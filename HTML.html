@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSS Concept Explained</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Full Content</title>
   <style>
     :root {
       --primary-color: #0097fa;
-      --text-dark: #333;
-      --bg-light: #f4f4f4;
+      --text-color: #333;
+      --bg-color: #f0f4f8;
+      --container-bg: #fff;
+      --code-bg: #222;
+      --code-text: #eee;
       --white: #fff;
-      --code-bg: #333;
     }
 
     body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
       padding: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
     }
 
     header {
       background-color: var(--primary-color);
       color: var(--white);
+      padding: 15px 0;
       text-align: center;
-      padding: 20px 10px;
       font-size: 28px;
       font-weight: bold;
     }
@@ -40,14 +41,13 @@
       width: 100px;
     }
 
-
     .container {
       max-width: 960px;
-      margin: auto;
-      padding: 30px 20px;
-      background-color: var(--white);
+      margin: 30px auto;
+      background-color: var(--container-bg);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
+      padding: 30px;
+      border-radius: 10px;
     }
 
     h2 {
@@ -55,52 +55,52 @@
       margin-top: 30px;
     }
 
-    .section {
-      margin-bottom: 30px;
-    }
-
-    .section p,
-    .section ul {
+    .section p {
       line-height: 1.7;
+      font-size: 16px;
       margin: 10px 0;
     }
 
-    .section ul {
+    ul {
+      margin-top: 10px;
+      margin-bottom: 20px;
       padding-left: 20px;
     }
 
-    .section ul li {
-      margin-bottom: 10px;
+    ul li {
+      margin-bottom: 8px;
+      line-height: 1.5;
     }
 
     .code {
       background-color: var(--code-bg);
-      color: var(--white);
+      color: var(--code-text);
       padding: 15px;
-      border-radius: 8px;
-      font-family: 'Courier New', Courier, monospace;
+      font-family: 'Courier New', monospace;
+      border-radius: 5px;
       font-size: 15px;
+      margin-top: 10px;
+      overflow-x: auto;
       white-space: pre-wrap;
-      margin: 10px 0;
     }
 
     footer {
+      text-align: center;
       background-color: var(--primary-color);
       color: var(--white);
-      text-align: center;
-      padding: 15px 10px;
-      font-size: 14px;
+      padding: 12px 0;
       margin-top: 40px;
+      font-size: 14px;
     }
 
     @media (max-width: 768px) {
-      header {
-        font-size: 22px;
-        padding: 15px 10px;
+      .container {
+        width: 90%;
+        padding: 20px;
       }
 
-      .container {
-        padding: 20px 15px;
+      header {
+        font-size: 22px;
       }
 
       h2 {
@@ -111,111 +111,128 @@
         font-size: 14px;
       }
     }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 15px 10px;
-      }
-
-      header {
-        font-size: 20px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
-    }
   </style>
 </head>
-
 <body>
 
   <header>
-    Understanding CSS in Detail
+    Learn HTML: Complete Overview
   </header>
-  <div class="img-section">
-    <img src="images/HTML.png" alt="">
-  </div>
 
+  <div class="img-section">
+    <img src="images/html.png" alt="HTML Logo" />
+  </div>
 
   <div class="container">
     <div class="section">
       <h2>1. Developed By and When</h2>
-      <p>CSS (Cascading Style Sheets) was developed by <strong>Håkon Wium Lie</strong> in 1994 while he was working at
-        CERN. CSS was created to style HTML documents and separate structure from presentation.</p>
+      <p>HTML (HyperText Markup Language) was invented by <strong>Tim Berners-Lee</strong> in 1991 while working at CERN.</p>
     </div>
 
     <div class="section">
-      <h2>2. What is CSS?</h2>
-      <p>CSS stands for <strong>Cascading Style Sheets</strong>. It describes the presentation of an HTML or XML
-        document, including layout, colors, fonts, and spacing, allowing attractive and consistent designs.</p>
+      <h2>2. What is HTML?</h2>
+      <p>HTML is the standard markup language used to create web pages. It defines the structure of a web document using elements represented by tags.</p>
     </div>
 
     <div class="section">
-      <h2>3. Types of CSS</h2>
+      <h2>3. Versions of HTML</h2>
       <ul>
-        <li><strong>Inline CSS:</strong> Applied directly inside HTML tags.</li>
-        <li><strong>Internal CSS:</strong> Written inside the <code>&lt;style&gt;</code> tag in HTML.</li>
-        <li><strong>External CSS:</strong> Written in a separate .css file linked via <code>&lt;link&gt;</code>.</li>
+        <li>HTML 1.0 – 1993</li>
+        <li>HTML 2.0 – 1995</li>
+        <li>HTML 3.2 – 1997</li>
+        <li>HTML 4.01 – 1999</li>
+        <li>XHTML – 2000</li>
+        <li>HTML5 – 2014 (most recent stable version)</li>
       </ul>
     </div>
 
     <div class="section">
-      <h2>4. Use Cases of CSS</h2>
-      <ul>
-        <li><strong>Layout Design:</strong> Using Flexbox, Grid, and positioning.</li>
-        <li><strong>Styling Text:</strong> Fonts, sizes, weights, colors, spacing.</li>
-        <li><strong>Responsive Design:</strong> Media queries for device adaptability.</li>
-        <li><strong>Animations:</strong> Keyframes, transitions for visual effects.</li>
-        <li><strong>Theming:</strong> Centralized color and style control.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>5. What are Properties and Values?</h2>
-      <p>A <strong>property</strong> defines the style aspect, and a <strong>value</strong> defines its behavior or
-        appearance.</p>
-      <p><strong>Example:</strong></p>
+      <h2>4. Basic HTML Structure</h2>
       <div class="code">
-        h1 {
-        color: blue;
-        font-size: 24px;
-        }
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
       </div>
-      <p>Here, <code>color</code> and <code>font-size</code> are properties, while <code>blue</code> and
-        <code>24px</code> are values.</p>
     </div>
 
     <div class="section">
-      <h2>6. History of CSS</h2>
-      <p>CSS was first proposed in 1994 and officially released in 1996 as CSS1. CSS2 followed in 1998, and CSS3 in 2001
-        brought modular design with Flexbox, Grid, Transitions, and more.</p>
-    </div>
-
-    <div class="section">
-      <h2>7. Implementation of CSS in HTML</h2>
+      <h2>5. Commonly Used Tags</h2>
       <ul>
-        <li><strong>Inline:</strong> Inside HTML elements using the <code>style</code> attribute.</li>
-        <li><strong>Internal:</strong> Inside <code>&lt;style&gt;</code> tags in the head.</li>
-        <li><strong>External:</strong> Linked .css files via <code>&lt;link&gt;</code> tag.</li>
+        <li><code>&lt;h1&gt; to &lt;h6&gt;</code> – Headings</li>
+        <li><code>&lt;p&gt;</code> – Paragraph</li>
+        <li><code>&lt;a href=""&gt;</code> – Anchor (link)</li>
+        <li><code>&lt;img src=""&gt;</code> – Image</li>
+        <li><code>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code> – Lists</li>
+        <li><code>&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;</code> – Tables</li>
+        <li><code>&lt;div&gt;</code> – Division (block container)</li>
+        <li><code>&lt;span&gt;</code> – Inline container</li>
       </ul>
-      <p><strong>Example of Internal CSS:</strong></p>
+    </div>
+
+    <div class="section">
+      <h2>6. HTML Attributes</h2>
+      <p>Attributes provide additional information about elements. Example:</p>
       <div class="code">
-        &lt;head&gt;<br>
-        &nbsp;&nbsp;&lt;style&gt;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;body {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f4f4f4;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-        &nbsp;&nbsp;&lt;/style&gt;<br>
-        &lt;/head&gt;
+&lt;a href="https://example.com" target="_blank"&gt;Visit&lt;/a&gt;
+      </div>
+      <p>Common attributes: <code>href</code>, <code>src</code>, <code>alt</code>, <code>id</code>, <code>class</code>, <code>style</code>, <code>target</code></p>
+    </div>
+
+    <div class="section">
+      <h2>7. Forms in HTML</h2>
+      <p>HTML forms are used to collect user input.</p>
+      <div class="code">
+&lt;form action="/submit" method="post"&gt;
+  &lt;input type="text" name="name" placeholder="Enter your name"&gt;
+  &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>8. Semantic HTML</h2>
+      <p>Semantic elements clearly describe their meaning:</p>
+      <ul>
+        <li><code>&lt;header&gt;</code></li>
+        <li><code>&lt;footer&gt;</code></li>
+        <li><code>&lt;article&gt;</code></li>
+        <li><code>&lt;section&gt;</code></li>
+        <li><code>&lt;nav&gt;</code></li>
+        <li><code>&lt;aside&gt;</code></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>9. HTML Entities</h2>
+      <p>Special characters in HTML:</p>
+      <ul>
+        <li><code>&amp;amp;</code> = &amp;</li>
+        <li><code>&amp;lt;</code> = &lt;</li>
+        <li><code>&amp;gt;</code> = &gt;</li>
+        <li><code>&amp;nbsp;</code> = (non-breaking space)</li>
+        <li><code>&amp;copy;</code> = ©</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>10. HTML Comments</h2>
+      <p>Comments are not displayed in the browser.</p>
+      <div class="code">
+&lt;!-- This is a comment --&gt;
       </div>
     </div>
   </div>
 
   <footer>
-    © 2025 CSS Learning Resource
+    &copy; 2025 ZN Infotech | HTML Tutorial Content
   </footer>
 
 </body>
-
 </html>
