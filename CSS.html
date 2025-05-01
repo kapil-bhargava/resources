@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Concept Explained</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0097fa;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h2 {
+            color: #0097fa;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section p {
+            line-height: 1.6;
+        }
+        .code {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 10px;
+            white-space: pre-wrap;
+        }
+        footer {
+            text-align: center;
+            background-color: #0097fa;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Understanding CSS in Detail
+</header>
+
+<div class="container">
+    <div class="section">
+        <h2>1. Developed By and When</h2>
+        <p>CSS (Cascading Style Sheets) was developed by <strong>Håkon Wium Lie</strong> in 1994 while he was working at CERN, under the guidance of Tim Berners-Lee, the inventor of the World Wide Web. CSS was created to style HTML documents, providing control over the appearance of web pages, allowing separation of structure (HTML) and presentation (CSS).</p>
+    </div>
+
+    <div class="section">
+        <h2>2. What is CSS?</h2>
+        <p>CSS stands for <strong>Cascading Style Sheets</strong>. It is a stylesheet language used to describe the presentation (visual look) of a document written in HTML or XML. CSS controls the layout, colors, fonts, spacing, and other aspects of the web page. It allows web developers to create attractive, consistent, and well-structured web pages by separating content and presentation.</p>
+    </div>
+
+    <div class="section">
+        <h2>3. Types of CSS</h2>
+        <p>CSS can be implemented in three different ways:</p>
+        <ul>
+            <li><strong>Inline CSS:</strong> Styles are applied directly within HTML elements using the <code>style</code> attribute.</li>
+            <li><strong>Internal CSS:</strong> Styles are defined within a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code> section of the HTML document.</li>
+            <li><strong>External CSS:</strong> Styles are written in an external CSS file and linked to the HTML document using the <code>&lt;link&gt;</code> tag.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>4. Use Cases of CSS</h2>
+        <p>CSS is used for various purposes in web development, including:</p>
+        <ul>
+            <li><strong>Layout Design:</strong> Arranging elements on a page using grids, flexbox, and other layout techniques.</li>
+            <li><strong>Styling Text:</strong> Adjusting font family, size, color, weight, line height, and letter spacing.</li>
+            <li><strong>Responsive Design:</strong> Ensuring the web page looks good on various screen sizes using media queries.</li>
+            <li><strong>Animations:</strong> Adding visual effects like transitions and keyframe animations.</li>
+            <li><strong>Theming:</strong> Defining consistent color schemes and visual styles across multiple web pages.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>5. What are Properties and Values?</h2>
+        <p>In CSS, a <strong>property</strong> is a style aspect you want to apply to an element, and a <strong>value</strong> defines how that style will appear.</p>
+        <p><strong>Example:</strong></p>
+        <div class="code">
+            h1 {<br>
+            &nbsp;&nbsp;color: blue;<br>
+            &nbsp;&nbsp;font-size: 24px;<br>
+            }
+        </div>
+        <p>Here, <code>color</code> and <code>font-size</code> are the properties, while <code>blue</code> and <code>24px</code> are their respective values.</p>
+    </div>
+
+    <div class="section">
+        <h2>6. History of CSS</h2>
+        <p>The history of CSS dates back to 1994 when it was first proposed by Håkon Wium Lie. In 1996, CSS1 was officially released by the World Wide Web Consortium (W3C). Over the years, new versions were developed, each bringing new features, including CSS2 (1998) and CSS3 (2001). CSS3 introduced modularization, allowing developers to use specific components as needed, such as Flexbox, Grid, and Animations.</p>
+    </div>
+
+    <div class="section">
+        <h2>7. Implementation of CSS in HTML</h2>
+        <p>CSS can be implemented in HTML in several ways:</p>
+        <ul>
+            <li><strong>Inline:</strong> Using the <code>style</code> attribute within HTML elements.</li>
+            <li><strong>Internal:</strong> Using a <code>&lt;style&gt;</code> tag in the head section of the document.</li>
+            <li><strong>External:</strong> Linking to an external <code>.css</code> file via the <code>&lt;link&gt;</code> tag.</li>
+        </ul>
+        <p><strong>Example of Internal CSS:</strong></p>
+        <div class="code">
+            &lt;head&gt;<br>
+            &nbsp;&nbsp;&lt;style&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;body {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f4f4f4;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;&lt;/style&gt;<br>
+            &lt;/head&gt;
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2025 CSS Learning Resource
+</footer>
+
+</body>
+</html>
