@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CSS Concept Explained</title>
   <style>
     :root {
@@ -29,6 +30,16 @@
       font-size: 28px;
       font-weight: bold;
     }
+
+    .img-section {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .img-section img {
+      width: 100px;
+    }
+
 
     .container {
       max-width: 960px;
@@ -116,21 +127,28 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
     Understanding CSS in Detail
   </header>
+  <div class="img-section">
+    <img src="images/HTML.png" alt="">
+  </div>
+
 
   <div class="container">
     <div class="section">
       <h2>1. Developed By and When</h2>
-      <p>CSS (Cascading Style Sheets) was developed by <strong>Håkon Wium Lie</strong> in 1994 while he was working at CERN. CSS was created to style HTML documents and separate structure from presentation.</p>
+      <p>CSS (Cascading Style Sheets) was developed by <strong>Håkon Wium Lie</strong> in 1994 while he was working at
+        CERN. CSS was created to style HTML documents and separate structure from presentation.</p>
     </div>
 
     <div class="section">
       <h2>2. What is CSS?</h2>
-      <p>CSS stands for <strong>Cascading Style Sheets</strong>. It describes the presentation of an HTML or XML document, including layout, colors, fonts, and spacing, allowing attractive and consistent designs.</p>
+      <p>CSS stands for <strong>Cascading Style Sheets</strong>. It describes the presentation of an HTML or XML
+        document, including layout, colors, fonts, and spacing, allowing attractive and consistent designs.</p>
     </div>
 
     <div class="section">
@@ -155,20 +173,23 @@
 
     <div class="section">
       <h2>5. What are Properties and Values?</h2>
-      <p>A <strong>property</strong> defines the style aspect, and a <strong>value</strong> defines its behavior or appearance.</p>
+      <p>A <strong>property</strong> defines the style aspect, and a <strong>value</strong> defines its behavior or
+        appearance.</p>
       <p><strong>Example:</strong></p>
       <div class="code">
-h1 {
-  color: blue;
-  font-size: 24px;
-}
+        h1 {
+        color: blue;
+        font-size: 24px;
+        }
       </div>
-      <p>Here, <code>color</code> and <code>font-size</code> are properties, while <code>blue</code> and <code>24px</code> are values.</p>
+      <p>Here, <code>color</code> and <code>font-size</code> are properties, while <code>blue</code> and
+        <code>24px</code> are values.</p>
     </div>
 
     <div class="section">
       <h2>6. History of CSS</h2>
-      <p>CSS was first proposed in 1994 and officially released in 1996 as CSS1. CSS2 followed in 1998, and CSS3 in 2001 brought modular design with Flexbox, Grid, Transitions, and more.</p>
+      <p>CSS was first proposed in 1994 and officially released in 1996 as CSS1. CSS2 followed in 1998, and CSS3 in 2001
+        brought modular design with Flexbox, Grid, Transitions, and more.</p>
     </div>
 
     <div class="section">
@@ -180,13 +201,13 @@ h1 {
       </ul>
       <p><strong>Example of Internal CSS:</strong></p>
       <div class="code">
-&lt;head&gt;<br>
-  &nbsp;&nbsp;&lt;style&gt;<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;body {<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f4f4f4;<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-  &nbsp;&nbsp;&lt;/style&gt;<br>
-&lt;/head&gt;
+        &lt;head&gt;<br>
+        &nbsp;&nbsp;&lt;style&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;body {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f4f4f4;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+        &nbsp;&nbsp;&lt;/style&gt;<br>
+        &lt;/head&gt;
       </div>
     </div>
   </div>
@@ -196,4 +217,5 @@ h1 {
   </footer>
 
 </body>
+
 </html>

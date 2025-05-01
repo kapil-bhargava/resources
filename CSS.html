@@ -3,92 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Topic Template</title>
+    <title>CSS Concept Explained</title>
     <style>
+        :root {
+            --primary-color: #0097fa;
+            --text-color: ;
+            --bg-color: #f0f4f8;
+            --container-bg: #fff;
+            --code-bg: #222;
+            --code-text: #eee;
+            --white: #fff;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
         }
+
         header {
-            background-color: #0097fa;
-            color: white;
-            padding: 10px 0;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 0;
             text-align: center;
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: bold;
         }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        h2 {
-            color: #0097fa;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        .section p {
-            line-height: 1.6;
-        }
-        .code {
-            background-color: #333;
-            color: #fff;
+
+        .img-section {
             padding: 10px;
-            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+
+        .img-section img {
+            width: 100px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            background-color: var(--container-bg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 30px;
+        }
+
+        .section p {
+            line-height: 1.7;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        ul {
             margin-top: 10px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .code {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            font-size: 15px;
+            margin-top: 10px;
+            overflow-x: auto;
             white-space: pre-wrap;
         }
+
         footer {
             text-align: center;
-            background-color: #0097fa;
-            color: white;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 0;
+            position: relative;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            header {
+                font-size: 22px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .code {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    CSS Topic Template
+    Understanding CSS in Detail
 </header>
+<div class="img-section">
+    <img src="images/CSS.png" alt="">
+</div>
 
 <div class="container">
     <div class="section">
-        <h2>1. Your Topic Title</h2>
-        <p>This is where you describe your topic in detail. Make sure to explain it clearly and include examples if needed.</p>
+        <h2>1. Developed By and When</h2>
+        <p>CSS (Cascading Style Sheets) was developed by <strong>Håkon Wium Lie</strong> in 1994 while he was working at CERN, under the guidance of Tim Berners-Lee, the inventor of the World Wide Web.</p>
+        <p>It was created to style HTML documents and provide better control over their presentation.</p>
     </div>
 
     <div class="section">
-        <h2>2. Code Example</h2>
-        <p>Here is an example of code related to the topic:</p>
+        <h2>2. What is CSS?</h2>
+        <p>CSS stands for <strong>Cascading Style Sheets</strong>. It is used to define the appearance of HTML documents by controlling layout, colors, fonts, and spacing.</p>
+    </div>
+
+    <div class="section">
+        <h2>3. Types of CSS</h2>
+        <p>CSS can be applied in three different ways:</p>
+        <ul>
+            <li><strong>Inline CSS:</strong> Within HTML elements using the <code>style</code> attribute.</li>
+            <li><strong>Internal CSS:</strong> Inside a <code>&lt;style&gt;</code> tag in the HTML document’s <code>&lt;head&gt;</code>.</li>
+            <li><strong>External CSS:</strong> In a separate file linked via <code>&lt;link&gt;</code>.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>4. Use Cases of CSS</h2>
+        <p>CSS is used for:</p>
+        <ul>
+            <li><strong>Layout Design:</strong> Grids, Flexbox, positioning, etc.</li>
+            <li><strong>Styling Text:</strong> Fonts, sizes, colors, and spacing.</li>
+            <li><strong>Responsive Design:</strong> Using media queries to adapt to screen sizes.</li>
+            <li><strong>Animations:</strong> Adding interactive effects with transitions and keyframes.</li>
+            <li><strong>Theming:</strong> Maintaining a consistent style across web pages.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>5. What are Properties and Values?</h2>
+        <p>In CSS, a <strong>property</strong> is a styling rule (like <code>color</code>), and a <strong>value</strong> defines how that rule is applied (like <code>blue</code>).</p>
+        <p><strong>Example:</strong></p>
         <div class="code">
-            selector {<br>
-            &nbsp;&nbsp;property: value;<br>
-            }
+h1 {
+  color: blue;
+  font-size: 24px;
+}
         </div>
     </div>
 
     <div class="section">
-        <h2>3. Why It Is Useful</h2>
-        <p>Explain how or where this concept is used in real-world web development scenarios.</p>
+        <h2>6. History of CSS</h2>
+        <p>CSS was proposed in 1994 and CSS1 was released in 1996. Then came CSS2 (1998), and CSS3 (2001), which introduced modular features like Flexbox, Grid, and animations.</p>
     </div>
 
     <div class="section">
-        <h2>4. Additional Notes</h2>
-        <p>Provide any additional tips, warnings, or best practices.</p>
+        <h2>7. Implementation of CSS in HTML</h2>
+        <p>There are three main ways:</p>
+        <ul>
+            <li><strong>Inline:</strong> <code>&lt;p style="color:red;"&gt;</code></li>
+            <li><strong>Internal:</strong> Within <code>&lt;style&gt;</code> tags in the <code>&lt;head&gt;</code></li>
+            <li><strong>External:</strong> Via linked CSS file</li>
+        </ul>
+        <p><strong>Example (Internal CSS):</strong></p>
+        <div class="code">
+&lt;head&gt;<br>
+  &nbsp;&nbsp;&lt;style&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;body {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f4f4f4;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  &nbsp;&nbsp;&lt;/style&gt;<br>
+&lt;/head&gt;
+        </div>
     </div>
 </div>
 
 <footer>
-    © 2025 CSS Topic Resource
+    © 2025 CSS Learning Resource
 </footer>
 
 </body>
