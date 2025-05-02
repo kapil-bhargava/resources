@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HTML Full Content</title>
   <style>
     :root {
@@ -30,6 +31,23 @@
       text-align: center;
       font-size: 28px;
       font-weight: bold;
+    }
+
+    .random-button {
+      display: inline-block;
+      text-decoration: none;
+      background-color: var(--primary-color);
+      color: var(--btn-color);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      border: none;
+      color: white;
+    }
+
+    .random-button:hover {
+      background-color: #0073c7;
     }
 
     .img-section {
@@ -113,6 +131,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -125,13 +144,19 @@
 
   <div class="container">
     <div class="section">
+      <h3>The History and Development of HTML </h3>
+     <a href="html_history.html" class="random-button">View History</a>
+    </div>
+    <div class="section">
       <h2>1. Developed By and When</h2>
-      <p>HTML (HyperText Markup Language) was invented by <strong>Tim Berners-Lee</strong> in 1991 while working at CERN.</p>
+      <p>HTML (HyperText Markup Language) was invented by <strong>Tim Berners-Lee</strong> in 1991 while working at
+        CERN.</p>
     </div>
 
     <div class="section">
       <h2>2. What is HTML?</h2>
-      <p>HTML is the standard markup language used to create web pages. It defines the structure of a web document using elements represented by tags.</p>
+      <p>HTML is the standard markup language used to create web pages. It defines the structure of a web document using
+        elements represented by tags.</p>
     </div>
 
     <div class="section">
@@ -149,17 +174,54 @@
     <div class="section">
       <h2>4. Basic HTML Structure</h2>
       <div class="code">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Page Title&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Welcome&lt;/h1&gt;
-    &lt;p&gt;This is a paragraph.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;title&gt;Page Title&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        &lt;h1&gt;Welcome&lt;/h1&gt;
+        &lt;p&gt;This is a paragraph.&lt;/p&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
       </div>
+    </div>
+    <div class="section">
+      <h3>What are Tags and Elements in HTML ?</h3>
+      <p> <strong>Tags :</strong>
+      <ul>
+        <li>The keywords enclosed in angle brackets &lt; &gt; that tell the browser what to do or how to interpret
+          content.</li>
+        <li>
+          </p> (closing tag) Tags are like instructions or labels. Tags alone don’t mean much without content.
+        </li>
+        <strong>Example :</strong> &lt;p&gt; (opening tag), &lt;/p&gt;(closing tag)
+      </ul>
+      </p>
+      <p> <strong>Element :</strong>
+      <ul>
+        <li>The complete structure that includes the opening tag, the content, and the closing
+          tag (if needed).</li>
+        <li>An element is everything together (tag + content). It represents actual content on the page.</li>
+        <strong>Example :</strong> &lt;p&gt; This is a paragraph &lt;/p&gt;
+      </ul>
+      <h4>Types of Elements</h4>
+      <ul>
+        <li><strong>Block-Element : </strong>A block-level element is an HTML element that starts on a new line and
+          takes up the full width of its container by default (even if the content inside it is small). </strong></li>
+        <strong>For Ex- <code>
+          &lt;div&gt;, &lt;h1&gt; - &lt;h6&gt;
+        </code></strong> <br><br>
+        <li><strong>Inline-Element : </strong>An inline element is an HTML element that does not start on a new line and
+          only takes up as much width as its content requires.</li>
+        <strong>For Ex- <code>
+          &lt;a&gt;, &lt;strong&gt; , &lt;span&gt;, &lt;img&gt;, &lt;input&gt;
+        </code></strong> <br><br>
+      </ul>
+      <a class="random-button" href="tags.html">
+        See More Tags
+      </a>
+      </p>
     </div>
 
     <div class="section">
@@ -180,19 +242,21 @@
       <h2>6. HTML Attributes</h2>
       <p>Attributes provide additional information about elements. Example:</p>
       <div class="code">
-&lt;a href="https://example.com" target="_blank"&gt;Visit&lt;/a&gt;
+        &lt;a href="https://example.com" target="_blank"&gt;Visit&lt;/a&gt;
       </div>
-      <p>Common attributes: <code>href</code>, <code>src</code>, <code>alt</code>, <code>id</code>, <code>class</code>, <code>style</code>, <code>target</code></p>
+      <p>Common attributes: <code>href</code>, <code>src</code>, <code>alt</code>, <code>id</code>, <code>class</code>,
+        <code>style</code>, <code>target</code>
+      </p>
     </div>
 
     <div class="section">
       <h2>7. Forms in HTML</h2>
       <p>HTML forms are used to collect user input.</p>
       <div class="code">
-&lt;form action="/submit" method="post"&gt;
-  &lt;input type="text" name="name" placeholder="Enter your name"&gt;
-  &lt;input type="submit" value="Submit"&gt;
-&lt;/form&gt;
+        &lt;form action="/submit" method="post"&gt;
+        &lt;input type="text" name="name" placeholder="Enter your name"&gt;
+        &lt;input type="submit" value="Submit"&gt;
+        &lt;/form&gt;
       </div>
     </div>
 
@@ -225,7 +289,7 @@
       <h2>10. HTML Comments</h2>
       <p>Comments are not displayed in the browser.</p>
       <div class="code">
-&lt;!-- This is a comment --&gt;
+        &lt;!-- This is a comment --&gt;
       </div>
     </div>
   </div>
@@ -235,4 +299,5 @@
   </footer>
 
 </body>
+
 </html>

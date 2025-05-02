@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Resources - MERN</title>
   <style>
     :root {
@@ -128,7 +129,8 @@
     }
   </style>
 </head>
-<body>
+
+<body id="body">
 
   <header>
     <h2>ZN Infotech - Learning Hub</h2>
@@ -136,7 +138,8 @@
 
   <div class="container">
     <h1>What do you want to learn today?</h1>
-    <p>Welcome to our MERN Learning Resources. Begin your journey by selecting one of the core front-end technologies. Each topic includes detailed explanations, examples, and practical use cases.</p>
+    <p>Welcome to our MERN Learning Resources. Begin your journey by selecting one of the core front-end technologies.
+      Each topic includes detailed explanations, examples, and practical use cases.</p>
   </div>
 
   <section class="divs">
@@ -160,6 +163,14 @@
   <footer>
     &copy; 2025 ZN Infotech. All rights reserved. | Designed with 💙 for learners.
   </footer>
+  <script>
+    const targeted = document.getElementById("body");
+    // function to disable right click 
+    targeted.addEventListener("contextmenu", function (e) {
+      e.preventDefault(); // Prevents the default context menu
+    });
+  </script>
 
 </body>
+
 </html>

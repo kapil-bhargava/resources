@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,90 +115,124 @@
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    Understanding CSS in Detail
-</header>
-<div class="img-section">
-    <img src="images/CSS.png" alt="">
-</div>
-
-<div class="container">
-    <div class="section">
-        <h2>1. Developed By and When</h2>
-        <p>CSS (Cascading Style Sheets) was developed by <strong>Håkon Wium Lie</strong> in 1994 while he was working at CERN, under the guidance of Tim Berners-Lee, the inventor of the World Wide Web.</p>
-        <p>It was created to style HTML documents and provide better control over their presentation.</p>
+    <header>
+        Understanding CSS in Detail
+    </header>
+    <div class="img-section">
+        <img src="images/CSS.png" alt="">
     </div>
 
-    <div class="section">
-        <h2>2. What is CSS?</h2>
-        <p>CSS stands for <strong>Cascading Style Sheets</strong>. It is used to define the appearance of HTML documents by controlling layout, colors, fonts, and spacing.</p>
-    </div>
+    <div class="container">
 
-    <div class="section">
-        <h2>3. Types of CSS</h2>
-        <p>CSS can be applied in three different ways:</p>
-        <ul>
-            <li><strong>Inline CSS:</strong> Within HTML elements using the <code>style</code> attribute.</li>
-            <li><strong>Internal CSS:</strong> Inside a <code>&lt;style&gt;</code> tag in the HTML document’s <code>&lt;head&gt;</code>.</li>
-            <li><strong>External CSS:</strong> In a separate file linked via <code>&lt;link&gt;</code>.</li>
-        </ul>
-    </div>
+        <div class="section">
+            <h2>1. Developed By and When</h2>
+            <p>The concept of CSS was proposed by <strong>Håkon Wium Lie</strong> in October 1994.
+            <ul>
+                <li>Håkon Wium Lie was working at CERN and later at W3C (World Wide Web Consortium).</li>
+                <li>He proposed CSS because web designers needed a way to separate content (HTML) from presentation
+                    (style).</li>
+            </ul>
 
-    <div class="section">
-        <h2>4. Use Cases of CSS</h2>
-        <p>CSS is used for:</p>
-        <ul>
-            <li><strong>Layout Design:</strong> Grids, Flexbox, positioning, etc.</li>
-            <li><strong>Styling Text:</strong> Fonts, sizes, colors, and spacing.</li>
-            <li><strong>Responsive Design:</strong> Using media queries to adapt to screen sizes.</li>
-            <li><strong>Animations:</strong> Adding interactive effects with transitions and keyframes.</li>
-            <li><strong>Theming:</strong> Maintaining a consistent style across web pages.</li>
-        </ul>
-    </div>
 
-    <div class="section">
-        <h2>5. What are Properties and Values?</h2>
-        <p>In CSS, a <strong>property</strong> is a styling rule (like <code>color</code>), and a <strong>value</strong> defines how that rule is applied (like <code>blue</code>).</p>
-        <p><strong>Example:</strong></p>
-        <div class="code">
-h1 {
-  color: blue;
-  font-size: 24px;
-}
+            Before CSS, people used ugly, clunky HTML tags like <code> &lt;font&gt; </code>, and table layouts
+                to handle visual design directly inside the HTML — it was messy and inflexible.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. What is CSS?</h2>
+            <p>CSS stands for <strong> Cascading Style Sheets </strong>— it controls the style and layout of web pages
+                (colors, fonts, spacing, positioning), separate from the HTML structure.
+
+            </p>
+        </div>
+        <div class="section">
+            <h3>Why CSS related to W3C</h3>
+            <ul>
+                <li>The W3C (World Wide Web Consortium) is an international organization founded by Tim Berners-Lee (the inventor of the web) to standardize web technologies so that the web remains open, interoperable, and universal.</li>
+                <li>CSS was developed under <strong>W3C’s guidance</strong>, meaning:</li>
+                <ul>
+                    <li>It became an official web standard, not controlled by a single browser company.</li>
+                    <li>W3C makes sure that browsers (like Chrome, Firefox, Safari) all implement CSS consistently, so websites look the same across platforms.</li>
+                </ul>
+            </ul>
+            <p>Without W3C, we’d have a messy web where every browser might style things differently (like the old browser wars of the 90s).
+
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>3. Types of CSS</h2>
+            <p>CSS can be applied in three different ways:</p>
+            <ul>
+                <li><strong>Inline CSS:</strong> Within HTML elements using the <code>style</code> attribute.</li>
+                <li><strong>Internal CSS:</strong> Inside a <code>&lt;style&gt;</code> tag in the HTML document’s
+                    <code>&lt;head&gt;</code>.
+                </li>
+                <li><strong>External CSS:</strong> In a separate file linked via <code>&lt;link&gt;</code>.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. Use Cases of CSS</h2>
+            <p>CSS is used for:</p>
+            <ul>
+                <li><strong>Layout Design:</strong> Grids, Flexbox, positioning, etc.</li>
+                <li><strong>Styling Text:</strong> Fonts, sizes, colors, and spacing.</li>
+                <li><strong>Responsive Design:</strong> Using media queries to adapt to screen sizes.</li>
+                <li><strong>Animations:</strong> Adding interactive effects with transitions and keyframes.</li>
+                <li><strong>Theming:</strong> Maintaining a consistent style across web pages.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. What are Properties and Values?</h2>
+            <p>In CSS, a <strong>property</strong> is a styling rule (like <code>color</code>), and a
+                <strong>value</strong> defines how that rule is applied (like <code>blue</code>).
+            </p>
+            <p><strong>Example:</strong></p>
+            <div class="code">
+                h1 {
+                color: blue;
+                font-size: 24px;
+                }
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>6. History of CSS</h2>
+            <p>CSS was proposed in 1994 and CSS1 was released in 1996. Then came CSS2 (1998), and CSS3 (2001), which
+                introduced modular features like Flexbox, Grid, and animations.</p>
+        </div>
+
+        <div class="section">
+            <h2>7. Implementation of CSS in HTML</h2>
+            <p>There are three main ways:</p>
+            <ul>
+                <li><strong>Inline:</strong> <code>&lt;p style="color:red;"&gt;</code></li>
+                <li><strong>Internal:</strong> Within <code>&lt;style&gt;</code> tags in the <code>&lt;head&gt;</code>
+                </li>
+                <li><strong>External:</strong> Via linked CSS file</li>
+            </ul>
+            <p><strong>Example (Internal CSS):</strong></p>
+            <div class="code">
+                &lt;head&gt;<br>
+                &nbsp;&nbsp;&lt;style&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;body {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f4f4f4;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&lt;/style&gt;<br>
+                &lt;/head&gt;
+            </div>
         </div>
     </div>
 
-    <div class="section">
-        <h2>6. History of CSS</h2>
-        <p>CSS was proposed in 1994 and CSS1 was released in 1996. Then came CSS2 (1998), and CSS3 (2001), which introduced modular features like Flexbox, Grid, and animations.</p>
-    </div>
-
-    <div class="section">
-        <h2>7. Implementation of CSS in HTML</h2>
-        <p>There are three main ways:</p>
-        <ul>
-            <li><strong>Inline:</strong> <code>&lt;p style="color:red;"&gt;</code></li>
-            <li><strong>Internal:</strong> Within <code>&lt;style&gt;</code> tags in the <code>&lt;head&gt;</code></li>
-            <li><strong>External:</strong> Via linked CSS file</li>
-        </ul>
-        <p><strong>Example (Internal CSS):</strong></p>
-        <div class="code">
-&lt;head&gt;<br>
-  &nbsp;&nbsp;&lt;style&gt;<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;body {<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f4f4f4;<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-  &nbsp;&nbsp;&lt;/style&gt;<br>
-&lt;/head&gt;
-        </div>
-    </div>
-</div>
-
-<footer>
-    © 2025 CSS Learning Resource
-</footer>
+    <footer>
+        © 2025 CSS Learning Resource
+    </footer>
 
 </body>
+
 </html>
