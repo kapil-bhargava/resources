@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Text Formatting Properties</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #222e50;
+        }
+
+        h1 {
+            border-bottom: 3px solid #222e50;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #222e50;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+
+        .footer-note {
+            background: #222e50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Text Formatting Properties (Like MS Word)</h1>
+
+    <section>
+        <h2>🅰️ Font & Style</h2>
+        <table>
+            <tr><th>CSS Property</th><th>Description</th></tr>
+            <tr><td>font-family</td><td>Set the font face (like Arial, Times)</td></tr>
+            <tr><td>font-size</td><td>Set the font size</td></tr>
+            <tr><td>font-style</td><td>normal / italic / oblique</td></tr>
+            <tr><td>font-variant</td><td>small-caps</td></tr>
+            <tr><td>font-weight</td><td>normal / bold / bolder / lighter / 100-900</td></tr>
+            <tr><td>color</td><td>Text color</td></tr>
+            <tr><td>text-decoration</td><td>underline / overline / line-through / none</td></tr>
+            <tr><td>text-decoration-color</td><td>Color of decoration (underline etc.)</td></tr>
+            <tr><td>text-decoration-style</td><td>solid / dotted / dashed / wavy</td></tr>
+            <tr><td>text-emphasis</td><td>Add emphasis marks (like dot, circle)</td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>✍️ Text Transformations & Spacing</h2>
+        <table>
+            <tr><th>CSS Property</th><th>Description</th></tr>
+            <tr><td>text-transform</td><td>uppercase / lowercase / capitalize</td></tr>
+            <tr><td>letter-spacing</td><td>Space between characters</td></tr>
+            <tr><td>word-spacing</td><td>Space between words</td></tr>
+            <tr><td>line-height</td><td>Space between lines</td></tr>
+            <tr><td>white-space</td><td>Handling of spaces/wrapping</td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>🛠️ Alignment & Indentation</h2>
+        <table>
+            <tr><th>CSS Property</th><th>Description</th></tr>
+            <tr><td>text-align</td><td>left / center / right / justify</td></tr>
+            <tr><td>vertical-align</td><td>Align text vertically (inline elements)</td></tr>
+            <tr><td>text-indent</td><td>Indent first line of text</td></tr>
+            <tr><td>direction</td><td>ltr / rtl (Left-to-Right, Right-to-Left)</td></tr>
+            <tr><td>unicode-bidi</td><td>Bidirectional text support</td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>🌈 Text Shadow & Effects</h2>
+        <table>
+            <tr><th>CSS Property</th><th>Description</th></tr>
+            <tr><td>text-shadow</td><td>Shadow behind text</td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>🔗 Links & Special Decorations</h2>
+        <table>
+            <tr><th>CSS Property</th><th>Description</th></tr>
+            <tr><td>text-decoration-thickness</td><td>Thickness of underline/line-through</td></tr>
+            <tr><td>text-decoration-skip</td><td>Controls how underlines skip descenders</td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>✨ CSS Logical Properties</h2>
+        <table>
+            <tr><th>CSS Property</th><th>Description</th></tr>
+            <tr><td>text-align-last</td><td>Align last line of text</td></tr>
+            <tr><td>writing-mode</td><td>Vertical/horizontal writing flow</td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>🥇 MS Word Feature vs CSS Property Comparison</h2>
+        <table class="comparison-table">
+            <tr><th>MS Word Feature</th><th>CSS Property</th></tr>
+            <tr><td>Bold</td><td>font-weight: bold;</td></tr>
+            <tr><td>Italic</td><td>font-style: italic;</td></tr>
+            <tr><td>Underline</td><td>text-decoration: underline;</td></tr>
+            <tr><td>Strikethrough</td><td>text-decoration: line-through;</td></tr>
+            <tr><td>Font size</td><td>font-size</td></tr>
+            <tr><td>Font family</td><td>font-family</td></tr>
+            <tr><td>Text color</td><td>color</td></tr>
+            <tr><td>Highlight color</td><td>background-color</td></tr>
+            <tr><td>Align Left/Center/Right</td><td>text-align</td></tr>
+            <tr><td>Line spacing</td><td>line-height</td></tr>
+            <tr><td>Capitalize / Uppercase</td><td>text-transform</td></tr>
+            <tr><td>Small caps</td><td>font-variant: small-caps;</td></tr>
+        </table>
+    </section>
+
+    <div class="footer-note">
+        📘 This page lists all CSS properties related to text formatting, like MS Word text styling features.
+    </div>
+
+</body>
+
+</html>

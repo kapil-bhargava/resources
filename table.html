@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Tables: Full Explanation and Examples</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 20px;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #0056b3;
+    }
+
+    code {
+      background: #e9ecef;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: center;
+    }
+
+    thead {
+      background-color: #f2f2f2;
+    }
+
+    caption {
+      caption-side: top;
+      font-size: 1.5em;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    section {
+      margin-bottom: 40px;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    @media screen and (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      }
+      th {
+        background-color: #ddd;
+      }
+      td {
+        border: none;
+        border-bottom: 1px solid #ccc;
+        text-align: left;
+        padding-left: 50%;
+        position: relative;
+      }
+      td::before {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+      td:nth-of-type(1)::before { content: "Name"; }
+      td:nth-of-type(2)::before { content: "Age"; }
+      td:nth-of-type(3)::before { content: "Country"; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HTML Tables: Full Explanation and Examples</h1>
+
+  <section>
+    <h2>📋 What is an HTML Table?</h2>
+    <p>An HTML table is used to display <strong>tabular data</strong> — information arranged in <strong>rows</strong> and <strong>columns</strong>.</p>
+    <p><strong>Example:</strong></p>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Country</th>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>25</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <td>Anna</td>
+        <td>30</td>
+        <td>UK</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>🛠️ Basic Table Tags</h2>
+    <ul>
+      <li><code>&lt;table&gt;</code> — The container of the table</li>
+      <li><code>&lt;tr&gt;</code> — Table row</li>
+      <li><code>&lt;th&gt;</code> — Table header cell</li>
+      <li><code>&lt;td&gt;</code> — Table data cell</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📚 Advanced Table Tags</h2>
+    <ul>
+      <li><code>&lt;caption&gt;</code> — Adds a title/description</li>
+      <li><code>&lt;thead&gt;</code> — Groups header rows</li>
+      <li><code>&lt;tbody&gt;</code> — Groups body rows</li>
+      <li><code>&lt;tfoot&gt;</code> — Groups footer rows</li>
+      <li><code>&lt;colgroup&gt;</code> — Groups columns (for styling)</li>
+      <li><code>&lt;col&gt;</code> — Defines styles or widths for specific columns</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>⚙️ Attributes of Table Tags</h2>
+    <ul>
+      <li><code>colspan</code> — Cell spans multiple columns</li>
+      <li><code>rowspan</code> — Cell spans multiple rows</li>
+      <li><code>border</code> — Adds border (deprecated; use CSS)</li>
+      <li><code>width</code>, <code>height</code> — Sets width/height</li>
+      <li><code>align</code> — Horizontal alignment</li>
+      <li><code>valign</code> — Vertical alignment</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>✨ Complete Table Example (With <code>colspan</code>, <code>rowspan</code>, <code>thead</code>, <code>tfoot</code>)</h2>
+
+    <table>
+      <caption>Employee Details</caption>
+      <thead>
+        <tr>
+          <th rowspan="2">Name</th>
+          <th rowspan="2">Department</th>
+          <th colspan="2">Contact Info</th>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>IT</td>
+          <td>john@example.com</td>
+          <td>123-456-7890</td>
+        </tr>
+        <tr>
+          <td>Anna Smith</td>
+          <td>HR</td>
+          <td>anna@example.com</td>
+          <td>234-567-8901</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">Total Employees: 2</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <section>
+    <h2>🏆 Best Practices</h2>
+    <ul>
+      <li>Use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code> for better structure and accessibility</li>
+      <li>Prefer CSS for styling (instead of deprecated attributes)</li>
+      <li>Use <code>colspan</code>, <code>rowspan</code> wisely for clarity</li>
+      <li>Ensure tables are responsive on smaller screens</li>
+    </ul>
+  </section>
+
+</body>
+</html>

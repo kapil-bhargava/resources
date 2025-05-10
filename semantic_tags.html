@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guide to HTML Semantic Tags</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Root Colors */
+    :root {
+      --primary-color: #4CAF50;
+      --secondary-color: #222;
+      --accent-color: #f0f0f0;
+      --highlight-color: #e0ffe0;
+      --text-color: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      color: var(--secondary-color);
+      margin-bottom: 10px;
+    }
+
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    ul {
+      margin: 10px 0 10px 20px;
+    }
+
+    pre {
+      background: var(--highlight-color);
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      background: var(--secondary-color);
+      color: white;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Complete Guide to HTML5 Semantic Tags</h1>
+  <p>Learn what semantic tags are, why they matter, and how to use them effectively!</p>
+</header>
+
+<section>
+  <h2>What are Semantic Tags?</h2>
+  <p><b>Semantic HTML tags</b> are elements that clearly describe their meaning both to the browser and to the developer. Instead of using generic tags like <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>, semantic tags tell you exactly what their purpose is.</p>
+
+  <p><b>Example:</b> Compare these:</p>
+  <pre><code>&lt;div id="header"&gt; ... &lt;/div&gt;</code></pre>
+  <p>vs</p>
+  <pre><code>&lt;header&gt; ... &lt;/header&gt;</code></pre>
+
+  <p>The second one is clearer — you know this section is the page header!</p>
+</section>
+
+<section>
+  <h2>Why are Semantic Tags Important?</h2>
+  <ul>
+    <li><b>Improves Readability:</b> Easier for developers to understand the code structure.</li>
+    <li><b>SEO Benefits:</b> Search engines understand your page content better.</li>
+    <li><b>Accessibility:</b> Screen readers and assistive technologies interpret the content more accurately.</li>
+    <li><b>Maintainability:</b> Easier to manage and update code in the future.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Common HTML5 Semantic Tags</h2>
+  <table>
+    <tr>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><code>&lt;header&gt;</code></td>
+      <td>Defines a header for a page or section.</td>
+    </tr>
+    <tr>
+      <td><code>&lt;nav&gt;</code></td>
+      <td>Defines navigation links.</td>
+    </tr>
+    <tr>
+      <td><code>&lt;main&gt;</code></td>
+      <td>Specifies the main content of a document.</td>
+    </tr>
+    <tr>
+      <td><code>&lt;section&gt;</code></td>
+      <td>Defines a standalone section of content.</td>
+    </tr>
+    <tr>
+      <td><code>&lt;article&gt;</code></td>
+      <td>Specifies independent, self-contained content (like a blog post).</td>
+    </tr>
+    <tr>
+      <td><code>&lt;aside&gt;</code></td>
+      <td>Contains content indirectly related to the main content (sidebar).</td>
+    </tr>
+    <tr>
+      <td><code>&lt;footer&gt;</code></td>
+      <td>Defines a footer for a page or section.</td>
+    </tr>
+    <tr>
+      <td><code>&lt;figure&gt;</code> / <code>&lt;figcaption&gt;</code></td>
+      <td>Used for images, diagrams, with captions.</td>
+    </tr>
+    <tr>
+      <td><code>&lt;mark&gt;</code></td>
+      <td>Highlights important text.</td>
+    </tr>
+    <tr>
+      <td><code>&lt;time&gt;</code></td>
+      <td>Represents dates/times.</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2>Example Semantic Layout</h2>
+  <p>Here’s a simple example of how semantic tags are used in a webpage layout:</p>
+
+  <pre><code>&lt;header&gt;
+  &lt;h1&gt;My Website&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Home&lt;/li&gt;
+    &lt;li&gt;About&lt;/li&gt;
+    &lt;li&gt;Contact&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Blog Post&lt;/h2&gt;
+    &lt;p&gt;This is an article.&lt;/p&gt;
+  &lt;/article&gt;
+
+  &lt;aside&gt;
+    &lt;p&gt;This is a sidebar.&lt;/p&gt;
+  &lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;&copy; 2025 My Website&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+</section>
+
+<section>
+  <h2>Key Tips When Using Semantic Tags</h2>
+  <ul>
+    <li>Use tags based on their <b>meaning</b>, not just their style.</li>
+    <li>Don’t overuse tags like <code>&lt;section&gt;</code> and <code>&lt;article&gt;</code> unnecessarily.</li>
+    <li>Combine semantic tags with <b>ARIA attributes</b> for better accessibility (optional).</li>
+  </ul>
+</section>
+
+<footer>
+  <p>&copy; 2025 Semantic Tags Guide | Made with ❤️ by ZN Infotech</p>
+</footer>
+
+</body>
+</html>

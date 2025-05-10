@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Forms Guide (Fully Responsive)</title>
+<style>
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #f5f7fa;
+  --accent-color: #50e3c2;
+  --text-color: #333333;
+  --heading-color: #222222;
+  --border-color: #dddddd;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: var(--heading-color);
+}
+
+h1 {
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 5px;
+}
+
+section {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+code {
+  background-color: #eef1f5;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: #c7254e;
+}
+
+pre {
+  background-color: #272822;
+  color: #f8f8f2;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  word-break: break-word;
+}
+
+table, th, td {
+  border: 1px solid var(--border-color);
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+table td {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border: 1px solid var(--border-color);
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 10px;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+  }
+}
+</style>
+</head>
+<body>
+<h1>HTML Forms Guide (with &lt;select&gt; and &lt;option&gt;)</h1>
+
+<section>
+  <h2>1. What is an HTML Form?</h2>
+  <p>An HTML form allows users to input data and submit it to a server for processing.</p>
+  <pre><code>&lt;form action="/submit" method="POST"&gt;
+  &lt;!-- form controls here --&gt;
+&lt;/form&gt;</code></pre>
+</section>
+
+<section>
+  <h2>2. The &lt;form&gt; Tag and Attributes</h2>
+  <pre><code>&lt;form action="URL" method="GET|POST"&gt;
+  &lt;!-- form elements --&gt;
+&lt;/form&gt;</code></pre>
+  <div class="table-wrapper">
+    <table>
+      <tr><th>Attribute</th><th>Description</th><th>Example</th></tr>
+      <tr><td data-label="Attribute">action</td><td data-label="Description">URL where form data is sent</td><td data-label="Example"><code>action="/submit"</code></td></tr>
+      <tr><td data-label="Attribute">method</td><td data-label="Description">HTTP method</td><td data-label="Example"><code>method="POST"</code></td></tr>
+      <tr><td data-label="Attribute">enctype</td><td data-label="Description">Data encoding type</td><td data-label="Example"><code>enctype="multipart/form-data"</code></td></tr>
+      <tr><td data-label="Attribute">target</td><td data-label="Description">Where to display response</td><td data-label="Example"><code>target="_blank"</code></td></tr>
+      <tr><td data-label="Attribute">autocomplete</td><td data-label="Description">Enable/disable autocomplete</td><td data-label="Example"><code>autocomplete="off"</code></td></tr>
+      <tr><td data-label="Attribute">novalidate</td><td data-label="Description">Disable validation</td><td data-label="Example"><code>novalidate</code></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>3. Common Form Elements</h2>
+  <div class="table-wrapper">
+    <table>
+      <tr><th>Tag</th><th>Purpose</th><th>Example</th></tr>
+      <tr><td data-label="Tag">&lt;input&gt;</td><td data-label="Purpose">Text, password, email</td><td data-label="Example"><code>&lt;input type="text"&gt;</code></td></tr>
+      <tr><td data-label="Tag">&lt;textarea&gt;</td><td data-label="Purpose">Multi-line text input</td><td data-label="Example"><code>&lt;textarea&gt;&lt;/textarea&gt;</code></td></tr>
+      <tr><td data-label="Tag">&lt;button&gt;</td><td data-label="Purpose">Clickable button</td><td data-label="Example"><code>&lt;button&gt;Submit&lt;/button&gt;</code></td></tr>
+      <tr><td data-label="Tag">&lt;select&gt;</td><td data-label="Purpose">Dropdown menu</td><td data-label="Example"><code>&lt;select&gt;&lt;option&gt;&lt;/option&gt;&lt;/select&gt;</code></td></tr>
+      <tr><td data-label="Tag">&lt;label&gt;</td><td data-label="Purpose">Label for input</td><td data-label="Example"><code>&lt;label&gt;&lt;/label&gt;</code></td></tr>
+      <tr><td data-label="Tag">&lt;fieldset&gt;</td><td data-label="Purpose">Group related elements</td><td data-label="Example"><code>&lt;fieldset&gt;&lt;/fieldset&gt;</code></td></tr>
+      <tr><td data-label="Tag">&lt;legend&gt;</td><td data-label="Purpose">Caption for &lt;fieldset&gt;</td><td data-label="Example"><code>&lt;legend&gt;Info&lt;/legend&gt;</code></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>4. &lt;select&gt; and &lt;option&gt; Tags</h2>
+  <p><strong>&lt;select&gt;</strong> defines a dropdown menu, <strong>&lt;option&gt;</strong> defines individual options.</p>
+  <pre><code>&lt;select name="country"&gt;
+  &lt;option value="india"&gt;India&lt;/option&gt;
+  &lt;option value="usa"&gt;USA&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+  <h3>&lt;select&gt; Attributes</h3>
+  <div class="table-wrapper">
+    <table>
+      <tr><th>Attribute</th><th>Description</th><th>Example</th></tr>
+      <tr><td data-label="Attribute">name</td><td data-label="Description">Name of dropdown</td><td data-label="Example"><code>name="country"</code></td></tr>
+      <tr><td data-label="Attribute">multiple</td><td data-label="Description">Allow multiple selection</td><td data-label="Example"><code>multiple</code></td></tr>
+      <tr><td data-label="Attribute">size</td><td data-label="Description">Visible options count</td><td data-label="Example"><code>size="4"</code></td></tr>
+      <tr><td data-label="Attribute">required</td><td data-label="Description">Mandatory selection</td><td data-label="Example"><code>required</code></td></tr>
+    </table>
+  </div>
+
+  <h3>&lt;option&gt; Attributes</h3>
+  <div class="table-wrapper">
+    <table>
+      <tr><th>Attribute</th><th>Description</th><th>Example</th></tr>
+      <tr><td data-label="Attribute">value</td><td data-label="Description">Data sent to server</td><td data-label="Example"><code>value="india"</code></td></tr>
+      <tr><td data-label="Attribute">selected</td><td data-label="Description">Pre-selected</td><td data-label="Example"><code>selected</code></td></tr>
+      <tr><td data-label="Attribute">disabled</td><td data-label="Description">Unselectable</td><td data-label="Example"><code>disabled</code></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>5. Complete Example</h2>
+  <pre><code>&lt;form action="/submit" method="POST"&gt;
+  &lt;label for="username"&gt;Username:&lt;/label&gt;
+  &lt;input type="text" id="username" name="username" required&gt;
+
+  &lt;label for="gender"&gt;Gender:&lt;/label&gt;
+  &lt;select id="gender" name="gender" required&gt;
+    &lt;option value=""&gt;--Select Gender--&lt;/option&gt;
+    &lt;option value="male"&gt;Male&lt;/option&gt;
+    &lt;option value="female"&gt;Female&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;label for="skills"&gt;Skills:&lt;/label&gt;
+  &lt;select id="skills" name="skills[]" multiple size="3"&gt;
+    &lt;option value="html"&gt;HTML&lt;/option&gt;
+    &lt;option value="css"&gt;CSS&lt;/option&gt;
+    &lt;option value="javascript"&gt;JavaScript&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</section>
+
+<footer>
+  <p>For more details, visit <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" target="_blank">MDN Web Docs on &lt;form&gt;</a>.</p>
+</footer>
+
+</body>
+</html>

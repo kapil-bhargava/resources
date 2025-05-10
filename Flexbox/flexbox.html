@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Flexbox Playground</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --primary-dark: #4338ca;
+            --secondary: #f3f4f6;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 1024px) {
+            .main-content {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px var(--shadow);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .display-area {
+            min-height: 400px;
+        }
+
+        .display-area h2 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .flex-container {
+            border: 2px dashed var(--primary-light);
+            min-height: 300px;
+            padding: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .flex-item {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 20px;
+            margin: 5px;
+            border-radius: var(--radius);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            transition: all 1s ease;
+            min-width: 70px;
+            min-height: 70px;
+            position: relative;
+        }
+
+        .flex-item::after {
+            content: attr(data-order);
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .controls {
+            overflow-y: auto;
+            max-height: 600px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .control-group:last-child {
+            border-bottom: none;
+        }
+
+        .control-group h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            background-color: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #e5e7eb;
+        }
+
+        .btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary-dark);
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            width: 60px;
+            padding: 6px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .input-group input[type="color"] {
+            width: 40px;
+            height: 30px;
+            padding: 0;
+            border: none;
+        }
+
+        .item-controls {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .item-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .item-selector label {
+            margin-right: 10px;
+        }
+
+        .item-selector select {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            flex: 1;
+        }
+
+        .code-display {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: var(--radius);
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 20px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .property {
+            color: #93c5fd;
+        }
+
+        .value {
+            color: #fca5a5;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+        }
+
+        .tooltip .tooltip-icon {
+            width: 16px;
+            height: 16px;
+            background-color: var(--text-light);
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            pointer-events: none;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Interactive Flexbox Playground</h1>
+            <p class="subtitle">Experiment with all Flexbox properties and see changes in real-time</p>
+        </header>
+
+        <div class="main-content">
+            <div class="display-section">
+                <div class="card display-area">
+                    <h2>
+                        Flexbox Container
+                        <button id="toggleCode" class="btn">Show CSS</button>
+                    </h2>
+                    <div id="flexContainer" class="flex-container">
+                        <div class="flex-item" data-order="1">1</div>
+                        <div class="flex-item" data-order="2">2</div>
+                        <div class="flex-item" data-order="3">3</div>
+                        <div class="flex-item" data-order="4">4</div>
+                    </div>
+                    <div id="codeDisplay" class="code-display" style="display: none;"></div>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="card controls">
+                    <h2>Controls</h2>
+
+                    <!-- Container Properties -->
+                    <div class="control-group">
+                        <h3>Container Properties</h3>
+                        
+                        <div class="property-control">
+                            <h4>flex-direction 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Defines the direction of the flex items</span>
+                                </span>
+                            </h4>
+                            <div class="btn-group" id="flexDirection">
+                                <button class="btn active" data-value="row">row</button>
+                                <button class="btn" data-value="row-reverse">row-reverse</button>
+                                <button class="btn" data-value="column">column</button>
+                                <button class="btn" data-value="column-reverse">column-reverse</button>
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>justify-content 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Aligns items along the main axis</span>
+                                </span>
+                            </h4>
+                            <div class="btn-group" id="justifyContent">
+                                <button class="btn active" data-value="flex-start">flex-start</button>
+                                <button class="btn" data-value="flex-end">flex-end</button>
+                                <button class="btn" data-value="center">center</button>
+                                <button class="btn" data-value="space-between">space-between</button>
+                                <button class="btn" data-value="space-around">space-around</button>
+                                <button class="btn" data-value="space-evenly">space-evenly</button>
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>align-items 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Aligns items along the cross axis</span>
+                                </span>
+                            </h4>
+                            <div class="btn-group" id="alignItems">
+                                <button class="btn" data-value="flex-start">flex-start</button>
+                                <button class="btn" data-value="flex-end">flex-end</button>
+                                <button class="btn active" data-value="center">center</button>
+                                <button class="btn" data-value="stretch">stretch</button>
+                                <button class="btn" data-value="baseline">baseline</button>
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>flex-wrap 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Controls whether items wrap to multiple lines</span>
+                                </span>
+                            </h4>
+                            <div class="btn-group" id="flexWrap">
+                                <button class="btn active" data-value="nowrap">nowrap</button>
+                                <button class="btn" data-value="wrap">wrap</button>
+                                <button class="btn" data-value="wrap-reverse">wrap-reverse</button>
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>align-content 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Aligns multiple lines within the container</span>
+                                </span>
+                            </h4>
+                            <div class="btn-group" id="alignContent">
+                                <button class="btn active" data-value="flex-start">flex-start</button>
+                                <button class="btn" data-value="flex-end">flex-end</button>
+                                <button class="btn" data-value="center">center</button>
+                                <button class="btn" data-value="space-between">space-between</button>
+                                <button class="btn" data-value="space-around">space-around</button>
+                                <button class="btn" data-value="stretch">stretch</button>
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>gap 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Sets spacing between flex items</span>
+                                </span>
+                            </h4>
+                            <div class="input-group">
+                                <label for="gapSize">Gap size (px):</label>
+                                <input type="number" id="gapSize" min="0" max="50" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Container Dimensions -->
+                    <div class="control-group">
+                        <h3>Container Dimensions</h3>
+                        <div class="input-group">
+                            <label for="containerHeight">Height (px):</label>
+                            <input type="number" id="containerHeight" min="100" max="800" value="300">
+                        </div>
+                        <div class="input-group">
+                            <label for="containerWidth">Width (%):</label>
+                            <input type="number" id="containerWidth" min="10" max="100" value="100">
+                        </div>
+                        <div class="input-group">
+                            <label for="containerBgColor">Background color:</label>
+                            <input type="color" id="containerBgColor" value="#ffffff">
+                        </div>
+                    </div>
+
+                    <!-- Item Properties -->
+                    <div class="control-group">
+                        <h3>Item Properties</h3>
+                        <div class="item-selector">
+                            <label for="itemSelect">Select item:</label>
+                            <select id="itemSelect">
+                                <option value="all">All items</option>
+                                <option value="1">Item 1</option>
+                                <option value="2">Item 2</option>
+                                <option value="3">Item 3</option>
+                                <option value="4">Item 4</option>
+                            </select>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>flex-grow 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Determines how much the item will grow</span>
+                                </span>
+                            </h4>
+                            <div class="input-group">
+                                <label for="flexGrow">Value:</label>
+                                <input type="number" id="flexGrow" min="0" max="10" value="0" step="1">
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>flex-shrink 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Determines how much the item will shrink</span>
+                                </span>
+                            </h4>
+                            <div class="input-group">
+                                <label for="flexShrink">Value:</label>
+                                <input type="number" id="flexShrink" min="0" max="10" value="1" step="1">
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>flex-basis 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Sets the initial main size of the item</span>
+                                </span>
+                            </h4>
+                            <div class="input-group">
+                                <label for="flexBasis">Value (px):</label>
+                                <input type="number" id="flexBasis" min="0" max="500" value="auto" placeholder="auto">
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>order 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Controls the order of the item</span>
+                                </span>
+                            </h4>
+                            <div class="input-group">
+                                <label for="itemOrder">Value:</label>
+                                <input type="number" id="itemOrder" min="-10" max="10" value="0">
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>align-self 
+                                <span class="tooltip">
+                                    <span class="tooltip-icon">?</span>
+                                    <span class="tooltip-text">Overrides the align-items value for specific item</span>
+                                </span>
+                            </h4>
+                            <div class="btn-group" id="alignSelf">
+                                <button class="btn active" data-value="auto">auto</button>
+                                <button class="btn" data-value="flex-start">flex-start</button>
+                                <button class="btn" data-value="flex-end">flex-end</button>
+                                <button class="btn" data-value="center">center</button>
+                                <button class="btn" data-value="stretch">stretch</button>
+                                <button class="btn" data-value="baseline">baseline</button>
+                            </div>
+                        </div>
+
+                        <div class="property-control">
+                            <h4>Item Dimensions</h4>
+                            <div class="input-group">
+                                <label for="itemHeight">Height (px):</label>
+                                <input type="number" id="itemHeight" min="20" max="300" value="70">
+                            </div>
+                            <div class="input-group">
+                                <label for="itemWidth">Width (px):</label>
+                                <input type="number" id="itemWidth" min="20" max="300" value="70">
+                            </div>
+                            <div class="input-group">
+                                <label for="itemBgColor">Background color:</label>
+                                <input type="color" id="itemBgColor" value="#6366f1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="action-buttons">
+                        <button id="addItem" class="btn btn-primary">Add Item</button>
+                        <button id="removeItem" class="btn btn-secondary">Remove Item</button>
+                        <button id="resetAll" class="btn btn-secondary">Reset All</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const flexContainer = document.getElementById('flexContainer');
+            const codeDisplay = document.getElementById('codeDisplay');
+            const toggleCodeBtn = document.getElementById('toggleCode');
+            const itemSelect = document.getElementById('itemSelect');
+            
+            // Container property buttons
+            const flexDirectionBtns = document.querySelectorAll('#flexDirection .btn');
+            const justifyContentBtns = document.querySelectorAll('#justifyContent .btn');
+            const alignItemsBtns = document.querySelectorAll('#alignItems .btn');
+            const flexWrapBtns = document.querySelectorAll('#flexWrap .btn');
+            const alignContentBtns = document.querySelectorAll('#alignContent .btn');
+            const alignSelfBtns = document.querySelectorAll('#alignSelf .btn');
+            
+            // Container inputs
+            const gapSizeInput = document.getElementById('gapSize');
+            const containerHeightInput = document.getElementById('containerHeight');
+            const containerWidthInput = document.getElementById('containerWidth');
+            const containerBgColorInput = document.getElementById('containerBgColor');
+            
+            // Item inputs
+            const flexGrowInput = document.getElementById('flexGrow');
+            const flexShrinkInput = document.getElementById('flexShrink');
+            const flexBasisInput = document.getElementById('flexBasis');
+            const itemOrderInput = document.getElementById('itemOrder');
+            const itemHeightInput = document.getElementById('itemHeight');
+            const itemWidthInput = document.getElementById('itemWidth');
+            const itemBgColorInput = document.getElementById('itemBgColor');
+            
+            // Action buttons
+            const addItemBtn = document.getElementById('addItem');
+            const removeItemBtn = document.getElementById('removeItem');
+            const resetAllBtn = document.getElementById('resetAll');
+            
+            // Current state
+            let currentState = {
+                container: {
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    flexWrap: 'nowrap',
+                    alignContent: 'flex-start',
+                    gap: '0px',
+                    height: '300px',
+                    width: '100%',
+                    backgroundColor: '#ffffff'
+                },
+                items: {
+                    all: {
+                        flexGrow: 0,
+                        flexShrink: 1,
+                        flexBasis: 'auto',
+                        order: 0,
+                        alignSelf: 'auto',
+                        height: '70px',
+                        width: '70px',
+                        backgroundColor: '#6366f1'
+                    }
+                },
+                itemCount: 4
+            };
+            
+            // Initialize individual item states
+            for (let i = 1; i <= currentState.itemCount; i++) {
+                currentState.items[i] = { ...currentState.items.all };
+            }
+            
+            // Helper function to set active button in a group
+            function setActiveButton(buttons, value) {
+                buttons.forEach(btn => {
+                    if (btn.dataset.value === value) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Apply current state to the DOM
+            function applyState() {
+                // Apply container properties
+                const container = currentState.container;
+                flexContainer.style.display = 'flex';
+                flexContainer.style.flexDirection = container.flexDirection;
+                flexContainer.style.justifyContent = container.justifyContent;
+                flexContainer.style.alignItems = container.alignItems;
+                flexContainer.style.flexWrap = container.flexWrap;
+                flexContainer.style.alignContent = container.alignContent;
+                flexContainer.style.gap = container.gap;
+                flexContainer.style.height = container.height;
+                flexContainer.style.width = container.width;
+                flexContainer.style.backgroundColor = container.backgroundColor;
+                
+                // Apply item properties
+                const items = document.querySelectorAll('.flex-item');
+                items.forEach((item, index) => {
+                    const itemNumber = index + 1;
+                    const itemState = currentState.items[itemNumber] || currentState.items.all;
+                    
+                    item.style.flexGrow = itemState.flexGrow;
+                    item.style.flexShrink = itemState.flexShrink;
+                    item.style.flexBasis = itemState.flexBasis === 'auto' ? 'auto' : `${itemState.flexBasis}px`;
+                    item.style.order = itemState.order;
+                    item.style.alignSelf = itemState.alignSelf;
+                    item.style.height = `${itemState.height}px`;
+                    item.style.width = `${itemState.width}px`;
+                    item.style.backgroundColor = itemState.backgroundColor;
+                    item.setAttribute('data-order', itemState.order);
+                });
+                
+                // Update code display
+                updateCodeDisplay();
+                
+                // Update form controls to match state
+                updateControlsFromState();
+            }
+            
+            // Update code display
+            function updateCodeDisplay() {
+                const container = currentState.container;
+                let css = `.flex-container {\n`;
+                css += `  display: flex;\n`;
+                css += `  flex-direction: ${container.flexDirection};\n`;
+                css += `  justify-content: ${container.justifyContent};\n`;
+                css += `  align-items: ${container.alignItems};\n`;
+                css += `  flex-wrap: ${container.flexWrap};\n`;
+                css += `  align-content: ${container.alignContent};\n`;
+                css += `  gap: ${container.gap};\n`;
+                css += `  height: ${container.height};\n`;
+                css += `  width: ${container.width};\n`;
+                css += `  background-color: ${container.backgroundColor};\n`;
+                css += `}\n\n`;
+                
+                // Add item CSS if not all the same
+                const allItemsState = currentState.items.all;
+                let hasCustomItems = false;
+                
+                for (let i = 1; i <= currentState.itemCount; i++) {
+                    const itemState = currentState.items[i];
+                    if (
+                        itemState.flexGrow !== allItemsState.flexGrow ||
+                        itemState.flexShrink !== allItemsState.flexShrink ||
+                        itemState.flexBasis !== allItemsState.flexBasis ||
+                        itemState.order !== allItemsState.order ||
+                        itemState.alignSelf !== allItemsState.alignSelf ||
+                        itemState.height !== allItemsState.height ||
+                        itemState.width !== allItemsState.width ||
+                        itemState.backgroundColor !== allItemsState.backgroundColor
+                    ) {
+                        hasCustomItems = true;
+                        css += `.flex-item:nth-child(${i}) {\n`;
+                        css += `  flex-grow: ${itemState.flexGrow};\n`;
+                        css += `  flex-shrink: ${itemState.flexShrink};\n`;
+                        css += `  flex-basis: ${itemState.flexBasis === 'auto' ? 'auto' : itemState.flexBasis + 'px'};\n`;
+                        css += `  order: ${itemState.order};\n`;
+                        css += `  align-self: ${itemState.alignSelf};\n`;
+                        css += `  height: ${itemState.height}px;\n`;
+                        css += `  width: ${itemState.width}px;\n`;
+                        css += `  background-color: ${itemState.backgroundColor};\n`;
+                        css += `}\n\n`;
+                    }
+                }
+                
+                // Add general item CSS
+                css += `.flex-item {\n`;
+                css += `  flex-grow: ${allItemsState.flexGrow};\n`;
+                css += `  flex-shrink: ${allItemsState.flexShrink};\n`;
+                css += `  flex-basis: ${allItemsState.flexBasis === 'auto' ? 'auto' : allItemsState.flexBasis + 'px'};\n`;
+                css += `  order: ${allItemsState.order};\n`;
+                css += `  align-self: ${allItemsState.alignSelf};\n`;
+                css += `  height: ${allItemsState.height}px;\n`;
+                css += `  width: ${allItemsState.width}px;\n`;
+                css += `  background-color: ${allItemsState.backgroundColor};\n`;
+                css += `}`;
+                
+                // Format with syntax highlighting
+                css = css.replace(/(flex-direction|justify-content|align-items|flex-wrap|align-content|gap|height|width|background-color|display|flex-grow|flex-shrink|flex-basis|order|align-self)/g, '<span class="property">$1</span>');
+                css = css.replace(/: ([^;]+);/g, ': <span class="value">$1</span>;');
+                
+                codeDisplay.innerHTML = css;
+            }
+            
+            // Update controls to match current state
+            function updateControlsFromState() {
+                const container = currentState.container;
+                const selectedItem = itemSelect.value;
+                const itemState = selectedItem === 'all' 
+                    ? currentState.items.all 
+                    : currentState.items[selectedItem];
+                
+                // Set active buttons
+                setActiveButton(flexDirectionBtns, container.flexDirection);
+                setActiveButton(justifyContentBtns, container.justifyContent);
+                setActiveButton(alignItemsBtns, container.alignItems);
+                setActiveButton(flexWrapBtns, container.flexWrap);
+                setActiveButton(alignContentBtns, container.alignContent);
+                setActiveButton(alignSelfBtns, itemState.alignSelf);
+                
+                // Set input values
+                gapSizeInput.value = parseInt(container.gap);
+                containerHeightInput.value = parseInt(container.height);
+                containerWidthInput.value = parseInt(container.width);
+                containerBgColorInput.value = container.backgroundColor;
+                
+                flexGrowInput.value = itemState.flexGrow;
+                flexShrinkInput.value = itemState.flexShrink;
+                flexBasisInput.value = itemState.flexBasis === 'auto' ? '' : itemState.flexBasis;
+                itemOrderInput.value = itemState.order;
+                itemHeightInput.value = itemState.height;
+                itemWidthInput.value = itemState.width;
+                itemBgColorInput.value = itemState.backgroundColor;
+                
+                // Update item selector options
+                while (itemSelect.options.length > 1) {
+                    itemSelect.remove(1);
+                }
+                
+                for (let i = 1; i <= currentState.itemCount; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = `Item ${i}`;
+                    itemSelect.appendChild(option);
+                }
+            }
+            
+            // Event listeners for container property buttons
+            function setupButtonGroup(buttons, property, isItemProperty = false) {
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const value = btn.dataset.value;
+                        
+                        if (isItemProperty) {
+                            const selectedItem = itemSelect.value;
+                            if (selectedItem === 'all') {
+                                // Update all items
+                                currentState.items.all[property] = value;
+                                for (let i = 1; i <= currentState.itemCount; i++) {
+                                    currentState.items[i][property] = value;
+                                }
+                            } else {
+                                // Update specific item
+                                currentState.items[selectedItem][property] = value;
+                            }
+                        } else {
+                            // Update container property
+                            currentState.container[property] = value;
+                        }
+                        
+                        // Set active button
+                        buttons.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        
+                        // Apply changes
+                        applyState();
+                    });
+                });
+            }
+            
+            // Setup button groups
+            setupButtonGroup(flexDirectionBtns, 'flexDirection');
+            setupButtonGroup(justifyContentBtns, 'justifyContent');
+            setupButtonGroup(alignItemsBtns, 'alignItems');
+            setupButtonGroup(flexWrapBtns, 'flexWrap');
+            setupButtonGroup(alignContentBtns, 'alignContent');
+            setupButtonGroup(alignSelfBtns, 'alignSelf', true);
+            
+            // Event listeners for container inputs
+            gapSizeInput.addEventListener('input', () => {
+                currentState.container.gap = `${gapSizeInput.value}px`;
+                applyState();
+            });
+            
+            containerHeightInput.addEventListener('input', () => {
+                currentState.container.height = `${containerHeightInput.value}px`;
+                applyState();
+            });
+            
+            containerWidthInput.addEventListener('input', () => {
+                currentState.container.width = `${containerWidthInput.value}%`;
+                applyState();
+            });
+            
+            containerBgColorInput.addEventListener('input', () => {
+                currentState.container.backgroundColor = containerBgColorInput.value;
+                applyState();
+            });
+            
+            // Event listeners for item inputs
+            function setupItemInput(input, property, unit = '') {
+                input.addEventListener('input', () => {
+                    const value = input.value === '' ? 'auto' : (unit ? input.value + unit : input.value);
+                    const selectedItem = itemSelect.value;
+                    
+                    if (selectedItem === 'all') {
+                        // Update all items
+                        currentState.items.all[property] = unit ? parseInt(input.value) : value;
+                        for (let i = 1; i <= currentState.itemCount; i++) {
+                            currentState.items[i][property] = unit ? parseInt(input.value) : value;
+                        }
+                    } else {
+                        // Update specific item
+                        currentState.items[selectedItem][property] = unit ? parseInt(input.value) : value;
+                    }
+                    
+                    applyState();
+                });
+            }
+            
+            setupItemInput(flexGrowInput, 'flexGrow');
+            setupItemInput(flexShrinkInput, 'flexShrink');
+            setupItemInput(flexBasisInput, 'flexBasis');
+            setupItemInput(itemOrderInput, 'order');
+            setupItemInput(itemHeightInput, 'height', 'px');
+            setupItemInput(itemWidthInput, 'width', 'px');
+            
+            itemBgColorInput.addEventListener('input', () => {
+                const selectedItem = itemSelect.value;
+                
+                if (selectedItem === 'all') {
+                    // Update all items
+                    currentState.items.all.backgroundColor = itemBgColorInput.value;
+                    for (let i = 1; i <= currentState.itemCount; i++) {
+                        currentState.items[i].backgroundColor = itemBgColorInput.value;
+                    }
+                } else {
+                    // Update specific item
+                    currentState.items[selectedItem].backgroundColor = itemBgColorInput.value;
+                }
+                
+                applyState();
+            });
+            
+            // Item selector change
+            itemSelect.addEventListener('change', () => {
+                updateControlsFromState();
+            });
+            
+            // Toggle code display
+            toggleCodeBtn.addEventListener('click', () => {
+                if (codeDisplay.style.display === 'none') {
+                    codeDisplay.style.display = 'block';
+                    toggleCodeBtn.textContent = 'Hide CSS';
+                } else {
+                    codeDisplay.style.display = 'none';
+                    toggleCodeBtn.textContent = 'Show CSS';
+                }
+            });
+            
+            // Add item
+            addItemBtn.addEventListener('click', () => {
+                currentState.itemCount++;
+                const newItem = document.createElement('div');
+                newItem.className = 'flex-item';
+                newItem.textContent = currentState.itemCount;
+                newItem.setAttribute('data-order', '0');
+                flexContainer.appendChild(newItem);
+                
+                // Initialize new item state
+                currentState.items[currentState.itemCount] = { ...currentState.items.all };
+                
+                applyState();
+            });
+            
+            // Remove item
+            removeItemBtn.addEventListener('click', () => {
+                if (currentState.itemCount > 1) {
+                    const lastItem = flexContainer.lastElementChild;
+                    flexContainer.removeChild(lastItem);
+                    
+                    // Remove item state
+                    delete currentState.items[currentState.itemCount];
+                    currentState.itemCount--;
+                    
+                    // If selected item was removed, select 'all'
+                    if (parseInt(itemSelect.value) > currentState.itemCount) {
+                        itemSelect.value = 'all';
+                    }
+                    
+                    applyState();
+                }
+            });
+            
+            // Reset all
+            resetAllBtn.addEventListener('click', () => {
+                // Reset to default state
+                currentState = {
+                    container: {
+                        flexDirection: 'row',
+                        justifyContent: 'flex-start',
+                        alignItems: 'center',
+                        flexWrap: 'nowrap',
+                        alignContent: 'flex-start',
+                        gap: '0px',
+                        height: '300px',
+                        width: '100%',
+                        backgroundColor: '#ffffff'
+                    },
+                    items: {
+                        all: {
+                            flexGrow: 0,
+                            flexShrink: 1,
+                            flexBasis: 'auto',
+                            order: 0,
+                            alignSelf: 'auto',
+                            height: 70,
+                            width: 70,
+                            backgroundColor: '#6366f1'
+                        }
+                    },
+                    itemCount: 4
+                };
+                
+                // Reset individual item states
+                for (let i = 1; i <= currentState.itemCount; i++) {
+                    currentState.items[i] = { ...currentState.items.all };
+                }
+                
+                // Clear and recreate items
+                flexContainer.innerHTML = '';
+                for (let i = 1; i <= currentState.itemCount; i++) {
+                    const item = document.createElement('div');
+                    item.className = 'flex-item';
+                    item.textContent = i;
+                    item.setAttribute('data-order', '0');
+                    flexContainer.appendChild(item);
+                }
+                
+                // Reset item selector
+                itemSelect.value = 'all';
+                
+                applyState();
+            });
+            
+            // Initial application of state
+            applyState();
+        });
+    </script>
+</body>
+</html>

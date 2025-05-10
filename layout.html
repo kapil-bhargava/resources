@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Layout Design Concepts</title>
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #8e44ad;
+      --highlight-color: #ff5722;
+      --text-color: #2c3e50;
+      --background-color: #f4f6f8;
+      --box-bg-color: #ffffff;
+      --border-color: #dcdcdc;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    h1,
+    h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: var(--box-bg-color);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      color: var(--secondary-color);
+      margin-top: 30px;
+    }
+
+    .box {
+      width: 100%;
+      padding: 20px;
+      margin: 20px 0;
+      border: 2px solid var(--border-color);
+      background-color: var(--highlight-color);
+      text-align: center;
+      font-weight: bold;
+      color: white;
+    }
+
+    .info-box {
+      background-color: var(--box-bg-color);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .example-box {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .highlight {
+      background-color: #ffeb3b;
+      font-weight: bold;
+    }
+
+    /* Styling for layout examples */
+    .layout-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .layout-item {
+      flex: 1 1 calc(33.33% - 20px);
+      background-color: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .layout-item:nth-child(odd) {
+      background-color: #bdc3c7;
+    }
+
+    .layout-item:nth-child(even) {
+      background-color: #95a5a6;
+    }
+    .s2 li{
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Website Layout Design Concepts</h1>
+
+    <!-- Section: What is div vs span -->
+    <div class="section">
+      <h2 class="section-title">What is <span class="highlight">div</span> vs <span class="highlight">span</span>?</h2>
+      <p>The <strong>div</strong> and <strong>span</strong> elements are both container elements in HTML. The difference
+        between them lies in their behavior and usage:</p>
+
+      <ul>
+        <li><strong><code>div</code></strong>:
+          <ul>
+            <li>It is a block-level element.</li>
+            <li>It takes up the full width available, pushing other content below it.</li>
+            <li>Used for creating larger sections of a page, such as containers or layout blocks.</li>
+            <li>Example: <code>&lt;div&gt;Content here&lt;/div&gt;</code></li>
+          </ul>
+        </li>
+
+        <li><strong><code>span</code></strong>:
+          <ul>
+            <li>It is an inline element.</li>
+            <li>It only takes up as much width as the content inside it.</li>
+            <li>Used for smaller, inline sections, like styling a word in a sentence.</li>
+            <li>Example: <code>&lt;span&gt;Styled text&lt;/span&gt;</code></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section: Requirements for Creating Website Layouts -->
+    <div class="section s2">
+      <h2 class="section-title">Requirements for Creating Website Layouts</h2>
+      <p>Designing an effective layout involves organizing the content on a webpage. To create a modern website layout,
+        here are the key requirements:</p>
+      <ul>
+        <li><strong>Responsive Design:</strong> Ensure that the layout adapts to different screen sizes (mobile, tablet,
+          desktop). Use media queries, Flexbox, or CSS Grid.</li>
+        <li><strong>Semantic HTML:</strong> Use appropriate tags (like <code>&lt;header&gt;</code>,
+          <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>) for better structure and
+          accessibility. <a href="semantic_tags.html">View in Detail</a> </li>
+        <li><strong>Flexibility and Centering:</strong> Flexbox and CSS Grid are powerful tools for creating flexible,
+          dynamic layouts that automatically adjust the content position.</li>
+        <li><strong>Visual Hierarchy:</strong> Organize the layout with sections like the header, main content, sidebar,
+          and footer. This makes the page easy to scan.</li>
+        <li><strong>Consistency:</strong> Use consistent spacing, margins, and padding to maintain a neat and organized
+          design.</li>
+        <li><strong>Typography and Color Scheme:</strong> Choose readable fonts and harmonious color combinations that
+          align with the website's purpose.</li>
+      </ul>
+    </div>
+
+    <!-- Section: Example Layout -->
+    <div class="section">
+      <h2 class="section-title">Example of a Basic Website Layout</h2>
+      <p>Here is an example layout using <strong>Flexbox</strong> that divides the page into a header, main content,
+        sidebar, and footer:</p>
+
+      <div class="layout-container">
+        <div class="layout-item">Header</div>
+        <div class="layout-item">Main Content</div>
+        <div class="layout-item">Sidebar</div>
+        <div class="layout-item">Footer</div>
+      </div>
+
+      <p>This layout demonstrates a simple **4-column layout**. You can adjust the content for each section as needed.
+        The use of <strong>Flexbox</strong> allows for easy alignment and spacing between elements, making it ideal for
+        responsive designs.</p>
+    </div>
+
+    <!-- Section: Conclusion -->
+    <div class="section">
+      <h2 class="section-title">Conclusion</h2>
+      <p>In summary, a website layout involves strategically organizing the content to make it user-friendly,
+        responsive, and visually appealing. By using elements like <strong>div</strong> and <strong>span</strong> with
+        modern layout tools such as Flexbox and CSS Grid, you can create flexible and well-structured layouts.
+        Understanding the role of each element and the tools at your disposal will greatly enhance the quality of your
+        website's design.</p>
+    </div>
+
+    <a href="selectors.html">Take loook to css selectors</a>
+  </div>
+
+</body>
+
+</html>

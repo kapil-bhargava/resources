@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Specificity Explained</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #4c4cff, #6c63ff);
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: white;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        color: #4c4cff;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        color: #4c4cff;
+        margin-top: 30px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table th, table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    table th {
+        background-color: #4c4cff;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    code {
+        background-color: #f0f0ff;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: #333;
+    }
+
+    .highlight {
+        background-color: #dfe7ff;
+        padding: 8px;
+        border-left: 4px solid #4c4cff;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: white;
+        box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    }
+
+    .arrow {
+        font-weight: bold;
+        color: #4c4cff;
+    }
+
+    ul {
+        margin-left: 20px;
+    }
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>CSS Specificity — Complete Guide</h1>
+</header>
+
+<div class="container">
+    <p><strong>CSS specificity</strong> determines which rule wins when multiple CSS rules apply to the same element.</p>
+
+    <h2>📊 Specificity Levels (4 values)</h2>
+    <ul>
+        <li><strong>a</strong> → Inline styles</li>
+        <li><strong>b</strong> → ID selectors</li>
+        <li><strong>c</strong> → Class, attribute selectors, pseudo-classes</li>
+        <li><strong>d</strong> → Element selectors, pseudo-elements</li>
+    </ul>
+
+    <h2>📋 Specificity Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Selector Type</th>
+                <th>Example</th>
+                <th>Specificity (a,b,c,d)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Universal</td><td><code>*</code></td><td>(0,0,0,0)</td></tr>
+            <tr><td>Element selector</td><td><code>p</code>, <code>h1</code></td><td>(0,0,0,1)</td></tr>
+            <tr><td>Pseudo-element</td><td><code>::before</code></td><td>(0,0,0,1)</td></tr>
+            <tr><td>Class selector</td><td><code>.btn</code></td><td>(0,0,1,0)</td></tr>
+            <tr><td>Attribute selector</td><td><code>[type="text"]</code></td><td>(0,0,1,0)</td></tr>
+            <tr><td>Pseudo-class</td><td><code>:hover</code></td><td>(0,0,1,0)</td></tr>
+            <tr><td>ID selector</td><td><code>#main</code></td><td>(0,1,0,0)</td></tr>
+            <tr><td>Inline style</td><td><code>style="color:red;"</code></td><td>(1,0,0,0)</td></tr>
+        </tbody>
+    </table>
+
+    <h2>⚡️ Power Ranking (who wins)</h2>
+    <div class="highlight">
+        Universal (*) <span class="arrow"><<</span> Element  
+        <span class="arrow"><<</span> Class/Attribute/Pseudo-class  
+        <span class="arrow"><<</span> ID  
+        <span class="arrow"><<</span> Inline style  
+        <span class="arrow"><<</span> <strong>!important</strong> (forces override)
+    </div>
+
+    <h2>✅ Inline, Internal, External (Cascade)</h2>
+    <ul>
+        <li><strong>External CSS</strong> → Weakest if specificity equal</li>
+        <li><strong>Internal CSS (&lt;style&gt;)</strong> → Middle</li>
+        <li><strong>Inline CSS</strong> → Strongest (even if same selectors)</li>
+    </ul>
+
+    <h2>🥇 Quick Mnemonic</h2>
+    <div class="highlight"><strong>ICE-I</strong>  
+    Inline > ID > Class > Element  
+    </div>
+
+    <h2>📌 Example</h2>
+    <pre><code>p { color: blue; }          /* (0,0,0,1) */
+.text { color: green; }     /* (0,0,1,0) */
+#main { color: orange; }    /* (0,1,0,0) */
+style="color: red;"         /* (1,0,0,0) */
+</code></pre>
+
+</div>
+
+<footer>
+    © 2025 CSS Specificity Guide — Built with ❤️ for ZN Infotech
+</footer>
+
+</body>
+</html>

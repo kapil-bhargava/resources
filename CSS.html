@@ -62,6 +62,17 @@
             margin: 10px 0;
         }
 
+        .section a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
         ul {
             margin-top: 10px;
             margin-bottom: 20px;
@@ -138,7 +149,7 @@
 
 
             Before CSS, people used ugly, clunky HTML tags like <code> &lt;font&gt; </code>, and table layouts
-                to handle visual design directly inside the HTML — it was messy and inflexible.</p>
+            to handle visual design directly inside the HTML — it was messy and inflexible.</p>
         </div>
 
         <div class="section">
@@ -151,14 +162,18 @@
         <div class="section">
             <h3>Why CSS related to W3C</h3>
             <ul>
-                <li>The W3C (World Wide Web Consortium) is an international organization founded by Tim Berners-Lee (the inventor of the web) to standardize web technologies so that the web remains open, interoperable, and universal.</li>
+                <li>The W3C (World Wide Web Consortium) is an international organization founded by Tim Berners-Lee (the
+                    inventor of the web) to standardize web technologies so that the web remains open, interoperable,
+                    and universal.</li>
                 <li>CSS was developed under <strong>W3C’s guidance</strong>, meaning:</li>
                 <ul>
                     <li>It became an official web standard, not controlled by a single browser company.</li>
-                    <li>W3C makes sure that browsers (like Chrome, Firefox, Safari) all implement CSS consistently, so websites look the same across platforms.</li>
+                    <li>W3C makes sure that browsers (like Chrome, Firefox, Safari) all implement CSS consistently, so
+                        websites look the same across platforms.</li>
                 </ul>
             </ul>
-            <p>Without W3C, we’d have a messy web where every browser might style things differently (like the old browser wars of the 90s).
+            <p>Without W3C, we’d have a messy web where every browser might style things differently (like the old
+                browser wars of the 90s).
 
             </p>
         </div>
@@ -226,6 +241,13 @@
                 &nbsp;&nbsp;&lt;/style&gt;<br>
                 &lt;/head&gt;
             </div>
+        </div>
+        <div class="section">
+            <h2>8. CSS Specificity</h2>
+            <p>CSS specificity determines which rule wins when multiple CSS rules apply to the same element.</p>
+            <a target="_blank" href="css_specificity.html">
+                View in Detail
+            </a>
         </div>
     </div>
 

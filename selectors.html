@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Selectors — Full Explanation</title>
+<style>
+  :root {
+    --background: #f9f9f9;
+    --card-bg: #ffffff;
+    --primary: #333333;
+    --secondary: #555555;
+    --accent: #007acc;
+    --muted: #888888;
+    --border: #dddddd;
+    --light-blue: #eef6fc;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--primary);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    padding: 40px;
+    max-width: 960px;
+    margin: auto;
+  }
+
+  h1 {
+    color: var(--primary);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  h2 {
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+  }
+
+  section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin-bottom: 12px;
+    color: var(--secondary);
+  }
+
+  .example {
+    background-color: var(--background);
+    border-left: 3px solid var(--accent);
+    padding: 10px 15px;
+    margin-top: 12px;
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: var(--primary);
+  }
+
+  code {
+    background-color: #f0f0f0;
+    padding: 2px 5px;
+    border-radius: 4px;
+  }
+
+  .demo-box {
+    background-color: var(--light-blue);
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  /* SELECTORS DEMOS */
+
+  /* 1. Type Selector */
+  div {
+    padding: 5px;
+  }
+
+  /* 2. Class Selector */
+  .blue-box {
+    background-color: var(--light-blue);
+    border: 1px solid var(--accent);
+  }
+
+  /* 3. ID Selector */
+  #unique-box {
+    background-color: var(--accent);
+    color: white;
+  }
+
+  /* 4. Attribute Selector */
+  div[data-type="info"] {
+    border-left: 4px solid var(--accent);
+    padding-left: 8px;
+  }
+
+  /* 5. Descendant Selector */
+  .descendant-demo div {
+    background-color: #e1f5fe;
+    border: 1px dashed var(--accent);
+  }
+
+  /* 6. Child Selector */
+  .child-demo > div {
+    border: 2px solid var(--accent);
+  }
+
+  /* 7. Adjacent Sibling Selector */
+  .adjacent-demo div + div {
+    background-color: #d0ebff;
+  }
+
+  /* 8. General Sibling Selector */
+  .sibling-demo div ~ div {
+    background-color: #cce5ff;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>CSS Selectors — Full In-Depth Guide</h1>
+
+<section>
+  <h2>1️⃣ Type Selector (Element Selector)</h2>
+  <p>Targets all elements of a given type (tag name). For example, <code>div</code> will select all &lt;div&gt; tags.</p>
+  <div class="demo-box">This is a div</div>
+  <div class="demo-box">This is another div</div>
+  <div class="example">
+    div { padding: 5px; }
+  </div>
+</section>
+
+<section>
+  <h2>2️⃣ Class Selector (.)</h2>
+  <p>Targets all elements that have a specific <code>class</code> attribute.</p>
+  <div class="demo-box blue-box">This div has class "blue-box"</div>
+  <div class="demo-box">This div has no class</div>
+  <div class="example">
+    .blue-box { background-color: light-blue; border: 1px solid blue; }
+  </div>
+</section>
+
+<section>
+  <h2>3️⃣ ID Selector (#)</h2>
+  <p>Targets an element with a specific <code>id</code> attribute (must be unique on the page).</p>
+  <div class="demo-box" id="unique-box">This div has id "unique-box"</div>
+  <div class="demo-box">Normal div</div>
+  <div class="example">
+    #unique-box { background-color: blue; color: white; }
+  </div>
+</section>
+
+<section>
+  <h2>4️⃣ Attribute Selector</h2>
+  <p>Targets elements that have a specific attribute (and optionally a value).</p>
+  <div class="demo-box" data-type="info">This div has attribute data-type="info"</div>
+  <div class="demo-box">Normal div</div>
+  <div class="example">
+    div[data-type="info"] { border-left: 4px solid blue; }
+  </div>
+</section>
+
+<section>
+  <h2>5️⃣ Descendant Selector (Space)</h2>
+  <p>Selects **all** elements inside another element, no matter how deeply nested.</p>
+  <div class="descendant-demo demo-box">
+    Parent div
+    <div>Child div</div>
+    <div>
+      Nested div
+      <div>Deepest div</div>
+    </div>
+  </div>
+  <div class="example">
+    .descendant-demo div { background: light-blue; }
+  </div>
+</section>
+
+<section>
+  <h2>6️⃣ Child Selector (>)</h2>
+  <p>Selects **direct children only** (not deeper descendants).</p>
+  <div class="child-demo demo-box">
+    Parent div
+    <div>Direct child div</div>
+    <div>
+      Nested child
+      <div>Deepest div (not selected)</div>
+    </div>
+  </div>
+  <div class="example">
+    .child-demo > div { border: 2px solid blue; }
+  </div>
+</section>
+
+<section>
+  <h2>7️⃣ Adjacent Sibling Selector (+)</h2>
+  <p>Selects the element that **immediately follows** the specified element (same parent).</p>
+  <div class="adjacent-demo demo-box">First div</div>
+  <div class="adjacent-demo demo-box">Second div (selected)</div>
+  <div class="adjacent-demo demo-box">Third div (not selected)</div>
+  <div class="example">
+    .adjacent-demo div + div { background: light-blue; }
+  </div>
+</section>
+
+<section>
+  <h2>8️⃣ General Sibling Selector (~)</h2>
+  <p>Selects **all siblings** after the specified element (same parent), not just the immediate one.</p>
+  <div class="sibling-demo demo-box">First div</div>
+  <div class="sibling-demo demo-box">Second div (selected)</div>
+  <div class="sibling-demo demo-box">Third div (selected)</div>
+  <div class="example">
+    .sibling-demo div ~ div { background: light-blue; }
+  </div>
+</section>
+
+<section>
+  <h2>9️⃣ CSS Specificity (VERY IMPORTANT)</h2>
+  <p>Specificity determines **which rule wins** when multiple rules apply to the same element.</p>
+  <ul style="margin-bottom:12px; padding-left:20px; color:var(--secondary)">
+    <li>Type selector (element) → <b>Low specificity</b></li>
+    <li>Class selector → Higher than type</li>
+    <li>ID selector → Higher than class</li>
+    <li>Inline styles → Highest</li>
+  </ul>
+  <p>Example:</p>
+  <div class="demo-box blue-box" id="unique-box">Div with class "blue-box" and id "unique-box"</div>
+  <div class="example">
+    div { color: black; } <br>
+    .blue-box { color: blue; } <br>
+    #unique-box { color: red; } <br><br>
+    <b>Result:</b> text color will be red (ID wins)
+  </div>
+  <p style="margin-top:15px;"><b>Specificity calculation:</b></p>
+  <ul style="padding-left:20px; color:var(--secondary)">
+    <li>Element = 0,0,0,1</li>
+    <li>Class = 0,0,1,0</li>
+    <li>ID = 0,1,0,0</li>
+  </ul>
+  <p><b>Inline styles</b> (like <code>style="color: green;"</code>) have even higher specificity.</p>
+
+  <a href="css_specificity.html">View in Details</a>
+</section>
+
+</body>
+</html>
