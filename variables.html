@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript var, let & const Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2b6cb0;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #2c5282;
+    }
+
+    pre {
+      background: #edf2f7;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e0;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #e2e8f0;
+    }
+
+    .tip {
+      background: #e6fffa;
+      border-left: 6px solid #38b2ac;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+
+    .example {
+      background: #fff5f5;
+      border-left: 6px solid #f56565;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .note {
+      font-style: italic;
+      color: #555;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #2b6cb0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Understanding <code>var</code>, <code>let</code>, and <code>const</code> in JavaScript</h1>
+
+  <div class="section">
+    <h2>🧠 What are they?</h2>
+    <p>They are used to <span class="highlight">declare variables</span> in JavaScript. But they behave differently in terms of <strong>scope</strong>, <strong>reassignment</strong>, and <strong>hoisting</strong>.</p>
+  </div>
+
+  <div class="section">
+    <h2>📦 <code>var</code> — The Old-School Way</h2>
+    <ul>
+      <li><strong>Function scoped</strong></li>
+      <li>Can be <strong>re-declared</strong> and <strong>reassigned</strong></li>
+      <li><strong>Hoisted</strong> and initialized as <code>undefined</code></li>
+    </ul>
+    <pre><code>function greet() {
+  if (true) {
+    var name = "John";
+  }
+  console.log(name); // ✅ Works
+}</code></pre>
+    <div class="example">Re-declaration is allowed:
+      <pre><code>var a = 5;
+var a = 10; // ✅ OK</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📦 <code>let</code> — The Modern Way</h2>
+    <ul>
+      <li><strong>Block scoped</strong></li>
+      <li>Can be <strong>reassigned</strong> but <strong>not re-declared</strong> in the same scope</li>
+      <li><strong>Hoisted</strong>, but not initialized</li>
+    </ul>
+    <pre><code>function greet() {
+  if (true) {
+    let name = "Alice";
+    console.log(name); // ✅ Works
+  }
+  // console.log(name); ❌ Error
+}</code></pre>
+    <div class="example">Re-declaration is not allowed:
+      <pre><code>let x = 5;
+x = 10;        // ✅ OK
+let x = 20;    // ❌ Error</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📦 <code>const</code> — Constant Value</h2>
+    <ul>
+      <li><strong>Block scoped</strong></li>
+      <li><strong>Cannot be reassigned or re-declared</strong></li>
+      <li><strong>Must be initialized</strong> at declaration</li>
+    </ul>
+    <pre><code>const pi = 3.14;
+console.log(pi); // ✅
+// pi = 3.14159; ❌ Error</code></pre>
+
+    <div class="example">For arrays and objects:
+      <pre><code>const arr = [1, 2, 3];
+arr.push(4);      // ✅
+
+const person = { name: "Bob" };
+person.name = "Tom"; // ✅</code></pre>
+      <p class="note">You can't reassign <code>arr</code> or <code>person</code>, but you can modify their content.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🧭 Scope Comparison Table</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th><code>var</code></th>
+        <th><code>let</code></th>
+        <th><code>const</code></th>
+      </tr>
+      <tr>
+        <td>Scope</td>
+        <td>Function</td>
+        <td>Block</td>
+        <td>Block</td>
+      </tr>
+      <tr>
+        <td>Re-declarable</td>
+        <td>✅ Yes</td>
+        <td>❌ No</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Re-assignable</td>
+        <td>✅ Yes</td>
+        <td>✅ Yes</td>
+        <td>❌ No</td>
+      </tr>
+      <tr>
+        <td>Hoisting</td>
+        <td>✅ (undefined)</td>
+        <td>✅ (but not initialized)</td>
+        <td>✅ (but not initialized)</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>🎓 Real-World Analogy</h2>
+    <p>
+      Imagine a school:
+      <ul>
+        <li>🏫 <code>var</code> — A student known across the entire school (function)</li>
+        <li>📚 <code>let</code> — A student known only in their class group (block)</li>
+        <li>🪧 <code>const</code> — A student with a fixed seat, but they can still open/change their notebook (content)</li>
+      </ul>
+    </p>
+  </div>
+
+  <div class="section tip">
+    ✅ <strong>Tips:</strong><br>
+    Use <code>let</code> when the value might change.<br>
+    Use <code>const</code> for constants and object references.<br>
+    Avoid <code>var</code> unless maintaining old code.
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Entities Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary: #3f51b5;
+      --secondary: #f5f5f5;
+      --text: #333;
+      --highlight: #e3f2fd;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--secondary);
+      padding: 20px;
+      color: var(--text);
+    }
+
+
+    h1 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 50px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--highlight);
+    }
+
+    code {
+      background-color: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      th {
+        display: none;
+      }
+      td {
+        position: relative;
+        padding-left: 50%;
+      }
+      td::before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+      td:nth-child(1)::before { content: "Entity"; }
+      td:nth-child(2)::before { content: "Name"; }
+      td:nth-child(3)::before { content: "Description"; }
+      td:nth-child(4)::before { content: "Output"; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HTML Entities Reference</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Entity</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>&amp;amp;</td><td><code>&amp;amp;</code></td><td>Ampersand</td><td>&amp;</td></tr>
+      <tr><td>&amp;lt;</td><td><code>&amp;lt;</code></td><td>Less than</td><td>&lt;</td></tr>
+      <tr><td>&amp;gt;</td><td><code>&amp;gt;</code></td><td>Greater than</td><td>&gt;</td></tr>
+      <tr><td>&amp;quot;</td><td><code>&amp;quot;</code></td><td>Double quote</td><td>&quot;</td></tr>
+      <tr><td>&amp;apos;</td><td><code>&amp;apos;</code></td><td>Single quote</td><td>&apos;</td></tr>
+      <tr><td>&amp;nbsp;</td><td><code>&amp;nbsp;</code></td><td>Non-breaking space</td><td>&nbsp;</td></tr>
+      <tr><td>&amp;copy;</td><td><code>&amp;copy;</code></td><td>Copyright</td><td>&copy;</td></tr>
+      <tr><td>&amp;reg;</td><td><code>&amp;reg;</code></td><td>Registered Trademark</td><td>&reg;</td></tr>
+      <tr><td>&amp;trade;</td><td><code>&amp;trade;</code></td><td>Trademark</td><td>&trade;</td></tr>
+      <tr><td>&amp;cent;</td><td><code>&amp;cent;</code></td><td>Cent sign</td><td>&cent;</td></tr>
+      <tr><td>&amp;pound;</td><td><code>&amp;pound;</code></td><td>Pound sign</td><td>&pound;</td></tr>
+      <tr><td>&amp;euro;</td><td><code>&amp;euro;</code></td><td>Euro sign</td><td>&euro;</td></tr>
+      <tr><td>&amp;yen;</td><td><code>&amp;yen;</code></td><td>Yen sign</td><td>&yen;</td></tr>
+      <tr><td>&amp;infin;</td><td><code>&amp;infin;</code></td><td>Infinity</td><td>&infin;</td></tr>
+      <tr><td>&amp;plusmn;</td><td><code>&amp;plusmn;</code></td><td>Plus-minus</td><td>&plusmn;</td></tr>
+      <tr><td>&amp;divide;</td><td><code>&amp;divide;</code></td><td>Division</td><td>&divide;</td></tr>
+      <tr><td>&amp;times;</td><td><code>&amp;times;</code></td><td>Multiplication</td><td>&times;</td></tr>
+      <tr><td>&amp;le;</td><td><code>&amp;le;</code></td><td>Less than or equal to</td><td>&le;</td></tr>
+      <tr><td>&amp;ge;</td><td><code>&amp;ge;</code></td><td>Greater than or equal to</td><td>&ge;</td></tr>
+      <tr><td>&amp;ne;</td><td><code>&amp;ne;</code></td><td>Not equal to</td><td>&ne;</td></tr>
+      <tr><td>&amp;sum;</td><td><code>&amp;sum;</code></td><td>Summation</td><td>&sum;</td></tr>
+      <tr><td>&amp;pi;</td><td><code>&amp;pi;</code></td><td>Pi symbol</td><td>&pi;</td></tr>
+      <tr><td>&amp;alpha;</td><td><code>&amp;alpha;</code></td><td>Greek Alpha</td><td>&alpha;</td></tr>
+      <tr><td>&amp;beta;</td><td><code>&amp;beta;</code></td><td>Greek Beta</td><td>&beta;</td></tr>
+      <tr><td>&amp;deg;</td><td><code>&amp;deg;</code></td><td>Degree symbol</td><td>&deg;</td></tr>
+      <tr><td>&amp;hellip;</td><td><code>&amp;hellip;</code></td><td>Ellipsis (…) symbol</td><td>&hellip;</td></tr>
+      <tr><td>&amp;mdash;</td><td><code>&amp;mdash;</code></td><td>Em dash</td><td>&mdash;</td></tr>
+      <tr><td>&amp;ndash;</td><td><code>&amp;ndash;</code></td><td>En dash</td><td>&ndash;</td></tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
