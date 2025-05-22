@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Scope Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9fafb;
+      color: #2d3748;
+    }
+
+    h1, h2 {
+      color: #2b6cb0;
+      text-align: center;
+    }
+
+    .section {
+      background: #fff;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 900px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    pre {
+      background-color: #edf2f7;
+      padding: 15px;
+      border-left: 5px solid #4299e1;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, monospace;
+    }
+
+    .note {
+      background-color: #e6fffa;
+      border-left: 5px solid #38b2ac;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .example-title {
+      font-weight: bold;
+      color: #2c5282;
+      margin-top: 10px;
+    }
+
+    code {
+      background: #edf2f7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 90%;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌐 JavaScript Scope & Block Concepts</h1>
+
+  <div class="section">
+    <h2>📦 What is a Block?</h2>
+    <p>
+      A <strong>block</strong> is a chunk of code enclosed within <code>{ }</code>. It is commonly used in:
+    </p>
+    <ul>
+      <li><code>if</code>, <code>else</code> conditions</li>
+      <li><code>for</code>, <code>while</code> loops</li>
+      <li><code>function</code> definitions</li>
+      <li>Even standalone: <code>{ let x = 5; }</code></li>
+    </ul>
+
+    <div class="example-title">Example:</div>
+    <pre><code>{
+  let message = "Hello Block";
+  console.log(message); // ✅ Works here
+}
+console.log(message); // ❌ Error: message is not defined</code></pre>
+
+    <div class="note">Variables declared with <code>let</code> and <code>const</code> are <strong>block scoped</strong>.</div>
+  </div>
+
+  <div class="section">
+    <h2>🔍 What is Scope?</h2>
+    <p>
+      <strong>Scope</strong> determines where a variable is accessible in your code.
+    </p>
+    <ul>
+      <li><strong>Global Scope</strong> — accessible anywhere</li>
+      <li><strong>Function Scope</strong> — accessible only inside a function</li>
+      <li><strong>Block Scope</strong> — accessible only inside a block <code>{ }</code></li>
+    </ul>
+
+    <div class="example-title">Example:</div>
+    <pre><code>let a = 10; // global scope
+
+function test() {
+  let b = 20; // function scope
+  if (true) {
+    let c = 30; // block scope
+    console.log(a, b, c); // ✅ 10 20 30
+  }
+  console.log(c); // ❌ Error: c is not defined
+}
+test();</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>🌐 Global Scope</h2>
+    <p>
+      Any variable declared <strong>outside all functions or blocks</strong> is in the global scope.
+      It's accessible from anywhere in your JavaScript code.
+    </p>
+
+    <div class="example-title">Example:</div>
+    <pre><code>let website = "zninfotech.com";
+
+function showSite() {
+  console.log(website); // ✅ Access global variable
+}
+showSite();</code></pre>
+
+    <div class="note">Be cautious: modifying global variables can cause bugs if reused in many places.</div>
+  </div>
+
+  <div class="section">
+    <h2>🔁 Function Scope</h2>
+    <p>
+      Variables declared with <code>var</code>, <code>let</code>, or <code>const</code> inside a function
+      can only be accessed within that function.
+    </p>
+
+    <div class="example-title">Example:</div>
+    <pre><code>function greet() {
+  let name = "Student";
+  console.log(name); // ✅ Accessible
+}
+greet();
+console.log(name); // ❌ Error: name is not defined</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>🧠 Lexical Scope (Static Scope)</h2>
+    <p>
+      Lexical Scope means a function can access variables defined in its <strong>outer scope</strong>
+      based on where it was defined — not where it is called.
+    </p>
+
+    <div class="example-title">Example:</div>
+    <pre><code>function outer() {
+  let outerVar = "I'm outside!";
+  
+  function inner() {
+    console.log(outerVar); // ✅ Accessible due to lexical scope
+  }
+
+  inner();
+}
+outer();</code></pre>
+
+    <div class="note">
+      Lexical scope is fixed during code writing, not during runtime.
+    </div>
+  </div>
+
+</body>
+</html>

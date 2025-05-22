@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Hoisting Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9fafb;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2b6cb0;
+    }
+
+    .section {
+      background: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #2c5282;
+    }
+
+    pre {
+      background: #edf2f7;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, monospace;
+    }
+
+    .note {
+      background: #e6fffa;
+      border-left: 6px solid #38b2ac;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .error {
+      background: #fff5f5;
+      border-left: 6px solid #f56565;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e0;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background: #e2e8f0;
+      color: #2d3748;
+    }
+
+    .highlight {
+      color: #2b6cb0;
+      font-weight: bold;
+    }
+
+    code {
+      background: #edf2f7;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 95%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 JavaScript Hoisting Explained</h1>
+
+  <div class="section">
+    <h2>🔍 What is Hoisting?</h2>
+    <p>
+      <strong>Hoisting</strong> is JavaScript's default behavior of <span class="highlight">moving declarations to the top</span> of the current scope (function or block) before the code is executed.
+    </p>
+    <p>
+      But — <strong>only the declaration is hoisted</strong>, not the assignment (initialization).
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>✅ Example with <code>var</code></h2>
+    <pre><code>console.log(a); // 👉 undefined
+var a = 10;</code></pre>
+
+    <p>This works because JavaScript does this behind the scenes:</p>
+
+    <pre><code>var a;
+console.log(a); // undefined
+a = 10;</code></pre>
+
+    <div class="note">
+      <strong>✔️ <code>var</code> is hoisted</strong> and automatically initialized as <code>undefined</code>.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>❌ <code>let</code> and <code>const</code> are hoisted but not initialized</h2>
+    <pre><code>console.log(b); // ❌ ReferenceError
+let b = 20;</code></pre>
+
+    <pre><code>console.log(c); // ❌ ReferenceError
+const c = 30;</code></pre>
+
+    <div class="error">
+      These are hoisted, but exist in a <strong>"temporal dead zone"</strong> until the declaration line is reached.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>✅ Function Declaration Hoisting</h2>
+    <pre><code>sayHello(); // ✅ Works
+
+function sayHello() {
+  console.log("Hi!");
+}</code></pre>
+
+    <p>
+      Full function declarations are hoisted, including their code body.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>❌ Function Expressions Are Not Hoisted</h2>
+    <pre><code>greet(); // ❌ Error
+
+const greet = function() {
+  console.log("Hello!");
+}</code></pre>
+
+    <div class="error">
+      Function expressions using <code>let</code> or <code>const</code> are hoisted but not initialized, so they throw an error if accessed before the line.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📊 Summary Table</h2>
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>Hoisted?</th>
+        <th>Initialized?</th>
+        <th>Access Before Declaration?</th>
+      </tr>
+      <tr>
+        <td><code>var</code></td>
+        <td>✅ Yes</td>
+        <td>✅ Yes (<code>undefined</code>)</td>
+        <td>✅ Allowed</td>
+      </tr>
+      <tr>
+        <td><code>let</code></td>
+        <td>✅ Yes</td>
+        <td>❌ No</td>
+        <td>❌ ReferenceError</td>
+      </tr>
+      <tr>
+        <td><code>const</code></td>
+        <td>✅ Yes</td>
+        <td>❌ No</td>
+        <td>❌ ReferenceError</td>
+      </tr>
+      <tr>
+        <td><code>function</code></td>
+        <td>✅ Yes</td>
+        <td>✅ Yes</td>
+        <td>✅ Allowed</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>

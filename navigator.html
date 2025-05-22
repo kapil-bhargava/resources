@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navigator APIs</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --bg: #f9fafb;
+      --text: #1f2937;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    h1 {
+      text-align: center;
+      margin: 1.5rem 0;
+      color: var(--primary);
+    }
+
+    .container {
+      padding: 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--card);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    thead {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    th {
+      font-size: 1rem;
+    }
+
+    td {
+      font-size: 0.95rem;
+    }
+
+    tbody tr:hover {
+      background-color: #eef2ff;
+      transition: 0.2s ease-in;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      td {
+        position: relative;
+        padding-left: 50%;
+        border: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      td::before {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        width: 40%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      td:nth-child(1)::before { content: "API"; }
+      td:nth-child(2)::before { content: "Description"; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Navigator APIs Overview</h1>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>API</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>navigator.userAgent</td><td>Returns browser's user agent string</td></tr>
+        <tr><td>navigator.language</td><td>Returns browser language (e.g. en-US)</td></tr>
+        <tr><td>navigator.languages</td><td>Array of preferred languages</td></tr>
+        <tr><td>navigator.platform</td><td>Returns the operating system platform</td></tr>
+        <tr><td>navigator.onLine</td><td>Checks if browser is online</td></tr>
+        <tr><td>navigator.cookieEnabled</td><td>Returns if cookies are enabled</td></tr>
+        <tr><td>navigator.hardwareConcurrency</td><td>Number of logical CPU cores</td></tr>
+        <tr><td>navigator.deviceMemory</td><td>Device memory in GB (approx.)</td></tr>
+        <tr><td>navigator.connection</td><td>Network type and speed info</td></tr>
+        <tr><td>navigator.geolocation</td><td>Access to location (with permission)</td></tr>
+        <tr><td>navigator.mediaDevices</td><td>Access camera/mic with permission</td></tr>
+        <tr><td>navigator.clipboard</td><td>Clipboard read/write access</td></tr>
+        <tr><td>navigator.permissions</td><td>Query API permissions (e.g. geo)</td></tr>
+        <tr><td>navigator.credentials</td><td>Access saved credentials</td></tr>
+        <tr><td>navigator.storage</td><td>Check storage and persistence</td></tr>
+        <tr><td>navigator.bluetooth</td><td>Access Bluetooth devices</td></tr>
+        <tr><td>navigator.usb</td><td>Access USB devices</td></tr>
+        <tr><td>navigator.wakeLock</td><td>Prevent screen from sleeping</td></tr>
+        <tr><td>navigator.getBattery()</td><td>Battery info (level, charging)</td></tr>
+        <tr><td>navigator.sendBeacon()</td><td>Send data without blocking unload</td></tr>
+        <tr><td>navigator.serviceWorker</td><td>Register service workers for PWA</td></tr>
+        <tr><td>navigator.vibrate()</td><td>Vibrate device (mobile)</td></tr>
+        <tr><td>navigator.xr</td><td>Access AR/VR WebXR devices</td></tr>
+        <tr><td>navigator.hid</td><td>Access Human Interface Devices</td></tr>
+        <tr><td>navigator.serial</td><td>Read/write to serial ports</td></tr>
+        <tr><td>navigator.locks</td><td>Use Web Locks API</td></tr>
+        <tr><td>navigator.presentation</td><td>Send to external display</td></tr>
+        <tr><td>navigator.scheduling</td><td>Cooperative scheduling API</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
