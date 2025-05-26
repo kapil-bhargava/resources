@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Data Types</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f4f9ff;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #3b82f6;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin: 30px auto;
+      max-width: 900px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #d1d5db;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e0f2fe;
+      color: #0c4a6e;
+    }
+
+    code {
+      background-color: #fef3c7;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Data Types</h1>
+
+  <div class="section">
+    <h2>Primitive Data Types</h2>
+    <p><strong>Definition:</strong> Primitive data types are the basic data types in JavaScript. They hold a single value and are immutable.</p>
+    
+    <table>
+      <tr>
+        <th>Data Type</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>String</td>
+        <td>Textual data</td>
+        <td><code>let name = "Rohan";</code></td>
+      </tr>
+      <tr>
+        <td>Number</td>
+        <td>Numeric values</td>
+        <td><code>let age = 25;</code></td>
+      </tr>
+      <tr>
+        <td>Boolean</td>
+        <td>True or False</td>
+        <td><code>let isOnline = true;</code></td>
+      </tr>
+      <tr>
+        <td>Undefined</td>
+        <td>Variable declared but not assigned</td>
+        <td><code>let x;</code></td>
+      </tr>
+      <tr>
+        <td>Null</td>
+        <td>Intentional absence of value</td>
+        <td><code>let y = null;</code></td>
+      </tr>
+      <tr>
+        <td>Symbol</td>
+        <td>Unique and immutable value</td>
+        <td><code>let id = Symbol("id");</code></td>
+      </tr>
+      <tr>
+        <td>BigInt</td>
+        <td>Large integers</td>
+        <td><code>let big = 123456789123456789n;</code></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Non-Primitive (Reference) Data Types</h2>
+    <p><strong>Definition:</strong> Non-primitive data types can store collections of values or more complex entities and are mutable.</p>
+
+    <table>
+      <tr>
+        <th>Data Type</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>Object</td>
+        <td>Key-value pairs</td>
+        <td><code>let person = { name: "Rohan", age: 25 };</code></td>
+      </tr>
+      <tr>
+        <td>Array</td>
+        <td>Ordered list of values</td>
+        <td><code>let fruits = ["apple", "banana"];</code></td>
+      </tr>
+      <tr>
+        <td>Function</td>
+        <td>Reusable block of code</td>
+        <td><code>function greet() { alert("Hello"); }</code></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- <footer>
+    &copy; 2025 | JavaScript Concepts by ChatGPT
+  </footer> -->
+  
+</body>
+</html>

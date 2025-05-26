@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Complete Bootstrap Guide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg-color: #f9fafb;
+      --text-color: #111827;
+      --primary-color: #1d4ed8;
+      --secondary-color: #0ea5e9;
+      --accent-color: #e0f2fe;  
+      --card-color: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #0f172a;
+        --text-color: #f8fafc;
+        --primary-color: #60a5fa;
+        --secondary-color: #38bdf8;
+        --accent-color: #c2c2c2;
+        --card-color: #ffffff;
+      }
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', sans-serif;
+      padding-top: 3rem;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background-color: var(--card-color);
+      border: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-title {
+      padding-top: 2rem;
+      border-bottom: 2px solid var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    nav a {
+      display: block;
+      padding: 0.25rem 0;
+    }
+
+    .example-box {
+      background-color: var(--accent-color);
+      border-radius: 6px;
+      padding: 0.75rem;
+      font-family: monospace;
+      overflow-x: auto;
+    }
+
+    code {
+      color: var(--secondary-color);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header class="text-center mb-5">
+    <h1 class="fw-bold">📘 Complete Bootstrap 5 Guide</h1>
+    <p class="lead">Learn Bootstrap from scratch with examples and best practices.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="mb-4">
+    <h4>🔗 Quick Navigation</h4>
+    <div class="row">
+      <div class="col-md-4">
+        <a href="#what-is-bootstrap">What is Bootstrap?</a>
+        <a href="#cdn-usage">How to Use Bootstrap (CDN)</a>
+        <a href="#container-section">Containers</a>
+      </div>
+      <div class="col-md-4">
+        <a href="#grid-system">Grid System (Partitions)</a>
+        <a href="#spacing">Margins & Padding</a>
+        <a href="#buttons">Buttons</a>
+      </div>
+      <div class="col-md-4">
+        <a href="#cards">Cards</a>
+        <a href="#responsive">Responsiveness</a>
+        <a href="#dark-mode">Dark Mode Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- What is Bootstrap -->
+  <section id="what-is-bootstrap">
+    <h2 class="section-title">🔹 What is Bootstrap?</h2>
+    <div class="card p-3">
+      <p><strong>Bootstrap</strong> is a powerful front-end framework for faster and easier web development. It includes CSS and JavaScript-based design templates for typography, buttons, forms, navigation, and other interface components.</p>
+    </div>
+  </section>
+
+  <!-- CDN Usage -->
+  <section id="cdn-usage">
+    <h2 class="section-title">🔹 How to Use Bootstrap (CDN)</h2>
+    <div class="card p-3">
+      <ol>
+        <li>Create an HTML file</li>
+        <li>In the <code>&lt;head&gt;</code> section, add this link:</li>
+      </ol>
+      <div class="example-box mb-3">
+        &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+      </div>
+      <p>Now you can start using all Bootstrap classes in your HTML elements.</p>
+    </div>
+  </section>
+
+  <!-- Containers -->
+  <section id="container-section">
+    <h2 class="section-title">🔹 Containers</h2>
+    <div class="card p-3">
+      <p>Bootstrap offers two container classes:</p>
+      <ul>
+        <li><code>.container</code>: Centered, fixed-width container</li>
+        <li><code>.container-fluid</code>: Full-width container</li>
+      </ul>
+      <div class="example-box mb-3">
+        &lt;div class="container"&gt;Fixed Width&lt;/div&gt;<br/>
+        &lt;div class="container-fluid"&gt;Full Width&lt;/div&gt;
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid System -->
+  <section id="grid-system">
+    <h2 class="section-title">🔹 Grid System (Partition Layout)</h2>
+    <div class="card p-3">
+      <p>Bootstrap’s grid is a 12-column system. Use <code>.row</code> to define rows, and <code>.col-*</code> to divide the space.</p>
+      <div class="example-box">
+        &lt;div class="row"&gt;<br/>
+        &nbsp;&nbsp;&lt;div class="col-6"&gt;Left&lt;/div&gt;<br/>
+        &nbsp;&nbsp;&lt;div class="col-6"&gt;Right&lt;/div&gt;<br/>
+        &lt;/div&gt;
+      </div>
+    </div>
+  </section>
+
+  <!-- Spacing -->
+  <section id="spacing">
+    <h2 class="section-title">🔹 Margin & Padding</h2>
+    <div class="card p-3">
+      <p>Spacing utilities: <code>{property}{side}-{size}</code></p>
+      <ul>
+        <li><code>m</code> = margin, <code>p</code> = padding</li>
+        <li><code>t</code> = top, <code>b</code> = bottom, <code>x</code> = left and right, <code>y</code> = top and bottom</li>
+        <li>Sizes: 0–5, or auto</li>
+      </ul>
+      <div class="example-box">
+        &lt;div class="mt-3 mb-3 px-4 py-2"&gt;Margin Top & Bottom, Padding X & Y&lt;/div&gt;
+      </div>
+    </div>
+  </section>
+
+  <!-- Buttons -->
+  <section id="buttons">
+    <h2 class="section-title">🔹 Buttons</h2>
+    <div class="card p-3">
+      <p>Bootstrap buttons come in many styles:</p>
+      <div class="example-box">
+        &lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;<br/>
+        &lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section id="cards">
+    <h2 class="section-title">🔹 Cards</h2>
+    <div class="card p-3">
+      <p>Cards are flexible content containers with headers and footers.</p>
+      <div class="example-box">
+        &lt;div class="card"&gt;<br/>
+        &nbsp;&nbsp;&lt;div class="card-body"&gt;Card Content&lt;/div&gt;<br/>
+        &lt;/div&gt;
+      </div>
+    </div>
+  </section>
+
+  <!-- Responsive -->
+  <section id="responsive">
+    <h2 class="section-title">🔹 Responsiveness</h2>
+    <div class="card p-3">
+      <p>Use breakpoints like <code>.col-md-6</code>, <code>.d-none d-md-block</code> to create responsive layouts.</p>
+      <div class="example-box">
+        &lt;div class="col-md-6"&gt;Half width on md+ screens&lt;/div&gt;
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Mode -->
+  <section id="dark-mode">
+    <h2 class="section-title">🔹 Dark Mode Support</h2>
+    <div class="card p-3">
+      <p>This guide uses CSS variables and <code>prefers-color-scheme</code> media query to automatically switch between light and dark themes based on user preferences.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center mt-5">
+    <p>✨ Built with Bootstrap 5, Designed for clarity and dark mode ✨</p>
+  </footer>
+</div>
+
+</body>
+</html>
