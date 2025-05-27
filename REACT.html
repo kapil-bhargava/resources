@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Notes Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #f0f4ff, #ffffff);
+            color: #333;
+            padding: 2rem;
+        }
+
+        h2,
+        h3 {
+            color: #2b6cb0;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        p,
+        ul,
+        table {
+            margin: 1rem 0;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #bee3f8;
+        }
+
+        code,
+        pre {
+            background-color: #f7fafc;
+            color: #2d3748;
+            padding: 0.4rem 0.6rem;
+            border-radius: 5px;
+            display: block;
+            margin: 1rem 0;
+        }
+
+        .highlight {
+            background-color: #ebf8ff;
+            padding: 1rem;
+            border-left: 5px solid #4299e1;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>React Notes</h2>
+
+    <h3>🧠 What is React?</h3>
+    <p><strong>React</strong> is an <strong>open-source JavaScript library</strong> developed by Facebook for building
+        user interfaces, especially <strong>single-page applications</strong> (SPAs). It helps create <strong>reusable
+            UI components</strong>, making frontend development faster, cleaner, and more efficient.</p>
+
+    <h3>🏗️ Is React a Library or a Framework?</h3>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Library</th>
+            <th>Framework</th>
+        </tr>
+        <tr>
+            <td>Definition</td>
+            <td>A collection of tools/functions</td>
+            <td>A full structure to build an app</td>
+        </tr>
+        <tr>
+            <td>Control</td>
+            <td>You control the flow</td>
+            <td>Framework controls the flow</td>
+        </tr>
+        <tr>
+            <td>Examples</td>
+            <td>React, jQuery</td>
+            <td>Angular, Django, Laravel</td>
+        </tr>
+    </table>
+    <div class="highlight">
+        ➡️ <strong>React is a library</strong>, not a framework. — but it can be called a framework in certain practical
+        contexts. Here's the detailed explanation: <br>
+
+
+
+
+    </div>
+    <h3>✅ Why React Is a Library (By Definition)</h3>
+    <ul>
+        <li>
+            Officially, React is described as a JavaScript library for building user interfaces.
+        </li>
+        <li>
+            It focuses only on the view layer (UI) in the MVC (Model-View-Controller) architecture.
+        </li>
+        <li>
+            It does not include routing, state management, or data fetching by default — those are handled via external
+            libraries (e.g., React Router, Redux, Axios, etc.).
+
+        </li>
+    </ul>
+
+    <h3>When React Can Be Called a Framework</h3>
+    <p>React behaves like a framework when:</p>
+    <h4>1. Using a Full React Stack</h4>
+    <p>If you're building an app using:</p>
+
+    <ul>
+        <li>React (for UI)</li>
+        <li>
+            React Router (for routing)
+        </li>
+        <li>
+            Redux/Zustand/Context API (for state management)
+        </li>
+        <li>
+            Axios/React Query/SWR (for data fetching)
+        </li>
+        <li>
+            Vite/CRA/Next.js (for tooling or SSR)
+        </li>
+    </ul>
+
+    <div class="highlight">You are essentially creating a framework-like environment, so it's fair to call it a
+        framework in practice.</div>
+
+    <h3>❓ Why Use React?</h3>
+    <ul>
+        <li><strong>Component-based architecture</strong>: Reuse UI pieces like LEGO blocks.</li>
+        <li><strong>Fast rendering</strong> with <strong>Virtual DOM</strong>.</li>
+        <li><strong>One-way data binding</strong>: Predictable flow of data.</li>
+        <li><strong>Rich ecosystem</strong>: Lots of tools, libraries, and support.</li>
+        <li><strong>Strong community</strong> and frequent updates from Meta (Facebook).</li>
+    </ul>
+
+    <h3>♋️ What is Virtual DOM?</h3>
+    <p>React maintains a <strong>virtual copy of the real DOM</strong>. When a component changes, React compares the
+        <strong>old Virtual DOM with the new one (diffing)</strong>. Only <strong>the changed part is updated</strong>
+        in the real DOM, making updates fast and efficient.
+    </p>
+
+    <h3>🔁 What Are Hooks?</h3>
+    <p>Hooks are special functions in React that let you <strong>use state and lifecycle features in functional
+            components</strong>.  <a href="react/reack_hooks.html">See full guide</a></p>
+           
+    <ul>
+        <li><code>useState()</code> – for state management</li>
+        <li><code>useEffect()</code> – for side effects (like API calls, timers)</li>
+        <li><code>useContext()</code> – for managing global state</li>
+        <li><code>useRef()</code> – for referencing DOM elements</li>
+    </ul>
+    <p>✅ Hooks make functional components as powerful as class components.</p>
+
+    <h3>⚙️ How to Create a React App?</h3>
+    <h4>1. Using <strong>Create React App (CRA)</strong> (Beginner-friendly):</h4>
+    <pre><code>npx create-react-app myapp
+cd myapp
+npm start</code></pre>
+    <p>Sets up everything automatically. Good for learning and small to medium apps.</p>
+
+    <h4>2. Using <strong>Vite</strong> (Faster modern build tool):</h4>
+    <pre><code>npm create vite@latest myapp -- --template react
+cd myapp
+npm install
+npm run dev</code></pre>
+
+    <table>
+        <tr>
+            <th>CRA</th>
+            <th>Vite</th>
+        </tr>
+        <tr>
+            <td>Slower builds</td>
+            <td>Lightning-fast HMR</td>
+        </tr>
+        <tr>
+            <td>Heavy setup</td>
+            <td>Lightweight and fast</td>
+        </tr>
+        <tr>
+            <td>Great for beginners</td>
+            <td>Great for performance-focused devs</td>
+        </tr>
+    </table>
+    <p>✅ <strong>Use Vite for modern projects</strong> where performance matters.</p>
+
+    <h3>🚀 Other Ways to Create React Apps:</h3>
+    <ul>
+        <li><code>npm init react-app myapp</code> (alias of CRA)</li>
+        <li><code>yarn create react-app myapp</code></li>
+        <li><code>pnpm create vite</code> (with Vite)</li>
+        <li><code>Next.js</code> for React apps with SSR (Server-Side Rendering)</li>
+    </ul>
+
+    <h3>✅ Summary</h3>
+    <table>
+        <tr>
+            <th>Term</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td>React</td>
+            <td>JavaScript <strong>library</strong> for building UIs</td>
+        </tr>
+        <tr>
+            <td>Virtual DOM</td>
+            <td>Fast UI updates via virtual representation</td>
+        </tr>
+        <tr>
+            <td>Hooks</td>
+            <td>Use state/lifecycle in functional components</td>
+        </tr>
+        <tr>
+            <td>CRA</td>
+            <td>Create React App – easy setup</td>
+        </tr>
+        <tr>
+            <td>Vite</td>
+            <td>Fast build tool for modern React apps</td>
+        </tr>
+    </table>
+    
+
+</body>
+
+</html>

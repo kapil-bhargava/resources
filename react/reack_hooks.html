@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Hooks Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f8ff;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #007acc;
+        }
+
+        h2 {
+            margin-top: 30px;
+            border-left: 6px solid #007acc;
+            padding-left: 10px;
+        }
+
+        .hook {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-left: 5px solid #007acc;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🪝 React Hooks </h1>
+    <h3>What are Hooks in React ?</h3>
+    <p>Hooks are special functions in React that let you "hook into" React features like state and lifecycle methods
+        from functional components.</p>
+    <h3>Why use Hooks?</h3>
+    <ul>
+        <li>
+            <strong>✅ Simpler Code:</strong> No need to use classes — you can write stateful logic in cleaner functional
+            components.
+        </li>
+        <li>
+            <strong>✅ Code Reusability:</strong> Share logic across components with custom hooks.
+        </li>
+        <li>
+            <strong>✅ Better Readability:</strong>
+            Easier to read and understand compared to class components.
+        </li>
+        <li>
+            <strong>✅ Modern Best Practice: </strong>
+        </li> React now encourages the use of hooks in most cases.
+    </ul>
+
+    <b>Example :</b>
+     <pre>
+    <code>
+import React, &#123; useState &#125; from 'react';
+
+function Counter() &#123;
+  const [count, setCount] = useState(0); // useState hook
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked &#123;count&#125; times&lt;/p&gt;
+      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;Click me&lt;/button&gt;
+    &lt;/div&gt;
+  );
+&#125;
+    </code>
+  </pre>
+
+    <h2>📋 List of Hooks (Ranked by Importance)</h2>
+    <ol>
+        <li>useState</li>
+        <li>useEffect</li>
+        <li>useContext</li>
+        <li>useRef</li>
+        <li>useMemo</li>
+        <li>useCallback</li>
+        <li>useReducer</li>
+        <li>useLayoutEffect</li>
+        <li>useImperativeHandle</li>
+        <li>useDebugValue</li>
+    </ol>
+
+    <div class="hook">
+        <h2>1️⃣ useState</h2>
+        <p><strong>Purpose:</strong> To create and manage local state in a functional component.</p>
+        <pre><code>const [count, setCount] = useState(0);
+
+setCount(count + 1);</code></pre>
+    </div>
+
+    <div class="hook">
+        <h2>2️⃣ useEffect</h2>
+        <p><strong>Purpose:</strong> To perform side effects like fetching data, setting up subscriptions, or timers.
+        </p>
+        <pre><code>useEffect(() => {
+    console.log("Component mounted or updated");
+}, [dependency]);</code></pre>
+    </div>
+
+    <div class="hook">
+        <h2>3️⃣ useContext</h2>
+        <p><strong>Purpose:</strong> To access global values provided by React Context.</p>
+        <pre><code>const theme = useContext(ThemeContext);</code></pre>
+    </div>
+
+    <div class="hook">
+        <h2>4️⃣ useRef</h2>
+        <p><strong>Purpose:</strong> To reference DOM elements or keep mutable values between renders without
+            re-rendering.</p>
+        <pre><code>const inputRef = useRef(null);
+inputRef.current.focus();</code></pre>
+    </div>
+
+    <div class="hook">
+        <h2>5️⃣ useMemo</h2>
+        <p><strong>Purpose:</strong> To memoize expensive calculations and prevent unnecessary re-computations.</p>
+        <pre><code>const result = useMemo(() => computeExpensiveValue(a, b), [a, b]);</code></pre>
+    </div>
+
+    <div class="hook">
+        <h2>6️⃣ useCallback</h2>
+        <p><strong>Purpose:</strong> To memoize functions and avoid re-creating them on each render.</p>
+        <pre><code>const handleClick = useCallback(() => doSomething(), [dependency]);</code></pre>
+    </div>
+
+    <div class="hook">
+        <h2>7️⃣ useReducer</h2>
+        <p><strong>Purpose:</strong> To manage complex state logic using reducers (like Redux).</p>
+        <pre><code>const [state, dispatch] = useReducer(reducerFunction, initialState);</code></pre>
+    </div>
+
+    <div class="hook">
+        <h2>8️⃣ useLayoutEffect</h2>
+        <p><strong>Purpose:</strong> Like <code>useEffect</code>, but fires synchronously after all DOM mutations.</p>
+        <pre><code>useLayoutEffect(() => {
+    // Reads DOM layout before painting
+});</code></pre>
+    </div>
+
+    <div class="hook">
+        <h2>9️⃣ useImperativeHandle</h2>
+        <p><strong>Purpose:</strong> Customize the instance value that is exposed to parent components when using
+            <code>ref</code>.</p>
+        <pre><code>useImperativeHandle(ref, () => ({
+    customMethod: () => console.log("Exposed")
+}));</code></pre>
+    </div>
+
+    <div class="hook">
+        <h2>🔟 useDebugValue</h2>
+        <p><strong>Purpose:</strong> To show debug info for custom hooks in React DevTools.</p>
+        <pre><code>useDebugValue(value);</code></pre>
+    </div>
+</body>
+
+</html>
