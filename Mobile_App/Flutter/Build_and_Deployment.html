@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flutter: Build and Deployment</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    pre {
+      background-color: #f0f3f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin: 20px 0;
+    }
+
+    a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background-color: #e9ecef;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Build and Deployment in Flutter</h1>
+
+    <p><strong>Build</strong> means creating a final version of your app that can run on a device (like Android or iOS). <strong>Deployment</strong> means sending or publishing this app so users can download and use it.</p>
+
+    <div class="highlight">
+      <strong>Keyword Explanation:</strong>
+      <ul>
+        <li><strong>Build:</strong> The process of converting your Flutter code into native app files (APK for Android, IPA for iOS).</li>
+        <li><strong>Deployment:</strong> Publishing your app to app stores (Google Play Store, Apple App Store) or distributing it privately.</li>
+        <li><strong>APK:</strong> Android application package file used to install apps on Android devices.</li>
+        <li><strong>IPA:</strong> iOS app archive file used to install apps on Apple devices.</li>
+      </ul>
+    </div>
+
+    <h2>Steps to Build a Flutter App</h2>
+
+    <h3>1. Prepare Your App for Release</h3>
+    <ul>
+      <li>Remove debug code and test thoroughly.</li>
+      <li>Update app version and build number in <code>pubspec.yaml</code> and platform files.</li>
+      <li>Configure app icons and splash screens.</li>
+      <li>Make sure permissions and platform-specific settings are properly set.</li>
+    </ul>
+
+    <h3>2. Build the App</h3>
+    <p>Use Flutter CLI commands to generate build files:</p>
+    <pre><code># For Android (APK or app bundle)
+flutter build apk --release
+flutter build appbundle --release
+
+# For iOS (IPA)
+flutter build ios --release
+    </code></pre>
+    <p>The build files will be created in the <code>build/</code> folder inside your project.</p>
+
+    <div class="highlight">
+      <strong>Important:</strong>
+      <ul>
+        <li><code>flutter build apk</code> creates an installable APK file.</li>
+        <li><code>flutter build appbundle</code> creates an Android App Bundle (recommended for Play Store uploads).</li>
+        <li>iOS build requires a Mac with Xcode installed and a valid Apple Developer account.</li>
+      </ul>
+    </div>
+
+    <h3>3. Test the Release Build</h3>
+    <p>Before deployment, install the release build on physical devices or use testing services like Firebase App Distribution.</p>
+
+    <h2>Deployment Process</h2>
+
+    <h3>1. Android Deployment</h3>
+    <ul>
+      <li>Create a Google Play Developer account.</li>
+      <li>Prepare app listing with screenshots, description, and app details.</li>
+      <li>Upload your signed APK or App Bundle to Google Play Console.</li>
+      <li>Submit your app for review and publishing.</li>
+    </ul>
+
+    <h3>2. iOS Deployment</h3>
+    <ul>
+      <li>Create an Apple Developer account.</li>
+      <li>Use Xcode or Transporter app to upload your IPA file to App Store Connect.</li>
+      <li>Fill app metadata, upload screenshots, and submit for review.</li>
+      <li>After approval, your app will be available on the App Store.</li>
+    </ul>
+
+    <div class="highlight">
+      <strong>Note:</strong>
+      <p>Both app stores have review processes that can take time and may require app adjustments to meet guidelines.</p>
+    </div>
+
+    <h2>Real World Analogy</h2>
+    <p>Think of building and deploying like baking a cake (building) and then packaging and delivering it to customers (deployment). You want the cake perfect before giving it out.</p>
+
+    <h2>Useful Links</h2>
+    <ul>
+      <li><a href="https://flutter.dev/docs/deployment/android" target="_blank">Flutter Android Deployment Guide</a></li>
+      <li><a href="https://flutter.dev/docs/deployment/ios" target="_blank">Flutter iOS Deployment Guide</a></li>
+    </ul>
+  </div>
+</body>
+
+</html>

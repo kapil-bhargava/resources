@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Lists & Maps</title>
+  <style>
+    :root {
+      --bg-color: #f9fafb;
+      --primary: #2c7be5;
+      --dark: #1a202c;
+      --text: #4a5568;
+      --card-bg: #ffffff;
+      --code-bg: #e6f0ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 22px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(44, 123, 229, 0.15);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 5px 9px;
+      border-radius: 7px;
+      font-family: 'Courier New', Courier, monospace;
+      color: #1a202c;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Lists & Maps</h1>
+    <p>Understanding Lists and Maps with programming and real-world examples.</p>
+  </header>
+
+  <section>
+    <h2>1. What is a List? (Programming Definition)</h2>
+    <p>
+      A <strong>List</strong> in Dart is an ordered collection of items, where each item has an index starting from 0.
+      Lists allow you to store multiple values in one variable and access them by their position.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example: List</h2>
+    <p>
+      Think of a <em>grocery shopping list</em>. You write down the items you want to buy in order:
+      Apples, Bread, Milk, Eggs. You can look at the 1st item, 2nd item, and so on.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. List Example in Dart</h2>
+    <pre><code>void main() {
+  List<String> groceries = ['Apples', 'Bread', 'Milk', 'Eggs'];
+
+  print(groceries[0]); // Output: Apples
+  print(groceries.length); // Output: 4
+
+  groceries.add('Cheese');  // Add new item
+  print(groceries); // Output: [Apples, Bread, Milk, Eggs, Cheese]
+}</code></pre>
+    <p>
+      Here, <code>groceries</code> is a list holding multiple strings. You can access items by index and add new items.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. What is a Map? (Programming Definition)</h2>
+    <p>
+      A <strong>Map</strong> in Dart is a collection of key-value pairs.
+      Each value is associated with a unique key, and you use the key to retrieve the value.
+      Think of it like a dictionary.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Real-World Example: Map</h2>
+    <p>
+      Imagine a <em>phonebook</em>, where each person's name is the key and their phone number is the value.
+      You look up a person's name (key) to get their number (value).
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Map Example in Dart</h2>
+    <pre><code>void main() {
+  Map<String, String> phoneBook = {
+    'Alice': '123-456-7890',
+    'Bob': '987-654-3210',
+    'Charlie': '555-555-5555'
+  };
+
+  print(phoneBook['Bob']); // Output: 987-654-3210
+
+  phoneBook['David'] = '111-222-3333'; // Add new entry
+  print(phoneBook);
+  // Output: {Alice: 123-456-7890, Bob: 987-654-3210, Charlie: 555-555-5555, David: 111-222-3333}
+}</code></pre>
+    <p>
+      In this example, <code>phoneBook</code> maps names (keys) to phone numbers (values).
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Summary</h2>
+    <ul>
+      <li><strong>List</strong>: Ordered collection accessed by index.</li>
+      <li><strong>Map</strong>: Collection of key-value pairs accessed by keys.</li>
+      <li>Lists are great when order matters, Maps are great when you want to look up values by a name or key.</li>
+    </ul>
+  </section>
+
+</body>
+
+</html>

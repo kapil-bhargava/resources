@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flutter: Asynchronous Programming</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    pre {
+      background-color: #f0f3f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin: 20px 0;
+    }
+
+    a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background-color: #e9ecef;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Asynchronous Programming in Flutter (Dart)</h1>
+
+    <p>In programming, sometimes tasks take time to complete — like loading data from the internet, reading files, or waiting for a timer. <strong>Asynchronous programming</strong> helps your app stay responsive by allowing these tasks to run <em>in the background</em> without freezing the app.</p>
+
+    <div class="highlight">
+      <strong>Keyword Explanation:</strong>
+      <ul>
+        <li><strong>Asynchronous:</strong> Running tasks that don’t block the rest of the program.</li>
+        <li><strong>Future:</strong> A promise that a value will be available later (like ordering pizza, and waiting for delivery).</li>
+        <li><strong>async/await:</strong> Syntax in Dart to write asynchronous code that looks like regular, readable code.</li>
+        <li><strong>Event Loop:</strong> Manages and runs asynchronous tasks behind the scenes.</li>
+      </ul>
+    </div>
+
+    <h2>Basic Example: Using Future and async/await</h2>
+    <pre>
+// Function that simulates waiting for 3 seconds before returning a message
+Future<String> fetchData() async {
+  await Future.delayed(Duration(seconds: 3)); // wait 3 seconds
+  return 'Data loaded!';
+}
+
+void main() async {
+  print('Fetching data...');
+  
+  // Wait for fetchData to complete, but without freezing main
+  String result = await fetchData();
+  
+  print(result);
+}
+    </pre>
+
+    <div class="highlight">
+      <strong>Explanation:</strong>
+      <ul>
+        <li><code>Future&lt;String&gt;</code> means this function returns a value later (a String).</li>
+        <li><code>async</code> marks a function to use <code>await</code> inside it.</li>
+        <li><code>await</code> pauses code execution until the Future completes, but only inside async functions.</li>
+        <li><code>Future.delayed()</code> simulates a delay (like waiting for data).</li>
+      </ul>
+    </div>
+
+    <h2>Why Use async/await Instead of Just Futures?</h2>
+    <p>You can use Futures with <code>.then()</code> callbacks, but async/await makes the code look cleaner and easier to read, especially when chaining many asynchronous operations.</p>
+
+    <pre>
+fetchData().then((result) {
+  print(result);
+});
+    </pre>
+
+    <p>This works fine, but for multiple steps, callbacks can get messy — async/await simplifies that.</p>
+
+    <h2>Real World Analogy</h2>
+    <p>Imagine ordering a pizza. Instead of standing in the kitchen waiting for the pizza (blocking everything), you place your order and do other things. Later, when the pizza arrives (Future completes), you get notified and enjoy your pizza. This way, you don’t waste time waiting.</p>
+
+    <h2>Other Async Features in Dart/Flutter</h2>
+    <ul>
+      <li><strong>Streams:</strong> Like Futures but for multiple values/events over time (e.g., listening to user inputs).</li>
+      <li><strong>Isolates:</strong> For running expensive tasks on separate threads to avoid freezing UI.</li>
+    </ul>
+
+    <p>For a deeper dive, check out the official Flutter docs on <a href="https://dart.dev/codelabs/async-await" target="_blank">Async & Await</a>.</p>
+  </div>
+</body>
+
+</html>

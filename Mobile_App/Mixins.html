@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Mixins Explained</title>
+  <style>
+    :root {
+      --bg-color: #fefefe;
+      --primary: #2563eb;
+      --dark: #1e293b;
+      --text: #334155;
+      --card-bg: #ffffff;
+      --code-bg: #dbeafe;
+      --highlight: #fbbf24;
+      --term-color: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 22px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    .keyword {
+      background-color: var(--highlight);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .term {
+      color: var(--term-color);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Mixins</h1>
+    <p>Learn how to reuse code with Mixins in Dart</p>
+  </header>
+
+  <section>
+    <h2>1. What is a Mixin? (Programming Definition)</h2>
+    <p>
+      A <span class="term">Mixin</span> in Dart is a way to reuse a set of methods and properties
+      in multiple classes without using inheritance. It lets classes <strong>share functionality</strong> easily,
+      even if they don’t have a parent-child relationship.
+    </p>
+    <p>
+      Think of mixins as a “code helper” you can add to any class to give it extra abilities.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example of Mixins</h2>
+    <p>
+      Imagine a <strong>toy robot</strong> and a <strong>toy car</strong>. Both can <em>move</em> and <em>make sounds</em>.
+      Instead of writing those abilities separately for each toy, you create a "Move" and "Sound" mixin.
+      Then you add those mixins to each toy, so both have the same abilities without repeating code.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Important Terms</h2>
+    <ul>
+      <li><span class="keyword">class</span>: Defines a blueprint or template for objects.</li>
+      <li><span class="keyword">mixin</span>: A reusable set of methods and properties.</li>
+      <li><span class="keyword">with</span>: Keyword used to add mixins to a class.</li>
+      <li><span class="keyword">extends</span>: Keyword to inherit from a parent class.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. How to Create and Use a Mixin in Dart</h2>
+    <pre><code>mixin CanMove {
+  void move() {
+    print("Moving forward");
+  }
+}
+
+mixin CanMakeSound {
+  void makeSound() {
+    print("Making a sound");
+  }
+}
+
+class ToyRobot with CanMove, CanMakeSound {
+  void robotFeature() {
+    print("Robot special feature");
+  }
+}
+
+class ToyCar with CanMove {
+  void carFeature() {
+    print("Car special feature");
+  }
+}
+
+void main() {
+  ToyRobot robot = ToyRobot();
+  robot.move();        // From CanMove mixin
+  robot.makeSound();   // From CanMakeSound mixin
+  robot.robotFeature();
+
+  ToyCar car = ToyCar();
+  car.move();          // From CanMove mixin
+  car.carFeature();
+}</code></pre>
+
+    <p><strong>Explanation:</strong></p>
+    <ul>
+      <li><code>CanMove</code> and <code>CanMakeSound</code> are mixins that add behaviors.</li>
+      <li><code>ToyRobot</code> uses both mixins and has those abilities.</li>
+      <li><code>ToyCar</code> uses only <code>CanMove</code>, so it can move but not make sound.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Why Use Mixins?</h2>
+    <ul>
+      <li>Mixins allow <strong>code reuse</strong> without complex inheritance.</li>
+      <li>Classes can add multiple mixins for different abilities.</li>
+      <li>Improves flexibility and keeps code DRY (<em>Don't Repeat Yourself</em>).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Summary</h2>
+    <p>
+      Mixins are a powerful way in Dart to share code between classes. Use them when you want to give classes extra
+      features without making them part of the same inheritance chain.
+    </p>
+  </section>
+</body>
+
+</html>

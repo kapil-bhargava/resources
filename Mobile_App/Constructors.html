@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Constructors Explained</title>
+  <style>
+    :root {
+      --bg-color: #e8f4f8;
+      --primary: #007acc;
+      --dark: #223344;
+      --text: #334455;
+      --card-bg: #ffffff;
+      --code-bg: #d0e7ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 122, 204, 0.2);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 14px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Constructors</h1>
+    <p>Learn how to create and use constructors in Dart with simple examples and real-life comparisons.</p>
+  </header>
+
+  <section>
+    <h2>1. What is a Constructor? (Programming Definition)</h2>
+    <p>
+      A <strong>constructor</strong> is a special method in a class that is automatically called when you create an object. It helps to initialize the object’s properties with values.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example: Constructor</h2>
+    <p>
+      Imagine you want to build a <em>custom toy car</em>. When you order the toy car, you tell the builder its <strong>color</strong> and <strong>model</strong>. The builder uses this information right away to create your toy car exactly how you want it.
+      The builder listening to your instructions is like a constructor in programming — it sets up the object immediately when it’s created.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Basic Constructor in Dart</h2>
+    <pre><code>class ToyCar {
+  String color;
+  String model;
+
+  // Constructor
+  ToyCar(String c, String m) {
+    color = c;
+    model = m;
+  }
+
+  void display() {
+    print("This is a $color $model toy car.");
+  }
+}
+
+void main() {
+  ToyCar myToy = ToyCar("blue", "sports");
+  myToy.display();  // Output: This is a blue sports toy car.
+}</code></pre>
+    <p>
+      In this example, the <code>ToyCar</code> class has a constructor that takes two parameters <code>c</code> and <code>m</code>, and sets the object’s <code>color</code> and <code>model</code> when it is created.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. Shorter Syntax Using Dart’s Constructor Shorthand</h2>
+    <pre><code>class ToyCar {
+  String color;
+  String model;
+
+  // Constructor shorthand
+  ToyCar(this.color, this.model);
+
+  void display() {
+    print("This is a $color $model toy car.");
+  }
+}
+
+void main() {
+  ToyCar myToy = ToyCar("red", "convertible");
+  myToy.display();  // Output: This is a red convertible toy car.
+}</code></pre>
+    <p>
+      Dart allows a shorter way to write constructors using <code>this.propertyName</code> directly in the constructor parameter list.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Named Constructors</h2>
+    <p>Sometimes, you want more than one way to create an object. Named constructors help you do that.</p>
+    <pre><code>class ToyCar {
+  String color;
+  String model;
+
+  ToyCar(this.color, this.model);
+
+  // Named constructor
+  ToyCar.redSports() {
+    color = "red";
+    model = "sports";
+  }
+
+  void display() {
+    print("This is a $color $model toy car.");
+  }
+}
+
+void main() {
+  ToyCar car1 = ToyCar("green", "sedan");
+  car1.display();  // Output: This is a green sedan toy car.
+
+  ToyCar car2 = ToyCar.redSports();
+  car2.display();  // Output: This is a red sports toy car.
+}</code></pre>
+    <p>
+      Here, <code>ToyCar.redSports()</code> is a named constructor that creates a red sports toy car without needing to pass arguments.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Why Use Constructors?</h2>
+    <p>
+      Constructors make it easy to create objects with initial values right away, keeping your code clean and organized.
+    </p>
+  </section>
+
+</body>
+
+</html>

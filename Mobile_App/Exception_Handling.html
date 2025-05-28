@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Exception Handling</title>
+  <style>
+    :root {
+      --bg-color: #fefefe;
+      --primary: #1d4ed8;
+      --dark: #111827;
+      --text: #4b5563;
+      --card-bg: #ffffff;
+      --code-bg: #e0e7ff;
+      --highlight: #facc15;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 22px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.15);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--dark);
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    .keyword {
+      background-color: var(--highlight);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .term {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Exception Handling</h1>
+    <p>How Dart handles unexpected problems in your code.</p>
+  </header>
+
+  <section>
+    <h2>1. What is Exception Handling? (Programming Definition)</h2>
+    <p>
+      <span class="term">Exception Handling</span> means writing code to deal with <strong>exceptions</strong>, which are unexpected errors that happen while your program is running.
+      Instead of the program crashing, you catch these exceptions and tell the program what to do next.
+    </p>
+    <p>
+      <strong>Exception:</strong> A problem or error that happens when the program runs, like trying to divide by zero or reading a file that doesn’t exist.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example: Exception Handling</h2>
+    <p>
+      Imagine you want to open a gift box.
+      But sometimes the box is locked.
+      Instead of getting upset and stopping, you try to open it gently (try), and if it's locked (exception), you ask for help (catch).
+      This way, you don’t give up and handle the problem calmly.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Important Keywords in Dart Exception Handling</h2>
+    <ul>
+      <li><span class="keyword">try</span>: This block contains the code you want to run that might cause an exception.</li>
+      <li><span class="keyword">catch</span>: This block runs if an exception happens, so you can handle the error.</li>
+      <li><span class="keyword">finally</span>: This block runs no matter what — whether an exception happens or not. It's used for cleanup.</li>
+      <li><span class="keyword">throw</span>: This is used to create your own exceptions (errors) when something goes wrong.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Example of Exception Handling in Dart</h2>
+    <pre><code>void main() {
+  try {
+    int result = 12 ~/ 0;  // Division by zero causes an exception
+    print('Result: $result');
+  } catch (e) {
+    print('Oops! An error occurred: $e');
+  } finally {
+    print('This will always run, no matter what.');
+  }
+}</code></pre>
+    <p><strong>Explanation:</strong></p>
+    <ul>
+      <li>The <code>try</code> block tries to divide 12 by 0, which is not allowed and causes an exception.</li>
+      <li>The <code>catch</code> block catches the exception and prints an error message instead of crashing.</li>
+      <li>The <code>finally</code> block runs after that, always executing.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Why is Exception Handling Important?</h2>
+    <p>
+      Without exception handling, your program would stop suddenly when an error happens.
+      This could cause a bad experience for users.
+      With exception handling, your program can:
+    </p>
+    <ul>
+      <li>Stay running even if some errors occur</li>
+      <li>Show friendly error messages</li>
+      <li>Fix problems or ask for help</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Summary</h2>
+    <ul>
+      <li><strong>Exception Handling</strong> is about catching and managing unexpected errors in your program.</li>
+      <li>Use <code>try</code>, <code>catch</code>, and <code>finally</code> blocks to control what happens during errors.</li>
+      <li>It makes your program stronger and user-friendly.</li>
+    </ul>
+  </section>
+
+</body>
+
+</html>

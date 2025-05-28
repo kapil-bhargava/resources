@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Typedefs Explained</title>
+  <style>
+    :root {
+      --bg-color: #fefefe;
+      --primary: #2563eb;
+      --dark: #1e293b;
+      --text: #334155;
+      --card-bg: #ffffff;
+      --code-bg: #dbeafe;
+      --highlight: #fbbf24;
+      --term-color: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 22px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    .keyword {
+      background-color: var(--highlight);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .term {
+      color: var(--term-color);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Typedefs</h1>
+    <p>Learn what typedefs are and how to use them in Dart</p>
+  </header>
+
+  <section>
+    <h2>1. What is a Typedef? (Programming Definition)</h2>
+    <p>
+      A <span class="term">typedef</span> in Dart is a way to create a new name for a function type.
+      It helps you give a meaningful name to a function signature (parameters and return type), making your code easier to read and maintain.
+    </p>
+    <p>
+      Think of it as creating a shortcut or nickname for a function's "shape" or "blueprint."
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example of Typedef</h2>
+    <p>
+      Imagine you have many different workers who all follow the same instructions for a task — like "paint a wall."
+      Instead of explaining the task every time, you give that task a name, like "PainterTask." Now whenever someone says <strong>PainterTask</strong>, everyone knows exactly what type of task it is.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Important Terms</h2>
+    <ul>
+      <li><span class="keyword">typedef</span>: Keyword used to define a function type alias.</li>
+      <li><span class="keyword">Function Signature</span>: The list of parameters and return type a function has.</li>
+      <li><span class="keyword">Alias</span>: Another name for something.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. How to Define and Use Typedefs in Dart</h2>
+    <pre><code>// Define a typedef for a function that takes two integers and returns an integer
+typedef Operation = int Function(int a, int b);
+
+// Use the typedef to declare functions matching the signature
+int add(int a, int b) {
+  return a + b;
+}
+
+int multiply(int a, int b) {
+  return a * b;
+}
+
+void performOperation(Operation op, int x, int y) {
+  print('Result: ${op(x, y)}');
+}
+
+void main() {
+  performOperation(add, 5, 3);       // Output: Result: 8
+  performOperation(multiply, 5, 3);  // Output: Result: 15
+}</code></pre>
+
+    <p><strong>Explanation:</strong></p>
+    <ul>
+      <li><code>Operation</code> is the typedef — a name for a function that takes two ints and returns an int.</li>
+      <li><code>add</code> and <code>multiply</code> functions match this typedef.</li>
+      <li><code>performOperation</code> takes a function of type <code>Operation</code> and calls it.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Why Use Typedefs?</h2>
+    <ul>
+      <li>Improves <strong>code readability</strong> by giving meaningful names to function types.</li>
+      <li>Makes it easier to <strong>change function signatures</strong> in one place.</li>
+      <li>Useful in APIs and callbacks where you pass functions as parameters.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Summary</h2>
+    <p>
+      Typedefs let you name function types, making your Dart code cleaner and easier to understand.
+      They help especially when working with complex function parameters or callbacks.
+    </p>
+  </section>
+</body>
+
+</html>

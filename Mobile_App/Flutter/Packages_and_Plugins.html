@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flutter: Packages and Plugins</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    pre {
+      background-color: #f0f3f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin: 20px 0;
+    }
+
+    a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background-color: #e9ecef;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Packages and Plugins in Flutter</h1>
+
+    <p>In Flutter, <strong>packages</strong> and <strong>plugins</strong> are pre-built pieces of code that you can reuse in your app to add new features quickly, without writing everything from scratch.</p>
+
+    <div class="highlight">
+      <strong>Keyword Explanation:</strong>
+      <ul>
+        <li><strong>Package:</strong> A reusable library of Dart code that helps you add functionality (like HTTP requests, state management, UI widgets).</li>
+        <li><strong>Plugin:</strong> A special kind of package that includes native code (for Android/iOS) so your Flutter app can access device features like camera, GPS, sensors, etc.</li>
+        <li><strong>pub.dev:</strong> The official Dart and Flutter package repository where developers share packages/plugins.</li>
+      </ul>
+    </div>
+
+    <h2>How to Use a Package or Plugin</h2>
+    <p>1. Open your <code>pubspec.yaml</code> file in your Flutter project.</p>
+    <p>2. Under <code>dependencies:</code>, add the package name and version.</p>
+    <pre>
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.5
+    </pre>
+    <p>3. Run <code>flutter pub get</code> in the terminal or your IDE will fetch and install the package.</p>
+    <p>4. Import and use it in your Dart code:</p>
+    <pre>
+import 'package:http/http.dart' as http;
+
+void fetchData() async {
+  final response = await http.get(Uri.parse('https://example.com'));
+  print(response.body);
+}
+    </pre>
+
+    <div class="highlight">
+      <strong>Important:</strong>
+      <ul>
+        <li>Always check the package/plugin documentation on <a href="https://pub.dev" target="_blank">pub.dev</a> for setup instructions and usage examples.</li>
+        <li>Some plugins require additional native setup for Android and iOS — such as permission configuration.</li>
+      </ul>
+    </div>
+
+    <h2>When to Use Packages vs Plugins?</h2>
+    <ul>
+      <li><strong>Use packages</strong> for pure Dart functionality like data formatting, HTTP requests, or state management that doesn’t require platform-specific code.</li>
+      <li><strong>Use plugins</strong> when your app needs to access device hardware or platform features like camera, location, Bluetooth, etc.</li>
+    </ul>
+
+    <h2>Real World Analogy</h2>
+    <p>Think of packages and plugins like tools in a toolbox. If you want to hang a picture (add a feature), you can use a hammer or drill (package/plugin) someone else made, instead of building those tools yourself.</p>
+
+    <h2>Example: Using the <code>shared_preferences</code> Plugin</h2>
+    <pre>
+// Add to pubspec.yaml
+dependencies:
+  shared_preferences: ^2.0.15
+
+// Import and use in your code
+import 'package:shared_preferences/shared_preferences.dart';
+
+void saveData() async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setString('username', 'flutterUser');
+  print('Data saved!');
+}
+
+void loadData() async {
+  final prefs = await SharedPreferences.getInstance();
+  String? username = prefs.getString('username');
+  print('Loaded username: \$username');
+}
+    </pre>
+
+    <p>Shared Preferences plugin allows storing simple data locally on the device like a tiny database.</p>
+
+    <p>For more details, see <a href="https://flutter.dev/docs/development/packages-and-plugins/using-packages" target="_blank">Flutter's official docs on packages & plugins</a>.</p>
+  </div>
+</body>
+
+</html>

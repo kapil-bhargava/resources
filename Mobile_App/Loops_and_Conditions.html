@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Loops & Conditions</title>
+  <style>
+    :root {
+      --bg-color: #f9fafb;
+      --primary: #2c7be5;
+      --dark: #1a202c;
+      --text: #4a5568;
+      --card-bg: #ffffff;
+      --code-bg: #e6f0ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 22px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(44, 123, 229, 0.15);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 5px 9px;
+      border-radius: 7px;
+      font-family: 'Courier New', Courier, monospace;
+      color: #1a202c;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Loops & Conditions</h1>
+    <p>Learn how to repeat tasks and make decisions in Dart programming.</p>
+  </header>
+
+  <section>
+    <h2>1. What are Loops? (Programming Definition)</h2>
+    <p>
+      <strong>Loops</strong> allow you to repeat a block of code multiple times without writing it again and again.
+      They help automate repetitive tasks.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example: Loop</h2>
+    <p>
+      Imagine you want to water your 5 plants every day.
+      Instead of saying "water plant 1", "water plant 2", and so on each time,
+      you just say "repeat watering 5 times."
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Example of a Loop in Dart (for loop)</h2>
+    <pre><code>void main() {
+  for (int i = 1; i <= 5; i++) {
+    print('Water plant number $i');
+  }
+}</code></pre>
+    <p>This will print:</p>
+    <ul>
+      <li>Water plant number 1</li>
+      <li>Water plant number 2</li>
+      <li>Water plant number 3</li>
+      <li>Water plant number 4</li>
+      <li>Water plant number 5</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. What are Conditions? (Programming Definition)</h2>
+    <p>
+      <strong>Conditions</strong> let your program make decisions.
+      You check if something is true or false, then do different things based on that.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Real-World Example: Condition</h2>
+    <p>
+      Imagine if it is raining, you take an umbrella. If not, you don’t.
+      This is a simple decision based on the condition "Is it raining?"
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Example of a Condition in Dart (if-else)</h2>
+    <pre><code>void main() {
+  bool isRaining = true;
+
+  if (isRaining) {
+    print('Take an umbrella.');
+  } else {
+    print('No umbrella needed.');
+  }
+}</code></pre>
+    <p>This will print:</p>
+    <ul>
+      <li>Take an umbrella.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>7. Combining Loops & Conditions</h2>
+    <p>You can use loops and conditions together to create smart, repeated actions.</p>
+    <pre><code>void main() {
+  for (int i = 1; i <= 5; i++) {
+    if (i == 3) {
+      print('Water plant number $i carefully.');
+    } else {
+      print('Water plant number $i');
+    }
+  }
+}</code></pre>
+    <p>This prints:</p>
+    <ul>
+      <li>Water plant number 1</li>
+      <li>Water plant number 2</li>
+      <li>Water plant number 3 carefully.</li>
+      <li>Water plant number 4</li>
+      <li>Water plant number 5</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>8. Summary</h2>
+    <ul>
+      <li>Loops repeat actions multiple times.</li>
+      <li>Conditions help make decisions based on true or false.</li>
+      <li>Together, they make programs powerful and flexible.</li>
+    </ul>
+  </section>
+
+</body>
+
+</html>

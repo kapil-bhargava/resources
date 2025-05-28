@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flutter: Networking & JSON</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    pre {
+      background-color: #f0f3f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin: 20px 0;
+    }
+
+    a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Networking & JSON in Flutter</h1>
+
+    <p>When apps need to communicate with a server (like getting weather data, user details, or submitting forms), we use <strong>networking</strong>. Flutter uses the <code>http</code> package to make HTTP requests, and JSON to handle data format.</p>
+
+    <div class="highlight">
+      <strong>Keyword Explanation:</strong>
+      <ul>
+        <li><strong>HTTP</strong>: A way for apps to communicate with servers using URLs.</li>
+        <li><strong>JSON</strong>: A format (like a recipe card) to store and send data in key-value pairs.</li>
+      </ul>
+    </div>
+
+    <h2>🌐 Making a Simple GET Request</h2>
+    <pre>
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+void fetchUserData() async {
+  final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users/1'));
+  if (response.statusCode == 200) {
+    var data = jsonDecode(response.body);
+    print("User Name: \${data['name']}");
+  } else {
+    print('Failed to load data');
+  }
+}
+    </pre>
+
+    <div class="highlight">
+      <strong>Important:</strong>
+      <ul>
+        <li><code>http.get</code> fetches the data from the internet.</li>
+        <li><code>jsonDecode</code> turns JSON string into Dart Map.</li>
+        <li>Always check <code>statusCode</code> to ensure the request succeeded (200 means OK).</li>
+      </ul>
+    </div>
+
+    <h2>🧠 Real World Analogy</h2>
+    <p>Think of networking like ordering a pizza. Your app sends a request (order), the server processes it (kitchen), and you get the data back (pizza). JSON is the format in which the pizza details are written (like cheese: yes, size: large).</p>
+
+    <h2>🔁 POST Request Example (Sending Data)</h2>
+    <pre>
+void sendData() async {
+  final response = await http.post(
+    Uri.parse('https://jsonplaceholder.typicode.com/posts'),
+    body: jsonEncode({
+      'title': 'Hello',
+      'body': 'Learning Flutter is fun!',
+      'userId': 1,
+    }),
+    headers: {'Content-Type': 'application/json'},
+  );
+
+  if (response.statusCode == 201) {
+    print("Post created successfully!");
+  } else {
+    print("Failed to create post.");
+  }
+}
+    </pre>
+
+    <div class="highlight">
+      <strong>Tip:</strong>
+      <ul>
+        <li><code>http.post</code> is used to send data to a server.</li>
+        <li>Always set the correct headers like <code>'Content-Type'</code> to <code>application/json</code>.</li>
+      </ul>
+    </div>
+
+    <p>Check more on <a href="https://docs.flutter.dev/cookbook/networking/fetch-data" target="_blank">Flutter's Networking Cookbook</a>.</p>
+  </div>
+</body>
+
+</html>

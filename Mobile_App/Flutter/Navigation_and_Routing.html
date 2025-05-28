@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flutter Navigation and Routing</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    pre {
+      background-color: #f0f3f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin: 20px 0;
+    }
+
+    a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Navigation and Routing in Flutter</h1>
+
+    <p>
+      In Flutter, <strong>Navigation</strong> refers to moving between different screens (called <strong>routes</strong>) in your app.
+      <strong>Routing</strong> is the technique used to define and manage those transitions.
+    </p>
+
+    <div class="highlight">
+      <strong>Keyword Explanation:</strong>
+      <ul>
+        <li><strong>Route</strong>: A screen or page in the app.</li>
+        <li><strong>Navigator</strong>: A widget that manages routes and the history stack.</li>
+      </ul>
+    </div>
+
+    <h2>🔄 Basic Navigation</h2>
+    <pre>
+// Navigate to a new screen
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => SecondScreen()),
+);
+
+// Go back to previous screen
+Navigator.pop(context);
+    </pre>
+
+    <div class="highlight">
+      <strong>Important:</strong> Use <code>Navigator.push()</code> to move forward and <code>Navigator.pop()</code> to go back.
+    </div>
+
+    <h2>🗺️ Named Routes</h2>
+    <p>Named routes help manage navigation in larger apps by giving each route a name.</p>
+    <pre>
+void main() {
+  runApp(MaterialApp(
+    initialRoute: '/',
+    routes: {
+      '/': (context) => HomeScreen(),
+      '/about': (context) => AboutScreen(),
+    },
+  ));
+}
+
+// Navigate using name
+Navigator.pushNamed(context, '/about');
+    </pre>
+
+    <div class="highlight">
+      <strong>Why use named routes?</strong>
+      <ul>
+        <li>Cleaner and scalable code</li>
+        <li>Useful for deep linking and large applications</li>
+      </ul>
+    </div>
+
+    <h2>🏠 Real World Analogy</h2>
+    <p>Imagine an app as a house with many rooms. Each room is a screen. Navigation is like walking from one room to another, and the Navigator keeps track of where you've been so you can go back if needed.</p>
+
+    <p>For more, check <a href="https://docs.flutter.dev/ui/navigation" target="_blank">Flutter's official Navigation guide</a>.</p>
+  </div>
+</body>
+
+</html>

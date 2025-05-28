@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flutter Overview and Topics</title>
+    <style>
+        :root {
+            --bg-color: #f5f6fa;
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --card-bg: #ffffff;
+            --text-light: #7f8c8d;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: var(--bg-color);
+            color: var(--primary);
+            margin: 0;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .topic-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+
+        .topic-list li a {
+            display: block;
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px var(--shadow);
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent);
+        }
+
+        .topic-list li a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .topic-list li a strong {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-list li a span {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .intro {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Flutter Topics Overview</h1>
+    <p class="intro">
+        Flutter is an open-source UI toolkit by Google for building natively compiled applications for mobile, web, and
+        desktop from a single codebase. It uses the Dart programming language and provides a rich set of pre-designed
+        widgets that help developers create fast, smooth, and beautiful user interfaces for iOS and Android apps.
+    </p>
+
+    <ul class="topic-list">
+        <li><a href="Widgets.html"><strong>Widgets</strong><span>The basic building blocks of every Flutter app – everything is a
+                    widget.</span></a></li>
+        <li><a href="Layouts_and_UI_Design.html"><strong>Layouts and UI Design</strong><span>Designing visual structure using Rows, Columns,
+                    Containers, and more.</span></a></li>
+        <li><a href="State_Management.html"><strong>State Management</strong><span>Managing UI state using tools like setState, Provider,
+                    Riverpod, and Bloc.</span></a></li>
+        <li><a href="Navigation_and_Routing.html"><strong>Navigation and Routing</strong><span>Switch between screens and pass data using
+                    Navigator and named routes.</span></a></li>
+        <li><a href="Handling_User_Input.html"><strong>Handling User Input</strong><span>Using TextFields, Forms, Buttons, and gesture
+                    detection in apps.</span></a></li>
+        <li><a href="Networking_&_JSON.html"><strong>Networking & JSON</strong><span>Connecting apps to the internet, fetching data and
+                    decoding JSON.</span></a></li>
+        <li><a href="Animations.html"><strong>Animations</strong><span>Creating smooth and expressive UI transitions and custom
+                    animations.</span></a></li>
+        <li><a href="Asynchronous_Programming.html"><strong>Asynchronous Programming</strong><span>Use Futures, async/await and Streams to manage
+                    time-based operations.</span></a></li>
+        <li><a href="Packages_and_Plugins.html"><strong>Packages and Plugins</strong><span>Add extra features using community packages or custom
+                    plugins.</span></a></li>
+        <li><a href="Build_and_Deployment.html"><strong>Build and Deployment</strong><span>Compile, test, and publish apps for Android and iOS
+                    platforms.</span></a></li>
+        <li><a  style="background-color: lightblue;" href="App_structure/Flutter_Structure.html"><strong>Take a overall Look</strong><span>Recommended to take a first look how code work in creating apps</span></a></li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Getters and Setters Explained</title>
+  <style>
+    :root {
+      --bg-color: #fefefe;
+      --primary: #2563eb;
+      --dark: #1e293b;
+      --text: #334155;
+      --card-bg: #ffffff;
+      --code-bg: #dbeafe;
+      --highlight: #fbbf24;
+      --term-color: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 22px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    .keyword {
+      background-color: var(--highlight);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .term {
+      color: var(--term-color);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Getters and Setters</h1>
+    <p>Understand what getters and setters are, with easy examples</p>
+  </header>
+
+  <section>
+    <h2>1. What are Getters and Setters? (Programming Definition)</h2>
+    <p>
+      <span class="term">Getters</span> and <span class="term">setters</span> are special methods in Dart that allow you to read (get) or change (set) the values of private variables in a controlled way.
+    </p>
+    <p>
+      - A <span class="term">getter</span> lets you access the value of a variable as if it were a property.<br />
+      - A <span class="term">setter</span> lets you update the value of a variable but with control over how it changes.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example of Getters and Setters</h2>
+    <p>
+      Imagine you have a treasure box that holds your favorite toys. You don’t want just anyone to take toys or put broken toys inside.
+      So, you have a <strong>getter</strong> to look inside the box safely and a <strong>setter</strong> that checks toys before letting you put them in.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Important Terms</h2>
+    <ul>
+      <li><span class="keyword">private variable</span>: A variable that can only be accessed inside its own class (starts with <code>_</code> in Dart).</li>
+      <li><span class="keyword">getter</span>: A method that gets (reads) the value of a variable.</li>
+      <li><span class="keyword">setter</span>: A method that sets (writes) the value of a variable.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. How to Use Getters and Setters in Dart</h2>
+    <pre><code>class Person {
+  // private variable (underscore means private)
+  String _name;
+
+  Person(this._name);
+
+  // Getter to read _name
+  String get name {
+    return _name;
+  }
+
+  // Setter to change _name with control
+  set name(String newName) {
+    if (newName.isNotEmpty) {
+      _name = newName;
+    } else {
+      print('Name cannot be empty!');
+    }
+  }
+}
+
+void main() {
+  var person = Person('Alice');
+
+  // Using getter
+  print(person.name); // Output: Alice
+
+  // Using setter
+  person.name = 'Bob';
+  print(person.name); // Output: Bob
+
+  // Trying to set an empty name
+  person.name = '';
+  // Output: Name cannot be empty!
+  print(person.name); // Output: Bob (unchanged)
+}</code></pre>
+    <p><strong>Explanation:</strong></p>
+    <ul>
+      <li>We keep <code>_name</code> private so it can't be changed directly from outside.</li>
+      <li><code>get name</code> lets us read the name like a property.</li>
+      <li><code>set name</code> lets us update the name, but only if the new name is not empty.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Why Use Getters and Setters?</h2>
+    <ul>
+      <li>Protect your data by controlling how variables are read or changed.</li>
+      <li>Run extra code when values are accessed or updated (like validations).</li>
+      <li>Make your code cleaner and easier to maintain.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Summary</h2>
+    <p>
+      Getters and setters in Dart help you safely access and modify private variables,
+      just like having special doors to your treasure box that check what goes in or out.
+    </p>
+  </section>
+</body>
+
+</html>

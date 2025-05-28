@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Variables and Data Types</title>
+  <style>
+    :root {
+      --bg-color: #f8f9fa;
+      --primary: #007bff;
+      --dark: #343a40;
+      --text: #212529;
+      --card-bg: #ffffff;
+      --code-bg: #e9ecef;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #dee2e6;
+    }
+
+    th {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Variables and Data Types</h1>
+    <p>Learn the basics clearly: Programming definitions + Real-world examples!</p>
+  </header>
+
+  <section>
+    <h2>1. What is a Variable? (Programming Definition)</h2>
+    <p>
+      A <strong>variable</strong> in programming is a named container that stores information which can be changed later.
+      Think of it as a label on a box that tells you what's inside, so the program can use or update that information.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. What is a Variable? (Real-World Example)</h2>
+    <p>
+      Imagine a locker where you keep your school books. The locker has a name or number, so you know where your books are.
+      You can put a new book in the locker or take one out anytime. The locker is like a variable; it holds something, and you can change it.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. What are Data Types? (Programming Definition)</h2>
+    <p>
+      <strong>Data types</strong> tell the computer what kind of data a variable can hold, such as numbers, text, or true/false values.
+      This helps the computer understand how to store and use the data correctly.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. What are Data Types? (Real-World Example)</h2>
+    <p>
+      Think about different kinds of containers: a basket for apples, a box for toys, or a jar for coins. Each container is made for a specific kind of thing.
+      Similarly, data types tell the program what type of "container" to use for your data.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Common Dart Data Types</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Programming Explanation</th>
+          <th>Real-World Example</th>
+          <th>Example Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>int</code></td>
+          <td>Stores whole numbers (no decimals).</td>
+          <td>Like counting how many apples you have: 3 apples.</td>
+          <td><code>int apples = 3;</code></td>
+        </tr>
+        <tr>
+          <td><code>double</code></td>
+          <td>Stores decimal numbers (numbers with fractions).</td>
+          <td>Measuring water: 1.5 liters.</td>
+          <td><code>double water = 1.5;</code></td>
+        </tr>
+        <tr>
+          <td><code>String</code></td>
+          <td>Stores text or words.</td>
+          <td>Your name or a street address.</td>
+          <td><code>String city = "New York";</code></td>
+        </tr>
+        <tr>
+          <td><code>bool</code></td>
+          <td>Stores only true or false values.</td>
+          <td>Whether a light is ON (true) or OFF (false).</td>
+          <td><code>bool isLightOn = true;</code></td>
+        </tr>
+        <tr>
+          <td><code>var</code></td>
+          <td>A variable that automatically detects the type based on the assigned value.</td>
+          <td>A magic box that changes what it holds depending on what you put in.</td>
+          <td><code>var name = "Alice";</code></td>
+        </tr>
+        <tr>
+          <td><code>dynamic</code></td>
+          <td>Variable whose type can change at any time during the program.</td>
+          <td>A container that can first hold toys, then coins later.</td>
+          <td><code>dynamic item = "toy"; item = 5;</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>6. Simple Example Code</h2>
+    <p>This Dart program uses variables with different data types and prints their values:</p>
+    <pre><code>void main() {
+  int age = 12;
+  double height = 4.5;
+  String city = "Chicago";
+  bool isStudent = true;
+  var favoriteColor = "Blue";
+
+  print("Age: $age");
+  print("Height: $height feet");
+  print("City: $city");
+  print("Is student: $isStudent");
+  print("Favorite color: $favoriteColor");
+}</code></pre>
+  </section>
+</body>
+
+</html>

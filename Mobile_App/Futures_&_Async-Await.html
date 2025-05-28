@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Futures & Async/Await</title>
+  <style>
+    :root {
+      --bg-color: #fefefe;
+      --primary: #2563eb;
+      --dark: #111827;
+      --text: #4b5563;
+      --card-bg: #ffffff;
+      --code-bg: #dbeafe;
+      --highlight: #fbbf24;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 22px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--dark);
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    .keyword {
+      background-color: var(--highlight);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .term {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Futures & Async/Await</h1>
+    <p>Understanding how Dart handles tasks that take time — like waiting for data.</p>
+  </header>
+
+  <section>
+    <h2>1. What are Futures and Async/Await? (Programming Definition)</h2>
+    <p>
+      In programming, sometimes you ask your computer to do something that takes time, like fetching data from the internet.
+      A <span class="term">Future</span> is a special object that represents a task that will finish later — it promises to give you a result once it's done.
+    </p>
+    <p>
+      <span class="keyword">async</span> and <span class="keyword">await</span> are keywords that help you write code that waits for these <span class="term">Futures</span> to finish, but without freezing your whole program.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example: Futures & Async/Await</h2>
+    <p>
+      Imagine you order a pizza (the task).
+      The pizza shop promises to deliver it in 30 minutes (that's the <strong>Future</strong>).
+      You don't want to just stand there waiting — you want to do other things like chatting with friends.
+      Later, when the pizza arrives, you get it and eat.
+      <br /><br />
+      <strong>async/await</strong> helps you tell your program, "Hey, wait here for the pizza but don't stop everything else."
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Important Keywords in Dart Futures & Async/Await</h2>
+    <ul>
+      <li><span class="keyword">Future</span>: Represents a task that will finish later, with either a result or an error.</li>
+      <li><span class="keyword">async</span>: Marks a function as asynchronous, meaning it can perform tasks that take time.</li>
+      <li><span class="keyword">await</span>: Pauses the execution inside an async function until the Future finishes.</li>
+      <li><span class="keyword">then()</span>: A method to register a callback to run when a Future completes.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Example of Using Futures with async & await in Dart</h2>
+    <pre><code>Future<String> fetchUserOrder() {
+  // Imagine this function is fetching data from the internet and it takes 3 seconds
+  return Future.delayed(Duration(seconds: 3), () => 'Pizza is ready!');
+}
+
+void main() async {
+  print('Order placed...');
+  
+  // Wait here for the pizza to be ready, but the program won't freeze!
+  String order = await fetchUserOrder();
+  
+  print(order);
+  print('Enjoy your meal!');
+}</code></pre>
+    <p><strong>Explanation:</strong></p>
+    <ul>
+      <li><code>fetchUserOrder()</code> returns a <code>Future</code> that completes after 3 seconds with a string.</li>
+      <li><code>main()</code> is marked <code>async</code> because it uses <code>await</code> to wait for the Future.</li>
+      <li>While waiting, other parts of the program can still run (in real apps).</li>
+      <li>When the Future completes, it prints the pizza message and then "Enjoy your meal!".</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Why Use Futures & Async/Await?</h2>
+    <p>
+      Without <code>Futures</code> and <code>async/await</code>, your app would freeze or stop while waiting for things like:
+    </p>
+    <ul>
+      <li>Downloading data from the internet</li>
+      <li>Reading files from storage</li>
+      <li>Waiting for user input or other time-consuming tasks</li>
+    </ul>
+    <p>
+      Using these concepts helps your app stay smooth and responsive, making users happy.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Summary</h2>
+    <ul>
+      <li><strong>Future</strong> means a task that will finish later.</li>
+      <li><strong>async</strong> marks functions that do time-consuming work.</li>
+      <li><strong>await</strong> waits for a Future to complete without blocking the entire app.</li>
+      <li>This makes apps faster and better at handling waiting tasks.</li>
+    </ul>
+  </section>
+</body>
+
+</html>

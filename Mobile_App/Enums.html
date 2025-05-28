@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Enums Explained</title>
+  <style>
+    :root {
+      --bg-color: #f9fafb;
+      --primary: #2563eb;
+      --dark: #1e293b;
+      --text: #334155;
+      --card-bg: #ffffff;
+      --code-bg: #dbeafe;
+      --highlight: #fbbf24;
+      --term-color: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 22px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    .keyword {
+      background-color: var(--highlight);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .term {
+      color: var(--term-color);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Enums</h1>
+    <p>Understand what enums are, with clear examples and real-life meaning</p>
+  </header>
+
+  <section>
+    <h2>1. What are Enums? (Programming Definition)</h2>
+    <p>
+      An <span class="term">enum</span> (short for <em>enumeration</em>) is a special data type in Dart that lets you define a set of named, constant values.
+      It’s useful when you have a fixed list of possible options for something.
+    </p>
+    <p>
+      Instead of using random numbers or strings, enums make your code easier to read and less error-prone by using meaningful names.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example of Enums</h2>
+    <p>
+      Think about the days of the week: Monday, Tuesday, Wednesday, etc. These are a fixed list of possible values.
+      You could write them down as an enum called <code>Day</code>. This way, you can use <code>Day.Monday</code> instead of typing strings like "Monday" that might be misspelled.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Important Terms</h2>
+    <ul>
+      <li><span class="keyword">enum</span>: A data type that has a limited, fixed set of constant values.</li>
+      <li><span class="keyword">constant</span>: A value that cannot change once set.</li>
+      <li><span class="keyword">named values</span>: Human-readable names for each possible value.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. How to Use Enums in Dart</h2>
+    <pre><code>enum Day {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday
+}
+
+void main() {
+  var today = Day.Monday;
+
+  print('Today is: $today');  // Output: Today is: Day.Monday
+
+  // Check if today is weekend
+  if (today == Day.Saturday || today == Day.Sunday) {
+    print('It\'s weekend! Time to relax.');
+  } else {
+    print('It\'s a weekday. Time to work.');
+  }
+}</code></pre>
+
+    <p><strong>Explanation:</strong></p>
+    <ul>
+      <li><code>Day</code> enum lists all the days of the week as named values.</li>
+      <li><code>today</code> stores the current day as one of those enum values.</li>
+      <li>We compare <code>today</code> with specific enum values to decide if it is a weekend or not.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Why Use Enums?</h2>
+    <ul>
+      <li>They make your code easier to understand by replacing unclear numbers or strings with meaningful names.</li>
+      <li>They help prevent errors caused by typos because you must use the exact enum names.</li>
+      <li>They keep the possible values limited and fixed, making your program safer and predictable.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Summary</h2>
+    <p>
+      Enums in Dart are like named boxes that hold a fixed set of constant values. You use them to write clean, safe, and understandable code when working with limited options, such as days of the week, directions, or statuses.
+    </p>
+  </section>
+</body>
+
+</html>

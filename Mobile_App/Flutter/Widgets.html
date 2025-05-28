@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Understanding Widgets in Flutter</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fbfd;
+      margin: 0;
+      padding: 2.5rem 1.5rem;
+      color: #2c3e50;
+      line-height: 1.6;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1, h2 {
+      color: #1a2732;
+      font-weight: 700;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    strong {
+      color: #34495e;
+    }
+
+    /* Code styling */
+    code {
+      background-color: #ecf0f1;
+      color: #2d3436;
+      padding: 0.25rem 0.5rem;
+      border-radius: 5px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      display: inline;
+    }
+
+    pre {
+      background-color: #ecf0f1;
+      padding: 1.25rem 1.5rem;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      box-shadow: inset 0 0 8px rgba(52, 152, 219, 0.1);
+      line-height: 1.4;
+    }
+
+    /* Highlighted explanation box */
+    .highlight {
+      background-color: #eaf2f8;
+      border-left: 5px solid #3498db;
+      padding: 1.2rem 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      color: #2c3e50;
+      box-shadow: 0 2px 8px rgba(52, 152, 219, 0.1);
+    }
+
+    .highlight p {
+      margin: 0 0 0.8rem 0;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .highlight ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      list-style-type: disc;
+      font-size: 1rem;
+    }
+
+    /* Links */
+    a {
+      color: #2980b9;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover, a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Understanding Widgets in Flutter</h1>
+
+  <p><strong>Definition (Programming):</strong> In Flutter, a <code>Widget</code> is the fundamental building block of the user interface. Everything you see on the screen in a Flutter app—texts, buttons, images, layouts—are widgets.</p>
+
+  <p><strong>Real-life Example:</strong> Think of widgets like LEGO blocks. Each LEGO piece (widget) has a specific shape and purpose, and when you combine them, you build complex structures—your app’s UI.</p>
+
+  <h2>Basic Example of a Widget</h2>
+  <pre><code>// A simple Flutter app using a StatelessWidget
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('My First Widget')),
+        body: Center(
+          child: Text('Hello, Flutter!'),
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+
+  <div class="highlight">
+    <p>Explanation:</p>
+    <ul>
+      <li><code>StatelessWidget</code> is used when the widget does not change its state after being built.</li>
+      <li><code>MaterialApp</code> is the root widget that provides Material Design styling and features.</li>
+      <li><code>Scaffold</code> sets up the basic visual layout structure like app bar and body.</li>
+    </ul>
+  </div>
+
+  <h2>Alternative: Using StatefulWidget</h2>
+  <pre><code>// A StatefulWidget example to update UI dynamically
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: CounterWidget(),
+    );
+  }
+}
+
+class CounterWidget extends StatefulWidget {
+  @override
+  _CounterWidgetState createState() => _CounterWidgetState();
+}
+
+class _CounterWidgetState extends State<CounterWidget> {
+  int count = 0;
+
+  void increment() {
+    setState(() {
+      count++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Counter Example')),
+      body: Center(child: Text('Count: \$count')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: increment,
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+</code></pre>
+
+  <div class="highlight">
+    <p>Why use <code>StatefulWidget</code>?</p>
+    <ul>
+      <li>Use <code>StatefulWidget</code> when the UI changes over time or reacts to user input.</li>
+      <li>Here, the <code>count</code> variable updates every time the user taps the button, triggering <code>setState()</code> to rebuild the UI.</li>
+    </ul>
+  </div>
+
+  <p>For more detailed Flutter widget info, visit the official <a href="https://flutter.dev/docs/development/ui/widgets" target="_blank" rel="noopener noreferrer">Flutter Widgets documentation</a>.</p>
+
+</body>
+</html>

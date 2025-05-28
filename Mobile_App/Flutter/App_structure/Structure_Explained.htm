@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flutter Concepts Explained - Detailed Topics</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fbfd;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    color: #2c3e50;
+    line-height: 1.6;
+  }
+  h1, h2 {
+    color: #1a2732;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  h3 {
+    color: #2980b9;
+    margin-top: 1.6rem;
+  }
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+  strong {
+    color: #34495e;
+  }
+  code {
+    background-color: #ecf0f1;
+    color: #2d3436;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+  }
+  pre {
+    background-color: #ecf0f1;
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    box-shadow: inset 0 0 10px rgba(52, 152, 219, 0.1);
+    line-height: 1.4;
+  }
+  .topic-section {
+    margin-bottom: 3rem;
+    padding: 1.4rem 1.6rem;
+    background-color: #eaf2f8;
+    border-left: 5px solid #3498db;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.1);
+  }
+  .topic-section h2 {
+    border: none;
+    color: #2c3e50;
+  }
+  ul {
+    padding-left: 1.3rem;
+  }
+  ul li {
+    margin-bottom: 0.5rem;
+  }
+  a {
+    color: #2980b9;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Flutter Concepts Explained — Detailed Breakdown</h1>
+  <p>This page explains in detail the main Flutter concepts: <strong>StatelessWidget vs StatefulWidget</strong>, <strong>MaterialApp</strong>, <strong>Scaffold</strong>, and <strong>setState()</strong>. For each topic, you'll find explanations of what they are, their sub-concepts or related components, and references for further reading.</p>
+
+  <!-- StatelessWidget vs StatefulWidget -->
+  <section class="topic-section" id="stateless-vs-stateful">
+    <h2>1. StatelessWidget vs StatefulWidget</h2>
+    <p><strong>StatelessWidget:</strong> A widget that describes part of the UI by building a constellation of other widgets that describe the UI more concretely. It <em>does not maintain any mutable state</em>. The widget's appearance only depends on the configuration information it is given.</p>
+
+    <h3>Key points about StatelessWidget:</h3>
+    <ul>
+      <li><a href="https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html" target="_blank" rel="noopener noreferrer">Immutable once created (StatelessWidget docs)</a></li>
+      <li><a href="https://flutter.dev/docs/development/ui/widgets-intro#statelesswidget" target="_blank" rel="noopener noreferrer">Good for static UI elements that never change (Flutter Widgets intro)</a></li>
+      <li><a href="https://flutter.dev/docs/development/ui/widgets-intro#basic-widgets" target="_blank" rel="noopener noreferrer">Examples: Icons, Text, Images, Buttons without interaction (Flutter Widgets intro)</a></li>
+    </ul>
+
+    <h3>StatefulWidget:</h3>
+    <p>A widget that has mutable state. This means the UI can change dynamically over time based on user interaction or asynchronous events.</p>
+
+    <h3>Key points about StatefulWidget:</h3>
+    <ul>
+      <li><a href="https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html" target="_blank" rel="noopener noreferrer">Has two classes: StatefulWidget and State (StatefulWidget docs)</a></li>
+      <li><a href="https://flutter.dev/docs/development/ui/interactive" target="_blank" rel="noopener noreferrer">Calls setState() to rebuild widget (Flutter interactive docs)</a></li>
+      <li><a href="https://flutter.dev/docs/development/ui/widgets-intro#statefulwidget" target="_blank" rel="noopener noreferrer">Examples: Forms, animations, counters (Flutter Widgets intro)</a></li>
+    </ul>
+
+    <h3>Other related concepts:</h3>
+    <ul>
+      <li><a href="https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html" target="_blank" rel="noopener noreferrer">InheritedWidget: propagates immutable data down widget tree</a></li>
+      <li><a href="https://pub.dev/packages/provider" target="_blank" rel="noopener noreferrer">Provider package: popular state management built on InheritedWidget</a></li>
+      <li><a href="https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro" target="_blank" rel="noopener noreferrer">State management techniques: Bloc, Redux, Riverpod, MobX</a></li>
+    </ul>
+
+    <p><a href="https://flutter.dev/docs/development/ui/interactive" target="_blank" rel="noopener noreferrer">Official Flutter docs: Managing state</a></p>
+  </section>
+
+  <!-- MaterialApp -->
+  <section class="topic-section" id="materialapp">
+    <h2>2. MaterialApp</h2>
+    <p><code>MaterialApp</code> is a convenience widget that wraps several widgets commonly required for a Material Design app.</p>
+
+    <h3>Main responsibilities:</h3>
+    <ul>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/navigatorKey.html" target="_blank" rel="noopener noreferrer">Provides navigation (navigatorKey docs)</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/theme.html" target="_blank" rel="noopener noreferrer">Sets app-wide themes (theme docs)</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/localizationsDelegates.html" target="_blank" rel="noopener noreferrer">Handles localization (localizationsDelegates docs)</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/home.html" target="_blank" rel="noopener noreferrer">Sets home screen (home docs)</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/debugShowCheckedModeBanner.html" target="_blank" rel="noopener noreferrer">Manages app-level features like debug banner</a></li>
+    </ul>
+
+    <h3>Key properties you should know:</h3>
+    <ul>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/home.html" target="_blank" rel="noopener noreferrer">home - default widget for main screen</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/routes.html" target="_blank" rel="noopener noreferrer">routes - map of route names to widgets</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/theme.html" target="_blank" rel="noopener noreferrer">theme and darkTheme - for light/dark mode</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/locale.html" target="_blank" rel="noopener noreferrer">locale and localizationDelegates - for internationalization</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/MaterialApp/navigatorKey.html" target="_blank" rel="noopener noreferrer">navigatorKey - control navigation externally</a></li>
+    </ul>
+
+    <h3>Related concepts and widgets:</h3>
+    <ul>
+      <li><a href="https://api.flutter.dev/flutter/cupertino/CupertinoApp-class.html" target="_blank" rel="noopener noreferrer">CupertinoApp - iOS style app container</a></li>
+      <li><a href="https://api.flutter.dev/flutter/widgets/WidgetsApp-class.html" target="_blank" rel="noopener noreferrer">WidgetsApp - base class for MaterialApp and CupertinoApp</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/ThemeData-class.html" target="_blank" rel="noopener noreferrer">ThemeData - colors and fonts used in MaterialApp</a></li>
+    </ul>
+
+    <p><a href="https://flutter.dev/docs/development/ui/widgets/material" target="_blank" rel="noopener noreferrer">Official Flutter docs: MaterialApp</a></p>
+  </section>
+
+  <!-- Scaffold -->
+  <section class="topic-section" id="scaffold">
+    <h2>3. Scaffold</h2>
+    <p>The <code>Scaffold</code> widget provides a basic visual layout structure for a Material Design app.</p>
+
+    <h3>Main features of Scaffold:</h3>
+    <ul>
+      <li><a href="https://api.flutter.dev/flutter/material/Scaffold/appBar.html" target="_blank" rel="noopener noreferrer">AppBar - a toolbar at the top</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/Scaffold/body.html" target="_blank" rel="noopener noreferrer">Body - main content area</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/Scaffold/floatingActionButton.html" target="_blank" rel="noopener noreferrer">FloatingActionButton - circular button overlay</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/Scaffold/drawer.html" target="_blank" rel="noopener noreferrer">Drawer - slide-in menu</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/Scaffold/bottomNavigationBar.html" target="_blank" rel="noopener noreferrer">BottomNavigationBar - bottom tabs navigation</a></li>
+    </ul>
+
+    <h3>Why use Scaffold?</h3>
+    <p>It saves you from manually implementing the standard visual layout structure of apps, like app bars, drawers, snack bars, and floating buttons, with consistent Material Design look and feel.</p>
+
+    <h3>Related widgets:</h3>
+    <ul>
+      <li><a href="https://api.flutter.dev/flutter/material/AppBar-class.html" target="_blank" rel="noopener noreferrer">AppBar</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/Drawer-class.html" target="_blank" rel="noopener noreferrer">Drawer</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/FloatingActionButton-class.html" target="_blank" rel="noopener noreferrer">FloatingActionButton</a></li>
+      <li><a href="https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html" target="_blank" rel="noopener noreferrer">BottomNavigationBar</a></li>
+    </ul>
+
+    <p><a href="https://flutter.dev/docs/cookbook/design/scaffolding" target="_blank" rel="noopener noreferrer">Official Flutter docs: Scaffold</a></p>
+  </section>
+
+  <!-- setState -->
+  <section class="topic-section" id="setstate">
+    <h2>4. setState()</h2>
+    <p><code>setState()</code> is a method used inside the <code>State</code> class of a StatefulWidget.</p>
+
+    <h3>Purpose:</h3>
+    <p>It notifies Flutter that the internal state of the widget has changed in a way that might impact the UI. Flutter then schedules a rebuild of the widget subtree.</p>
+
+    <h3>How to use it:</h3>
+    <pre><code>void increment() {
+  setState(() {
+    count++;
+  });
+}</code></pre>
+
+    <h3>Important notes:</h3>
+    <ul>
+      <li>Call <code>setState()</code> only from within the <code>State</code> class.</li>
+      <li>The function passed to <code>setState()</code> should be synchronous and quick.</li>
+      <li>Calling <code>setState()</code> triggers <code>build()</code> method to rerun and update the UI.</li>
+      <li>For complex state management, other approaches like <code>Provider</code>, <code>Bloc</code>, or <code>ChangeNotifier</code> offer alternatives.</li>
+    </ul>
+
+    <p><a href="https://flutter.dev/docs/development/ui/interactive#using-setstate" target="_blank" rel="noopener noreferrer">Flutter docs: Using setState()</a></p>
+  </section>
+
+</body>
+</html>

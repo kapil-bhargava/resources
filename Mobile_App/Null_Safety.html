@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart Null Safety Explained</title>
+  <style>
+    :root {
+      --bg-color: #fcfcfc;
+      --primary: #2563eb;
+      --dark: #1e293b;
+      --text: #475569;
+      --card-bg: #ffffff;
+      --code-bg: #e0f2fe;
+      --highlight: #fbbf24;
+      --error-color: #dc2626;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      padding: 22px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    h2 {
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    code {
+      background: var(--code-bg);
+      padding: 6px 10px;
+      border-radius: 7px;
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--dark);
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    .keyword {
+      background-color: var(--highlight);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .term {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .error {
+      color: var(--error-color);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Null Safety</h1>
+    <p>Understanding how Dart helps prevent errors with <code>null</code> values</p>
+  </header>
+
+  <section>
+    <h2>1. What is Null Safety? (Programming Definition)</h2>
+    <p>
+      <span class="term">Null Safety</span> is a feature in Dart that helps prevent a common error called the
+      <span class="error">null reference error</span>. It means a variable that is expected to have a value
+      <strong>cannot</strong> accidentally be <code>null</code> (which means “no value” or “empty”).
+    </p>
+    <p>
+      With null safety, Dart requires you to explicitly say if a variable can be <code>null</code> or not,
+      helping catch errors <em>before</em> running the program.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Real-World Example of Null</h2>
+    <p>
+      Imagine a mailbox: if you expect a letter (value) inside it but the mailbox is empty (null), you can’t open or read anything.
+      Null safety is like making sure the mailbox will always have a letter before you try to read it.
+      If it can be empty, you have to check for that first.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Important Keywords & Concepts</h2>
+    <ul>
+      <li><span class="keyword">null</span>: Represents the absence of a value.</li>
+      <li><span class="keyword">Non-nullable types</span>: Variables that <strong>cannot</strong> be null.</li>
+      <li><span class="keyword">Nullable types</span>: Variables that <strong>can</strong> be null; denoted by adding <code>?</code> after the type.</li>
+      <li><span class="keyword">Late keyword</span>: Allows declaring a non-nullable variable that will be initialized later.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Example: Variables with and without Null Safety</h2>
+    <pre><code>// Non-nullable variable: must always have a value
+String name = "Alex";
+
+// Nullable variable: can be null (notice the ?)
+String? middleName;
+
+// Using the variable safely
+void main() {
+  print("Name: $name");
+  
+  if (middleName != null) {
+    print("Middle Name: $middleName");
+  } else {
+    print("Middle Name is not provided.");
+  }
+}</code></pre>
+    <p><strong>Explanation:</strong></p>
+    <ul>
+      <li><code>name</code> cannot be null, so it must always hold a string value.</li>
+      <li><code>middleName</code> can be null, so you check if it's null before using it.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. What Happens Without Null Safety?</h2>
+    <p>
+      Without null safety, your program might try to use a variable that has no value (<code>null</code>),
+      which causes it to crash at runtime — called a <span class="error">null reference error</span>.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Using <code>late</code> Keyword</h2>
+    <p>
+      Sometimes you want a variable that cannot be null but you don’t have the value immediately.
+      You can use <code>late</code> to tell Dart: "I promise I will set this value later."
+    </p>
+    <pre><code>late String description;
+
+void main() {
+  description = "This is a Dart example.";
+  print(description);
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>7. Summary</h2>
+    <ul>
+      <li><strong>Null safety</strong> helps prevent errors by making you handle <code>null</code> carefully.</li>
+      <li>Use <code>?</code> to allow variables to be null.</li>
+      <li>Use <code>late</code> to delay initializing non-nullable variables.</li>
+      <li>This makes your apps safer, less error-prone, and easier to debug.</li>
+    </ul>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flutter State Management</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    pre {
+      background-color: #f0f3f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin: 20px 0;
+    }
+
+    a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>State Management in Flutter</h1>
+
+    <p>
+      <strong>State</strong> refers to the information or data that can change over time in your app.
+      <strong>State Management</strong> means how you handle and update this changing data in your UI.
+    </p>
+
+    <h2>📌 Why is State Management Important?</h2>
+    <p>
+      In Flutter, the UI is built using widgets. When the state changes, the UI needs to update to reflect the new data. Proper state management ensures your app stays responsive and consistent.
+    </p>
+
+    <div class="highlight">
+      <strong>Keyword Explanation:</strong> 
+      <ul>
+        <li><strong>Widget</strong>: The basic building block of a Flutter UI.</li>
+        <li><strong>StatelessWidget</strong>: A widget that does not change its state.</li>
+        <li><strong>StatefulWidget</strong>: A widget that can change its state during runtime.</li>
+      </ul>
+    </div>
+
+    <h2>🧱 Types of Widgets Based on State</h2>
+    <ul>
+      <li><strong>StatelessWidget</strong> – No internal state. Suitable for static content.</li>
+      <li><strong>StatefulWidget</strong> – Maintains state. Suitable for dynamic content.</li>
+    </ul>
+
+    <h3>Example: Stateless vs Stateful Widget</h3>
+    <pre>
+// Stateless Widget Example
+class MyStateless extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text('I never change!');
+  }
+}
+
+// Stateful Widget Example
+class MyStateful extends StatefulWidget {
+  @override
+  _MyStatefulState createState() => _MyStatefulState();
+}
+
+class _MyStatefulState extends State<MyStateful> {
+  int counter = 0;
+
+  void _increment() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Counter: \$counter'),
+        ElevatedButton(onPressed: _increment, child: Text('Increment')),
+      ],
+    );
+  }
+}
+    </pre>
+
+    <div class="highlight">
+      <strong>Important:</strong> <code>setState()</code> is used to tell Flutter to redraw the widget with new data.
+    </div>
+
+    <h2>🔀 Other State Management Approaches</h2>
+    <p>Flutter provides multiple options to manage state efficiently for bigger applications:</p>
+    <ul>
+      <li><strong>Provider</strong> – Simple and powerful (Recommended by Flutter team).</li>
+      <li><strong>Riverpod</strong> – A better version of Provider with improvements.</li>
+      <li><strong>GetX</strong> – Lightweight and efficient with simple syntax.</li>
+      <li><strong>Bloc (Business Logic Component)</strong> – Highly structured with clear separation of UI and logic.</li>
+    </ul>
+
+    <h2>🏠 Real World Analogy</h2>
+    <p>Imagine your app is like a house. If someone turns on a light (changes state), you want only that room (widget) to update, not rebuild the entire house. State management helps do this efficiently!</p>
+
+    <p>For a deeper dive into Flutter State Management, visit the <a href="https://docs.flutter.dev/data-and-backend/state-mgmt/intro" target="_blank">official documentation</a>.</p>
+  </div>
+</body>
+
+</html>

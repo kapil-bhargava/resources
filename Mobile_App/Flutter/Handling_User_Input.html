@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flutter: Handling User Input</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    pre {
+      background-color: #f0f3f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    .highlight {
+      background: #fffbe6;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin: 20px 0;
+    }
+
+    a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Handling User Input in Flutter</h1>
+
+    <p>In mobile apps, collecting input from the user (like name, email, or password) is very important. Flutter makes it easy using widgets like <code>TextField</code>, <code>TextFormField</code>, and input controllers.</p>
+
+    <div class="highlight">
+      <strong>Keyword Explanation:</strong>
+      <ul>
+        <li><strong>TextField</strong>: A basic input widget for text.</li>
+        <li><strong>TextEditingController</strong>: Helps us read and control the value inside a text field.</li>
+      </ul>
+    </div>
+
+    <h2>📥 Basic TextField Example</h2>
+    <pre>
+TextField(
+  decoration: InputDecoration(
+    labelText: 'Enter your name',
+    border: OutlineInputBorder(),
+  ),
+)
+    </pre>
+
+    <h2>🧠 Using Controller to Access Text</h2>
+    <pre>
+TextEditingController myController = TextEditingController();
+
+TextField(
+  controller: myController,
+  decoration: InputDecoration(
+    labelText: 'Enter something',
+  ),
+),
+
+ElevatedButton(
+  onPressed: () {
+    print(myController.text);
+  },
+  child: Text('Submit'),
+)
+    </pre>
+
+    <div class="highlight">
+      <strong>Why use a Controller?</strong>
+      <ul>
+        <li>To get the value typed by the user</li>
+        <li>To update or clear the input programmatically</li>
+      </ul>
+    </div>
+
+    <h2>🏠 Real World Analogy</h2>
+    <p>Imagine a notebook where someone writes their name. The <code>TextField</code> is the notebook, and the <code>TextEditingController</code> is like someone who reads what’s written inside and acts on it.</p>
+
+    <p>Check more on <a href="https://docs.flutter.dev/cookbook/forms/text-input" target="_blank">Flutter's input handling docs</a>.</p>
+  </div>
+</body>
+
+</html>
