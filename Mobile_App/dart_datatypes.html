@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dart Data Types Explained</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --secondary: #f8f9fa;
+      --text: #333;
+      --bg: #ffffff;
+      --highlight: #ffc107;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--secondary);
+      color: var(--text);
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    section {
+      background-color: var(--bg);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+
+    .important {
+      background: var(--highlight);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dart Data Types Explained</h1>
+  </header>
+
+  <section>
+    <h2>1. <code>int</code> (Integer)</h2>
+    <p><strong>int</strong> is used to store whole numbers (positive or negative) without decimals.</p>
+    <pre><code>int age = 25;
+print(age);</code></pre>
+  </section>
+
+  <section>
+    <h2>2. <code>double</code></h2>
+    <p><strong>double</strong> is used to store numbers with decimal points.</p>
+    <pre><code>double pi = 3.14;
+print(pi);</code></pre>
+  </section>
+
+  <section>
+    <h2>3. <code>String</code></h2>
+    <p><strong>String</strong> is used to store text or a sequence of characters enclosed in quotes.</p>
+    <pre><code>String name = "Sumit";
+print(name);</code></pre>
+  </section>
+
+  <section>
+    <h2>4. <code>bool</code> (Boolean)</h2>
+    <p><strong>bool</strong> is used to store true or false values (yes or no).</p>
+    <pre><code>bool isFlutterFun = true;
+print(isFlutterFun);</code></pre>
+  </section>
+
+  <section>
+    <h2>5. <code>List</code></h2>
+    <p><strong>List</strong> is used to store multiple values in a single variable (like an array).</p>
+    <pre><code>List<String> fruits = ["Apple", "Banana", "Orange"];
+print(fruits);</code></pre>
+  </section>
+
+  <section>
+    <h2>6. <code>Map</code></h2>
+    <p><strong>Map</strong> is a collection of key-value pairs.</p>
+    <pre><code>Map<String, String> user = {
+  "name": "Rohan",
+  "city": "Delhi"
+};
+print(user);</code></pre>
+  </section>
+
+  <section>
+    <h2>7. <code>var</code> and <code>dynamic</code></h2>
+    <a style="background-color: blue; padding: 5px; text-decoration: none; color: white;" href="const_final.html">See about const and final</a> <br> 
+    <p><strong>var</strong> is used when you want Dart to automatically detect the type.<br>
+      <strong>dynamic</strong> allows changing the type of value at runtime.</p>
+    <pre><code>var city = "Mumbai"; // inferred as String
+city = "Pune";
+
+dynamic item = "Book";
+item = 100; // no error, type changed to int
+print(item);</code></pre>
+  </section>
+  <section>
+  <h2>8. Typed vs Untyped List</h2>
+  <p>In Dart, you can define a list with or without a specific type:</p>
+
+  <h3>🔸 Untyped List</h3>
+  <p>This list allows storing <span class="important">any data type</span>. Not safe for large projects.</p>
+  <pre><code>List fruits = ["Apple", "Banana", "Orange"];
+fruits.add(123); // No error, but not type-safe
+print(fruits);</code></pre>
+
+  <h3>🔹 Typed List</h3>
+  <p>This list is <span class="important">strictly typed</span>. Only specific types (like String) are allowed.</p>
+  <pre><code>List&lt;String&gt; fruits = ["Apple", "Banana", "Orange"];
+fruits.add("Mango"); // OK
+fruits.add(123); // ❌ Error: int is not a String
+print(fruits);</code></pre>
+
+  <h3>📝 Why Typed Lists?</h3>
+  <ul>
+    <li><strong>Type Safety:</strong> Prevents adding wrong data types</li>
+    <li><strong>Clean Code:</strong> Easier to maintain and debug</li>
+    <li><strong>Editor Support:</strong> Autocomplete and suggestions work better</li>
+  </ul>
+
+  <h3>📊 Comparison Table</h3>
+  <table border="1" cellpadding="10" style="border-collapse: collapse; margin-top: 10px;">
+    <thead style="background-color: var(--primary); color: white;">
+      <tr>
+        <th>Code</th>
+        <th>Type</th>
+        <th>Type-Safe?</th>
+        <th>Accepts Other Types?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>List fruits = [...];</code></td>
+        <td>Untyped List</td>
+        <td>No</td>
+        <td>Yes ✅</td>
+      </tr>
+      <tr>
+        <td><code>List&lt;String&gt; fruits = [...];</code></td>
+        <td>Typed List (String)</td>
+        <td>Yes ✅</td>
+        <td>No ❌</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>✅ <strong>Tip:</strong> Always use <code>List&lt;Type&gt;</code> for better safety and cleaner code.</p>
+</section>
+
+
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dart Variable Types: var, final, const</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9fb;
+      color: #2c3e50;
+      padding: 20px;
+      line-height: 1.7;
+    }
+
+    h1, h2 {
+      color: #007bff;
+    }
+
+    section {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    code {
+      background: #eef;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 15px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .note {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Understanding <code>var</code>, <code>final</code>, and <code>const</code> in Dart</h1>
+
+  <section>
+    <h2>1. <code>var</code></h2>
+    <p><strong>Definition:</strong> A <code>var</code> variable is mutable (can change) and its type is inferred automatically.</p>
+    <pre><code>var name = 'Rakesh';
+name = 'Amit'; // ✅ allowed</code></pre>
+  </section>
+
+  <section>
+    <h2>2. <code>final</code></h2>
+    <p><strong>Definition:</strong> <code>final</code> variables are assigned only once. The value is determined at runtime and can't be changed later.</p>
+    <pre><code>final city = 'Delhi';
+city = 'Mumbai'; // ❌ Error: Final variable can't be reassigned</code></pre>
+    <div class="note">Use <code>final</code> when the value won’t change and is known only at runtime.</div>
+  </section>
+
+  <section>
+    <h2>3. <code>const</code></h2>
+    <p><strong>Definition:</strong> <code>const</code> variables are compile-time constants. Their values must be known and fixed when the code is compiled.</p>
+    <pre><code>const country = 'India';
+country = 'Nepal'; // ❌ Error: Const variable can't be reassigned</code></pre>
+    <div class="note">Use <code>const</code> when the value never changes and is known at compile time.</div>
+  </section>
+
+  <section>
+    <h2>4. Difference Between <code>final</code> and <code>const</code></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th><code style="color: black;">final</code></th>
+          <th><code style="color: black;">const</code></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mutability</td>
+          <td>Immutable (can’t change after assigning)</td>
+          <td>Immutable (must be constant from start)</td>
+        </tr>
+        <tr>
+          <td>Evaluated</td>
+          <td>At runtime</td>
+          <td>At compile-time</td>
+        </tr>
+        <tr>
+          <td>Use Case</td>
+          <td>Value known only at runtime</td>
+          <td>Value known at compile time</td>
+        </tr>
+        <tr>
+          <td>Example</td>
+          <td><code>final today = DateTime.now();</code></td>
+          <td><code>const pi = 3.14;</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pre><code>void main() {
+  final timestamp = DateTime.now(); // ✅ valid
+  // const timestamp = DateTime.now(); ❌ invalid - not compile-time constant
+
+  const appName = 'MyApp'; // ✅ valid
+  print(timestamp);
+  print(appName);
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>5. Reference Links</h2>
+    <ul>
+      <li><a href="https://dart.dev/guides/language/language-tour#variables" target="_blank">Dart Language Tour – Variables</a></li>
+      <li><a href="https://dart.dev/guides/language/language-tour#final-and-const" target="_blank">Final and Const in Dart (Official Docs)</a></li>
+    </ul>
+  </section>
+
+</body>
+</html>

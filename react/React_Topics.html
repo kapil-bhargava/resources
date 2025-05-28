@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>React Topics Overview</title>
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --primary: #0d6efd;
+      --secondary: #6c757d;
+      --text-dark: #212529;
+      --text-light: #495057;
+      --border: #dee2e6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 1.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card a {
+      text-decoration: none;
+      color: var(--text-dark);
+      display: block;
+    }
+
+    .card a:hover h2 {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-top: 0;
+    }
+
+    .card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .references {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .references h3 {
+      color: var(--primary);
+    }
+
+    .references ul {
+      list-style: square;
+      padding-left: 1.2rem;
+    }
+
+    .references a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .references a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>React Topics Overview</h1>
+    <p>Your complete roadmap to mastering React</p>
+  </header>
+
+  <a style="background-color: blue;padding: 5px;color: white;text-decoration: none;display:block;margin: 20px auto; width: fit-content;" href="../REACT.html">See Overview of React</a>
+
+  <main>
+    <div class="grid">
+      <div class="card"><a href="intro.html"><h2>1. What is React?</h2><p>JavaScript library for building user interfaces using components.</p></a></div>
+      <div class="card"><a href="jsx.html"><h2>2. JSX</h2><p>Write HTML-like syntax in JS, compiled to React.createElement().</p></a></div>
+      <div class="card"><a href="components.html"><h2>3. Components</h2><p>Reusable and independent UI blocks — class or functional.</p></a></div>
+      <div class="card"><a href="props.html"><h2>4. Props</h2><p>Pass data from parent to child components.</p></a></div>
+      <div class="card"><a href="state.html"><h2>5. State</h2><p>Component-specific data that triggers re-render on change.</p></a></div>
+      <div class="card"><a href="useeffect.html"><h2>6. useEffect</h2><p>Run side effects like fetching data, timers, etc.</p></a></div>
+      <div class="card"><a href="conditional.html"><h2>7. Conditional Rendering</h2><p>Render UI based on conditions using ternary or &&.</p></a></div>
+      <div class="card"><a href="lists.html"><h2>8. Lists & Keys</h2><p>Render collections using map and unique keys.</p></a></div>
+      <div class="card"><a href="forms.html"><h2>9. Forms Handling</h2><p>Manage user input using controlled components and state.</p></a></div>
+      <div class="card"><a href="lifting.html"><h2>10. Lifting State Up</h2><p>Move state to common ancestor to share between children.</p></a></div>
+      <div class="card"><a href="context.html"><h2>11. useContext</h2><p>Share global data without prop drilling using context API.</p></a></div>
+      <div class="card"><a href="custom-hooks.html"><h2>12. Custom Hooks</h2><p>Encapsulate reusable logic with custom hook functions.</p></a></div>
+      <div class="card"><a href="useref.html"><h2>13. useRef</h2><p>Access DOM or keep mutable values without re-renders.</p></a></div>
+      <div class="card"><a href="memo.html"><h2>14. useMemo & useCallback</h2><p>Optimize performance by memoizing values/functions.</p></a></div>
+      <div class="card"><a href="routing.html"><h2>15. Routing</h2><p>Use React Router to manage navigation and routes.</p></a></div>
+      <div class="card"><a href="error-boundary.html"><h2>16. Error Boundaries</h2><p>Catch and handle JS errors in class components.</p></a></div>
+      <div class="card"><a href="code-splitting.html"><h2>17. Code Splitting</h2><p>Lazy load components using Suspense and React.lazy.</p></a></div>
+      <div class="card"><a href="redux.html"><h2>18. State Management (Redux)</h2><p>Centralized app state using Redux or similar tools.</p></a></div>
+      <div class="card"><a href="testing.html"><h2>19. Testing</h2><p>Write unit/integration tests with Jest & RTL.</p></a></div>
+      <div class="card"><a href="deployment.html"><h2>20. Deployment</h2><p>Deploy to Netlify, Vercel, GitHub Pages, etc.</p></a></div>
+    </div>
+
+    
+    <div class="references">
+      <h3>📚 Reference Links</h3>
+      <ul>
+        <li><a href="https://react.dev/learn" target="_blank">Official React Docs – Learn React</a></li>
+        <li><a href="https://reactrouter.com/en/main" target="_blank">React Router Documentation</a></li>
+        <li><a href="https://redux.js.org/" target="_blank">Redux Documentation</a></li>
+        <li><a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">React Hooks Introduction</a></li>
+        <li><a href="https://testing-library.com/docs/react-testing-library/intro/" target="_blank">React Testing Library</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    📘 Learn React step by step — Start small, build big!
+  </footer>
+
+</body>
+</html>
