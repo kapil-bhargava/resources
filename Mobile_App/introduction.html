@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dart & Flutter Explained</title>
   <style>
     :root {
@@ -36,7 +37,9 @@
       margin-bottom: 20px;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       color: var(--primary);
     }
 
@@ -45,7 +48,7 @@
       padding: 20px;
       border-radius: 8px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     a {
@@ -71,6 +74,17 @@
       font-weight: bold;
     }
 
+    pre {
+      background-color: #f0f0f0;
+      padding: 1em;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, Monaco, monospace;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 10px;
@@ -82,20 +96,25 @@
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>Learn Dart & Flutter from Scratch</h1>
+    <h1 style="color: white;">Learn Dart & Flutter from Scratch</h1>
   </header>
 
   <section>
     <h2>What is Dart?</h2>
-    <p><strong>Dart</strong> is an <span class="important">open-source programming language</span> created by Google. It's optimized for building <strong>mobile, desktop, web, and server apps</strong>.</p>
+    <p><strong>Dart</strong> is an <span class="important">open-source programming language</span> created by Google.
+      It's optimized for building <strong>mobile, desktop, web, and server apps</strong>.</p>
     <p>It is an object-oriented, class-based language with a C-style syntax.</p>
   </section>
 
   <section>
     <h2>What is Flutter?</h2>
-    <p><strong>Flutter</strong> is an <span class="important">open-source UI toolkit</span> also created by Google. It is used to build <strong>natively compiled applications</strong> for mobile, web, and desktop from a single codebase.</p>
+    <p><strong>Flutter</strong> is an <span class="important">open-source UI toolkit</span> also created by Google. It
+      is used to build <strong>natively compiled applications</strong> for mobile, web, and desktop from a single
+      codebase.</p>
+    <a style="background-color: blue;color: white;padding: 5px; text-decoration: none;" href="Flutter/Topics_intro.html">Start Learning Flutter</a>
   </section>
 
   <section>
@@ -106,24 +125,52 @@
 
   <section>
     <h2>Required Dart Concepts for Flutter Mobile App Development</h2>
+    <ol style="padding: 30px; font-weight: bold;">
+      <li><a href="variable_and_datatypes.html"> Variables and Data Types</a></li>
+      <li><a href="Functions.html"> Functions</a></li>
+      <li><a href="Classes_and_Objects.html"> Classes and Objects</a></li>
+      <li><a href="Constructors.html"> Constructors</a></li>
+      <li><a href="Inheritance.html"> Inheritance</a></li>
+      <li><a href="Interfaces_and_Abstract_Classes.html"> Interfaces and Abstract Classes</a></li>
+      <li><a href="Lists_and_Maps.html"> Lists and Maps</a></li>
+      <li><a href="Loops_and_Conditions.html"> Loops and Conditions</a></li>
+      <li><a href="Exception_Handling.html"> Exception Handling</a></li>
+      <li><a href="Futures_&_Async-Await.html"> Futures & Async/Await</a></li>
+      <li><a href="Null_Safety.html"> Null Safety</a></li>
+      <li><a href="Getters_and_Setters.html"> Getters and Setters</a></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>🔹 Understanding <code>main()</code> Function in Dart</h2>
+    <p>The <code>main()</code> function is the <span class="important">entry point</span> of every Dart program. When your app runs, Dart looks for this function and starts executing from there.</p>
+
+    <pre><code>void main() {
+  print('Hello, Dart!');
+}</code></pre>
+
+    <h3>Code Breakdown:</h3>
     <ul>
-      <li><a href="variable_and_datatypes.html">1. Variables and Data Types</a></li>
-      <li><a href="Functions.html">2. Functions</a></li>
-      <li><a href="Classes_and_Objects.html">3. Classes and Objects</a></li>
-      <li><a href="Constructors.html">4. Constructors</a></li>
-      <li><a href="Inheritance.html">5. Inheritance</a></li>
-      <li><a href="Interfaces_and_Abstract_Classes.html">6. Interfaces and Abstract Classes</a></li>
-      <li><a href="Lists_and_Maps.html">7. Lists and Maps</a></li>
-      <li><a href="Loops_and_Conditions.html">8. Loops and Conditions</a></li>
-      <li><a href="Exception_Handling.html">9. Exception Handling</a></li>
-      <li><a href="Futures_&_Async-Await.html">10. Futures & Async/Await</a></li>
-      <li><a href="Null_Safety.html">11. Null Safety</a></li>
-      <li><a href="Mixins.html">12. Mixins</a></li>
-      <li><a href="Typedefs.html">13. Typedefs</a></li>
-      <li><a href="Getters_and_Setters.html">14. Getters and Setters</a></li>
-      <li><a href="Enums.html">15. Enums</a></li>
+      <li><strong><code>void</code></strong>: This means the function doesn't return any value.</li>
+      <li><strong><code>main()</code></strong>: The name of the entry function where your program starts.</li>
+      <li><strong><code>print()</code></strong>: This function outputs text to the console.</li>
+    </ul>
+
+    <h3>📦 Where does <code>print()</code> show output?</h3>
+    <p>When you run a Dart program, the <code>print()</code> output appears in the <span class="important">terminal or console</span>.</p>
+    <p>In Flutter development (in VS Code or Android Studio), you can see this output in the <strong>Debug Console</strong>.</p>
+
+    <h3>💡 What is a Terminal?</h3>
+    <p>The <strong>Terminal</strong> (or Command Line) is a place where developers can run commands, execute code, and see output or errors.</p>
+
+    <h3>🔗 Reference Links:</h3>
+    <ul>
+      <li><a href="https://dart.dev/guides/language/language-tour#the-main-function" target="_blank">Official Dart: main() function</a></li>
+      <li><a href="https://dart.dev/guides/language/language-tour#print-statements" target="_blank">Official Dart: print() statement</a></li>
+      <li><a href="https://docs.flutter.dev/development/tools/vs-code" target="_blank">Flutter with VS Code Guide</a></li>
     </ul>
   </section>
 
 </body>
+
 </html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OOP Concepts in Dart for Kids</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfefe;
+      color: #2c3e50;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+      color: #1a5276;
+      border-bottom: 2px solid #d5d8dc;
+      padding-bottom: 5px;
+    }
+
+    .highlight {
+      background-color: #fcf3cf;
+      padding: 1rem;
+      border-left: 5px solid #f7dc6f;
+      border-radius: 5px;
+      margin: 1rem 0;
+    }
+
+    pre {
+      background-color: #f4f6f7;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    a {
+      color: #2874a6;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Object-Oriented Programming (OOP) in Dart</h1>
+    <p><strong>OOP</strong> stands for <strong>Object-Oriented Programming</strong>. It is a way of writing code that uses "objects" — just like real things — to make programming easier and organized. Think of it like playing with LEGO blocks, where each block (object) has its own shape and function, and you can build cool stuff by combining them!</p>
+
+    <div class="highlight">
+      <p><strong>Full Forms & Simple Meanings:</strong></p>
+      <ul>
+        <li><strong>OOP:</strong> Object-Oriented Programming – coding with objects.</li>
+        <li><strong>Class:</strong> A blueprint for creating objects (like a cookie cutter).</li>
+        <li><strong>Object:</strong> An item made from a class (like the cookie).</li>
+        <li><strong>Method:</strong> A function that belongs to a class (like an action).</li>
+        <li><strong>Property:</strong> A variable that belongs to a class (like a feature).</li>
+      </ul>
+    </div>
+
+    <h2>1. Class and Object</h2>
+    <pre>
+class Animal {
+  String name = 'Dog';
+
+  void speak() {
+    print('Woof!');
+  }
+}
+
+void main() {
+  var pet = Animal();
+  print(pet.name);
+  pet.speak();
+}</pre>
+
+    <div class="highlight">
+      <p><strong>Explanation:</strong> We created a class called <code>Animal</code>. Then we made an object called <code>pet</code> using that class. The object can talk (run the method) and has a name!</p>
+      <p>🔗 <a href="https://dart.dev/language/classes" target="_blank">Dart Classes and Objects</a></p>
+    </div>
+
+    <h2>2. Inheritance</h2>
+    <pre>
+class Animal {
+  void sound() {
+    print('Animal makes a sound');
+  }
+}
+
+class Dog extends Animal {
+  void bark() {
+    print('Dog barks!');
+  }
+}
+
+void main() {
+  var dog = Dog();
+  dog.sound();
+  dog.bark();
+}</pre>
+
+    <div class="highlight">
+      <p><strong>Explanation:</strong> <code>Dog</code> gets features of <code>Animal</code>. This is called <strong>inheritance</strong> — like kids inheriting traits from parents.</p>
+      <p>🔗 <a href="https://dart.dev/language/class-modifiers#inheritance" target="_blank">Dart Inheritance</a></p>
+    </div>
+
+    <h2>3. Encapsulation</h2>
+    <pre>
+class BankAccount {
+  double _balance = 0; // private variable
+
+  void deposit(double amount) {
+    _balance += amount;
+  }
+
+  double get balance => _balance; // getter
+}
+
+void main() {
+  var account = BankAccount();
+  account.deposit(100);
+  print(account.balance);
+}</pre>
+
+    <div class="highlight">
+      <p><strong>Explanation:</strong> Data is hidden inside the class and only accessed through functions. This is called <strong>encapsulation</strong>.</p>
+      <p>🔗 <a href="https://dart.dev/language/libraries#privacy" target="_blank">Encapsulation in Dart</a></p>
+    </div>
+
+    <h2>4. Polymorphism</h2>
+    <pre>
+class Animal {
+  void speak() {
+    print("Animal sound");
+  }
+}
+
+class Cat extends Animal {
+  @override
+  void speak() {
+    print("Meow");
+  }
+}
+
+void main() {
+  Animal a = Cat();
+  a.speak();
+}</pre>
+
+    <div class="highlight">
+      <p><strong>Explanation:</strong> <code>speak()</code> behaves differently based on the object. This is <strong>polymorphism</strong> — same method, different actions.</p>
+      <p>🔗 <a href="https://dart.dev/language/classes#inheritance-and-method-overrides" target="_blank">Polymorphism in Dart</a></p>
+    </div>
+
+    <h2>5. Abstraction</h2>
+    <pre>
+abstract class Shape {
+  void draw();
+}
+
+class Circle extends Shape {
+  void draw() {
+    print("Drawing Circle");
+  }
+}
+
+void main() {
+  Shape shape = Circle();
+  shape.draw();
+}</pre>
+
+    <div class="highlight">
+      <p><strong>Explanation:</strong> Abstract class hides complex code and lets subclasses fill in the details. Just like giving someone a sketch and they color it in.</p>
+      <p>🔗 <a href="https://dart.dev/language/abstract-classes" target="_blank">Abstraction in Dart</a></p>
+    </div>
+
+    <h2>Summary</h2>
+    <ul>
+      <li><a href="https://dart.dev/language/classes">Class & Object</a></li>
+      <li><a href="https://dart.dev/language/class-modifiers#inheritance">Inheritance</a></li>
+      <li><a href="https://dart.dev/language/libraries#privacy">Encapsulation</a></li>
+      <li><a href="https://dart.dev/language/classes#inheritance-and-method-overrides">Polymorphism</a></li>
+      <li><a href="https://dart.dev/language/abstract-classes">Abstraction</a></li>
+    </ul>
+
+   
+  </div>
+</body>
+
+</html>
