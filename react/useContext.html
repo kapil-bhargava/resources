@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React useContext Explained</title>
+    <style>
+        :root {
+            --primary: #4e9af1;
+            --secondary: #1f1f1f;
+            --background: #121212;
+            --text: #f1f1f1;
+            --highlight: #ffca28;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --primary: #007bff;
+                --secondary: #f8f9fa;
+                --background: #ffffff;
+                --text: #212529;
+                --highlight: #ffc107;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        section {
+            background-color: var(--secondary);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        h2,
+        h3 {
+            color: var(--highlight);
+            margin-bottom: 10px;
+        }
+
+        p,
+        ul,
+        pre {
+            margin-bottom: 15px;
+        }
+
+        ul,
+        ol {
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: monospace;
+        }
+
+        a {
+            color: var(--highlight);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Understanding <code>useContext</code> in React</h1>
+        <p>A complete guide to managing global state efficiently using Context API</p>
+    </header>
+
+    <section>
+        <h2>What is <code>useContext</code>?</h2>
+        <p><code>useContext</code> is a React Hook that allows you to consume and subscribe to a React Context. It
+            simplifies the process of accessing shared data across components without prop drilling.</p>
+    </section>
+
+    <section>
+        <h2>What is Context API?</h2>
+        <p>The Context API is a built-in API in React (introduced in v16.3+) that allows you to manage and share state
+            globally. "API" means a set of tools (like <code>createContext</code>, <code>Provider</code>,
+            <code>useContext</code>) provided by React to easily build and consume context.</p>
+    </section>
+
+    <section>
+        <h2>Why use <code>useContext</code>?</h2>
+        <ul>
+            <li>Avoids prop drilling (no need to pass props manually through every level)</li>
+            <li>Makes global data like themes, user info, or settings available anywhere</li>
+            <li>Improves code readability and maintainability</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Why is useContext better than Props?</h2>
+        <ul>
+            <li><strong>Cleaner:</strong> Prevents messy deeply-nested props</li>
+            <li><strong>Reusable:</strong> Makes shared state accessible across multiple components</li>
+            <li><strong>Efficient:</strong> Only re-renders components that use the context</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Steps to Use <code>useContext</code></h2>
+        <ol>
+            <li><strong>Create Context</strong> with <code>createContext()</code></li>
+            <li><strong>Provide</strong> context using <code>Provider</code> in parent</li>
+            <li><strong>Consume</strong> context using <code>useContext()</code> in any child</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>1. Create Context (ThemeContext.js)</h2>
+        <pre><code>import { createContext } from 'react';
+
+const ThemeContext = createContext();
+export default ThemeContext;</code></pre>
+    </section>
+
+    <section>
+        <h2>2. Provide Context (App.js)</h2>
+        <pre><code>import React from 'react';
+import ThemeContext from './ThemeContext';
+import Toolbar from './Toolbar';
+
+function App() {
+  const theme = { color: 'blue' };
+
+  return (
+    &lt;ThemeContext.Provider value={theme}&gt;
+      &lt;Toolbar /&gt;
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+export default App;</code></pre>
+    </section>
+
+    <section>
+        <h2>3. Consume Context (Toolbar.js)</h2>
+        <pre><code>import React, { useContext } from 'react';
+import ThemeContext from './ThemeContext';
+
+function Toolbar() {
+  const theme = useContext(ThemeContext);
+
+  return (
+    &lt;h2 style={{ color: theme.color }}&gt;
+      Toolbar Text with Context Color
+    &lt;/h2&gt;
+  );
+}
+
+export default Toolbar;</code></pre>
+
+<a href="useContext_in_detail.html">See another example</a>
+    </section>
+
+    <section>
+        <h2>Common Use Cases</h2>
+        <ul>
+            <li>Dark/light theme toggling</li>
+            <li>User authentication status</li>
+            <li>Global app settings</li>
+            <li>Language preferences</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Things to Avoid</h2>
+        <ul>
+            <li>Using context for deeply complex state (consider Redux)</li>
+            <li>Forgetting to wrap components with the Provider</li>
+            <li>Changing context value directly (use state)</li>
+            <li>Not using memoized context values (causes unnecessary re-renders)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="https://reactjs.org/docs/hooks-reference.html#usecontext" target="_blank">React Docs:
+                    useContext</a></li>
+            <li><a href="https://reactjs.org/docs/context.html" target="_blank">React Docs: Context API</a></li>
+        </ul>
+    </section>
+</body>
+
+
+</html>

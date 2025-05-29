@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=2.0" />
+  <title>React useContext Example</title>
+  <style>
+    :root {
+      --primary: #4e9af1;
+      --background: #121212;
+      --text: #f1f1f1;
+      --card: #1e1e1e;
+      --highlight: #ffca28;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --primary: #007bff;
+        --background: #ffffff;
+        --text: #212529;
+        --card: #f1f1f1;
+        --highlight: #ffc107;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    section {
+      background-color: var(--card);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h2, h3 {
+      color: var(--highlight);
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background-color: #2d2d2d;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 15px;
+    }
+
+    code {
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    ul {
+      margin-bottom: 15px;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Understanding <code>useContext</code> and <code>createContext</code> in React</h1>
+    <p>Easy example with explanation and separate files</p>
+  </header>
+
+  <section>
+    <h2>What is <code>useContext</code>?</h2>
+    <p><code>useContext</code> is a React Hook that allows you to access context values directly without passing props down manually through each component.</p>
+  </section>
+
+  <section>
+    <h2>Why use Context API?</h2>
+    <ul>
+      <li>Avoids prop drilling (passing props through many levels)</li>
+      <li>Provides global state access</li>
+      <li>Efficient and cleaner state sharing</li>
+    </ul>
+    <p><strong>Why is it called API?</strong><br>The Context API refers to a set of functions and components (like <code>createContext</code>, <code>Provider</code>, <code>useContext</code>) offered by React to manage global data.</p>
+  </section>
+
+  <section>
+    <h2>Step-by-Step Example</h2>
+    <p><strong>File Structure:</strong></p>
+    <pre><code>src/
+├── App.js
+├── UserContext.js
+├── Parent.js
+└── Child.js</code></pre>
+
+    <h3>1. Create Context (<code>UserContext.js</code>)</h3>
+    <pre><code>// UserContext.js
+import { createContext } from 'react';
+
+const UserContext = createContext();
+export default UserContext;</code></pre>
+
+    <h3>2. Provide Context (<code>App.js</code>)</h3>
+    <pre><code>// App.js
+import React from 'react';
+import UserContext from './UserContext';
+import Parent from './Parent';
+
+function App() {
+  const user = { name: 'Kapil', role: 'Student' };
+
+  return (
+    <UserContext.Provider value={user}>
+      <Parent />
+    </UserContext.Provider>
+  );
+}
+
+export default App;</code></pre>
+
+    <h3>3. Intermediate Component (<code>Parent.js</code>)</h3>
+    <pre><code>// Parent.js
+import React from 'react';
+import Child from './Child';
+
+function Parent() {
+  return (
+    <div>
+      <h2>This is the Parent component</h2>
+      <Child />
+    </div>
+  );
+}
+
+export default Parent;</code></pre>
+
+    <h3>4. Consume Context (<code>Child.js</code>)</h3>
+    <pre><code>// Child.js
+import React, { useContext } from 'react';
+import UserContext from './UserContext';
+
+function Child() {
+  const user = useContext(UserContext);
+
+  return (
+    <div>
+      <h3>This is the Child component</h3>
+      <p>User Name: {user.name}</p>
+      <p>User Role: {user.role}</p>
+    </div>
+  );
+}
+
+export default Child;</code></pre>
+  </section>
+
+  <section>
+    <h2>Summary</h2>
+    <ul>
+      <li><code>createContext()</code>: Creates context object</li>
+      <li><code>Provider</code>: Supplies data to children</li>
+      <li><code>useContext()</code>: Reads context data in any child</li>
+    </ul>
+    <p>This helps you share data across components without manually passing props.</p>
+  </section>
+</body>
+
+</html>
