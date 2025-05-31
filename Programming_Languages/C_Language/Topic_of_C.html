@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Topics to Learn in C Programming</title>
+  <style>
+    :root {
+      --primary-color: #0d3b66;
+      --highlight-color: #f4a261;
+      --bg-color: #f0f4f8;
+      --text-color: #1a1a1a;
+      --link-color: #0d3b66;
+      --link-hover-color: #f4a261;
+      --section-bg: #ffffff;
+      --border-radius: 12px;
+      --max-width: 900px;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      color: var(--primary-color);
+      margin-bottom: 0.25em;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--highlight-color);
+      font-weight: 600;
+    }
+
+    nav#toc {
+      background: var(--section-bg);
+      padding: 20px 25px;
+      border-radius: var(--border-radius);
+      max-width: var(--max-width);
+      margin: 0 auto 40px auto;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    nav#toc h2 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    nav#toc ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    nav#toc li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    nav#toc a {
+      text-decoration: none;
+      color: var(--link-color);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav#toc a:hover,
+    nav#toc a:focus {
+      color: var(--link-hover-color);
+      outline: none;
+      text-decoration: underline;
+    }
+
+    section {
+      background: var(--section-bg);
+      max-width: var(--max-width);
+      margin: 0 auto 30px auto;
+      padding: 25px 30px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    }
+
+    section h2 {
+      color: var(--primary-color);
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--highlight-color);
+      padding-bottom: 6px;
+    }
+
+    ul.topic-list {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    ul.topic-list li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    ul.topic-list li a.anchor-link {
+      color: var(--highlight-color);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    ul.topic-list li a.anchor-link:hover,
+    ul.topic-list li a.anchor-link:focus {
+      color: var(--primary-color);
+      outline: none;
+      text-decoration: underline;
+    }
+
+    p.conclusion {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-color);
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    section#references {
+      font-size: 1rem;
+      max-width: var(--max-width);
+      margin: 0 auto 50px auto;
+      padding: 25px 30px;
+      background: var(--section-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    }
+
+    section#references h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--highlight-color);
+      padding-bottom: 6px;
+    }
+
+    section#references ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    section#references ul li {
+      margin-bottom: 10px;
+    }
+
+    section#references ul li a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    section#references ul li a:hover,
+    section#references ul li a:focus {
+      color: var(--link-hover-color);
+      text-decoration: underline;
+      outline: none;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 15px 15px 40px 15px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section, nav#toc, section#references {
+        padding: 18px 20px;
+      }
+
+      section h2, nav#toc h2, section#references h2 {
+        font-size: 1.5rem;
+      }
+
+      ul.topic-list li {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="color: whit;">Topics to Learn in C Programming</h1>
+    <p>A complete beginner to advanced roadmap</p>
+  </header>
+
+  <nav id="toc" aria-label="Table of Contents">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#beginner" class="toc-link">Beginner Level</a></li>
+      <li><a href="#intermediate" class="toc-link">Intermediate Level</a></li>
+      <li><a href="#advanced" class="toc-link">Advanced Level</a></li>
+      <li><a href="#conclusion" class="toc-link">Conclusion</a></li>
+      <li><a href="#references" class="toc-link">References</a></li>
+    </ul>
+  </nav>
+
+  <section id="beginner">
+    <h2><a name="beginner"></a>Beginner Level</h2>
+    <ul class="topic-list">
+      <li><a href="#introduction" class="anchor-link">Introduction to C</a></li>
+      <li><a href="#structure" class="anchor-link">Structure of a C Program</a></li>
+      <li><a href="#header-files" class="anchor-link">Header Files and Preprocessor Directives</a></li>
+      <li><a href="#input-output" class="anchor-link">Input and Output (printf and scanf)</a></li>
+      <li><a href="#variables" class="anchor-link">Variables and Data Types</a></li>
+      <li><a href="#operators" class="anchor-link">Operators (Arithmetic, Relational, Logical, Bitwise)</a></li>
+      <li><a href="#control-structures" class="anchor-link">Control Structures (if, else, switch)</a></li>
+      <li><a href="#loops" class="anchor-link">Loops (for, while, do-while)</a></li>
+    </ul>
+
+    <article id="introduction"><h3><a name="introduction"></a>Introduction to C</h3>
+      <p>C is a powerful general-purpose programming language developed by Dennis Ritchie in 1972. It is widely used for system programming, embedded systems, and application development.</p>
+    </article>
+
+    <article id="structure"><h3><a name="structure"></a>Structure of a C Program</h3>
+      <p>A basic C program consists of functions, declarations, statements, and preprocessor directives. The <code>main()</code> function is the entry point of every C program.</p>
+    </article>
+
+    <article id="header-files"><h3><a name="header-files"></a>Header Files and Preprocessor Directives</h3>
+      <p>Header files contain declarations for functions and macros. Preprocessor directives like <code>#include</code> tell the compiler which files to include before compiling.</p>
+    </article>
+
+    <article id="input-output"><h3><a name="input-output"></a>Input and Output (printf and scanf)</h3>
+      <p>The <code>printf()</code> function outputs data to the screen, while <code>scanf()</code> reads input from the user.</p>
+    </article>
+
+    <article id="variables"><h3><a name="variables"></a>Variables and Data Types</h3>
+      <p>Variables store data, and data types specify the kind of data (like int, float, char) a variable can hold.</p>
+    </article>
+
+    <article id="operators"><h3><a name="operators"></a>Operators (Arithmetic, Relational, Logical, Bitwise)</h3>
+      <p>Operators perform operations on variables and values. Examples include addition (<code>+</code>), comparison (<code>==</code>), and logical operations (<code>&&</code>).</p>
+    </article>
+
+    <article id="control-structures"><h3><a name="control-structures"></a>Control Structures (if, else, switch)</h3>
+      <p>Control structures manage the flow of a program by making decisions using conditions.</p>
+    </article>
+
+    <article id="loops"><h3><a name="loops"></a>Loops (for, while, do-while)</h3>
+      <p>Loops repeat a block of code multiple times based on a condition.</p>
+    </article>
+  </section>
+
+  <section id="intermediate">
+    <h2><a name="intermediate"></a>Intermediate Level</h2>
+    <ul class="topic-list">
+      <li><a href="#functions" class="anchor-link">Functions and Recursion</a></li>
+      <li><a href="#arrays" class="anchor-link">Arrays and Strings</a></li>
+      <li><a href="#pointers" class="anchor-link">Pointers</a></li>
+      <li><a href="#structures" class="anchor-link">Structures and Unions</a></li>
+      <li><a href="#file-io" class="anchor-link">File Input/Output</a></li>
+      <li><a href="#dynamic-memory" class="anchor-link">Dynamic Memory Allocation</a></li>
+    </ul>
+
+    <article id="functions"><h3><a name="functions"></a>Functions and Recursion</h3>
+      <p>Functions help to modularize code. Recursion is when a function calls itself to solve a problem.</p>
+    </article>
+
+    <article id="arrays"><h3><a name="arrays"></a>Arrays and Strings</h3>
+      <p>Arrays hold multiple values of the same type. Strings are arrays of characters ending with a null character.</p>
+    </article>
+
+    <article id="pointers"><h3><a name="pointers"></a>Pointers</h3>
+      <p>Pointers store memory addresses and are used for dynamic memory management and efficient array handling.</p>
+    </article>
+
+    <article id="structures"><h3><a name="structures"></a>Structures and Unions</h3>
+      <p>Structures group different variables under one name. Unions allow storing different data types in the same memory location.</p>
+    </article>
+
+    <article id="file-io"><h3><a name="file-io"></a>File Input/Output</h3>
+      <p>File I/O allows reading from and writing to files stored on disk.</p>
+    </article>
+
+    <article id="dynamic-memory"><h3><a name="dynamic-memory"></a>Dynamic Memory Allocation</h3>
+      <p>Dynamic memory allocation lets you allocate memory during runtime using functions like <code>malloc()</code> and <code>free()</code>.</p>
+    </article>
+  </section>
+
+  <section id="advanced">
+    <h2><a name="advanced"></a>Advanced Level</h2>
+    <ul class="topic-list">
+      <li><a href="#bitwise" class="anchor-link">Advanced Bitwise Operations</a></li>
+      <li><a href="#macros" class="anchor-link">Macros and Conditional Compilation</a></li>
+      <li><a href="#multi-threading" class="anchor-link">Multi-threading (POSIX Threads)</a></li>
+      <li><a href="#networking" class="anchor-link">Networking Basics</a></li>
+      <li><a href="#data-structures" class="anchor-link">Data Structures (Linked Lists, Trees)</a></li>
+      <li><a href="#debugging" class="anchor-link">Debugging and Optimization</a></li>
+    </ul>
+
+    <article id="bitwise"><h3><a name="bitwise"></a>Advanced Bitwise Operations</h3>
+      <p>Learn about shifting bits, masking, and manipulating individual bits for optimization.</p>
+    </article>
+
+    <article id="macros"><h3><a name="macros"></a>Macros and Conditional Compilation</h3>
+      <p>Macros are code replacements done by the preprocessor. Conditional compilation allows compiling code selectively.</p>
+    </article>
+
+    <article id="multi-threading"><h3><a name="multi-threading"></a>Multi-threading (POSIX Threads)</h3>
+      <p>Multi-threading lets you run multiple threads concurrently, improving performance.</p>
+    </article>
+
+    <article id="networking"><h3><a name="networking"></a>Networking Basics</h3>
+      <p>Understand socket programming and communication between devices over networks.</p>
+    </article>
+
+    <article id="data-structures"><h3><a name="data-structures"></a>Data Structures (Linked Lists, Trees)</h3>
+      <p>Implement and manipulate common data structures like linked lists and trees in C.</p>
+    </article>
+
+    <article id="debugging"><h3><a name="debugging"></a>Debugging and Optimization</h3>
+      <p>Learn how to debug programs effectively and optimize code for better performance.</p>
+    </article>
+  </section>
+
+  <section id="conclusion">
+    <h2><a name="conclusion"></a>Conclusion</h2>
+    <p class="conclusion">
+      Learning C programming step-by-step from beginner to advanced topics prepares you well for systems programming and software development.
+    </p>
+  </section>
+
+  <section id="references" aria-label="References">
+    <h2>References</h2>
+    <ul>
+      <li><a href="https://en.cppreference.com/w/c" target="_blank" rel="noopener noreferrer">cppreference - C Language Reference</a></li>
+      <li><a href="https://www.learn-c.org/" target="_blank" rel="noopener noreferrer">Learn-C.org - Interactive C Tutorial</a></li>
+      <li><a href="https://www.tutorialspoint.com/cprogramming/index.htm" target="_blank" rel="noopener noreferrer">TutorialsPoint - C Programming Tutorial</a></li>
+      <li><a href="https://www.geeksforgeeks.org/c-programming-language/" target="_blank" rel="noopener noreferrer">GeeksforGeeks - C Programming</a></li>
+      <li><a href="https://www.programiz.com/c-programming" target="_blank" rel="noopener noreferrer">Programiz - C Programming</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Your Name or Company
+  </footer>
+</body>
+</html>

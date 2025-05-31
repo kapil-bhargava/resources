@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Java Topics from Beginner to Advanced</title>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px 40px;
+            background: #fdfdfd;
+            color: #222;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #0a74da;
+        }
+
+        nav {
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background: #e6f0ff;
+            border: 1px solid #b3d1ff;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+
+        nav h2 {
+            margin-top: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #0645ad;
+            display: block;
+            margin: 6px 0;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        .subtopics a {
+            font-size: 0.9rem;
+            color: #0366d6;
+            margin-left: 15px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .subtopics a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Complete Java Topics from Beginner to Advanced</h1>
+
+    <nav>
+        <h2>Topics Table of Contents</h2>
+
+        <a href="#intro">Introduction to Java</a>
+
+        <a href="#java-basics">Java Basics</a>
+        <div class="subtopics">
+            <a href="#data-types">Data Types</a>
+            <a href="#variables">Variables</a>
+            <a href="#operators">Operators</a>
+        </div>
+
+        <a href="#control-statements">Control Statements</a>
+        <div class="subtopics">
+            <a href="#if-else">If-Else</a>
+            <a href="#switch">Switch</a>
+            <a href="#loops">Loops (for, while, do-while)</a>
+        </div>
+
+        <a href="#methods-functions">Methods / Functions</a>
+
+        <a href="#oop">Object-Oriented Programming (OOP)</a>
+        <div class="subtopics">
+            <a href="#classes-objects">Classes and Objects</a>
+            <a href="#inheritance">Inheritance</a>
+            <a href="#polymorphism">Polymorphism</a>
+            <a href="#abstraction">Abstraction</a>
+            <a href="#encapsulation">Encapsulation</a>
+        </div>
+
+        <a href="#exceptions">Exception Handling</a>
+
+        <a href="#arrays">Arrays</a>
+
+        <a href="#strings">Strings</a>
+
+        <a href="#collections">Collections Framework</a>
+        <div class="subtopics">
+            <a href="#list">List Interface</a>
+            <a href="#set">Set Interface</a>
+            <a href="#map">Map Interface</a>
+        </div>
+
+        <a href="#file-handling">File Handling</a>
+
+        <a href="#input-output">Input and Output (I/O)</a>
+
+        <a href="#multithreading">Multithreading & Concurrency</a>
+        <div class="subtopics">
+            <a href="#threads">Threads Basics</a>
+            <a href="#synchronization">Synchronization</a>
+        </div>
+
+        <a href="#java-8-features">Java 8 and Later Features</a>
+        <div class="subtopics">
+            <a href="#lambda-expressions">Lambda Expressions</a>
+            <a href="#streams">Streams API</a>
+            <a href="#optional">Optional Class</a>
+        </div>
+
+        <a href="#advanced-topics">Advanced Topics</a>
+        <div class="subtopics">
+            <a href="#generics">Generics</a>
+            <a href="#annotations">Annotations</a>
+            <a href="#reflection">Reflection</a>
+            <a href="#jdbc">JDBC (Database Connectivity)</a>
+            <a href="#design-patterns">Design Patterns</a>
+        </div>
+
+    </nav>
+
+    <section id="intro">
+        <h2>Introduction to Java</h2>
+        <p>Java is a widely used, platform-independent, object-oriented programming language. It is designed to have
+            minimal implementation dependencies, allowing developers to write once and run anywhere (WORA).</p>
+    </section>
+
+    <section id="java-basics">
+        <h2>Java Basics</h2>
+
+        <section id="data-types">
+            <h3>Data Types</h3>
+            <p>Java has two categories of data types: <strong>Primitive</strong> and <strong>Reference</strong>.</p>
+            <ul>
+                <li><strong>Primitive Types:</strong> byte, short, int, long, float, double, char, boolean</li>
+                <li><strong>Reference Types:</strong> Objects, Arrays, Strings</li>
+            </ul>
+        </section>
+
+        <section id="variables">
+            <h3>Variables</h3>
+            <p>Variables are used to store data values. They must be declared with a specific data type before use.</p>
+        </section>
+
+        <section id="operators">
+            <h3>Operators</h3>
+            <p>Operators perform operations on variables and values. Java supports arithmetic, relational, logical,
+                bitwise, assignment, and ternary operators.</p>
+        </section>
+    </section>
+
+    <section id="control-statements">
+        <h2>Control Statements</h2>
+
+        <section id="if-else">
+            <h3>If-Else</h3>
+            <p>Used for conditional branching based on boolean expressions.</p>
+        </section>
+
+        <section id="switch">
+            <h3>Switch</h3>
+            <p>Used for selecting one of many code blocks to execute.</p>
+        </section>
+
+        <section id="loops">
+            <h3>Loops (for, while, do-while)</h3>
+            <p>Loops execute a block of code multiple times until a condition is met.</p>
+        </section>
+    </section>
+
+    <section id="methods-functions">
+        <h2>Methods / Functions</h2>
+        <p>Methods are reusable blocks of code that perform a specific task and can return a value.</p>
+    </section>
+
+    <section id="oop">
+        <h2>Object-Oriented Programming (OOP)</h2>
+
+        <section id="classes-objects">
+            <h3>Classes and Objects</h3>
+            <p>A class is a blueprint for objects. An object is an instance of a class.</p>
+        </section>
+
+        <section id="inheritance">
+            <h3>Inheritance</h3>
+            <p>Inheritance allows one class to inherit the properties and methods of another.</p>
+        </section>
+
+        <section id="polymorphism">
+            <h3>Polymorphism</h3>
+            <p>Allows methods to behave differently based on the object that calls them.</p>
+        </section>
+
+        <section id="abstraction">
+            <h3>Abstraction</h3>
+            <p>Hides complex implementation details and shows only essential features.</p>
+        </section>
+
+        <section id="encapsulation">
+            <h3>Encapsulation</h3>
+            <p>Restricts direct access to some of an object's components and protects object integrity.</p>
+        </section>
+    </section>
+
+    <section id="exceptions">
+        <h2>Exception Handling</h2>
+        <p>Mechanism to handle runtime errors, using <code>try</code>, <code>catch</code>, <code>finally</code>, and
+            <code>throw</code>.</p>
+    </section>
+
+    <section id="arrays">
+        <h2>Arrays</h2>
+        <p>Containers that hold fixed-size collections of elements of the same type.</p>
+    </section>
+
+    <section id="strings">
+        <h2>Strings</h2>
+        <p>Immutable objects representing sequences of characters with many useful methods.</p>
+    </section>
+
+    <section id="collections">
+        <h2>Collections Framework</h2>
+
+        <section id="list">
+            <h3>List Interface</h3>
+            <p>Ordered collections (arrays that can grow) like ArrayList, LinkedList.</p>
+        </section>
+
+        <section id="set">
+            <h3>Set Interface</h3>
+            <p>Collections that do not allow duplicates, e.g., HashSet, TreeSet.</p>
+        </section>
+
+        <section id="map">
+            <h3>Map Interface</h3>
+            <p>Stores key-value pairs, e.g., HashMap, TreeMap.</p>
+        </section>
+    </section>
+
+    <section id="file-handling">
+        <h2>File Handling</h2>
+        <p>Reading and writing files using classes like <code>FileReader</code>, <code>FileWriter</code>, and
+            <code>BufferedReader</code>.</p>
+    </section>
+
+    <section id="input-output">
+        <h2>Input and Output (I/O)</h2>
+        <p>Managing user input and program output using <code>Scanner</code>, <code>System.in</code>,
+            <code>System.out</code>, and streams.</p>
+    </section>
+
+    <section id="multithreading">
+        <h2>Multithreading & Concurrency</h2>
+
+        <section id="threads">
+            <h3>Threads Basics</h3>
+            <p>Creating and running threads using <code>Thread</code> class or <code>Runnable</code> interface.</p>
+        </section>
+
+        <section id="synchronization">
+            <h3>Synchronization</h3>
+            <p>Control access to shared resources to avoid race conditions.</p>
+        </section>
+    </section>
+
+    <section id="java-8-features">
+        <h2>Java 8 and Later Features</h2>
+
+        <section id="lambda-expressions">
+            <h3>Lambda Expressions</h3>
+            <p>Concise way to represent anonymous functions.</p>
+        </section>
+
+        <section id="streams">
+            <h3>Streams API</h3>
+            <p>Functional-style operations on streams of elements, e.g., map, filter, reduce.</p>
+        </section>
+
+        <section id="optional">
+            <h3>Optional Class</h3>
+            <p>Container object to avoid null checks and NullPointerException.</p>
+        </section>
+    </section>
+
+    <section id="advanced-topics">
+        <h2>Advanced Topics</h2>
+
+        <section id="generics">
+            <h3>Generics</h3>
+            <p>Enables classes, interfaces, and methods to operate on typed parameters.</p>
+        </section>
+
+        <section id="annotations">
+            <h3>Annotations</h3>
+            <p>Metadata to provide data about a program that is not part of the program itself.</p>
+        </section>
+
+        <section id="reflection">
+            <h3>Reflection</h3>
+            <p>Allows inspection and modification of runtime behavior of applications.</p>
+        </section>
+
+        <section id="jdbc">
+            <h3>JDBC (Java Database Connectivity)</h3 <p>JDBC is an API in Java that allows Java programs to connect and
+            execute queries with databases. It provides classes and interfaces to interact with databases such as MySQL,
+            Oracle, etc.</p>
+            <ul>
+                <li><strong>Steps in JDBC:</strong></li>
+                <li>1. Load the JDBC Driver</li>
+                <li>2. Establish a Connection</li>
+                <li>3. Create a Statement</li>
+                <li>4. Execute the Query</li>
+                <li>5. Process the Result</li>
+                <li>6. Close the Connection</li>
+            </ul>
+            <p>Common classes include: <code>DriverManager</code>, <code>Connection</code>, <code>Statement</code>,
+                <code>PreparedStatement</code>, <code>ResultSet</code>.</p>
+        </section>
+
+        <section id="design-patterns">
+            <h3>Design Patterns</h3>
+            <p>Reusable solutions to common problems in software design. Common Java design patterns include:</p>
+            <ul>
+                <li><strong>Creational:</strong> Singleton, Factory, Abstract Factory</li>
+                <li><strong>Structural:</strong> Adapter, Decorator, Facade</li>
+                <li><strong>Behavioral:</strong> Observer, Strategy, Iterator</li>
+            </ul>
+        </section>
+    </section>
+
+</body>
+
+</html>

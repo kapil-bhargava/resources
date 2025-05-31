@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS General Sibling Selector (~) — Full Guide</title>
+<style>
+  :root {
+    --background: #f9f9f9;
+    --card-bg: #ffffff;
+    --primary: #333333;
+    --secondary: #555555;
+    --accent: #007acc;
+    --muted: #888888;
+    --border: #dddddd;
+    --light-blue: #eef6fc;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--primary);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    padding: 40px;
+    max-width: 960px;
+    margin: auto;
+  }
+
+  h1 {
+    color: var(--primary);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  h2 {
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+  }
+
+  section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin-bottom: 12px;
+    color: var(--secondary);
+  }
+
+  .example {
+    background-color: var(--background);
+    border-left: 3px solid var(--accent);
+    padding: 10px 15px;
+    margin-top: 12px;
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: var(--primary);
+  }
+
+  code {
+    background-color: #f0f0f0;
+    padding: 2px 5px;
+    border-radius: 4px;
+  }
+
+  .demo-box {
+    background-color: var(--light-blue);
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .highlighted {
+    background-color: #d0ebff;
+    border: 2px solid var(--accent);
+  }
+
+  .note {
+    background: #fff4cc;
+    border-left: 4px solid #ffb800;
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 6px;
+    color: #7a5700;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>CSS General Sibling Selector (~) — In-Depth Guide</h1>
+
+<section>
+  <h2>What is the General Sibling Selector?</h2>
+  <p>The **General Sibling Selector** (<code>~</code>) targets all elements that share the **same parent** and come **after** a specified element, regardless of how many elements are in between.</p>
+
+  <p>It is written as:</p>
+  <div class="example">
+    A ~ B { /* styles */ }
+  </div>
+  <p>This means: Select every <code>B</code> element that is a **sibling** of <code>A</code> and appears **after** <code>A</code> (not before).</p>
+
+  <div class="note"><b>Note:</b> The selected siblings must be under the **same parent** element.</div>
+</section>
+
+<section>
+  <h2>Visual Example</h2>
+  <p>Here is an example layout:</p>
+
+  <div class="demo-box">First box (no selector)</div>
+  <div class="demo-box target">Second box (target element)</div>
+  <div class="demo-box">Third box (selected)</div>
+  <div class="demo-box">Fourth box (selected)</div>
+  <div class="demo-box">Fifth box (selected)</div>
+
+  <div class="example">
+    .target ~ div { background-color: light-blue; border: 2px solid blue; }
+  </div>
+
+  <p>Here, the rule selects all <code>&lt;div&gt;</code>s **after** the one with class <code>target</code>, which are Third, Fourth, Fifth boxes.</p>
+</section>
+
+<section>
+  <h2>Key Characteristics</h2>
+  <ul style="margin-bottom:12px; padding-left:20px; color:var(--secondary)">
+    <li>✅ Selects **all** siblings **after** the first element (not before)</li>
+    <li>✅ Siblings must have the **same parent**</li>
+    <li>✅ Matches **multiple** elements (not just one)</li>
+    <li>❌ Does **not** select elements **before** the specified element</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Full Practical Example with divs</h2>
+
+  <p>Consider the following HTML:</p>
+  <div class="example">
+&lt;div&gt;First&lt;/div&gt;<br>
+&lt;div class="start"&gt;Second (start)&lt;/div&gt;<br>
+&lt;div&gt;Third&lt;/div&gt;<br>
+&lt;div&gt;Fourth&lt;/div&gt;<br>
+&lt;div&gt;Fifth&lt;/div&gt;
+  </div>
+
+  <p>CSS:</p>
+  <div class="example">
+.start ~ div {<br>
+&nbsp;&nbsp;background-color: #cce5ff;<br>
+&nbsp;&nbsp;border: 2px solid #007acc;<br>
+}
+  </div>
+
+  <p>Result:</p>
+  <ul style="margin-bottom:12px; padding-left:20px; color:var(--secondary)">
+    <li><b>First div</b> → Not selected (comes before)</li>
+    <li><b>Second div</b> → Has class <code>start</code> → Not selected (it's the target)</li>
+    <li><b>Third, Fourth, Fifth div</b> → All selected (come after)</li>
+  </ul>
+
+</section>
+
+<section>
+  <h2>Real-World Use Cases</h2>
+  <ul style="margin-bottom:12px; padding-left:20px; color:var(--secondary)">
+    <li><b>Show/hide content:</b> Highlight all related sections after a marker</li>
+    <li><b>FAQs:</b> When clicking a question, highlight all answers after it</li>
+    <li><b>Forms:</b> Style all fields after a validation message</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Comparison with Adjacent Sibling (+)</h2>
+  <p><b>Adjacent Sibling Selector</b> (<code>+</code>) selects **only the immediate next** sibling.</p>
+
+  <div class="example">
+.start + div { /* styles only the very next div */ }
+  </div>
+
+  <p><b>General Sibling Selector</b> (<code>~</code>) selects **all next siblings**.</p>
+
+  <div class="example">
+.start ~ div { /* styles ALL next divs */ }
+  </div>
+
+</section>
+
+<section>
+  <h2>Important Points</h2>
+  <ul style="margin-bottom:12px; padding-left:20px; color:var(--secondary)">
+    <li><b>Same parent rule:</b> Elements must be siblings under the same parent.</li>
+    <li><b>Non-matching tag:</b> You can target specific tags only (like <code>.box ~ p</code>)</li>
+    <li><b>Dynamic interaction:</b> Combine with pseudo-classes (like <code>:hover</code> or <code>:checked</code>) for interaction</li>
+  </ul>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Java Topics Guide</title>
+<style>
+  :root {
+    --bg-light: #f9f9f9;
+    --text-light: #222;
+    --primary-color: #007acc;
+    --code-bg: #eaeaea;
+    --sidebar-bg: #222;
+    --sidebar-text: #eee;
+    --sidebar-link-hover: #66aaff;
+  }
+  html{
+    scroll-behavior: smooth;
+
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    display: flex;
+    min-height: 100vh;
+  }
+  nav {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 20px 15px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  nav h2 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    text-align: center;
+  }
+  nav a {
+    display: block;
+    padding: 8px 10px;
+    margin: 5px 0;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  nav a:hover {
+    background-color: var(--sidebar-link-hover);
+    color: #fff;
+  }
+  main {
+    flex-grow: 1;
+    padding: 25px 40px;
+    max-width: 900px;
+  }
+  h1, h2, h3 {
+    color: var(--primary-color);
+  }
+  pre {
+    background-color: var(--code-bg);
+    padding: 12px 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: Consolas, monospace;
+    font-size: 0.95rem;
+  }
+  code {
+    font-family: Consolas, monospace;
+  }
+  section {
+    margin-bottom: 45px;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+    }
+    nav {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    main {
+      padding: 20px;
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <h2>Java Topics</h2>
+  <a href="#intro">Introduction</a>
+  <a href="#basics">Java Basics</a>
+  <a href="#operators">Operators</a>
+  <a href="#control">Control Statements</a>
+  <a href="#methods">Methods</a>
+  <a href="#classes-objects">Classes & Objects</a>
+  <a href="#inheritance">Inheritance</a>
+  <a href="#polymorphism">Polymorphism</a>
+  <a href="#abstraction">Abstraction</a>
+  <a href="#encapsulation">Encapsulation</a>
+  <a href="#exceptions">Exception Handling</a>
+  <a href="#arrays">Arrays</a>
+  <a href="#strings">Strings</a>
+  <a href="#file-handling">File Handling</a>
+  <a href="#io">Input/Output</a>
+  <a href="#collections">Collections Framework</a>
+  <a href="#threads">Threads (Multithreading)</a>
+</nav>
+
+<main>
+  <h1>Java Programming Language Guide</h1>
+
+  <section id="intro">
+    <h2>Introduction</h2>
+    <p>Java is a popular, class-based, object-oriented programming language designed to have as few implementation dependencies as possible. It is widely used for building cross-platform applications, mobile apps, and enterprise software.</p>
+  </section>
+
+  <section id="basics">
+    <h2>Java Basics</h2>
+    <p><strong>Data Types:</strong> Java supports various data types including primitive types such as <code>int</code>, <code>double</code>, <code>boolean</code>, <code>char</code> and reference types like classes and arrays.</p>
+    <p><strong>Variables:</strong> Variables are containers for storing data values.</p>
+    <pre><code>// Declaring variables
+int age = 25;
+double price = 19.99;
+boolean isJavaFun = true;
+char grade = 'A';
+</code></pre>
+  </section>
+
+  <section id="operators">
+    <h2>Operators</h2>
+    <p>Java provides arithmetic, relational, logical, bitwise, and assignment operators.</p>
+    <pre><code>// Arithmetic operators example
+int sum = 10 + 5; // 15
+int product = 10 * 5; // 50
+
+// Relational operators example
+boolean isEqual = (10 == 5); // false
+
+// Logical operators example
+boolean result = (true && false); // false
+</code></pre>
+  </section>
+
+  <section id="control">
+    <h2>Control Statements</h2>
+    <p>Control flow is managed using conditional statements and loops.</p>
+    <pre><code>// if-else statement
+if(age > 18) {
+  System.out.println("Adult");
+} else {
+  System.out.println("Minor");
+}
+
+// for loop
+for(int i = 0; i &lt; 5; i++) {
+  System.out.println(i);
+}
+</code></pre>
+  </section>
+
+  <section id="methods">
+    <h2>Methods</h2>
+    <p>Methods (functions) contain reusable blocks of code.</p>
+    <pre><code>// Method example
+public int add(int a, int b) {
+  return a + b;
+}
+
+// Calling the method
+int result = add(10, 5);
+System.out.println(result); // 15
+</code></pre>
+  </section>
+
+  <section id="classes-objects">
+    <h2>Classes and Objects</h2>
+    <p>Java is object-oriented. You create classes and instantiate objects from them.</p>
+    <pre><code>// Class definition
+public class Car {
+  String color;
+  int speed;
+
+  void drive() {
+    System.out.println("Driving at " + speed + " km/h");
+  }
+}
+
+// Creating an object
+Car myCar = new Car();
+myCar.color = "Red";
+myCar.speed = 60;
+myCar.drive();
+</code></pre>
+  </section>
+
+  <section id="inheritance">
+    <h2>Inheritance</h2>
+    <p>Inheritance allows one class to inherit fields and methods from another.</p>
+    <pre><code>// Base class
+class Animal {
+  void sound() {
+    System.out.println("Animal sound");
+  }
+}
+
+// Derived class
+class Dog extends Animal {
+  void sound() {
+    System.out.println("Bark");
+  }
+}
+
+Dog d = new Dog();
+d.sound(); // Output: Bark
+</code></pre>
+  </section>
+
+  <section id="polymorphism">
+    <h2>Polymorphism</h2>
+    <p>Polymorphism allows methods to behave differently based on the object that invokes them.</p>
+    <pre><code>
+Animal a = new Dog();
+a.sound(); // Calls Dog's sound method: Bark
+</code></pre>
+  </section>
+
+  <section id="abstraction">
+    <h2>Abstraction</h2>
+    <p>Abstraction hides complexity by exposing only necessary details.</p>
+    <pre><code>
+// Abstract class
+abstract class Shape {
+  abstract void draw();
+}
+
+// Subclass provides implementation
+class Circle extends Shape {
+  void draw() {
+    System.out.println("Drawing Circle");
+  }
+}
+</code></pre>
+  </section>
+
+  <section id="encapsulation">
+    <h2>Encapsulation</h2>
+    <p>Encapsulation restricts direct access to some of an object's components and is achieved using access modifiers.</p>
+    <pre><code>
+public class Person {
+  private String name;
+
+  public String getName() {
+    return name;
+  }
+  public void setName(String newName) {
+    name = newName;
+  }
+}
+</code></pre>
+  </section>
+
+  <section id="exceptions">
+    <h2>Exception Handling</h2>
+    <p>Exceptions are errors that occur during program execution. Use <code>try-catch</code> to handle them.</p>
+    <pre><code>
+try {
+  int result = 10 / 0;
+} catch(ArithmeticException e) {
+  System.out.println("Cannot divide by zero");
+}
+</code></pre>
+  </section>
+
+  <section id="arrays">
+    <h2>Arrays</h2>
+    <p>Arrays store multiple values of the same type in a single variable.</p>
+    <pre><code>
+int[] numbers = {1, 2, 3, 4, 5};
+System.out.println(numbers[0]); // 1
+</code></pre>
+  </section>
+
+  <section id="strings">
+    <h2>Strings</h2>
+    <p>Strings are objects that represent sequences of characters.</p>
+    <pre><code>
+String greeting = "Hello, Java!";
+int length = greeting.length();
+System.out.println(length); // 12
+</code></pre>
+  </section>
+
+  <section id="file-handling">
+    <h2>File Handling</h2>
+    <p>Java can read/write files using classes like <code>FileReader</code> and <code>FileWriter</code>.</p>
+    <pre><code>
+import java.io.FileWriter;
+import java.io.IOException;
+
+try {
+  FileWriter writer = new FileWriter("output.txt");
+  writer.write("Hello, File!");
+  writer.close();
+} catch(IOException e) {
+  e.printStackTrace();
+}
+</code></pre>
+  </section>
+
+  <section id="io">
+    <h2>Input/Output</h2>
+    <p>Use the <code>Scanner</code> class to read user input from the console.</p>
+    <pre><code>
+import java.util.Scanner;
+
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter your name: ");
+String name = sc.nextLine();
+System.out.println("Hello, " + name);
+</code></pre>
+  </section>
+
+  <section id="collections">
+    <h2>Collections Framework</h2>
+    <p>Java Collections provide data structures like List, Set, and Map to store groups of objects.</p>
+    <pre><code>
+import java.util.ArrayList;
+
+ArrayList<String> list = new ArrayList<>();
+list.add("Apple");
+list.add("Banana");
+System.out.println(list.get(0)); // Apple
+</code></pre>
+  </section>
+
+  <section id="threads">
+    <h2>Threads (Multithreading)</h2>
+    <p>Java supports multithreading to perform multiple tasks simultaneously.</p>
+    <pre><code>
+class MyThread extends Thread {
+  public void run() {
+    System.out.println("Thread running");
+  }
+}
+
+MyThread t = new MyThread();
+t.start();
+</code></pre>
+  </section>
+
+</main>
+
+</body>
+</html>

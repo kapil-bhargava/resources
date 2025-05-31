@@ -70,7 +70,7 @@
     </ul>
 
     <b>Example :</b>
-     <pre>
+    <pre>
     <code>
 import React, &#123; useState &#125; from 'react';
 
@@ -89,16 +89,20 @@ function Counter() &#123;
 
     <h2>📋 List of Hooks (Ranked by Importance)</h2>
     <ol>
-        <li>useState</li>
-        <li>useEffect</li>
-        <li>useContext</li>
-        <li>useRef</li>
-        <li>useMemo</li>
-        <li>useCallback</li>
-        <li>useReducer</li>
-        <li>useLayoutEffect</li>
-        <li>useImperativeHandle</li>
-        <li>useDebugValue</li>
+        <li><a href="https://react.dev/reference/react/useState" target="_blank">useState</a></li>
+        <li><a href="https://react.dev/reference/react/useEffect" target="_blank">useEffect</a></li>
+        <li><a href="https://react.dev/reference/react/useContext" target="_blank">useContext</a></li>
+        <li><a href="https://react.dev/reference/react/useRef" target="_blank">useRef</a></li>
+        <li><a href="https://react.dev/reference/react-router-dom/useNavigate" target="_blank">useNavigate</a></li>
+        <li><a href="https://react.dev/reference/react-router-dom/useParams" target="_blank">useParams</a></li>
+        <li><a href="https://react.dev/reference/react-router-dom/useLocation" target="_blank">useLocation</a></li>
+        <li><a href="https://react.dev/reference/react/useMemo" target="_blank">useMemo</a></li>
+        <li><a href="https://react.dev/reference/react/useCallback" target="_blank">useCallback</a></li>
+        <li><a href="https://react.dev/reference/react/useReducer" target="_blank">useReducer</a></li>
+        <li><a href="https://react.dev/reference/react/useLayoutEffect" target="_blank">useLayoutEffect</a></li>
+        <li><a href="https://react.dev/reference/react/useImperativeHandle" target="_blank">useImperativeHandle</a></li>
+        <li><a href="https://react.dev/reference/react/useDebugValue" target="_blank">useDebugValue</a></li>
+
     </ol>
 
     <div class="hook">
@@ -123,7 +127,8 @@ setCount(count + 1);</code></pre>
         <p><strong>Purpose:</strong> To access global values provided by React Context.</p>
         <pre><code>const theme = useContext(ThemeContext);</code></pre>
 
-        <a style="background-color: blue;padding: 5px;color: white; text-decoration: none;" href="useContext.html">Study in detail</a>
+        <a style="background-color: blue;padding: 5px;color: white; text-decoration: none;" href="useContext.html">Study
+            in detail</a>
     </div>
 
     <div class="hook">
@@ -163,7 +168,8 @@ inputRef.current.focus();</code></pre>
     <div class="hook">
         <h2>9️⃣ useImperativeHandle</h2>
         <p><strong>Purpose:</strong> Customize the instance value that is exposed to parent components when using
-            <code>ref</code>.</p>
+            <code>ref</code>.
+        </p>
         <pre><code>useImperativeHandle(ref, () => ({
     customMethod: () => console.log("Exposed")
 }));</code></pre>
