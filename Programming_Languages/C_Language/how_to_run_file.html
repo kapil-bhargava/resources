@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Run C File in VS Code (Step 5 and Beyond)</title>
+  <style>
+    :root {
+      --bg: #fdfdfd;
+      --primary: #005f73;
+      --accent: #0a9396;
+      --text: #333;
+      --code-bg: #eee;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: var(--primary);
+    }
+    h1 {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+    }
+    .step {
+      margin-bottom: 30px;
+    }
+    code, pre {
+      background-color: var(--code-bg);
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: block;
+      overflow-x: auto;
+    }
+    .tip {
+      background: #e0f7fa;
+      border-left: 5px solid var(--accent);
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 Step-by-Step Guide: How to Run a <code>.c</code> File in VS Code</h1>
+
+  <div class="step">
+    <h2>✅ Step 5: Open VS Code and Your C File</h2>
+    <p>Once you've installed <strong>GCC</strong> and set the path correctly:</p>
+    <ol>
+      <li>Open <strong>Visual Studio Code</strong>.</li>
+      <li>Open the folder where your <code>.c</code> file is saved.</li>
+      <li>Click on the file to open it in the editor.</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <h2>🛠️ Step 6: Compile the C File</h2>
+    <p>In the terminal of VS Code, type the following command to compile your file:</p>
+    <pre><code>gcc filename.c -o filename.exe</code></pre>
+    <p>🧠 This tells the computer to take your <code>filename.c</code> and turn it into an executable file.</p>
+  </div>
+
+  <div class="step">
+    <h2>▶️ Step 7: Run the C Program</h2>
+    <p>Now that you've created the <code>.exe</code> file, run it with this command:</p>
+    <pre><code>./filename.exe</code></pre>
+    <p>🎉 You should now see the output of your program!</p>
+  </div>
+
+  <div class="step">
+    <h2>🔁 Step 8: What to Do When You Change Code</h2>
+    <p>If you make changes to your <code>.c</code> file, you need to:</p>
+    <ol>
+      <li>Compile it again:</li>
+      <pre><code>gcc filename.c -o filename.exe</code></pre>
+      <li>Then run it again:</li>
+      <pre><code>./filename.exe</code></pre>
+    </ol>
+
+    <div class="tip">
+      💡 <strong>TIP:</strong> If you want to run both commands at once, use:
+      <pre><code>gcc filename.c -o filename.exe && ./filename.exe</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <h2>🎓 Bonus: Use Shortcut Extension (Optional)</h2>
+    <p>If you want to run C code quickly with a shortcut:</p>
+    <ol>
+      <li>Install the extension called <strong>C/C++ Compile Run</strong>.</li>
+      <li>Click the <strong>Run</strong> button or press <code>Ctrl+Alt+N</code>.</li>
+    </ol>
+    <div class="tip">
+      ⚠️ This still requires GCC to be installed properly.
+    </div>
+  </div>
+</body>
+</html>
