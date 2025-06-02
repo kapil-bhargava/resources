@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Types in C - Explained</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 20px;
+      padding: 20px;
+      color: #222;
+      line-height: 1.7;
+    }
+    h1, h2, h3 {
+      color: #0056b3;
+    }
+    h1 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+    code {
+      /* background: #eee; */
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #dcdcdc;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #aaa;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #0056b3;
+      color: white;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Data Types in C - Complete Guide</h1>
+
+  <section>
+    <h2>🧠 What Are Data Types in C?</h2>
+    <p><strong>Data types</strong> tell the compiler <em>what kind of data</em> a variable will store — like numbers, characters, or decimals.</p>
+    <p>Think of data types as different boxes 📦 to store different kinds of items: numbers, letters, decimals, etc.</p>
+  </section>
+
+  <section>
+    <h2>🧱 Main Categories of Data Types</h2>
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>Meaning</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td><code>int</code></td>
+        <td>Integer (whole numbers)</td>
+        <td><code>5</code>, <code>-10</code></td>
+      </tr>
+      <tr>
+        <td><code>float</code></td>
+        <td>Decimal numbers</td>
+        <td><code>3.14</code>, <code>-0.5</code></td>
+      </tr>
+      <tr>
+        <td><code>double</code></td>
+        <td>More precise decimal</td>
+        <td><code>3.14159265</code></td>
+      </tr>
+      <tr>
+        <td><code>char</code></td>
+        <td>Single character</td>
+        <td><code>'A'</code>, <code>'z'</code></td>
+      </tr>
+      <tr>
+        <td><code>void</code></td>
+        <td>No value</td>
+        <td>Used in functions</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>1️⃣ int (Integer)</h2>
+    <p>Used to store whole numbers.</p>
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age = 20;
+    printf("Age: %d\n", age);
+    return 0;
+}</code></pre>
+    <p><strong>%d</strong> is used for printing integer values.</p>
+  </section>
+
+  <section>
+    <h2>2️⃣ float (Decimal)</h2>
+    <p>Used for decimal numbers with ~6 digits of precision.</p>
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float pi = 3.14;
+    printf("Value of pi: %.2f\n", pi);
+    return 0;
+}</code></pre>
+    <p><strong>%.2f</strong> prints float with 2 decimal places.</p>
+  </section>
+
+  <section>
+    <h2>3️⃣ double (More precise decimal)</h2>
+    <p>Used for more accurate decimals than float.</p>
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    double price = 99.999999;
+    printf("Price: %.6lf\n", price);
+    return 0;
+}</code></pre>
+    <p><strong>%.6lf</strong> is used for printing double values.</p>
+  </section>
+
+  <section>
+    <h2>4️⃣ char (Character)</h2>
+    <p>Used to store a single character.</p>
+    <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    char grade = 'A';
+    printf("Your grade is: %c\n", grade);
+    return 0;
+}</code></pre>
+    <p><strong>%c</strong> is used to print characters.</p>
+  </section>
+
+  <section>
+    <h2>5️⃣ void (No value)</h2>
+    <p>Used in functions that don’t return anything.</p>
+    <pre><code>#include &lt;stdio.h&gt;
+
+void sayHello() {
+    printf("Hello, World!\n");
+}
+
+int main() {
+    sayHello();
+    return 0;
+}</code></pre>
+    <p><strong>void</strong> means the function doesn’t give anything back.</p>
+  </section>
+
+  <section>
+    <h2>🧮 Summary Table</h2>
+    <table>
+      <tr>
+        <th>Data Type</th>
+        <th>Format Specifier</th>
+        <th>Size (bytes)</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td><code>int</code></td>
+        <td>%d</td>
+        <td>4</td>
+        <td><code>42</code></td>
+      </tr>
+      <tr>
+        <td><code>float</code></td>
+        <td>%f</td>
+        <td>4</td>
+        <td><code>3.14</code></td>
+      </tr>
+      <tr>
+        <td><code>double</code></td>
+        <td>%lf</td>
+        <td>8</td>
+        <td><code>3.141592</code></td>
+      </tr>
+      <tr>
+        <td><code>char</code></td>
+        <td>%c</td>
+        <td>1</td>
+        <td><code>'A'</code></td>
+      </tr>
+      <tr>
+        <td><code>void</code></td>
+        <td>-</td>
+        <td>0</td>
+        <td>(no value)</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>✅ Final Tips</h2>
+    <ul>
+      <li>Use <strong>int</strong> for counting, marks, age, etc.</li>
+      <li>Use <strong>float</strong> or <strong>double</strong> when dealing with decimals and precision.</li>
+      <li>Use <strong>char</strong> for single letters or symbols.</li>
+      <li><strong>void</strong> is mostly used in functions with no return value.</li>
+    </ul>
+  </section>
+
+</body>
+</html>
