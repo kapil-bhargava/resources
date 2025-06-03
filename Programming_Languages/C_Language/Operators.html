@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>C Operators</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 30px;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2a7ae2;
+    }
+    h2 {
+      margin-top: 30px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    pre {
+      background-color: #eef4ff;
+      padding: 15px;
+      border-left: 4px solid #2a7ae2;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 8px 12px;
+      text-align: left;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      font-size: 0.95rem;
+    }
+    footer a {
+      color: #2a7ae2;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>C Operators</h1>
+  <p>Operators are symbols that perform operations on variables and values. Let's explore the main types:</p>
+
+  <h2>1. Arithmetic Operators</h2>
+  <p>Used for basic mathematical operations.</p>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th></tr>
+    <tr><td>+</td><td>Addition</td><td>a + b</td></tr>
+    <tr><td>-</td><td>Subtraction</td><td>a - b</td></tr>
+    <tr><td>*</td><td>Multiplication</td><td>a * b</td></tr>
+    <tr><td>/</td><td>Division</td><td>a / b</td></tr>
+    <tr><td>%</td><td>Modulus (remainder)</td><td>a % b</td></tr>
+  </table>
+  <pre><code>int a = 10, b = 3;
+printf("%d", a + b);  // Output: 13</code></pre>
+
+  <h2>2. Relational Operators</h2>
+  <p>Used to compare two values. Returns 1 if true, 0 if false.</p>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th></tr>
+    <tr><td>==</td><td>Equal to</td><td>a == b</td></tr>
+    <tr><td>!=</td><td>Not equal to</td><td>a != b</td></tr>
+    <tr><td>&gt;</td><td>Greater than</td><td>a &gt; b</td></tr>
+    <tr><td>&lt;</td><td>Less than</td><td>a &lt; b</td></tr>
+    <tr><td>&gt;=</td><td>Greater than or equal to</td><td>a &gt;= b</td></tr>
+    <tr><td>&lt;=</td><td>Less than or equal to</td><td>a &lt;= b</td></tr>
+  </table>
+  <pre><code>int a = 5, b = 10;
+printf("%d", a < b);  // Output: 1 (true)</code></pre>
+
+  <h2>3. Logical Operators</h2>
+  <p>Used to combine conditional expressions.</p>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th></tr>
+    <tr><td>&&</td><td>Logical AND</td><td>(a &gt; 0) && (b &gt; 0)</td></tr>
+    <tr><td>||</td><td>Logical OR</td><td>(a &gt; 0) || (b &gt; 0)</td></tr>
+    <tr><td>!</td><td>Logical NOT</td><td>!(a &gt; 0)</td></tr>
+  </table>
+  <pre><code>int a = 5, b = -1;
+printf("%d", (a > 0) && (b > 0));  // Output: 0 (false)</code></pre>
+
+  <h2>4. Bitwise Operators</h2>
+  <p>Used to perform operations on bits.</p>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th></tr>
+    <tr><td>&</td><td>Bitwise AND</td><td>a & b</td></tr>
+    <tr><td>|</td><td>Bitwise OR</td><td>a | b</td></tr>
+    <tr><td>^</td><td>Bitwise XOR</td><td>a ^ b</td></tr>
+    <tr><td>~</td><td>Bitwise NOT</td><td>~a</td></tr>
+    <tr><td>&lt;&lt;</td><td>Left Shift</td><td>a &lt;&lt; 2</td></tr>
+    <tr><td>&gt;&gt;</td><td>Right Shift</td><td>a &gt;&gt; 2</td></tr>
+  </table>
+  <pre><code>int a = 5, b = 3;
+printf("%d", a & b);  // Output: 1 (0101 & 0011 = 0001)</code></pre>
+
+  <footer>
+    <h3>References</h3>
+    <ul>
+      <li><a href="https://www.geeksforgeeks.org/operators-in-c/" target="_blank">GeeksforGeeks - Operators in C</a></li>
+      <li><a href="https://www.programiz.com/c-programming/c-operators" target="_blank">Programiz - C Operators</a></li>
+      <li><a href="https://en.cppreference.com/w/c/language/operator_arithmetic" target="_blank">cppreference - C Operator Reference</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

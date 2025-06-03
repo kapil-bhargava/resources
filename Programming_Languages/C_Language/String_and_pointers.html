@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Advanced C Topics Overview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+      padding: 30px 50px;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+    h1 {
+      text-align: center;
+      color: #005a9c;
+    }
+    h2 {
+      color: #0077cc;
+    }
+    a {
+      text-decoration: none;
+      color: #0055aa;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-left: 5px solid #007acc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #c7254e;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Advanced C Programming Topics</h1>
+
+  <section id="strings">
+    <a href="#"><h2>1. Strings in C</h2></a>
+    <p>Strings in C are arrays of characters ending with a null character <code>'\0'</code>. You can declare and use strings with <code>char</code> arrays.</p>
+    <pre><code>char name[20] = "John";
+printf("Hello %s", name);</code></pre>
+    <p>Use <code>&lt;string.h&gt;</code> for string functions like <code>strlen()</code>, <code>strcpy()</code>, etc.</p>
+  </section>
+
+  <section id="pointers">
+    <a href="#"><h2>2. Pointers</h2></a>
+    <p>Pointers are variables that store memory addresses. They are powerful and allow dynamic memory and function manipulation.</p>
+    <pre><code>int num = 10;
+int *ptr = &num;
+printf("Value: %d", *ptr);</code></pre>
+    <p><code>*</code> is the dereference operator, and <code>&</code> is the address-of operator.</p>
+  </section>
+
+  <section id="structures">
+    <a href="#"><h2>3. Structures in C</h2></a>
+    <p>Structures group multiple variables of different types into one unit.</p>
+    <pre><code>struct Student {
+  int id;
+  char name[50];
+};
+
+struct Student s1 = {1, "Alice"};
+printf("ID: %d, Name: %s", s1.id, s1.name);</code></pre>
+    <p>Useful for representing real-world entities like students, books, etc.</p>
+  </section>
+
+  <section id="file-handling">
+    <a href="#"><h2>4. File Handling in C</h2></a>
+    <p>File handling allows you to read from and write to files. Use <code>&lt;stdio.h&gt;</code> functions like <code>fopen()</code>, <code>fprintf()</code>, <code>fscanf()</code>, and <code>fclose()</code>.</p>
+    <pre><code>FILE *fptr;
+fptr = fopen("data.txt", "w");
+fprintf(fptr, "Hello, file!");
+fclose(fptr);</code></pre>
+    <p>Modes: <code>"r"</code> (read), <code>"w"</code> (write), <code>"a"</code> (append), etc.</p>
+  </section>
+
+</body>
+</html>

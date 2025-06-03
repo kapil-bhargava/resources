@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loops in C - Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    h2 {
+      margin-top: 30px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    pre {
+      background-color: #e8f0fe;
+      border-left: 4px solid #2c3e50;
+      padding: 15px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+      color: #1e293b;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+    }
+    footer a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Loops in C Programming</h1>
+  <p>Loops are used in C to execute a block of code repeatedly. C supports three main types of loops:</p>
+  <ul>
+    <li><strong>for loop</strong></li>
+    <li><strong>while loop</strong></li>
+    <li><strong>do-while loop</strong></li>
+  </ul>
+
+  <h2>1. for Loop</h2>
+  <p>The <strong>for loop</strong> is best used when the number of iterations is known. It has three parts: initialization, condition, and increment/decrement.</p>
+  <pre><code>for (int i = 1; i <= 5; i++) {
+  printf("Value of i is: %d\n", i);
+}</code></pre>
+  <p><strong>Explanation:</strong></p>
+  <ul>
+    <li><code>int i = 1</code> → Initialize counter</li>
+    <li><code>i <= 5</code> → Loop continues as long as condition is true</li>
+    <li><code>i++</code> → Increment counter</li>
+  </ul>
+
+  <h2>2. while Loop</h2>
+  <p>The <strong>while loop</strong> is used when the number of iterations is not known in advance. It checks the condition before each iteration.</p>
+  <pre><code>int i = 1;
+while (i <= 5) {
+  printf("Value of i: %d\n", i);
+  i++;
+}</code></pre>
+  <p><strong>Note:</strong> If the condition is false at the beginning, the loop body won’t execute at all.</p>
+
+  <h2>3. do-while Loop</h2>
+  <p>The <strong>do-while loop</strong> is similar to the while loop, but it checks the condition <em>after</em> executing the loop body at least once.</p>
+  <pre><code>int i = 1;
+do {
+  printf("Value of i: %d\n", i);
+  i++;
+} while (i <= 5);</code></pre>
+  <p><strong>Note:</strong> The loop body will always run once, even if the condition is false.</p>
+
+  <h2>Comparison Table</h2>
+  <table border="1" cellpadding="10" style="border-collapse: collapse;">
+    <tr>
+      <th>Loop Type</th>
+      <th>Condition Checked</th>
+      <th>Use Case</th>
+    </tr>
+    <tr>
+      <td>for</td>
+      <td>Before the loop starts</td>
+      <td>Known number of iterations</td>
+    </tr>
+    <tr>
+      <td>while</td>
+      <td>Before each iteration</td>
+      <td>Unknown iterations (user input, file reading)</td>
+    </tr>
+    <tr>
+      <td>do-while</td>
+      <td>After the loop body</td>
+      <td>At least one iteration is required</td>
+    </tr>
+  </table>
+
+  <footer>
+    <h3>References</h3>
+    <ul>
+      <li><a href="https://www.programiz.com/c-programming/c-for-loop" target="_blank">Programiz - for loop</a></li>
+      <li><a href="https://www.geeksforgeeks.org/loops-in-c-and-cpp/" target="_blank">GeeksforGeeks - Loops in C</a></li>
+      <li><a href="https://www.tutorialspoint.com/cprogramming/c_loops.htm" target="_blank">TutorialsPoint - C Loops</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

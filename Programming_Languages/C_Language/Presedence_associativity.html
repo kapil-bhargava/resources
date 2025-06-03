@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Operator Precedence and Associativity in C</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 30px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #005f99;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-left: 4px solid #005f99;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #aaa;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #ddeeff;
+    }
+    section {
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Operator Precedence and Associativity in C</h1>
+
+  <section>
+    <h2>What is Operator Precedence?</h2>
+    <p>
+      Operator precedence determines the **order** in which different operators in an expression are evaluated. For example:
+    </p>
+    <pre><code>int result = 10 + 5 * 2;</code></pre>
+    <p>Even though <code>+</code> comes before <code>*</code>, the multiplication happens first because <code>*</code> has higher precedence than <code>+</code>.</p>
+  </section>
+
+  <section>
+    <h2>What is Associativity?</h2>
+    <p>
+      Associativity defines the **direction** (left-to-right or right-to-left) in which operators of the same precedence are evaluated.
+    </p>
+    <p>For example, in the expression:</p>
+    <pre><code>int x = 10 - 5 - 2;</code></pre>
+    <p>The subtraction is done left to right: <code>(10 - 5) - 2 = 3</code>.</p>
+  </section>
+
+  <section>
+    <h2>Table of Precedence and Associativity</h2>
+    <p>Here’s a simplified table of C operators, ordered by precedence (highest at top):</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Precedence Level</th>
+          <th>Operator</th>
+          <th>Description</th>
+          <th>Associativity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>() [] . -></td>
+          <td>Function call, array, member access</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>++ -- + - ! ~ (type) * & sizeof</td>
+          <td>Unary operators</td>
+          <td>Right to Left</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>* / %</td>
+          <td>Multiplication, division, modulus</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>+ -</td>
+          <td>Addition, subtraction</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>&lt;&lt; &gt;&gt;</td>
+          <td>Bitwise shift operators</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>&lt; &lt;= &gt; &gt;=</td>
+          <td>Relational operators</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>== !=</td>
+          <td>Equality operators</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>&</td>
+          <td>Bitwise AND</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>^</td>
+          <td>Bitwise XOR</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>|</td>
+          <td>Bitwise OR</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>&&</td>
+          <td>Logical AND</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>||</td>
+          <td>Logical OR</td>
+          <td>Left to Right</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>?:</td>
+          <td>Conditional (Ternary)</td>
+          <td>Right to Left</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>= += -= *= /= etc.</td>
+          <td>Assignment operators</td>
+          <td>Right to Left</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>,</td>
+          <td>Comma operator</td>
+          <td>Left to Right</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Example with Precedence</h2>
+    <pre><code>int result = 10 + 20 * 3;</code></pre>
+    <p><strong>Explanation:</strong></p>
+    <ul>
+      <li>Multiplication <code>20 * 3</code> happens first → 60</li>
+      <li>Then addition <code>10 + 60</code> → <strong>70</strong></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Example with Associativity</h2>
+    <pre><code>int x = 100 / 10 * 2;</code></pre>
+    <p><strong>Explanation:</strong> Both <code>/</code> and <code>*</code> have same precedence and left-to-right associativity:</p>
+    <ul>
+      <li><code>100 / 10</code> → 10</li>
+      <li><code>10 * 2</code> → <strong>20</strong></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Why This is Important</h2>
+    <p>
+      Understanding precedence and associativity helps you write correct expressions and avoid logical errors.
+    </p>
+    <p>
+      Use <code>()</code> parentheses when in doubt to ensure the desired order of operations.
+    </p>
+    <pre><code>int x = (10 + 5) * 3; // Ensures addition happens first</code></pre>
+  </section>
+
+</body>
+</html>

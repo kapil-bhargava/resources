@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Input and Output in C (printf & scanf)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fc;
+      color: #333;
+      line-height: 1.7;
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #1e6eb9;
+      margin-top: 30px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    pre {
+      background-color: #e0eafc;
+      padding: 15px;
+      border-left: 5px solid #3498db;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #d6336c;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+    }
+    footer a {
+      color: #1e6eb9;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Input and Output in C</h1>
+
+  <h2>1. What is <code>printf()</code>?</h2>
+  <p><code>printf()</code> is used to display (print) output on the screen. It's a standard output function provided by the C Standard Library.</p>
+
+  <h3>Example:</h3>
+  <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}</code></pre>
+
+  <p><strong>Output:</strong> Hello, World!</p>
+
+  <h2>2. What is <code>scanf()</code>?</h2>
+  <p><code>scanf()</code> is used to take input from the user. It stores the value entered by the user in the variable.</p>
+
+  <h3>Example:</h3>
+  <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    printf("Enter your age: ");
+    scanf("%d", &age);  // &age stores the input in the variable age
+    printf("You are %d years old.", age);
+    return 0;
+}</code></pre>
+
+  <p><strong>Input:</strong> 21 <br>
+     <strong>Output:</strong> You are 21 years old.</p>
+
+  <h2>3. Format Specifiers</h2>
+  <p>Format specifiers tell the compiler the type of data:</p>
+  <ul>
+    <li><code>%d</code> – Integer</li>
+    <li><code>%f</code> – Float</li>
+    <li><code>%c</code> – Character</li>
+    <li><code>%s</code> – String</li>
+  </ul>
+
+  <h2>4. Example Using Multiple Inputs</h2>
+  <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int roll;
+    float marks;
+    char grade;
+
+    printf("Enter Roll Number: ");
+    scanf("%d", &roll);
+
+    printf("Enter Marks: ");
+    scanf("%f", &marks);
+
+    printf("Enter Grade: ");
+    scanf(" %c", &grade); // Note the space before %c
+
+    printf("Roll: %d\nMarks: %.2f\nGrade: %c", roll, marks, grade);
+    return 0;
+}</code></pre>
+
+  <h2>5. Why Use <code>&</code> in <code>scanf()</code>?</h2>
+  <p>The <code>&</code> (address-of) operator gives the memory address of the variable so that <code>scanf()</code> can store the input value there.</p>
+
+  <footer>
+    <h3>References</h3>
+    <ul>
+      <li><a href="https://www.geeksforgeeks.org/printf-and-scanf-in-c/" target="_blank" rel="noopener noreferrer">GeeksforGeeks - printf() and scanf() in C</a></li>
+      <li><a href="https://www.cprogramming.com/tutorial/c/lesson2.html" target="_blank" rel="noopener noreferrer">CProgramming.com - Input/Output</a></li>
+      <li><a href="https://en.cppreference.com/w/c/io/fprintf" target="_blank" rel="noopener noreferrer">cppreference.com - printf()</a></li>
+      <li><a href="https://en.cppreference.com/w/c/io/fscanf" target="_blank" rel="noopener noreferrer">cppreference.com - scanf()</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

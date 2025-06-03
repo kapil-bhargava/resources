@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>C Control Structures</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      padding: 30px;
+      color: #333;
+    }
+    h1, h2 {
+      color: #0056b3;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    pre {
+      background-color: #eef5ff;
+      padding: 15px;
+      border-left: 4px solid #0056b3;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+    }
+    footer a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Control Structures in C</h1>
+  <a target="_blank" href="loops.html">Learn in Details</a>
+  <p>Control structures allow you to control the flow of a program. They help your program make decisions and execute blocks of code based on conditions.</p>
+
+  <h2>1. if Statement</h2>
+  <p>The <strong>if</strong> statement executes a block of code if a specified condition is true.</p>
+  <pre><code>int age = 18;
+if (age >= 18) {
+  printf("You are an adult.");
+}</code></pre>
+
+  <h2>2. if-else Statement</h2>
+  <p>Executes one block if the condition is true, and another block if it is false.</p>
+  <pre><code>int age = 16;
+if (age >= 18) {
+  printf("Adult");
+} else {
+  printf("Not an adult");
+}</code></pre>
+
+  <h2>3. if-else if-else Ladder</h2>
+  <p>Allows checking multiple conditions one after another.</p>
+  <pre><code>int marks = 75;
+if (marks >= 90) {
+  printf("Grade A");
+} else if (marks >= 75) {
+  printf("Grade B");
+} else {
+  printf("Grade C");
+}</code></pre>
+
+  <h2>4. Nested if</h2>
+  <p>An <code>if</code> statement inside another <code>if</code> statement.</p>
+  <pre><code>int age = 20;
+int hasID = 1;
+if (age >= 18) {
+  if (hasID) {
+    printf("Allowed to enter");
+  }
+}</code></pre>
+
+  <h2>5. switch Statement</h2>
+  <p>The <strong>switch</strong> statement is used to execute one block of code based on the value of a variable.</p>
+  <pre><code>int day = 3;
+switch (day) {
+  case 1:
+    printf("Monday");
+    break;
+  case 2:
+    printf("Tuesday");
+    break;
+  case 3:
+    printf("Wednesday");
+    break;
+  default:
+    printf("Invalid day");
+}</code></pre>
+
+  <p><strong>Note:</strong> Always use <code>break;</code> after each case to stop fall-through.</p>
+
+  <footer>
+    <h3>References</h3>
+    <ul>
+      <li><a href="https://www.programiz.com/c-programming/c-if-else" target="_blank">Programiz - if, else</a></li>
+      <li><a href="https://www.geeksforgeeks.org/decision-making-c-cpp/" target="_blank">GFG - Control Structures</a></li>
+      <li><a href="https://www.tutorialspoint.com/cprogramming/c_decision_making.htm" target="_blank">TutorialsPoint - C Decision Making</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

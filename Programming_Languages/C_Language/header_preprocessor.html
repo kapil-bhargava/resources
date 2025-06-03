@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Header Files and Preprocessor Directives in C</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      padding: 30px 50px;
+      color: #222;
+    }
+    h1 {
+      text-align: center;
+      color: #0066cc;
+    }
+    h2 {
+      color: #007acc;
+      margin-top: 30px;
+    }
+    p {
+      margin: 10px 0;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    pre {
+      background-color: #eaeaea;
+      padding: 12px;
+      border-left: 4px solid #007acc;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      color: #c7254e;
+    }
+    a {
+      color: #0066cc;
+    }
+    .reference {
+      margin-top: 40px;
+      padding: 15px;
+      background-color: #d9edf7;
+      border-left: 5px solid #31708f;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Header Files & Preprocessor Directives in C</h1>
+
+  <h2>1. What are Header Files?</h2>
+  <p>
+    Header files in C contain declarations of functions and macros. They allow you to reuse code and organize functions logically.
+    They typically have a <code>.h</code> extension and are included using the <code>#include</code> directive.
+  </p>
+
+  <h2>2. Types of Header Files</h2>
+  <ul>
+    <li><strong>Standard Header Files</strong> – Provided by the C library.<br />
+      Example: <code>#include &lt;stdio.h&gt;</code>, <code>#include &lt;math.h&gt;</code></li>
+    <li><strong>User-defined Header Files</strong> – Created by the programmer.<br />
+      Example: <code>#include "myheader.h"</code></li>
+  </ul>
+
+  <h2>3. What are Preprocessor Directives?</h2>
+  <p>
+    Preprocessor directives are commands that begin with <code>#</code> and are processed before the compilation starts.
+    They are used to include files, define macros, and conditionally compile code.
+  </p>
+
+  <h2>4. Common Preprocessor Directives</h2>
+  <ul>
+    <li><code>#include</code> – Includes a header file.</li>
+    <li><code>#define</code> – Defines a macro or constant.</li>
+    <li><code>#undef</code> – Undefines a macro.</li>
+    <li><code>#ifdef / #ifndef</code> – Conditional compilation if a macro is defined or not defined.</li>
+    <li><code>#if / #else / #elif / #endif</code> – Multi-branch conditional compilation.</li>
+  </ul>
+
+  <h2>5. Example Code</h2>
+  <pre><code>#include &lt;stdio.h&gt;
+#define PI 3.14159
+
+int main() {
+    printf("Value of PI: %.2f\n", PI);
+    return 0;
+}</code></pre>
+  <p>
+    <strong>Explanation:</strong><br />
+    <code>#include &lt;stdio.h&gt;</code> tells the compiler to include standard input-output functions.<br />
+    <code>#define PI 3.14159</code> defines a macro constant named <code>PI</code>.
+  </p>
+
+  <h2>6. Why Use Header Files and Preprocessor Directives?</h2>
+  <ul>
+    <li>They help organize large code into modular units.</li>
+    <li>Prevents duplication of code.</li>
+    <li>Makes it easier to maintain and understand the codebase.</li>
+  </ul>
+
+  <div class="reference">
+    <h2>7. References</h2>
+    <ul>
+      <li><a href="https://en.cppreference.com/w/c/preprocessor" target="_blank">C Preprocessor Reference - cppreference</a></li>
+      <li><a href="https://www.geeksforgeeks.org/header-files-in-c-cpp/" target="_blank">GeeksforGeeks – Header Files</a></li>
+      <li><a href="https://www.tutorialspoint.com/cprogramming/c_preprocessors.htm" target="_blank">TutorialsPoint – C Preprocessors</a></li>
+    </ul>
+  </div>
+
+</body>
+</html>
