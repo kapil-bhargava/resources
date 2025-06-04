@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bitwise Operators in C</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f8fb;
+      color: #333;
+      padding: 30px;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    .code-box {
+      background-color: #2d2d2d;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-family: 'Courier New', Courier, monospace;
+      overflow-x: auto;
+    }
+
+    .explanation {
+      background-color: #e0f7fa;
+      border-left: 6px solid #00acc1;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 40px;
+    }
+
+    .bitwise-table {
+      margin-top: 10px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .bitwise-table th, .bitwise-table td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: center;
+    }
+
+    .bitwise-table th {
+      background-color: #00796b;
+      color: white;
+    }
+
+    .bitwise-table td {
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bitwise Operators in C</h1>
+
+  <p>Bitwise operators perform operations on individual bits of integers. Here's a detailed explanation of each:</p>
+
+  <!-- AND -->
+  <h2>1. Bitwise AND (&)</h2>
+  <div class="code-box">
+<pre><code>int a = 5, b = 3;
+printf("%d", a & b);  // Output: 1</code></pre>
+  </div>
+  <div class="explanation">
+    <p>Compares bits of <code>a</code> and <code>b</code>. Returns 1 only if both bits are 1.</p>
+    <table class="bitwise-table">
+      <tr><th>a (5)</th><th>b (3)</th><th>a & b</th></tr>
+      <tr><td>0101</td><td>0011</td><td>0001 (1)</td></tr>
+    </table>
+  </div>
+
+  <!-- OR -->
+  <h2>2. Bitwise OR (|)</h2>
+  <div class="code-box">
+<pre><code>int a = 5, b = 3;
+printf("%d", a | b);  // Output: 7</code></pre>
+  </div>
+  <div class="explanation">
+    <p>Compares bits of <code>a</code> and <code>b</code>. Returns 1 if either bit is 1.</p>
+    <table class="bitwise-table">
+      <tr><th>a (5)</th><th>b (3)</th><th>a | b</th></tr>
+      <tr><td>0101</td><td>0011</td><td>0111 (7)</td></tr>
+    </table>
+  </div>
+
+  <!-- XOR -->
+  <h2>3. Bitwise XOR (^)</h2>
+  <div class="code-box">
+<pre><code>int a = 5, b = 3;
+printf("%d", a ^ b);  // Output: 6</code></pre>
+  </div>
+  <div class="explanation">
+    <p>Compares bits of <code>a</code> and <code>b</code>. Returns 1 if bits are different.</p>
+    <table class="bitwise-table">
+      <tr><th>a (5)</th><th>b (3)</th><th>a ^ b</th></tr>
+      <tr><td>0101</td><td>0011</td><td>0110 (6)</td></tr>
+    </table>
+  </div>
+
+  <!-- NOT -->
+  <h2>4. Bitwise NOT (~)</h2>
+  <div class="code-box">
+<pre><code>int a = 5;
+printf("%d", ~a);  // Output: -6</code></pre>
+  </div>
+  <div class="explanation">
+    <p>Inverts all bits of the number.</p>
+    <p>In 32-bit systems: <code>~00000000 00000000 00000000 00000101</code> = <code>11111111 11111111 11111111 11111010</code></p>
+    <p>This represents -6 in 2’s complement form.</p>
+  </div>
+
+  <!-- Left Shift -->
+  <h2>5. Left Shift (<<)</h2>
+  <div class="code-box">
+<pre><code>int a = 5;
+printf("%d", a << 1);  // Output: 10</code></pre>
+  </div>
+  <div class="explanation">
+    <p>Shifts all bits to the left by the specified number of positions.</p>
+    <p><code>0101 << 1</code> becomes <code>1010</code> → 10</p>
+    <p>Each left shift is equivalent to multiplying by 2.</p>
+  </div>
+
+  <!-- Right Shift -->
+  <h2>6. Right Shift (>>)</h2>
+  <div class="code-box">
+<pre><code>int a = 5;
+printf("%d", a >> 1);  // Output: 2</code></pre>
+  </div>
+  <div class="explanation">
+    <p>Shifts all bits to the right by the specified number of positions.</p>
+    <p><code>0101 >> 1</code> becomes <code>0010</code> → 2</p>
+    <p>Each right shift is equivalent to dividing by 2 (ignoring remainder).</p>
+  </div>
+
+</body>
+</html>
