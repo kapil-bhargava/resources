@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Control Structures in C</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fb;
+      padding: 30px;
+      color: #2c3e50;
+    }
+    h1, h2, h3 {
+      color: #1a5276;
+    }
+    pre {
+      background-color: #ecf0f1;
+      border-left: 4px solid #3498db;
+      padding: 10px;
+      margin: 20px 0;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+    }
+    code {
+      font-weight: bold;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    footer {
+      margin-top: 40px;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Control Structures in C</h1>
+
+  <p>Control structures are the fundamental building blocks of programming. They allow programmers to dictate how the code should execute based on conditions or repetitions.</p>
+
+  <h2>Types of Control Structures</h2>
+  <ul>
+    <li><strong>Conditional Control</strong> - Executes a part of code based on certain conditions.</li>
+    <li><strong>Looping Control</strong> - Repeats a set of statements.</li>
+    <li><strong>Unconditional Control</strong> - Transfers control unconditionally (e.g., <code>break</code>, <code>continue</code>, <code>goto</code>).</li>
+  </ul>
+
+  <h2>1. if Statement</h2>
+  <p>Checks a condition. If it's true, the code inside the block runs.</p>
+  <pre><code>int age = 20;
+if (age >= 18) {
+  printf("Eligible to vote");
+}</code></pre>
+
+  <h2>2. if-else Statement</h2>
+  <p>Provides an alternate path if the condition is false.</p>
+  <pre><code>int age = 16;
+if (age >= 18) {
+  printf("Eligible to vote");
+} else {
+  printf("Not eligible to vote");
+}</code></pre>
+
+  <h2>3. else-if Ladder</h2>
+  <p>Used to check multiple conditions.</p>
+  <pre><code>int score = 75;
+if (score >= 90) {
+  printf("A grade");
+} else if (score >= 75) {
+  printf("B grade");
+} else {
+  printf("C grade");
+}</code></pre>
+
+  <h2>4. switch Statement</h2>
+  <p>Checks a variable against a list of values.</p>
+  <pre><code>int day = 2;
+switch (day) {
+  case 1:
+    printf("Monday");
+    break;
+  case 2:
+    printf("Tuesday");
+    break;
+  default:
+    printf("Invalid day");
+}</code></pre>
+
+  <h2>5. break Statement</h2>
+  <p>Terminates loop or switch block prematurely.</p>
+  <pre><code>for (int i = 1; i <= 5; i++) {
+  if (i == 3) {
+    break;
+  }
+  printf("%d ", i);
+}</code></pre>
+
+  <h2>6. continue Statement</h2>
+  <p>Skips the current iteration and moves to the next.</p>
+  <pre><code>for (int i = 1; i <= 5; i++) {
+  if (i == 3) {
+    continue;
+  }
+  printf("%d ", i);
+}</code></pre>
+
+  <h2>7. goto Statement</h2>
+  <p>Transfers control to a labeled statement.</p>
+  <pre><code>int num = 10;
+if (num > 0)
+  goto label;
+
+printf("Negative");
+
+label:
+  printf("Positive");</code></pre>
+
+  <footer>
+    <h3>References</h3>
+    <ul>
+      <li><a href="https://www.programiz.com/c-programming/c-if-else" target="_blank">Programiz: if-else</a></li>
+      <li><a href="https://www.geeksforgeeks.org/decision-making-c-cpp/" target="_blank">GeeksforGeeks: Decision Making</a></li>
+      <li><a href="https://www.tutorialspoint.com/cprogramming/c_decision_making.htm" target="_blank">TutorialsPoint: Decision Making</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

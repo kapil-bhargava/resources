@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Functions and Recursion in C</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      padding: 20px 40px;
+      color: #222;
+    }
+    h1, h2, h3 {
+      color: #00509e;
+    }
+    a {
+      color: #00509e;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-left: 5px solid #00509e;
+      overflow-x: auto;
+    }
+    .section {
+      margin-bottom: 50px;
+    }
+    .references {
+      margin-top: 50px;
+      padding: 15px;
+      background: #eef6ff;
+      border-left: 4px solid #0077cc;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Functions and Recursion in C</h1>
+
+<div class="section" id="functions">
+  <h2><a href="#">Functions in C</a></h2>
+  <p>
+    A <strong>function</strong> is a block of code that performs a specific task. Functions help us reuse code, divide logic into manageable parts, and improve readability.
+  </p>
+
+  <h3>Why Use Functions?</h3>
+  <ul>
+    <li>Improves code reusability</li>
+    <li>Makes programs easier to debug and maintain</li>
+    <li>Allows dividing complex problems into simpler blocks</li>
+  </ul>
+
+  <h3>Types of Functions:</h3>
+  <ul>
+    <li><strong>Library Functions</strong> – Provided by C (like <code>printf()</code>, <code>scanf()</code>)</li>
+    <li><strong>User-defined Functions</strong> – Created by the programmer</li>
+  </ul>
+
+  <h3>Syntax of a Function:</h3>
+  <pre><code>return_type function_name(parameters) {
+  // body of the function
+}</code></pre>
+
+  <h3>Example: Simple Function</h3>
+  <pre><code>#include &lt;stdio.h&gt;
+
+void greet() {
+  printf("Hello, welcome to C programming!\n");
+}
+
+int main() {
+  greet();  // Function call
+  return 0;
+}</code></pre>
+
+  <p><strong>Output:</strong> Hello, welcome to C programming!</p>
+
+  <h3>Function with Return Value</h3>
+  <pre><code>int add(int a, int b) {
+  return a + b;
+}
+
+int main() {
+  int result = add(5, 3);
+  printf("Sum is %d", result);
+  return 0;
+}</code></pre>
+
+  <p><strong>Output:</strong> Sum is 8</p>
+
+  <h3>Parameters vs Arguments</h3>
+  <ul>
+    <li><strong>Parameters</strong> are variables listed in the function declaration/definition.</li>
+    <li><strong>Arguments</strong> are actual values passed to the function when it is called.</li>
+  </ul>
+
+  <p><strong>Example:</strong></p>
+  <pre><code>// Function with parameters
+void displayMessage(char name[]) {
+  printf("Hello %s!\n", name);
+}
+
+int main() {
+  // "John" is the argument
+  displayMessage("John");
+  return 0;
+}</code></pre>
+
+  <p><strong>Output:</strong> Hello John!</p>
+
+  <h3>Types of Functions by Arguments and Return:</h3>
+  <ul>
+    <li><strong>With arguments and return value:</strong> <code>int add(int a, int b)</code></li>
+    <li><strong>With arguments and no return:</strong> <code>void greet(char name[])</code></li>
+    <li><strong>No arguments but return value:</strong> <code>int getValue()</code></li>
+    <li><strong>No arguments and no return:</strong> <code>void display()</code></li>
+  </ul>
+</div>
+
+<div class="section" id="recursion">
+  <h2><a href="#">Recursion in C</a></h2>
+  <p>
+    <strong>Recursion</strong> is the process in which a function calls itself either directly or indirectly to solve a problem.
+  </p>
+
+  <h3>Important Concepts:</h3>
+  <ul>
+    <li><strong>Base Case:</strong> Condition to stop recursion</li>
+    <li><strong>Recursive Case:</strong> The part where the function calls itself</li>
+  </ul>
+
+  <h3>Example: Factorial using Recursion</h3>
+  <pre><code>int factorial(int n) {
+  if (n == 0)
+    return 1; // Base case
+  else
+    return n * factorial(n - 1); // Recursive call
+}
+
+int main() {
+  int result = factorial(5);
+  printf("Factorial of 5 is %d", result);
+  return 0;
+}</code></pre>
+
+  <p><strong>Output:</strong> Factorial of 5 is 120</p>
+
+  <h3>Advantages of Recursion:</h3>
+  <ul>
+    <li>Simplifies code for problems like factorial, Fibonacci, tree traversal</li>
+  </ul>
+
+  <h3>Disadvantages of Recursion:</h3>
+  <ul>
+    <li>Consumes more memory due to function calls</li>
+    <li>Can lead to stack overflow if not handled correctly</li>
+  </ul>
+</div>
+
+<div class="section references">
+  <h3>References</h3>
+  <ul>
+    <li><a href="https://www.programiz.com/c-programming/c-functions" target="_blank">Programiz: C Functions</a></li>
+    <li><a href="https://www.geeksforgeeks.org/functions-in-c/" target="_blank">GeeksforGeeks: Functions in C</a></li>
+    <li><a href="https://www.geeksforgeeks.org/recursion/" target="_blank">GeeksforGeeks: Recursion</a></li>
+    <li><a href="https://en.cppreference.com/w/c/language/function_definition" target="_blank">cppreference: Function Definition</a></li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrays and Strings in C</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #222;
+      padding: 20px 40px;
+    }
+    h1, h2, h3 {
+      color: #00509e;
+    }
+    pre {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-left: 5px solid #00509e;
+      overflow-x: auto;
+    }
+    a {
+      color: #00509e;
+    }
+    .reference {
+      margin-top: 30px;
+      background: #eef6ff;
+      padding: 15px;
+      border-left: 4px solid #0077cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Arrays and Strings in C</h1>
+
+  <h2>Arrays</h2>
+  <p>An <strong>array</strong> is a collection of elements of the same data type stored in contiguous memory locations.</p>
+
+  <h3>Declaration and Initialization</h3>
+  <pre><code>int numbers[5];              // Declaration
+int marks[5] = {90, 85, 75, 88, 92};  // Initialization</code></pre>
+
+  <h3>Accessing Elements</h3>
+  <p>Array elements are accessed using indices starting from 0.</p>
+  <pre><code>printf("First mark: %d", marks[0]);</code></pre>
+
+  <h3>Example: Print all array elements</h3>
+  <pre><code>#include &lt;stdio.h&gt;
+int main() {
+  int arr[3] = {10, 20, 30};
+  for(int i = 0; i < 3; i++) {
+    printf("%d ", arr[i]);
+  }
+  return 0;
+}</code></pre>
+
+  <h2>Multidimensional Arrays</h2>
+  <p>C also supports multidimensional arrays (e.g., 2D arrays).</p>
+  <pre><code>int matrix[2][3] = {
+  {1, 2, 3},
+  {4, 5, 6}
+};</code></pre>
+
+  <h2>Strings</h2>
+  <p>A <strong>string</strong> in C is an array of characters ending with a null character <code>'\0'</code>.</p>
+
+  <h3>Declaration and Initialization</h3>
+  <pre><code>char name[10] = "Alice"; // Automatically adds '\0'
+char name[] = {'A','l','i','c','e','\0'}; // Manual</code></pre>
+
+  <h3>Reading and Printing Strings</h3>
+  <pre><code>char str[50];
+scanf("%s", str);   // reads a single word
+printf("%s", str);</code></pre>
+
+  <h3>String Functions</h3>
+  <ul>
+    <li><code>strlen(str)</code> – Returns length</li>
+    <li><code>strcpy(dest, src)</code> – Copies one string to another</li>
+    <li><code>strcat(s1, s2)</code> – Concatenates s2 to s1</li>
+    <li><code>strcmp(s1, s2)</code> – Compares strings</li>
+  </ul>
+
+  <h3>Example: Concatenate Strings</h3>
+  <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+  char first[20] = "Hello, ";
+  char second[] = "World!";
+  strcat(first, second);
+  printf("%s", first);
+  return 0;
+}</code></pre>
+
+  <div class="reference">
+    <h3>References</h3>
+    <ul>
+      <li><a href="https://www.programiz.com/c-programming/c-arrays" target="_blank">Programiz - C Arrays</a></li>
+      <li><a href="https://www.programiz.com/c-programming/c-strings" target="_blank">Programiz - C Strings</a></li>
+      <li><a href="https://www.geeksforgeeks.org/strings-in-c/" target="_blank">GeeksforGeeks - Strings in C</a></li>
+    </ul>
+  </div>
+</body>
+</html>
