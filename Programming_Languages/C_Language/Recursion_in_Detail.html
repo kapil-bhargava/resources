@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Recursion Explained in Detail</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f9f9;
+    margin: 30px;
+    color: #222;
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    color: #2c3e50;
+  }
+  code {
+    background: #eef6fc;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+  }
+  .definition {
+    background-color: #e3f2fd;
+    border-left: 5px solid #2196f3;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+  }
+  .example {
+    background: #fff8e1;
+    border-left: 5px solid #ffb300;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .example code {
+    background: #fff3e0;
+    padding: 3px 6px;
+    border-radius: 3px;
+  }
+  ul {
+    margin-left: 20px;
+  }
+  footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+
+<h1>Understanding Recursion in Programming</h1>
+
+<p><strong>Recursion</strong> is a programming technique where a function calls itself to solve a problem.</p>
+
+<div class="definition">
+  <strong>Function:</strong> A block of reusable code that performs a specific task.<br/>
+  <strong>Call itself (Recursion):</strong> When a function executes its own code again within its definition.<br/>
+  <strong>Problem solving:</strong> Breaking down a complex problem into simpler smaller problems.
+</div>
+
+<h2>How Does Recursion Work?</h2>
+
+<p>Imagine you want to do a task that can be broken into smaller, similar tasks. The function solves the smaller task by calling itself repeatedly until it reaches a simple case it can solve directly.</p>
+
+<div class="definition">
+  <strong>Base Case:</strong> The simplest instance of the problem which can be solved directly, stopping the recursion.<br/>
+  <strong>Recursive Case:</strong> The part of the function where it calls itself with a smaller or simpler input.<br/>
+  <strong>Stack:</strong> Memory structure that keeps track of function calls. Each recursive call adds a new layer to the stack until the base case is reached.
+</div>
+
+<h2>Real Life Example: The <em>Russian Nesting Dolls</em></h2>
+
+<p>Think of Russian nesting dolls (<em>Matryoshka dolls</em>): a big doll contains a smaller doll inside, which contains a smaller doll inside that, and so on, until the smallest doll which has no more dolls inside.</p>
+
+<ul>
+  <li>The smallest doll is like the <strong>base case</strong> — nothing more to open.</li>
+  <li>Opening each doll to get the smaller one inside is like the <strong>recursive case</strong> — repeating the same action with a smaller problem.</li>
+</ul>
+
+<h2>Programming Example: Factorial Function</h2>
+
+<p>The factorial of a number <code>n</code> (written as <code>n!</code>) is the product of all positive integers from 1 to <code>n</code>.</p>
+
+<p>Mathematically:</p>
+
+<pre><code>n! = n × (n-1) × (n-2) × ... × 2 × 1</code></pre>
+
+<p>By definition, <code>0! = 1</code>.</p>
+
+<div class="example">
+  <p><strong>Recursive factorial function in C:</strong></p>
+  <pre><code>int factorial(int n) {
+  if (n == 0)          // Base Case
+    return 1;
+  else
+    return n * factorial(n - 1);  // Recursive Case
+}</code></pre>
+  <p>Explanation:</p>
+  <ul>
+    <li>If <code>n</code> is 0, return 1 (stop recursion).</li>
+    <li>Otherwise, return <code>n</code> multiplied by factorial of <code>n-1</code>.</li>
+  </ul>
+</div>
+
+<h3>Step-by-step for factorial(3):</h3>
+<ul>
+  <li>factorial(3) = 3 × factorial(2)</li>
+  <li>factorial(2) = 2 × factorial(1)</li>
+  <li>factorial(1) = 1 × factorial(0)</li>
+  <li>factorial(0) = 1 (base case)</li>
+  <li>Now it returns back up: factorial(1) = 1 × 1 = 1</li>
+  <li>factorial(2) = 2 × 1 = 2</li>
+  <li>factorial(3) = 3 × 2 = 6</li>
+</ul>
+
+<h2>Another Example: Fibonacci Numbers</h2>
+
+<p>The Fibonacci sequence starts as:</p>
+
+<pre><code>0, 1, 1, 2, 3, 5, 8, 13, 21, ...</code></pre>
+
+<p>Each number is the sum of the previous two.</p>
+
+<div class="example">
+  <p><strong>Recursive Fibonacci function in C:</strong></p>
+  <pre><code>int fibonacci(int n) {
+  if (n == 0)
+    return 0;           // Base Case 1
+  else if (n == 1)
+    return 1;           // Base Case 2
+  else
+    return fibonacci(n-1) + fibonacci(n-2);  // Recursive Case
+}</code></pre>
+</div>
+
+<h3>Step-by-step for fibonacci(4):</h3>
+<ul>
+  <li>fibonacci(4) = fibonacci(3) + fibonacci(2)</li>
+  <li>fibonacci(3) = fibonacci(2) + fibonacci(1)</li>
+  <li>fibonacci(2) = fibonacci(1) + fibonacci(0)</li>
+  <li>fibonacci(1) = 1 (base case)</li>
+  <li>fibonacci(0) = 0 (base case)</li>
+  <li>Backtrack and calculate each value to get fibonacci(4) = 3</li>
+</ul>
+
+<h2>Why Use Recursion?</h2>
+<ul>
+  <li>Useful for problems that can be broken down into similar smaller problems.</li>
+  <li>Makes code cleaner and easier to understand in many cases.</li>
+  <li>Common in algorithms involving trees, graphs, and divide-and-conquer strategies.</li>
+</ul>
+
+<h2>Important Notes:</h2>
+<ul>
+  <li>Every recursive function must have a <strong>base case</strong> to stop the recursion.</li>
+  <li>Too many recursive calls without a base case can cause <strong>stack overflow</strong> (program crash due to memory exhaustion).</li>
+</ul>
+
+<div class="definition">
+  <strong>Stack Overflow:</strong> When the program runs out of memory space to keep track of function calls, often due to infinite recursion.<br/>
+  <strong>Divide and Conquer:</strong> Algorithm technique where a problem is divided into smaller parts, solved independently, and combined.
+</div>
+
+<footer>
+  <p>© 2025 Recursion Tutorial — Made Simple for Beginners</p>
+</footer>
+
+</body>
+</html>

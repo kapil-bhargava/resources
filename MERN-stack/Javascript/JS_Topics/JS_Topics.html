@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Topics Guide</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6fc;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      margin-bottom: 40px;
+    }
+
+    .section {
+      margin-bottom: 50px;
+      width: 1200px;
+      margin: 0 auto;
+    }
+
+    .category-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #1e40af;
+      border-left: 5px solid #3b82f6;
+      padding-left: 10px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: 0.3s;
+      border: 1px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      border: 1px solid #3b82f6;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #2563eb;
+      font-size: 20px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .card a {
+        font-size: 18px;
+      }
+      .section {
+      margin-bottom: 50px;
+      width: 100%;
+    }
+
+    }
+      @media (min-width: 601px) and (max-width: 1200px) {
+     
+      .section {
+      margin-bottom: 50px;
+      width: 100%;
+      /* margin: 30px; */
+    }
+
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Topics from Beginner to Advanced</h1>
+
+  <!-- Beginner Section -->
+  <div class="section">
+    <h2 class="category-title">Beginner</h2>
+    <div class="grid">
+      <div class="card">
+        <a href="01_Variable&Datatypes.html" target="_blank">Variables & Data Types</a>
+        <p>Learn about var, let, const, and JavaScript's primitive data types.</p>
+      </div>
+      <div class="card">
+        <a href="./02_Operators.html" target="_blank">Operators</a>
+        <p>Explore arithmetic, assignment, comparison, and logical operators.</p>
+      </div>
+      <div class="card">
+        <a href="./03_JS_Control_Structures.html" target="_blank">Control Structures</a>
+        <p>Understand if-else, switch, for, while, and do-while loops.</p>
+      </div>
+      <div class="card">
+        <a href="./04_JS_Functions.html" target="_blank">Functions</a>
+        <p>Define reusable blocks of code using named, anonymous, or arrow functions.</p>
+      </div>
+      <div class="card">
+        <a href="./05_Array&Objects.html" target="_blank">Arrays & Objects</a>
+        <p>Work with collections of data using arrays and key-value pairs with objects.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intermediate Section -->
+  <div class="section">
+    <h2 class="category-title">Intermediate</h2>
+    <div class="grid">
+      <div class="card">
+        <a href="#" target="_blank">DOM Manipulation</a>
+        <p>Interact with HTML elements dynamically using JavaScript.</p>
+      </div>
+      <div class="card">
+        <a href="#" target="_blank">Events</a>
+        <p>Handle user actions like clicks, key presses, and form submissions.</p>
+      </div>
+      <div class="card">
+        <a href="#" target="_blank">Error Handling</a>
+        <p>Use try-catch blocks and error objects to manage runtime errors.</p>
+      </div>
+      <div class="card">
+        <a href="#" target="_blank">ES6+ Features</a>
+        <p>Use modern features like destructuring, template literals, spread/rest, etc.</p>
+      </div>
+      <div class="card">
+        <a href="#" target="_blank">Array Methods</a>
+        <p>Master powerful methods like map, filter, reduce, forEach, and find.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Advanced Section -->
+  <div class="section">
+    <h2 class="category-title">Advanced</h2>
+    <div class="grid">
+      <div class="card">
+        <a href="#" target="_blank">Closures</a>
+        <p>Understand how inner functions access variables from their outer scope.</p>
+      </div>
+      <div class="card">
+        <a href="#" target="_blank">Promises & Async/Await</a>
+        <p>Handle asynchronous operations using promises and modern async/await syntax.</p>
+      </div>
+      <div class="card">
+        <a href="#" target="_blank">Prototypes & Inheritance</a>
+        <p>Learn prototype chaining and how inheritance works in JavaScript.</p>
+      </div>
+      <div class="card">
+        <a href="#" target="_blank">Modules</a>
+        <p>Split code into reusable files using import/export syntax in ES6 modules.</p>
+      </div>
+      <div class="card">
+        <a href="#" target="_blank">Event Loop & Concurrency</a>
+        <p>Understand how JavaScript handles asynchronous tasks with the event loop.</p>
+      </div>
+      <div class="card">
+        <a href="#" target="_blank">Memory Management</a>
+        <p>Learn about garbage collection, memory leaks, and performance optimization.</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+</body>
+</html>

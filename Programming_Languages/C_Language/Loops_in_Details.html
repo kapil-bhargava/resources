@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Loops in C Programming</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+    margin: 30px;
+    color: #222;
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    color: #2c3e50;
+  }
+  .definition, .why-use, .assignment {
+    background-color: #e3f2fd;
+    border-left: 6px solid #2196f3;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+  pre {
+    background-color: #282c34;
+    color: #abb2bf;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+  code {
+    font-family: Consolas, monospace;
+  }
+  ul {
+    margin-left: 20px;
+  }
+  .example {
+    background-color: #fff3e0;
+    border-left: 6px solid #ffb300;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+  }
+  a {
+    color: #0d47a1;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Loops in C Programming</h1>
+
+<div class="definition">
+  <h2>What is a Loop?</h2>
+  <p>A <strong>loop</strong> is a programming construct that allows you to repeat a block of code multiple times.</p>
+  <p>Instead of writing the same code repeatedly, loops help automate repetitive tasks efficiently.</p>
+</div>
+
+<div class="why-use">
+  <h2>Why Use Loops?</h2>
+  <ul>
+    <li>To perform repetitive tasks without writing redundant code.</li>
+    <li>To automate processes like traversing arrays, reading input until a condition is met, or repeating calculations.</li>
+    <li>To reduce errors and improve code maintainability.</li>
+  </ul>
+</div>
+
+<h2>Types of Loops in C</h2>
+<p>There are 3 main types of loops in C:</p>
+<ol>
+  <li><strong>for loop</strong></li>
+  <li><strong>while loop</strong></li>
+  <li><strong>do-while loop</strong></li>
+</ol>
+
+<hr>
+
+<h3>1. <code>for</code> loop</h3>
+<div class="example">
+  <p>The <code>for</code> loop is used when the number of iterations is known beforehand.</p>
+  <pre><code>for (initialization; condition; update) {
+    // Code to execute repeatedly
+}</code></pre>
+  <p>Example: Print numbers from 1 to 5</p>
+  <pre><code>for (int i = 1; i <= 5; i++) {
+    printf("%d\n", i);
+}</code></pre>
+</div>
+
+<h3>2. <code>while</code> loop</h3>
+<div class="example">
+  <p>The <code>while</code> loop executes as long as the condition is true.</p>
+  <pre><code>while (condition) {
+    // Code to execute repeatedly
+}</code></pre>
+  <p>Example: Print numbers from 1 to 5</p>
+  <pre><code>int i = 1;
+while (i <= 5) {
+    printf("%d\n", i);
+    i++;
+}</code></pre>
+</div>
+
+<h3>3. <code>do-while</code> loop</h3>
+<div class="example">
+  <p>The <code>do-while</code> loop executes the code block at least once, then repeats as long as the condition is true.</p>
+  <pre><code>do {
+    // Code to execute
+} while (condition);</code></pre>
+  <p>Example: Print numbers from 1 to 5</p>
+  <pre><code>int i = 1;
+do {
+    printf("%d\n", i);
+    i++;
+} while (i <= 5);</code></pre>
+</div>
+
+<hr>
+
+<h2>Summary Table of Loop Types</h2>
+<table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%; max-width: 600px;">
+  <thead style="background-color:#2196f3; color:white;">
+    <tr>
+      <th>Loop Type</th>
+      <th>Execution</th>
+      <th>Condition Check</th>
+      <th>When to Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>for</code></td>
+      <td>Known number of iterations</td>
+      <td>Before each iteration</td>
+      <td>When iteration count is known</td>
+    </tr>
+    <tr>
+      <td><code>while</code></td>
+      <td>Unknown iterations</td>
+      <td>Before each iteration</td>
+      <td>Repeat while condition is true</td>
+    </tr>
+    <tr>
+      <td><code>do-while</code></td>
+      <td>At least once</td>
+      <td>After each iteration</td>
+      <td>When code must run at least once</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Practice Assignments</h2>
+<div class="assignment">
+  <ol>
+    <li>Write a program using a <code>for</code> loop to print the multiplication table of 7 (from 7×1 to 7×10).</li>
+    <li>Write a program using a <code>while</code> loop to calculate the sum of numbers from 1 to 50.</li>
+    <li>Write a program using a <code>do-while</code> loop to repeatedly ask the user to enter a number until they enter 0.</li>
+    <li>Write a program to find the factorial of a number using any loop.</li>
+  </ol>
+</div>
+
+<hr>
+
+<h2>Further Reading</h2>
+<p>For more detailed information, examples, and explanation on loops in C, visit the <a href="https://www.programiz.com/c-programming/c-loops" target="_blank" rel="noopener noreferrer">Programiz - C Loops Tutorial</a>.</p>
+
+<footer>
+  <p>© 2025 C Programming Tutorials</p>
+</footer>
+
+</body>
+</html>

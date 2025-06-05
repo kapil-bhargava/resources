@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JavaScript Arrays & Objects - In-depth Explanation</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 25px; background: #f5f7fa; color: #1f2937;
+    display: flex; justify-content: center;
+  }
+  .container {
+    max-width: 1200px;
+    width: 95%;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+    line-height: 1.65;
+  }
+  h1, h2, h3, h4 {
+    color: #2563eb;
+    margin-bottom: 16px;
+  }
+  p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  code {
+    background: #e0e7ff;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+  }
+  pre {
+    background: #f3f4f6;
+    padding: 18px 22px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    color: #374151;
+  }
+  ul {
+    margin-left: 20px;
+    margin-bottom: 25px;
+  }
+  ol {
+    margin-left: 22px;
+    margin-bottom: 25px;
+  }
+  abbr[title] {
+    cursor: help;
+    border-bottom: 1px dotted #2563eb;
+    text-decoration: none;
+  }
+  a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 700px) {
+    body {
+      padding: 15px;
+    }
+    .container {
+      padding: 20px 25px;
+    }
+  }
+   details {
+    background-color: #e0e7ff;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgb(37 99 235 / 0.2);
+  }
+
+  summary {
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    list-style: none;
+    color: #2563eb;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::before {
+    content: "▶ ";
+    display: inline-block;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+
+  details[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  ol {
+    margin-top: 15px;
+    padding-left: 20px;
+    color: #1e293b;
+    font-size: 1rem;
+  }
+
+  ol li {
+    margin-bottom: 10px;
+  }
+  .anchor {
+    color: white;
+    text-decoration: none;
+    background-color: #2563eb;
+    padding: 5px;
+  }
+</style>
+</head>
+<body>
+  <main class="container">
+    <h1>JavaScript <abbr title="A collection of elements accessible by numeric index">Arrays</abbr> &amp; <abbr title="A collection of key-value pairs, also called associative arrays or dictionaries">Objects</abbr></h1>
+
+    <section>
+      <h2>1. What is an Array?</h2>
+      <a href="Array_Methods.html" class="anchor">Know more in Detail</a>
+      <p>An <strong>array</strong> is an ordered collection of values (elements) stored under a single variable. Each element can be accessed using a numeric <abbr title="An integer number representing position in a sequence">index</abbr> starting from 0.</p>
+      <p>Arrays can store values of any data type, including other arrays and objects.</p>
+      <pre><code>const fruits = ["apple", "banana", "cherry"];
+console.log(fruits[0]); // "apple"
+</code></pre>
+    </section>
+
+    <section>
+      <h2>2. Why Use Arrays?</h2>
+      <ul>
+        <li><strong>Group related data:</strong> Manage lists like students, products, tasks.</li>
+        <li><strong>Order matters:</strong> Keep elements in sequence and access by position.</li>
+        <li><strong>Iteration:</strong> Easily loop over elements with <code>for</code>, <code>forEach</code>, <code>map</code>, etc.</li>
+        <li><strong>Dynamic sizing:</strong> Add or remove elements easily.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Array Declaration and Basic Operations</h2>
+      <h3>3.1 Creating Arrays</h3>
+      <pre><code>const colors = ["red", "green", "blue"];
+const empty = [];
+const mixed = [1, "two", true];
+</code></pre>
+
+      <h3>3.2 Accessing & Modifying Elements</h3>
+      <pre><code>console.log(colors[1]); // "green"
+colors[2] = "yellow";
+console.log(colors); // ["red", "green", "yellow"]
+</code></pre>
+
+      <h3>3.3 Array Length</h3>
+      <pre><code>console.log(colors.length); // 3
+</code></pre>
+    </section>
+
+    <section>
+      <h2>4. Common Array Methods</h2>
+      <p>Some important built-in methods:</p>
+      <ul>
+        <li><code>push(value)</code>: Adds an element to the end</li>
+        <li><code>pop()</code>: Removes and returns the last element</li>
+        <li><code>shift()</code>: Removes and returns the first element</li>
+        <li><code>unshift(value)</code>: Adds element at the start</li>
+        <li><code>indexOf(value)</code>: Returns index of first matching element or -1</li>
+        <li><code>slice(start, end)</code>: Returns a shallow copy subarray</li>
+        <li><code>splice(start, deleteCount, ...items)</code>: Add/remove elements at position</li>
+        <li><code>forEach(callback)</code>: Executes callback on each element</li>
+        <li><code>map(callback)</code>: Returns new array with results of callback</li>
+        <li><code>filter(callback)</code>: Returns array with elements passing condition</li>
+      </ul>
+      <pre><code>const numbers = [1, 2, 3];
+numbers.push(4);
+console.log(numbers); // [1, 2, 3, 4]
+
+const evens = numbers.filter(n => n % 2 === 0);
+console.log(evens); // [2, 4]
+</code></pre>
+    </section>
+
+    <section>
+      <h2>5. What is an Object?</h2>
+      <!-- <a href="Array_Methods.html" class="anchor">Know more in Detail</a> -->
+      <p>An <strong>object</strong> is a collection of <abbr title="A unique identifier used to access a value in an object">key-value pairs</abbr>, where keys (also called <em>properties</em>) are strings (or symbols), and values can be any type.</p>
+      <p>Objects allow you to group related data and functions (methods) together logically.</p>
+      <pre><code>const person = {
+  name: "Alex",
+  age: 30,
+  greet: function() {
+    console.log("Hello, " + this.name);
+  }
+};
+
+console.log(person.name); // "Alex"
+person.greet(); // Hello, Alex
+</code></pre>
+    </section>
+
+    <section>
+      <h2>6. Why Use Objects?</h2>
+      <ul>
+        <li><strong>Structure data logically:</strong> Group related properties and behavior.</li>
+        <li><strong>Model real-world entities:</strong> Represent people, products, settings, etc.</li>
+        <li><strong>Access by keys:</strong> Readable and descriptive property names.</li>
+        <li><strong>Store methods:</strong> Functions as object properties to represent behavior.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Object Declaration & Access</h2>
+      <h3>7.1 Creating Objects</h3>
+      <pre><code>const car = {
+  brand: "Toyota",
+  model: "Corolla",
+  year: 2020
+};
+</code></pre>
+
+      <h3>7.2 Accessing Properties</h3>
+      <pre><code>console.log(car.brand);    // Dot notation: "Toyota"
+console.log(car["model"]);  // Bracket notation: "Corolla"
+</code></pre>
+
+      <h3>7.3 Modifying Properties</h3>
+      <pre><code>car.year = 2021;
+car["color"] = "red"; // Adding new property
+console.log(car);
+</code></pre>
+    </section>
+
+    <section>
+      <h2>8. Object Methods</h2>
+      <p>Functions inside objects are called <abbr title="Functions that belong to an object and can use 'this' keyword">methods</abbr>.</p>
+      <pre><code>const calculator = {
+  add: function(a, b) {
+    return a + b;
+  },
+  multiply(a, b) {
+    return a * b; // shorthand method syntax
+  }
+};
+
+console.log(calculator.add(2, 3));      // 5
+console.log(calculator.multiply(4, 5)); // 20
+</code></pre>
+    </section>
+
+    <section>
+      <h2>9. Iterating Over Arrays and Objects</h2>
+      <h3>9.1 Looping through Arrays</h3>
+      <pre><code>const nums = [10, 20, 30];
+for (let i = 0; i < nums.length; i++) {
+  console.log(nums[i]);
+}
+
+// Using forEach
+nums.forEach(num => console.log(num));
+</code></pre>
+
+      <h3>9.2 Looping through Objects</h3>
+      <pre><code>const user = { name: "Sam", age: 25 };
+for (let key in user) {
+  console.log(key + ": " + user[key]);
+}
+</code></pre>
+    </section>
+
+    <section>
+      <h2>10. When to Use Arrays vs Objects</h2>
+      <ul>
+        <li><strong>Arrays:</strong> When order matters, elements accessed by numeric index, or you have a list of similar items.</li>
+        <li><strong>Objects:</strong> When you want to group related named properties or represent entities with keys and values.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>11. Best Practices</h2>
+      <ul>
+        <li>Use <code>const</code> for arrays and objects to avoid accidental reassignment.</li>
+        <li>Use descriptive keys for object properties.</li>
+        <li>Prefer array methods for immutability instead of mutating original arrays.</li>
+        <li>Use bracket notation when keys are dynamic or not valid identifiers.</li>
+        <li>Keep objects simple and flat; use nested objects only when necessary.</li>
+      </ul>
+    </section>
+
+    <section>
+  <h2>12. Array Assignments</h2>
+  <details>
+    <summary>Click to view Array Assignments</summary>
+    <ol>
+      <li>Create an array of your five favorite movies and print the third movie.</li>
+      <li>Add a new color to an existing array of colors.</li>
+      <li>Remove the last element from an array and print the updated array.</li>
+      <li>Write a function that takes an array of numbers and returns a new array with each number doubled.</li>
+      <li>Given an array of objects representing students (name and grade), write a function to filter students who passed (grade >= 50).</li>
+      <li>Use the map method to create an array of just student names from the array of objects.</li>
+      <li>Write a loop to print all elements of an array in reverse order.</li>
+      <li>Create a program to find the largest number in an array.</li>
+      <li>Write a function that removes duplicate elements from an array.</li>
+      <li>Create an array and sort its elements alphabetically.</li>
+    </ol>
+  </details>
+</section>
+
+<section>
+  <h2>13. Object Assignments</h2>
+  <details>
+    <summary>Click to view Object Assignments</summary>
+    <ol>
+      <li>Create an object to represent a book with properties: title, author, pages, and a method to describe the book.</li>
+      <li>Update a property in the book object and add a new property for genre.</li>
+      <li>Write a loop to print all keys and values of the book object.</li>
+      <li>Create a nested object representing a company with departments as objects containing employee arrays.</li>
+      <li>Add a method to an object that updates one of its properties.</li>
+      <li>Write a function that takes an object and returns an array of its keys.</li>
+      <li>Create an object and check if a given property exists in it.</li>
+      <li>Merge two objects into a new object without modifying the originals.</li>
+      <li>Create an object with a method that uses <code>this</code> keyword to access properties.</li>
+      <li>Write a program to count the number of properties in an object.</li>
+    </ol>
+  </details>
+</section>
+
+
+    <section>
+      <h2>14. References</h2>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections" target="_blank" rel="noopener noreferrer">MDN - JavaScript Arrays</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects" target="_blank" rel="noopener noreferrer">MDN - JavaScript Objects</a></li>
+        <li><a href="https://javascript.info/array" target="_blank" rel="noopener noreferrer">JavaScript.info - Arrays</a></li>
+        <li><a href="https://javascript.info/object" target="_blank" rel="noopener noreferrer">JavaScript.info - Objects</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

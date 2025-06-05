@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>In-Depth Explanation of Arrays in C</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fcfcfc;
+    margin: 30px;
+    color: #333;
+    line-height: 1.7;
+  }
+  h1, h2, h3 {
+    color: #2c3e50;
+  }
+  .section {
+    background-color: #e8f0fe;
+    border-left: 6px solid #3b82f6;
+    padding: 20px 25px;
+    margin: 25px 0;
+    border-radius: 6px;
+  }
+  pre {
+    background-color: #20232a;
+    color: #61dafb;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: Consolas, monospace;
+  }
+  code {
+    font-family: Consolas, monospace;
+  }
+  ul {
+    margin-left: 20px;
+  }
+  .warning {
+    background-color: #ffe6e6;
+    border-left: 6px solid #ff4d4d;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+  a {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  footer {
+    margin-top: 50px;
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Understanding Arrays in C: A Complete Guide for Beginners</h1>
+
+<div class="section">
+  <h2>What is an Array?</h2>
+  <p>
+    Imagine you have a row of boxes lined up, and each box can store one value — like your favorite toys in boxes.
+    An <strong>array</strong> in C is just like those boxes but for storing values of the same type (like all numbers or all characters).
+  </p>
+  <p>
+    Instead of giving each box a different name, you give the whole row a single name and use numbers (called <em>indexes</em>) to open each box.
+  </p>
+</div>
+
+<div class="section">
+  <h2>How to Use Arrays? Step by Step</h2>
+  <ol>
+    <li><strong>Declare an array:</strong> Tell the computer what type of data you want to store and how many boxes you need.</li>
+    <pre><code>int numbers[5];  // Creates an array named 'numbers' to store 5 integers</code></pre>
+
+    <li><strong>Initialize the array:</strong> You can put values inside the boxes when you declare or later.</li>
+    <pre><code>int numbers[5] = {10, 20, 30, 40, 50};</code></pre>
+    <p>Or fill them one by one:</p>
+    <pre><code>numbers[0] = 10;
+numbers[1] = 20;
+// and so on...</code></pre>
+
+    <li><strong>Access elements:</strong> Use the index to get or change the value inside a box.</li>
+    <pre><code>printf("%d\n", numbers[2]);  // Prints the 3rd element (indexes start at 0)</code></pre>
+
+    <li><strong>Loop through arrays:</strong> Usually, we use loops to go through all boxes easily.</li>
+    <pre><code>for (int i = 0; i &lt; 5; i++) {
+    printf("%d\n", numbers[i]);
+}</code></pre>
+  </ol>
+</div>
+
+<div class="section">
+  <h2>Important Things to Know About Arrays</h2>
+  <ul>
+    <li><strong>Indexes start at 0:</strong> The first box is <code>array[0]</code>, the second <code>array[1]</code>, and so on.</li>
+    <li><strong>Fixed size:</strong> Once you create an array with a certain size, it cannot grow or shrink during the program.</li>
+    <li><strong>Same data type:</strong> All elements in the array must be of the same type (all int, all char, etc.).</li>
+    <li><strong>Contiguous memory:</strong> Elements are stored one after another in memory, making access very fast.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Common Mistakes to Avoid When Using Arrays</h2>
+  
+  <div class="warning">
+    <strong>1. Accessing Out of Bounds:</strong><br />
+    Never use an index less than 0 or greater than or equal to the size of the array.<br />
+    <em>Example mistake:</em> <code>numbers[5] = 100;</code> is wrong if array size is 5 (max index is 4).<br />
+    This leads to <strong>undefined behavior</strong> and possible program crashes.
+  </div>
+
+  <div class="warning">
+    <strong>2. Not Initializing Arrays:</strong><br />
+    If you don’t assign values, the array elements contain garbage (random data). Always initialize before use.<br />
+    <em>Example mistake:</em> Using <code>int arr[3];</code> and printing values before assigning.
+  </div>
+
+  <div class="warning">
+    <strong>3. Forgetting Index Starts at 0:</strong><br />
+    Beginners sometimes try to access <code>array[1]</code> thinking it’s the first element. It’s actually the second.<br />
+    Always remember: first element is <code>array[0]</code>.
+  </div>
+
+  <div class="warning">
+    <strong>4. Mixing Data Types:</strong><br />
+    You cannot mix types inside an array. For example, you can’t have some elements as <code>int</code> and others as <code>float</code> in the same array.
+  </div>
+
+  <div class="warning">
+    <strong>5. Ignoring Array Size When Looping:</strong><br />
+    Make sure your loop runs from 0 to size-1 to avoid accessing invalid elements.<br />
+    Wrong loop: <code>for (int i = 0; i <= 5; i++)</code> for an array of size 5.<br />
+    Correct loop: <code>for (int i = 0; i &lt; 5; i++)</code>.
+  </div>
+</div>
+
+<div class="section">
+  <h2>Examples for Practice</h2>
+
+  <h3>Example 1: Declare, initialize and print an array</h3>
+  <pre><code>int scores[4] = {85, 90, 78, 92};
+for (int i = 0; i &lt; 4; i++) {
+    printf("Score %d: %d\n", i+1, scores[i]);
+}</code></pre>
+
+  <h3>Example 2: Change an element in the array</h3>
+  <pre><code>scores[2] = 80;  // Change 3rd score from 78 to 80
+printf("Updated Score 3: %d\n", scores[2]);</code></pre>
+
+  <h3>Example 3: What happens if you access outside the array?</h3>
+  <pre><code>printf("%d\n", scores[4]);  // Invalid! Array size is 4, max index 3</code></pre>
+  <p>This might print garbage or cause a crash. Avoid!</p>
+</div>
+
+<div class="section">
+  <h2>Summary</h2>
+  <ul>
+    <li>Arrays store multiple values of the same type in order.</li>
+    <li>Indexes always start at 0.</li>
+    <li>Declare size before use; size cannot change later.</li>
+    <li>Use loops to efficiently access array elements.</li>
+    <li>Avoid common mistakes like out-of-bound access and uninitialized values.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Further Learning</h2>
+  <p>For more detailed explanations and examples, visit:</p>
+  <ul>
+    <li><a href="https://www.programiz.com/c-programming/c-arrays" target="_blank" rel="noopener noreferrer">Programiz: Arrays in C</a></li>
+    <li><a href="https://www.geeksforgeeks.org/arrays-in-c-cpp/" target="_blank" rel="noopener noreferrer">GeeksforGeeks: Arrays</a></li>
+    <li><a href="https://www.cprogramming.com/tutorial/c/lesson6.html" target="_blank" rel="noopener noreferrer">CProgramming.com - Arrays</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>© 2025 Learn C Programming - Arrays Guide</p>
+</footer>
+
+</body>
+</html>

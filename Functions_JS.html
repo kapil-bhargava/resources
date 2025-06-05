@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Functions Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 30px;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    pre {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-left: 4px solid #3498db;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+      font-size: 15px;
+      color: #2c3e50;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .highlight {
+      background-color: #e8f4fc;
+      padding: 5px 10px;
+      border-left: 3px solid #3498db;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Functions</h1>
+
+  <div class="section">
+    <h2>1. What is a Function?</h2>
+    <p>A <strong>function</strong> is a reusable block of code designed to perform a specific task. It can take inputs (parameters), process them, and return an output.</p>
+    <pre><code>function greet(name) {
+  return "Hello, " + name + "!";
+}</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>2. Why Use Functions?</h2>
+    <ul>
+      <li>Reusability of code</li>
+      <li>Improves readability</li>
+      <li>Avoids repetition</li>
+      <li>Modular design</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Synchronous vs Asynchronous Functions</h2>
+    <p><span class="highlight">Synchronous</span> functions are executed sequentially, one at a time.</p>
+    <pre><code>function add(a, b) {
+  return a + b;
+}
+console.log(add(2, 3)); // 5</code></pre>
+
+    <p><span class="highlight">Asynchronous</span> functions can run independently of the main flow, using mechanisms like promises or async/await.</p>
+    <pre><code>setTimeout(() => {
+  console.log("I run after 2 seconds");
+}, 2000);</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>4. Named Function</h2>
+    <p>A function declared with a name.</p>
+    <pre><code>function multiply(x, y) {
+  return x * y;
+}
+console.log(multiply(4, 5)); // 20</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>5. Anonymous Function</h2>
+    <p>A function without a name, often used in expressions or as arguments.</p>
+    <pre><code>const sayHi = function() {
+  console.log("Hi there!");
+};
+sayHi();</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>6. Arrow Function</h2>
+    <p>Introduced in ES6. More concise, doesn't bind its own <code>this</code>.</p>
+    <pre><code>const square = (n) => n * n;
+console.log(square(6)); // 36</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>7. Asynchronous Function (Async/Await)</h2>
+    <p>Declared with the <code>async</code> keyword, uses <code>await</code> to wait for promises.</p>
+    <pre><code>async function fetchData() {
+  const res = await fetch('https://api.example.com/data');
+  const data = await res.json();
+  console.log(data);
+}</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>8. Summary</h2>
+    <ul>
+      <li><strong>Named Function</strong>: Traditional reusable function</li>
+      <li><strong>Anonymous Function</strong>: Used for inline logic or callbacks</li>
+      <li><strong>Arrow Function</strong>: Short syntax, best for callbacks</li>
+      <li><strong>Async Function</strong>: Deals with promises easily</li>
+      <li><strong>Synchronous</strong>: Runs in order, blocks the thread</li>
+      <li><strong>Asynchronous</strong>: Non-blocking, useful for API calls, delays</li>
+    </ul>
+  </div>
+
+</body>
+</html>

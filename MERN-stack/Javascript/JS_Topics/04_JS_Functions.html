@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JavaScript Functions - In-depth Explanation</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 25px; background: #f5f7fa; color: #1f2937;
+    display: flex; justify-content: center;
+  }
+  .container {
+    max-width: 1200px;
+    width: 95%;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+    line-height: 1.65;
+  }
+  h1, h2, h3, h4 {
+    color: #2563eb;
+    margin-bottom: 16px;
+  }
+  p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  code {
+    background: #e0e7ff;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+  }
+  pre {
+    background: #f3f4f6;
+    padding: 18px 22px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    color: #374151;
+  }
+  ul {
+    margin-left: 20px;
+    margin-bottom: 25px;
+  }
+  ol {
+    margin-left: 22px;
+    margin-bottom: 25px;
+  }
+  abbr[title] {
+    cursor: help;
+    border-bottom: 1px dotted #2563eb;
+    text-decoration: none;
+  }
+  a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 700px) {
+    body {
+      padding: 15px;
+    }
+    .container {
+      padding: 20px 25px;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="container">
+    <h1>JavaScript <abbr title="A reusable block of code designed to perform a particular task">Functions</abbr></h1>
+
+    <section>
+      <h2>1. What is a Function?</h2>
+      <p>A <strong>function</strong> in JavaScript is a block of code designed to perform a particular task or calculation. It is reusable and can be executed whenever needed by <em>calling</em> or <em>invoking</em> it. Functions help in organizing code into manageable pieces and enable code reuse.</p>
+      <p>Think of a function as a named recipe: it defines steps (code), and you can follow (call) the recipe whenever you want without rewriting it.</p>
+    </section>
+
+    <section>
+      <h2>2. Why Use Functions?</h2>
+      <ul>
+        <li><strong>Reusability:</strong> Write a piece of logic once, reuse it anywhere.</li>
+        <li><strong>Modularity:</strong> Break complex problems into smaller functions.</li>
+        <li><strong>Maintainability:</strong> Fix or update code in one place.</li>
+        <li><strong>Readability:</strong> Named functions explain the purpose of code blocks.</li>
+        <li><strong>Abstraction:</strong> Hide complex details and expose simple interfaces.</li>
+        <li><strong>Testability:</strong> Functions can be tested individually.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. How to Define and Use Functions</h2>
+
+      <h3>3.1 Function Declaration</h3>
+      <p>Defined using the <code>function</code> keyword with a name and optional parameters. These functions are hoisted (can be called before they appear).</p>
+      <pre><code>function greet(name) {
+  console.log("Hello, " + name + "!");
+}
+
+greet("Alice"); // Hello, Alice!
+</code></pre>
+
+      <h3>3.2 Function Invocation</h3>
+      <p>Calling a function by using its name followed by parentheses and any required arguments:</p>
+      <pre><code>greet("Bob"); // Hello, Bob!
+</code></pre>
+
+      <h3>3.3 Returning Values</h3>
+      <p>Functions can send back a result to the caller using the <code>return</code> statement:</p>
+      <pre><code>function add(a, b) {
+  return a + b;
+}
+
+let sum = add(5, 7);
+console.log(sum); // 12
+</code></pre>
+    </section>
+
+    <section>
+      <h2>4. Function Parameters & Arguments</h2>
+      <p><strong>Parameters</strong> are placeholders in a function definition representing values it expects. <strong>Arguments</strong> are actual values passed when calling the function.</p>
+      <pre><code>function multiply(x, y) { // x and y are parameters
+  return x * y;
+}
+
+multiply(4, 6); // 4 and 6 are arguments
+</code></pre>
+
+      <p>Functions can have default parameters to handle missing arguments:</p>
+      <pre><code>function greet(name = "Guest") {
+  console.log("Hello, " + name + "!");
+}
+
+greet(); // Hello, Guest!
+</code></pre>
+    </section>
+
+    <section>
+      <h2>5. Types of Functions</h2>
+
+      <h3>5.1 Function Declaration (Named Function)</h3>
+      <p>Traditional, hoisted functions with a name.</p>
+      <pre><code>function sayHi() {
+  console.log("Hi!");
+}
+sayHi();
+</code></pre>
+
+      <h3>5.2 Function Expression</h3>
+      <p>Function stored in a variable. Not hoisted, so declare before use.</p>
+      <pre><code>const greet = function(name) {
+  console.log("Hello, " + name);
+};
+greet("Charlie");
+</code></pre>
+
+      <h3>5.3 Arrow Functions</h3>
+      <p>Introduced in ES6, shorter syntax, no own <code>this</code> or <code>arguments</code>. Ideal for callbacks and concise functions.</p>
+      <pre><code>const square = (n) => n * n;
+console.log(square(5)); // 25
+</code></pre>
+
+      <h3>5.4 Anonymous Functions</h3>
+      <p>Functions without names, often used inline or as callbacks:</p>
+      <pre><code>setTimeout(function() {
+  console.log("Delayed hello!");
+}, 1000);
+</code></pre>
+
+      <h3>5.5 Immediately Invoked Function Expressions (IIFE)</h3>
+      <p>Runs immediately after definition. Useful for creating isolated scopes.</p>
+      <pre><code>(function() {
+  console.log("IIFE running!");
+})();
+</code></pre>
+
+      <h3>5.6 Async Functions</h3>
+      <p>Use the <code>async</code> keyword to work with asynchronous code more cleanly using <code>await</code>.</p>
+      <pre><code>async function fetchData() {
+  const response = await fetch('https://api.example.com/data');
+  const data = await response.json();
+  console.log(data);
+}
+</code></pre>
+
+      <h3>5.7 Recursive Functions</h3>
+      <p>Functions that call themselves to solve problems by breaking them down.</p>
+      <pre><code>function factorial(n) {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
+}
+console.log(factorial(5)); // 120
+</code></pre>
+    </section>
+
+    <section>
+      <h2>6. Function Scope and Closures (Brief)</h2>
+      <p>Functions create their own <abbr title="The visibility or lifetime of variables">scope</abbr>. Variables declared inside a function are not accessible outside it.</p>
+      <pre><code>function testScope() {
+  let secret = "hidden";
+  console.log(secret);
+}
+testScope(); // "hidden"
+console.log(secret); // ReferenceError: secret is not defined
+</code></pre>
+
+      <p><strong>Closures</strong> happen when a function “remembers” the variables from its outer scope even after that scope has finished execution.</p>
+      <pre><code>function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    console.log(count);
+  }
+}
+const counter = outer();
+counter(); // 1
+counter(); // 2
+</code></pre>
+    </section>
+
+    <section>
+      <h2>7. Best Practices When Using Functions</h2>
+      <ul>
+        <li>Give functions descriptive names reflecting their purpose.</li>
+        <li>Keep functions small and focused on one task.</li>
+        <li>Use parameters to make functions flexible and reusable.</li>
+        <li>Return values instead of printing inside functions for better reusability.</li>
+        <li>Use arrow functions for concise callbacks.</li>
+        <li>Handle errors inside functions or let them propagate sensibly.</li>
+        <li>Use comments and documentation to clarify complex logic.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Assignments</h2>
+      <ol>
+        <li>Write a function <code>greetUser</code> that accepts a name and prints a personalized greeting.</li>
+        <li>Create a function to calculate the factorial of a number using recursion.</li>
+        <li>Write an arrow function <code>isEven</code> that returns true if a number is even.</li>
+        <li>Write a function that takes an array of numbers and returns the maximum number.</li>
+        <li>Build an async function to fetch user data from a free API and print the user's name.</li>
+        <li>Create an IIFE that logs "Hello, IIFE!" immediately.</li>
+        <li>Write a function expression that converts Fahrenheit to Celsius.</li>
+        <li>Create a function that accepts another function as a callback and calls it after 2 seconds.</li>
+        <li>Write a function with default parameters that calculates the power of a number.</li>
+        <li>Write a recursive function that calculates the nth Fibonacci number.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>9. References</h2>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions" target="_blank" rel="noopener noreferrer">MDN - JavaScript Functions</a></li>
+        <li><a href="https://javascript.info/function-basics" target="_blank" rel="noopener noreferrer">JavaScript.info - Functions</a></li>
+        <li><a href="https://www.freecodecamp.org/news/an-introduction-to-javascript-functions/" target="_blank" rel="noopener noreferrer">FreeCodeCamp - Intro to JavaScript Functions</a></li>
+        <li><a href="https://eloquentjavascript.net/03_functions.html" target="_blank" rel="noopener noreferrer">Eloquent JavaScript - Functions</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

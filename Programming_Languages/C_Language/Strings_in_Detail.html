@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Complete Guide to Strings in C</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fcfcfc;
+    margin: 30px;
+    color: #333;
+    line-height: 1.7;
+  }
+  h1, h2, h3 {
+    color: #2c3e50;
+  }
+  .section {
+    background-color: #e8f0fe;
+    border-left: 6px solid #3b82f6;
+    padding: 20px 25px;
+    margin: 25px 0;
+    border-radius: 6px;
+  }
+  pre {
+    background-color: #20232a;
+    color: #61dafb;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: Consolas, monospace;
+  }
+  code {
+    font-family: Consolas, monospace;
+  }
+  ul {
+    margin-left: 20px;
+  }
+  .warning {
+    background-color: #ffe6e6;
+    border-left: 6px solid #ff4d4d;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+  a {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  footer {
+    margin-top: 50px;
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Understanding Strings in C: A Complete Guide for Beginners</h1>
+
+<div class="section">
+  <h2>What is a String?</h2>
+  <p>
+    A <strong>string</strong> is a sequence of characters stored together. Think of a string as a chain of letters, digits, or symbols that form words or sentences.
+  </p>
+  <p>
+    In C, strings are stored as arrays of characters (<code>char</code> type), but with a special ending called the <strong>null character</strong> <code>'\0'</code> which marks where the string finishes.
+  </p>
+</div>
+
+<div class="section">
+  <h2>How to Use Strings in C? Step by Step</h2>
+  <ol>
+    <li><strong>Declare a string:</strong> Use an array of characters.</li>
+    <pre><code>char name[10];  // Declares a string with space for 9 characters + null terminator</code></pre>
+
+    <li><strong>Initialize a string:</strong> You can assign values while declaring.</li>
+    <pre><code>char greeting[] = "Hello";  // Automatically adds '\0' at the end</code></pre>
+
+    <li><strong>Input a string:</strong> Use <code>scanf</code> or <code>fgets</code> to get user input.</li>
+    <pre><code>scanf("%s", name);  // Reads a word (stops at space)</code></pre>
+
+    <li><strong>Access characters:</strong> You can use indexes like arrays.</li>
+    <pre><code>printf("%c\n", greeting[1]);  // Prints 'e'</code></pre>
+
+    <li><strong>Print the whole string:</strong></li>
+    <pre><code>printf("%s\n", greeting);  // Prints Hello</code></pre>
+  </ol>
+</div>
+
+<div class="section">
+  <h2>Important Concepts About Strings</h2>
+  <ul>
+    <li><strong>Null Terminator <code>'\0'</code>:</strong> Every string ends with a special character <code>'\0'</code>. It tells the computer where the string ends.</li>
+    <li><strong>String Length:</strong> The number of characters before the null terminator.</li>
+    <li><strong>Strings are arrays:</strong> You can think of strings as character arrays with one extra character for <code>'\0'</code>.</li>
+    <li><strong>Strings in C are mutable:</strong> You can change characters inside a string (unless it's a string literal).</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Common Mistakes to Avoid When Using Strings</h2>
+
+  <div class="warning">
+    <strong>1. Forgetting the Null Terminator:</strong><br />
+    If your string does not have <code>'\0'</code> at the end, functions like <code>printf</code> won’t know where to stop and may print garbage.<br />
+    Always make sure there’s enough space for <code>'\0'</code> when declaring or copying strings.
+  </div>
+
+  <div class="warning">
+    <strong>2. Using <code>scanf("%s", ...)</code> Without Size Limit:</strong><br />
+    It can cause buffer overflow if user inputs more characters than the array size.<br />
+    Use <code>scanf("%9s", name);</code> if the array size is 10 to leave space for <code>'\0'</code>.
+  </div>
+
+  <div class="warning">
+    <strong>3. Trying to Change String Literals:</strong><br />
+    Strings declared as <code>char *str = "Hello";</code> are stored in read-only memory.<br />
+    Changing them causes undefined behavior.<br />
+    Use character arrays if you want to modify strings.
+  </div>
+
+  <div class="warning">
+    <strong>4. Not Using String Library Functions:</strong><br />
+    C provides useful functions like <code>strlen()</code>, <code>strcpy()</code>, <code>strcmp()</code> in <code>string.h</code> to work with strings safely.<br />
+    Avoid writing your own from scratch unless practicing.
+  </div>
+</div>
+
+<div class="section">
+  <h2>Examples for Practice</h2>
+
+  <h3>Example 1: Declare and print a string</h3>
+  <pre><code>char name[] = "Rohan";
+printf("Name: %s\n", name);</code></pre>
+
+  <h3>Example 2: Change characters in a string</h3>
+  <pre><code>name[0] = 'S';  // Changes "Rohan" to "Sohan"
+printf("Updated Name: %s\n", name);</code></pre>
+
+  <h3>Example 3: Reading a string safely</h3>
+  <pre><code>char input[20];
+printf("Enter your name: ");
+scanf("%19s", input);  // Reads a word with max 19 chars + '\0'
+printf("Hello, %s!\n", input);</code></pre>
+
+  <h3>Example 4: Using string functions</h3>
+  <pre><code>#include &lt;string.h&gt;
+char str1[20] = "Hello";
+char str2[20];
+strcpy(str2, str1);  // Copies str1 into str2
+printf("Copied string: %s\n", str2);
+printf("Length: %lu\n", strlen(str2));</code></pre>
+</div>
+
+<div class="section">
+  <h2>Summary</h2>
+  <ul>
+    <li>Strings are arrays of characters ending with a null character <code>'\0'</code>.</li>
+    <li>Always ensure space for the null terminator in your arrays.</li>
+    <li>Use string library functions from <code>string.h</code> for common tasks.</li>
+    <li>Beware of buffer overflows when reading strings from users.</li>
+    <li>Strings declared as literals should not be changed.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Further Learning</h2>
+  <p>For more detailed explanations and examples, visit:</p>
+  <ul>
+    <li><a href="https://www.programiz.com/c-programming/c-strings" target="_blank" rel="noopener noreferrer">Programiz: Strings in C</a></li>
+    <li><a href="https://www.geeksforgeeks.org/strings-in-c-2/" target="_blank" rel="noopener noreferrer">GeeksforGeeks: Strings in C</a></li>
+    <li><a href="https://www.cprogramming.com/tutorial/c/lesson4.html" target="_blank" rel="noopener noreferrer">CProgramming.com - Strings</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>© 2025 Learn C Programming - Strings Guide</p>
+</footer>
+
+</body>
+</html>

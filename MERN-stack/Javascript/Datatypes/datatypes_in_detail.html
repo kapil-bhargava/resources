@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript Data Types Explained</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f8ff;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      margin-bottom: 40px;
+    }
+
+    .datatype {
+      background: white;
+      margin: 15px 0;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .datatype h2 {
+      color: #1d4ed8;
+      margin-bottom: 5px;
+    }
+
+    .datatype p {
+      margin: 5px 0;
+      font-size: 15px;
+    }
+
+    .code {
+      background: #eef3ff;
+      border-left: 5px solid #3b82f6;
+      padding: 10px 15px;
+      font-family: monospace;
+      margin: 10px 0;
+      overflow-x: auto;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+    }
+    a.anchor {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 10px;
+      color: white;
+      background-color: #2563eb;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>JavaScript Data Types with Examples & Usage</h1>
+
+<!-- Primitive Types -->
+<div class="datatype">
+  <h2>1. String</h2>
+  <p><strong>Definition:</strong> A sequence of characters used for text.</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">let name = "Alice";</div>
+  <p><strong>Use:</strong> Store names, messages, sentences, etc.</p>
+  <p><strong>Why:</strong> Easy to handle user input and display text.</p>
+  <p><strong>When:</strong> Any time you work with text or words.</p>
+  <a href="01_String.html" target="_blank" class="anchor">Know more in Detail</a>
+</div>
+
+<div class="datatype">
+  <h2>2. Number</h2>
+  <p><strong>Definition:</strong> Represents both integers and floating-point numbers.</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">let age = 25;<br>let price = 9.99;</div>
+  <p><strong>Use:</strong> For calculations, measurements, scores, prices.</p>
+  <p><strong>Why:</strong> Essential for math and logic operations.</p>
+  <p><strong>When:</strong> Anytime you need numeric values.</p>
+  <a href="01_String.html" target="_blank" class="anchor">Know more in Detail</a>
+</div>
+
+<div class="datatype">
+  <h2>3. Boolean</h2>
+  <p><strong>Definition:</strong> Represents either <code>true</code> or <code>false</code>.</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">let isOnline = true;</div>
+  <p><strong>Use:</strong> For conditional checks and logic (like login status).</p>
+  <p><strong>Why:</strong> Controls program flow (e.g., show/hide UI).</p>
+  <p><strong>When:</strong> Use when result is yes/no, on/off, true/false.</p>
+</div>
+
+<div class="datatype">
+  <h2>4. Undefined</h2>
+  <p><strong>Definition:</strong> A variable declared but not assigned a value.</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">let score;<br>console.log(score); // undefined</div>
+  <p><strong>Use:</strong> Detect uninitialized variables.</p>
+  <p><strong>Why:</strong> Helps find bugs or logic errors.</p>
+  <p><strong>When:</strong> Happens automatically if no value is assigned.</p>
+</div>
+
+<div class="datatype">
+  <h2>5. Null</h2>
+  <p><strong>Definition:</strong> Intentional absence of value (manually assigned).</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">let data = null;</div>
+  <p><strong>Use:</strong> Reset or empty a variable intentionally.</p>
+  <p><strong>Why:</strong> Tells program that a value is purposely "nothing".</p>
+  <p><strong>When:</strong> Use when a variable will later be given data.</p>
+</div>
+
+<div class="datatype">
+  <h2>6. BigInt</h2>
+  <p><strong>Definition:</strong> Used to store very large integers beyond the normal range.</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">let big = 1234567890123456789012345678901234567890n;</div>
+  <p><strong>Use:</strong> Store large numbers like those in cryptography or math.</p>
+  <p><strong>Why:</strong> Normal numbers may lose precision.</p>
+  <p><strong>When:</strong> Numbers > 2<sup>53</sup> or need full precision.</p>
+</div>
+
+<div class="datatype">
+  <h2>7. Symbol</h2>
+  <p><strong>Definition:</strong> A unique, immutable identifier (often used as keys).</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">let sym = Symbol("id");</div>
+  <p><strong>Use:</strong> Add hidden properties to objects.</p>
+  <p><strong>Why:</strong> Avoid property name collisions.</p>
+  <p><strong>When:</strong> Advanced use cases like meta-programming.</p>
+</div>
+
+<!-- Reference Types -->
+<div class="datatype">
+  <h2>8. Object</h2>
+  <p><strong>Definition:</strong> A collection of key-value pairs.</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">let person = { name: "Alice", age: 25 };</div>
+  <p><strong>Use:</strong> Store structured data (e.g., users, products).</p>
+  <p><strong>Why:</strong> Very flexible and powerful data container.</p>
+  <p><strong>When:</strong> When storing grouped or nested values.</p>
+</div>
+
+<div class="datatype">
+  <h2>9. Array</h2>
+  <p><strong>Definition:</strong> A list of values stored in a single variable.</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">let fruits = ["apple", "banana", "mango"];</div>
+  <p><strong>Use:</strong> Store collections of data like lists or tables.</p>
+  <p><strong>Why:</strong> Easy to loop and manage multiple items.</p>
+  <p><strong>When:</strong> When data has an order or needs iteration.</p>
+</div>
+
+<div class="datatype">
+  <h2>10. Function</h2>
+  <p><strong>Definition:</strong> A reusable block of code to perform a task.</p>
+  <p><strong>Example:</strong></p>
+  <div class="code">
+    function greet(name) {<br>
+      &nbsp;&nbsp;return "Hello " + name;<br>
+    }
+  </div>
+  <p><strong>Use:</strong> Organize logic into reusable units.</p>
+  <p><strong>Why:</strong> Helps with code reuse, clarity, and testing.</p>
+  <p><strong>When:</strong> Use for repeated tasks or actions.</p>
+</div>
+
+</body>
+</html>

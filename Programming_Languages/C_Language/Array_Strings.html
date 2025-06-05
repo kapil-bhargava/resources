@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arrays and Strings in C Programming</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fefefe;
+    margin: 30px;
+    color: #222;
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    color: #34495e;
+  }
+  .definition, .example, .reference {
+    background-color: #dbe9f4;
+    border-left: 6px solid #2980b9;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+  pre {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+  code {
+    font-family: Consolas, monospace;
+  }
+  ul {
+    margin-left: 20px;
+  }
+  a {
+    color: #2980b9;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+  }
+  .anchor {
+    display: inline-block;
+    padding: 5px;
+    color: white;
+    margin-right: 10px;
+    background-color: #2980b9;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<h1>Arrays and Strings in C Programming</h1>
+
+<div class="definition">
+  <h2>What is an Array?</h2>
+  <a target="_blank" class="anchor" href="Arrays_in_Detail.html">Know more in Detail</a>
+  <p>
+    An <strong>array</strong> is a collection of variables of the same type that are stored in contiguous memory locations.
+    Think of it as a row of boxes, each box holding one value, and all boxes being of the same kind (type).
+  </p>
+  <p>Arrays help you store and manage multiple values using a single variable name with an <em>index</em> to access each value.</p>
+</div>
+
+<h3>Key Terms:</h3>
+<ul>
+  <li><strong>Element:</strong> An individual value stored in an array.</li>
+  <li><strong>Index:</strong> Position number of an element in the array, starting from <code>0</code>.</li>
+  <li><strong>Contiguous Memory:</strong> Array elements are stored one after another in memory.</li>
+</ul>
+
+<div class="example">
+  <h3>Example: Declaring and Using an Integer Array</h3>
+  <pre><code>int numbers[5] = {10, 20, 30, 40, 50};
+printf("%d\n", numbers[2]);  // Outputs 30</code></pre>
+  <p>Here, <code>numbers</code> is an array of 5 integers. We access the 3rd element using <code>numbers[2]</code> because indexes start at 0.</p>
+</div>
+
+<hr>
+
+<div class="definition">
+  <h2>What is a String in C?</h2>
+   <a target="_blank" class="anchor" href="Strings_in_Detail.html">Know more in Detail</a>
+  <p>
+    A <strong>string</strong> is a sequence of characters stored as an array of <code>char</code> elements in C.
+    It is terminated with a special character called the <code>null character</code> represented as <code>'\0'</code>.
+  </p>
+  <p>This <code>null character</code> marks the end of the string so functions know where the string stops.</p>
+</div>
+
+<h3>Key Terms:</h3>
+<ul>
+  <li><strong>Character:</strong> A single letter, digit, or symbol stored in a <code>char</code> variable.</li>
+  <li><strong>Null Character (<code>'\0'</code>):</strong> A special character indicating the end of a string.</li>
+</ul>
+
+<div class="example">
+  <h3>Example: Declaring and Printing a String</h3>
+  <pre><code>char name[] = "Kapil";
+printf("%s\n", name);  // Outputs Kapil</code></pre>
+  <p>Here, <code>name</code> is a character array holding the characters 'K', 'a', 'p', 'i', 'l', and '\0' (end marker).</p>
+</div>
+
+<hr>
+
+<h2>How to Work with Arrays and Strings?</h2>
+
+<ul>
+  <li><strong>Accessing elements:</strong> Use indexes starting at 0, like <code>array[0]</code> for the first element.</li>
+  <li><strong>Modifying elements:</strong> Assign new values to specific indexes, e.g., <code>numbers[1] = 25;</code></li>
+  <li><strong>Looping through arrays:</strong> Use loops like <code>for</code> or <code>while</code> to process elements.</li>
+  <li><strong>String functions:</strong> Use built-in functions like <code>strlen()</code>, <code>strcpy()</code>, <code>strcmp()</code> from <code>string.h</code> to work with strings.</li>
+</ul>
+
+<div class="example">
+  <h3>Example: Looping through an Array</h3>
+  <pre><code>int i;
+int numbers[5] = {10, 20, 30, 40, 50};
+for (i = 0; i &lt; 5; i++) {
+    printf("Element %d: %d\n", i, numbers[i]);
+}</code></pre>
+</div>
+
+<hr>
+
+<h2>Common Operations with Strings</h2>
+<ul>
+  <li><code>strlen(str)</code> – Returns the length of the string (excluding <code>'\0'</code>).</li>
+  <li><code>strcpy(dest, src)</code> – Copies the source string into the destination.</li>
+  <li><code>strcmp(str1, str2)</code> – Compares two strings and returns 0 if they are equal.</li>
+  <li><code>strcat(dest, src)</code> – Concatenates (appends) the source string to the destination string.</li>
+</ul>
+
+<hr>
+
+<h2>Practice Assignments</h2>
+<ol>
+  <li>Declare an integer array of size 10, initialize it with values, and print all elements.</li>
+  <li>Write a program that reads a string from the user and prints its length using <code>strlen()</code>.</li>
+  <li>Write a program to reverse a string entered by the user.</li>
+  <li>Write a program to concatenate two strings using <code>strcat()</code>.</li>
+</ol>
+
+<hr>
+
+<h2>Further Reading</h2>
+<div class="reference">
+  <ul>
+    <li><a href="https://www.programiz.com/c-programming/c-arrays" target="_blank" rel="noopener noreferrer">Programiz: C Arrays</a></li>
+    <li><a href="https://www.programiz.com/c-programming/c-strings" target="_blank" rel="noopener noreferrer">Programiz: C Strings</a></li>
+    <li><a href="https://www.geeksforgeeks.org/arrays-in-c-cpp/" target="_blank" rel="noopener noreferrer">GeeksforGeeks: Arrays in C</a></li>
+    <li><a href="https://www.geeksforgeeks.org/strings-in-c/" target="_blank" rel="noopener noreferrer">GeeksforGeeks: Strings in C</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>© 2025 C Programming Tutorials - Arrays & Strings</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Variables & Data Types in JavaScript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9fafe;
+      padding: 20px;
+      color: #222;
+    }
+
+    h1, h2 {
+      color: #1e40af;
+    }
+
+    p {
+      font-size: 16px;
+      max-width: 750px;
+      margin-bottom: 10px;
+    }
+
+    .code-block {
+      background: #f0f4ff;
+      border-left: 5px solid #2563eb;
+      padding: 15px;
+      font-family: monospace;
+      font-size: 15px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+
+    ul {
+      max-width: 700px;
+    }
+
+    strong {
+      color: #0f172a;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+    }
+    a.anchor {
+      display: inline-block;
+      padding: 5px 10px;
+      color: white;
+      background-color: #2563eb;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Variables & Data Types in JavaScript</h1>
+
+  <h2>What is a Variable?</h2>
+  <a href="variables.html" class="anchor">Know more in Detail</a>
+  <p>A <strong>variable</strong> is like a container that stores data values. In JavaScript, we use keywords like <code>var</code>, <code>let</code>, and <code>const</code> to declare variables.</p>
+
+  <h2>Variable Declaration Keywords</h2>
+
+  <ul>
+    <li><strong>var</strong> - old way of declaring variables (function-scoped, can be re-declared and updated).</li>
+    <li><strong>let</strong> - modern way (block-scoped, can be updated but not re-declared in same scope).</li>
+    <li><strong>const</strong> - block-scoped, cannot be updated or re-declared (used for constants).</li>
+  </ul>
+
+  <div class="code-block">
+    // Example<br>
+    var name = "John";      // old<br>
+    let age = 25;           // modern<br>
+    const country = "India"; // constant
+  </div>
+
+  <h2>Data Types in JavaScript</h2>
+  <a href="../Datatypes/datatypes_in_detail.html" class="anchor">Know more in Detail</a>
+  <p>JavaScript has different types of data that variables can hold. These are divided into two main categories:</p>
+
+  <h3>1. Primitive Data Types</h3>
+  <ul>
+    <li><strong>String</strong>: A sequence of characters, like text.</li>
+    <li><strong>Number</strong>: Any numeric value (integer or floating-point).</li>
+    <li><strong>Boolean</strong>: True or false.</li>
+    <li><strong>Undefined</strong>: A variable that has been declared but not assigned a value.</li>
+    <li><strong>Null</strong>: Intentionally set to have no value.</li>
+    <li><strong>BigInt</strong>: Used for very large integers.</li>
+    <li><strong>Symbol</strong>: Unique and immutable value often used as object keys.</li>
+  </ul>
+
+  <div class="code-block">
+    let name = "Alice";     // String<br>
+    let age = 30;           // Number<br>
+    let isStudent = true;   // Boolean<br>
+    let score;              // Undefined<br>
+    let empty = null;       // Null<br>
+    let bigNumber = 1234567890123456789012345678901234567890n; // BigInt<br>
+    let uniqueId = Symbol("id"); // Symbol
+  </div>
+
+  <h3>2. Non-Primitive (Reference) Data Types</h3>
+  <ul>
+    <li><strong>Object</strong>: A collection of key-value pairs.</li>
+    <li><strong>Array</strong>: A list-like object.</li>
+    <li><strong>Function</strong>: A block of code that can be called.</li>
+  </ul>
+
+  <div class="code-block">
+    let person = { name: "Bob", age: 40 };   // Object<br>
+    let fruits = ["Apple", "Banana"];        // Array<br>
+    function greet() {                       // Function
+      console.log("Hello!");
+    }
+  </div>
+
+  <h2>Type Checking</h2>
+  <p>You can use <code>typeof</code> to check the data type of a variable:</p>
+
+  <div class="code-block">
+    console.log(typeof "Hello");   // "string"<br>
+    console.log(typeof 42);        // "number"<br>
+    console.log(typeof true);      // "boolean"
+  </div>
+
+  <h2>Summary</h2>
+  <ul>
+    <li>Use <code>let</code> for values that may change.</li>
+    <li>Use <code>const</code> for constants.</li>
+    <li>Understand the difference between primitive and reference types.</li>
+    <li>Use <code>typeof</code> to inspect types.</li>
+  </ul>
+
+</body>
+</html>

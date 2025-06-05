@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript Operators</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 30px;
+      color: #333;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #2a7ae2;
+    }
+    h2 {
+      margin-top: 30px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    pre {
+      background-color: #eef4ff;
+      padding: 15px;
+      border-left: 4px solid #2a7ae2;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 8px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      font-size: 0.95rem;
+    }
+    footer a {
+      color: #2a7ae2;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      table{
+        width: 100%;
+        overflow-x: scroll;
+      }
+      thead tr {
+        display: none;
+      }
+      tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 6px;
+      }
+      td {
+        text-align-last: left;
+        position: relative;
+        /* padding-left: 50%; */
+        text-align: right;
+        padding: 5px;
+      }
+      th{
+        /* display: none; */
+        padding: 5px;
+        text-align-last: left;
+      }
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Operators</h1>
+  <p>Operators in JavaScript are special symbols or keywords that are used to perform operations on operands (values and variables). They are essential in every JavaScript program to perform mathematical, logical, or assignment operations.</p>
+
+  <h2>1. Arithmetic Operators</h2>
+  <p>These operators are used to perform arithmetic calculations such as addition, subtraction, multiplication, etc.</p>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th><th>Output</th></tr>
+    <tr><td>+</td><td>Addition</td><td>let x = 5 + 3;</td><td>8</td></tr>
+    <tr><td>-</td><td>Subtraction</td><td>let x = 5 - 3;</td><td>2</td></tr>
+    <tr><td>*</td><td>Multiplication</td><td>let x = 5 * 3;</td><td>15</td></tr>
+    <tr><td>/</td><td>Division</td><td>let x = 6 / 3;</td><td>2</td></tr>
+    <tr><td>%</td><td>Modulus (remainder)</td><td>let x = 7 % 3;</td><td>1</td></tr>
+    <tr><td>**</td><td>Exponentiation</td><td>let x = 2 ** 3;</td><td>8</td></tr>
+  </table>
+
+  <h2>2. Comparison Operators</h2>
+  <p>These operators are used to compare two values and return a Boolean value (true or false).</p>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th><th>Output</th></tr>
+    <tr><td>==</td><td>Equal to</td><td>5 == '5'</td><td>true</td></tr>
+    <tr><td>===</td><td>Strict equal to (value and type)</td><td>5 === '5'</td><td>false</td></tr>
+    <tr><td>!=</td><td>Not equal</td><td>5 != '6'</td><td>true</td></tr>
+    <tr><td>!==</td><td>Strict not equal</td><td>5 !== '5'</td><td>true</td></tr>
+    <tr><td>&gt;</td><td>Greater than</td><td>6 &gt; 3</td><td>true</td></tr>
+    <tr><td>&lt;</td><td>Less than</td><td>2 &lt; 5</td><td>true</td></tr>
+    <tr><td>&gt;=</td><td>Greater than or equal to</td><td>5 &gt;= 5</td><td>true</td></tr>
+    <tr><td>&lt;=</td><td>Less than or equal to</td><td>4 &lt;= 3</td><td>false</td></tr>
+  </table>
+
+  <h2>3. Logical Operators</h2>
+  <p>Used to combine multiple conditions or expressions and return Boolean results.</p>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th><th>Output</th></tr>
+    <tr><td>&&</td><td>Logical AND</td><td>(5 > 2) && (4 < 10)</td><td>true</td></tr>
+    <tr><td>||</td><td>Logical OR</td><td>(5 < 2) || (4 < 10)</td><td>true</td></tr>
+    <tr><td>!</td><td>Logical NOT</td><td>!(5 === 5)</td><td>false</td></tr>
+  </table>
+
+  <h2>4. Bitwise Operators</h2>
+  <p>Perform bit-level operations on binary representations of integers.</p>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th><th>Output</th></tr>
+    <tr><td>&</td><td>Bitwise AND</td><td>5 & 3</td><td>1</td></tr>
+    <tr><td>|</td><td>Bitwise OR</td><td>5 | 3</td><td>7</td></tr>
+    <tr><td>^</td><td>Bitwise XOR</td><td>5 ^ 3</td><td>6</td></tr>
+    <tr><td>~</td><td>Bitwise NOT</td><td>~5</td><td>-6</td></tr>
+    <tr><td>&lt;&lt;</td><td>Left Shift</td><td>5 &lt;&lt; 1</td><td>10</td></tr>
+    <tr><td>&gt;&gt;</td><td>Right Shift</td><td>5 &gt;&gt; 1</td><td>2</td></tr>
+  </table>
+
+  <h2>5. Assignment Operators</h2>
+  <p>Used to assign values to variables and combine with arithmetic operations.</p>
+  <table>
+    <tr><th>Operator</th><th>Description</th><th>Example</th><th>Output</th></tr>
+    <tr><td>=</td><td>Assign</td><td>x = 10</td><td>10</td></tr>
+    <tr><td>+=</td><td>Add and assign</td><td>x += 5</td><td>15</td></tr>
+    <tr><td>-=</td><td>Subtract and assign</td><td>x -= 2</td><td>13</td></tr>
+    <tr><td>*=</td><td>Multiply and assign</td><td>x *= 2</td><td>26</td></tr>
+    <tr><td>/=</td><td>Divide and assign</td><td>x /= 2</td><td>13</td></tr>
+    <tr><td>%=</td><td>Modulus and assign</td><td>x %= 4</td><td>1</td></tr>
+  </table>
+
+  <footer>
+    <h3>References</h3>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators" target="_blank">MDN - JavaScript Operators</a></li>
+      <li><a href="https://www.w3schools.com/js/js_operators.asp" target="_blank">W3Schools - JavaScript Operators</a></li>
+      <li><a href="https://javascript.info/operators" target="_blank">JavaScript.info - Operators</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
