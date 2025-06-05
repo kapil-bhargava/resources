@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Control Structures in C</title>
@@ -10,9 +11,13 @@
       padding: 30px;
       color: #2c3e50;
     }
-    h1, h2, h3 {
+
+    h1,
+    h2,
+    h3 {
       color: #1a5276;
     }
+
     pre {
       background-color: #ecf0f1;
       border-left: 4px solid #3498db;
@@ -21,37 +26,95 @@
       font-family: 'Courier New', monospace;
       overflow-x: auto;
     }
+
     code {
       font-weight: bold;
     }
+
     ul {
       margin-left: 20px;
     }
+
     footer {
       margin-top: 40px;
       border-top: 1px solid #ccc;
       padding-top: 20px;
     }
+
     a {
       color: #2980b9;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
+
+    .assignment {
+      background-color: #92d5ff;
+      border-left: 6px solid #1a5276;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+
+    section.assignment {
+      margin-top: 40px;
+    }
+
+    section.assignment h2 {
+      font-size: 1.5rem;
+      color: #2a7ae2;
+      margin-bottom: 20px;
+    }
+
+    details {
+      background-color: #f1f8ff;
+      padding: 15px 20px;
+      border-left: 5px solid #2a7ae2;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    details:hover {
+      background-color: #e4f1ff;
+    }
+
+    summary {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #1a5db3;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    details[open] summary {
+      color: #174a8b;
+    }
+
+    details p {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.6;
+    }
   </style>
 </head>
+
 <body>
 
   <h1>Control Structures in C</h1>
 
-  <p>Control structures are the fundamental building blocks of programming. They allow programmers to dictate how the code should execute based on conditions or repetitions.</p>
+  <p>Control structures are the fundamental building blocks of programming. They allow programmers to dictate how the
+    code should execute based on conditions or repetitions.</p>
 
   <h2>Types of Control Structures</h2>
   <ul>
     <li><strong>Conditional Control</strong> - Executes a part of code based on certain conditions.</li>
     <li><strong>Looping Control</strong> - Repeats a set of statements.</li>
-    <li><strong>Unconditional Control</strong> - Transfers control unconditionally (e.g., <code>break</code>, <code>continue</code>, <code>goto</code>).</li>
+    <li><strong>Unconditional Control</strong> - Transfers control unconditionally (e.g., <code>break</code>,
+      <code>continue</code>, <code>goto</code>).</li>
   </ul>
 
   <h2>1. if Statement</h2>
@@ -124,14 +187,92 @@ printf("Negative");
 label:
   printf("Positive");</code></pre>
 
-  <footer>
-    <h3>References</h3>
-    <ul>
-      <li><a href="https://www.programiz.com/c-programming/c-if-else" target="_blank">Programiz: if-else</a></li>
-      <li><a href="https://www.geeksforgeeks.org/decision-making-c-cpp/" target="_blank">GeeksforGeeks: Decision Making</a></li>
-      <li><a href="https://www.tutorialspoint.com/cprogramming/c_decision_making.htm" target="_blank">TutorialsPoint: Decision Making</a></li>
-    </ul>
-  </footer>
+  <section class="assignment">
+    <h2>C Programming - If Else Assignments</h2>
+
+    <details>
+      <summary>1. Check whether a number is positive, negative or zero.</summary>
+      <p>Write a program to input a number and print whether it is positive, negative or zero using <code>if else</code>
+        statements.</p>
+    </details>
+
+    <details>
+      <summary>2. Find the largest of two numbers.</summary>
+      <p>Take two integer inputs from the user and display the largest number using <code>if else</code>.</p>
+    </details>
+
+    <details>
+      <summary>3. Check if a number is even or odd.</summary>
+      <p>Write a C program to check whether a given number is even or odd using <code>if else</code>.</p>
+    </details>
+
+    <details>
+      <summary>4. Find eligibility to vote.</summary>
+      <p>Input the age of the user and determine whether the user is eligible to vote (age >= 18).</p>
+    </details>
+
+    <details>
+      <summary>5. Check whether a character is a vowel or consonant.</summary>
+      <p>Input a character from the user and determine whether it is a vowel or consonant using <code>if else</code>.
+      </p>
+    </details>
+
+    <details>
+      <summary>6. Check if a year is a leap year or not.</summary>
+      <p>Input a year and determine whether it is a leap year using proper conditions and <code>if else</code>.</p>
+    </details>
+
+    <details>
+      <summary>7. Determine grade from percentage.</summary>
+      <p>Input percentage marks and determine grade based on the value (e.g., A, B, C, Fail) using nested
+        <code>if else</code>.</p>
+    </details>
+
+    <details>
+      <summary>8. Create a simple calculator (add, subtract, multiply, divide) based on user input.</summary>
+      <p>Ask for two numbers and an operator. Use <code>if else</code> to perform the corresponding operation.</p>
+    </details>
+     <details>
+      <summary>9. Check whether a number is divisible by 5 and 11.</summary>
+      <p>Take input from the user and check whether the number is divisible by both 5 and 11 using <code>if else</code>.</p>
+    </details>
+
+    <details>
+      <summary>10. Check if a number is positive, negative or zero using nested if.</summary>
+      <p>Use <code>nested if</code> structure to determine the category of number input.</p>
+    </details>
+
+    <details>
+      <summary>11. Find the greatest of three numbers.</summary>
+      <p>Input three numbers and determine the greatest using multiple <code>if else</code> conditions.</p>
+    </details>
+
+    <details>
+      <summary>12. Check whether a triangle is valid or not.</summary>
+      <p>Input three angles of a triangle. A triangle is valid if the sum of all three angles is equal to 180 degrees.</p>
+    </details>
+
+    <details>
+      <summary>13. Check if character is alphabet, digit or special character.</summary>
+      <p>Take one character as input and categorize it using <code>if else</code>.</p>
+    </details>
+
+    <details>
+      <summary>14. Menu-driven program for simple operations.</summary>
+      <p>Create a menu for add, subtract, multiply, divide. Ask for user's choice and perform accordingly using <code>if else if</code>.</p>
+    </details>
+
+    <footer>
+      <h3>References</h3>
+      <ul>
+        <li><a href="https://www.programiz.com/c-programming/c-if-else" target="_blank">Programiz: if-else</a></li>
+        <li><a href="https://www.geeksforgeeks.org/decision-making-c-cpp/" target="_blank">GeeksforGeeks: Decision
+            Making</a></li>
+        <li><a href="https://www.tutorialspoint.com/cprogramming/c_decision_making.htm" target="_blank">TutorialsPoint:
+            Decision Making</a></li>
+      </ul>
+    </footer>
 
 </body>
+
 </html>

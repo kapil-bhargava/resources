@@ -47,54 +47,55 @@
             white-space: pre;
             margin: 10px 0;
         }
-         details {
-    background: #f0f4ff;
-    border-radius: 8px;
-    padding: 15px 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
 
-  details[open] {
-    background: #dbeafe;
-  }
+        details {
+            background: #f0f4ff;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-  summary {
-    font-weight: 700;
-    font-size: 1.2rem;
-    outline: none;
-    list-style: none;
-  }
+        details[open] {
+            background: #dbeafe;
+        }
 
-  /* Remove default disclosure triangle */
-  summary::-webkit-details-marker {
-    display: none;
-  }
+        summary {
+            font-weight: 700;
+            font-size: 1.2rem;
+            outline: none;
+            list-style: none;
+        }
 
-  summary::before {
-    content: "▶";
-    display: inline-block;
-    margin-right: 10px;
-    transform-origin: center;
-    transition: transform 0.3s ease;
-  }
+        /* Remove default disclosure triangle */
+        summary::-webkit-details-marker {
+            display: none;
+        }
 
-  details[open] > summary::before {
-    transform: rotate(90deg);
-  }
+        summary::before {
+            content: "▶";
+            display: inline-block;
+            margin-right: 10px;
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
 
-  ol {
-    margin-top: 12px;
-    padding-left: 20px;
-    color: #1e40af;
-  }
+        details[open]>summary::before {
+            transform: rotate(90deg);
+        }
 
-  ol li {
-    margin-bottom: 10px;
-    line-height: 1.4;
-  }
+        ol {
+            margin-top: 12px;
+            padding-left: 20px;
+            color: #1e40af;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
 
         @media (max-width: 768px) {
             body {
@@ -147,12 +148,13 @@ It helps save time, avoid mistakes, and write cleaner code when you need to repe
         </div>
 
         <div class="section">
-  <h2>1. Conditional Statements - Detailed Explanation</h2>
+            <h2>1. Conditional Statements - Detailed Explanation</h2>
 
-  <h3>🔹 if Statement</h3>
-  <p><strong>Purpose:</strong> Execute a block of code <em>only if</em> a specific condition is true.</p>
-  <p><strong>How it works:</strong> The condition inside parentheses <code>if(condition)</code> is evaluated. If true, the code block inside curly braces <code>{}</code> runs. If false, it skips.</p>
-  <pre class="code">
+            <h3>🔹 if Statement</h3>
+            <p><strong>Purpose:</strong> Execute a block of code <em>only if</em> a specific condition is true.</p>
+            <p><strong>How it works:</strong> The condition inside parentheses <code>if(condition)</code> is evaluated.
+                If true, the code block inside curly braces <code>{}</code> runs. If false, it skips.</p>
+            <pre class="code">
 let age = 16;
 if (age &lt; 18) {
   console.log("You are a minor.");
@@ -160,10 +162,12 @@ if (age &lt; 18) {
 // Output: You are a minor.
   </pre>
 
-  <h3>🔹 if...else Statement</h3>
-  <p><strong>Purpose:</strong> Choose between two alternatives. Run one block if the condition is true, otherwise run the other block.</p>
-  <p><strong>How it works:</strong> If the condition in <code>if()</code> is true, run that block; if false, run the block inside <code>else</code>.</p>
-  <pre class="code">
+            <h3>🔹 if...else Statement</h3>
+            <p><strong>Purpose:</strong> Choose between two alternatives. Run one block if the condition is true,
+                otherwise run the other block.</p>
+            <p><strong>How it works:</strong> If the condition in <code>if()</code> is true, run that block; if false,
+                run the block inside <code>else</code>.</p>
+            <pre class="code">
 let age = 20;
 if (age &lt; 18) {
   console.log("You are a minor.");
@@ -173,10 +177,12 @@ if (age &lt; 18) {
 // Output: You are an adult.
   </pre>
 
-  <h3>🔹 if...else if...else Statement</h3>
-  <p><strong>Purpose:</strong> Test multiple conditions in sequence, running the first block where the condition is true, or the <code>else</code> block if none are true.</p>
-  <p><strong>How it works:</strong> Checks conditions in order. When one is true, its block executes and the rest are skipped.</p>
-  <pre class="code">
+            <h3>🔹 if...else if...else Statement</h3>
+            <p><strong>Purpose:</strong> Test multiple conditions in sequence, running the first block where the
+                condition is true, or the <code>else</code> block if none are true.</p>
+            <p><strong>How it works:</strong> Checks conditions in order. When one is true, its block executes and the
+                rest are skipped.</p>
+            <pre class="code">
 let age = 70;
 
 if (age &lt; 18) {
@@ -188,7 +194,7 @@ if (age &lt; 18) {
 }
 // Output: You are a senior citizen.
   </pre>
-</div>
+        </div>
 
 
         <div class="section">
@@ -267,40 +273,41 @@ if (age &lt; 18) {
         </div>
     </div>
     <div class="section">
-  <h2>📝 Assignments: Conditionals & Loops</h2>
+        <h2>📝 Assignments: Conditionals & Loops</h2>
 
-  <details open>
-    <summary><strong>Conditionals Assignments</strong></summary>
-    <ol>
-      <li>Write a program to check if a number is positive, negative, or zero.</li>
-      <li>Create a program that determines if a user is eligible to vote (age >= 18).</li>
-      <li>Write a program to find the largest of three numbers using if...else.</li>
-      <li>Check if a given year is a leap year.</li>
-      <li>Write a program to print "Good Morning", "Good Afternoon" or "Good Evening" based on current hour.</li>
-      <li>Use ternary operator to decide if a number is even or odd.</li>
-      <li>Create a login simulation: print welcome message if username matches, else show error.</li>
-      <li>Write a program to check if a character is a vowel or consonant.</li>
-      <li>Determine grade based on score (A, B, C, D, F) using if...else if.</li>
-      <li>Write a program that outputs "Weekend" or "Weekday" based on day input.</li>
-    </ol>
-  </details>
+        <details open>
+            <summary><strong>Conditionals Assignments</strong></summary>
+            <ol>
+                <li>Write a program to check if a number is positive, negative, or zero.</li>
+                <li>Create a program that determines if a user is eligible to vote (age >= 18).</li>
+                <li>Write a program to find the largest of three numbers using if...else.</li>
+                <li>Check if a given year is a leap year.</li>
+                <li>Write a program to print "Good Morning", "Good Afternoon" or "Good Evening" based on current hour.
+                </li>
+                <li>Use ternary operator to decide if a number is even or odd.</li>
+                <li>Create a login simulation: print welcome message if username matches, else show error.</li>
+                <li>Write a program to check if a character is a vowel or consonant.</li>
+                <li>Determine grade based on score (A, B, C, D, F) using if...else if.</li>
+                <li>Write a program that outputs "Weekend" or "Weekday" based on day input.</li>
+            </ol>
+        </details>
 
-  <details>
-    <summary><strong>Loops Assignments</strong></summary>
-    <ol>
-      <li>Print numbers from 1 to 50 using a for loop.</li>
-      <li>Calculate the factorial of a given number using a while loop.</li>
-      <li>Print all even numbers between 1 and 100.</li>
-      <li>Sum all numbers from 1 to n, where n is user input.</li>
-      <li>Print the multiplication table of a given number.</li>
-      <li>Find the sum of digits of a number using a loop.</li>
-      <li>Print the Fibonacci series up to n terms.</li>
-      <li>Display all prime numbers between 1 and 100.</li>
-      <li>Use a for...of loop to print all elements of an array.</li>
-      <li>Write a program to reverse a string using a loop.</li>
-    </ol>
-  </details>
-</div>
+        <details>
+            <summary><strong>Loops Assignments</strong></summary>
+            <ol>
+                <li>Print numbers from 1 to 50 using a for loop.</li>
+                <li>Calculate the factorial of a given number using a while loop.</li>
+                <li>Print all even numbers between 1 and 100.</li>
+                <li>Sum all numbers from 1 to n, where n is user input.</li>
+                <li>Print the multiplication table of a given number.</li>
+                <li>Find the sum of digits of a number using a loop.</li>
+                <li>Print the <abbr title="A sequence where each number is the sum of the two preceding ones, starting from 0 and 1">Fibonacci</abbr> series up to n terms.</li>
+                <li>Display all prime numbers between 1 and 100.</li>
+                <li>Use a for...of loop to print all elements of an array.</li>
+                <li>Write a program to reverse a string using a loop.</li>
+            </ol>
+        </details>
+    </div>
 </body>
 
 </html>

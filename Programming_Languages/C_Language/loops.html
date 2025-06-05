@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Loops in C - Explained</title>
@@ -16,41 +17,52 @@
       padding: 30px;
       line-height: 1.6;
     }
-    h1, h2 {
+
+    h1,
+    h2 {
       color: #2c3e50;
     }
+
     h2 {
       margin-top: 30px;
     }
+
     p {
       margin-bottom: 10px;
     }
+
     pre {
       background-color: #e8f0fe;
       border-left: 4px solid #2c3e50;
       padding: 15px;
       overflow-x: auto;
     }
+
     code {
       font-family: Consolas, monospace;
       color: #1e293b;
     }
+
     ul {
       margin-left: 20px;
     }
+
     footer {
       margin-top: 40px;
       padding-top: 20px;
       border-top: 1px solid #ccc;
     }
+
     footer a {
       color: #0066cc;
       text-decoration: none;
     }
+
     footer a:hover {
       text-decoration: underline;
     }
-    .anchor{
+
+    .anchor {
       /* display: inline-block; */
       padding: 5px;
       color: white;
@@ -58,8 +70,59 @@
       background-color: #0066cc;
       text-decoration: none;
     }
+
+    /* .assignment {
+      background-color: #92d5ff;
+      border-left: 6px solid #1a5276;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+    } */
+
+    section.assignment {
+      margin-top: 40px;
+    }
+
+    section.assignment h2 {
+      font-size: 1.5rem;
+      color: #2a7ae2;
+      margin-bottom: 20px;
+    }
+
+    details {
+      background-color: #f1f8ff;
+      padding: 15px 20px;
+      border-left: 5px solid #2a7ae2;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    details:hover {
+      background-color: #e4f1ff;
+    }
+
+    summary {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #1a5db3;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    details[open] summary {
+      color: #174a8b;
+    }
+
+    details p {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.6;
+    }
   </style>
 </head>
+
 <body>
 
   <h1>Loops in C Programming</h1>
@@ -72,7 +135,8 @@
   </ul>
 
   <h2>1. for Loop</h2>
-  <p>The <strong>for loop</strong> is best used when the number of iterations is known. It has three parts: initialization, condition, and increment/decrement.</p>
+  <p>The <strong>for loop</strong> is best used when the number of iterations is known. It has three parts:
+    initialization, condition, and increment/decrement.</p>
   <pre><code>for (int i = 1; i <= 5; i++) {
   printf("Value of i is: %d\n", i);
 }</code></pre>
@@ -84,7 +148,8 @@
   </ul>
 
   <h2>2. while Loop</h2>
-  <p>The <strong>while loop</strong> is used when the number of iterations is not known in advance. It checks the condition before each iteration.</p>
+  <p>The <strong>while loop</strong> is used when the number of iterations is not known in advance. It checks the
+    condition before each iteration.</p>
   <pre><code>int i = 1;
 while (i <= 5) {
   printf("Value of i: %d\n", i);
@@ -93,7 +158,8 @@ while (i <= 5) {
   <p><strong>Note:</strong> If the condition is false at the beginning, the loop body won’t execute at all.</p>
 
   <h2>3. do-while Loop</h2>
-  <p>The <strong>do-while loop</strong> is similar to the while loop, but it checks the condition <em>after</em> executing the loop body at least once.</p>
+  <p>The <strong>do-while loop</strong> is similar to the while loop, but it checks the condition <em>after</em>
+    executing the loop body at least once.</p>
   <pre><code>int i = 1;
 do {
   printf("Value of i: %d\n", i);
@@ -124,15 +190,71 @@ do {
       <td>At least one iteration is required</td>
     </tr>
   </table>
+  <section class="assignment"></section>
+  <h2>C Programming - Loop Assignments</h2>
+
+  <details>
+    <summary>1. Print numbers from 1 to 100 using a loop.</summary>
+    <p>Use a <code>for</code> loop to print numbers from 1 to 100.</p>
+  </details>
+
+  <details>
+    <summary>2. Print even numbers between 1 to 50 using a loop.</summary>
+    <p>Use a <code>for</code> or <code>while</code> loop and check if a number is even using modulus operator.</p>
+  </details>
+
+  <details>
+    <summary>3. Find the factorial of a number.</summary>
+    <p>Input a number from the user and calculate its factorial using a <code>for</code> or <code>while</code> loop.</p>
+  </details>
+
+  <details>
+    <summary>4. Display multiplication table of a number.</summary>
+    <p>Input a number and print its multiplication table from 1 to 10 using a loop.</p>
+  </details>
+
+  <details>
+    <summary>5. Print Fibonacci series up to n terms.</summary>
+    <p>Use a loop to display the Fibonacci series (0, 1, 1, 2, 3, 5...) up to a given number of terms.</p>
+  </details>
+
+  <details>
+    <summary>6. Reverse a number using loop.</summary>
+    <p>Input a number and reverse it using a <code>while</code> loop.</p>
+  </details>
+  <details>
+    <summary>7. Count number of digits in an integer.</summary>
+    <p>Input a number and count how many digits it has using a <code>while</code> loop.</p>
+  </details>
+
+  <details>
+    <summary>8. Check whether a number is palindrome or not.</summary>
+    <p>Reverse the number using loop and compare it with original to check for palindrome.</p>
+  </details>
+
+  <details>
+    <summary>9. Find sum of digits of a number using loop.</summary>
+    <p>Use loop to extract and add each digit of a number.</p>
+  </details>
+
+  <details>
+    <summary>10. Find the power of a number using loop.</summary>
+    <p>Input base and exponent. Use loop to multiply base exponent times.</p>
+  </details>
+
+  </section>
 
   <footer>
     <h3>References</h3>
     <ul>
       <li><a href="https://www.programiz.com/c-programming/c-for-loop" target="_blank">Programiz - for loop</a></li>
-      <li><a href="https://www.geeksforgeeks.org/loops-in-c-and-cpp/" target="_blank">GeeksforGeeks - Loops in C</a></li>
-      <li><a href="https://www.tutorialspoint.com/cprogramming/c_loops.htm" target="_blank">TutorialsPoint - C Loops</a></li>
+      <li><a href="https://www.geeksforgeeks.org/loops-in-c-and-cpp/" target="_blank">GeeksforGeeks - Loops in C</a>
+      </li>
+      <li><a href="https://www.tutorialspoint.com/cprogramming/c_loops.htm" target="_blank">TutorialsPoint - C Loops</a>
+      </li>
     </ul>
   </footer>
 
 </body>
+
 </html>
