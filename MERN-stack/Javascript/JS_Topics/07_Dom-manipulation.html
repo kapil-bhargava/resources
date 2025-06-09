@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DOM Manipulation in JavaScript</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2, h3 {
+      color: #2563eb;
+    }
+
+    .section {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    pre {
+      background-color: #1e293b;
+      color: #f8fafc;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      background-color: #e5e7eb;
+      padding: 2px 6px;
+      color: black;
+      border-radius: 4px;
+    }
+
+    abbr {
+      border-bottom: 1px dotted #555;
+      cursor: help;
+    }
+
+    a {
+      color: #2563eb;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 10px;
+      }
+    }
+    .anchor{
+        background-color: rgb(41, 95, 243);
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DOM Manipulation in JavaScript</h1>
+    <a href="extended-dom-operations.html" target="_blank" class="anchor">Extended DOM Manipulation</a>
+
+    <div class="section">
+      <h2>What is DOM?</h2>
+      <p>
+        <abbr title="Document Object Model">DOM</abbr> stands for Document Object Model. It is a programming interface for HTML and XML documents. It represents the page so that programs can change the structure, style, and content of a document dynamically.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Why Use DOM?</h2>
+      <ul>
+        <li>To change content on the web page dynamically</li>
+        <li>To respond to user actions like clicks, hovers, etc.</li>
+        <li>To validate forms and manipulate inputs</li>
+        <li>To create dynamic interfaces (modals, tabs, themes, etc.)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>How Does DOM Work?</h2>
+      <p>
+        The browser parses HTML and builds a tree-like structure known as the <strong>DOM tree</strong>. JavaScript can then use this structure to access and modify elements using the <code>document</code> object.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Why <code>document</code> is an Object?</h2>
+      <p>
+        In JavaScript, everything is an object. The <code>document</code> is a global object provided by the browser that represents the entire HTML page. It has properties and methods to interact with and manipulate the page.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>What Can DOM Do?</h2>
+      <ul>
+        <li>Change text content, styles, or HTML</li>
+        <li>Create, remove, or replace elements</li>
+        <li>Handle events like click, input, scroll, etc.</li>
+        <li>Add or remove classes and attributes</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Targeting Elements in DOM</h2>
+      <p>We use various methods on <code>document</code> to access HTML elements:</p>
+
+      <h3>1. <code>getElementById()</code></h3>
+      <p>Targets a single element by its <abbr title="HTML attribute that uniquely identifies an element">ID</abbr>.</p>
+      <pre><code>const title = document.getElementById("main-title");</code></pre>
+
+      <h3>2. <code>getElementsByClassName()</code></h3>
+      <p>Returns a collection of all elements with the given class name.</p>
+      <pre><code>const items = document.getElementsByClassName("item");</code></pre>
+
+      <h3>3. <code>getElementsByTagName()</code></h3>
+      <p>Returns a collection of elements with the specified tag (like <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>).</p>
+      <pre><code>const paragraphs = document.getElementsByTagName("p");</code></pre>
+
+      <h3>4. <code>querySelector()</code></h3>
+      <p>Returns the first element that matches a CSS selector.</p>
+      <pre><code>const firstItem = document.querySelector(".item");</code></pre>
+
+      <h3>5. <code>querySelectorAll()</code></h3>
+      <p>Returns all elements that match a CSS selector.</p>
+      <pre><code>const allItems = document.querySelectorAll(".item");</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>Example: Change Text Content</h2>
+      <pre><code>// HTML: &lt;h1 id="header"&gt;Hello&lt;/h1&gt;
+const header = document.getElementById("header");
+header.textContent = "Welcome to DOM";</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>Example: Add Event Listener</h2>
+      <pre><code>// HTML: &lt;button id="clickBtn"&gt;Click Me&lt;/button&gt;
+document.getElementById("clickBtn").addEventListener("click", function() {
+  alert("Button Clicked!");
+});</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>References</h2>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" target="_blank">MDN: Document Object Model</a></li>
+        <li><a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">W3Schools: HTML DOM</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

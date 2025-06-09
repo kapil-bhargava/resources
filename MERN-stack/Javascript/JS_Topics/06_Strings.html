@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript String Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2, h3 {
+      color: #0f172a;
+    }
+
+    h1 {
+      text-align: center;
+      color: #3b82f6;
+    }
+
+    p, li {
+      line-height: 1.7;
+    }
+
+    code {
+      background: #cfcfcf;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 15px;
+      color: black;
+    }
+
+    pre {
+      background-color: #1e293b;
+      color: #f1f5f9;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .method-block {
+      background: #f9fafb;
+      border-left: 5px solid #3b82f6;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 10px;
+      }
+    }
+
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    .anchor{
+      background-color: #1b6ae9;
+      color: white;
+      padding: 5px;
+      text-decoration: none;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript Strings Explained</h1>
+
+    <h2>📌 What is a String?</h2>
+    <p>
+      A <strong>string</strong> is a sequence of characters used to represent text in programming. In JavaScript, strings are enclosed in either <code>'single quotes'</code>, <code>"double quotes"</code>, or <code>`template literals`</code>.
+    </p>
+
+    <pre><code>let message = "Hello, world!";
+let name = 'Rohan';
+let greeting = `Hello, ${name}`;</code></pre>
+
+    <h2>✅ Why Use Strings?</h2>
+    <ul>
+      <li>To store and manipulate text-based data (e.g., names, emails, messages)</li>
+      <li>Used for displaying messages, output, prompts, or labels in the UI</li>
+      <li>Helpful in working with dynamic content, logs, and APIs</li>
+    </ul>
+
+    <h2>📍 Where Are Strings Used?</h2>
+    <ul>
+      <li>In form inputs (name, email)</li>
+      <li>URLs, file paths, and error messages</li>
+      <li>HTML and UI rendering</li>
+      <li>Data from APIs and databases</li>
+    </ul>
+
+    <h2>🧠 Common String Methods (with Examples)</h2>
+    <a href="String_methods.html" target="_blank" class="anchor">Know more in Detail</a>
+
+    <div class="method-block">
+      <h3>1. <code>length</code></h3>
+      <p>Returns the number of characters in a string.</p>
+      <pre><code>let str = "Hello";
+console.log(str.length); // 5</code></pre>
+    </div>
+
+    <div class="method-block">
+      <h3>2. <code>toUpperCase()</code> / <code>toLowerCase()</code></h3>
+      <p>Converts a string to upper or lower case.</p>
+      <pre><code>let city = "delhi";
+console.log(city.toUpperCase()); // "DELHI"</code></pre>
+    </div>
+
+    <div class="method-block">
+      <h3>3. <code>includes()</code></h3>
+      <p>Checks if a substring is present in a string. Returns true or false.</p>
+      <pre><code>let email = "user@example.com";
+console.log(email.includes("@")); // true</code></pre>
+    </div>
+
+    <div class="method-block">
+      <h3>4. <code>indexOf()</code></h3>
+      <p>Returns the index of the first occurrence of a specified value.</p>
+      <pre><code>let text = "JavaScript";
+console.log(text.indexOf("S")); // 4</code></pre>
+    </div>
+
+    <div class="method-block">
+      <h3>5. <code>slice(start, end)</code></h3>
+      <p>Extracts a section of a string and returns it as a new string.</p>
+      <pre><code>let lang = "JavaScript";
+console.log(lang.slice(0, 4)); // "Java"</code></pre>
+    </div>
+
+    <div class="method-block">
+      <h3>6. <code>replace()</code></h3>
+      <p>Replaces a value with another in a string.</p>
+      <pre><code>let text = "I like HTML";
+console.log(text.replace("HTML", "JavaScript")); // "I like JavaScript"</code></pre>
+    </div>
+
+    <div class="method-block">
+      <h3>7. <code>trim()</code></h3>
+      <p>Removes whitespace from both ends of a string.</p>
+      <pre><code>let name = "   Rohan   ";
+console.log(name.trim()); // "Rohan"</code></pre>
+    </div>
+
+    <div class="method-block">
+      <h3>8. <code>split()</code></h3>
+      <p>Splits a string into an array of substrings.</p>
+      <pre><code>let fruits = "apple,banana,grape";
+console.log(fruits.split(",")); // ["apple", "banana", "grape"]</code></pre>
+    </div>
+
+    <div class="method-block">
+      <h3>9. <code>charAt()</code></h3>
+      <p>Returns the character at a specified index.</p>
+      <pre><code>let str = "Rohan";
+console.log(str.charAt(2)); // "p"</code></pre>
+    </div>
+
+    <div class="method-block">
+      <h3>10. <code>concat()</code></h3>
+      <p>Joins two or more strings.</p>
+      <pre><code>let fname = "Rohan";
+let lname = "Kumar";
+console.log(fname.concat(" ", lname)); // "Rohan Kumar"</code></pre>
+    </div>
+
+    <h2>🔗 References</h2>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">MDN Web Docs: String</a></li>
+      <li><a href="https://www.w3schools.com/js/js_strings.asp" target="_blank">W3Schools - JavaScript Strings</a></li>
+    </ul>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pointers in C - Subtopics Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      color: #0046d5;
+    }
+
+    section {
+      margin-bottom: 40px;
+      padding: 25px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    code, pre {
+      background-color: #eef3fb;
+      padding: 12px;
+      border-radius: 6px;
+      display: block;
+      margin-top: 10px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pointers in C - Subtopics Explained</h1>
+
+    <section>
+      <h2>1. Basics of Pointers</h2>
+      <p>A pointer is a variable that stores the memory address of another variable. The <code>&</code> operator is used to get the address, and <code>*</code> is used to dereference the address.</p>
+      <pre><code>int a = 10;
+int *p = &a;
+printf("%d", *p);  // Outputs: 10</code></pre>
+    </section>
+
+    <section>
+      <h2>2. Pointer and Variables</h2>
+      <p>Pointers can point to any data type: int, char, float, etc. They allow indirect manipulation of variable values.</p>
+      <pre><code>float pi = 3.14;
+float *ptr = &pi;
+*ptr = 3.14159;</code></pre>
+    </section>
+
+    <section>
+      <h2>3. Pointer Arithmetic</h2>
+      <p>You can increment/decrement pointers to move across memory addresses. This is mainly useful in arrays.</p>
+      <pre><code>int arr[] = {1, 2, 3};
+int *p = arr;
+
+printf("%d", *(p + 1)); // Outputs: 2</code></pre>
+    </section>
+
+    <section>
+      <h2>4. Pointers and Arrays</h2>
+      <p>Array names work like pointers. You can access array elements using pointer arithmetic.</p>
+      <pre><code>int arr[3] = {10, 20, 30};
+int *ptr = arr;
+
+for(int i = 0; i < 3; i++) {
+  printf("%d ", *(ptr + i));
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>5. Pointers and Functions</h2>
+      <p>Pointers allow functions to modify variables passed as arguments (pass by reference).</p>
+      <pre><code>void update(int *x) {
+  *x = 100;
+}
+
+int main() {
+  int a = 10;
+  update(&a);
+  printf("%d", a); // Outputs: 100
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>6. Pointer to Pointer</h2>
+      <p>Double pointers store the address of another pointer. Used in dynamic memory and function references.</p>
+      <pre><code>int x = 5;
+int *p = &x;
+int **pp = &p;
+
+printf("%d", **pp);</code></pre>
+    </section>
+
+    <section>
+      <h2>7. Dynamic Memory Allocation</h2>
+      <p>Memory can be allocated at runtime using <code>malloc</code>, <code>calloc</code>, and resized with <code>realloc</code>. Always <code>free</code> the memory.</p>
+      <pre><code>int *p = (int*) malloc(sizeof(int));
+*p = 25;
+free(p);</code></pre>
+    </section>
+
+    <section>
+      <h2>8. Pointers and Strings</h2>
+      <p>Character arrays and string literals are manipulated using pointers.</p>
+      <pre><code>char *str = "Hello";
+printf("%c", *(str+1)); // Outputs: 'e'</code></pre>
+    </section>
+
+    <section>
+      <h2>9. Pointers and Structures</h2>
+      <p>Use <code>-></code> to access members via structure pointers.</p>
+      <pre><code>struct Student { int id; } s = {1};
+struct Student *sp = &s;
+printf("%d", sp->id);</code></pre>
+    </section>
+
+    <section>
+      <h2>10. Advanced Topics</h2>
+      <ul>
+        <li><strong>Function pointers:</strong> Call functions through pointers</li>
+        <li><strong>Void pointers:</strong> Generic pointers that can hold any type</li>
+        <li><strong>Dangling/Wild pointers:</strong> Uninitialized or freed pointers</li>
+      </ul>
+      <pre><code>void greet() { printf("Hello"); }
+void (*fp)() = greet;
+fp();</code></pre>
+    </section>
+
+    <section>
+      <h2>11. Applications in Data Structures</h2>
+      <p>Pointers are essential for dynamic data structures like:</p>
+      <ul>
+        <li>Linked Lists</li>
+        <li>Trees and Binary Search Trees</li>
+        <li>Graphs (Adjacency list)</li>
+        <li>Dynamic Stacks and Queues</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>12. Common Mistakes and Debugging</h2>
+      <ul>
+        <li>Dereferencing NULL or uninitialized pointers</li>
+        <li>Memory leaks from missing <code>free()</code></li>
+        <li>Dangling pointers after <code>free()</code></li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

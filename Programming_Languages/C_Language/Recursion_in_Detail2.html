@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursion in C - Full Guide</title>
+  <style>
+    :root {
+      --primary: #4A00E0;
+      --secondary: #8E2DE2;
+      --background: #f5f7fa;
+      --text: #333;
+      --card-bg: #ffffff;
+      --code-bg: #eee;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--primary);
+    }
+
+    section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    code, pre {
+      background-color: var(--code-bg);
+      padding: 10px;
+      border-radius: 6px;
+      display: block;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    ul, ol {
+      margin-left: 25px;
+    }
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔁 Recursion in C - Complete Guide</h1>
+
+    <section>
+      <h2>What is Recursion?</h2>
+      <p>Recursion is a technique where a function calls itself to solve a problem in smaller sub-parts.</p>
+      <pre><code>void function() {
+    // logic
+    function();  // recursive call
+}</code></pre>
+      <p>Every recursive function must have a <strong>base case</strong> to stop further recursive calls.</p>
+    </section>
+
+    <section>
+      <h2>Why Use Recursion?</h2>
+      <ul>
+        <li>When the problem can be divided into smaller sub-problems.</li>
+        <li>To write cleaner and more readable code for nested/recursive structures.</li>
+        <li>Some problems are naturally recursive (e.g. tree traversal).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Types of Recursion</h2>
+      <ul>
+        <li><strong>Direct Recursion:</strong> Function calls itself directly.</li>
+        <li><strong>Indirect Recursion:</strong> Function A calls B, which calls A again.</li>
+        <li><strong>Tail Recursion:</strong> Recursive call is the last thing done.</li>
+        <li><strong>Head Recursion:</strong> Recursive call happens first.</li>
+        <li><strong>Tree Recursion:</strong> Function calls itself multiple times.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How Recursion Works</h2>
+      <p>Every recursive call adds a new frame to the call stack. Once the base case is reached, the stack unwinds returning values.</p>
+    </section>
+
+    <section>
+      <h2>Example: Factorial</h2>
+      <pre><code>#include &lt;stdio.h&gt;
+
+int factorial(int n) {
+    if (n == 0)
+        return 1;
+    else
+        return n * factorial(n - 1);
+}
+
+int main() {
+    int num = 5;
+    printf("Factorial of %d is %d", num, factorial(num));
+    return 0;
+}</code></pre>
+      <p><strong>Breakdown:</strong></p>
+      <ol>
+        <li>factorial(5) → 5 * factorial(4)</li>
+        <li>factorial(4) → 4 * factorial(3)</li>
+        <li>...</li>
+        <li>factorial(0) → 1 (base case)</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Real Life Analogies</h2>
+      <ul>
+        <li>📦 Russian Dolls (one inside another)</li>
+        <li>🪞 Mirrors facing each other</li>
+        <li>🧗 Climbing stairs recursively</li>
+        <li>🗼 Tower of Hanoi</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Practical Use Cases</h2>
+      <ul>
+        <li>File system traversal</li>
+        <li>Solving puzzles like Sudoku, N-Queens</li>
+        <li>Tree and Graph traversal</li>
+        <li>Backtracking problems</li>
+        <li>Sorting: Merge Sort, Quick Sort</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursion in DSA</h2>
+      <ul>
+        <li><strong>Trees:</strong> Inorder, Preorder, Postorder</li>
+        <li><strong>Graphs:</strong> DFS</li>
+        <li><strong>Divide & Conquer:</strong> Merge Sort, Quick Sort</li>
+        <li><strong>Backtracking:</strong> N-Queens, Maze Solver</li>
+        <li><strong>Dynamic Programming:</strong> Memoization</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>When Not to Use Recursion</h2>
+      <ul>
+        <li>Very deep recursion can cause stack overflow</li>
+        <li>Iteration may be more efficient in some cases</li>
+        <li>Resource-constrained environments</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Summary</h2>
+      <ul>
+        <li>🔁 <strong>Recursion:</strong> Function calling itself</li>
+        <li>🧠 <strong>Base Case:</strong> Must exist to prevent infinite calls</li>
+        <li>📦 <strong>Applications:</strong> DSA, file systems, games, puzzles</li>
+        <li>⚠️ <strong>Be cautious:</strong> Stack depth and memory usage</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📚 References</h2>
+      <ul>
+        <li><a href="https://www.geeksforgeeks.org/recursion/" target="_blank">GeeksforGeeks - Recursion</a></li>
+        <li><a href="https://www.programiz.com/c-programming/recursion" target="_blank">Programiz - Recursion in C</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Recursion_(computer_science)" target="_blank">Wikipedia - Recursion</a></li>
+      </ul>
+    </section>
+
+  </div>
+</body>
+</html>

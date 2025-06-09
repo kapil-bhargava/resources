@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asynchronous Function in JavaScript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      color: #0f172a;
+    }
+
+    section {
+      background: #ffffff;
+      margin-bottom: 30px;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    code {
+      background-color: #e2e8f0;
+      padding: 2px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+
+    pre {
+      background-color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    abbr {
+      text-decoration: underline dotted;
+      cursor: help;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔁 JavaScript Asynchronous Function</h1>
+
+    <section>
+      <h2>📘 What is an <code>async</code> function?</h2>
+      <p>
+        An <strong>asynchronous function</strong> is a special type of function in JavaScript defined using the <code>async</code> keyword. It allows you to write <abbr title="Non-blocking code that runs independently and doesn't stop other operations">non-blocking</abbr> code in a more readable and cleaner way using <code>await</code>.
+      </p>
+      <p>
+        It always returns a <abbr title="An object representing the eventual completion or failure of an asynchronous operation">Promise</abbr>.
+      </p>
+    </section>
+
+    <section>
+      <h2>🔍 Why use async functions?</h2>
+      <ul>
+        <li>They make <code>Promise</code>-based code easier to read and maintain.</li>
+        <li>You can write asynchronous code that looks like synchronous code.</li>
+        <li>Perfect for network requests, timers, and any delayed operations.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🧠 Syntax</h2>
+      <pre><code>
+async function functionName() {
+  // You can use await inside here
+}
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>⚙️ Keywords</h2>
+      <ul>
+        <li><strong><code>async</code></strong> – Declares that a function is asynchronous and returns a <code>Promise</code>.</li>
+        <li><strong><code>await</code></strong> – Pauses the execution inside <code>async</code> until the promise settles.</li>
+        <li><strong><code>Promise</code></strong> – An object representing the result of an async operation.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📦 Example 1: Basic Async Function</h2>
+      <pre><code>
+async function greet() {
+  return "Hello!";
+}
+
+greet().then(msg => console.log(msg)); // Output: Hello!
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>⏳ Example 2: Using <code>await</code></h2>
+      <pre><code>
+function fetchData() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve("Data loaded"), 2000);
+  });
+}
+
+async function loadData() {
+  console.log("⏳ Loading...");
+  const data = await fetchData(); // Waits for 2 seconds
+  console.log("✅", data);
+}
+
+loadData();
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>🧩 Real Life Analogy</h2>
+      <p>
+        Imagine ordering a pizza 🍕. You place the order (<code>fetchData()</code>), then go do other stuff while you wait. When it arrives, you eat it (<code>await</code>). Async functions let your program do something else while waiting, instead of sitting idle.
+      </p>
+    </section>
+
+    <section>
+      <h2>📌 Tips</h2>
+      <ul>
+        <li>Use <code>try...catch</code> inside <code>async</code> to handle errors.</li>
+        <li>You cannot use <code>await</code> outside <code>async</code> functions (unless top-level await is supported).</li>
+        <li><code>async</code> and <code>await</code> are just syntax sugar for using Promises.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>✅ Example with Error Handling</h2>
+      <pre><code>
+async function getUser() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
+    const user = await response.json();
+    console.log(user);
+  } catch (err) {
+    console.error("Fetch error:", err);
+  }
+}
+
+getUser();
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>📝 Summary</h2>
+      <ul>
+        <li><strong><code>async</code></strong> functions return promises.</li>
+        <li><strong><code>await</code></strong> pauses code until the promise resolves.</li>
+        <li>Useful for working with APIs and timeouts.</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

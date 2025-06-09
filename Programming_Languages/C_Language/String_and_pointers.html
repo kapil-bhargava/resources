@@ -39,6 +39,12 @@
       font-family: monospace;
       color: #c7254e;
     }
+    .anchor{
+      background-color: rgb(0, 110, 255);
+      padding: 5px;
+      color: white;
+      
+    }
   </style>
 </head>
 <body>
@@ -46,7 +52,8 @@
   <h1>Advanced C Programming Topics</h1>
 
   <section id="strings">
-    <a href="#"><h2>1. Strings in C</h2></a>
+    <h2>1. Strings in C</h2>
+    <a class="anchor" href="String-details.html" target="_blank">Know about Strings</a>
     <p>Strings in C are arrays of characters ending with a null character <code>'\0'</code>. You can declare and use strings with <code>char</code> arrays.</p>
     <pre><code>char name[20] = "John";
 printf("Hello %s", name);</code></pre>
@@ -55,6 +62,7 @@ printf("Hello %s", name);</code></pre>
 
   <section id="pointers">
     <a href="#"><h2>2. Pointers</h2></a>
+    <a class="anchor" href="Pointer-subtopics.html" target="_blank">Know about Pointers</a> 
     <p>Pointers are variables that store memory addresses. They are powerful and allow dynamic memory and function manipulation.</p>
     <pre><code>int num = 10;
 int *ptr = &num;

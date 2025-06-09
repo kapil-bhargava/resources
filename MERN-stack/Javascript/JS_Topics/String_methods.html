@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript String Methods</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f4f6;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #3b82f6;
+      text-align: center;
+    }
+
+    h2 {
+      color: #0f172a;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 5px;
+      margin-top: 40px;
+    }
+
+    .method {
+      background: #ffffff;
+      padding: 20px;
+      margin: 20px 0;
+      border-left: 5px solid #3b82f6;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .method h3 {
+      margin-top: 0;
+      color: #1e40af;
+    }
+
+    pre {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      background-color: #e5e7eb;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: black;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>All JavaScript String Methods</h1>
+
+    <h2>🔤 Basic Properties & Access</h2>
+
+    <div class="method">
+      <h3>1. <code>length</code></h3>
+      <p>Returns the number of characters in the string.</p>
+      <pre><code>let str = "Hello";
+console.log(str.length); // 5</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>2. <code>charAt(index)</code></h3>
+      <p>Returns the character at a specified index.</p>
+      <pre><code>let str = "JavaScript";
+console.log(str.charAt(4)); // S</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>3. <code>charCodeAt(index)</code></h3>
+      <p>Returns the Unicode of the character at the given index.</p>
+      <pre><code>let str = "ABC";
+console.log(str.charCodeAt(0)); // 65</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>4. <code>at(index)</code></h3>
+      <p>Modern alternative to <code>charAt</code>, supports negative indexing.</p>
+      <pre><code>let str = "Hello";
+console.log(str.at(-1)); // o</code></pre>
+    </div>
+
+    <h2>🔍 Search & Test</h2>
+
+    <div class="method">
+      <h3>5. <code>indexOf(searchValue)</code></h3>
+      <p>Returns the index of the first occurrence.</p>
+      <pre><code>"hello world".indexOf("world"); // 6</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>6. <code>lastIndexOf(searchValue)</code></h3>
+      <p>Returns the index of the last occurrence.</p>
+      <pre><code>"hello hello".lastIndexOf("hello"); // 6</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>7. <code>includes(searchValue)</code></h3>
+      <p>Checks if the string contains the specified value.</p>
+      <pre><code>"developer".includes("dev"); // true</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>8. <code>startsWith(searchValue)</code></h3>
+      <p>Checks if a string starts with a specified value.</p>
+      <pre><code>"JavaScript".startsWith("Java"); // true</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>9. <code>endsWith(searchValue)</code></h3>
+      <p>Checks if a string ends with a specified value.</p>
+      <pre><code>"hello.js".endsWith(".js"); // true</code></pre>
+    </div>
+
+    <h2>✂️ Extracting Substrings</h2>
+
+    <div class="method">
+      <h3>10. <code>slice(start, end)</code></h3>
+      <p>Extracts part of a string from start to end (excluding end).</p>
+      <pre><code>"JavaScript".slice(0, 4); // "Java"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>11. <code>substring(start, end)</code></h3>
+      <p>Similar to slice but doesn't support negative indexes.</p>
+      <pre><code>"JavaScript".substring(4, 10); // "Script"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>12. <code>substr(start, length)</code> (deprecated)</h3>
+      <p>Returns a substring starting at a specified position with a given length.</p>
+      <pre><code>"JavaScript".substr(0, 4); // "Java"</code></pre>
+    </div>
+
+    <h2>🔧 Modifying Strings</h2>
+
+    <div class="method">
+      <h3>13. <code>toUpperCase()</code></h3>
+      <p>Converts the string to uppercase.</p>
+      <pre><code>"hello".toUpperCase(); // "HELLO"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>14. <code>toLowerCase()</code></h3>
+      <p>Converts the string to lowercase.</p>
+      <pre><code>"HELLO".toLowerCase(); // "hello"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>15. <code>trim()</code></h3>
+      <p>Removes whitespace from both ends.</p>
+      <pre><code>"  test  ".trim(); // "test"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>16. <code>trimStart()</code> / <code>trimEnd()</code></h3>
+      <p>Removes whitespace from start or end.</p>
+      <pre><code>"  test".trimStart(); // "test"
+"test  ".trimEnd();   // "test"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>17. <code>replace(search, replace)</code></h3>
+      <p>Replaces the first match of a value with another value.</p>
+      <pre><code>"I like Java".replace("Java", "JS"); // "I like JS"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>18. <code>replaceAll(search, replace)</code></h3>
+      <p>Replaces all occurrences.</p>
+      <pre><code>"ha ha ha".replaceAll("ha", "ho"); // "ho ho ho"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>19. <code>repeat(n)</code></h3>
+      <p>Repeats the string n times.</p>
+      <pre><code>"ha".repeat(3); // "hahaha"</code></pre>
+    </div>
+
+    <h2>🔗 Combination & Conversion</h2>
+
+    <div class="method">
+      <h3>20. <code>concat(string2)</code></h3>
+      <p>Joins strings together.</p>
+      <pre><code>"Hello".concat(" World"); // "Hello World"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>21. <code>split(separator)</code></h3>
+      <p>Splits the string into an array.</p>
+      <pre><code>"a,b,c".split(","); // ["a", "b", "c"]</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>22. <code>valueOf()</code></h3>
+      <p>Returns the primitive value of a string.</p>
+      <pre><code>let strObj = new String("hello");
+console.log(strObj.valueOf()); // "hello"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>23. <code>toString()</code></h3>
+      <p>Converts a value to a string.</p>
+      <pre><code>let num = 123;
+console.log(num.toString()); // "123"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>24. <code>padStart(length, pad)</code></h3>
+      <p>Pads the start of the string to reach a certain length.</p>
+      <pre><code>"5".padStart(3, "0"); // "005"</code></pre>
+    </div>
+
+    <div class="method">
+      <h3>25. <code>padEnd(length, pad)</code></h3>
+      <p>Pads the end of the string.</p>
+      <pre><code>"5".padEnd(3, "*"); // "5**"</code></pre>
+    </div>
+
+    <h2>🔗 References</h2>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">MDN: String Methods</a></li>
+      <li><a href="https://www.w3schools.com/jsref/jsref_obj_string.asp" target="_blank">W3Schools: String Object</a></li>
+    </ul>
+
+  </div>
+</body>
+</html>

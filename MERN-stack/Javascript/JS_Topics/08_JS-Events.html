@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Events</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2563eb;
+        }
+
+        .section {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+
+        code {
+            background-color: #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        abbr {
+            border-bottom: 1px dotted #555;
+            cursor: help;
+        }
+
+        @media (max-width: 768px) {
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            th {
+                text-align: right;
+                background-color: #2563eb;
+                color: white;
+            }
+
+            td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                font-weight: bold;
+                color: #111827;
+            }
+        }
+
+        .anchor {
+            background-color: #2563eb;
+            color: white;
+            padding: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>JavaScript Events</h1>
+
+        <div class="section">
+            <h2>What is an Event?</h2>
+            <p>
+                An <strong>event</strong> in JavaScript is an action or occurrence that takes place in the browser and
+                can be responded to using code.
+                Common events include <code>click</code>, <code>hover</code>, <code>keypress</code>,
+                <code>submit</code>, and more.
+            </p>
+            <p>
+                JavaScript allows you to "listen" for these events using an <abbr
+                    title="A function that waits for a specific event to occur and then executes code">event
+                    listener</abbr>.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>How Do Events Work?</h2>
+            <ul>
+                <li>JavaScript uses the <code>addEventListener()</code> method to attach an event to an element.</li>
+                <li>When the event occurs, a function (called a <abbr
+                        title="Function that handles a triggered event">callback</abbr>) is executed.</li>
+            </ul>
+            <pre><code>document.getElementById("btn").addEventListener("click", function() {
+  alert("Button was clicked!");
+});</code></pre>
+        </div>
+
+        <div class="section">
+            <h2>Categories of Events</h2>
+            <a href="Events_in_Detail.html" class="anchor">Kow more in Detail</a>
+            <p>Events can be grouped based on their purpose. Below is a categorized table of common events:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Event</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Mouse Events -->
+                    <tr>
+                        <td rowspan="6">Mouse Events</td>
+                        <td data-label="Event">click</td>
+                        <td data-label="Description">Fires when an element is clicked</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">dblclick</td>
+                        <td data-label="Description">Fires when an element is double-clicked</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">mouseover</td>
+                        <td data-label="Description">Triggered when the mouse enters an element</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">mouseout</td>
+                        <td data-label="Description">Triggered when the mouse leaves an element</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">mousedown</td>
+                        <td data-label="Description">When the mouse button is pressed down</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">mouseup</td>
+                        <td data-label="Description">When the mouse button is released</td>
+                    </tr>
+
+                    <!-- Keyboard Events -->
+                    <tr>
+                        <td rowspan="3">Keyboard Events</td>
+                        <td data-label="Event">keydown</td>
+                        <td data-label="Description">When a key is pressed</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">keyup</td>
+                        <td data-label="Description">When a key is released</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">keypress</td>
+                        <td data-label="Description">When a key is pressed and released</td>
+                    </tr>
+
+                    <!-- Form Events -->
+                    <tr>
+                        <td rowspan="4">Form Events</td>
+                        <td data-label="Event">submit</td>
+                        <td data-label="Description">Triggered when a form is submitted</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">change</td>
+                        <td data-label="Description">When an input's value changes</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">focus</td>
+                        <td data-label="Description">When an element gains focus</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">blur</td>
+                        <td data-label="Description">When an element loses focus</td>
+                    </tr>
+
+                    <!-- Window Events -->
+                    <tr>
+                        <td rowspan="3">Window Events</td>
+                        <td data-label="Event">load</td>
+                        <td data-label="Description">Fires when the page has loaded</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">resize</td>
+                        <td data-label="Description">Fires when the browser window is resized</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Event">scroll</td>
+                        <td data-label="Description">Fires when the user scrolls the page</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Conclusion</h2>
+            <p>
+                Events are essential for making web pages interactive and dynamic. Mastering event handling allows you
+                to build rich user interfaces.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>References</h2>
+            <ul>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">MDN Web Docs:
+                        Events</a></li>
+                <li><a href="https://www.w3schools.com/js/js_events.asp" target="_blank">W3Schools: JavaScript
+                        Events</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

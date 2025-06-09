@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ES6+ Features Explained</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      color: #0f172a;
+    }
+
+    section {
+      background: #ffffff;
+      margin-bottom: 30px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    code, pre {
+      background-color: #e2e8f0;
+      padding: 10px;
+      display: block;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: Consolas, monospace;
+      margin: 10px 0;
+    }
+
+    abbr {
+      text-decoration: underline dotted;
+      cursor: help;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Modern JavaScript: ES6+ Features</h1>
+
+    <section>
+      <h2>1. 🧩 Destructuring</h2>
+      <p>
+        <strong>Destructuring</strong> lets you extract values from arrays or objects into variables.
+      </p>
+      <pre><code>
+const person = { name: "Alice", age: 25 };
+const { name, age } = person;
+console.log(name); // Alice
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>2. 📜 Template Literals</h2>
+      <p>
+        Use <strong>backticks</strong> (<code>`</code>) to embed expressions using <code>${...}</code>.
+      </p>
+      <pre><code>
+const name = "Bob";
+const greeting = `Hello, ${name}!`;
+console.log(greeting); // Hello, Bob!
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>3. 🌐 Spread & Rest Operators</h2>
+      <p>
+        <strong>Spread (<code>...</code>)</strong> expands arrays or objects.<br>
+        <strong>Rest (<code>...</code>)</strong> collects multiple elements into one.
+      </p>
+      <pre><code>
+// Spread
+const arr1 = [1, 2];
+const arr2 = [...arr1, 3]; // [1, 2, 3]
+
+// Rest
+function sum(...nums) {
+  return nums.reduce((a, b) => a + b, 0);
+}
+console.log(sum(1, 2, 3)); // 6
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>4. 🔐 Let & Const</h2>
+      <p>
+        <code>let</code> and <code>const</code> are block-scoped. Use <code>const</code> for constants.
+      </p>
+      <pre><code>
+let count = 10;
+const name = "Charlie";
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>5. 📦 Arrow Functions</h2>
+      <p>
+        Arrow functions are shorter and don't bind their own <abbr title="Execution context of a function">this</abbr>.
+      </p>
+      <pre><code>
+const add = (a, b) => a + b;
+console.log(add(2, 3)); // 5
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>6. 🛡 Default Parameters</h2>
+      <p>
+        Set default values in function parameters to avoid <abbr title="A variable with no assigned value">undefined</abbr>.
+      </p>
+      <pre><code>
+function greet(name = "Guest") {
+  console.log(`Hello, ${name}`);
+}
+greet(); // Hello, Guest
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>7. 🧠 Enhanced Object Literals</h2>
+      <p>
+        Create objects using shorthand syntax when key and variable name match.
+      </p>
+      <pre><code>
+const name = "David";
+const user = {
+  name,
+  greet() {
+    console.log(`Hi ${this.name}`);
+  }
+};
+user.greet(); // Hi David
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>8. 🔗 Optional Chaining (<code>?.</code>)</h2>
+      <p>
+        Access deep properties safely without throwing errors.
+      </p>
+      <pre><code>
+const user = { profile: null };
+console.log(user.profile?.name); // undefined, no error
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>9. 🌀 Nullish Coalescing (<code>??</code>)</h2>
+      <p>
+        Return right-hand side only if left is <code>null</code> or <code>undefined</code>.
+      </p>
+      <pre><code>
+const username = null;
+const defaultName = username ?? "Anonymous";
+console.log(defaultName); // Anonymous
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>📘 Summary</h2>
+      <ul>
+        <li>Destructuring simplifies access to object/array values</li>
+        <li>Template literals allow embedded expressions</li>
+        <li>Spread/Rest make array/object handling elegant</li>
+        <li>Arrow functions = compact + <abbr title="No own `this` context">lexical this</abbr></li>
+        <li>Optional chaining + nullish coalescing = safer access</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

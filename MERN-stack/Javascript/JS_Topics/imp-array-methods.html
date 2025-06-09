@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JavaScript Array Methods Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      color: #1e293b;
+      margin: 0;
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #0f172a;
+    }
+    section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      padding: 25px 30px;
+    }
+    h2 {
+      color: #334155;
+      margin-top: 0;
+    }
+    p {
+      line-height: 1.5;
+    }
+    code {
+      background: #e2e8f0;
+      padding: 3px;
+      border-radius: 6px;
+      font-family: Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    pre {
+      background: #f1f5f9;
+      padding: 15px 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: Consolas, monospace;
+      margin: 15px 0;
+    }
+    abbr {
+      text-decoration: underline dotted;
+      cursor: help;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 JavaScript Array Methods Explained In Depth</h1>
+
+  <section>
+    <h2>1. <code>map()</code></h2>
+    <p><strong>Definition:</strong> Creates a new array by applying a function to each element of the original array.</p>
+    <p><strong>When to use:</strong> When you want to transform each item in an array into something else without modifying the original array.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li><code>callback(currentValue, index, array)</code>: A function that is called for each element.</li>
+      <li><code>currentValue</code>: The current element being processed.</li>
+      <li><code>index</code>: (Optional) The index of the current element.</li>
+      <li><code>array</code>: (Optional) The original array.</li>
+    </ul>
+    <pre><code>
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map((num, idx) => {
+  console.log(`Index: ${idx}, Original: ${num}`);
+  return num * 2;
+});
+console.log(doubled); // [2, 4, 6, 8]
+    </code></pre>
+    <p><strong>Explanation:</strong> The <code>map</code> method calls the function on each element, doubling it here. The original <code>numbers</code> array remains unchanged.</p>
+  </section>
+
+  <section>
+    <h2>2. <code>filter()</code></h2>
+    <p><strong>Definition:</strong> Creates a new array containing only elements that satisfy a condition.</p>
+    <p><strong>When to use:</strong> When you want to keep only certain elements based on a test.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li><code>callback(element, index, array)</code>: Function returning <code>true</code> or <code>false</code>.</li>
+      <li><code>element</code>: The current element.</li>
+      <li><code>index</code> and <code>array</code>: Optional.</li>
+    </ul>
+    <pre><code>
+const ages = [12, 18, 25, 15, 30];
+const adults = ages.filter(age => age >= 18);
+console.log(adults); // [18, 25, 30]
+    </code></pre>
+    <p><strong>Explanation:</strong> Only ages 18 or above are kept. Others are filtered out.</p>
+  </section>
+
+  <section>
+    <h2>3. <code>reduce()</code></h2>
+    <p><strong>Definition:</strong> Applies a function against an accumulator and each element to reduce the array to a single value.</p>
+    <p><strong>When to use:</strong> When you want to compute a single result from an array (sum, product, flatten, etc.).</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li><code>callback(accumulator, currentValue, index, array)</code>: Function called on each element.</li>
+      <li><code>accumulator</code>: Accumulates the callback's return values.</li>
+      <li><code>currentValue</code>: The current element.</li>
+      <li><code>index</code> and <code>array</code>: Optional.</li>
+      <li><code>initialValue</code>: Optional, initial value for the accumulator.</li>
+    </ul>
+    <pre><code>
+const numbers = [1, 2, 3, 4];
+const sum = numbers.reduce((acc, curr) => {
+  console.log(`acc: ${acc}, curr: ${curr}`);
+  return acc + curr;
+}, 0);
+console.log(sum); // 10
+    </code></pre>
+    <p><strong>Explanation:</strong> Starts from 0, adds each number to accumulator to get sum.</p>
+  </section>
+
+  <section>
+    <h2>4. <code>find()</code></h2>
+    <p><strong>Definition:</strong> Returns the first element that satisfies the testing function.</p>
+    <p><strong>When to use:</strong> When you want to find one item matching criteria.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+      <li><code>callback(element, index, array)</code>: Function returning <code>true</code> or <code>false</code>.</li>
+    </ul>
+    <pre><code>
+const users = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Jane" },
+  { id: 3, name: "Mark" }
+];
+
+const user = users.find(user => user.id === 2);
+console.log(user); // { id: 2, name: "Jane" }
+    </code></pre>
+    <p><strong>Explanation:</strong> Returns first object where <code>id</code> is 2.</p>
+  </section>
+
+  <section>
+    <h2>5. <code>some()</code> &amp; <code>every()</code></h2>
+    <p><strong>Definition:</strong></p>
+    <ul>
+      <li><code>some()</code> — Returns <code>true</code> if <em>any</em> element satisfies the test.</li>
+      <li><code>every()</code> — Returns <code>true</code> if <em>all</em> elements satisfy the test.</li>
+    </ul>
+    <p><strong>When to use:</strong> To check conditions on elements collectively.</p>
+    <pre><code>
+const nums = [10, 20, 30];
+
+// some: is there any number > 25?
+console.log(nums.some(n => n > 25)); // true
+
+// every: are all numbers > 5?
+console.log(nums.every(n => n > 5)); // true
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>6. <code>flatMap()</code></h2>
+    <p><strong>Definition:</strong> Maps each element then flattens the result by one level.</p>
+    <p><strong>When to use:</strong> When mapping returns arrays and you want a single flattened array.</p>
+    <pre><code>
+const sentences = ["Hello world", "How are you?"];
+const words = sentences.flatMap(sentence => sentence.split(" "));
+console.log(words); 
+// ["Hello", "world", "How", "are", "you?"]
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>7. <code>forEach()</code></h2>
+    <p><strong>Definition:</strong> Executes a provided function once for each array element.</p>
+    <p><strong>Note:</strong> Unlike <code>map</code>, it does not return a new array.</p>
+    <p><strong>When to use:</strong> When you want to perform side effects like logging or modifying external variables.</p>
+    <pre><code>
+const nums = [1, 2, 3];
+nums.forEach((num, idx) => {
+  console.log(`Index ${idx}: ${num}`);
+});
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>Parameters in Callbacks</h2>
+    <p>Most array methods accept a callback function with up to three parameters:</p>
+    <ul>
+      <li><code>currentValue</code> — The element currently being processed.</li>
+      <li><code>index</code> — The index of the current element.</li>
+      <li><code>array</code> — The original array being traversed.</li>
+    </ul>
+    <p>Use parameters as needed; often only <code>currentValue</code> is necessary.</p>
+  </section>
+
+  <section>
+    <h2>📌 Summary</h2>
+    <ul>
+      <li><code>map()</code> — Transform elements, returns new array.</li>
+      <li><code>filter()</code> — Select elements by condition.</li>
+      <li><code>reduce()</code> — Aggregate array to single value.</li>
+      <li><code>find()</code> — Find first element matching condition.</li>
+      <li><code>some()</code> / <code>every()</code> — Test if any or all elements pass condition.</li>
+      <li><code>flatMap()</code> — Map and flatten arrays.</li>
+      <li><code>forEach()</code> — Loop through array for side-effects.</li>
+    </ul>
+  </section>
+</body>
+</html>

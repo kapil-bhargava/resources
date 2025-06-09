@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Promise Methods Explained</title>
+  <style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    section {
+      background: #ffffff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    code, pre {
+      background: #e2e8f0;
+      /* padding: 6px 12px; */
+      border-radius: 6px;
+      font-family: Consolas, monospace;
+      color: #0f172a;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      padding: 16px;
+      margin-top: 10px;
+      display: block;
+    }
+
+    abbr {
+      text-decoration: underline dotted;
+      cursor: help;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 JavaScript Promise Methods - Explained with Examples</h1>
+    <p>This page provides detailed explanations and real examples of all major Promise handling methods in JavaScript. Includes <abbr title="Unknown or technical terms are clarified using this HTML tag">abbr</abbr> tags for new terms.</p>
+
+    <section>
+      <h2>📌 <code>then()</code> - Handling Success</h2>
+      <p><strong>Definition:</strong> The <code>then()</code> method is used to define what to do when a Promise is <strong>fulfilled</strong> (i.e., successful).</p>
+      <p><strong>When to use:</strong> When you want to handle the result after a successful async task.</p>
+      <pre><code>
+const promise = Promise.resolve("Data received");
+
+promise.then(result => {
+  console.log("Success:", result);
+});
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>⚠️ <code>catch()</code> - Handling Errors</h2>
+      <p><strong>Definition:</strong> The <code>catch()</code> method handles <strong>rejected</strong> Promises (errors).</p>
+      <p><strong>When to use:</strong> When you want to deal with failures like network errors or invalid operations.</p>
+      <pre><code>
+const promise = Promise.reject("Something went wrong");
+
+promise
+  .then(data => console.log(data))
+  .catch(error => console.error("Error caught:", error));
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>✅ <code>finally()</code> - Always Runs</h2>
+      <p><strong>Definition:</strong> <code>finally()</code> runs <strong>after the promise settles</strong>, no matter if it was resolved or rejected.</p>
+      <p><strong>Use case:</strong> Cleanup, hiding loaders, resetting states.</p>
+      <pre><code>
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err))
+  .finally(() => console.log("✅ Request completed"));
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>🔗 <code>Promise.all()</code> - Wait for All</h2>
+      <p><strong>Definition:</strong> <code>Promise.all()</code> waits for <strong>all promises to succeed</strong> or fails if any one fails.</p>
+      <p><strong>When to use:</strong> When you need all operations to complete before proceeding (e.g., multiple API calls).</p>
+      <pre><code>
+const p1 = Promise.resolve("🟢 Task 1");
+const p2 = Promise.resolve("🟢 Task 2");
+
+Promise.all([p1, p2])
+  .then(results => console.log("All done:", results))
+  .catch(err => console.error("At least one failed:", err));
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>⚡ <code>Promise.race()</code> - First to Settle</h2>
+      <p><strong>Definition:</strong> <code>Promise.race()</code> returns the <strong>first settled promise</strong> (fulfilled or rejected).</p>
+      <p><strong>Use case:</strong> Timeout handling or picking the fastest response.</p>
+      <pre><code>
+const fast = new Promise(res => setTimeout(() => res("Fast!"), 500));
+const slow = new Promise(res => setTimeout(() => res("Slow"), 2000));
+
+Promise.race([fast, slow]).then(result => console.log("First done:", result));
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>🔍 <code>Promise.allSettled()</code> - Get All Results</h2>
+      <p><strong>Definition:</strong> This method returns <strong>results of all promises</strong> whether they are resolved or rejected.</p>
+      <p><strong>Use case:</strong> When you want to know the outcome of every promise without short-circuiting.</p>
+      <pre><code>
+const p1 = Promise.resolve("OK");
+const p2 = Promise.reject("Failed");
+
+Promise.allSettled([p1, p2]).then(results => console.log(results));
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>🎯 <code>Promise.any()</code> - First Success</h2>
+      <p><strong>Definition:</strong> Returns the <strong>first fulfilled</strong> promise. Ignores any rejections.</p>
+      <p><strong>Use case:</strong> Get the first successful result, even if others fail.</p>
+      <pre><code>
+const fail1 = Promise.reject("Fail 1");
+const fail2 = Promise.reject("Fail 2");
+const pass = Promise.resolve("Success!");
+
+Promise.any([fail1, fail2, pass])
+  .then(result => console.log("First fulfilled:", result))
+  .catch(err => console.error("All failed:", err));
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>📘 Summary Table</h2>
+      <table style="width:100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background: #dbeafe;">
+            <th style="padding: 10px; border: 1px solid #ccc;">Method</th>
+            <th style="padding: 10px; border: 1px solid #ccc;">Purpose</th>
+            <th style="padding: 10px; border: 1px solid #ccc;">Use Case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;"><code>then()</code></td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Handle success</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">On fulfilled Promise</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;"><code>catch()</code></td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Handle errors</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">On rejected Promise</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;"><code>finally()</code></td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Always runs</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Cleanup after resolve/reject</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;"><code>Promise.all()</code></td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Wait for all</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">All must succeed</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;"><code>Promise.race()</code></td>
+            <td style="padding: 10px; border: 1px solid #ccc;">First to settle</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Fastest wins</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;"><code>Promise.allSettled()</code></td>
+            <td style="padding: 10px; border: 1px solid #ccc;">All outcomes</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">Get all results</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;"><code>Promise.any()</code></td>
+            <td style="padding: 10px; border: 1px solid #ccc;">First success</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">One must succeed</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</body>
+</html>

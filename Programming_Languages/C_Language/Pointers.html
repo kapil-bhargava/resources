@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pointers in C - Full Guide</title>
+    <style>
+        :root {
+            --primary: #0061ff;
+            --secondary: #60efff;
+            --background: #f0f4f8;
+            --text: #222;
+            --card-bg: #ffffff;
+            --code-bg: #e8f0fe;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary);
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        code,
+        pre {
+            background-color: var(--code-bg);
+            padding: 10px;
+            border-radius: 6px;
+            display: block;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .anchor {
+            background-color: rgb(36, 84, 240);
+            color: white;
+            padding: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📍 Pointers in C - Complete Guide</h1>
+        
+        <section>
+            <h2>What is a Pointer?</h2>
+            <p>A <strong>pointer</strong> is a variable that stores the <strong>memory address</strong> of another
+                variable.</p>
+                <pre><code>int a = 10;
+                    int *ptr = &a; // ptr now holds the address of variable a</code></pre>
+                    <a class="anchor" href="Pointer-subtopics.html" target="_blank">Pointer Subtopics</a>
+        </section>
+
+        <section>
+            <h2>Why Use Pointers?</h2>
+            <ul>
+                <li>To directly access and manipulate memory.</li>
+                <li>To pass large data structures efficiently to functions (pass by reference).</li>
+                <li>To build dynamic data structures (e.g., linked lists, trees).</li>
+                <li>To allocate memory dynamically using malloc/calloc.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Pointer Terminology</h2>
+            <ul>
+                <li><strong>* (Asterisk):</strong> Used to declare a pointer and dereference it.</li>
+                <li><strong>& (Ampersand):</strong> Used to get the address of a variable.</li>
+            </ul>
+            <pre><code>int x = 5;
+int *p = &x;  // address of x
+printf("%d", *p); // value at address (dereferencing)</code></pre>
+        </section>
+
+        <section>
+            <h2>How Pointers Work in Memory</h2>
+            <p>When a variable is declared, it's stored at a specific memory location. A pointer stores this address.
+            </p>
+            <p>For example:</p>
+            <pre><code>int a = 5;
+int *ptr = &a;
+printf("Address: %p\n", ptr);
+printf("Value: %d\n", *ptr);</code></pre>
+        </section>
+
+        <section>
+            <h2>Pointer to Pointer</h2>
+            <p>A pointer that stores the address of another pointer.</p>
+            <pre><code>int x = 10;
+int *p = &x;
+int **pp = &p;
+
+printf("Value: %d", **pp);</code></pre>
+        </section>
+
+        <section>
+            <h2>Pointer Arithmetic</h2>
+            <p>Pointers can be incremented/decremented to move across memory (especially arrays).</p>
+            <pre><code>int arr[] = {1, 2, 3};
+int *p = arr;
+
+printf("%d", *(p + 1)); // prints 2</code></pre>
+        </section>
+
+        <section>
+            <h2>Pointers and Arrays</h2>
+            <p>Array names are constant pointers. You can iterate over arrays using pointers.</p>
+            <pre><code>int arr[3] = {10, 20, 30};
+int *p = arr;
+
+for(int i = 0; i < 3; i++) {
+    printf("%d ", *(p + i));
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Pointers and Functions</h2>
+            <p>Pointers are used to pass arguments by reference.</p>
+            <pre><code>void modify(int *p) {
+    *p = 100;
+}
+
+int main() {
+    int x = 10;
+    modify(&x);
+    printf("%d", x);  // 100
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Dynamic Memory Allocation</h2>
+            <p>Using pointers and malloc/calloc to allocate memory at runtime.</p>
+            <pre><code>int *ptr = (int*) malloc(sizeof(int));
+*ptr = 50;
+printf("%d", *ptr);
+free(ptr);</code></pre>
+        </section>
+
+        <section>
+            <h2>Pointers in Data Structures</h2>
+            <ul>
+                <li>Used in <strong>Linked Lists</strong>, <strong>Trees</strong>, <strong>Graphs</strong></li>
+                <li>Used to build dynamic structures</li>
+                <li>Essential for implementing stacks and queues using linked approach</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Real Life Analogy</h2>
+            <ul>
+                <li>📬 A pointer is like a house address — it doesn’t hold the house, just its location.</li>
+                <li>📦 Dereferencing is like going to that house and opening the door to see what’s inside.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📚 References</h2>
+            <ul>
+                <li><a href="https://www.geeksforgeeks.org/pointers-in-c-and-c-set-1-introduction-arithmetic-and-array/"
+                        target="_blank">GeeksforGeeks - Pointers</a></li>
+                <li><a href="https://www.programiz.com/c-programming/c-pointers" target="_blank">Programiz - C
+                        Pointers</a></li>
+                <li><a href="https://en.cppreference.com/w/c/language/pointer" target="_blank">cppreference - C
+                        Pointers</a></li>
+            </ul>
+        </section>
+
+    </div>
+</body>
+
+</html>

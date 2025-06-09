@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Error Handling in JavaScript - Full Guide</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      color: #1f2937;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h1, h2 {
+      color: #1d4ed8;
+    }
+    section {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+    code {
+      background: #e0f2fe;
+      color: #0c4a6e;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      background: #f1f5f9;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    abbr {
+      border-bottom: 1px dotted #555;
+      cursor: help;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #2563eb;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input {
+      padding: 10px;
+      width: 100%;
+      max-width: 300px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .output {
+      margin-top: 10px;
+      background: #fefce8;
+      padding: 15px;
+      border-left: 4px solid #facc15;
+    }
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+    }
+    .anchor{
+        background-color: #1d4ed8;
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Error Handling in JavaScript</h1>
+
+    <!-- Previous Sections (as before) -->
+    <section>
+      <h2>📘 What is Error Handling?</h2>
+      <p>Error handling is the process of responding to and managing exceptions (errors) that occur during the execution of code, allowing programs to recover gracefully instead of crashing.</p>
+    </section>
+
+    <section>
+      <h2>⚠️ Why Do Errors Occur?</h2>
+      <ul>
+        <li>Incorrect syntax</li>
+        <li>Calling undefined variables/functions</li>
+        <li>Runtime failures (e.g., failed API calls)</li>
+        <li>Invalid user input</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>✅ How to Handle Errors in JS?</h2>
+      <pre><code>try {
+  let data = JSON.parse("{ invalid json }");
+} catch (error) {
+  console.error("Caught an error:", error.message);
+} finally {
+  console.log("This always runs.");
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>🔁 Try, Catch, Finally Explained</h2>
+      <ul>
+        <li><strong>try:</strong> Code to test for errors</li>
+        <li><strong>catch:</strong> Handles the error</li>
+        <li><strong>finally:</strong> Always runs</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🧨 Throwing Errors Manually</h2>
+      <pre><code>function divide(a, b) {
+  if (b === 0) throw new Error("Cannot divide by zero!");
+  return a / b;
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>🧱 JavaScript Error Object</h2>
+      <ul>
+        <li><code>name</code> – Type of error</li>
+        <li><code>message</code> – Details about the error</li>
+        <li><code>stack</code> – Call stack trace</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>⚙️ Common Error Types</h2>
+      <ul>
+        <li><code>ReferenceError</code></li>
+        <li><code>TypeError</code></li>
+        <li><code>SyntaxError</code></li>
+        <li><code>RangeError</code></li>
+        <li><code>EvalError</code></li>
+        <li><code>URIError</code></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>⏳ Async & Await <abbr title="Asynchronous JavaScript and XML">async/await</abbr></h2>
+      <a href="11_Promise-async&await.html" target="_blank" class="anchor">Know more in Detail</a>
+      <pre><code>async function fetchUser() {
+  try {
+    let res = await fetch("https://jsonplaceholder.typicode.com/users/1");
+    let user = await res.json();
+    console.log(user);
+  } catch (err) {
+    console.error("Failed to load user:", err.message);
+  }
+}</code></pre>
+    </section>
+
+    <!-- 🧪 Live Demo -->
+    <section>
+      <h2>🧪 Live Demo: Error Catching in Action</h2>
+      <input type="text" id="numberInput" placeholder="Enter a number to divide 100 by">
+      <button onclick="handleDivision()">Divide</button>
+      <div class="output" id="outputDiv"></div>
+      <script>
+        function handleDivision() {
+          const input = document.getElementById('numberInput').value;
+          const output = document.getElementById('outputDiv');
+          try {
+            const number = parseFloat(input);
+            if (isNaN(number)) throw new Error("Please enter a valid number.");
+            if (number === 0) throw new Error("Cannot divide by zero.");
+            output.innerHTML = "Result: " + (100 / number).toFixed(2);
+          } catch (err) {
+            output.innerHTML = "❌ Error: " + err.message;
+          } finally {
+            console.log("Division attempted.");
+          }
+        }
+      </script>
+    </section>
+
+    <!-- 📚 Practice Questions -->
+    <section>
+      <h2>📚 Practice Questions</h2>
+      <ul>
+        <li>Create a program to convert string to JSON. Catch and log errors if the string is malformed.</li>
+        <li>Write a function that fetches data from an API using <code>async/await</code> and handles failures.</li>
+        <li>Simulate a login function that throws an error if username or password is empty.</li>
+        <li>Try dividing two user inputs and handle division by zero.</li>
+        <li>Create a custom error message using <code>throw</code> if age input is less than 18.</li>
+      </ul>
+    </section>
+
+    <!-- ❓ FAQ Section -->
+    <section>
+      <h2>❓ FAQ</h2>
+      <details>
+        <summary>What happens if an error is not caught?</summary>
+        <p>The script will stop running and a message will be shown in the browser console.</p>
+      </details>
+      <details>
+        <summary>Can you use try-catch with async functions?</summary>
+        <p>Yes, wrap the <code>await</code> calls in a try-catch block to handle asynchronous errors.</p>
+      </details>
+      <details>
+        <summary>Should I always use try-catch?</summary>
+        <p>Use it when you expect possible runtime errors and want to prevent app crashes.</p>
+      </details>
+      <details>
+        <summary>What is the difference between try-catch and .catch() on promises?</summary>
+        <p><code>try-catch</code> works with <code>async/await</code>, while <code>.catch()</code> is used with promise chains.</p>
+      </details>
+    </section>
+
+    <!-- 🧠 Summary -->
+    <section>
+      <h2>🧠 Final Summary</h2>
+      <ul>
+        <li>Errors are common in JS, handling them improves UX and stability</li>
+        <li>Use <code>try-catch</code> and <code>throw</code> to trap and define issues</li>
+        <li>Async functions must also handle errors using <code>try-catch</code></li>
+        <li>Practice handling all types: sync, async, custom</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

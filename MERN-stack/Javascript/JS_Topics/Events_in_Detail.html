@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Complete JavaScript Events Table</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      color: #2563eb;
+    }
+
+    .section {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 10px 15px;
+      border: 1px solid #e5e7eb;
+      text-align: left;
+    }
+
+    th {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f3f4f6;
+    }
+
+    abbr {
+      border-bottom: 1px dotted #555;
+      cursor: help;
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      th {
+        text-align: right;
+      }
+
+      td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: bold;
+        color: #111827;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Complete JavaScript Events Table</h1>
+
+    <div class="section">
+      <h2>Overview</h2>
+      <p>
+        JavaScript provides a wide variety of events that can be used to create interactive web applications.
+        Events can be grouped into categories like mouse, keyboard, form, window, clipboard, media, drag & drop, animation, and more.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Event Categories and Events</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Event</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Mouse Events -->
+          <tr><td rowspan="8">Mouse</td><td>click</td><td>When the element is clicked</td></tr>
+          <tr><td>dblclick</td><td>When the element is double-clicked</td></tr>
+          <tr><td>mousedown</td><td>When the mouse button is pressed</td></tr>
+          <tr><td>mouseup</td><td>When the mouse button is released</td></tr>
+          <tr><td>mousemove</td><td>When the mouse is moved</td></tr>
+          <tr><td>mouseover</td><td>When the pointer enters an element</td></tr>
+          <tr><td>mouseout</td><td>When the pointer leaves an element</td></tr>
+          <tr><td>contextmenu</td><td>When the right mouse button is clicked</td></tr>
+
+          <!-- Keyboard Events -->
+          <tr><td rowspan="3">Keyboard</td><td>keydown</td><td>When a key is pressed</td></tr>
+          <tr><td>keyup</td><td>When a key is released</td></tr>
+          <tr><td>keypress</td><td>When a key is pressed and released (deprecated)</td></tr>
+
+          <!-- Form Events -->
+          <tr><td rowspan="6">Form</td><td>submit</td><td>When a form is submitted</td></tr>
+          <tr><td>change</td><td>When an element value changes</td></tr>
+          <tr><td>input</td><td>When input changes in real-time</td></tr>
+          <tr><td>focus</td><td>When the element gets focus</td></tr>
+          <tr><td>blur</td><td>When the element loses focus</td></tr>
+          <tr><td>reset</td><td>When the form is reset</td></tr>
+
+          <!-- Clipboard Events -->
+          <tr><td rowspan="3">Clipboard</td><td>copy</td><td>Triggered when copying content</td></tr>
+          <tr><td>cut</td><td>Triggered when cutting content</td></tr>
+          <tr><td>paste</td><td>Triggered when pasting content</td></tr>
+
+          <!-- Drag & Drop Events -->
+          <tr><td rowspan="6">Drag & Drop</td><td>drag</td><td>Element is being dragged</td></tr>
+          <tr><td>dragstart</td><td>Drag starts</td></tr>
+          <tr><td>dragend</td><td>Drag ends</td></tr>
+          <tr><td>dragover</td><td>Element is dragged over a drop target</td></tr>
+          <tr><td>dragenter</td><td>Dragged element enters a drop zone</td></tr>
+          <tr><td>dragleave</td><td>Dragged element leaves a drop zone</td></tr>
+
+          <!-- Media Events -->
+          <tr><td rowspan="5">Media</td><td>play</td><td>Media starts playing</td></tr>
+          <tr><td>pause</td><td>Media is paused</td></tr>
+          <tr><td>ended</td><td>Media playback ends</td></tr>
+          <tr><td>volumechange</td><td>Volume is changed</td></tr>
+          <tr><td>timeupdate</td><td>Playback position has changed</td></tr>
+
+          <!-- Window Events -->
+          <tr><td rowspan="5">Window</td><td>load</td><td>When the page is fully loaded</td></tr>
+          <tr><td>unload</td><td>When the user leaves the page</td></tr>
+          <tr><td>resize</td><td>When the window is resized</td></tr>
+          <tr><td>scroll</td><td>When the user scrolls the document</td></tr>
+          <tr><td>beforeunload</td><td>When about to leave the page (confirmation)</td></tr>
+
+          <!-- Touch Events -->
+          <tr><td rowspan="3">Touch</td><td>touchstart</td><td>Finger touches screen</td></tr>
+          <tr><td>touchmove</td><td>Finger is dragged on screen</td></tr>
+          <tr><td>touchend</td><td>Finger is removed from screen</td></tr>
+
+          <!-- Pointer Events -->
+          <tr><td rowspan="3">Pointer</td><td>pointerdown</td><td>Pointer is pressed</td></tr>
+          <tr><td>pointerup</td><td>Pointer is released</td></tr>
+          <tr><td>pointermove</td><td>Pointer moves over element</td></tr>
+
+          <!-- Animation Events -->
+          <tr><td rowspan="3">Animation</td><td>animationstart</td><td>CSS animation starts</td></tr>
+          <tr><td>animationend</td><td>CSS animation ends</td></tr>
+          <tr><td>animationiteration</td><td>Animation repeats</td></tr>
+
+          <!-- Transition Events -->
+          <tr><td rowspan="2">Transition</td><td>transitionstart</td><td>CSS transition starts</td></tr>
+          <tr><td>transitionend</td><td>CSS transition ends</td></tr>
+
+          <!-- Misc -->
+          <tr><td rowspan="2">Miscellaneous</td><td>error</td><td>Script or resource fails to load</td></tr>
+          <tr><td>wheel</td><td>Mouse wheel is scrolled</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Conclusion</h2>
+      <p>
+        Events allow developers to interact with users in real-time. Knowing these events helps you build powerful, interactive user interfaces across devices and platforms.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

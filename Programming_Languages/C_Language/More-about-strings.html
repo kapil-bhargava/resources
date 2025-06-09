@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strings in C - Complete Guide</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f4f8;
+      margin: 0;
+      padding: 0;
+      color: #1b1f23;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h1, h2, h3 {
+      color: #0d47a1;
+    }
+    section {
+      background: #ffffff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    }
+    pre, code {
+      background: #e3f2fd;
+      padding: 12px;
+      border-radius: 8px;
+      display: block;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      font-size: 15px;
+      color: #2c3e50;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    a {
+      color: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Strings in C Programming</h1>
+
+    <section>
+      <h2>What is a String in C?</h2>
+      <p>In C, a string is a sequence of characters terminated by a null character <code>\0</code>. C does not have a dedicated string data type, so strings are represented using character arrays.</p>
+    </section>
+
+    <section>
+      <h2>Declaring and Initializing Strings</h2>
+      <pre><code>char name[20];              // Declaration
+char greet[] = "Hello";    // Initialization with string literal
+char message[6] = {'H', 'e', 'l', 'l', 'o', '\0'}; // Manual initialization</code></pre>
+    </section>
+
+    <section>
+      <h2>Reading and Printing Strings</h2>
+      <pre><code>char name[50];
+scanf("%s", name);  // Reads a single word
+printf("%s", name);
+
+// For reading a full line
+fgets(name, 50, stdin);</code></pre>
+    </section>
+
+    <section>
+      <h2>Common String Functions (from &lt;string.h&gt;)</h2>
+      <ul>
+        <li><strong>strlen(str):</strong> Returns length of string</li>
+        <li><strong>strcpy(dest, src):</strong> Copies src to dest</li>
+        <li><strong>strcat(dest, src):</strong> Appends src to dest</li>
+        <li><strong>strcmp(str1, str2):</strong> Compares two strings</li>
+        <li><strong>strupr(str):</strong> Converts to uppercase (non-standard)</li>
+        <li><strong>strlwr(str):</strong> Converts to lowercase (non-standard)</li>
+      </ul>
+
+      <h3>Example:</h3>
+      <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+  char str1[20] = "Hello";
+  char str2[20] = "World";
+  strcat(str1, str2);
+  printf("%s", str1);  // Output: HelloWorld
+  return 0;
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>Important Notes</h2>
+      <ul>
+        <li><code>scanf("%s")</code> stops reading on space.</li>
+        <li><code>fgets()</code> is preferred for reading lines.</li>
+        <li>Always ensure space for <code>\0</code> when declaring string arrays.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Use Cases of Strings</h2>
+      <ul>
+        <li>Reading user input</li>
+        <li>Storing and displaying messages</li>
+        <li>String comparisons and modifications</li>
+        <li>Parsing data formats like CSV, JSON</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>References</h2>
+      <ul>
+        <li><a href="https://www.tutorialspoint.com/cprogramming/c_strings.htm" target="_blank">TutorialsPoint - C Strings</a></li>
+        <li><a href="https://www.geeksforgeeks.org/strings-in-c-sets-1-2-3/" target="_blank">GeeksForGeeks - C Strings</a></li>
+        <li><a href="https://cplusplus.com/reference/cstring/" target="_blank">C++ Reference - C String Library</a></li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrays in C - Single, Double, and Multi-Dimensional</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6fa;
+      margin: 0;
+      padding: 0;
+      color: #1d1d1f;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h1, h2 {
+      color: #0d47a1;
+    }
+    section {
+      background: #ffffff;
+      padding: 25px;
+      margin-bottom: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    pre, code {
+      background: #eef2fb;
+      padding: 12px;
+      border-radius: 8px;
+      display: block;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      font-size: 15px;
+      color: #2c3e50;
+    }
+    ul {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Arrays in C Programming</h1>
+
+    <section>
+      <h2>1. Single Dimensional Array</h2>
+      <p>A single-dimensional array is a list of elements of the same type stored in contiguous memory locations. It is also known as a one-dimensional array.</p>
+      <h3>Declaration:</h3>
+      <code>int arr[5];</code>
+
+      <h3>Initialization:</h3>
+      <code>int arr[5] = {1, 2, 3, 4, 5};</code>
+
+      <h3>Accessing Elements:</h3>
+      <pre><code>for (int i = 0; i < 5; i++) {
+  printf("%d ", arr[i]);
+}</code></pre>
+
+      <h3>Use Cases:</h3>
+      <ul>
+        <li>Storing scores, marks, prices, etc.</li>
+        <li>Simple data lookup and iteration</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Double Dimensional Array (2D Array)</h2>
+      <p>A 2D array is an array of arrays. It can be visualized as a matrix with rows and columns.</p>
+
+      <h3>Declaration:</h3>
+      <code>int matrix[3][4];</code>
+
+      <h3>Initialization:</h3>
+      <pre><code>int matrix[2][3] = {
+  {1, 2, 3},
+  {4, 5, 6}
+};</code></pre>
+
+      <h3>Accessing Elements:</h3>
+      <pre><code>for (int i = 0; i < 2; i++) {
+  for (int j = 0; j < 3; j++) {
+    printf("%d ", matrix[i][j]);
+  }
+}</code></pre>
+
+      <h3>Use Cases:</h3>
+      <ul>
+        <li>Storing tables or matrices</li>
+        <li>Grid-based layouts</li>
+        <li>Board games like chess or sudoku</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Multi Dimensional Array</h2>
+      <p>Multi-dimensional arrays can have more than two dimensions. Mostly used are 3D arrays which can be visualized as a collection of 2D matrices.</p>
+
+      <h3>Declaration:</h3>
+      <code>int cube[2][3][4];</code>
+
+      <h3>Initialization:</h3>
+      <pre><code>int cube[2][2][2] = {
+  {
+    {1, 2},
+    {3, 4}
+  },
+  {
+    {5, 6},
+    {7, 8}
+  }
+};</code></pre>
+
+      <h3>Accessing Elements:</h3>
+      <pre><code>for (int i = 0; i < 2; i++) {
+  for (int j = 0; j < 2; j++) {
+    for (int k = 0; k < 2; k++) {
+      printf("%d ", cube[i][j][k]);
+    }
+  }
+}</code></pre>
+
+      <h3>Use Cases:</h3>
+      <ul>
+        <li>Storing multi-layered data (e.g., 3D coordinates)</li>
+        <li>Simulating 3D space (like a Rubik’s cube)</li>
+        <li>Tensor operations in scientific computing</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Promises Practice Worksheet</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #1e40af;
+      margin-top: 40px;
+    }
+
+    details {
+      background: #ffffff;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #0f172a;
+    }
+
+    code, pre {
+      background: #e2e8f0;
+      padding: 6px 10px;
+      border-radius: 5px;
+      font-family: Consolas, monospace;
+      color: #0f172a;
+      display: inline-block;
+    }
+
+    pre {
+      padding: 15px;
+      display: block;
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 10px;
+      }
+    }
+    .anchor{
+        background-color: #1d4ed8;
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📘 JavaScript Promises Practice Worksheet</h1>
+    <p>Practice and strengthen your knowledge of JavaScript Promises with these challenges and solutions.</p>
+
+    <h2>🚀 Basic Promise Usage</h2>
+
+    <details>
+      <summary>1. Create a Promise that resolves after 2 seconds and logs a message.</summary>
+      <pre><code>
+const wait2Seconds = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve("✅ Resolved after 2 seconds");
+  }, 2000);
+});
+
+wait2Seconds.then(msg => console.log(msg));
+      </code></pre>
+    </details>
+
+    <details>
+      <summary>2. Write a Promise that randomly resolves or rejects.</summary>
+      <pre><code>
+const randomOutcome = new Promise((resolve, reject) => {
+  let success = Math.random() > 0.5;
+  setTimeout(() => {
+    if (success) {
+      resolve("🎉 Success!");
+    } else {
+      reject("❌ Failure!");
+    }
+  }, 1000);
+});
+
+randomOutcome
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+      </code></pre>
+    </details>
+
+    <h2>🔁 Chaining Promises</h2>
+
+    <details>
+      <summary>3. Chain multiple <code>then()</code> handlers.</summary>
+      <pre><code>
+new Promise((resolve) => {
+  resolve(5);
+})
+  .then(num => {
+    console.log("Step 1:", num);
+    return num * 2;
+  })
+  .then(num => {
+    console.log("Step 2:", num);
+    return num * 2;
+  })
+  .then(num => {
+    console.log("Step 3:", num);
+  });
+      </code></pre>
+    </details>
+
+    <h2>🧠 Using async/await</h2>
+
+    <details>
+      <summary>4. Rewrite the chain above using async/await.</summary>
+      <pre><code>
+async function doubleSteps() {
+  let num = 5;
+  console.log("Step 1:", num);
+  num = num * 2;
+  console.log("Step 2:", num);
+  num = num * 2;
+  console.log("Step 3:", num);
+}
+
+doubleSteps();
+      </code></pre>
+    </details>
+
+    <details>
+      <summary>5. Use async/await to fetch user data from JSONPlaceholder.</summary>
+      <pre><code>
+async function getUser() {
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users/1");
+    const data = await res.json();
+    console.log("👤 User:", data.name);
+  } catch (err) {
+    console.error("Fetch failed:", err);
+  }
+}
+
+getUser();
+      </code></pre>
+    </details>
+
+    <h2>🧩 Advanced: Promise.all, race, any</h2>
+
+    <details>
+      <summary>6. Use <code>Promise.all</code> to wait for multiple promises.</summary>
+      <pre><code>
+const p1 = Promise.resolve("🍎 Apple");
+const p2 = Promise.resolve("🍌 Banana");
+const p3 = Promise.resolve("🍇 Grapes");
+
+Promise.all([p1, p2, p3])
+  .then(values => console.log("All fruits:", values));
+      </code></pre>
+    </details>
+
+    <details>
+      <summary>7. Use <code>Promise.race</code> to get the first settled promise.</summary>
+      <pre><code>
+const fast = new Promise(res => setTimeout(() => res("⚡ Fast!"), 1000));
+const slow = new Promise(res => setTimeout(() => res("🐢 Slow"), 3000));
+
+Promise.race([fast, slow]).then(result => console.log("Winner:", result));
+      </code></pre>
+    </details>
+
+    <details>
+      <summary>8. Use <code>Promise.allSettled</code> to get all results (even if some fail).</summary>
+      <pre><code>
+const pA = Promise.resolve("✅ Done A");
+const pB = Promise.reject("❌ Failed B");
+const pC = Promise.resolve("✅ Done C");
+
+Promise.allSettled([pA, pB, pC])
+  .then(results => console.log(results));
+      </code></pre>
+    </details>
+
+    <details>
+      <summary>9. Use <code>Promise.any</code> to get the first fulfilled promise.</summary>
+      <pre><code>
+const fail1 = Promise.reject("Error 1");
+const fail2 = Promise.reject("Error 2");
+const success = Promise.resolve("🎯 Success!");
+
+Promise.any([fail1, fail2, success])
+  .then(result => console.log("First fulfilled:", result));
+      </code></pre>
+    </details>
+
+    <h2>📝 Bonus: Common Interview Question</h2>
+
+    <details>
+      <summary>10. Convert a callback-based function into a Promise-based one.</summary>
+      <pre><code>
+// Callback style
+function loadScript(src, callback) {
+  const script = document.createElement("script");
+  script.src = src;
+  script.onload = () => callback(null, script);
+  script.onerror = () => callback("Error loading");
+  document.body.appendChild(script);
+}
+
+// Promise version
+function loadScriptPromise(src) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.onload = () => resolve(script);
+    script.onerror = () => reject("Error loading script");
+    document.body.appendChild(script);
+  });
+}
+
+loadScriptPromise("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+  .then(script => console.log("Script loaded:", script.src))
+  .catch(err => console.error(err));
+      </code></pre>
+    </details>
+  </div>
+</body>
+</html>

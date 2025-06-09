@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Extended DOM Operations</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h2, h3 {
+      color: #2563eb;
+    }
+
+    .section {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    pre {
+      background-color: #1e293b;
+      color: #f8fafc;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      background-color: #e5e7eb;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: black;
+    }
+
+    abbr {
+      border-bottom: 1px dotted #555;
+      cursor: help;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 10px;
+      }
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #2563eb;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Extended DOM Operations</h1>
+
+    <div class="section">
+      <h2>1. Creating Elements</h2>
+      <p>
+        You can create HTML elements dynamically using <code>document.createElement()</code>.
+      </p>
+      <pre><code>const newDiv = document.createElement("div");
+newDiv.textContent = "I am a new DIV!";</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>2. Appending Elements</h2>
+      <p>
+        To add the element to the DOM, use <code>appendChild()</code> or <code>append()</code>.
+      </p>
+      <pre><code>document.body.appendChild(newDiv);</code></pre>
+      <p><strong>append()</strong> can also add strings or multiple elements at once.</p>
+    </div>
+
+    <div class="section">
+      <h2>3. Styling Elements</h2>
+      <p>
+        Use <code>element.style</code> to apply CSS directly via JavaScript.
+      </p>
+      <pre><code>newDiv.style.color = "white";
+newDiv.style.backgroundColor = "teal";
+newDiv.style.padding = "10px";</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>4. Adding Event Listeners</h2>
+      <p>
+        You can add interactive behavior using <code>addEventListener()</code>.
+      </p>
+      <pre><code>newDiv.addEventListener("click", () => {
+  alert("You clicked the div!");
+});</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>5. Removing Elements</h2>
+      <p>
+        Use <code>remove()</code> to delete an element from the DOM.
+      </p>
+      <pre><code>newDiv.remove();</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>6. Replacing Elements</h2>
+      <p>
+        You can replace one element with another using <code>replaceChild()</code>.
+      </p>
+      <pre><code>const newPara = document.createElement("p");
+newPara.textContent = "I am replacing the div!";
+document.body.replaceChild(newPara, newDiv);</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>7. innerHTML vs textContent</h2>
+      <p>
+        <code>innerHTML</code> sets HTML content. <code>textContent</code> sets only plain text.
+      </p>
+      <pre><code>element.innerHTML = "&lt;strong&gt;Bold Text&lt;/strong&gt;";
+element.textContent = "&lt;strong&gt;Not Bold&lt;/strong&gt;";</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>Live Demo Example</h2>
+      <button id="addBtn">Add Box</button>
+      <div id="boxContainer"></div>
+      <pre><code>
+// JS
+document.getElementById("addBtn").addEventListener("click", () => {
+  const box = document.createElement("div");
+  box.textContent = "New Box";
+  box.style.backgroundColor = "#22c55e";
+  box.style.color = "#fff";
+  box.style.margin = "10px 0";
+  box.style.padding = "10px";
+  box.style.borderRadius = "6px";
+  document.getElementById("boxContainer").appendChild(box);
+});
+      </code></pre>
+    </div>
+
+    <div class="section">
+      <h2>Glossary</h2>
+      <ul>
+        <li><abbr title="Document Object Model">DOM</abbr>: A tree-like representation of the HTML structure</li>
+        <li><abbr title="Cascading Style Sheets">CSS</abbr>: Styles used to present HTML content</li>
+        <li><abbr title="Hypertext Markup Language">HTML</abbr>: The structure of a web page</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>References</h2>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement" target="_blank">MDN: createElement</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild" target="_blank">MDN: appendChild</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("addBtn").addEventListener("click", () => {
+      const box = document.createElement("div");
+      box.textContent = "New Box";
+      box.style.backgroundColor = "#22c55e";
+      box.style.color = "#fff";
+      box.style.margin = "10px 0";
+      box.style.padding = "10px";
+      box.style.borderRadius = "6px";
+      document.getElementById("boxContainer").appendChild(box);
+    });
+  </script>
+</body>
+</html>
