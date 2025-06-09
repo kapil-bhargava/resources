@@ -59,6 +59,31 @@
       border-radius: 4px;
       color: black;
     }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    td a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
 
     @media (max-width: 768px) {
       .container {
@@ -70,6 +95,44 @@
 <body>
   <div class="container">
     <h1>All JavaScript String Methods</h1>
+     <div class="method-table">
+      <h2>📘 Table of String Methods</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><a href="#length">length</a></td><td>Gets string length</td></tr>
+          <tr><td><a href="#charAt">charAt()</a></td><td>Gets character at index</td></tr>
+          <tr><td><a href="#charCodeAt">charCodeAt()</a></td><td>Gets Unicode at index</td></tr>
+          <tr><td><a href="#at">at()</a></td><td>Modern index getter (supports negatives)</td></tr>
+          <tr><td><a href="#indexOf">indexOf()</a></td><td>First occurrence of string</td></tr>
+          <tr><td><a href="#lastIndexOf">lastIndexOf()</a></td><td>Last occurrence of string</td></tr>
+          <tr><td><a href="#includes">includes()</a></td><td>Check if string contains</td></tr>
+          <tr><td><a href="#startsWith">startsWith()</a></td><td>Check if starts with</td></tr>
+          <tr><td><a href="#endsWith">endsWith()</a></td><td>Check if ends with</td></tr>
+          <tr><td><a href="#slice">slice()</a></td><td>Extract part of string</td></tr>
+          <tr><td><a href="#substring">substring()</a></td><td>Part of string (no negative)</td></tr>
+          <tr><td><a href="#substr">substr()</a></td><td>Substring by length (deprecated)</td></tr>
+          <tr><td><a href="#toUpperCase">toUpperCase()</a></td><td>Convert to uppercase</td></tr>
+          <tr><td><a href="#toLowerCase">toLowerCase()</a></td><td>Convert to lowercase</td></tr>
+          <tr><td><a href="#trim">trim()</a></td><td>Remove whitespace ends</td></tr>
+          <tr><td><a href="#trimStart">trimStart()/trimEnd()</a></td><td>Remove from start or end</td></tr>
+          <tr><td><a href="#replace">replace()</a></td><td>Replace first match</td></tr>
+          <tr><td><a href="#replaceAll">replaceAll()</a></td><td>Replace all matches</td></tr>
+          <tr><td><a href="#repeat">repeat()</a></td><td>Repeat string</td></tr>
+          <tr><td><a href="#concat">concat()</a></td><td>Join strings</td></tr>
+          <tr><td><a href="#split">split()</a></td><td>Split into array</td></tr>
+          <tr><td><a href="#valueOf">valueOf()</a></td><td>Primitive value</td></tr>
+          <tr><td><a href="#toString">toString()</a></td><td>Convert to string</td></tr>
+          <tr><td><a href="#padStart">padStart()</a></td><td>Pad beginning of string</td></tr>
+          <tr><td><a href="#padEnd">padEnd()</a></td><td>Pad end of string</td></tr>
+        </tbody>
+      </table>
+    </div>
 
     <h2>🔤 Basic Properties & Access</h2>
 

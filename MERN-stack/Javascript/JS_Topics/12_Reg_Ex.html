@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Regular Expressions - Complete Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <style>
+   :root {
+  --primary-color: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #93c5fd;
+  --secondary-color: #0f172a;
+  --text-color: #334155;
+  --text-light: #64748b;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --code-bg: #f1f5f9;
+  --code-block-bg: #0f172a;
+  --code-text: #e2e8f0;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  --font-mono: "Fira Code", "Roboto Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+  --transition: all 0.2s ease-in-out;
+}
+
+[data-theme="dark"] {
+  --primary-color: #60a5fa;
+  --primary-dark: #3b82f6;
+  --primary-light: #93c5fd;
+  --secondary-color: #e2e8f0;
+  --text-color: #e2e8f0;
+  --text-light: #94a3b8;
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --border-color: #334155;
+  --code-bg: #1e293b;
+  --code-block-bg: #0f172a;
+  --code-text: #e2e8f0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 150px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: var(--transition);
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+ul,
+ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+code {
+  font-family: var(--font-mono);
+  background-color: var(--code-bg);
+  color: var(--primary-dark);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: var(--code-block-bg);
+  color: var(--code-text);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.section {
+  margin-bottom: 4rem;
+  scroll-margin-top: 2rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+}
+
+#themeToggle {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+#themeToggle:hover {
+  transform: scale(1.1);
+}
+
+.toc {
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  /* padding: 1.5rem; */
+  padding: 5px;
+  margin-bottom: 2rem;
+  /* box-shadow: var(--shadow); */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  z-index: 200;
+  border:1px solid  #0f172a;
+  /* top: 2rem; */
+  top: 0px;
+  padding-bottom: 0;
+}
+
+.toc h2 {
+  margin-top: 0;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.toc ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.toc li {
+  /* padding: 0 !important; */
+  /* background-color: green; */
+  /* margin-bottom: 0.5rem; */
+  /* list-style-type: disc; */
+  display: inline-block;
+}
+
+.toc a {
+  display: block;
+  /* padding: 0.5rem; */
+  background-color: rgb(231, 231, 231);
+  border-radius: 0.25rem;
+  padding: 2px;
+  transition: var(--transition);
+}
+
+.toc a:hover {
+  background-color: var(--code-bg);
+  text-decoration: none;
+}
+
+.info-box {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-left: 4px solid var(--primary-color);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0.25rem;
+}
+
+.info-box h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-box.warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-left-color: var(--warning-color);
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--code-bg);
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: var(--code-bg);
+}
+
+.code-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.interactive-container {
+  background-color: var(--code-bg);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  transition: var(--transition);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.results-container {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-color);
+}
+
+.regex-results {
+  font-family: var(--font-mono);
+  white-space: pre-wrap;
+}
+
+.validation-examples {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .validation-examples {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.validation-example {
+  background-color: var(--code-bg);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.validation-result {
+  margin-top: 0.5rem;
+  min-height: 1.5rem;
+}
+
+.demo-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-top: 0.25rem;
+}
+
+.text-processing {
+  margin-top: 2rem;
+}
+
+.extracted-tags {
+  min-height: 100px;
+}
+
+.cheatsheet-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .cheatsheet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cheatsheet-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cheatsheet-section table {
+  width: 100%;
+}
+
+.cheatsheet-section td:first-child {
+  width: 40%;
+  font-family: var(--font-mono);
+}
+
+.resource-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.resource-list li {
+  margin-bottom: 0.75rem;
+}
+
+.resource-list i {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+}
+
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.books li {
+  background-color: var(--code-bg);
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  flex: 1 1 300px;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-light);
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+footer i {
+  color: var(--error-color);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}
+
+/* Highlight.js overrides */
+.hljs {
+  background: var(--code-block-bg) !important;
+  padding: 0 !important;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="theme-toggle">
+    <button id="themeToggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-code"></i> Mastering JavaScript Regular Expressions</h1>
+      <p class="subtitle">A comprehensive guide to understanding and using regex patterns effectively</p>
+    </header>
+
+    <nav class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#introduction">Introduction to Regex</a></li>
+        <li><a href="#why-use">Why Use Regular Expressions</a></li>
+        <li><a href="#syntax">Basic Syntax</a></li>
+        <li><a href="#metacharacters">Special Characters & Metacharacters</a></li>
+        <li><a href="#quantifiers">Quantifiers & Grouping</a></li>
+        <li><a href="#common-patterns">Common Regex Patterns</a></li>
+        <li><a href="#interactive">Interactive Examples</a></li>
+        <li><a href="#real-world">Real-World Applications</a></li>
+        <li><a href="#cheatsheet">Regex Cheat Sheet</a></li>
+        <li><a href="#resources">Learning Resources</a></li>
+      </ul>
+    </nav>
+
+    <section id="introduction" class="section">
+      <h2>🔍 Introduction to Regular Expressions</h2>
+      <div class="card">
+        <p>A <strong>Regular Expression</strong> (Regex or RegExp) is a sequence of characters that forms a search
+          pattern. These patterns are used for string searching algorithms, "find" or "find and replace" operations, and
+          input validation.</p>
+
+        <p>Regular expressions are both <em>powerful</em> and <em>flexible</em>, allowing developers to:</p>
+        <ul>
+          <li>Match specific character patterns within text</li>
+          <li>Extract information from strings</li>
+          <li>Validate user input against predefined patterns</li>
+          <li>Perform complex search and replace operations</li>
+        </ul>
+
+        <div class="info-box">
+          <h4><i class="fas fa-lightbulb"></i> Did You Know?</h4>
+          <p>Regular expressions were invented by mathematician Stephen Cole Kleene in the 1950s as a way to describe
+            regular languages. They were later incorporated into programming languages, with Perl being particularly
+            influential in popularizing their use.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-use" class="section">
+      <h2>🎯 Why Use Regular Expressions?</h2>
+      <div class="card">
+        <div class="grid-2">
+          <div>
+            <h3>Advantages</h3>
+            <ul>
+              <li><strong>Conciseness</strong>: Express complex string operations in a compact form</li>
+              <li><strong>Flexibility</strong>: Create patterns that can match a wide variety of text</li>
+              <li><strong>Efficiency</strong>: Perform complex string operations with minimal code</li>
+              <li><strong>Standardization</strong>: Regex syntax is similar across many programming languages</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Common Use Cases</h3>
+            <ul>
+              <li>Form validation (emails, passwords, phone numbers)</li>
+              <li>Data extraction and scraping</li>
+              <li>Search and replace operations</li>
+              <li>Syntax highlighting in code editors</li>
+              <li>URL routing in web frameworks</li>
+              <li>Parsing and tokenizing text</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="syntax" class="section">
+      <h2>🛠️ Basic Syntax</h2>
+      <div class="card">
+        <p>In JavaScript, regular expressions can be created in two ways:</p>
+
+        <div class="code-container">
+          <pre><code class="language-javascript">// Using literal notation (preferred for static patterns)
+const regex1 = /pattern/flags;
+
+// Using the RegExp constructor (useful when pattern is dynamic)
+const regex2 = new RegExp("pattern", "flags");</code></pre>
+        </div>
+
+        <h3>Regex Flags</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Flag</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>g</code></td>
+                <td>Global</td>
+                <td>Match all occurrences, not just the first one</td>
+                <td><code>/abc/g</code></td>
+              </tr>
+              <tr>
+                <td><code>i</code></td>
+                <td>Case-insensitive</td>
+                <td>Match regardless of case</td>
+                <td><code>/abc/i</code></td>
+              </tr>
+              <tr>
+                <td><code>m</code></td>
+                <td>Multiline</td>
+                <td>^ and $ match start/end of each line</td>
+                <td><code>/^abc/m</code></td>
+              </tr>
+              <tr>
+                <td><code>s</code></td>
+                <td>Dotall</td>
+                <td>. matches newlines too</td>
+                <td><code>/a.c/s</code></td>
+              </tr>
+              <tr>
+                <td><code>u</code></td>
+                <td>Unicode</td>
+                <td>Treat pattern as Unicode</td>
+                <td><code>/\u{1F600}/u</code></td>
+              </tr>
+              <tr>
+                <td><code>y</code></td>
+                <td>Sticky</td>
+                <td>Match only from lastIndex</td>
+                <td><code>/abc/y</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Basic Methods</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Description</th>
+                <th>Example</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>test()</code></td>
+                <td>Tests if pattern exists in string</td>
+                <td><code>/hello/.test("hello world")</code></td>
+                <td><code>true</code></td>
+              </tr>
+              <tr>
+                <td><code>exec()</code></td>
+                <td>Returns array of match information</td>
+                <td><code>/h(e)llo/.exec("hello")</code></td>
+                <td><code>["hello", "e"]</code></td>
+              </tr>
+              <tr>
+                <td><code>match()</code></td>
+                <td>String method that returns matches</td>
+                <td><code>"hello".match(/l/g)</code></td>
+                <td><code>["l", "l"]</code></td>
+              </tr>
+              <tr>
+                <td><code>replace()</code></td>
+                <td>String method that replaces matches</td>
+                <td><code>"hello".replace(/l/g, "r")</code></td>
+                <td><code>"herro"</code></td>
+              </tr>
+              <tr>
+                <td><code>search()</code></td>
+                <td>String method that returns index of match</td>
+                <td><code>"hello".search(/l/)</code></td>
+                <td><code>2</code></td>
+              </tr>
+              <tr>
+                <td><code>split()</code></td>
+                <td>String method that splits by matches</td>
+                <td><code>"a,b,c".split(/,/)</code></td>
+                <td><code>["a", "b", "c"]</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="metacharacters" class="section">
+      <h2>⚙️ Special Characters & Metacharacters</h2>
+      <div class="card">
+        <p>Metacharacters are characters with special meaning in regex:</p>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Character</th>
+                <th>Description</th>
+                <th>Example</th>
+                <th>Matches</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.</code></td>
+                <td>Any character except newline</td>
+                <td><code>/h.t/</code></td>
+                <td>"hat", "hot", "h@t", etc.</td>
+              </tr>
+              <tr>
+                <td><code>^</code></td>
+                <td>Start of string</td>
+                <td><code>/^hello/</code></td>
+                <td>"hello world" but not "say hello"</td>
+              </tr>
+              <tr>
+                <td><code>$</code></td>
+                <td>End of string</td>
+                <td><code>/world$/</code></td>
+                <td>"hello world" but not "world view"</td>
+              </tr>
+              <tr>
+                <td><code>\d</code></td>
+                <td>Digit (0-9)</td>
+                <td><code>/\d{3}/</code></td>
+                <td>"123", "456", etc.</td>
+              </tr>
+              <tr>
+                <td><code>\w</code></td>
+                <td>Word character (a-z, A-Z, 0-9, _)</td>
+                <td><code>/\w+/</code></td>
+                <td>"hello", "test123", etc.</td>
+              </tr>
+              <tr>
+                <td><code>\s</code></td>
+                <td>Whitespace</td>
+                <td><code>/hello\sworld/</code></td>
+                <td>"hello world"</td>
+              </tr>
+              <tr>
+                <td><code>\D</code></td>
+                <td>Non-digit</td>
+                <td><code>/\D+/</code></td>
+                <td>"hello", "world", etc.</td>
+              </tr>
+              <tr>
+                <td><code>\W</code></td>
+                <td>Non-word character</td>
+                <td><code>/\W/</code></td>
+                <td>"!", "@", " ", etc.</td>
+              </tr>
+              <tr>
+                <td><code>\S</code></td>
+                <td>Non-whitespace</td>
+                <td><code>/\S+/</code></td>
+                <td>"hello", "world123", etc.</td>
+              </tr>
+              <tr>
+                <td><code>\b</code></td>
+                <td>Word boundary</td>
+                <td><code>/\bcat\b/</code></td>
+                <td>"cat" but not "category"</td>
+              </tr>
+              <tr>
+                <td><code>[ ]</code></td>
+                <td>Character class</td>
+                <td><code>/[aeiou]/</code></td>
+                <td>Any vowel</td>
+              </tr>
+              <tr>
+                <td><code>[^ ]</code></td>
+                <td>Negated character class</td>
+                <td><code>/[^0-9]/</code></td>
+                <td>Any non-digit</td>
+              </tr>
+              <tr>
+                <td><code>|</code></td>
+                <td>Alternation (OR)</td>
+                <td><code>/cat|dog/</code></td>
+                <td>"cat" or "dog"</td>
+              </tr>
+              <tr>
+                <td><code>( )</code></td>
+                <td>Grouping</td>
+                <td><code>/(ab)+/</code></td>
+                <td>"ab", "abab", etc.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-box warning">
+          <h4><i class="fas fa-exclamation-triangle"></i> Watch Out!</h4>
+          <p>To match literal special characters like <code>.</code>, <code>*</code>, <code>+</code>, etc., you need to
+            escape them with a backslash: <code>\.</code>, <code>\*</code>, <code>\+</code></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="quantifiers" class="section">
+      <h2>🔢 Quantifiers & Grouping</h2>
+      <div class="card">
+        <h3>Quantifiers</h3>
+        <p>Quantifiers specify how many instances of a character, group, or character class must be present for a match:
+        </p>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Quantifier</th>
+                <th>Description</th>
+                <th>Example</th>
+                <th>Matches</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>*</code></td>
+                <td>0 or more</td>
+                <td><code>/ab*c/</code></td>
+                <td>"ac", "abc", "abbc", etc.</td>
+              </tr>
+              <tr>
+                <td><code>+</code></td>
+                <td>1 or more</td>
+                <td><code>/ab+c/</code></td>
+                <td>"abc", "abbc", etc. (not "ac")</td>
+              </tr>
+              <tr>
+                <td><code>?</code></td>
+                <td>0 or 1</td>
+                <td><code>/colou?r/</code></td>
+                <td>"color" or "colour"</td>
+              </tr>
+              <tr>
+                <td><code>{n}</code></td>
+                <td>Exactly n</td>
+                <td><code>/\d{3}/</code></td>
+                <td>"123", "456", etc.</td>
+              </tr>
+              <tr>
+                <td><code>{n,}</code></td>
+                <td>n or more</td>
+                <td><code>/\d{2,}/</code></td>
+                <td>"12", "123", "1234", etc.</td>
+              </tr>
+              <tr>
+                <td><code>{n,m}</code></td>
+                <td>Between n and m</td>
+                <td><code>/\d{2,4}/</code></td>
+                <td>"12", "123", "1234" (not "1" or "12345")</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Greedy vs. Lazy Matching</h3>
+        <p>By default, quantifiers are <strong>greedy</strong> - they match as much as possible. Adding a <code>?</code>
+          after a quantifier makes it <strong>lazy</strong> - matching as little as possible.</p>
+
+        <div class="code-container">
+          <pre><code class="language-javascript">// Greedy matching
+"&lt;div&gt;Hello&lt;/div&gt;&lt;div&gt;World&lt;/div&gt;".match(/&lt;div&gt;.*&lt;\/div&gt;/);
+// Returns: "&lt;div&gt;Hello&lt;/div&gt;&lt;div&gt;World&lt;/div&gt;"
+
+// Lazy matching
+"&lt;div&gt;Hello&lt;/div&gt;&lt;div&gt;World&lt;/div&gt;".match(/&lt;div&gt;.*?&lt;\/div&gt;/);
+// Returns: "&lt;div&gt;Hello&lt;/div&gt;"</code></pre>
+        </div>
+
+        <h3>Capturing Groups</h3>
+        <p>Parentheses <code>( )</code> create capturing groups that remember the matched text:</p>
+
+        <div class="code-container">
+          <pre><code class="language-javascript">const regex = /(\d{3})-(\d{3})-(\d{4})/;
+const match = "123-456-7890".match(regex);
+// match[0] = "123-456-7890" (full match)
+// match[1] = "123" (first group)
+// match[2] = "456" (second group)
+// match[3] = "7890" (third group)</code></pre>
+        </div>
+
+        <h3>Named Capturing Groups</h3>
+        <p>You can name capturing groups for easier reference:</p>
+
+        <div class="code-container">
+          <pre><code class="language-javascript">const regex = /(?&lt;areaCode&gt;\d{3})-(?&lt;prefix&gt;\d{3})-(?&lt;lineNumber&gt;\d{4})/;
+const match = "123-456-7890".match(regex);
+// match.groups.areaCode = "123"
+// match.groups.prefix = "456"
+// match.groups.lineNumber = "7890"</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="common-patterns" class="section">
+      <h2>📋 Common Regex Patterns</h2>
+      <div class="card">
+        <p>Here are some commonly used regex patterns for various validation scenarios:</p>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Pattern Type</th>
+                <th>Regex</th>
+                <th>Description</th>
+                <th>Valid Examples</th>
+                <th>Invalid Examples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Email (Simple)</td>
+                <td><code>/^[\w.-]+@[\w.-]+\.\w+$/</code></td>
+                <td>Basic email validation</td>
+                <td>user@example.com<br>john.doe@company.co.uk</td>
+                <td>user@.com<br>@example.com</td>
+              </tr>
+              <tr>
+                <td>Email (RFC 5322)</td>
+                <td>
+                  <code>/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/</code>
+                </td>
+                <td>Comprehensive email validation</td>
+                <td>user+tag@example.com<br>first-last@domain.co.uk</td>
+                <td>user@domain@domain.com<br>user@-domain.com</td>
+              </tr>
+              <tr>
+                <td>Phone (US)</td>
+                <td><code>/^(\+\d{1,2}\s)?$$?\d{3}$$?[\s.-]?\d{3}[\s.-]?\d{4}$/</code></td>
+                <td>US phone number with optional country code</td>
+                <td>123-456-7890<br>(123) 456-7890<br>+1 123 456 7890</td>
+                <td>123-45-6789<br>123-456-789</td>
+              </tr>
+              <tr>
+                <td>Phone (International)</td>
+                <td><code>/^\+(?:[0-9] ?){6,14}[0-9]$/</code></td>
+                <td>International phone number</td>
+                <td>+1 123 456 7890<br>+44 7911 123456</td>
+                <td>+123<br>1234567890</td>
+              </tr>
+              <tr>
+                <td>URL</td>
+                <td><code>/^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w.-]*)*\/?$/</code></td>
+                <td>Web URL with optional protocol</td>
+                <td>https://example.com<br>example.com/path</td>
+                <td>http:/example.com<br>https://example</td>
+              </tr>
+              <tr>
+                <td>Date (MM/DD/YYYY)</td>
+                <td><code>/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19|20)\d\d$/</code></td>
+                <td>Date in MM/DD/YYYY format</td>
+                <td>01/01/2023<br>12/31/2023</td>
+                <td>13/01/2023<br>01/32/2023</td>
+              </tr>
+              <tr>
+                <td>Date (YYYY-MM-DD)</td>
+                <td><code>/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/</code></td>
+                <td>ISO date format</td>
+                <td>2023-01-01<br>2023-12-31</td>
+                <td>2023-13-01<br>2023-01-32</td>
+              </tr>
+              <tr>
+                <td>Strong Password</td>
+                <td><code>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/</code></td>
+                <td>Min 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char</td>
+                <td>Password1!<br>Str0ng@Pass</td>
+                <td>password<br>Password<br>Password1</td>
+              </tr>
+              <tr>
+                <td>Username</td>
+                <td><code>/^[a-zA-Z0-9_]{3,16}$/</code></td>
+                <td>3-16 characters, letters, numbers, underscore</td>
+                <td>user123<br>john_doe</td>
+                <td>u$er<br>user-name</td>
+              </tr>
+              <tr>
+                <td>IP Address</td>
+                <td>
+                  <code>/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/</code>
+                </td>
+                <td>IPv4 address</td>
+                <td>192.168.1.1<br>255.255.255.255</td>
+                <td>256.0.0.1<br>192.168.1</td>
+              </tr>
+              <tr>
+                <td>Postal Code (US)</td>
+                <td><code>/^\d{5}(-\d{4})?$/</code></td>
+                <td>US ZIP code with optional +4</td>
+                <td>12345<br>12345-6789</td>
+                <td>1234<br>12345-67</td>
+              </tr>
+              <tr>
+                <td>Credit Card</td>
+                <td>
+                  <code>/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12})$/</code>
+                </td>
+                <td>Major credit card numbers</td>
+                <td>4111111111111111<br>5555555555554444</td>
+                <td>41111111111111<br>3111111111111111</td>
+              </tr>
+              <tr>
+                <td>Hex Color</td>
+                <td><code>/^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/</code></td>
+                <td>Hex color code with optional #</td>
+                <td>#fff<br>#f0f0f0</td>
+                <td>#ffff<br>#xyz</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="interactive" class="section">
+      <h2>🧪 Interactive Examples</h2>
+      <div class="card">
+        <h3>Test Your Regex</h3>
+        <p>Try out different regex patterns and see the results in real-time:</p>
+
+        <div class="interactive-container">
+          <div class="form-group">
+            <label for="regexPattern">Regex Pattern:</label>
+            <input type="text" id="regexPattern" value="/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g" />
+          </div>
+
+          <div class="form-group">
+            <label for="testString">Test String:</label>
+            <textarea
+              id="testString">Contact us at info@example.com or support@company.co.uk for more information.</textarea>
+          </div>
+
+          <button id="testRegexBtn" class="btn">Test Regex</button>
+
+          <div class="results-container">
+            <h4>Results:</h4>
+            <div id="regexResults" class="regex-results">
+              <p>Click "Test Regex" to see results</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Common Validation Examples</h3>
+        <div class="validation-examples">
+          <div class="validation-example">
+            <h4>Email Validation</h4>
+            <input type="text" id="emailInput" placeholder="Enter an email address" />
+            <p id="emailResult" class="validation-result"></p>
+          </div>
+
+          <div class="validation-example">
+            <h4>Password Strength</h4>
+            <input type="password" id="passwordInput" placeholder="Enter a password" />
+            <p id="passwordResult" class="validation-result"></p>
+          </div>
+
+          <div class="validation-example">
+            <h4>Phone Number</h4>
+            <input type="text" id="phoneInput" placeholder="Enter a phone number" />
+            <p id="phoneResult" class="validation-result"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="real-world" class="section">
+      <h2>✨ Real-World Applications</h2>
+      <div class="card">
+        <h3>Form Validation Example</h3>
+        <form id="registrationForm" class="demo-form">
+          <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" placeholder="John Doe" required />
+            <p class="hint">Letters and spaces only, minimum 3 characters</p>
+          </div>
+
+          <div class="form-group">
+            <label for="userEmail">Email:</label>
+            <input type="email" id="userEmail" placeholder="john@example.com" required />
+            <p class="hint">Valid email format required</p>
+          </div>
+
+          <div class="form-group">
+            <label for="userPhone">Phone Number:</label>
+            <input type="tel" id="userPhone" placeholder="123-456-7890" required />
+            <p class="hint">Format: XXX-XXX-XXXX</p>
+          </div>
+
+          <div class="form-group">
+            <label for="userPassword">Password:</label>
+            <input type="password" id="userPassword" required />
+            <p class="hint">Min 8 chars, including uppercase, lowercase, number, and special character</p>
+          </div>
+
+          <div class="form-group">
+            <label for="website">Website (optional):</label>
+            <input type="url" id="website" placeholder="https://example.com" />
+            <p class="hint">Valid URL format</p>
+          </div>
+
+          <button type="submit" class="btn">Register</button>
+        </form>
+
+        <div class="code-container">
+          <pre><code class="language-javascript">// Form validation with regex
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('fullName').value;
+  const email = document.getElementById('userEmail').value;
+  const phone = document.getElementById('userPhone').value;
+  const password = document.getElementById('userPassword').value;
+  const website = document.getElementById('website').value;
+  
+  // Name: letters and spaces only, min 3 chars
+  const nameRegex = /^[A-Za-z\s]{3,}$/;
+  
+  // Email: standard format validation
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  
+  // Phone: XXX-XXX-XXXX format
+  const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+  
+  // Password: min 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  
+  // Website: optional, but must be valid if provided
+  const websiteRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w.-]*)*\/?$/;
+  
+  let isValid = true;
+  let errorMessage = '';
+  
+  if (!nameRegex.test(name)) {
+    errorMessage += 'Name must contain only letters and spaces (min 3 characters).\n';
+    isValid = false;
+  }
+  
+  if (!emailRegex.test(email)) {
+    errorMessage += 'Please enter a valid email address.\n';
+    isValid = false;
+  }
+  
+  if (!phoneRegex.test(phone)) {
+    errorMessage += 'Phone must be in XXX-XXX-XXXX format.\n';
+    isValid = false;
+  }
+  
+  if (!passwordRegex.test(password)) {
+    errorMessage += 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.\n';
+    isValid = false;
+  }
+  
+  if (website && !websiteRegex.test(website)) {
+    errorMessage += 'Please enter a valid website URL.\n';
+    isValid = false;
+  }
+  
+  if (isValid) {
+    alert('Registration successful!');
+    this.reset();
+  } else {
+    alert('Please fix the following errors:\n\n' + errorMessage);
+  }
+});</code></pre>
+        </div>
+
+        <h3>Text Processing Example</h3>
+        <div class="text-processing">
+          <h4>HTML Tag Extractor</h4>
+          <div class="form-group">
+            <label for="htmlInput">HTML Input:</label>
+            <textarea id="htmlInput"
+              rows="5">&lt;div class="container"&gt;&lt;h1&gt;Title&lt;/h1&gt;&lt;p&gt;This is a paragraph with &lt;a href="https://example.com"&gt;a link&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</textarea>
+          </div>
+
+          <button id="extractTagsBtn" class="btn">Extract Tags</button>
+
+          <div class="results-container">
+            <h4>Extracted Tags:</h4>
+            <div id="extractedTags" class="extracted-tags"></div>
+          </div>
+
+          <div class="code-container">
+            <pre><code class="language-javascript">document.getElementById('extractTagsBtn').addEventListener('click', function() {
+  const html = document.getElementById('htmlInput').value;
+  const tagRegex = /&lt;(\w+)(?:\s+[^>]*)?&gt;/g;
+  const matches = [...html.matchAll(tagRegex)];
+  
+  const tagsContainer = document.getElementById('extractedTags');
+  tagsContainer.innerHTML = '';
+  
+  if (matches.length === 0) {
+    tagsContainer.innerHTML = 'No tags found';
+    return;
+  }
+  
+  const tagCounts = {};
+  
+  matches.forEach(match => {
+    const tag = match[1];
+    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+  });
+  
+  const table = document.createElement('table');
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>Tag</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${Object.entries(tagCounts).map(([tag, count]) => `
+        <tr>
+          <td>&lt;${tag}&gt;</td>
+          <td>${count}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  `;
+  
+  tagsContainer.appendChild(table);
+});</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cheatsheet" class="section">
+      <h2>📝 Regex Cheat Sheet</h2>
+      <div class="card">
+        <div class="cheatsheet-grid">
+          <div class="cheatsheet-section">
+            <h3>Character Classes</h3>
+            <table>
+              <tr>
+                <td><code>.</code></td>
+                <td>Any character except newline</td>
+              </tr>
+              <tr>
+                <td><code>\w</code></td>
+                <td>Word character [a-zA-Z0-9_]</td>
+              </tr>
+              <tr>
+                <td><code>\d</code></td>
+                <td>Digit [0-9]</td>
+              </tr>
+              <tr>
+                <td><code>\s</code></td>
+                <td>Whitespace character</td>
+              </tr>
+              <tr>
+                <td><code>\W</code></td>
+                <td>Non-word character</td>
+              </tr>
+              <tr>
+                <td><code>\D</code></td>
+                <td>Non-digit</td>
+              </tr>
+              <tr>
+                <td><code>\S</code></td>
+                <td>Non-whitespace character</td>
+              </tr>
+              <tr>
+                <td><code>[abc]</code></td>
+                <td>Any of a, b, or c</td>
+              </tr>
+              <tr>
+                <td><code>[^abc]</code></td>
+                <td>Not a, b, or c</td>
+              </tr>
+              <tr>
+                <td><code>[a-z]</code></td>
+                <td>Any character a through z</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="cheatsheet-section">
+            <h3>Anchors</h3>
+            <table>
+              <tr>
+                <td><code>^</code></td>
+                <td>Start of string or line</td>
+              </tr>
+              <tr>
+                <td><code>$</code></td>
+                <td>End of string or line</td>
+              </tr>
+              <tr>
+                <td><code>\b</code></td>
+                <td>Word boundary</td>
+              </tr>
+              <tr>
+                <td><code>\B</code></td>
+                <td>Non-word boundary</td>
+              </tr>
+            </table>
+
+            <h3>Escaped Characters</h3>
+            <table>
+              <tr>
+                <td><code>\.</code></td>
+                <td>Literal period</td>
+              </tr>
+              <tr>
+                <td><code>\+</code></td>
+                <td>Literal plus sign</td>
+              </tr>
+              <tr>
+                <td><code>\*</code></td>
+                <td>Literal asterisk</td>
+              </tr>
+              <tr>
+                <td><code>\?</code></td>
+                <td>Literal question mark</td>
+              </tr>
+              <tr>
+                <td><code>\\</code></td>
+                <td>Literal backslash</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="cheatsheet-section">
+            <h3>Quantifiers</h3>
+            <table>
+              <tr>
+                <td><code>*</code></td>
+                <td>0 or more</td>
+              </tr>
+              <tr>
+                <td><code>+</code></td>
+                <td>1 or more</td>
+              </tr>
+              <tr>
+                <td><code>?</code></td>
+                <td>0 or 1</td>
+              </tr>
+              <tr>
+                <td><code>{3}</code></td>
+                <td>Exactly 3</td>
+              </tr>
+              <tr>
+                <td><code>{3,}</code></td>
+                <td>3 or more</td>
+              </tr>
+              <tr>
+                <td><code>{1,3}</code></td>
+                <td>Between 1 and 3</td>
+              </tr>
+              <tr>
+                <td><code>*?</code></td>
+                <td>0 or more (lazy)</td>
+              </tr>
+              <tr>
+                <td><code>+?</code></td>
+                <td>1 or more (lazy)</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="cheatsheet-section">
+            <h3>Groups & Lookarounds</h3>
+            <table>
+              <tr>
+                <td><code>(abc)</code></td>
+                <td>Capture group</td>
+              </tr>
+              <tr>
+                <td><code>(?:abc)</code></td>
+                <td>Non-capturing group</td>
+              </tr>
+              <tr>
+                <td><code>(?&lt;name&gt;abc)</code></td>
+                <td>Named capture group</td>
+              </tr>
+              <tr>
+                <td><code>(?=abc)</code></td>
+                <td>Positive lookahead</td>
+              </tr>
+              <tr>
+                <td><code>(?!abc)</code></td>
+                <td>Negative lookahead</td>
+              </tr>
+              <tr>
+                <td><code>(?&lt;=abc)</code></td>
+                <td>Positive lookbehind</td>
+              </tr>
+              <tr>
+                <td><code>(?&lt;!abc)</code></td>
+                <td>Negative lookbehind</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <h4><i class="fas fa-lightbulb"></i> Pro Tips</h4>
+          <ul>
+            <li>Use non-capturing groups <code>(?:...)</code> when you don't need to reference the group later</li>
+            <li>Use lookaheads/lookbehinds for complex validation without including the matched text</li>
+            <li>Remember that <code>.*</code> is greedy - use <code>.*?</code> for non-greedy matching</li>
+            <li>Test your regex with various inputs to ensure it handles edge cases</li>
+            <li>Break complex patterns into smaller, more manageable pieces</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="section">
+      <h2>📚 Learning Resources</h2>
+      <div class="card">
+        <div class="grid-2">
+          <div>
+            <h3>Online Tools</h3>
+            <ul class="resource-list">
+              <li><a href="https://regex101.com/" target="_blank"><i class="fas fa-tools"></i> Regex101</a> -
+                Interactive regex tester with explanation</li>
+              <li><a href="https://regexr.com/" target="_blank"><i class="fas fa-tools"></i> RegExr</a> - Learn, build,
+                & test regex</li>
+              <li><a href="https://www.regextester.com/" target="_blank"><i class="fas fa-tools"></i> RegexTester</a> -
+                Test and debug regex</li>
+              <li><a href="https://regexcrossword.com/" target="_blank"><i class="fas fa-puzzle-piece"></i> Regex
+                  Crossword</a> - Learn regex through puzzles</li>
+              <li><a href="https://extendsclass.com/regex-tester.html" target="_blank"><i class="fas fa-tools"></i>
+                  ExtendsClass</a> - Regex tester with syntax highlighting</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Documentation & Tutorials</h3>
+            <ul class="resource-list">
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"
+                  target="_blank"><i class="fas fa-book"></i> MDN Web Docs</a> - Comprehensive JavaScript regex guide
+              </li>
+              <li><a href="https://www.regular-expressions.info/" target="_blank"><i class="fas fa-graduation-cap"></i>
+                  Regular-Expressions.info</a> - In-depth tutorials and examples</li>
+              <li><a href="https://www.w3schools.com/js/js_regexp.asp" target="_blank"><i class="fas fa-code"></i>
+                  W3Schools</a> - JavaScript regex tutorial</li>
+              <li><a href="https://javascript.info/regular-expressions" target="_blank"><i class="fas fa-book-open"></i>
+                  JavaScript.info</a> - Modern JavaScript tutorial</li>
+              <li><a href="https://eloquentjavascript.net/09_regexp.html" target="_blank"><i class="fas fa-book"></i>
+                  Eloquent JavaScript</a> - Chapter on regular expressions</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Books</h3>
+        <ul class="resource-list books">
+          <li><i class="fas fa-book"></i> "Mastering Regular Expressions" by Jeffrey Friedl</li>
+          <li><i class="fas fa-book"></i> "Regular Expressions Cookbook" by Jan Goyvaerts & Steven Levithan</li>
+          <li><i class="fas fa-book"></i> "Regular Expression Pocket Reference" by Tony Stubblebine</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- <footer>
+      <p>&copy; 2023 JavaScript Regular Expressions Guide | Created with <i class="fas fa-heart"></i> for developers</p>
+      <p>Last updated: June 9, 2023</p>
+    </footer> -->
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <!-- <script src="script.js"></script> -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Declare hljs variable or import it before using it
+      const hljs = window.hljs // Assuming hljs is available globally
+
+      // Initialize syntax highlighting
+      hljs.highlightAll()
+
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("themeToggle")
+      const icon = themeToggle.querySelector("i")
+
+      // Check for saved theme preference or respect OS preference
+      const savedTheme = localStorage.getItem("theme")
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+
+      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark")
+        icon.classList.remove("fa-moon")
+        icon.classList.add("fa-sun")
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = document.documentElement.getAttribute("data-theme")
+        const newTheme = currentTheme === "dark" ? "light" : "dark"
+
+        document.documentElement.setAttribute("data-theme", newTheme)
+        localStorage.setItem("theme", newTheme)
+
+        if (newTheme === "dark") {
+          icon.classList.remove("fa-moon")
+          icon.classList.add("fa-sun")
+        } else {
+          icon.classList.remove("fa-sun")
+          icon.classList.add("fa-moon")
+        }
+      })
+
+      // Test Regex functionality
+      const testRegexBtn = document.getElementById("testRegexBtn")
+      if (testRegexBtn) {
+        testRegexBtn.addEventListener("click", () => {
+          const patternInput = document.getElementById("regexPattern").value
+          const testString = document.getElementById("testString").value
+          const resultsDiv = document.getElementById("regexResults")
+
+          try {
+            // Extract pattern and flags from input
+            let pattern, flags
+            const match = patternInput.match(/^\/(.*)\/([gimsuyd]*)$/)
+
+            if (match) {
+              pattern = match[1]
+              flags = match[2]
+            } else {
+              pattern = patternInput
+              flags = ""
+            }
+
+            const regex = new RegExp(pattern, flags)
+            const matches = testString.match(regex)
+
+            if (!matches) {
+              resultsDiv.innerHTML = "<p>No matches found</p>"
+              return
+            }
+
+            if (regex.global) {
+              resultsDiv.innerHTML = `<p>Found ${matches.length} matches:</p>`
+              resultsDiv.innerHTML += `<ul>${matches.map((m) => `<li>"${m}"</li>`).join("")}</ul>`
+            } else {
+              resultsDiv.innerHTML = `<p>Found match: "${matches[0]}"</p>`
+
+              if (matches.length > 1) {
+                resultsDiv.innerHTML += "<p>Capturing groups:</p>"
+                resultsDiv.innerHTML += `<ul>${matches
+                  .slice(1)
+                  .map((m, i) => `<li>Group ${i + 1}: "${m}"</li>`)
+                  .join("")}</ul>`
+              }
+            }
+
+            // Highlight matches in the original string
+            let highlightedString = testString
+            if (regex.global) {
+              matches.forEach((match) => {
+                highlightedString = highlightedString.replace(match, `<mark>${match}</mark>`)
+              })
+            } else {
+              highlightedString = highlightedString.replace(matches[0], `<mark>${matches[0]}</mark>`)
+            }
+
+            resultsDiv.innerHTML += `<p>Highlighted text:</p><div style="background: var(--code-bg); padding: 1rem; border-radius: 0.25rem; margin-top: 0.5rem;">${highlightedString}</div>`
+          } catch (error) {
+            resultsDiv.innerHTML = `<p style="color: var(--error-color);">Error: ${error.message}</p>`
+          }
+        })
+      }
+
+      // Real-time validation examples
+      const emailInput = document.getElementById("emailInput")
+      const emailResult = document.getElementById("emailResult")
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+      if (emailInput) {
+        emailInput.addEventListener("input", function () {
+          const value = this.value
+          if (!value) {
+            emailResult.textContent = ""
+            return
+          }
+
+          if (emailRegex.test(value)) {
+            emailResult.textContent = "✅ Valid email address"
+            emailResult.style.color = "var(--success-color)"
+          } else {
+            emailResult.textContent = "❌ Invalid email address"
+            emailResult.style.color = "var(--error-color)"
+          }
+        })
+      }
+
+      const passwordInput = document.getElementById("passwordInput")
+      const passwordResult = document.getElementById("passwordResult")
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+
+      if (passwordInput) {
+        passwordInput.addEventListener("input", function () {
+          const value = this.value
+          if (!value) {
+            passwordResult.textContent = ""
+            return
+          }
+
+          const checks = {
+            length: value.length >= 8,
+            lowercase: /[a-z]/.test(value),
+            uppercase: /[A-Z]/.test(value),
+            number: /\d/.test(value),
+            special: /[@$!%*?&]/.test(value),
+          }
+
+          const passedChecks = Object.values(checks).filter(Boolean).length
+          const totalChecks = Object.keys(checks).length
+
+          if (passwordRegex.test(value)) {
+            passwordResult.textContent = "✅ Strong password"
+            passwordResult.style.color = "var(--success-color)"
+          } else {
+            passwordResult.textContent = `❌ Password strength: ${passedChecks}/${totalChecks} requirements met`
+            passwordResult.style.color = "var(--error-color)"
+          }
+        })
+      }
+
+      const phoneInput = document.getElementById("phoneInput")
+      const phoneResult = document.getElementById("phoneResult")
+      const phoneRegex = /^(\+\d{1,2}\s)?$$?\d{3}$$?[\s.-]?\d{3}[\s.-]?\d{4}$/
+
+      if (phoneInput) {
+        phoneInput.addEventListener("input", function () {
+          const value = this.value
+          if (!value) {
+            phoneResult.textContent = ""
+            return
+          }
+
+          if (phoneRegex.test(value)) {
+            phoneResult.textContent = "✅ Valid phone number"
+            phoneResult.style.color = "var(--success-color)"
+          } else {
+            phoneResult.textContent = "❌ Invalid phone number format"
+            phoneResult.style.color = "var(--error-color)"
+          }
+        })
+      }
+
+      // Registration form validation
+      const registrationForm = document.getElementById("registrationForm")
+      if (registrationForm) {
+        registrationForm.addEventListener("submit", function (e) {
+          e.preventDefault()
+
+          const name = document.getElementById("fullName").value
+          const email = document.getElementById("userEmail").value
+          const phone = document.getElementById("userPhone").value
+          const password = document.getElementById("userPassword").value
+          const website = document.getElementById("website").value
+
+          // Validation patterns
+          const nameRegex = /^[A-Za-z\s]{3,}$/
+          const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+          const phoneRegex = /^\d{3}-\d{3}-\d{4}$/
+          const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+          const websiteRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w.-]*)*\/?$/
+
+          let isValid = true
+          let errorMessage = ""
+
+          if (!nameRegex.test(name)) {
+            errorMessage += "Name must contain only letters and spaces (minimum 3 characters).\n"
+            isValid = false
+          }
+
+          if (!emailRegex.test(email)) {
+            errorMessage += "Please enter a valid email address.\n"
+            isValid = false
+          }
+
+          if (!phoneRegex.test(phone)) {
+            errorMessage += "Phone must be in XXX-XXX-XXXX format.\n"
+            isValid = false
+          }
+
+          if (!passwordRegex.test(password)) {
+            errorMessage +=
+              "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.\n"
+            isValid = false
+          }
+
+          if (website && !websiteRegex.test(website)) {
+            errorMessage += "Please enter a valid website URL.\n"
+            isValid = false
+          }
+
+          if (isValid) {
+            alert("Registration successful! 🎉")
+            this.reset()
+          } else {
+            alert("Please fix the following errors:\n\n" + errorMessage)
+          }
+        })
+      }
+
+      // HTML tag extractor
+      const extractTagsBtn = document.getElementById("extractTagsBtn")
+      if (extractTagsBtn) {
+        extractTagsBtn.addEventListener("click", () => {
+          const html = document.getElementById("htmlInput").value
+          const tagRegex = /<(\w+)(?:\s+[^>]*)?>/g
+          const matches = [...html.matchAll(tagRegex)]
+
+          const tagsContainer = document.getElementById("extractedTags")
+          tagsContainer.innerHTML = ""
+
+          if (matches.length === 0) {
+            tagsContainer.innerHTML = "<p>No tags found</p>"
+            return
+          }
+
+          const tagCounts = {}
+
+          matches.forEach((match) => {
+            const tag = match[1]
+            tagCounts[tag] = (tagCounts[tag] || 0) + 1
+          })
+
+          const table = document.createElement("table")
+          table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${Object.entries(tagCounts)
+              .map(
+                ([tag, count]) => `
+            <tr>
+              <td>&lt;${tag}&gt;</td>
+              <td>${count}</td>
+            </tr>
+          `,
+              )
+              .join("")}
+        </tbody>
+      `
+
+          tagsContainer.appendChild(table)
+        })
+      }
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault()
+          const target = document.querySelector(this.getAttribute("href"))
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            })
+          }
+        })
+      })
+    })
+
+  </script>
+</body>
+
+</html>
