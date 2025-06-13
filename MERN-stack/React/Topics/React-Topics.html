@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Concepts Roadmap (Beginner to Advanced)</title>
+  <style>
+    :root {
+      --primary-bg: #e8f4fd;
+      --card-bg: linear-gradient(145deg, #d0e6f6, #ffffff);
+      --text-color: #2c3e50;
+      --heading-color: #1b4f72;
+      --concept-color: #21618c;
+      --definition-color: #555;
+      --hover-border: rgba(52, 152, 219, 0.4);
+    }
+
+    body {
+      background: var(--primary-bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: var(--text-color);
+      max-width: 1200px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: var(--text-color);
+      margin-bottom: 40px;
+    }
+    h2 {
+      color: var(--heading-color);
+      border-left: 5px solid #3498db;
+      padding-left: 10px;
+      margin-top: 40px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px var(--hover-border);
+    }
+    .concept {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--concept-color);
+      text-align: center;
+      margin: 10px 0;
+    }
+    .definition {
+      font-size: 14px;
+      color: var(--definition-color);
+      line-height: 1.5;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>React Concepts Roadmap (Beginner to Advanced)</h1>
+  <a href="../REACT.html" class="anchor">See OverView of React</a>
+
+  <h2>Beginner Level</h2>
+  <div class="grid">
+    <a href="01_JSX.html" class="card">
+      <div class="concept">JSX</div>
+      <div class="definition">JavaScript Syntax Extension allowing HTML-like syntax in React.</div>
+    </a>
+    <a href="02_Components.html" class="card">
+      <div class="concept">Components</div>
+      <div class="definition">Reusable building blocks of React UI.</div>
+    </a>
+    <a href="03_Props.html" class="card">
+      <div class="concept">Props</div>
+      <div class="definition">Data passed from parent to child component.</div>
+    </a>
+    <a href="04_State.html" class="card">
+      <div class="concept">State</div>
+      <div class="definition">Internal data for components that triggers re-rendering.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">Event Handling</div>
+      <div class="definition">Capturing user actions like click, submit etc.</div>
+    </a>
+  </div>
+
+  <h2>Intermediate Level</h2>
+  <div class="grid">
+    <a href="#" class="card">
+      <div class="concept">Conditional Rendering</div>
+      <div class="definition">Render components based on conditions.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">Lists & Keys</div>
+      <div class="definition">Render lists dynamically with unique keys for optimization.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">Forms Handling</div>
+      <div class="definition">Managing form input values and submissions.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">useEffect Hook</div>
+      <div class="definition">Perform side-effects in function components.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">Context API</div>
+      <div class="definition">Share data globally without prop drilling.</div>
+    </a>
+  </div>
+
+  <h2>Advanced Level</h2>
+  <div class="grid">
+    <a href="#" class="card">
+      <div class="concept">Custom Hooks</div>
+      <div class="definition">Reusable hooks to extract component logic.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">React Router</div>
+      <div class="definition">Navigation and routing library for React apps.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">useRef & useMemo</div>
+      <div class="definition">Hooks for performance optimization and DOM references.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">Error Boundaries</div>
+      <div class="definition">Catches JavaScript errors in the component tree.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">Performance Optimization</div>
+      <div class="definition">Techniques like lazy loading and memoization.</div>
+    </a>
+  </div>
+
+  <h2>Expert Level</h2>
+  <div class="grid">
+    <a href="#" class="card">
+      <div class="concept">SSR (Server-Side Rendering)</div>
+      <div class="definition">Render React components on the server for SEO.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">SSG (Static Site Generation)</div>
+      <div class="definition">Generate static HTML at build time.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">Suspense & Concurrent Mode</div>
+      <div class="definition">Improve rendering performance with async handling.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">TypeScript with React</div>
+      <div class="definition">Type safety and development improvement using TypeScript.</div>
+    </a>
+    <a href="#" class="card">
+      <div class="concept">Testing Libraries</div>
+      <div class="definition">Jest, React Testing Library for unit and integration testing.</div>
+    </a>
+  </div>
+
+</body>
+</html>

@@ -1,302 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>JavaScript Array Methods Explained</title>
-<style>
-  body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem 2rem;
-    line-height: 1.6;
-    background-color: #f9fafb;
-    color: #111827;
-  }
-  h1, h2 {
-    color: #2563eb;
-    margin-bottom: 0.5rem;
-  }
-  p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-  }
-  pre {
-    background-color: #e0e7ff;
-    padding: 1rem;
-    border-radius: 6px;
-    overflow-x: auto;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  code {
-    font-family: Consolas, "Courier New", monospace;
-    font-size: 1rem;
-    color: #1e40af;
-  }
-  ul {
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  abbr[title] {
-    border-bottom: 1px dotted #2563eb;
-    cursor: help;
-    color: #2563eb;
-  }
-  .method {
-    margin-bottom: 2.5rem;
-  }
-  .method h3 {
-    color: #1e40af;
-    margin-bottom: 0.3rem;
-  }
-  .method p {
-    margin-bottom: 0.6rem;
-  }
-  /* Responsive tweaks */
-  @media (max-width: 600px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JavaScript Array Methods Explained</title>
+  <style>
     body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+      line-height: 1.6;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+
+    h1,
+    h2 {
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    pre {
+      background-color: #e0e7ff;
       padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
       font-size: 1rem;
+      margin-bottom: 1.5rem;
     }
-  }
-   .anchor{
-        background-color: #1d4ed8;
-        color: white;
-        padding: 5px;
-        text-decoration: none;
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 1rem;
+      color: #1e40af;
     }
-</style>
+
+    ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    abbr[title] {
+      border-bottom: 1px dotted #2563eb;
+      cursor: help;
+      color: #2563eb;
+    }
+
+    .method {
+      margin-bottom: 2.5rem;
+    }
+
+    .method h3 {
+      color: #1e40af;
+      margin-bottom: 0.3rem;
+    }
+
+    .method p {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+        font-size: 1rem;
+      }
+    }
+
+    .anchor {
+      background-color: #1d4ed8;
+      color: white;
+      padding: 5px;
+      text-decoration: none;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>JavaScript Arrays and Their Methods Explained</h1>
+  <h1>JavaScript Arrays and Their Methods Explained</h1>
 
-<section>
-  <h2>What is an Array?</h2>
-  <p>
-    An <strong>array</strong> is a special variable that can hold multiple values in an <abbr title="An ordered collection of elements">ordered list</abbr>. Arrays are used when you want to store collections of data such as a list of names, numbers, or objects in a single variable.
-  </p>
-  <p>Example of an array:</p>
-  <pre><code>const fruits = ["Apple", "Banana", "Mango"];</code></pre>
-</section>
+  <section>
+    <h2>What is an Array?</h2>
+    <p>
+      An <strong>array</strong> is a special variable that can hold multiple values in an <abbr
+        title="An ordered collection of elements">ordered list</abbr>. Arrays are used when you want to store
+      collections of data such as a list of names, numbers, or objects in a single variable.
+    </p>
+    <p>Example of an array:</p>
+    <pre><code>const fruits = ["Apple", "Banana", "Mango"];</code></pre>
+  </section>
 
-<section>
-  <h2>What are Array Methods?</h2>
-  <p>
-    Array methods are built-in functions that allow you to perform common tasks on arrays, like adding or removing elements, iterating, searching, transforming, and more. They make working with arrays easy and efficient.
-  </p>
-  <p>Example of a method used on an array:</p>
-  <pre><code>fruits.push("Orange"); // Adds "Orange" to the end of the fruits array</code></pre>
-</section>
+  <section>
+    <h2>What are Array Methods?</h2>
+    <p>
+      Array methods are built-in functions that allow you to perform common tasks on arrays, like adding or removing
+      elements, iterating, searching, transforming, and more. They make working with arrays easy and efficient.
+    </p>
+    <p>Example of a method used on an array:</p>
+    <pre><code>fruits.push("Orange"); // Adds "Orange" to the end of the fruits array</code></pre>
+  </section>
 
-<section>
-  <h2>Main Array Methods with Examples and Use Cases</h2>
+  <section>
+    <h2>Main Array Methods with Examples and Use Cases</h2>
 
-  <div class="method">
-    <h3>1. <code>push()</code></h3>
-    <p><strong>Definition:</strong> Adds one or more elements to the <em>end</em> of an array and returns the new length.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = [1, 2, 3];
+    <div class="method">
+      <h3>1. <code>push()</code></h3>
+      <p><strong>Definition:</strong> Adds one or more elements to the <em>end</em> of an array and returns the new
+        length.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = [1, 2, 3];
 arr.push(4);
 console.log(arr); // [1, 2, 3, 4]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>push</code> to add new items at the end, like adding a new message to a chat array.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>push</code> to add new items at the end, like adding a new message to a
+        chat array.</p>
+    </div>
 
-  <div class="method">
-    <h3>2. <code>pop()</code></h3>
-    <p><strong>Definition:</strong> Removes the last element from the array and returns it.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = [1, 2, 3];
+    <div class="method">
+      <h3>2. <code>pop()</code></h3>
+      <p><strong>Definition:</strong> Removes the last element from the array and returns it.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = [1, 2, 3];
 const last = arr.pop();
 console.log(last); // 3
 console.log(arr); // [1, 2]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>pop</code> to remove the most recent item, such as undoing the last action in a list.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>pop</code> to remove the most recent item, such as undoing the last action
+        in a list.</p>
+    </div>
 
-  <div class="method">
-    <h3>3. <code>shift()</code></h3>
-    <p><strong>Definition:</strong> Removes the first element from the array and returns it.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = ["a", "b", "c"];
+    <div class="method">
+      <h3>3. <code>shift()</code></h3>
+      <p><strong>Definition:</strong> Removes the first element from the array and returns it.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = ["a", "b", "c"];
 const first = arr.shift();
 console.log(first); // "a"
 console.log(arr); // ["b", "c"]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>shift</code> to remove the oldest item, like processing a queue.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>shift</code> to remove the oldest item, like processing a queue.</p>
+    </div>
 
-  <div class="method">
-    <h3>4. <code>unshift()</code></h3>
-    <p><strong>Definition:</strong> Adds one or more elements to the <em>beginning</em> of an array and returns the new length.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = [2, 3];
+    <div class="method">
+      <h3>4. <code>unshift()</code></h3>
+      <p><strong>Definition:</strong> Adds one or more elements to the <em>beginning</em> of an array and returns the
+        new length.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = [2, 3];
 arr.unshift(1);
 console.log(arr); // [1, 2, 3]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>unshift</code> to add urgent items to the front, like adding priority tasks to a list.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>unshift</code> to add urgent items to the front, like adding priority
+        tasks to a list.</p>
+    </div>
 
-  <div class="method">
-    <h3>5. <code>splice()</code></h3>
-    <p><strong>Definition:</strong> Adds or removes elements at a specific index in the array.</p>
-    <p><strong>Syntax:</strong> <code>array.splice(start, deleteCount, item1, item2, ...)</code></p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = ["a", "b", "c", "d"];
+    <div class="method">
+      <h3>5. <code>splice()</code></h3>
+      <p><strong>Definition:</strong> Adds or removes elements at a specific index in the array.</p>
+      <p><strong>Syntax:</strong> <code>array.splice(start, deleteCount, item1, item2, ...)</code></p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = ["a", "b", "c", "d"];
 arr.splice(1, 2, "x", "y"); 
 console.log(arr); // ["a", "x", "y", "d"]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>splice</code> to replace, add or remove items anywhere in the array, such as editing a list of items dynamically.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>splice</code> to replace, add or remove items anywhere in the array, such
+        as editing a list of items dynamically.</p>
+    </div>
 
-  <div class="method">
-    <h3>6. <code>slice()</code></h3>
-    <p><strong>Definition:</strong> Returns a shallow copy of a portion of an array without modifying the original.</p>
-    <p><strong>Syntax:</strong> <code>array.slice(start, end)</code></p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = [1, 2, 3, 4, 5];
+    <div class="method">
+      <h3>6. <code>slice()</code></h3>
+      <p><strong>Definition:</strong> Returns a shallow copy of a portion of an array without modifying the original.
+      </p>
+      <p><strong>Syntax:</strong> <code>array.slice(start, end)</code></p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = [1, 2, 3, 4, 5];
 const part = arr.slice(1, 4);
 console.log(part); // [2, 3, 4]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>slice</code> to get sublists, like showing a page of items in pagination.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>slice</code> to get sublists, like showing a page of items in pagination.
+      </p>
+    </div>
 
-  <div class="method">
-    <h3>7. <code>concat()</code></h3>
-    <p><strong>Definition:</strong> Merges two or more arrays and returns a new array.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr1 = [1, 2];
+    <div class="method">
+      <h3>7. <code>concat()</code></h3>
+      <p><strong>Definition:</strong> Merges two or more arrays and returns a new array.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr1 = [1, 2];
 const arr2 = [3, 4];
 const combined = arr1.concat(arr2);
 console.log(combined); // [1, 2, 3, 4]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>concat</code> to join multiple lists, like combining multiple user inputs.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>concat</code> to join multiple lists, like combining multiple user inputs.
+      </p>
+    </div>
 
-  <div class="method">
-    <h3>8. <code>indexOf()</code></h3>
-    <p><strong>Definition:</strong> Returns the first index of a specified element or -1 if not found.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = ["apple", "banana", "cherry"];
+    <div class="method">
+      <h3>8. <code>indexOf()</code></h3>
+      <p><strong>Definition:</strong> Returns the first index of a specified element or -1 if not found.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = ["apple", "banana", "cherry"];
 console.log(arr.indexOf("banana")); // 1
 console.log(arr.indexOf("orange")); // -1</code></pre>
-    <p><strong>Use Case:</strong> Use <code>indexOf</code> to find the position of an item in a list.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>indexOf</code> to find the position of an item in a list.</p>
+    </div>
 
-  <div class="method">
-    <h3>9. <code>includes()</code></h3>
-    <p><strong>Definition:</strong> Returns <code>true</code> if an array contains a specified element, otherwise <code>false</code>.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = [10, 20, 30];
+    <div class="method">
+      <h3>9. <code>includes()</code></h3>
+      <p><strong>Definition:</strong> Returns <code>true</code> if an array contains a specified element, otherwise
+        <code>false</code>.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = [10, 20, 30];
 console.log(arr.includes(20)); // true
 console.log(arr.includes(40)); // false</code></pre>
-    <p><strong>Use Case:</strong> Use <code>includes</code> to check if an item exists before performing actions.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>includes</code> to check if an item exists before performing actions.</p>
+    </div>
 
-  <div class="method">
-    <h3>10. <code>forEach()</code></h3>
-    <p><strong>Definition:</strong> Executes a provided function once for each array element.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = ["a", "b", "c"];
+    <div class="method">
+      <h3>10. <code>forEach()</code></h3>
+      <p><strong>Definition:</strong> Executes a provided function once for each array element.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = ["a", "b", "c"];
 arr.forEach(item => console.log(item));
 // Output: a b c</code></pre>
-    <p><strong>Use Case:</strong> Use <code>forEach</code> to perform actions like printing or updating every element.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>forEach</code> to perform actions like printing or updating every element.
+      </p>
+    </div>
 
-  <div class="method">
-    <h3>11. <code>map()</code></h3>
-    <p><strong>Definition:</strong> Creates a new array with the results of calling a function on every element.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const numbers = [1, 2, 3];
+    <div class="method">
+      <h3>11. <code>map()</code></h3>
+      <p><strong>Definition:</strong> Creates a new array with the results of calling a function on every element.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const numbers = [1, 2, 3];
 const doubled = numbers.map(n => n * 2);
 console.log(doubled); // [2, 4, 6]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>map</code> to transform data, like doubling numbers or formatting strings.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>map</code> to transform data, like doubling numbers or formatting strings.
+      </p>
+    </div>
 
-  <div class="method">
-    <h3>12. <code>filter()</code></h3>
-    <p><strong>Definition:</strong> Creates a new array with all elements that pass a test.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const numbers = [1, 2, 3, 4, 5];
+    <div class="method">
+      <h3>12. <code>filter()</code></h3>
+      <p><strong>Definition:</strong> Creates a new array with all elements that pass a test.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const numbers = [1, 2, 3, 4, 5];
 const evens = numbers.filter(n => n % 2 === 0);
 console.log(evens); // [2, 4]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>filter</code> to select specific elements, such as filtering active users from a list.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>filter</code> to select specific elements, such as filtering active users
+        from a list.</p>
+    </div>
 
-  <div class="method">
-    <h3>13. <code>reduce()</code></h3>
-    <p><strong>Definition:</strong> Reduces the array to a single value by executing a reducer function.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const numbers = [1, 2, 3, 4];
+    <div class="method">
+      <h3>13. <code>reduce()</code></h3>
+      <p><strong>Definition:</strong> Reduces the array to a single value by executing a reducer function.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const numbers = [1, 2, 3, 4];
 const sum = numbers.reduce((total, n) => total + n, 0);
 console.log(sum); // 10</code></pre>
-    <p><strong>Use Case:</strong> Use <code>reduce</code> to sum values, calculate averages, or combine items into one result.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>reduce</code> to sum values, calculate averages, or combine items into one
+        result.</p>
+    </div>
 
-  <div class="method">
-    <h3>14. <code>find()</code></h3>
-    <p><strong>Definition:</strong> Returns the first element that satisfies a testing function.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const users = [{id:1, name:"A"}, {id:2, name:"B"}];
+    <div class="method">
+      <h3>14. <code>find()</code></h3>
+      <p><strong>Definition:</strong> Returns the first element that satisfies a testing function.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const users = [{id:1, name:"A"}, {id:2, name:"B"}];
 const user = users.find(u => u.id === 2);
 console.log(user); // {id: 2, name: "B"}</code></pre>
-    <p><strong>Use Case:</strong> Use <code>find</code> to locate a single item, such as searching a user by ID.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>find</code> to locate a single item, such as searching a user by ID.</p>
+    </div>
 
-  <div class="method">
-    <h3>15. <code>findIndex()</code></h3>
-    <p><strong>Definition:</strong> Returns the index of the first element that satisfies a testing function, or -1 if none found.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const nums = [10, 20, 30];
+    <div class="method">
+      <h3>15. <code>findIndex()</code></h3>
+      <p><strong>Definition:</strong> Returns the index of the first element that satisfies a testing function, or -1 if
+        none found.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const nums = [10, 20, 30];
 const idx = nums.findIndex(n => n > 15);
 console.log(idx); // 1</code></pre>
-    <p><strong>Use Case:</strong> Use <code>findIndex</code> to find position for updating or deleting items.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>findIndex</code> to find position for updating or deleting items.</p>
+    </div>
 
-  <div class="method">
-    <h3>16. <code>sort()</code></h3>
-    <p><strong>Definition:</strong> Sorts the elements of an array in place and returns it.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = [3, 1, 4, 2];
+    <div class="method">
+      <h3>16. <code>sort()</code></h3>
+      <p><strong>Definition:</strong> Sorts the elements of an array in place and returns it.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = [3, 1, 4, 2];
 arr.sort();
 console.log(arr); // [1, 2, 3, 4]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>sort</code> to order lists alphabetically or numerically.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>sort</code> to order lists alphabetically or numerically.</p>
+    </div>
 
-  <div class="method">
-    <h3>17. <code>reverse()</code></h3>
-    <p><strong>Definition:</strong> Reverses the order of the elements in an array.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = [1, 2, 3];
+    <div class="method">
+      <h3>17. <code>reverse()</code></h3>
+      <p><strong>Definition:</strong> Reverses the order of the elements in an array.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = [1, 2, 3];
 arr.reverse();
 console.log(arr); // [3, 2, 1]</code></pre>
-    <p><strong>Use Case:</strong> Use <code>reverse</code> to display items in reverse order, like showing recent messages first.</p>
-  </div>
+      <p><strong>Use Case:</strong> Use <code>reverse</code> to display items in reverse order, like showing recent
+        messages first.</p>
+    </div>
 
-  <div class="method">
-    <h3>18. <code>join()</code></h3>
-    <p><strong>Definition:</strong> Joins all elements into a string, separated by a specified separator.</p>
-    <p><strong>Example:</strong></p>
-    <pre><code>const arr = ["Hello", "World"];
+    <div class="method">   b cz 
+      <h3>18. <code>join()</code></h3>
+      <p><strong>Definition:</strong> Joins all elements into a string, separated by a specified separator.</p>
+      <p><strong>Example:</strong></p>
+      <pre><code>const arr = ["Hello", "World"];
 const str = arr.join(" ");
 console.log(str); // "Hello World"</code></pre>
-    <p><strong>Use Case:</strong> Use <code>join</code> to create CSV strings or formatted text from array data.</p>
-  </div>
-  <div class="method">
-    <h3>18. Most Important methods</h3>
-    <a href="imp-array-methods.html" target="_blank" class="anchor">Know more in Detail</a>
- <ul>
-  <li><code>map()</code> — Transform elements, returns new array.</li>
-  <li><code>filter()</code> — Select elements by condition.</li>
-  <li><code>reduce()</code> — Aggregate array to single value.</li>
-  <li><code>find()</code> — Find first element matching condition.</li>
-  <li><code>some()</code> / <code>every()</code> — Test if any or all elements pass condition.</li>
-  <li><code>flatMap()</code> — Map and flatten arrays.</li>
-  <li><code>forEach()</code> — Loop through array for side-effects.</li>
-</ul>
+      <p><strong>Use Case:</strong> Use <code>join</code> to create CSV strings or formatted text from array data.</p>
+    </div>
+    <div class="method">
+      <h3>18. Most Important methods</h3>
+      <a href="imp-array-methods.html" target="_blank" class="anchor">Know more in Detail</a>
+      <ul>
+        <li><code>map()</code> — Transform elements, returns new array.</li>
+        <li><code>filter()</code> — Select elements by condition.</li>
+        <li><code>reduce()</code> — Aggregate array to single value.</li>
+        <li><code>find()</code> — Find first element matching condition.</li>
+        <li><code>some()</code> / <code>every()</code> — Test if any or all elements pass condition.</li>
+        <li><code>flatMap()</code> — Map and flatten arrays.</li>
+        <li><code>forEach()</code> — Loop through array for side-effects.</li>
+      </ul>
 
-  </div>
+    </div>
 
-  <section>
-    <h2>References</h2>
-    <p>For detailed documentation, visit <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener noreferrer">MDN Web Docs: Array</a></p>
-  </section>
+    <section>
+      <h2>References</h2>
+      <p>For detailed documentation, visit <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank"
+          rel="noopener noreferrer">MDN Web Docs: Array</a></p>
+    </section>
 
 </body>
+
 </html>

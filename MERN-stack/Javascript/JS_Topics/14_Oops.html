@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript OOPs Explained</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #f0f4f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    p {
+      line-height: 1.7;
+    }
+    pre {
+      background: #ecf0f1;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      color: #c0392b;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    .note {
+      background: #dff9fb;
+      padding: 10px;
+      border-left: 5px solid #00cec9;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Object-Oriented Programming (OOP) in JavaScript</h1>
+
+    <h2>What is OOP?</h2>
+    <p>OOP (Object-Oriented Programming) is a programming paradigm where programs are designed using <strong>objects</strong> — which can hold data (properties) and methods (functions).</p>
+
+    <h2>Why Use OOP?</h2>
+    <ul>
+      <li><strong>Reusability:</strong> Write once, reuse many times.</li>
+      <li><strong>Modularity:</strong> Split complex code into small, manageable pieces.</li>
+      <li><strong>Maintainability:</strong> Easy to update and manage.</li>
+      <li><strong>Scalability:</strong> Suitable for large applications (like React, Node.js projects).</li>
+    </ul>
+
+    <h2>When and Where to Use?</h2>
+    <ul>
+      <li>When building complex web apps (e.g., e-commerce, dashboards).</li>
+      <li>When you want to model real-world entities (User, Product, Vehicle).</li>
+      <li>In any scenario where multiple instances of the same kind are needed.</li>
+    </ul>
+
+    <h2>OOP Key Concepts in JavaScript</h2>
+    <ul>
+      <li><strong>Class</strong></li>
+      <li><strong>Object</strong></li>
+      <li><strong>Constructor</strong></li>
+      <li><strong>Encapsulation</strong></li>
+      <li><strong>Inheritance</strong></li>
+      <li><strong>Polymorphism</strong></li>
+    </ul>
+
+    <h2>What is a Class?</h2>
+    <p>A <strong>Class</strong> is a blueprint to create objects with predefined properties and methods.</p>
+
+    <h3>Example:</h3>
+    <pre><code>class Car {
+  constructor(brand, model) {
+    this.brand = brand;
+    this.model = model;
+  }
+
+  displayInfo() {
+    return `Car: ${this.brand} ${this.model}`;
+  }
+}</code></pre>
+
+    <h2>What is an Object?</h2>
+    <p>An <strong>Object</strong> is an instance of a Class. It holds actual values for the properties defined by the class.</p>
+
+    <h3>Creating and Accessing Object:</h3>
+    <pre><code>const car1 = new Car('Toyota', 'Corolla');
+console.log(car1.displayInfo()); // Output: Car: Toyota Corolla
+</code></pre>
+
+    <h2>Encapsulation</h2>
+    <p>Encapsulation hides internal details and exposes only necessary parts.</p>
+
+    <pre><code>class BankAccount {
+  #balance = 0; // private field
+
+  deposit(amount) {
+    if(amount > 0) this.#balance += amount;
+  }
+
+  getBalance() {
+    return this.#balance;
+  }
+}
+
+const acc = new BankAccount();
+acc.deposit(1000);
+console.log(acc.getBalance()); // Output: 1000
+</code></pre>
+
+    <h2>Inheritance</h2>
+    <p>Inheritance allows a class to acquire properties and methods from another class.</p>
+
+    <pre><code>class Vehicle {
+  move() {
+    return 'Moving...';
+  }
+}
+
+class Bike extends Vehicle {
+  ringBell() {
+    return 'Ring Ring!';
+  }
+}
+
+const myBike = new Bike();
+console.log(myBike.move()); // Moving...
+console.log(myBike.ringBell()); // Ring Ring!
+</code></pre>
+
+    <h2>Polymorphism</h2>
+    <p>Polymorphism allows objects to be treated as instances of their parent class while still calling their own methods.</p>
+
+    <pre><code>class Animal {
+  speak() {
+    return 'Some sound';
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    return 'Bark';
+  }
+}
+
+const pet = new Dog();
+console.log(pet.speak()); // Bark
+</code></pre>
+
+    <div class="note">
+      <strong>Note:</strong> In real-world applications like React, Vue, and Node.js, OOP is used heavily to manage state, build components, and structure backend logic.
+    </div>
+
+    <h2>Summary</h2>
+    <ul>
+      <li><strong>Class:</strong> Blueprint for objects.</li>
+      <li><strong>Object:</strong> Instance of a class.</li>
+      <li><strong>Encapsulation:</strong> Protecting data inside a class.</li>
+      <li><strong>Inheritance:</strong> Sharing properties and methods between classes.</li>
+      <li><strong>Polymorphism:</strong> Different behaviors using the same interface.</li>
+    </ul>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript ES6 Modules Explained</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 25px;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      color: #c0392b;
+      font-size: 15px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    .note {
+      background: #dff9fb;
+      padding: 10px;
+      border-left: 5px solid #00cec9;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>JavaScript ES6 Modules - Explained in Detail</h1>
+    
+    <p><strong>Modules</strong> allow you to split your JavaScript code into reusable files. Using <code>import</code> and <code>export</code> (introduced in ES6), you can manage code better, reduce file sizes, and keep your project organized.</p>
+
+    <h2>Why Use Modules?</h2>
+    <ul>
+      <li>Reusability — share functions, classes, or variables across files.</li>
+      <li>Maintainability — keep code organized and easy to debug.</li>
+      <li>Scalability — manage larger projects by splitting logic into files.</li>
+    </ul>
+
+    <h2>Basic Syntax of Export</h2>
+    <p>In <strong>file1.js</strong>:</p>
+    <pre><code>// Named Export
+export const name = 'Rahul';
+
+export function greet() {
+  return 'Hello from Module!';
+}
+
+// Default Export
+const age = 25;
+export default age;
+</code></pre>
+
+    <h2>Basic Syntax of Import</h2>
+    <p>In <strong>file2.js</strong>:</p>
+    <pre><code>import age, { name, greet } from './file1.js';
+
+console.log(name);         // Output: Rahul
+console.log(greet());     // Output: Hello from Module!
+console.log(age);         // Output: 25
+</code></pre>
+
+    <h2>Types of Exports</h2>
+    <ul>
+      <li><strong>Named Export:</strong> Export multiple items with names (using <code>{}</code> when importing).</li>
+      <li><strong>Default Export:</strong> Export only one thing as the main exported value (import without <code>{}</code>).</li>
+    </ul>
+
+    <h2>Example: Splitting JS Code Using Modules</h2>
+    <h3>math.js (Module file)</h3>
+    <pre><code>// Exporting multiple named exports
+export function add(x, y) {
+  return x + y;
+}
+
+export function multiply(x, y) {
+  return x * y;
+}
+</code></pre>
+
+    <h3>app.js (Import file)</h3>
+    <pre><code>import { add, multiply } from './math.js';
+
+console.log(add(2, 3));        // Output: 5
+console.log(multiply(4, 5));   // Output: 20
+</code></pre>
+
+    <div class="note">
+      <strong>Note:</strong> ES6 Modules only work when served via HTTP/HTTPS or local server (not directly opening HTML file in browser).
+    </div>
+
+    <h2>Use Case in Real Projects</h2>
+    <ul>
+      <li><strong>Utility Functions:</strong> Create reusable utility functions like date formatting, calculations, etc.</li>
+      <li><strong>Component-Based Apps:</strong> React, Vue, Angular all depend on modules for components, services, routing, etc.</li>
+      <li><strong>API Services:</strong> Split API calling logic into service files.</li>
+    </ul>
+
+    <h2>Example: API Service Using Modules</h2>
+    <h3>apiService.js</h3>
+    <pre><code>export async function fetchData(url) {
+  const response = await fetch(url);
+  return await response.json();
+}
+</code></pre>
+
+    <h3>main.js</h3>
+    <pre><code>import { fetchData } from './apiService.js';
+
+fetchData('https://jsonplaceholder.typicode.com/posts/1')
+  .then(data => console.log(data));
+</code></pre>
+
+    <h2>Conclusion</h2>
+    <p>Modules in JavaScript improve structure, reusability, and scalability of code. ES6 <code>import/export</code> makes it easy to split code into meaningful files — a must for professional JavaScript development.</p>
+  </div>
+
+</body>
+</html>

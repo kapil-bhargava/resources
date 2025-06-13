@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Hooks - Comprehensive Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="hooks.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>React Hooks - Comprehensive Guide</h1>
+      <p class="subtitle">Master the power of functional components with React's built-in hooks</p>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <!-- Sidebar Toggle Button (Mobile Only) -->
+    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>React Hooks</h2>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <h3><span class="tag basic">Basic</span> Hooks</h3>
+          <ul>
+            <li><a href="#useState">useState</a></li>
+            <li><a href="#useEffect">useEffect</a></li>
+          </ul>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3><span class="tag intermediate">Intermediate</span> Hooks</h3>
+          <ul>
+            <li><a href="#useContext">useContext</a></li>
+            <li><a href="#useRef">useRef</a></li>
+            <li><a href="#useId">useId</a></li>
+          </ul>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3><span class="tag performance">Performance</span> Hooks</h3>
+          <ul>
+            <li><a href="#useMemo">useMemo</a></li>
+            <li><a href="#useCallback">useCallback</a></li>
+            <li><a href="#useDeferredValue">useDeferredValue</a></li>
+            <li><a href="#useTransition">useTransition</a></li>
+          </ul>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3><span class="tag advanced">Advanced</span> Hooks</h3>
+          <ul>
+            <li><a href="#useReducer">useReducer</a></li>
+            <li><a href="#useLayoutEffect">useLayoutEffect</a></li>
+            <li><a href="#useImperativeHandle">useImperativeHandle</a></li>
+          </ul>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3>More Resources</h3>
+          <ul>
+            <li><a href="#custom-hooks">Custom Hooks</a></li>
+            <li><a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener noreferrer">Official Docs</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="intro">
+        <h2>What are React Hooks?</h2>
+        <p>
+          React Hooks are functions that let you "hook into" React state and lifecycle features from functional components.
+          Introduced in React 16.8, hooks allow you to use state and other React features without writing a class component.
+        </p>
+        <div class="info-box">
+          <h3>Why Hooks?</h3>
+          <ul>
+            <li>Simplify component logic and reduce boilerplate</li>
+            <li>Promote code reuse through custom hooks</li>
+            <li>Avoid the confusion of <abbr title="'this' refers to the current instance of a class. In JavaScript, its behavior can be confusing because its value depends on how a function is called, not where it's defined.">this</abbr> keyword</li>
+            <li>Group related code by concern rather than lifecycle methods</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="hooks-overview">
+        <h2>Hooks Categorized by Complexity</h2>
+        
+        <div class="legend">
+          <span class="tag basic">Basic</span>
+          <span class="tag intermediate">Intermediate</span>
+          <span class="tag performance">Performance</span>
+          <span class="tag advanced">Advanced</span>
+        </div>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Hook Name</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>When to Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#useState" class="hook-link">useState</a></td>
+                <td><span class="tag basic">Basic</span></td>
+                <td>Manage local state in functional components</td>
+                <td>When component needs to track and update data</td>
+              </tr>
+              <tr>
+                <td><a href="#useEffect" class="hook-link">useEffect</a></td>
+                <td><span class="tag basic">Basic</span></td>
+                <td>Perform side effects such as API calls, subscriptions, etc.</td>
+                <td>When component needs to interact with external systems</td>
+              </tr>
+              <tr>
+                <td><a href="#useContext" class="hook-link">useContext</a></td>
+                <td><span class="tag intermediate">Intermediate</span></td>
+                <td>Consume context values directly inside a component</td>
+                <td>When data needs to be accessible by many components at different nesting levels</td>
+              </tr>
+              <tr>
+                <td><a href="#useRef" class="hook-link">useRef</a></td>
+                <td><span class="tag intermediate">Intermediate</span></td>
+                <td>Access DOM nodes or store mutable variables without causing re-renders</td>
+                <td>When you need to interact with DOM elements or persist values between renders</td>
+              </tr>
+              <tr>
+                <td><a href="#useMemo" class="hook-link">useMemo</a></td>
+                <td><span class="tag performance">Performance</span></td>
+                <td>Optimize performance by memoizing expensive calculations</td>
+                <td>When expensive calculations should be cached and reused</td>
+              </tr>
+              <tr>
+                <td><a href="#useCallback" class="hook-link">useCallback</a></td>
+                <td><span class="tag performance">Performance</span></td>
+                <td>Memoize functions to prevent unnecessary re-renders</td>
+                <td>When passing callbacks to optimized child components</td>
+              </tr>
+              <tr>
+                <td><a href="#useReducer" class="hook-link">useReducer</a></td>
+                <td><span class="tag advanced">Advanced</span></td>
+                <td>Manage complex state logic (similar to Redux reducer)</td>
+                <td>When state logic involves multiple sub-values or complex transitions</td>
+              </tr>
+              <tr>
+                <td><a href="#useLayoutEffect" class="hook-link">useLayoutEffect</a></td>
+                <td><span class="tag advanced">Advanced</span></td>
+                <td>Runs synchronously after DOM mutations (before painting)</td>
+                <td>When measurements need to be taken before the browser paints</td>
+              </tr>
+              <tr>
+                <td><a href="#useImperativeHandle" class="hook-link">useImperativeHandle</a></td>
+                <td><span class="tag advanced">Advanced</span></td>
+                <td>Customize the instance value that is exposed when using ref</td>
+                <td>When a parent component needs to call methods on a child component</td>
+              </tr>
+              <tr>
+                <td><a href="#useId" class="hook-link">useId</a></td>
+                <td><span class="tag intermediate">Intermediate</span></td>
+                <td>Generate unique IDs for accessibility or <abbr title="Server-Side Rendering: The process of rendering components on the server instead of in the browser">SSR</abbr> hydration</td>
+                <td>When generating unique IDs for accessibility attributes</td>
+              </tr>
+              <tr>
+                <td><a href="#useDeferredValue" class="hook-link">useDeferredValue</a></td>
+                <td><span class="tag performance">Performance</span></td>
+                <td>Defer re-rendering a non-critical value for better UX</td>
+                <td>When you need to deprioritize certain UI updates</td>
+              </tr>
+              <tr>
+                <td><a href="#useTransition" class="hook-link">useTransition</a></td>
+                <td><span class="tag performance">Performance</span></td>
+                <td>Manage concurrent UI transitions (defer less important updates)</td>
+                <td>When you need to indicate loading state during a transition</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="hooks-detail">
+        <h2>Detailed Hook Explanations</h2>
+
+        <article id="useState" class="hook-card">
+          <div class="hook-header">
+            <h3>useState <span class="tag basic">Basic</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useState</code> hook allows functional components to manage local state. It returns a stateful value and a function to update it.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">const [state, setState] = useState(initialState);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Counter Component</h4>
+              <pre><code class="language-jsx">import React, { useState } from 'react';
+
+function Counter() {
+  // Declare a state variable named "count" with initial value 0
+  const [count, setCount] = useState(0);
+  
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>The initial state is only used during the first render</li>
+                <li>You can use multiple <code>useState</code> hooks in a single component</li>
+                <li>State updates are asynchronous and batched for performance</li>
+                <li>For complex state logic, consider <code>useReducer</code> instead</li>
+                <li>When updating state based on previous state, use the functional update form:
+                  <pre><code class="language-jsx">setCount(prevCount =&gt; prevCount + 1);</code></pre>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Keep state minimal and derive data when possible</li>
+                <li>Split complex state into multiple state variables</li>
+                <li>Use the functional update form when new state depends on old state</li>
+                <li>For objects and arrays, always create new copies when updating</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useEffect" class="hook-card">
+          <div class="hook-header">
+            <h3>useEffect <span class="tag basic">Basic</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useEffect</code> hook lets you perform side effects in functional components. It serves the same purpose as <code>componentDidMount</code>, <code>componentDidUpdate</code>, and <code>componentWillUnmount</code> in class components, but unified into a single API.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">useEffect(() => {
+  // Side effect code
+  
+  return () => {
+    // Cleanup code (optional)
+  };
+}, [dependencies]);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Data Fetching</h4>
+              <pre><code class="language-jsx">import React, { useState, useEffect } from 'react';
+
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    // Reset state when userId changes
+    setLoading(true);
+    setError(null);
+    
+    // Fetch user data
+    fetch(`https://api.example.com/users/${userId}`)
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch');
+        return response.json();
+      })
+      .then(data => {
+        setUser(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
+      
+    // Cleanup function
+    return () => {
+      // Cancel any pending requests or subscriptions
+    };
+  }, [userId]); // Re-run effect when userId changes
+  
+  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+  if (error) return &lt;div&gt;Error: {error}&lt;/div&gt;;
+  if (!user) return null;
+  
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;{user.name}&lt;/h2&gt;
+      &lt;p&gt;Email: {user.email}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>Effects run after every completed render</li>
+                <li>The dependency array controls when the effect runs:
+                  <ul>
+                    <li>Empty array (<code>[]</code>): Run once after initial render</li>
+                    <li>With dependencies: Run when any dependency changes</li>
+                    <li>No array: Run after every render</li>
+                  </ul>
+                </li>
+                <li>The cleanup function runs before the component unmounts and before re-running the effect</li>
+                <li>Effects are deferred until after the browser has painted</li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Include all values from the component scope that change over time and are used by the effect</li>
+                <li>Use multiple effects to separate concerns</li>
+                <li>Always clean up subscriptions and event listeners</li>
+                <li>For synchronous layout measurements, use <code>useLayoutEffect</code> instead</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useContext" class="hook-card">
+          <div class="hook-header">
+            <h3>useContext <span class="tag intermediate">Intermediate</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useContext</code> hook accepts a context object (created by <code>React.createContext</code>) and returns the current context value. It lets you consume context in a more concise way than the <code>Context.Consumer</code> component.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">const value = useContext(MyContext);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Theme Switcher</h4>
+              <pre><code class="language-jsx">import React, { createContext, useContext, useState } from 'react';
+
+// Create a context with a default value
+const ThemeContext = createContext({
+  theme: 'light',
+  toggleTheme: () => {},
+});
+
+// Provider component
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+  
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
+  
+  return (
+    &lt;ThemeContext.Provider value={{ theme, toggleTheme }}&gt;
+      {children}
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+// Consumer component using useContext
+function ThemedButton() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  
+  return (
+    &lt;button
+      onClick={toggleTheme}
+      style={{
+        background: theme === 'light' ? '#ffffff' : '#333333',
+        color: theme === 'light' ? '#333333' : '#ffffff',
+        padding: '10px 15px',
+        border: '1px solid #cccccc',
+        borderRadius: '4px',
+      }}
+    &gt;
+      Toggle Theme (Current: {theme})
+    &lt;/button&gt;
+  );
+}
+
+// App component
+function App() {
+  return (
+    &lt;ThemeProvider&gt;
+      &lt;div style={{ padding: '20px' }}&gt;
+        &lt;h1&gt;Theme Example&lt;/h1&gt;
+        &lt;ThemedButton /&gt;
+      &lt;/div&gt;
+    &lt;/ThemeProvider&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>The component will re-render whenever the context value changes</li>
+                <li>Works with the default value from <code>createContext</code> when no matching Provider is found</li>
+                <li>Can be used with multiple contexts in the same component</li>
+                <li>Context is primarily used for global state that many components need to access</li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Use context for truly global state (themes, user data, etc.)</li>
+                <li>Split contexts by domain for better performance</li>
+                <li>Consider using a reducer with context for complex state</li>
+                <li>Avoid excessive nesting of context providers</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useRef" class="hook-card">
+          <div class="hook-header">
+            <h3>useRef <span class="tag intermediate">Intermediate</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useRef</code> hook returns a mutable ref object whose <code>.current</code> property is initialized to the passed argument. The returned object will persist for the full lifetime of the component.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">const refContainer = useRef(initialValue);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example 1: Accessing DOM Elements</h4>
+              <pre><code class="language-jsx">import React, { useRef, useEffect } from 'react';
+
+function AutoFocusInput() {
+  // Create a ref
+  const inputRef = useRef(null);
+  
+  // Focus the input when component mounts
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+  
+  return (
+    &lt;div&gt;
+      &lt;label htmlFor="auto-focus"&gt;This input will focus on mount:&lt;/label&gt;
+      &lt;input 
+        id="auto-focus"
+        ref={inputRef} 
+        type="text" 
+        placeholder="I'll be focused!" 
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+              <h4>Example 2: Storing Previous Values</h4>
+              <pre><code class="language-jsx">import React, { useState, useRef, useEffect } from 'react';
+
+function CounterWithPrevious() {
+  const [count, setCount] = useState(0);
+  // Store previous count value
+  const prevCountRef = useRef();
+  
+  useEffect(() => {
+    // Update the ref after render
+    prevCountRef.current = count;
+  });
+  
+  const prevCount = prevCountRef.current;
+  
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Current: {count}, Previous: {prevCount !== undefined ? prevCount : 'N/A'}&lt;/h2&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>Changing <code>ref.current</code> doesn't cause a re-render</li>
+                <li>Refs persist between renders (unlike regular variables)</li>
+                <li>Common uses:
+                  <ul>
+                    <li>Accessing DOM elements</li>
+                    <li>Storing previous values</li>
+                    <li>Keeping mutable values without triggering re-renders</li>
+                    <li>Storing instance variables (timers, intervals)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Use refs for values that don't affect the visual output</li>
+                <li>Avoid overusing refs for state that should trigger re-renders</li>
+                <li>Don't modify DOM elements directly with refs except for focus, selection, or media playback</li>
+                <li>Clean up any resources (timers, subscriptions) stored in refs</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useMemo" class="hook-card">
+          <div class="hook-header">
+            <h3>useMemo <span class="tag performance">Performance</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useMemo</code> hook returns a memoized value. It only recomputes the memoized value when one of the dependencies has changed, which helps optimize performance by avoiding expensive calculations on every render.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Expensive Calculation</h4>
+              <pre><code class="language-jsx">import React, { useState, useMemo } from 'react';
+
+function PrimeCalculator() {
+  const [number, setNumber] = useState(1);
+  const [darkMode, setDarkMode] = useState(false);
+  
+  // This expensive calculation will only run when 'number' changes
+  const isPrime = useMemo(() => {
+    console.log('Calculating if', number, 'is prime...');
+    if (number <= 1) return false;
+    if (number <= 3) return true;
+    if (number % 2 === 0 || number % 3 === 0) return false;
+    
+    let i = 5;
+    while (i * i <= number) {
+      if (number % i === 0 || number % (i + 2) === 0) return false;
+      i += 6;
+    }
+    
+    return true;
+  }, [number]);
+  
+  // Theme styles that change when darkMode changes
+  const theme = {
+    backgroundColor: darkMode ? '#333' : '#fff',
+    color: darkMode ? '#fff' : '#333',
+    padding: '20px',
+    borderRadius: '8px',
+    transition: 'all 0.3s ease'
+  };
+  
+  return (
+    &lt;div style={theme}&gt;
+      &lt;div&gt;
+        &lt;label htmlFor="number-input"&gt;Enter a number: &lt;/label&gt;
+        &lt;input
+          id="number-input"
+          type="number"
+          value={number}
+          onChange={e => setNumber(parseInt(e.target.value) || 0)}
+          min="1"
+        /&gt;
+      &lt;/div&gt;
+      
+      &lt;div style={{ margin: '20px 0' }}&gt;
+        &lt;strong&gt;{number}&lt;/strong&gt; is {isPrime ? 'a prime number!' : 'not a prime number.'}
+      &lt;/div&gt;
+      
+      &lt;button onClick={() => setDarkMode(prev => !prev)}&gt;
+        Toggle {darkMode ? 'Light' : 'Dark'} Mode
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>The function passed to <code>useMemo</code> runs during rendering</li>
+                <li>Returns the cached result when dependencies haven't changed</li>
+                <li>Helps avoid expensive calculations on every render</li>
+                <li>Can be used to prevent unnecessary re-renders of child components</li>
+                <li>React may discard memoized values for performance reasons</li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Only use for computationally expensive operations</li>
+                <li>Include all values from the component scope used by the memoized function in the dependency array</li>
+                <li>Don't overuse - the memoization itself has a cost</li>
+                <li>Consider using for referential equality of objects and arrays passed to child components</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useCallback" class="hook-card">
+          <div class="hook-header">
+            <h3>useCallback <span class="tag performance">Performance</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useCallback</code> hook returns a memoized callback function. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">const memoizedCallback = useCallback(
+  () => {
+    doSomething(a, b);
+  },
+  [a, b],
+);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Optimized Child Component</h4>
+              <pre><code class="language-jsx">import React, { useState, useCallback, memo } from 'react';
+
+// Child component that only re-renders when props change
+const ExpensiveComponent = memo(function ExpensiveComponent({ onClick, name }) {
+  console.log(`Rendering ExpensiveComponent for ${name}`);
+  
+  return (
+    &lt;div style={{ margin: '10px 0', padding: '10px', border: '1px solid #ccc' }}&gt;
+      &lt;p&gt;Expensive component for {name}&lt;/p&gt;
+      &lt;button onClick={() => onClick(name)}&gt;Click me&lt;/button&gt;
+    &lt;/div&gt;
+  );
+});
+
+// Parent component
+function CallbackExample() {
+  const [count, setCount] = useState(0);
+  const [names] = useState(['Alice', 'Bob', 'Charlie']);
+  
+  // Without useCallback, this function would be recreated on every render
+  // causing ExpensiveComponent to re-render unnecessarily
+  const handleClick = useCallback((name) => {
+    console.log(`${name} clicked!`);
+    // Note: count is captured from closure and won't update unless added to deps
+  }, []); // Empty deps means this callback never changes
+  
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Count: {count}&lt;/h2&gt;
+      &lt;button onClick={() => setCount(c => c + 1)}&gt;
+        Increment count
+      &lt;/button&gt;
+      
+      &lt;div style={{ marginTop: '20px' }}&gt;
+        {names.map(name => (
+          &lt;ExpensiveComponent 
+            key={name} 
+            name={name} 
+            onClick={handleClick} 
+          /&gt;
+        ))}
+      &lt;/div&gt;
+      
+      &lt;p&gt;&lt;small&gt;Check console to see which components render&lt;/small&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li><code>useCallback(fn, deps)</code> is equivalent to <code>useMemo(() => fn, deps)</code></li>
+                <li>Returns the same function instance between renders if dependencies haven't changed</li>
+                <li>Primarily useful when passing callbacks to optimized child components</li>
+                <li>Works well with <code>React.memo()</code> for preventing unnecessary re-renders</li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Include all values from the component scope used by the callback in the dependency array</li>
+                <li>Only use when passing callbacks to optimized components that rely on reference equality</li>
+                <li>Consider using with <code>useReducer</code> for callbacks that update state</li>
+                <li>Don't overuse - only apply when there's a measurable performance benefit</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useReducer" class="hook-card">
+          <div class="hook-header">
+            <h3>useReducer <span class="tag advanced">Advanced</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useReducer</code> hook is an alternative to <code>useState</code> for managing complex state logic. It's especially useful when the next state depends on the previous state or when state transitions are complex.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">const [state, dispatch] = useReducer(reducer, initialState, init);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Shopping Cart</h4>
+              <pre><code class="language-jsx">import React, { useReducer } from 'react';
+
+// Reducer function
+function cartReducer(state, action) {
+  switch (action.type) {
+    case 'ADD_ITEM':
+      // Check if item already exists
+      const existingItem = state.items.find(item => item.id === action.payload.id);
+      if (existingItem) {
+        // Update quantity of existing item
+        return {
+          ...state,
+          items: state.items.map(item => 
+            item.id === action.payload.id 
+              ? { ...item, quantity: item.quantity + 1 } 
+              : item
+          ),
+          total: state.total + action.payload.price
+        };
+      } else {
+        // Add new item
+        return {
+          ...state,
+          items: [...state.items, { ...action.payload, quantity: 1 }],
+          total: state.total + action.payload.price
+        };
+      }
+    
+    case 'REMOVE_ITEM':
+      const itemToRemove = state.items.find(item => item.id === action.payload);
+      if (!itemToRemove) return state;
+      
+      // If quantity is 1, remove the item completely
+      if (itemToRemove.quantity === 1) {
+        return {
+          ...state,
+          items: state.items.filter(item => item.id !== action.payload),
+          total: state.total - itemToRemove.price
+        };
+      } else {
+        // Otherwise decrease quantity
+        return {
+          ...state,
+          items: state.items.map(item => 
+            item.id === action.payload 
+              ? { ...item, quantity: item.quantity - 1 } 
+              : item
+          ),
+          total: state.total - itemToRemove.price
+        };
+      }
+    
+    case 'CLEAR_CART':
+      return {
+        items: [],
+        total: 0
+      };
+      
+    default:
+      return state;
+  }
+}
+
+// Component using the reducer
+function ShoppingCart() {
+  const [cart, dispatch] = useReducer(cartReducer, { items: [], total: 0 });
+  
+  // Sample products
+  const products = [
+    { id: 1, name: 'Product 1', price: 10.99 },
+    { id: 2, name: 'Product 2', price: 24.99 },
+    { id: 3, name: 'Product 3', price: 5.99 }
+  ];
+  
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Shopping Cart&lt;/h2&gt;
+      
+      &lt;div className="products"&gt;
+        &lt;h3&gt;Products&lt;/h3&gt;
+        {products.map(product => (
+          &lt;div key={product.id} style={{ margin: '10px 0', padding: '10px', border: '1px solid #eee' }}&gt;
+            &lt;p&gt;{product.name} - ${product.price.toFixed(2)}&lt;/p&gt;
+            &lt;button 
+              onClick={() => dispatch({ 
+                type: 'ADD_ITEM', 
+                payload: product 
+              })}
+            &gt;
+              Add to Cart
+            &lt;/button&gt;
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+      
+      &lt;div className="cart" style={{ marginTop: '20px' }}&gt;
+        &lt;h3&gt;Cart Items&lt;/h3&gt;
+        {cart.items.length === 0 ? (
+          &lt;p&gt;Your cart is empty&lt;/p&gt;
+        ) : (
+          &lt;&gt;
+            {cart.items.map(item => (
+              &lt;div key={item.id} style={{ margin: '10px 0', padding: '10px', border: '1px solid #eee' }}&gt;
+                &lt;p&gt;
+                  {item.name} - ${item.price.toFixed(2)} x {item.quantity} = ${(item.price * item.quantity).toFixed(2)}
+                &lt;/p&gt;
+                &lt;button 
+                  onClick={() => dispatch({ 
+                    type: 'REMOVE_ITEM', 
+                    payload: item.id 
+                  })}
+                &gt;
+                  Remove One
+                &lt;/button&gt;
+              &lt;/div&gt;
+            ))}
+            &lt;div style={{ marginTop: '20px', fontWeight: 'bold' }}&gt;
+              Total: ${cart.total.toFixed(2)}
+            &lt;/div&gt;
+            &lt;button 
+              onClick={() => dispatch({ type: 'CLEAR_CART' })}
+              style={{ marginTop: '10px' }}
+            &gt;
+              Clear Cart
+            &lt;/button&gt;
+          &lt;/&gt;
+        )}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>The reducer function takes <code>(state, action)</code> and returns the new state</li>
+                <li>The dispatch function is used to send actions to the reducer</li>
+                <li>Actions are typically objects with a <code>type</code> property and optional payload</li>
+                <li>The optional <code>init</code> function can be used to lazily create the initial state</li>
+                <li>Similar to Redux but scoped to a component</li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Use for complex state logic with multiple sub-values or when next state depends on previous state</li>
+                <li>Keep reducers pure - no side effects, API calls, or mutations</li>
+                <li>Use action constants to avoid typos</li>
+                <li>Consider combining with <code>useContext</code> for global state management</li>
+                <li>Split large reducers into smaller functions for maintainability</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useLayoutEffect" class="hook-card">
+          <div class="hook-header">
+            <h3>useLayoutEffect <span class="tag advanced">Advanced</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useLayoutEffect</code> hook is identical to <code>useEffect</code>, but it fires synchronously after all DOM mutations and before the browser has a chance to paint. Use this to read layout from the DOM and synchronously re-render.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">useLayoutEffect(() => {
+  // DOM mutations/measurements
+  return () => {
+    // cleanup
+  };
+}, [dependencies]);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Measuring and Positioning an Element</h4>
+              <pre><code class="language-jsx">import React, { useState, useLayoutEffect, useRef } from 'react';
+
+function Tooltip({ text, children }) {
+  const [tooltipStyles, setTooltipStyles] = useState({});
+  const childRef = useRef(null);
+  const tooltipRef = useRef(null);
+  const [showTooltip, setShowTooltip] = useState(false);
+  
+  // Position the tooltip relative to the child element
+  useLayoutEffect(() => {
+    if (showTooltip && childRef.current && tooltipRef.current) {
+      const childRect = childRef.current.getBoundingClientRect();
+      const tooltipRect = tooltipRef.current.getBoundingClientRect();
+      
+      // Position tooltip above the element
+      setTooltipStyles({
+        position: 'absolute',
+        top: `${childRect.top - tooltipRect.height - 10}px`,
+        left: `${childRect.left + (childRect.width / 2) - (tooltipRect.width / 2)}px`,
+        opacity: 1
+      });
+    }
+  }, [showTooltip]);
+  
+  return (
+    &lt;div style={{ position: 'relative', display: 'inline-block' }}&gt;
+      &lt;div 
+        ref={childRef}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+      &gt;
+        {children}
+      &lt;/div&gt;
+      
+      {showTooltip && (
+        &lt;div 
+          ref={tooltipRef}
+          style={{
+            background: '#333',
+            color: 'white',
+            padding: '5px 10px',
+            borderRadius: '4px',
+            position: 'absolute',
+            opacity: 0,
+            transition: 'opacity 0.2s',
+            zIndex: 100,
+            ...tooltipStyles
+          }}
+        &gt;
+          {text}
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+
+// Usage
+function LayoutEffectExample() {
+  return (
+    &lt;div style={{ padding: '100px 20px' }}&gt;
+      &lt;Tooltip text="This is a tooltip!"&gt;
+        &lt;button&gt;Hover me&lt;/button&gt;
+      &lt;/Tooltip&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>Runs synchronously after DOM mutations but before browser paint</li>
+                <li>Blocks visual updates until the effect completes</li>
+                <li>Useful for:
+                  <ul>
+                    <li>Measuring DOM nodes (width, height, position)</li>
+                    <li>Moving elements based on layout</li>
+                    <li>Preventing visual flicker when updating the DOM</li>
+                  </ul>
+                </li>
+                <li>Has the same dependency array behavior as <code>useEffect</code></li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Prefer <code>useEffect</code> when possible to avoid blocking visual updates</li>
+                <li>Only use for DOM measurements and updates that must happen before paint</li>
+                <li>Keep the logic inside as minimal as possible</li>
+                <li>Be careful with infinite loops when updating state inside</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useImperativeHandle" class="hook-card">
+          <div class="hook-header">
+            <h3>useImperativeHandle <span class="tag advanced">Advanced</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useImperativeHandle</code> hook customizes the instance value that is exposed when using <code>React.forwardRef</code>. It lets a parent component access specific functions or properties from a child component.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">useImperativeHandle(ref, createHandle, [dependencies]);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Custom Input with Focus Method</h4>
+              <pre><code class="language-jsx">import React, { useRef, useImperativeHandle, forwardRef, useState } from 'react';
+
+// Custom input component with exposed methods
+const CustomInput = forwardRef((props, ref) => {
+  const inputRef = useRef(null);
+  const [value, setValue] = useState('');
+  
+  // Expose only specific methods to parent
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    },
+    clear: () => {
+      setValue('');
+      inputRef.current.focus();
+    },
+    getValue: () => {
+      return value;
+    }
+  }), [value]);
+  
+  return (
+    &lt;input
+      ref={inputRef}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      style={{
+        padding: '8px 12px',
+        border: '2px solid #3498db',
+        borderRadius: '4px',
+        fontSize: '16px'
+      }}
+      {...props}
+    /&gt;
+  );
+});
+
+// Parent component that uses the custom input
+function ImperativeHandleExample() {
+  const inputRef = useRef(null);
+  
+  const handleFocusClick = () => {
+    inputRef.current.focus();
+  };
+  
+  const handleClearClick = () => {
+    inputRef.current.clear();
+  };
+  
+  const handleGetValueClick = () => {
+    alert(`Current value: "${inputRef.current.getValue()}"`);
+  };
+  
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;Custom Input with Imperative Handle&lt;/h3&gt;
+      
+      &lt;div style={{ margin: '20px 0' }}&gt;
+        &lt;CustomInput ref={inputRef} placeholder="Type something..." /&gt;
+      &lt;/div&gt;
+      
+      &lt;div&gt;
+        &lt;button 
+          onClick={handleFocusClick}
+          style={{ marginRight: '10px' }}
+        &gt;
+          Focus Input
+        &lt;/button&gt;
+        
+        &lt;button 
+          onClick={handleClearClick}
+          style={{ marginRight: '10px' }}
+        &gt;
+          Clear Input
+        &lt;/button&gt;
+        
+        &lt;button onClick={handleGetValueClick}&gt;
+          Get Value
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>Must be used with <code>forwardRef</code> to work properly</li>
+                <li>Allows parent components to call methods on child components</li>
+                <li>Helps maintain encapsulation by exposing only specific functionality</li>
+                <li>The second argument to <code>useImperativeHandle</code> is a function that returns an object with the exposed methods/properties</li>
+                <li>The optional dependency array works like other hooks</li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Use sparingly - prefer props and state for most parent-child interactions</li>
+                <li>Only expose methods that are necessary for the parent component</li>
+                <li>Use for imperative actions like focus, scroll, or media playback</li>
+                <li>Consider if the functionality could be implemented with props instead</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useId" class="hook-card">
+          <div class="hook-header">
+            <h3>useId <span class="tag intermediate">Intermediate</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useId</code> hook generates a unique ID that can be used for accessibility attributes or for any case where a stable, unique ID is required across server and client.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">const id = useId();</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Accessible Form Controls</h4>
+              <pre><code class="language-jsx">import React, { useId } from 'react';
+
+function AccessibleForm() {
+  // Generate unique IDs for form elements
+  const nameId = useId();
+  const emailId = useId();
+  const passwordId = useId();
+  
+  return (
+    &lt;form style={{ maxWidth: '400px', margin: '0 auto' }}&gt;
+      &lt;h2&gt;Registration Form&lt;/h2&gt;
+      
+      &lt;div style={{ marginBottom: '15px' }}&gt;
+        &lt;label 
+          htmlFor={nameId}
+          style={{ display: 'block', marginBottom: '5px' }}
+        &gt;
+          Name
+        &lt;/label&gt;
+        &lt;input
+          id={nameId}
+          type="text"
+          aria-describedby={`${nameId}-help`}
+          style={{
+            width: '100%',
+            padding: '8px',
+            borderRadius: '4px',
+            border: '1px solid #ccc'
+          }}
+        /&gt;
+        &lt;small 
+          id={`${nameId}-help`}
+          style={{ display: 'block', marginTop: '5px', color: '#666' }}
+        &gt;
+          Enter your full name
+        &lt;/small&gt;
+      &lt;/div&gt;
+      
+      &lt;div style={{ marginBottom: '15px' }}&gt;
+        &lt;label 
+          htmlFor={emailId}
+          style={{ display: 'block', marginBottom: '5px' }}
+        &gt;
+          Email
+        &lt;/label&gt;
+        &lt;input
+          id={emailId}
+          type="email"
+          aria-describedby={`${emailId}-help`}
+          style={{
+            width: '100%',
+            padding: '8px',
+            borderRadius: '4px',
+            border: '1px solid #ccc'
+          }}
+        /&gt;
+        &lt;small 
+          id={`${emailId}-help`}
+          style={{ display: 'block', marginTop: '5px', color: '#666' }}
+        &gt;
+          We'll never share your email
+        &lt;/small&gt;
+      &lt;/div&gt;
+      
+      &lt;div style={{ marginBottom: '15px' }}&gt;
+        &lt;label 
+          htmlFor={passwordId}
+          style={{ display: 'block', marginBottom: '5px' }}
+        &gt;
+          Password
+        &lt;/label&gt;
+        &lt;input
+          id={passwordId}
+          type="password"
+          aria-describedby={`${passwordId}-help`}
+          style={{
+            width: '100%',
+            padding: '8px',
+            borderRadius: '4px',
+            border: '1px solid #ccc'
+          }}
+        /&gt;
+        &lt;small 
+          id={`${passwordId}-help`}
+          style={{ display: 'block', marginTop: '5px', color: '#666' }}
+        &gt;
+          Password must be at least 8 characters
+        &lt;/small&gt;
+      &lt;/div&gt;
+      
+      &lt;button
+        type="submit"
+        style={{
+          padding: '10px 15px',
+          backgroundColor: '#3498db',
+          color: 'white',
+          border: 'none',
+          borderRadius: '4px',
+          cursor: 'pointer'
+        }}
+      &gt;
+        Register
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>Generates a unique, stable ID string</li>
+                <li>IDs are consistent across server and client rendering</li>
+                <li>Helps avoid hydration mismatches in <abbr title="Server-Side Rendering: The process of rendering components on the server instead of in the browser">SSR</abbr> applications</li>
+                <li>Preferable to manually created IDs or random generators</li>
+                <li>Multiple calls to <code>useId</code> in the same component will generate different IDs</li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Use for accessibility attributes like <code>htmlFor</code>, <code>aria-describedby</code>, etc.</li>
+                <li>Add a prefix if needed with string concatenation: <code>const id = useId(); const checkboxId = `${id}-checkbox`;</code></li>
+                <li>Don't use for keys in lists (use data IDs or indexes instead)</li>
+                <li>Don't use for CSS selectors (use classes instead)</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useDeferredValue" class="hook-card">
+          <div class="hook-header">
+            <h3>useDeferredValue <span class="tag performance">Performance</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useDeferredValue</code> hook accepts a value and returns a new copy of the value that will defer to more urgent updates. This is similar to debouncing or throttling but built into React's rendering mechanism.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">const deferredValue = useDeferredValue(value);</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Search with Deferred Results</h4>
+              <pre><code class="language-jsx">import React, { useState, useDeferredValue, useMemo } from 'react';
+
+// Simulated list of items
+const generateItems = (count) => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    name: `Item ${i + 1}`
+  }));
+};
+
+const allItems = generateItems(10000);
+
+function SearchableList() {
+  const [query, setQuery] = useState('');
+  
+  // Defer the value to avoid blocking input
+  const deferredQuery = useDeferredValue(query);
+  
+  // Indicate when deferred value is different from actual value
+  const isStale = query !== deferredQuery;
+  
+  // Expensive filtering operation
+  const filteredItems = useMemo(() => {
+    console.log(`Filtering with query: "${deferredQuery}"`);
+    
+    if (!deferredQuery.trim()) return allItems.slice(0, 100);
+    
+    return allItems.filter(item => 
+      item.name.toLowerCase().includes(deferredQuery.toLowerCase())
+    );
+  }, [deferredQuery]);
+  
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Search Large List&lt;/h2&gt;
+      
+      &lt;input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Type to search..."
+        style={{
+          width: '100%',
+          padding: '10px',
+          fontSize: '16px',
+          marginBottom: '20px',
+          borderRadius: '4px',
+          border: '1px solid #ccc'
+        }}
+      /&gt;
+      
+      &lt;div style={{ opacity: isStale ? 0.7 : 1, transition: 'opacity 0.2s' }}&gt;
+        &lt;p&gt;
+          {isStale ? 'Updating results...' : `Showing ${filteredItems.length} results`}
+        &lt;/p&gt;
+        
+        &lt;ul style={{ 
+          height: '400px', 
+          overflowY: 'auto',
+          border: '1px solid #eee',
+          padding: '10px',
+          borderRadius: '4px'
+        }}&gt;
+          {filteredItems.map(item => (
+            &lt;li 
+              key={item.id}
+              style={{
+                padding: '8px',
+                borderBottom: '1px solid #f0f0f0'
+              }}
+            &gt;
+              {item.name}
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>Allows React to defer updating less critical parts of the UI</li>
+                <li>Keeps the UI responsive during expensive rendering operations</li>
+                <li>Works with React's concurrent rendering features</li>
+                <li>Similar to debouncing/throttling but integrated with React's rendering system</li>
+                <li>The deferred value might be "stale" temporarily while more urgent updates are processed</li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Use for expensive rendering operations that don't need to update immediately</li>
+                <li>Combine with <code>useMemo</code> to avoid recalculating during each render</li>
+                <li>Consider adding visual feedback when the deferred value is stale</li>
+                <li>Test performance with and without deferring to ensure it's beneficial</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="useTransition" class="hook-card">
+          <div class="hook-header">
+            <h3>useTransition <span class="tag performance">Performance</span></h3>
+          </div>
+          <div class="hook-content">
+            <p class="hook-description">
+              The <code>useTransition</code> hook returns a stateful value for the pending state of the transition and a function to start the transition. It allows you to mark updates as transitions, which tells React they can be interrupted and don't need to block the UI.
+            </p>
+            
+            <div class="hook-syntax">
+              <h4>Syntax</h4>
+              <pre><code class="language-jsx">const [isPending, startTransition] = useTransition();</code></pre>
+            </div>
+            
+            <div class="hook-example">
+              <h4>Example: Tab Switching with Transition</h4>
+              <pre><code class="language-jsx">import React, { useState, useTransition } from 'react';
+
+// Simulated expensive component
+function ExpensiveComponent({ text }) {
+  // Force the component to be slow to render
+  const startTime = performance.now();
+  while (performance.now() - startTime < 100) {
+    // Artificial delay - simulate expensive rendering
+  }
+  
+  return (
+    &lt;div style={{ padding: '20px', background: '#f9f9f9', borderRadius: '4px' }}&gt;
+      &lt;h3&gt;Expensive Component&lt;/h3&gt;
+      &lt;p&gt;{text}&lt;/p&gt;
+      &lt;div&gt;
+        {Array.from({ length: 50 }, (_, i) => (
+          &lt;div key={i} style={{ padding: '5px', margin: '5px 0', background: '#eee' }}&gt;
+            Item {i + 1}
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+function TabsWithTransition() {
+  const [tab, setTab] = useState('home');
+  const [isPending, startTransition] = useTransition();
+  
+  const tabs = [
+    { id: 'home', label: 'Home', content: 'Welcome to the home tab!' },
+    { id: 'profile', label: 'Profile', content: 'This is your profile information.' },
+    { id: 'settings', label: 'Settings', content: 'Adjust your settings here.' },
+    { id: 'dashboard', label: 'Dashboard', content: 'View your analytics dashboard.' }
+  ];
+  
+  const handleTabChange = (newTab) => {
+    // Mark the tab change as a transition
+    startTransition(() => {
+      setTab(newTab);
+    });
+  };
+  
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Tabs with Transition&lt;/h2&gt;
+      
+      &lt;div style={{ marginBottom: '20px' }}&gt;
+        {tabs.map(tabItem => (
+          &lt;button
+            key={tabItem.id}
+            onClick={() => handleTabChange(tabItem.id)}
+            style={{
+              padding: '10px 15px',
+              margin: '0 5px 0 0',
+              background: tab === tabItem.id ? '#3498db' : '#f0f0f0',
+              color: tab === tabItem.id ? 'white' : 'black',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              opacity: isPending ? 0.7 : 1
+            }}
+            disabled={isPending}
+          &gt;
+            {tabItem.label}
+          &lt;/button&gt;
+        ))}
+      &lt;/div&gt;
+      
+      {isPending && (
+        &lt;div style={{ 
+          padding: '10px', 
+          background: '#fff9e6', 
+          border: '1px solid #ffe58f',
+          borderRadius: '4px',
+          marginBottom: '20px'
+        }}&gt;
+          Loading tab content...
+        &lt;/div&gt;
+      )}
+      
+      &lt;div style={{ opacity: isPending ? 0.6 : 1, transition: 'opacity 0.2s' }}&gt;
+        {tabs.map(tabItem => (
+          tab === tabItem.id && (
+            &lt;ExpensiveComponent 
+              key={tabItem.id} 
+              text={tabItem.content} 
+            /&gt;
+          )
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <div class="hook-details">
+              <h4>Key Points</h4>
+              <ul>
+                <li>Returns a boolean <code>isPending</code> flag and a <code>startTransition</code> function</li>
+                <li>Updates wrapped in <code>startTransition</code> are treated as non-urgent</li>
+                <li>Transitions can be interrupted by more urgent updates</li>
+                <li>Helps keep the UI responsive during expensive state updates</li>
+                <li>Works with React's concurrent rendering features</li>
+              </ul>
+            </div>
+            
+            <div class="hook-best-practices">
+              <h4>Best Practices</h4>
+              <ul>
+                <li>Use for state updates that might lead to significant UI changes</li>
+                <li>Don't use for immediate feedback like input fields</li>
+                <li>Use the <code>isPending</code> flag to show loading indicators</li>
+                <li>Combine with <code>Suspense</code> for more complex loading states</li>
+                <li>Consider using <code>useDeferredValue</code> for simpler cases</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section id="custom-hooks" class="custom-hooks">
+        <h2>Creating Custom Hooks</h2>
+        <p>
+          Custom hooks are JavaScript functions that start with "use" and may call other hooks. They let you extract component logic into reusable functions.
+        </p>
+        
+        <div class="hook-example">
+          <h4>Example: useLocalStorage Custom Hook</h4>
+          <pre><code class="language-jsx">import { useState, useEffect } from 'react';
+
+// Custom hook for persisting state to localStorage
+function useLocalStorage(key, initialValue) {
+  // Get stored value from localStorage or use initialValue
+  const [storedValue, setStoredValue] = useState(() => {
+    if (typeof window === 'undefined') {
+      return initialValue;
+    }
+    
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error('Error reading from localStorage:', error);
+      return initialValue;
+    }
+  });
+  
+  // Update localStorage when state changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        window.localStorage.setItem(key, JSON.stringify(storedValue));
+      } catch (error) {
+        console.error('Error writing to localStorage:', error);
+      }
+    }
+  }, [key, storedValue]);
+  
+  return [storedValue, setStoredValue];
+}
+
+// Usage example
+function LocalStorageDemo() {
+  const [name, setName] = useLocalStorage('name', '');
+  const [darkMode, setDarkMode] = useLocalStorage('darkMode', false);
+  
+  return (
+    &lt;div style={{
+      padding: '20px',
+      background: darkMode ? '#333' : '#fff',
+      color: darkMode ? '#fff' : '#333',
+      borderRadius: '8px',
+      transition: 'all 0.3s ease'
+    }}&gt;
+      &lt;h3&gt;localStorage Demo&lt;/h3&gt;
+      
+      &lt;div style={{ marginBottom: '15px' }}&gt;
+        &lt;label htmlFor="name" style={{ display: 'block', marginBottom: '5px' }}&gt;
+          Your Name:
+        &lt;/label&gt;
+        &lt;input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          style={{
+            padding: '8px',
+            borderRadius: '4px',
+            border: '1px solid #ccc',
+            width: '100%',
+            maxWidth: '300px'
+          }}
+        /&gt;
+      &lt;/div&gt;
+      
+      &lt;div style={{ marginBottom: '15px' }}&gt;
+        &lt;label style={{ display: 'flex', alignItems: 'center' }}&gt;
+          &lt;input
+            type="checkbox"
+            checked={darkMode}
+            onChange={(e) => setDarkMode(e.target.checked)}
+            style={{ marginRight: '10px' }}
+          /&gt;
+          Dark Mode
+        &lt;/label&gt;
+      &lt;/div&gt;
+      
+      &lt;p&gt;
+        &lt;small&gt;
+          Your preferences will be remembered when you reload the page!
+        &lt;/small&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+        </div>
+        
+        <div class="hook-best-practices">
+          <h4>Custom Hook Best Practices</h4>
+          <ul>
+            <li>Always start custom hook names with "use" to follow React's conventions</li>
+            <li>Keep custom hooks focused on a single concern</li>
+            <li>Return only what's necessary from the hook</li>
+            <li>Document your custom hooks with comments or TypeScript types</li>
+            <li>Test custom hooks independently from components</li>
+            <li>Consider publishing reusable hooks as npm packages</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 React Hooks Guide</p>
+      <p>
+        <small>
+          React Hooks were introduced in React 16.8 and have become the standard way to write React components.
+          For more information, visit the <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener noreferrer">official React documentation</a>.
+        </small>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script>
+    // Simple sidebar toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('sidebar');
+      const sidebarToggle = document.getElementById('sidebar-toggle');
+      
+      if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', function() {
+          sidebar.classList.toggle('active');
+          sidebarToggle.classList.toggle('active');
+        });
+        
+        // Close sidebar when clicking on a link (mobile)
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            if (window.innerWidth < 992) {
+              sidebar.classList.remove('active');
+              sidebarToggle.classList.remove('active');
+            }
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

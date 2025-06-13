@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Components - Explained in Detail</title>
+  <style>
+    body {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+      border-left: 5px solid #3498db;
+      padding-left: 10px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    code {
+      background: #ecf0f1;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #ecf0f1;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Understanding React Components</h1>
+
+  <h2>What are Components?</h2>
+  <p>
+    A <strong>Component</strong> in React is a reusable and independent piece of <abbr title="User Interface">UI</abbr>. They help in breaking the <abbr title="Document Object Model">DOM</abbr> into smaller, manageable parts.
+  </p>
+
+  <h2>Types of Components</h2>
+  <ul>
+    <li><strong>Functional Components:</strong> Simple functions returning JSX.</li>
+    <li><strong>Class Components:</strong> ES6 classes extending <abbr title="React is a JavaScript library for building user interfaces">React</abbr>.Component (less used now after Hooks).</li>
+  </ul>
+
+  <h2>Example - Functional Component</h2>
+  <pre>
+  function Greeting() {
+    return &lt;h1&gt;Hello, React!&lt;/h1&gt;;
+  }
+  </pre>
+
+  <h2>Example - Class Component</h2>
+  <pre>
+  class Greeting extends React.Component {
+    render() {
+      return &lt;h1&gt;Hello, React!&lt;/h1&gt;;
+    }
+  }
+  </pre>
+
+  <h2>Why Use Components?</h2>
+  <ul>
+    <li>Reusability</li>
+    <li>Maintainability</li>
+    <li>Separation of concerns (logic, structure, styling)</li>
+  </ul>
+
+  <h2>When to Use?</h2>
+  <ul>
+    <li>Creating UI elements like buttons, forms, navigation bars</li>
+    <li>Building reusable layouts (headers, footers)</li>
+  </ul>
+
+  <h2>Props in Components</h2>
+  <p>
+    Components receive data via <strong>props</strong> (short for <abbr title="Properties - inputs to a component">properties</abbr>):
+  </p>
+  <pre>
+  function Welcome(props) {
+    return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+  }
+
+  &lt;Welcome name="Kapil" /&gt;
+  </pre>
+
+  <h2>State in Components</h2>
+  <p>
+    Components can also have their own <strong>state</strong> (data that changes over time):
+  </p>
+  <pre>
+  import { useState } from 'react';
+
+  function Counter() {
+    const [count, setCount] = useState(0);
+
+    return (
+      &lt;div&gt;
+        &lt;p&gt;Count: {count}&lt;/p&gt;
+        &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+  </pre>
+
+  <h2>Important Notes:</h2>
+  <ul>
+    <li>Component names must start with an uppercase letter.</li>
+    <li>They return JSX.</li>
+    <li>They can be nested (Component inside Component).</li>
+  </ul>
+
+  <h2>Use Cases</h2>
+  <ul>
+    <li>Reusable UI widgets</li>
+    <li>Forms and inputs</li>
+    <li>Application layout (Header, Sidebar, Footer)</li>
+    <li>Handling user interaction (Buttons, Modals)</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>
+    Components make building and maintaining large React applications easier by breaking the UI into small, independent pieces that can be composed together.
+  </p>
+
+</body>
+</html>

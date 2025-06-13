@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Props - Detailed Explanation</title>
+  <style>
+    body {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+      border-left: 5px solid #e67e22;
+      padding-left: 10px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    code {
+      background: #ecf0f1;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #ecf0f1;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Understanding React Props</h1>
+
+  <h2>What are Props?</h2>
+  <p>
+    In React, <strong>props</strong> (short for <abbr title="Properties - input values passed to components">properties</abbr>) are used to pass data from one component to another, primarily from parent to child components.
+  </p>
+
+  <h2>Why Use Props?</h2>
+  <ul>
+    <li>To make components reusable and dynamic.</li>
+    <li>To transfer data between components.</li>
+    <li>To render different outputs based on different inputs.</li>
+  </ul>
+
+  <h2>Example - Passing Props</h2>
+  <pre>
+  function Welcome(props) {
+    return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+  }
+
+  // Usage
+  &lt;Welcome name="Rohan" /&gt;
+  </pre>
+
+  <h2>Destructuring Props</h2>
+  <pre>
+  function Welcome({ name }) {
+    return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;
+  }
+
+  &lt;Welcome name="Anjali" /&gt;
+  </pre>
+
+  <h2>How Props Work?</h2>
+  <ol>
+    <li>Parent component sends data using HTML-like attributes.</li>
+    <li>Child component receives them as an object called <code>props</code>.</li>
+  </ol>
+
+  <h2>Default Props</h2>
+  <pre>
+  function Welcome({ name = "Guest" }) {
+    return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;
+  }
+  </pre>
+
+  <h2>Read-only Nature of Props</h2>
+  <p>
+    Props are <strong>immutable</strong> (cannot be changed by the child). If changes are needed, the parent must pass new props.
+  </p>
+
+  <h2>Props vs State</h2>
+  <ul>
+    <li><strong>Props:</strong> Passed from parent to child. Read-only.</li>
+    <li><strong>State:</strong> Maintained within the component itself. Mutable via hooks like <code>useState</code>.</li>
+  </ul>
+
+  <h2>Use Cases</h2>
+  <ul>
+    <li>Passing dynamic data (e.g., user's name, age)</li>
+    <li>Conditionally rendering components</li>
+    <li>Rendering lists with dynamic data</li>
+  </ul>
+
+  <h2>Important Notes</h2>
+  <ul>
+    <li>Props improve <abbr title="Reusability allows using the same component with different data">reusability</abbr>.</li>
+    <li>They enable <abbr title="Component composition means building components using other components">component composition</abbr>.</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>
+    Props make React components dynamic, reusable, and more adaptable to various data inputs without changing their structure.
+  </p>
+
+</body>
+</html>
