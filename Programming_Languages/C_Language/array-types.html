@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Types of Arrays in C</title>
+  <style>
+    :root {
+      --main: #005cc8;
+      --light: #eaf3ff;
+      --text: #222;
+      --border: #cfddec;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.07);
+    }
+
+    h1, h2 {
+      color: var(--main);
+    }
+
+    code, pre {
+      background-color: #f4faff;
+      padding: 10px;
+      display: block;
+      border-left: 4px solid var(--main);
+      margin: 10px 0;
+      overflow-x: auto;
+    }
+
+    abbr {
+      border-bottom: 1px dotted #444;
+      cursor: help;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .ascii-diagram {
+      background-color: #f9f9f9;
+      padding: 10px;
+      font-family: monospace;
+      white-space: pre;
+      border-left: 4px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+
+    /* arrray 3d css  */
+      .array-explanation {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    font-family: sans-serif;
+    background: #f9f9ff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .array-explanation h2 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .array-explanation p,
+  .array-explanation ul {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+
+  .array-explanation ul {
+    padding-left: 1.5rem;
+  }
+
+  .array-block h3 {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #2c3e50;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    background: #e9f5ff;
+    padding: 0.75rem;
+    margin: 0.5rem 0 1rem;
+    border-radius: 6px;
+  }
+
+  .grid div {
+    background: #fff;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    font-family: monospace;
+    font-size: 0.95rem;
+    border-radius: 4px;
+  }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Types of Arrays in C</h1>
+
+    <p>
+      In <abbr title="C is a general-purpose procedural programming language">C programming</abbr>, arrays are used to store multiple values in a single variable. An array is a collection of elements, all of the same data type, stored in contiguous memory locations.
+    </p>
+
+    <hr/>
+
+    <h2>📌 1. Single-Dimensional Array</h2>
+    <p>A <strong>1D array</strong> is a list of elements arranged in a single row.</p>
+
+    <h3>Syntax:</h3>
+    <pre><code>data_type array_name[size];</code></pre>
+
+    <h3>Example:</h3>
+    <pre><code>int marks[5] = {90, 85, 78, 92, 88};</code></pre>
+
+    <h3>Diagram:</h3>
+    <div class="ascii-diagram">
+Index:    0     1     2     3     4
+         +-----+-----+-----+-----+-----+
+marks →  | 90  | 85  | 78  | 92  | 88  |
+         +-----+-----+-----+-----+-----+
+    </div>
+
+    <h3>Accessing:</h3>
+    <ul>
+      <li><code>marks[0]</code> returns <code>90</code></li>
+      <li><code>marks[4]</code> returns <code>88</code></li>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+      <li>Storing scores, names (as characters), or any linear data</li>
+      <li>Iterated using loops</li>
+    </ul>
+
+    <hr/>
+
+    <h2>📌 2. Two-Dimensional Array</h2>
+    <p>A <strong>2D array</strong> is a table or matrix of elements. It uses two indices: row and column.</p>
+
+    <h3>Syntax:</h3>
+    <pre><code>data_type array_name[rows][columns];</code></pre>
+
+    <h3>Example:</h3>
+    <pre><code>int matrix[2][3] = {
+  {1, 2, 3},
+  {4, 5, 6}
+};</code></pre>
+
+    <h3>Diagram:</h3>
+    <div class="ascii-diagram">
+          Column →
+         0   1   2
+       +---+---+---+
+Row 0 | 1 | 2 | 3 |
+       +---+---+---+
+Row 1 | 4 | 5 | 6 |
+       +---+---+---+
+    </div>
+
+    <h3>Accessing:</h3>
+    <ul>
+      <li><code>matrix[0][1]</code> returns <code>2</code></li>
+      <li><code>matrix[1][2]</code> returns <code>6</code></li>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+      <li>Matrix operations</li>
+      <li>Storing tabular data (rows & columns)</li>
+      <li>Game boards (like Tic Tac Toe)</li>
+    </ul>
+
+    <hr/>
+
+    <h2>📌 3. Multi-Dimensional Array</h2>
+    <p>A <strong>Multi-Dimensional Array</strong> is an extension of 2D arrays and can go up to any number of dimensions (like 3D).</p>
+
+    <h3>Syntax:</h3>
+    <pre><code>data_type array_name[size1][size2][size3]...;</code></pre>
+
+    <h3>Example (3D Array):</h3>
+    <pre><code>int cube[2][2][2] = {
+  {
+    {1, 2},
+    {3, 4}
+  },
+  {
+    {5, 6},
+    {7, 8}
+  }
+};</code></pre>
+
+    <h3>Accessing:</h3>
+    <ul>
+      <li><code>cube[0][0][1]</code> → <code>2</code></li>
+      <li><code>cube[1][1][1]</code> → <code>8</code></li>
+    </ul>
+
+    <section class="array-explanation">
+  <h2>3D Array in C: <code>int cube[2][2][2]</code></h2>
+  <p>
+    This declaration creates a <strong>3D array</strong> with:
+    <ul>
+      <li>2 blocks (or layers)</li>
+      <li>Each block has 2 rows</li>
+      <li>Each row has 2 columns</li>
+    </ul>
+    Total elements = 2 × 2 × 2 = 8
+  </p>
+
+  <div class="array-block">
+    <h3>Block 0 (<code>cube[0]</code>)</h3>
+    <div class="grid">
+      <div>cube[0][0][0] = 1</div>
+      <div>cube[0][0][1] = 2</div>
+      <div>cube[0][1][0] = 3</div>
+      <div>cube[0][1][1] = 4</div>
+    </div>
+
+    <h3>Block 1 (<code>cube[1]</code>)</h3>
+    <div class="grid">
+      <div>cube[1][0][0] = 5</div>
+      <div>cube[1][0][1] = 6</div>
+      <div>cube[1][1][0] = 7</div>
+      <div>cube[1][1][1] = 8</div>
+    </div>
+  </div>
+
+  <p><strong>Tip:</strong> Think of it as a cube of data like <code>cube[block][row][column]</code></p>
+</section>
+
+    <h3>Usage:</h3>
+    <ul>
+      <li>Scientific simulations (3D grids)</li>
+      <li>3D games / engines</li>
+      <li>Image and video processing</li>
+    </ul>
+
+    <hr/>
+
+    <h2>✅ Summary Table</h2>
+    <ul>
+      <li><strong>1D Array:</strong> Linear data (list)</li>
+      <li><strong>2D Array:</strong> Tabular or matrix data</li>
+      <li><strong>Multidimensional:</strong> 3D or higher data structures</li>
+    </ul>
+
+    <p><strong>Note:</strong> The more dimensions, the more memory and complexity involved. Start with 1D or 2D for most beginner use cases.</p>
+  </div>
+</body>
+</html>

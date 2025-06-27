@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Memory Allocation in C</title>
+  <style>
+    :root {
+      --primary: #0066cc;
+      --bg: #f2f8ff;
+      --text: #333;
+      --card: #ffffff;
+      --border: #d0e0f0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      background: var(--card);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+
+    h1, h2 {
+      color: var(--primary);
+    }
+
+    code, pre {
+      background: #eef6ff;
+      padding: 12px;
+      border-left: 4px solid var(--primary);
+      overflow-x: auto;
+      display: block;
+    }
+
+    abbr {
+      border-bottom: 1px dotted #666;
+      cursor: help;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dynamic Memory Allocation in C</h1>
+
+    <h2>📌 What is Dynamic Memory Allocation?</h2>
+    <p>
+      <strong>Dynamic Memory Allocation</strong> is the process of allocating memory at runtime using pointers. Unlike <abbr title="Memory allocated during compile time, such as local variables">static memory allocation</abbr>, dynamic memory allows the program to request memory from the <abbr title="Heap is a region of memory used for dynamic allocation">heap</abbr> during execution.
+    </p>
+
+    <h2>🧰 Why Use It?</h2>
+    <ul>
+      <li>When the size of data is not known at compile-time</li>
+      <li>To allocate memory for complex structures like arrays, linked lists, etc.</li>
+      <li>To free memory when it's no longer needed</li>
+    </ul>
+
+    <h2>📚 Functions Used</h2>
+    <ul>
+      <li><code>malloc()</code> – Allocates a single block of memory</li>
+      <li><code>calloc()</code> – Allocates and initializes multiple blocks</li>
+      <li><code>realloc()</code> – Reallocates memory to change its size</li>
+      <li><code>free()</code> – Frees dynamically allocated memory</li>
+    </ul>
+
+    <h2>💡 Example Code</h2>
+    <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int *ptr;
+    int n;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    // Allocate memory using malloc
+    ptr = (int*) malloc(n * sizeof(int));
+
+    // Check if memory is allocated
+    if (ptr == NULL) {
+        printf("Memory allocation failed!");
+        return 1;
+    }
+
+    // Use the memory
+    for (int i = 0; i < n; i++) {
+        ptr[i] = i + 1;
+    }
+
+    printf("Elements: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", ptr[i]);
+    }
+
+    // Free the memory
+    free(ptr);
+
+    return 0;
+}
+    </code></pre>
+
+    <h2>📝 Explanation</h2>
+    <ul>
+      <li><code>malloc(n * sizeof(int))</code> → allocates memory for <code>n</code> integers.</li>
+      <li><code>ptr[i]</code> → accesses the dynamically allocated array.</li>
+      <li><code>free(ptr)</code> → releases the memory to prevent <abbr title="Memory that is no longer used but not freed">memory leaks</abbr>.</li>
+    </ul>
+
+    <h2>⚠️ Tips</h2>
+    <ul>
+      <li>Always check if the pointer returned by <code>malloc()</code> or <code>calloc()</code> is <code>NULL</code>.</li>
+      <li>Don’t forget to <strong>free</strong> the memory after use.</li>
+      <li>Accessing memory after freeing it causes <abbr title="Accessing memory that's been released can crash your program or cause security issues">undefined behavior</abbr>.</li>
+    </ul>
+  </div>
+</body>
+</html>

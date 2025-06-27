@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Types of Bugs in Coding - Explained</title>
+<style>
+  :root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --bg-color: #f0f8ff;
+    --text-color: #333;
+    --card-bg: #fff;
+    --hover-border: #2980b9;
+  }
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  h1, h2 {
+    color: var(--primary-color);
+    text-align: center;
+  }
+  .card {
+    background: var(--card-bg);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--primary-color);
+    transition: border-color 0.3s;
+  }
+  .card:hover {
+    border-color: var(--hover-border);
+  }
+  pre {
+    background: #ecf5fb;
+    padding: 10px;
+    overflow-x: auto;
+    border-radius: 5px;
+  }
+  @media(max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+<h1>Types of Bugs in Coding</h1>
+
+<div class="card">
+  <h2>1. Syntax Error</h2>
+  <p>Occurs when the code violates the grammar rules of the programming language.</p>
+  <pre>// Example:
+console.log("Hello World") // Missing semicolon</pre>
+</div>
+
+<div class="card">
+  <h2>2. Logical Error</h2>
+  <p>Code runs but gives wrong output due to incorrect logic.</p>
+  <pre>// Example:
+function isEven(num) {
+  return num % 2 === 1; // Incorrect logic
+}</pre>
+</div>
+
+<div class="card">
+  <h2>3. Runtime Error</h2>
+  <p>Error that occurs during code execution.</p>
+  <pre>// Example:
+let x = 5 / 0; // Division by zero</pre>
+</div>
+
+<div class="card">
+  <h2>4. Compilation Error</h2>
+  <p>Error prevents the code from compiling (in compiled languages).</p>
+  <pre>// C Example:
+#include <stdio.h>
+int main() {
+  printf("Hello");
+  return 0;
+}</pre>
+</div>
+
+<div class="card">
+  <h2>5. Semantic Error</h2>
+  <p>Code is syntactically correct but does not do what is intended.</p>
+</div>
+
+<div class="card">
+  <h2>6. Interface Error</h2>
+  <p>Error in using external APIs or libraries.</p>
+</div>
+
+<div class="card">
+  <h2>7. Performance Bug</h2>
+  <p>Causes the program to run slower than expected.</p>
+</div>
+
+<div class="card">
+  <h2>8. Security Bug</h2>
+  <p>Creates vulnerabilities, such as SQL injection possibilities.</p>
+</div>
+
+<div class="card">
+  <h2>9. Compatibility Bug</h2>
+  <p>Works in one environment or browser but fails in another.</p>
+</div>
+
+<div class="card">
+  <h2>10. Resource Bug</h2>
+  <p>Related to improper memory or resource usage.</p>
+</div>
+
+<div class="card">
+  <h2>11. Multithreading Bug</h2>
+  <p>Happens in concurrent executions like race conditions.</p>
+</div>
+
+</body>
+</html>
