@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2D and 3D Arrays in C - Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #222;
+      line-height: 1.6;
+      padding: 1rem;
+    }
+    header {
+      background: linear-gradient(to right, #306998, #1e4e8c);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+     h2 {
+      color: #306998;
+    }
+    section {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-left: 5px solid #ffd43b;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+      border-left: 4px solid #306998;
+    }
+    code {
+      font-family: monospace;
+    }
+    footer {
+      margin-top: 2rem;
+      background: #306998;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Understanding 2D and 3D Arrays in C</h1>
+    <p>A beginner-friendly breakdown of how to use multidimensional arrays.</p>
+  </header>
+
+  <section>
+    <h2>🔷 2D Array in C</h2>
+    <p>A 2D array is like a matrix (rows and columns).</p>
+
+    <pre><code>int matrix[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};</code></pre>
+
+    <p>This creates a matrix like:</p>
+    <pre><code>[1, 2, 3]
+[4, 5, 6]</code></pre>
+
+    <h3>🔁 Accessing 2D Array with Loops</h3>
+    <pre><code>for (int i = 0; i < 2; i++) {
+    for (int j = 0; j < 3; j++) {
+        printf("Element at [%d][%d] = %d\n", i, j, matrix[i][j]);
+    }
+}</code></pre>
+
+    <h2>🔷 3D Array in C</h2>
+    <p>A 3D array adds another layer (depth) to the 2D structure.</p>
+
+    <pre><code>int cube[2][2][3] = {
+    {
+        {1, 2, 3},
+        {4, 5, 6}
+    },
+    {
+        {7, 8, 9},
+        {10, 11, 12}
+    }
+};</code></pre>
+
+    <p>This can be visualized as two 2D blocks:</p>
+    <pre><code>Block 0:
+[1, 2, 3]
+[4, 5, 6]
+
+Block 1:
+[7, 8, 9]
+[10, 11, 12]</code></pre>
+
+    <h3>🔁 Accessing 3D Array with Nested Loops</h3>
+    <pre><code>for (int i = 0; i < 2; i++) {
+    for (int j = 0; j < 2; j++) {
+        for (int k = 0; k < 3; k++) {
+            printf("Element at [%d][%d][%d] = %d\n", i, j, k, cube[i][j][k]);
+        }
+    }
+}</code></pre>
+
+    <h3>📚 Use Cases</h3>
+    <ul>
+      <li>2D Arrays: Matrices, tables, seating plans</li>
+      <li>3D Arrays: 3D grids, voxel data, multi-frame image processing</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><strong>ZN Infotech Pvt. Ltd.</strong> — Learn trending technologies with experts</p>
+    <p>📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank" style="color:#ffd43b">zninfotech.com</a></p>
+    <p>Courses: C, C++, Python, IoT, Java, Web Dev, and more.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Virtual Environments and PIP</title>
+  <style>
+    :root {
+      --primary: #004080;
+      --secondary: #ffcc00;
+      --light: #f9f9f9;
+      --dark: #1c1c1c;
+      --accent: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+    }
+
+    pre {
+      background: #eee;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      margin: 0.2rem 0;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🐍 Virtual Environments & PIP in Python</h1>
+  <p>Master Python <abbr title="Isolated workspace for dependencies">virtual environments</abbr> and <abbr title="Python's package installer">PIP</abbr> to manage dependencies efficiently.</p>
+</header>
+
+<section>
+  <h2>🌐 What is a Virtual Environment?</h2>
+  <p>
+    A <strong>virtual environment</strong> is a self-contained directory that contains a Python installation and separate libraries for a project. It allows you to manage project-specific dependencies without affecting global settings.
+  </p>
+
+  <h2>🚀 Why Use Virtual Environments?</h2>
+  <ul>
+    <li>Isolate project dependencies</li>
+    <li>Prevent version conflicts</li>
+    <li>Reproducible builds</li>
+    <li>Cleaner development workflow</li>
+  </ul>
+
+  <h2>🛠️ Creating a Virtual Environment</h2>
+  <pre><code># Step 1: Install virtualenv (optional)
+pip install virtualenv
+
+# Step 2: Create environment
+python -m venv myenv
+
+# Step 3: Activate it
+# Windows:
+myenv\Scripts\activate
+# macOS/Linux:
+source myenv/bin/activate
+
+# Step 4: Deactivate it
+ deactivate</code></pre>
+
+  <h2>📦 What is PIP?</h2>
+  <p>
+    <strong>PIP</strong> is Python’s built-in <abbr title="A tool to install and manage Python packages">package manager</abbr>. You can install packages like <code>requests</code>, <code>flask</code>, or <code>numpy</code> easily.
+  </p>
+
+  <pre><code># Install a package
+pip install requests
+
+# Freeze current dependencies
+pip freeze > requirements.txt
+
+# Install from a requirements file
+pip install -r requirements.txt</code></pre>
+
+  <h2>🔗 References</h2>
+  <ul>
+    <li><a href="https://docs.python.org/3/library/venv.html" target="_blank">Python Docs – venv</a></li>
+    <li><a href="https://pip.pypa.io/en/stable/" target="_blank">PIP Official Docs</a></li>
+  </ul>
+</section>
+
+<footer>
+  <p><strong>ZN Infotech Pvt. Ltd.</strong> — Learn trending technologies with experts</p>
+  <p>📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank" style="color: var(--secondary);">zninfotech.com</a></p>
+  <p>Courses: <abbr title="Internet of Things">IoT</abbr>, Web Development, Mobile App Development, Python, C, C++, Java, JavaScript and more.</p>
+</footer>
+
+</body>
+</html>

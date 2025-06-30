@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Modules and Packages</title>
+  <style>
+    :root {
+      --primary: #004080;
+      --secondary: #ffcc00;
+      --light: #f9f9f9;
+      --dark: #1c1c1c;
+      --accent: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+    }
+
+    pre {
+      background: #eee;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      margin: 0.2rem 0;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📦 Python Modules and Packages</h1>
+  <p>Understand modular programming with <abbr title="A file containing Python code">modules</abbr> and <abbr title="A collection of modules organized in directories">packages</abbr> in Python.</p>
+</header>
+
+<section>
+  <h2>📘 What is a Module?</h2>
+  <p>
+    A <strong>module</strong> is simply a file containing Python definitions and statements. Modules help organize code into manageable sections and enable reuse across multiple programs.
+  </p>
+
+  <h2>📁 What is a Package?</h2>
+  <p>
+    A <strong>package</strong> is a way of organizing related modules into directories. A package must contain a special <code>__init__.py</code> file to be recognized as a package in Python.
+  </p>
+
+  <h2>🛠️ Creating and Using a Module</h2>
+  <pre><code># greetings.py
+
+def say_hello(name):
+    return f"Hello, {name}!"
+
+# main.py
+import greetings
+print(greetings.say_hello("Zoya"))</code></pre>
+
+  <h2>📦 Example of a Package</h2>
+  <pre><code># Directory Structure:
+# mypackage/
+# ├── __init__.py
+# └── tools.py
+
+# tools.py
+
+def multiply(a, b):
+    return a * b
+
+# main.py
+from mypackage import tools
+print(tools.multiply(4, 5))</code></pre>
+
+  <h2>🎯 Why Use Modules and Packages?</h2>
+  <ul>
+    <li>Code reusability</li>
+    <li>Organized structure for large projects</li>
+    <li>Helps avoid name conflicts</li>
+    <li>Makes testing and maintenance easier</li>
+  </ul>
+
+  <h2>🔗 References</h2>
+  <ul>
+    <li><a href="https://docs.python.org/3/tutorial/modules.html" target="_blank">Python Docs – Modules</a></li>
+    <li><a href="https://realpython.com/python-modules-packages/" target="_blank">Real Python – Modules and Packages</a></li>
+  </ul>
+</section>
+
+<footer>
+  <p><strong>ZN Infotech Pvt. Ltd.</strong> — Learn trending technologies with experts</p>
+  <p>📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank" style="color: #ffcc00;">zninfotech.com</a></p>
+  <p>Courses: <abbr title="Internet of Things">IoT</abbr>, Web Development, Mobile App Development, Python, C, C++, Java, JavaScript and more.</p>
+</footer>
+
+</body>
+</html>

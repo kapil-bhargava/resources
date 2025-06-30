@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python File Handling</title>
+  <style>
+    :root {
+      --primary: #004080;
+      --secondary: #ffcc00;
+      --light: #f9f9f9;
+      --dark: #1c1c1c;
+      --accent: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+    }
+
+    pre {
+      background: #eee;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      margin: 0.2rem 0;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📂 File Handling in Python</h1>
+  <p>Understand how to work with files using <abbr title="Input/Output">I/O</abbr> operations in Python.</p>
+</header>
+
+<section>
+  <h2>🔍 What is File Handling?</h2>
+  <p>
+    <strong>File handling</strong> in Python allows you to create, read, update, and delete files directly from your Python code. It is crucial when working with external data, logs, or reports.
+  </p>
+
+  <h2>📁 File Modes in Python</h2>
+  <ul>
+    <li><code>'r'</code> – Read (default): Opens file for reading, error if file doesn’t exist.</li>
+    <li><code>'w'</code> – Write: Creates a new file or truncates existing one.</li>
+    <li><code>'a'</code> – Append: Opens file for appending data to end.</li>
+    <li><code>'x'</code> – Create: Creates file, fails if file already exists.</li>
+    <li><code>'b'</code> – Binary mode (e.g., 'rb' or 'wb')</li>
+    <li><code>'t'</code> – Text mode (default)</li>
+  </ul>
+
+  <h2>🛠 Basic File Operations</h2>
+
+  <h3>📖 1. Opening and Reading a File</h3>
+  <pre><code>file = open("example.txt", "r")
+content = file.read()
+print(content)
+file.close()</code></pre>
+
+  <h3>✍️ 2. Writing to a File</h3>
+  <pre><code>file = open("example.txt", "w")
+file.write("Hello, this is a test.")
+file.close()</code></pre>
+
+  <h3>📌 3. Appending to a File</h3>
+  <pre><code>file = open("example.txt", "a")
+file.write("\nAdding a second line.")
+file.close()</code></pre>
+
+  <h3>✅ 4. Using <code>with</code> for Auto-close</h3>
+  <pre><code>with open("example.txt", "r") as file:
+    print(file.read())</code></pre>
+  <p>
+    This is the recommended way as it automatically <abbr title="Closes the file to free up resources">closes</abbr> the file.
+  </p>
+
+  <h2>💡 Use Cases</h2>
+  <ul>
+    <li>Reading configuration or log files</li>
+    <li>Saving form submissions or reports</li>
+    <li>Creating logs for user activity or errors</li>
+    <li>Handling data imports or exports in CSV format</li>
+  </ul>
+
+  <h2>📚 Best Practices</h2>
+  <ul>
+    <li>Always close the file or use <code>with</code> context manager</li>
+    <li>Handle <abbr title="Unexpected runtime errors">exceptions</abbr> with <code>try...except</code></li>
+    <li>Validate file existence using <code>os.path.exists()</code></li>
+  </ul>
+
+  <h2>🔗 References</h2>
+  <ul>
+    <li><a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank">Python Docs – Reading and Writing Files</a></li>
+    <li><a href="https://www.w3schools.com/python/python_file_handling.asp" target="_blank">W3Schools – File Handling</a></li>
+  </ul>
+</section>
+
+<foote

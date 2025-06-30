@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Variables</title>
+  <style>
+    :root {
+      --primary: #306998;
+      --secondary: #ffd43b;
+      --light: #f9f9f9;
+      --text-dark: #333;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary), #1e4e8c);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.4rem;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-left: 5px solid var(--secondary);
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    code {
+      background-color: #eee;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+      border-left: 5px solid var(--primary);
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--primary);
+      color: white;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Python Variables</h1>
+    <p>Understand how to store and manage data using variables in Python.</p>
+  </header>
+
+  <section>
+    <h2>📂 What are Variables?</h2>
+    <p>A <strong>variable</strong> in Python is a name given to a memory location that stores data. Python automatically assigns the type based on the value.</p>
+
+    <h2>📌 Creating Variables</h2>
+    <pre><code>x = 5         # integer
+y = "Hello"  # string
+z = 3.14      # float</code></pre>
+
+    <h2>✅ Rules for Naming Variables</h2>
+    <ul>
+      <li>Must start with a letter or underscore (_)</li>
+      <li>Cannot begin with a number</li>
+      <li>Can only contain letters, numbers, and underscores</li>
+      <li>Case-sensitive: <code>Age</code> and <code>age</code> are different</li>
+    </ul>
+
+    <h2>🧠 Dynamic Typing</h2>
+    <p>Python allows variables to change type dynamically:</p>
+    <pre><code>x = 10
+x = "Ten"  # now x is a string</code></pre>
+
+    <h2>🔍 Checking Variable Type</h2>
+    <pre><code>x = 25
+print(type(x))</code></pre>
+
+    <h2>📅 Multiple Assignments</h2>
+    <pre><code>a, b, c = 1, 2, 3
+x = y = z = "Same"</code></pre>
+
+    <h2>🔗 Useful References</h2>
+    <ul>
+      <li><a href="https://docs.python.org/3/tutorial/introduction.html#using-python-as-a-calculator" target="_blank">Python.org — Using Python as a Calculator</a></li>
+      <li><a href="https://realpython.com/python-variables/" target="_blank">RealPython — Python Variables and Data Types</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><strong>ZN Infotech Pvt. Ltd.</strong> — Learn trending technologies with experts</p>
+    <p>📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank" style="color:#ffd43b">zninfotech.com</a></p>
+    <p>Courses: IoT, Web Development, Mobile App Development, Python, C, C++, Java, JavaScript, and more.</p>
+  </footer>
+</body>
+</html>

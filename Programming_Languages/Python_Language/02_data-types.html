@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Data Types</title>
+  <style>
+    :root {
+      --primary: #306998;
+      --secondary: #ffd43b;
+      --light: #f9f9f9;
+      --dark: #1a1a1a;
+      --code-bg: #f3f3f3;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-left: 5px solid var(--secondary);
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    p {
+      margin: 0.5rem 0 1rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+      color: var(--primary);
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Python Data Types</h1>
+    <p>Learn the most commonly used built-in data types in Python</p>
+  </header>
+
+  <section>
+    <h2>1. <code>int</code> - Integer</h2>
+    <p>Used to represent whole numbers without a decimal.</p>
+    <pre><code># Example
+age = 25
+print(type(age))  # Output: &lt;class 'int'&gt;</code></pre>
+
+    <h2>2. <code>float</code> - Floating Point Number</h2>
+    <p>Used to represent numbers with decimals (real numbers).</p>
+    <pre><code># Example
+price = 199.99
+print(type(price))  # Output: &lt;class 'float'&gt;</code></pre>
+
+    <h2>3. <code>str</code> - String</h2>
+    <p>Used to represent textual data enclosed in quotes.</p>
+    <pre><code># Example
+name = "Python"
+print(type(name))  # Output: &lt;class 'str'&gt;</code></pre>
+
+    <h2>4. <code>list</code> - List</h2>
+    <p>An ordered, mutable collection. Can contain mixed data types.</p>
+    <pre><code># Example
+colors = ["red", "blue", "green"]
+print(type(colors))  # Output: &lt;class 'list'&gt;</code></pre>
+
+    <h2>5. <code>tuple</code> - Tuple</h2>
+    <p>An ordered, immutable collection. Once created, cannot be changed.</p>
+    <pre><code># Example
+coordinates = (10, 20)
+print(type(coordinates))  # Output: &lt;class 'tuple'&gt;</code></pre>
+
+    <h2>6. <code>dict</code> - Dictionary</h2>
+    <p>Used to store data in key-value pairs. Keys must be unique.</p>
+    <pre><code># Example
+student = {"name": "Alice", "age": 22}
+print(type(student))  # Output: &lt;class 'dict'&gt;</code></pre>
+
+    <h2>7. <code>set</code> - Set</h2>
+    <p>An unordered collection of unique elements (no duplicates).</p>
+    <pre><code># Example
+unique_numbers = {1, 2, 3, 3, 4}
+print(unique_numbers)  # Output: {1, 2, 3, 4}
+print(type(unique_numbers))  # Output: &lt;class 'set'&gt;</code></pre>
+  </section>
+
+  <footer>
+    © 2024 Python Guide | Data Types Explained
+  </footer>
+
+</body>
+</html>

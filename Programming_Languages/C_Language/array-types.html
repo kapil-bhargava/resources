@@ -120,6 +120,15 @@
         padding: 10px;
       }
     }
+    
+    .anchor {
+      background-color: rgb(26, 98, 231);
+      padding: 5px;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+
+    }
   </style>
 </head>
 <body>
@@ -165,28 +174,29 @@ marks →  | 90  | 85  | 78  | 92  | 88  |
 
     <h2>📌 2. Two-Dimensional Array</h2>
     <p>A <strong>2D array</strong> is a table or matrix of elements. It uses two indices: row and column.</p>
-
+    
     <h3>Syntax:</h3>
     <pre><code>data_type array_name[rows][columns];</code></pre>
-
+    
     <h3>Example:</h3>
     <pre><code>int matrix[2][3] = {
-  {1, 2, 3},
-  {4, 5, 6}
-};</code></pre>
-
+      {1, 2, 3},
+      {4, 5, 6}
+    };</code></pre>
+    
     <h3>Diagram:</h3>
     <div class="ascii-diagram">
-          Column →
-         0   1   2
-       +---+---+---+
-Row 0 | 1 | 2 | 3 |
-       +---+---+---+
-Row 1 | 4 | 5 | 6 |
-       +---+---+---+
+      Column →
+      0   1   2
+      +---+---+---+
+      Row 0 | 1 | 2 | 3 |
+      +---+---+---+
+      Row 1 | 4 | 5 | 6 |
+      +---+---+---+
     </div>
-
+    
     <h3>Accessing:</h3>
+    <a href="array-accessing.html" class="anchor">How to access Elements</a>
     <ul>
       <li><code>matrix[0][1]</code> returns <code>2</code></li>
       <li><code>matrix[1][2]</code> returns <code>6</code></li>

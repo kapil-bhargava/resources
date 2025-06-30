@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Conditional Statements</title>
+  <style>
+    :root {
+      --primary: #306998;
+      --secondary: #ffd43b;
+      --light: #f9f9f9;
+      --dark: #1a1a1a;
+      --code-bg: #f3f3f3;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-left: 5px solid var(--secondary);
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+      color: var(--primary);
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Python Conditional Statements</h1>
+    <p>Control the flow of your program using <strong>if</strong>, <strong>elif</strong>, and <strong>else</strong>.</p>
+  </header>
+
+  <section>
+    <h2>🔍 What Are Conditional Statements?</h2>
+    <p>
+      Conditional statements allow your Python programs to make decisions during execution based on conditions. These are also known as <strong>control flow statements</strong>.
+    </p>
+
+    <h2>✅ Syntax</h2>
+    <pre><code>if condition:
+    # block of code if condition is true
+elif another_condition:
+    # block if the elif condition is true
+else:
+    # block if all conditions are false
+</code></pre>
+
+    <h2>📌 Example</h2>
+    <pre><code>age = 18
+
+if age &lt; 13:
+    print("You are a child.")
+elif age &lt; 20:
+    print("You are a teenager.")
+else:
+    print("You are an adult.")
+</code></pre>
+
+    <p><strong>Output:</strong> <code>You are a teenager.</code></p>
+
+    <h2>🧠 Use Cases</h2>
+    <ul>
+      <li>Age-based category check</li>
+      <li>Form validation</li>
+      <li>Role-based access (admin, user, guest)</li>
+      <li>Login authentication</li>
+      <li>Grading system logic</li>
+    </ul>
+
+    <h2>💡 Nested if Statements</h2>
+    <p>You can place one <code>if</code> inside another for deeper decision logic.</p>
+    <pre><code>num = 15
+
+if num &gt; 10:
+    if num &lt; 20:
+        print("Number is between 10 and 20")</code></pre>
+
+    <h2>❗ Tips</h2>
+    <ul>
+      <li>Python uses indentation (4 spaces) to define code blocks.</li>
+      <li>Do not use curly braces like C/C++ or Java.</li>
+      <li>Conditions must return <code>True</code> or <code>False</code>.</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2024 Python Learning — Conditional Statements Explained Clearly.
+  </footer>
+
+</body>
+</html>

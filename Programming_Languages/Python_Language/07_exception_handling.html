@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Exception Handling</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #ffc107; /* Python yellow */
+      --accent: #4b8bbe;    /* Python blue */
+      --light: #f9f9f9;
+      --dark: #1e1e1e;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: var(--primary);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2, h3 {
+      color: var(--accent);
+      margin-top: 2rem;
+    }
+
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+    }
+
+    ul {
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Python Exception Handling</h1>
+    <p>Understanding <abbr title="Handling unexpected situations gracefully">try-except-finally</abbr> blocks in Python</p>
+  </header>
+
+  <section>
+    <h2>📌 What is Exception Handling?</h2>
+    <p>
+      <strong>Exception Handling</strong> allows your program to deal with unexpected errors gracefully,
+      without crashing. Common errors like dividing by zero, accessing unavailable files, or invalid user input
+      can be caught and managed using <code>try</code>, <code>except</code>, and <code>finally</code>.
+    </p>
+
+    <h3>💡 Keywords Explained:</h3>
+    <ul>
+      <li><strong>try:</strong> Code that may cause an <abbr title="Unexpected issue or error during program execution">exception</abbr></li>
+      <li><strong>except:</strong> Block that executes if an exception occurs</li>
+      <li><strong>finally:</strong> Executes no matter what — used for cleanup code (e.g. closing files)</li>
+    </ul>
+
+    <h2>🧪 Example:</h2>
+    <pre><code>try:
+    num = int(input("Enter a number: "))
+    result = 100 / num
+    print("Result:", result)
+
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+
+except ValueError:
+    print("Please enter a valid number!")
+
+finally:
+    print("This block runs no matter what.")</code></pre>
+
+    <h3>🔍 Breakdown:</h3>
+    <ul>
+      <li><strong>ZeroDivisionError:</strong> Triggered if the user enters 0</li>
+      <li><strong>ValueError:</strong> Triggered if the user enters non-numeric input</li>
+      <li><strong>finally:</strong> This message always prints regardless of exception or not</li>
+    </ul>
+
+    <h2>🛠️ Use Cases</h2>
+    <ul>
+      <li>Handling file read/write errors</li>
+      <li>Managing user input validation</li>
+      <li>Working with APIs or network calls that may fail</li>
+      <li>Dealing with database errors</li>
+    </ul>
+
+    <h3>📎 Real World Example (File Handling):</h3>
+    <pre><code>try:
+    with open("data.txt", "r") as file:
+        content = file.read()
+        print(content)
+
+except FileNotFoundError:
+    print("The file doesn't exist.")
+
+finally:
+    print("Execution completed.")</code></pre>
+  </section>
+
+  <footer>
+    © 2024 Python Learning Series | Exception Handling with ❤️
+  </footer>
+</body>
+</html>

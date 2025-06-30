@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Object-Oriented Programming</title>
+  <style>
+    :root {
+      --primary: #004080;
+      --secondary: #ffcc00;
+      --light: #f9f9f9;
+      --dark: #1c1c1c;
+      --accent: #e0e0e0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+    }
+
+    pre {
+      background: #eee;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      margin: 0.2rem 0;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧱 Object-Oriented Programming (OOP) in Python</h1>
+  <p>Learn the foundational concepts of <abbr title="Object-Oriented Programming">OOP</abbr> with practical Python examples.</p>
+</header>
+
+<section>
+  <h2>📌 What is OOP?</h2>
+  <p>
+    <strong>Object-Oriented Programming</strong> is a programming paradigm based on the concept of <abbr title="An instance of a class that contains attributes and behavior">objects</abbr>. It allows structuring code in a way that is modular, reusable, and easier to maintain.
+  </p>
+
+  <h2>🔑 Key Concepts in OOP</h2>
+  <ul>
+    <li><strong>Class</strong>: A blueprint for creating objects (like a template).</li>
+    <li><strong>Object</strong>: A real instance of a class.</li>
+    <li><strong>Attributes</strong>: Variables inside the class.</li>
+    <li><strong>Methods</strong>: Functions defined in a class.</li>
+    <li><strong>Constructor</strong>: Special method <code>__init__()</code> used for initialization.</li>
+    <li><strong>Encapsulation</strong>: Hiding internal state and requiring all interaction to be performed through methods.</li>
+    <li><strong>Inheritance</strong>: One class inherits properties and methods of another.</li>
+    <li><strong>Polymorphism</strong>: The ability to use a common interface for different data types.</li>
+  </ul>
+
+  <h2>🧪 Example: Simple Class & Object</h2>
+  <pre><code>class Student:
+    def __init__(self, name, course):
+        self.name = name
+        self.course = course
+
+    def introduce(self):
+        print(f"Hi, I'm {self.name} and I'm studying {self.course}.")
+
+# Creating objects
+s1 = Student("Ravi", "Python")
+s2 = Student("Anjali", "Data Science")
+
+s1.introduce()
+s2.introduce()</code></pre>
+
+  <h2>🧬 Inheritance Example</h2>
+  <pre><code>class Teacher:
+    def __init__(self, name):
+        self.name = name
+
+    def teach(self):
+        print(f"{self.name} is teaching")
+
+class MathTeacher(Teacher):
+    def teach(self):
+        print(f"{self.name} is teaching Mathematics")
+
+# Inherited behavior
+m1 = MathTeacher("Suman")
+m1.teach()</code></pre>
+
+  <h2>⚙️ Why Use OOP?</h2>
+  <ul>
+    <li>Makes code modular and organized</li>
+    <li>Encourages code reuse through inheritance</li>
+    <li>Makes programs scalable and maintainable</li>
+  </ul>
+
+  <h2>🔗 References</h2>
+  <ul>
+    <li><a href="https://docs.python.org/3/tutorial/classes.html" target="_blank">Python Docs – Classes and Objects</a></li>
+    <li><a href="https://www.w3schools.com/python/python_classes.asp" target="_blank">W3Schools – Python Classes</a></li>
+  </ul>
+</section>
+
+<footer>
+  <p><strong>ZN Infotech Pvt. Ltd.</strong> — Learn trending technologies with experts</p>
+  <p>📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank" style="color: #ffcc00;">zninfotech.com</a></p>
+  <p>Courses: <abbr title="Internet of Things">IoT</abbr>, Web Development, Mobile App Development, Python, C, C++, Java, JavaScript and more.</p>
+</footer>
+
+</body>
+</html>

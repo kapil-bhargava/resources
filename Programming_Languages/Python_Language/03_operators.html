@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Operators</title>
+  <style>
+    :root {
+      --primary: #306998;
+      --secondary: #ffd43b;
+      --light: #f9f9f9;
+      --dark: #1a1a1a;
+      --code-bg: #f3f3f3;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-left: 5px solid var(--secondary);
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+      color: var(--primary);
+    }
+
+    footer {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Python Operators</h1>
+    <p>Learn how Python performs operations on variables and values</p>
+  </header>
+
+  <section>
+    <h2>📌 What are Operators?</h2>
+    <p>
+      <strong>Operators</strong> are special symbols or keywords in Python used to perform operations on values or variables.
+    </p>
+
+    <h2>➕ Arithmetic Operators</h2>
+    <ul>
+      <li><code>+</code> Addition</li>
+      <li><code>-</code> Subtraction</li>
+      <li><code>*</code> Multiplication</li>
+      <li><code>/</code> Division</li>
+      <li><code>%</code> Modulus</li>
+      <li><code>//</code> Floor Division</li>
+      <li><code>**</code> Exponentiation</li>
+    </ul>
+    <pre><code># Example
+a = 10
+b = 3
+print(a + b)    # 13
+print(a ** b)   # 1000</code></pre>
+
+    <h2>🔁 Comparison Operators</h2>
+    <ul>
+      <li><code>==</code> Equal</li>
+      <li><code>!=</code> Not equal</li>
+      <li><code>&gt;</code> Greater than</li>
+      <li><code>&lt;</code> Less than</li>
+      <li><code>&gt;=</code> Greater or equal</li>
+      <li><code>&lt;=</code> Less or equal</li>
+    </ul>
+    <pre><code># Example
+x = 5
+y = 10
+print(x != y)  # True
+print(x &lt; y)   # True</code></pre>
+
+    <h2>⚙️ Assignment Operators</h2>
+    <ul>
+      <li><code>=</code> Assign</li>
+      <li><code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code> etc.</li>
+    </ul>
+    <pre><code># Example
+n = 5
+n += 3   # n = n + 3
+print(n) # 8</code></pre>
+
+    <h2>🔐 Logical Operators</h2>
+    <ul>
+      <li><code>and</code></li>
+      <li><code>or</code></li>
+      <li><code>not</code></li>
+    </ul>
+    <pre><code># Example
+a = True
+b = False
+print(a and b)  # False
+print(not b)    # True</code></pre>
+
+    <h2>🎯 Identity Operators</h2>
+    <ul>
+      <li><code>is</code> – True if objects are same</li>
+      <li><code>is not</code> – True if not same</li>
+    </ul>
+    <pre><code># Example
+x = [1,2]
+y = x
+print(x is y)  # True</code></pre>
+
+    <h2>📚 Membership Operators</h2>
+    <ul>
+      <li><code>in</code></li>
+      <li><code>not in</code></li>
+    </ul>
+    <pre><code># Example
+colors = ["red", "blue"]
+print("red" in colors)  # True</code></pre>
+
+    <h2>💡 Bitwise Operators</h2>
+    <ul>
+      <li><code>&</code> AND</li>
+      <li><code>|</code> OR</li>
+      <li><code>^</code> XOR</li>
+      <li><code>~</code> NOT</li>
+      <li><code>&lt;&lt;</code>, <code>&gt;&gt;</code> Shift left/right</li>
+    </ul>
+    <pre><code># Example
+a = 5  # 0101
+b = 3  # 0011
+print(a & b)  # 1</code></pre>
+  </section>
+
+  <footer>
+    © 2024 Python Operators — All Rights Reserved.
+  </footer>
+
+</body>
+</html>

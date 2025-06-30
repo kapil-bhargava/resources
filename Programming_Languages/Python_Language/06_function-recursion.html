@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Functions & Recursion</title>
+  <style>
+    :root {
+      --primary: #306998;   /* Python Blue */
+      --secondary: #ffd43b; /* Python Yellow */
+      --text-dark: #1a1a1a;
+      --bg-light: #f9f9f9;
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.3rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 2rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    pre {
+      background-color: #f4f4f4;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    abbr {
+      text-decoration: underline dotted;
+      cursor: help;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Functions & Recursion in Python</h1>
+    <p>Break your code into smaller, reusable parts using functions</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>🧩 What is a Function?</h2>
+      <p>
+        A <strong>function</strong> is a reusable block of code that performs a specific task. It helps in reducing code duplication and improves code readability.
+      </p>
+      <p>Functions can take <abbr title="Values passed to the function">parameters</abbr> and can return values.</p>
+    </section>
+
+    <section class="card">
+      <h2>🛠️ Defining and Calling Functions</h2>
+      <pre><code>def greet(name):
+    print("Hello,", name)
+
+greet("Rohan")</code></pre>
+      <p><strong>Output:</strong> Hello, Rohan</p>
+    </section>
+
+    <section class="card">
+      <h2>⚙️ Return Statement</h2>
+      <pre><code>def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print("Sum:", result)</code></pre>
+      <p><strong>Output:</strong> Sum: 8</p>
+    </section>
+
+    <section class="card">
+      <h2>🔁 What is Recursion?</h2>
+      <p>
+        <abbr title="When a function calls itself directly or indirectly">Recursion</abbr> is a technique used to solve problems by breaking them down into smaller subproblems of the same type.
+      </p>
+      <p>Every recursive function must have a <strong>base case</strong> to avoid infinite loops.</p>
+    </section>
+
+    <section class="card">
+      <h2>🧠 Recursion Example</h2>
+      <pre><code>def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print(factorial(5))</code></pre>
+      <p><strong>Output:</strong> 120</p>
+    </section>
+
+    <section class="card">
+      <h2>✅ When to Use Recursion?</h2>
+      <ul>
+        <li>Problems that can be broken into similar subproblems</li>
+        <li>Tree traversal (e.g. file directories, family trees)</li>
+        <li>Mathematical problems like factorial, Fibonacci, etc.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

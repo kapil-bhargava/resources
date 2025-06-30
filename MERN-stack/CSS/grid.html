@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete CSS Grid Learning Hub - ZN Infotech</title>
+  <style>
+    :root {
+      --primary: #4c4cff;
+      --secondary: #6c5ce7;
+      --accent: #ff6b81;
+      --success: #00b894;
+      --warning: #fdcb6e;
+      --bg: #f9f9ff;
+      --white: #ffffff;
+      --text: #212121;
+      --muted: #666;
+      --code-bg: #f3f4f6;
+      --border: #e1e5e9;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      text-align: center;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 8px;
+    }
+
+    p,
+    li {
+      margin-bottom: 12px;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .section {
+      background: var(--white);
+      border-left: 5px solid var(--primary);
+      padding: clamp(15px, 3vw, 25px);
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-2px);
+    }
+
+    .example {
+      background: var(--code-bg);
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      margin: 15px 0;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+
+    .grid-demo {
+      display: grid;
+      gap: 10px;
+      margin: 20px 0;
+      min-height: 200px;
+    }
+
+    .grid-item {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .grid-item:hover {
+      transform: scale(1.05);
+    }
+
+    /* Playground Styles */
+    .playground {
+      background: var(--white);
+      border: 2px solid var(--primary);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 30px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .playground-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .control-group {
+      background: var(--bg);
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .control-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .control-group select,
+    .control-group input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      background: var(--white);
+    }
+
+    .control-group select:focus,
+    .control-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(76, 76, 255, 0.2);
+    }
+
+    .playground-grid {
+      background: #f8f9fa;
+      border: 2px dashed var(--primary);
+      border-radius: 10px;
+      padding: 15px;
+      min-height: 300px;
+    }
+
+    .playground-item {
+      background: linear-gradient(135deg, var(--accent), #ff8fab);
+      color: white;
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .playground-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .playground-item.selected {
+      background: linear-gradient(135deg, var(--success), #55efc4);
+      box-shadow: 0 0 0 3px rgba(0, 184, 148, 0.3);
+    }
+
+    .code-output {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      margin-top: 15px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+    }
+
+    .property-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .property-table th,
+    .property-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .property-table th {
+      background: var(--primary);
+      color: white;
+      font-weight: bold;
+    }
+
+    .property-table tr:hover {
+      background: var(--bg);
+    }
+
+    .tabs {
+      display: flex;
+      background: var(--bg);
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+
+    .tab {
+      padding: 12px 20px;
+      background: var(--muted);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s ease;
+      flex: 1;
+    }
+
+    .tab.active {
+      background: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+      background: var(--white);
+      padding: 20px;
+      border-radius: 0 0 8px 8px;
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding: 20px;
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      .playground-controls {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs {
+        flex-direction: column;
+      }
+
+      .section {
+        padding: 15px;
+      }
+    }
+
+    /* Utility Classes */
+    .highlight {
+      background: linear-gradient(120deg, transparent 0%, var(--warning) 0%, var(--warning) 100%, transparent 100%);
+      background-size: 100% 30%;
+      background-repeat: no-repeat;
+      background-position: 0 85%;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: var(--primary);
+      color: white;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin: 0 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🎯 Complete CSS Grid Learning Hub - ZN Infotech</h1>
+
+    <div class="section">
+      <h2>🔹 What is CSS Grid?</h2>
+      <p>CSS Grid Layout is a <span class="highlight">two-dimensional layout system</span> for the web. It lets you lay
+        content out in rows and columns, and has many features that make building complex layouts straightforward.</p>
+      <p>Unlike Flexbox which is one-dimensional (either row or column), Grid allows you to work with both rows and
+        columns simultaneously, making it perfect for creating entire page layouts.</p>
+
+      <h3>Key Benefits:</h3>
+      <ul>
+        <li><strong>Two-dimensional control:</strong> Manage both rows and columns</li>
+        <li><strong>Responsive by design:</strong> Built-in responsive capabilities</li>
+        <li><strong>Alignment control:</strong> Precise positioning of items</li>
+        <li><strong>Overlapping elements:</strong> Layer items on top of each other</li>
+        <li><strong>Gap control:</strong> Easy spacing between items</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎮 Interactive Grid Playground</h2>
+      <p>Experiment with different grid properties and see the results in real-time!</p>
+
+      <div class="playground">
+        <div class="playground-controls">
+          <div class="control-group">
+            <label for="gridColumns">Grid Template Columns:</label>
+            <select id="gridColumns">
+              <option value="repeat(3, 1fr)">repeat(3, 1fr)</option>
+              <option value="1fr 2fr 1fr">1fr 2fr 1fr</option>
+              <option value="100px 1fr 100px">100px 1fr 100px</option>
+              <option value="repeat(4, 1fr)">repeat(4, 1fr)</option>
+              <option value="repeat(auto-fit, minmax(150px, 1fr))">repeat(auto-fit, minmax(150px, 1fr))</option>
+              <option value="repeat(auto-fill, 100px)">repeat(auto-fill, 100px)</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="gridRows">Grid Template Rows:</label>
+            <select id="gridRows">
+              <option value="auto">auto</option>
+              <option value="repeat(3, 100px)">repeat(3, 100px)</option>
+              <option value="100px 1fr 50px">100px 1fr 50px</option>
+              <option value="repeat(2, 1fr)">repeat(2, 1fr)</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="gridGap">Gap:</label>
+            <input type="range" id="gridGap" min="0" max="30" value="10">
+            <span id="gapValue">10px</span>
+          </div>
+
+          <div class="control-group">
+            <label for="justifyItems">Justify Items:</label>
+            <select id="justifyItems">
+              <option value="stretch">stretch</option>
+              <option value="start">start</option>
+              <option value="center">center</option>
+              <option value="end">end</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="alignItems">Align Items:</label>
+            <select id="alignItems">
+              <option value="stretch">stretch</option>
+              <option value="start">start</option>
+              <option value="center">center</option>
+              <option value="end">end</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="itemCount">Number of Items:</label>
+            <input type="range" id="itemCount" min="3" max="12" value="6">
+            <span id="itemCountValue">6</span>
+          </div>
+        </div>
+
+        <div class="playground-grid" id="playgroundGrid">
+          <!-- Grid items will be generated by JavaScript -->
+        </div>
+
+        <div class="code-output" id="codeOutput">
+          <!-- Generated CSS will appear here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Complete Grid Properties Reference</h2>
+
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('container-props')">Container Properties</button>
+        <button class="tab" onclick="showTab('item-props')">Item Properties</button>
+        <button class="tab" onclick="showTab('examples')">Advanced Examples</button>
+      </div>
+
+      <div id="container-props" class="tab-content active">
+        <h3>Grid Container Properties</h3>
+        <table class="property-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Description</th>
+              <th>Example Values</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>display</code></td>
+              <td>Defines the element as a grid container</td>
+              <td><code>grid</code>, <code>inline-grid</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-template-columns</code></td>
+              <td>Defines the columns of the grid</td>
+              <td><code>1fr 2fr 1fr</code>, <code>repeat(3, 1fr)</code>, <code>100px auto</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-template-rows</code></td>
+              <td>Defines the rows of the grid</td>
+              <td><code>100px 1fr</code>, <code>repeat(3, 100px)</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-template-areas</code></td>
+              <td>Defines named grid areas</td>
+              <td><code>"header header" "sidebar main"</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-template</code></td>
+              <td>Shorthand for rows, columns, and areas</td>
+              <td><code>100px 1fr / 200px 1fr</code></td>
+            </tr>
+            <tr>
+              <td><code>gap</code></td>
+              <td>Sets the gap between rows and columns</td>
+              <td><code>10px</code>, <code>10px 20px</code></td>
+            </tr>
+            <tr>
+              <td><code>row-gap</code></td>
+              <td>Sets the gap between rows only</td>
+              <td><code>10px</code></td>
+            </tr>
+            <tr>
+              <td><code>column-gap</code></td>
+              <td>Sets the gap between columns only</td>
+              <td><code>15px</code></td>
+            </tr>
+            <tr>
+              <td><code>justify-items</code></td>
+              <td>Aligns grid items along the row axis</td>
+              <td><code>start</code>, <code>end</code>, <code>center</code>, <code>stretch</code></td>
+            </tr>
+            <tr>
+              <td><code>align-items</code></td>
+              <td>Aligns grid items along the column axis</td>
+              <td><code>start</code>, <code>end</code>, <code>center</code>, <code>stretch</code></td>
+            </tr>
+            <tr>
+              <td><code>place-items</code></td>
+              <td>Shorthand for align-items and justify-items</td>
+              <td><code>center</code>, <code>start end</code></td>
+            </tr>
+            <tr>
+              <td><code>justify-content</code></td>
+              <td>Aligns the grid along the row axis</td>
+              <td><code>start</code>, <code>end</code>, <code>center</code>, <code>space-between</code></td>
+            </tr>
+            <tr>
+              <td><code>align-content</code></td>
+              <td>Aligns the grid along the column axis</td>
+              <td><code>start</code>, <code>end</code>, <code>center</code>, <code>space-around</code></td>
+            </tr>
+            <tr>
+              <td><code>place-content</code></td>
+              <td>Shorthand for align-content and justify-content</td>
+              <td><code>center</code>, <code>space-between start</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="item-props" class="tab-content">
+        <h3>Grid Item Properties</h3>
+        <table class="property-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Description</th>
+              <th>Example Values</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>grid-column-start</code></td>
+              <td>Specifies where the item starts in the column</td>
+              <td><code>1</code>, <code>span 2</code>, <code>header-start</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-column-end</code></td>
+              <td>Specifies where the item ends in the column</td>
+              <td><code>3</code>, <code>span 2</code>, <code>-1</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-row-start</code></td>
+              <td>Specifies where the item starts in the row</td>
+              <td><code>1</code>, <code>span 3</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-row-end</code></td>
+              <td>Specifies where the item ends in the row</td>
+              <td><code>4</code>, <code>span 1</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-column</code></td>
+              <td>Shorthand for column-start and column-end</td>
+              <td><code>1 / 3</code>, <code>span 2</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-row</code></td>
+              <td>Shorthand for row-start and row-end</td>
+              <td><code>2 / 4</code>, <code>span 2</code></td>
+            </tr>
+            <tr>
+              <td><code>grid-area</code></td>
+              <td>Shorthand for all four line properties or named area</td>
+              <td><code>1 / 1 / 3 / 3</code>, <code>header</code></td>
+            </tr>
+            <tr>
+              <td><code>justify-self</code></td>
+              <td>Aligns the item along the row axis</td>
+              <td><code>start</code>, <code>end</code>, <code>center</code>, <code>stretch</code></td>
+            </tr>
+            <tr>
+              <td><code>align-self</code></td>
+              <td>Aligns the item along the column axis</td>
+              <td><code>start</code>, <code>end</code>, <code>center</code>, <code>stretch</code></td>
+            </tr>
+            <tr>
+              <td><code>place-self</code></td>
+              <td>Shorthand for align-self and justify-self</td>
+              <td><code>center</code>, <code>start end</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="examples" class="tab-content">
+        <h3>Advanced Grid Examples</h3>
+
+        <h4>1. Named Grid Lines</h4>
+        <div class="example">
+          .grid-container {
+          display: grid;
+          grid-template-columns: [sidebar-start] 250px [sidebar-end main-start] 1fr [main-end];
+          grid-template-rows: [header-start] 60px [header-end content-start] 1fr [content-end];
+          }
+
+          .header {
+          grid-column: sidebar-start / main-end;
+          grid-row: header-start / header-end;
+          }
+        </div>
+
+        <h4>2. Grid Template Areas</h4>
+        <div class="example">
+          .layout {
+          display: grid;
+          grid-template-areas:
+          "header header header"
+          "sidebar main aside"
+          "footer footer footer";
+          grid-template-columns: 200px 1fr 150px;
+          grid-template-rows: 60px 1fr 40px;
+          }
+
+          .header { grid-area: header; }
+          .sidebar { grid-area: sidebar; }
+          .main { grid-area: main; }
+          .aside { grid-area: aside; }
+          .footer { grid-area: footer; }
+        </div>
+
+        <h4>3. Responsive Grid with Auto-Fit</h4>
+        <div class="example">
+          .responsive-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+          }
+
+          /* Items automatically wrap to new rows when space is limited */
+        </div>
+
+        <h4>4. Overlapping Grid Items</h4>
+        <div class="example">
+          .overlap-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(3, 100px);
+          }
+
+          .item1 {
+          grid-area: 1 / 1 / 3 / 3; /* Spans 2x2 */
+          z-index: 1;
+          }
+
+          .item2 {
+          grid-area: 2 / 2 / 4 / 4; /* Overlaps with item1 */
+          z-index: 2;
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🔹 Grid Units Explained</h2>
+
+      <h3><span class="badge">fr</span> Fractional Unit</h3>
+      <p>The <code>fr</code> unit represents a fraction of the available space in the grid container.</p>
+      <div class="example">
+        grid-template-columns: 1fr 2fr 1fr;
+        /* First column: 25%, Second column: 50%, Third column: 25% */
+      </div>
+
+      <h3><span class="badge">auto</span> Auto Sizing</h3>
+      <p>The <code>auto</code> keyword sizes tracks based on their content.</p>
+      <div class="example">
+        grid-template-columns: auto 1fr auto;
+        /* First and last columns size to content, middle column takes remaining space */
+      </div>
+
+      <h3><span class="badge">minmax()</span> Function</h3>
+      <p>Defines a size range greater than or equal to min and less than or equal to max.</p>
+      <div class="example">
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        /* Each column is at least 100px but can grow equally */
+      </div>
+
+      <h3><span class="badge">repeat()</span> Function</h3>
+      <p>Repeats track definitions to avoid repetitive code.</p>
+      <div class="example">
+        grid-template-columns: repeat(4, 1fr);
+        /* Same as: 1fr 1fr 1fr 1fr */
+
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* Creates responsive columns that wrap */
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🔹 Common Grid Patterns</h2>
+
+      <h3>1. Holy Grail Layout</h3>
+      <div class="grid-demo"
+        style="grid-template-areas: 'header header header' 'sidebar main aside' 'footer footer footer'; grid-template-columns: 150px 1fr 100px; grid-template-rows: 60px 1fr 40px; height: 300px;">
+        <div class="grid-item" style="grid-area: header;">Header</div>
+        <div class="grid-item" style="grid-area: sidebar;">Sidebar</div>
+        <div class="grid-item" style="grid-area: main;">Main Content</div>
+        <div class="grid-item" style="grid-area: aside;">Aside</div>
+        <div class="grid-item" style="grid-area: footer;">Footer</div>
+      </div>
+
+      <h3>2. Card Grid Layout</h3>
+      <div class="grid-demo" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        <div class="grid-item">Card 1</div>
+        <div class="grid-item">Card 2</div>
+        <div class="grid-item">Card 3</div>
+        <div class="grid-item">Card 4</div>
+      </div>
+
+      <h3>3. Magazine Layout</h3>
+      <div class="grid-demo" style="grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 100px);">
+        <div class="grid-item" style="grid-column: 1 / 3; grid-row: 1 / 3;">Feature Article</div>
+        <div class="grid-item" style="grid-column: 3 / 5;">Article 2</div>
+        <div class="grid-item" style="grid-column: 3 / 4;">Article 3</div>
+        <div class="grid-item" style="grid-column: 4 / 5;">Article 4</div>
+        <div class="grid-item" style="grid-column: 1 / 5;">Advertisement</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🔹 Grid vs Flexbox: When to Use What?</h2>
+
+      <h3>Use CSS Grid when:</h3>
+      <ul>
+        <li>You need to control both rows and columns</li>
+        <li>Creating complex layouts (entire page layouts)</li>
+        <li>You want to overlap elements</li>
+        <li>Working with a known layout structure</li>
+        <li>You need precise control over item placement</li>
+      </ul>
+
+      <h3>Use Flexbox when:</h3>
+      <ul>
+        <li>You're working in one dimension (row or column)</li>
+        <li>Content size is unknown or dynamic</li>
+        <li>You want items to "flex" and fill available space</li>
+        <li>Creating navigation bars, button groups</li>
+        <li>Centering content is the primary goal</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🔹 Browser Support & Best Practices</h2>
+
+      <h3>Browser Support</h3>
+      <p>CSS Grid is supported in all modern browsers. For older browsers, consider:</p>
+      <ul>
+        <li>Using <code>@supports</code> queries for progressive enhancement</li>
+        <li>Providing flexbox or float fallbacks</li>
+        <li>Testing in target browsers</li>
+      </ul>
+
+      <div class="example">
+        @supports (display: grid) {
+        .layout {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        }
+        }
+
+        /* Fallback for older browsers */
+        .layout {
+        display: flex;
+        flex-wrap: wrap;
+        }
+      </div>
+
+      <h3>Best Practices</h3>
+      <ul>
+        <li><strong>Start simple:</strong> Begin with basic grids and add complexity gradually</li>
+        <li><strong>Use semantic HTML:</strong> Grid enhances structure, doesn't replace it</li>
+        <li><strong>Consider accessibility:</strong> Ensure logical tab order and screen reader compatibility</li>
+        <li><strong>Test responsiveness:</strong> Use auto-fit, minmax(), and media queries</li>
+        <li><strong>Name your lines:</strong> Use named grid lines for better maintainability</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      © 2025 ZN Infotech Pvt. Ltd. | Contact: 9565017342 | <a href="https://zninfotech.com"
+        target="_blank">zninfotech.com</a><br>
+      Learn technologies like IoT, Web Development, Programming, Mobile Apps & more.<br>
+      <strong>Master CSS Grid and build amazing layouts! 🚀</strong>
+    </div>
+  </div>
+
+  <script>
+    // Playground functionality
+    const playgroundGrid = document.getElementById('playgroundGrid');
+    const codeOutput = document.getElementById('codeOutput');
+    const gridColumns = document.getElementById('gridColumns');
+    const gridRows = document.getElementById('gridRows');
+    const gridGap = document.getElementById('gridGap');
+    const gapValue = document.getElementById('gapValue');
+    const justifyItems = document.getElementById('justifyItems');
+    const alignItems = document.getElementById('alignItems');
+    const itemCount = document.getElementById('itemCount');
+    const itemCountValue = document.getElementById('itemCountValue');
+
+    let selectedItem = null;
+
+    function updatePlayground() {
+      const columns = gridColumns.value;
+      const rows = gridRows.value;
+      const gap = gridGap.value + 'px';
+      const justify = justifyItems.value;
+      const align = alignItems.value;
+      const count = parseInt(itemCount.value);
+
+      // Update gap display
+      gapValue.textContent = gap;
+      itemCountValue.textContent = count;
+
+      // Apply styles to grid
+      playgroundGrid.style.display = 'grid';
+      playgroundGrid.style.gridTemplateColumns = columns;
+      playgroundGrid.style.gridTemplateRows = rows;
+      playgroundGrid.style.gap = gap;
+      playgroundGrid.style.justifyItems = justify;
+      playgroundGrid.style.alignItems = align;
+
+      // Generate grid items
+      playgroundGrid.innerHTML = '';
+      for (let i = 1; i <= count; i++) {
+        const item = document.createElement('div');
+        item.className = 'playground-item';
+        item.textContent = i;
+        item.onclick = () => selectItem(item, i);
+        playgroundGrid.appendChild(item);
+      }
+
+      // Update code output
+      updateCodeOutput(columns, rows, gap, justify, align);
+    }
+
+    function selectItem(item, number) {
+      // Remove previous selection
+      if (selectedItem) {
+        selectedItem.classList.remove('selected');
+      }
+
+      // Select new item
+      selectedItem = item;
+      item.classList.add('selected');
+
+      // Show item-specific properties
+      showItemProperties(number);
+    }
+
+    function showItemProperties(itemNumber) {
+      const itemProps = `
+/* Selected Item ${itemNumber} Properties */
+.item-${itemNumber} {
+  grid-column: 1 / 3;     /* Span 2 columns */
+  grid-row: 1 / 2;        /* Stay in first row */
+  justify-self: center;   /* Center horizontally */
+  align-self: center;     /* Center vertically */
+}`;
+
+      const currentCode = codeOutput.textContent;
+      codeOutput.textContent = currentCode + '\n\n' + itemProps;
+    }
+
+    function updateCodeOutput(columns, rows, gap, justify, align) {
+      const css = `.grid-container {
+  display: grid;
+  grid-template-columns: ${columns};
+  grid-template-rows: ${rows};
+  gap: ${gap};
+  justify-items: ${justify};
+  align-items: ${align};
+}
+
+.grid-item {
+  /* Individual item styles */
+  background: linear-gradient(135deg, #ff6b81, #ff8fab);
+  color: white;
+  padding: 12px;
+  text-align: center;
+  border-radius: 6px;
+}`;
+
+      codeOutput.textContent = css;
+    }
+
+    // Tab functionality
+    function showTab(tabName) {
+      // Hide all tab contents
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => content.classList.remove('active'));
+
+      // Remove active class from all tabs
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      // Show selected tab content
+      document.getElementById(tabName).classList.add('active');
+
+      // Add active class to clicked tab
+      event.target.classList.add('active');
+    }
+
+    // Event listeners
+    gridColumns.addEventListener('change', updatePlayground);
+    gridRows.addEventListener('change', updatePlayground);
+    gridGap.addEventListener('input', updatePlayground);
+    justifyItems.addEventListener('change', updatePlayground);
+    alignItems.addEventListener('change', updatePlayground);
+    itemCount.addEventListener('input', updatePlayground);
+
+    // Initialize playground
+    updatePlayground();
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add some interactive animations
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+
+
+    sections.forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+
+
+    const connect = mongoose.connect('mongodb://localhost:27017/zninfotech');
+
+    connect.then(() => {
+      console.log('Connected to MongoDB');
+    }).catch(err => {
+      console.error('MongoDB connection error:', err);
+    });
+
+  </script>
+</body>
+
+</html>
