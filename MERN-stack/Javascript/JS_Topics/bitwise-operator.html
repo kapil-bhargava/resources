@@ -1,234 +1,1152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Bitwise Operators in JavaScript</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Guide to JavaScript Bitwise Operators | ZN Infotech</title>
+    <meta name="description" content="Master JavaScript bitwise operators with interactive examples, real-world applications, and comprehensive explanations.">
+    
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background: #f4f6f9;
-      color: #222;
-    }
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #f59e0b;
+            --accent-color: #10b981;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-code: #f1f5f9;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+        html{
+            scroll-behavior: smooth;
+            scroll-padding-top: 60px;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 30px;
-      background: white;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-      border-radius: 10px;
-    }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
 
-    h1, h2, h3 {
-      color: #0a4d8c;
-      margin-top: 30px;
-    }
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
 
-    code {
-      background: #e7f1ff;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-    }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-    .example {
-      background: #f9fcff;
-      border-left: 5px solid #0a4d8c;
-      padding: 15px 20px;
-      margin: 20px 0;
-      border-radius: 6px;
-    }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      background: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-    }
+        /* Container and Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 12px 15px;
-      text-align: center;
-    }
+        .main-content {
+            background: var(--bg-primary);
+            margin: -2rem auto 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            /* overflow: hidden; */
+            position: relative;
+        }
 
-    th {
-      background: #0a4d8c;
-      color: white;
-    }
+        .content-wrapper {
+            padding: 3rem;
+        }
 
-    ul {
-      padding-left: 20px;
-    }
+        /* Navigation */
+        .nav-menu {
+            background: var(--bg-secondary);
+            padding: 1rem 3rem;
+            border-radius: 16px;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky !important;
+            top: 0;
+            z-index: 100;
+        }
 
-    footer {
-      background: linear-gradient(135deg, #0a4d8c, #003366);
-      color: #fff;
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 60px;
-      border-top: 5px solid #007acc;
-    }
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
 
-    footer h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
 
-    footer p {
-      margin: 5px 0;
-    }
+        .nav-menu a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
 
-    .footer-links {
-      margin-top: 15px;
-    }
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.3;
+        }
 
-    .footer-links a {
-      color: #ffd700;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
+        h2 {
+            font-size: 2.5rem;
+            margin: 3rem 0 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
 
-    .footer-links a:hover {
-      color: #ffffff;
-    }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 20px;
-      }
-    }
-  </style>
+        h3 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Code Styles */
+        code {
+            background: var(--bg-code);
+            color: var(--primary-dark);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        pre {
+            background: var(--text-primary);
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+            line-height: 1.5;
+            box-shadow: var(--shadow-md);
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        /* Interactive Examples */
+        .example-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .example-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .example-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .example-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .example-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-primary);
+        }
+
+        th, td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        td code {
+            background: var(--secondary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        /* Interactive Calculator */
+        .calculator {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .calculator h3 {
+            color: white;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calc-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .calc-inputs input, .calc-inputs select {
+            padding: 0.75rem;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .calc-result {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        /* Real-world Examples */
+        .real-world-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .real-world-card {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .real-world-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .real-world-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* External Links */
+        .external-links {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .external-links h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .link-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .link-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .link-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link-card p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--text-primary), #111827);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-wrapper {
+                padding: 1.5rem;
+            }
+            
+            .nav-menu {
+                padding: 1rem 1.5rem;
+            }
+            
+            .nav-menu ul {
+                /* flex-direction: column; */
+                gap: 0.5rem;
+            }
+            
+            .calc-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+    </style>
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <header class="header">
+        <div class="container">
+            <h1 style="color: white;">JavaScript Bitwise Operators</h1>
+            <p style="color: white;">Master the art of bit manipulation with comprehensive examples and real-world applications</p>
+        </div>
+    </header>
 
-  <div class="container">
-    <h1>Bitwise Operators in JavaScript</h1>
+    <div class="container">
+        <main class="main-content">
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#basics">Basics</a></li>
+                    <li><a href="#operators">Operators</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#calculator">Calculator</a></li>
+                    <li><a href="#real-world">Real World</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </nav>
 
-    <h2>What is a <abbr title="Binary Digit">Bit</abbr>?</h2>
-    <p>A <strong>bit</strong> is the smallest unit of data in computing. It can either be <strong>0</strong> or <strong>1</strong>.</p>
-    <p>All numbers in JavaScript are stored internally as <strong>32-bit signed integers</strong> for bitwise operations.</p>
+            <div class="content-wrapper">
+                <section id="basics" class="fade-in">
+                    <h2>Understanding Bits and Binary</h2>
+                    <p>A <strong>bit</strong> (binary digit) is the fundamental unit of information in computing. It can hold one of two values: <code>0</code> or <code>1</code>. When JavaScript performs bitwise operations, it converts numbers to 32-bit signed integers.</p>
+                    
+                    <div class="example-card">
+                        <div class="example-title">
+                            <div class="example-icon">💡</div>
+                            <h3>Binary Representation</h3>
+                        </div>
+                        <p>Here's how decimal numbers are represented in binary:</p>
+                        <pre><code>Decimal 5  = Binary 00000000000000000000000000000101
+Decimal 10 = Binary 00000000000000000000000000001010
+Decimal -1 = Binary 11111111111111111111111111111111</code></pre>
+                        <p><strong>Note:</strong> JavaScript uses Two's Complement for negative numbers.</p>
+                    </div>
+                </section>
 
-    <h2>List of Bitwise Operators</h2>
-    <table>
-      <tr>
-        <th>Operator</th>
-        <th>Symbol</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>AND</td>
-        <td><code>&</code></td>
-        <td>Returns 1 if both bits are 1</td>
-      </tr>
-      <tr>
-        <td>OR</td>
-        <td><code>|</code></td>
-        <td>Returns 1 if either bit is 1</td>
-      </tr>
-      <tr>
-        <td>XOR</td>
-        <td><code>^</code></td>
-        <td>Returns 1 if bits are different</td>
-      </tr>
-      <tr>
-        <td>NOT</td>
-        <td><code>~</code></td>
-        <td>Inverts all the bits</td>
-      </tr>
-      <tr>
-        <td>Left Shift</td>
-        <td><code>&lt;&lt;</code></td>
-        <td>Shifts bits to the left and fills 0s on the right</td>
-      </tr>
-      <tr>
-        <td>Signed Right Shift</td>
-        <td><code>&gt;&gt;</code></td>
-        <td>Shifts bits to the right and preserves the sign</td>
-      </tr>
-      <tr>
-        <td>Zero-Fill Right Shift</td>
-        <td><code>&gt;&gt;&gt;</code></td>
-        <td>Shifts bits to the right and fills left bits with 0s</td>
-      </tr>
-    </table>
+                <section id="operators" class="fade-in">
+                    <h2>Complete Bitwise Operators Reference</h2>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Operator</th>
+                                    <th>Symbol</th>
+                                    <th>Description</th>
+                                    <th>Example</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AND</td>
+                                    <td><code>&</code></td>
+                                    <td>Returns 1 if both bits are 1</td>
+                                    <td><code>5 & 3</code></td>
+                                    <td><code>1</code></td>
+                                </tr>
+                                <tr>
+                                    <td>OR</td>
+                                    <td><code>|</code></td>
+                                    <td>Returns 1 if either bit is 1</td>
+                                    <td><code>5 | 3</code></td>
+                                    <td><code>7</code></td>
+                                </tr>
+                                <tr>
+                                    <td>XOR</td>
+                                    <td><code>^</code></td>
+                                    <td>Returns 1 if bits are different</td>
+                                    <td><code>5 ^ 3</code></td>
+                                    <td><code>6</code></td>
+                                </tr>
+                                <tr>
+                                    <td>NOT</td>
+                                    <td><code>~</code></td>
+                                    <td>Inverts all bits</td>
+                                    <td><code>~5</code></td>
+                                    <td><code>-6</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Left Shift</td>
+                                    <td><code><<</code></td>
+                                    <td>Shifts bits left, fills with 0s</td>
+                                    <td><code>5 << 1</code></td>
+                                    <td><code>10</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Right Shift</td>
+                                    <td><code>>></code></td>
+                                    <td>Shifts bits right, preserves sign</td>
+                                    <td><code>5 >> 1</code></td>
+                                    <td><code>2</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Zero-fill Right Shift</td>
+                                    <td><code>>>></code></td>
+                                    <td>Shifts bits right, fills with 0s</td>
+                                    <td><code>-5 >>> 1</code></td>
+                                    <td><code>2147483645</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
 
-    <h2>How Bitwise Works</h2>
+                <section id="examples" class="fade-in">
+                    <h2>Detailed Examples with Visual Breakdown</h2>
 
-    <div class="example">
-      <h3>Example: <code>5 & 3</code></h3>
-      <p>5 in binary: <code>0101</code><br>
-         3 in binary: <code>0011</code></p>
-      <pre>
-  0101
-& 0011
-  ----
-  0001 → <strong>1</strong>
-      </pre>
+                    <div class="example-card">
+                        <div class="example-title">
+                            <div class="example-icon">&</div>
+                            <h3>Bitwise AND (&)</h3>
+                        </div>
+                        <p>The AND operator compares each bit and returns 1 only if both bits are 1.</p>
+                        <pre><code>// Example: 12 & 10
+12 in binary: 1100
+10 in binary: 1010
+             ----
+Result:       1000 = 8
+
+console.log(12 & 10); // Output: 8</code></pre>
+                        <p><strong>Use Case:</strong> Checking if a number is even: <code>num & 1 === 0</code></p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title">
+                            <div class="example-icon">|</div>
+                            <h3>Bitwise OR (|)</h3>
+                        </div>
+                        <p>The OR operator returns 1 if at least one bit is 1.</p>
+                        <pre><code>// Example: 12 | 10
+12 in binary: 1100
+10 in binary: 1010
+             ----
+Result:       1110 = 14
+
+console.log(12 | 10); // Output: 14</code></pre>
+                        <p><strong>Use Case:</strong> Setting specific bits in flags or permissions.</p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title">
+                            <div class="example-icon">^</div>
+                            <h3>Bitwise XOR (^)</h3>
+                        </div>
+                        <p>XOR returns 1 when bits are different, 0 when they're the same.</p>
+                        <pre><code>// Example: 12 ^ 10
+12 in binary: 1100
+10 in binary: 1010
+             ----
+Result:       0110 = 6
+
+console.log(12 ^ 10); // Output: 6
+
+// XOR Trick: Swapping variables without temp
+let a = 5, b = 3;
+a = a ^ b; // a = 5 ^ 3 = 6
+b = a ^ b; // b = 6 ^ 3 = 5
+a = a ^ b; // a = 6 ^ 5 = 3
+console.log(a, b); // Output: 3, 5</code></pre>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title">
+                            <div class="example-icon">~</div>
+                            <h3>Bitwise NOT (~)</h3>
+                        </div>
+                        <p>NOT inverts all bits. Due to Two's Complement, ~n equals -(n+1).</p>
+                        <pre><code>// Example: ~5
+5 in binary:  00000000000000000000000000000101
+~5 in binary: 11111111111111111111111111111010 = -6
+
+console.log(~5);  // Output: -6
+console.log(~-1); // Output: 0
+
+// Quick trick: ~n === -(n+1)
+console.log(~10 === -11); // true</code></pre>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title">
+                            <div class="example-icon"><<</div>
+                            <h3>Left Shift (<<)</h3>
+                        </div>
+                        <p>Shifts bits to the left, effectively multiplying by 2^n.</p>
+                        <pre><code>// Example: 5 << 2
+5 in binary:    101
+5 << 2:      10100 = 20
+
+console.log(5 << 2); // Output: 20
+console.log(3 << 4); // Output: 48 (3 * 2^4)
+
+// Fast multiplication by powers of 2
+console.log(7 << 3); // 7 * 8 = 56</code></pre>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title">
+                            <div class="example-icon">>></div>
+                            <h3>Right Shift (>>)</h3>
+                        </div>
+                        <p>Shifts bits right while preserving the sign bit.</p>
+                        <pre><code>// Example: 20 >> 2
+20 in binary:   10100
+20 >> 2:          101 = 5
+
+console.log(20 >> 2); // Output: 5
+console.log(-20 >> 2); // Output: -5 (sign preserved)
+
+// Fast division by powers of 2 (floor division)
+console.log(15 >> 1); // 15 / 2 = 7 (floor)</code></pre>
+                    </div>
+                </section>
+
+                <section id="calculator" class="fade-in">
+                    <h2>Interactive Bitwise Calculator</h2>
+                    <div class="calculator">
+                        <h3>🧮 Try Bitwise Operations</h3>
+                        <div class="calc-inputs">
+                            <input type="number" id="num1" placeholder="First Number" value="5">
+                            <select id="operator">
+                                <option value="&">AND (&)</option>
+                                <option value="|">OR (|)</option>
+                                <option value="^">XOR (^)</option>
+                                <option value="<<">Left Shift (<<)</option>
+                                <option value=">>">Right Shift (>>)</option>
+                                <option value=">>>">Zero-fill Right Shift (>>>)</option>
+                            </select>
+                            <input type="number" id="num2" placeholder="Second Number" value="3">
+                        </div>
+                        <div class="calc-result" id="calcResult">
+                            Result: 5 & 3 = 1
+                        </div>
+                    </div>
+                </section>
+
+                <section id="real-world" class="fade-in">
+                    <h2>Real-World Applications</h2>
+                    
+                    <div class="real-world-grid">
+                        <div class="real-world-card">
+                            <h4>🔐 Permission Systems</h4>
+                            <p>Many systems use bitwise operations for managing user permissions efficiently.</p>
+                            <pre><code>// Permission flags
+const PERMISSIONS = {
+  READ: 1,    // 001
+  WRITE: 2,   // 010
+  EXECUTE: 4  // 100
+};
+
+// Grant multiple permissions
+let userPerms = PERMISSIONS.READ | PERMISSIONS.WRITE;
+
+// Check if user has specific permission
+function hasPermission(userPerms, permission) {
+  return (userPerms & permission) === permission;
+}
+
+console.log(hasPermission(userPerms, PERMISSIONS.READ)); // true
+console.log(hasPermission(userPerms, PERMISSIONS.EXECUTE)); // false</code></pre>
+                        </div>
+
+                        <div class="real-world-card">
+                            <h4>🎨 Color Manipulation</h4>
+                            <p>RGB colors are often stored as single integers and manipulated with bitwise operations.</p>
+                            <pre><code>// Extract RGB components from hex color
+function extractRGB(color) {
+  const r = (color >> 16) & 0xFF;  // Red
+  const g = (color >> 8) & 0xFF;   // Green
+  const b = color & 0xFF;          // Blue
+  return { r, g, b };
+}
+
+// Combine RGB into single value
+function combineRGB(r, g, b) {
+  return (r << 16) | (g << 8) | b;
+}
+
+const purple = 0x800080;
+console.log(extractRGB(purple)); // {r: 128, g: 0, b: 128}</code></pre>
+                        </div>
+
+                        <div class="real-world-card">
+                            <h4>⚡ Performance Optimizations</h4>
+                            <p>Bitwise operations are extremely fast and used in performance-critical code.</p>
+                            <pre><code>// Fast even/odd check
+function isEven(n) {
+  return (n & 1) === 0;
+}
+
+// Fast multiplication/division by powers of 2
+function multiplyBy8(n) {
+  return n << 3;  // Much faster than n * 8
+}
+
+function divideBy4(n) {
+  return n >> 2;  // Much faster than Math.floor(n / 4)
+}
+
+// Fast absolute value for 32-bit integers
+function fastAbs(n) {
+  const mask = n >> 31;
+  return (n + mask) ^ mask;
+}</code></pre>
+                        </div>
+
+                        <div class="real-world-card">
+                            <h4>🎯 Bit Flags in React</h4>
+                            <p>React internally uses bitwise operations for managing component update priorities.</p>
+                            <pre><code>// Feature flags system
+const FEATURES = {
+  DARK_MODE: 1,      // 0001
+  NOTIFICATIONS: 2,  // 0010
+  ANALYTICS: 4,      // 0100
+  BETA_FEATURES: 8   // 1000
+};
+
+class FeatureManager {
+  constructor() {
+    this.flags = 0;
+  }
+  
+  enable(feature) {
+    this.flags |= feature;
+  }
+  
+  disable(feature) {
+    this.flags &= ~feature;
+  }
+  
+  isEnabled(feature) {
+    return (this.flags & feature) !== 0;
+  }
+}
+
+const features = new FeatureManager();
+features.enable(FEATURES.DARK_MODE | FEATURES.NOTIFICATIONS);
+console.log(features.isEnabled(FEATURES.DARK_MODE)); // true</code></pre>
+                        </div>
+
+                        <div class="real-world-card">
+                            <h4>🔢 Hash Functions</h4>
+                            <p>Bitwise operations are fundamental in creating hash functions for data structures.</p>
+                            <pre><code>// Simple hash function using bitwise operations
+function simpleHash(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32-bit integer
+  }
+  return hash;
+}
+
+// Bloom filter implementation
+class BloomFilter {
+  constructor(size) {
+    this.size = size;
+    this.bits = new Array(Math.ceil(size / 32)).fill(0);
+  }
+  
+  add(item) {
+    const hash1 = this.hash1(item) % this.size;
+    const hash2 = this.hash2(item) % this.size;
+    
+    this.setBit(hash1);
+    this.setBit(hash2);
+  }
+  
+  setBit(index) {
+    const arrayIndex = Math.floor(index / 32);
+    const bitIndex = index % 32;
+    this.bits[arrayIndex] |= (1 << bitIndex);
+  }
+}</code></pre>
+                        </div>
+
+                        <div class="real-world-card">
+                            <h4>🎮 Game Development</h4>
+                            <p>Bitwise operations are crucial in game development for state management and optimizations.</p>
+                            <pre><code>// Game entity state flags
+const ENTITY_FLAGS = {
+  ALIVE: 1,
+  MOVING: 2,
+  ATTACKING: 4,
+  DEFENDING: 8,
+  INVISIBLE: 16
+};
+
+class GameEntity {
+  constructor() {
+    this.flags = ENTITY_FLAGS.ALIVE;
+  }
+  
+  addState(state) {
+    this.flags |= state;
+  }
+  
+  removeState(state) {
+    this.flags &= ~state;
+  }
+  
+  hasState(state) {
+    return (this.flags & state) !== 0;
+  }
+  
+  // Toggle state
+  toggleState(state) {
+    this.flags ^= state;
+  }
+}
+
+const player = new GameEntity();
+player.addState(ENTITY_FLAGS.MOVING | ENTITY_FLAGS.ATTACKING);
+console.log(player.hasState(ENTITY_FLAGS.MOVING)); // true</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="resources" class="fade-in">
+                    <h2>External Resources & Further Learning</h2>
+                    
+                    <div class="external-links">
+                        <h3>📚 Recommended Resources</h3>
+                        <div class="links-grid">
+                            <div class="link-card">
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators" target="_blank">MDN Web Docs - Bitwise Operators</a>
+                                <p>Comprehensive documentation with examples and browser compatibility</p>
+                            </div>
+                            <div class="link-card">
+                                <a href="https://javascript.info/bitwise-operators" target="_blank">JavaScript.info - Bitwise Operators</a>
+                                <p>Detailed tutorial with interactive examples and practical applications</p>
+                            </div>
+                            <div class="link-card">
+                                <a href="https://www.hackerrank.com/domains/algorithms?filters%5Bsubdomains%5D%5B%5D=bit-manipulation" target="_blank">HackerRank - Bit Manipulation</a>
+                                <p>Practice problems to master bitwise operations</p>
+                            </div>
+                            <div class="link-card">
+                                <a href="https://leetcode.com/tag/bit-manipulation/" target="_blank">LeetCode - Bit Manipulation</a>
+                                <p>Coding challenges focused on bitwise operations</p>
+                            </div>
+                            <div class="link-card">
+                                <a href="https://graphics.stanford.edu/~seander/bithacks.html" target="_blank">Stanford Bit Twiddling Hacks</a>
+                                <p>Collection of efficient bit manipulation techniques</p>
+                            </div>
+                            <div class="link-card">
+                                <a href="https://www.youtube.com/watch?v=NLKQEOgBAnw" target="_blank">YouTube - Bitwise Operators Explained</a>
+                                <p>Visual explanation of how bitwise operations work</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title">
+                            <div class="example-icon">🛠️</div>
+                            <h3>Tools for Learning</h3>
+                        </div>
+                        <ul style="list-style-type: none; padding: 0;">
+                            <li>🔗 <a href="https://www.rapidtables.com/convert/number/decimal-to-binary.html" target="_blank">Decimal to Binary Converter</a></li>
+                            <li>🔗 <a href="https://bitwisecmd.com/" target="_blank">Bitwise Command Line Tool</a></li>
+                            <li>🔗 <a href="https://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html" target="_blank">Number Base Converter</a></li>
+                            <li>🔗 <a href="https://www.calculator.net/binary-calculator.html" target="_blank">Binary Calculator</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title">
+                            <div class="example-icon">📖</div>
+                            <h3>Books & Advanced Reading</h3>
+                        </div>
+                        <ul style="list-style-type: none; padding: 0;">
+                            <li>📚 "Hacker's Delight" by Henry S. Warren Jr.</li>
+                            <li>📚 "Computer Systems: A Programmer's Perspective" by Bryant & O'Hallaron</li>
+                            <li>📚 "The Art of Computer Programming" by Donald Knuth</li>
+                            <li>📚 "Bitwise: A Life in Code" by David Auerbach</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="fade-in">
+                    <h2>Quick Reference Cheat Sheet</h2>
+                    <div class="example-card">
+                        <pre><code>// Common Bitwise Patterns
+
+// Check if number is power of 2
+function isPowerOfTwo(n) {
+  return n > 0 && (n & (n - 1)) === 0;
+}
+
+// Count number of set bits (1s)
+function countSetBits(n) {
+  let count = 0;
+  while (n) {
+    count += n & 1;
+    n >>= 1;
+  }
+  return count;
+}
+
+// Find the only non-duplicate in array
+function findSingle(arr) {
+  return arr.reduce((a, b) => a ^ b, 0);
+}
+
+// Check if nth bit is set
+function isBitSet(num, n) {
+  return (num & (1 << n)) !== 0;
+}
+
+// Set nth bit
+function setBit(num, n) {
+  return num | (1 << n);
+}
+
+// Clear nth bit
+function clearBit(num, n) {
+  return num & ~(1 << n);
+}
+
+// Toggle nth bit
+function toggleBit(num, n) {
+  return num ^ (1 << n);
+}</code></pre>
+                    </div>
+                </section>
+            </div>
+        </main>
     </div>
 
-    <div class="example">
-      <h3>Example: <code>5 | 3</code></h3>
-      <pre>
-  0101
-| 0011
-  ----
-  0111 → <strong>7</strong>
-      </pre>
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ZN Infotech Pvt. Ltd.</h3>
+                    <p>Empowering developers with cutting-edge programming education and training solutions.</p>
+                    <p>📞 <strong>Call:</strong> 9565017342</p>
+                    <p>✉️ <strong>Email:</strong> kapil.twoscience@gmail.com <br> 
+                     info@zninfotech.com </p>
+                    
+                </div>
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="https://zninfotech.com/courses/javascript" target="_blank">JavaScript Training</a></li>
+                        <li><a href="https://zninfotech.com/courses/react" target="_blank">React Development</a></li>
+                        <li><a href="https://zninfotech.com/courses/nodejs" target="_blank">Node.js Backend</a></li>
+                        <li><a href="https://zninfotech.com/courses/iot" target="_blank">IoT Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="https://zninfotech.com" target="_blank">Official Website</a></li>
+                        <li><a href="https://zninfotech.com/courses" target="_blank">All Courses</a></li>
+                        <li><a href="https://zninfotech.com/about" target="_blank">About Us</a></li>
+                        <li><a href="https://maps.google.com?q=zninfotech" target="_blank">Find Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="https://linkedin.com/company/zninfotech" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/zninfotech" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com/zninfotech" target="_blank">GitHub</a></li>
+                        <li><a href="https://youtube.com/zninfotech" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2010 ZN Infotech Pvt. Ltd. All rights reserved. | Crafted with ❤️ for developers</p>
+            </div>
+        </div>
+    </footer>
 
-    <div class="example">
-      <h3>Example: <code>~5</code></h3>
-      <p>
-        5 in 32-bit binary: <code>00000000000000000000000000000101</code><br>
-        Inverts to:         <code>11111111111111111111111111111010</code> → <strong>-6</strong>
-      </p>
-    </div>
+    <script>
+        // Interactive Calculator
+        function updateCalculator() {
+            const num1 = parseInt(document.getElementById('num1').value) || 0;
+            const num2 = parseInt(document.getElementById('num2').value) || 0;
+            const operator = document.getElementById('operator').value;
+            let result;
+            
+            switch(operator) {
+                case '&':
+                    result = num1 & num2;
+                    break;
+                case '|':
+                    result = num1 | num2;
+                    break;
+                case '^':
+                    result = num1 ^ num2;
+                    break;
+                case '<<':
+                    result = num1 << num2;
+                    break;
+                case '>>':
+                    result = num1 >> num2;
+                    break;
+                case '>>>':
+                    result = num1 >>> num2;
+                    break;
+                default:
+                    result = 0;
+            }
+            
+            document.getElementById('calcResult').textContent = 
+                `Result: ${num1} ${operator} ${num2} = ${result}`;
+        }
 
-    <div class="example">
-      <h3>Example: <code>2 &lt;&lt; 2</code></h3>
-      <p>2 in binary: <code>0010</code> → shift left → <code>1000</code> → <strong>8</strong></p>
-    </div>
+        // Event listeners for calculator
+        document.getElementById('num1').addEventListener('input', updateCalculator);
+        document.getElementById('num2').addEventListener('input', updateCalculator);
+        document.getElementById('operator').addEventListener('change', updateCalculator);
 
-    <div class="example">
-      <h3>Example: <code>8 &gt;&gt; 1</code></h3>
-      <p>8 in binary: <code>1000</code> → shift right → <code>0100</code> → <strong>4</strong></p>
-    </div>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    <h2>Where Are Bitwise Operators Used?</h2>
-    <ul>
-      <li>Low-level system operations</li>
-      <li>Cryptography</li>
-      <li>Permission & flag systems</li>
-      <li>Data compression</li>
-      <li>Graphics & hardware-level programming</li>
-    </ul>
-  </div>
+        // Progress bar
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        }
 
-  <footer>
-    <h2 style="color: white;">ZN Infotech Pvt. Ltd.</h2>
-    <p>Smart Training & Development in Programming, Web & App, IoT, and more.</p>
-    <p>📞 <strong>Call us:</strong> 9565017342</p>
-    <p class="footer-links">
-      <a href="https://zninfotech.com" target="_blank">Official Website</a> |
-      <a href="https://zninfotech.com/courses" target="_blank">Courses</a> |
-      <a href="mailto:contact@zninfotech.com">Email Us</a> |
-      <a href="https://maps.google.com?q=zninfotech" target="_blank">Find Us</a>
-    </p>
-    <p>© 2025 ZN Infotech Pvt. Ltd. All rights reserved.</p>
-  </footer>
+        window.addEventListener('scroll', updateProgressBar);
 
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Initialize calculator
+        updateCalculator();
+    </script>
 </body>
 </html>
