@@ -2,160 +2,1190 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HTML Block and Inline Elements Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete HTML Elements Reference</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f4f8;
-            margin: 20px;
-            padding: 20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        h1, h2 {
-            color: #333;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5;
+            color: #1f2937;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .header {
             text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .block-header {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 40px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            text-align: left;
         }
 
         th {
-            background-color: #007BFF;
-            color: white;
+            background: #f8fafc;
+            color: #374151;
+            font-weight: 600;
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 2px solid #e5e7eb;
+            font-size: 0.875rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.05em;
         }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+            font-size: 0.875rem;
         }
 
         tr:hover {
-            background-color: #e9f3ff;
-            transition: background-color 0.2s ease-in-out;
+            background: #f8fafc;
+            transition: background-color 0.15s ease;
         }
 
-        .table-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        footer {
+        .serial-number {
+            font-weight: 700;
+            color: #4f46e5;
             text-align: center;
-            margin-top: 40px;
-            color: #666;
-            font-size: 14px;
+            font-size: 1rem;
+        }
+
+        .block-serial {
+            color: #059669;
+        }
+
+        .element-tag {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #1e293b;
+            color: #64ffda;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .description {
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .use-case {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+
+        .example {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 0.4rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.75rem;
+            color: #475569;
+            margin-bottom: 0.25rem;
+        }
+
+        .output {
+            background: #ecfdf5;
+            border: 1px solid #d1fae5;
+            border-radius: 4px;
+            padding: 0.3rem;
+            font-size: 0.8rem;
+            color: #065f46;
+        }
+
+        .tag-type {
+            display: inline-block;
+            padding: 0.15rem 0.4rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .block-type {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .inline-type {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .header h1 { font-size: 2rem; }
+            th, td { padding: 0.5rem; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Complete HTML Elements Reference</h1>
+            <p>All HTML elements with examples and use cases</p>
+        </div>
 
-    <h1>HTML Elements Reference</h1>
+        <div class="section">
+            <div class="section-header block-header">
+                📦 Block-level Elements
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 8%;">#</th>
+                        <th style="width: 15%;">Element</th>
+                        <th style="width: 22%;">Description</th>
+                        <th style="width: 27%;">Example</th>
+                        <th style="width: 28%;">Use Case & Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="serial-number block-serial">1</span></td>
+                        <td><span class="element-tag">&lt;address&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Contact information</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;address&gt;<br>Email: john@example.com<br>Phone: 123-456-7890<br>&lt;/address&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Footer contact details, author info</div>
+                            <div class="output">Email: john@example.com<br>Phone: 123-456-7890</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">2</span></td>
+                        <td><span class="element-tag">&lt;article&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Self-contained content</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;article&gt;<br>&lt;h2&gt;News Title&lt;/h2&gt;<br>&lt;p&gt;Article content...&lt;/p&gt;<br>&lt;/article&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Blog posts, news articles, forum posts</div>
+                            <div class="output"><strong>News Title</strong><br>Article content...</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">3</span></td>
+                        <td><span class="element-tag">&lt;aside&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Sidebar content</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;aside&gt;<br>&lt;h3&gt;Related&lt;/h3&gt;<br>&lt;p&gt;Side content&lt;/p&gt;<br>&lt;/aside&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Sidebars, pull quotes, ads</div>
+                            <div class="output">Related<br>Side content</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">4</span></td>
+                        <td><span class="element-tag">&lt;blockquote&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Extended quotation</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;blockquote&gt;<br>"Long quote here..."<br>&lt;/blockquote&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Long quotes, testimonials</div>
+                            <div class="output" style="border-left: 3px solid #e5e7eb; padding-left: 0.5rem;">"Long quote here..."</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">5</span></td>
+                        <td><span class="element-tag">&lt;canvas&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Graphics container</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;canvas id="myCanvas" width="200" height="100"&gt;<br>&lt;/canvas&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Charts, games, animations</div>
+                            <div class="output">🎨 [Canvas drawing area]</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">6</span></td>
+                        <td><span class="element-tag">&lt;dd&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Description of term</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;dl&gt;<br>&lt;dt&gt;HTML&lt;/dt&gt;<br>&lt;dd&gt;Markup language&lt;/dd&gt;<br>&lt;/dl&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Glossaries, definitions</div>
+                            <div class="output">HTML<br>&nbsp;&nbsp;Markup language</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">7</span></td>
+                        <td><span class="element-tag">&lt;div&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Generic container</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;div class="container"&gt;<br>&lt;p&gt;Content&lt;/p&gt;<br>&lt;/div&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Layout, styling wrapper</div>
+                            <div class="output">Content</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">8</span></td>
+                        <td><span class="element-tag">&lt;dl&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Description list</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;dl&gt;<br>&lt;dt&gt;Term&lt;/dt&gt;<br>&lt;dd&gt;Definition&lt;/dd&gt;<br>&lt;/dl&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Glossaries, metadata</div>
+                            <div class="output">Term<br>&nbsp;&nbsp;Definition</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">9</span></td>
+                        <td><span class="element-tag">&lt;dt&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Term in description list</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;dt&gt;CSS&lt;/dt&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Terms, names, labels</div>
+                            <div class="output"><strong>CSS</strong></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">10</span></td>
+                        <td><span class="element-tag">&lt;fieldset&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Group form fields</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;fieldset&gt;<br>&lt;legend&gt;Personal Info&lt;/legend&gt;<br>&lt;input type="text"&gt;<br>&lt;/fieldset&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Form sections, accessibility</div>
+                            <div class="output">┌ Personal Info ┐<br>│ [text input] │<br>└──────────────┘</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">11</span></td>
+                        <td><span class="element-tag">&lt;figcaption&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Caption for figure</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;figure&gt;<br>&lt;img src="pic.jpg"&gt;<br>&lt;figcaption&gt;Caption&lt;/figcaption&gt;<br>&lt;/figure&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Image captions, descriptions</div>
+                            <div class="output">🖼️ [Image]<br><em>Caption</em></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">12</span></td>
+                        <td><span class="element-tag">&lt;figure&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Image with caption</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;figure&gt;<br>&lt;img src="chart.png"&gt;<br>&lt;figcaption&gt;Sales Chart&lt;/figcaption&gt;<br>&lt;/figure&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Images, diagrams, code blocks</div>
+                            <div class="output">📊 [Chart Image]<br><em>Sales Chart</em></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">13</span></td>
+                        <td><span class="element-tag">&lt;footer&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Footer section</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;footer&gt;<br>&copy; 2025 Company<br>&lt;/footer&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Page footers, copyright</div>
+                            <div class="output">© 2025 Company</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">14</span></td>
+                        <td><span class="element-tag">&lt;form&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Form container</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;form action="/submit"&gt;<br>&lt;input type="email"&gt;<br>&lt;button&gt;Submit&lt;/button&gt;<br>&lt;/form&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">User input, data collection</div>
+                            <div class="output">[email input] [Submit]</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">15</span></td>
+                        <td><span class="element-tag">&lt;h1&gt; to &lt;h6&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Headings (h1 largest)</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;h1&gt;Main Title&lt;/h1&gt;<br>&lt;h2&gt;Section&lt;/h2&gt;<br>&lt;h3&gt;Subsection&lt;/h3&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Content hierarchy, SEO</div>
+                            <div class="output"><h1 style="font-size: 1.2em; margin: 0;">Main Title</h1><h2 style="font-size: 1em; margin: 0;">Section</h2></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">16</span></td>
+                        <td><span class="element-tag">&lt;header&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Header section</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;header&gt;<br>&lt;h1&gt;Site Title&lt;/h1&gt;<br>&lt;nav&gt;Menu&lt;/nav&gt;<br>&lt;/header&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Page headers, navigation</div>
+                            <div class="output"><strong>Site Title</strong><br>Menu</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">17</span></td>
+                        <td><span class="element-tag">&lt;hr&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Horizontal rule</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;Section 1&lt;/p&gt;<br>&lt;hr&gt;<br>&lt;p&gt;Section 2&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Section breaks, dividers</div>
+                            <div class="output">Section 1<br>────────<br>Section 2</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">18</span></td>
+                        <td><span class="element-tag">&lt;li&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">List item</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;ul&gt;<br>&lt;li&gt;Item 1&lt;/li&gt;<br>&lt;li&gt;Item 2&lt;/li&gt;<br>&lt;/ul&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Menu items, feature lists</div>
+                            <div class="output">• Item 1<br>• Item 2</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">19</span></td>
+                        <td><span class="element-tag">&lt;main&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Main content area</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;main&gt;<br>&lt;article&gt;Main content&lt;/article&gt;<br>&lt;/main&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Primary content, accessibility</div>
+                            <div class="output">Main content</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">20</span></td>
+                        <td><span class="element-tag">&lt;nav&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Navigation section</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;nav&gt;<br>&lt;a href="/"&gt;Home&lt;/a&gt;<br>&lt;a href="/about"&gt;About&lt;/a&gt;<br>&lt;/nav&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Menus, breadcrumbs</div>
+                            <div class="output"><a href="#" style="color: #3b82f6;">Home</a> <a href="#" style="color: #3b82f6;">About</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">21</span></td>
+                        <td><span class="element-tag">&lt;noscript&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">No JavaScript fallback</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;noscript&gt;<br>Please enable JavaScript<br>&lt;/noscript&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Accessibility, fallbacks</div>
+                            <div class="output">Please enable JavaScript</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">22</span></td>
+                        <td><span class="element-tag">&lt;ol&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Ordered list</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;ol&gt;<br>&lt;li&gt;First step&lt;/li&gt;<br>&lt;li&gt;Second step&lt;/li&gt;<br>&lt;/ol&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Instructions, rankings</div>
+                            <div class="output">1. First step<br>2. Second step</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">23</span></td>
+                        <td><span class="element-tag">&lt;p&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Paragraph</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;This is a paragraph of text content.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Body text, descriptions</div>
+                            <div class="output">This is a paragraph of text content.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">24</span></td>
+                        <td><span class="element-tag">&lt;pre&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Preformatted text</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;pre&gt;<br>  Code block<br>    with spacing<br>&lt;/pre&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Code blocks, ASCII art</div>
+                            <div class="output" style="font-family: monospace;">  Code block<br>    with spacing</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">25</span></td>
+                        <td><span class="element-tag">&lt;section&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Content section</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;section&gt;<br>&lt;h2&gt;About Us&lt;/h2&gt;<br>&lt;p&gt;Content...&lt;/p&gt;<br>&lt;/section&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Page sections, chapters</div>
+                            <div class="output"><strong>About Us</strong><br>Content...</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">26</span></td>
+                        <td><span class="element-tag">&lt;table&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Table container</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;table&gt;<br>&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;<br>&lt;tr&gt;&lt;td&gt;John&lt;/td&gt;&lt;/tr&gt;<br>&lt;/table&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Data tables, layouts</div>
+                            <div class="output">┌──────┐<br>│ Name │<br>├──────┤<br>│ John │<br>└──────┘</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">27</span></td>
+                        <td><span class="element-tag">&lt;ul&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Unordered list</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;ul&gt;<br>&lt;li&gt;Apple&lt;/li&gt;<br>&lt;li&gt;Orange&lt;/li&gt;<br>&lt;/ul&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Navigation, feature lists</div>
+                            <div class="output">• Apple<br>• Orange</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number block-serial">28</span></td>
+                        <td><span class="element-tag">&lt;video&gt;</span></td>
+                        <td>
+                            <div class="tag-type block-type">Block</div>
+                            <div class="description">Video container</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;video controls&gt;<br>&lt;source src="movie.mp4"&gt;<br>&lt;/video&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Media content, tutorials</div>
+                            <div class="output">🎥 [Video Player Controls]</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <div class="table-container">
-        <h2>📦 Block-level Elements</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Element</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>&lt;address&gt;</td><td>Contact information</td></tr>
-                <tr><td>&lt;article&gt;</td><td>Self-contained article</td></tr>
-                <tr><td>&lt;aside&gt;</td><td>Sidebar, tangential content</td></tr>
-                <tr><td>&lt;blockquote&gt;</td><td>Block quotation</td></tr>
-                <tr><td>&lt;canvas&gt;</td><td>Graphics container</td></tr>
-                <tr><td>&lt;dd&gt;</td><td>Description of a term</td></tr>
-                <tr><td>&lt;div&gt;</td><td>Generic container</td></tr>
-                <tr><td>&lt;dl&gt;</td><td>Description list</td></tr>
-                <tr><td>&lt;dt&gt;</td><td>Term in description list</td></tr>
-                <tr><td>&lt;fieldset&gt;</td><td>Group of form fields</td></tr>
-                <tr><td>&lt;figcaption&gt;</td><td>Caption for &lt;figure&gt;</td></tr>
-                <tr><td>&lt;figure&gt;</td><td>Image with caption</td></tr>
-                <tr><td>&lt;footer&gt;</td><td>Footer of document/section</td></tr>
-                <tr><td>&lt;form&gt;</td><td>Form container</td></tr>
-                <tr><td>&lt;h1&gt; to &lt;h6&gt;</td><td>Headings</td></tr>
-                <tr><td>&lt;header&gt;</td><td>Header of document/section</td></tr>
-                <tr><td>&lt;hr&gt;</td><td>Horizontal rule (thematic break)</td></tr>
-                <tr><td>&lt;li&gt;</td><td>List item</td></tr>
-                <tr><td>&lt;main&gt;</td><td>Main content</td></tr>
-                <tr><td>&lt;nav&gt;</td><td>Navigation links</td></tr>
-                <tr><td>&lt;noscript&gt;</td><td>Fallback for no JavaScript</td></tr>
-                <tr><td>&lt;ol&gt;</td><td>Ordered list</td></tr>
-                <tr><td>&lt;p&gt;</td><td>Paragraph</td></tr>
-                <tr><td>&lt;pre&gt;</td><td>Preformatted text</td></tr>
-                <tr><td>&lt;section&gt;</td><td>Section of document</td></tr>
-                <tr><td>&lt;table&gt;</td><td>Table container</td></tr>
-                <tr><td>&lt;ul&gt;</td><td>Unordered list</td></tr>
-                <tr><td>&lt;video&gt;</td><td>Video container</td></tr>
-            </tbody>
-        </table>
+        <div class="section">
+            <div class="section-header">
+                ✏️ Inline Elements
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 8%;">#</th>
+                        <th style="width: 15%;">Element</th>
+                        <th style="width: 22%;">Description</th>
+                        <th style="width: 27%;">Example</th>
+                        <th style="width: 28%;">Use Case & Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="serial-number">1</span></td>
+                        <td><span class="element-tag">&lt;a&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Hyperlink</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;a href="https://example.com"&gt;Visit Site&lt;/a&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Navigation, external links</div>
+                            <div class="output"><a href="#" style="color: #3b82f6; text-decoration: underline;">Visit Site</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">2</span></td>
+                        <td><span class="element-tag">&lt;abbr&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Abbreviation</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Acronyms, abbreviations</div>
+                            <div class="output"><abbr title="HyperText Markup Language" style="text-decoration: underline dotted;">HTML</abbr></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">3</span></td>
+                        <td><span class="element-tag">&lt;b&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Bold (stylistic)</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;This is &lt;b&gt;bold&lt;/b&gt; text.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Keywords, product names</div>
+                            <div class="output">This is <b>bold</b> text.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">4</span></td>
+                        <td><span class="element-tag">&lt;bdi&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Bi-directional isolation</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;User: &lt;bdi&gt;إيان&lt;/bdi&gt;&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Mixed language content</div>
+                            <div class="output">User: إيان</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">5</span></td>
+                        <td><span class="element-tag">&lt;bdo&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Override text direction</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;bdo dir="rtl"&gt;This text is RTL&lt;/bdo&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Right-to-left text</div>
+                            <div class="output" style="direction: rtl;">This text is RTL</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">6</span></td>
+                        <td><span class="element-tag">&lt;br&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Line break</div>
+                        </td>
+                        <td>
+                            <div class="example">Line 1&lt;br&gt;Line 2</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Addresses, poems</div>
+                            <div class="output">Line 1<br>Line 2</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">7</span></td>
+                        <td><span class="element-tag">&lt;cite&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Citation title</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;From &lt;cite&gt;The Great Gatsby&lt;/cite&gt;&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Book titles, references</div>
+                            <div class="output">From <cite style="font-style: italic;">The Great Gatsby</cite></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">8</span></td>
+                        <td><span class="element-tag">&lt;code&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Inline code</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;Use &lt;code&gt;console.log()&lt;/code&gt; to debug.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Function names, variables</div>
+                            <div class="output">Use <code style="background: #f1f5f9; padding: 2px 4px; border-radius: 3px; font-family: monospace;">console.log()</code> to debug.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">9</span></td>
+                        <td><span class="element-tag">&lt;data&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Machine-readable data</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;data value="12345"&gt;Product Code&lt;/data&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Product codes, IDs</div>
+                            <div class="output">Product Code</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">10</span></td>
+                        <td><span class="element-tag">&lt;dfn&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Definition term</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;&lt;dfn&gt;HTML&lt;/dfn&gt; is a markup language.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">First use of terms</div>
+                            <div class="output"><dfn style="font-style: italic;">HTML</dfn> is a markup language.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">11</span></td>
+                        <td><span class="element-tag">&lt;em&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Emphasis (italic)</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;I &lt;em&gt;really&lt;/em&gt; like this.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Stress emphasis</div>
+                            <div class="output">I <em>really</em> like this.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">12</span></td>
+                        <td><span class="element-tag">&lt;i&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Italic (stylistic)</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;The &lt;i&gt;Titanic&lt;/i&gt; sank in 1912.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Ship names, foreign words</div>
+                            <div class="output">The <i>Titanic</i> sank in 1912.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">13</span></td>
+                        <td><span class="element-tag">&lt;img&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Image</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;img src="logo.png" alt="Company Logo"&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Photos, icons, graphics</div>
+                            <div class="output">🖼️ [Company Logo]</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">14</span></td>
+                        <td><span class="element-tag">&lt;input&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Input field</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;input type="text" placeholder="Enter name"&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Forms, user input</div>
+                            <div class="output"><input type="text" placeholder="Enter name" style="padding: 2px 6px; border: 1px solid #d1d5db; border-radius: 3px; font-size: 0.8rem;"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">15</span></td>
+                        <td><span class="element-tag">&lt;kbd&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Keyboard input</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;Press &lt;kbd&gt;Ctrl+C&lt;/kbd&gt; to copy.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Keyboard shortcuts</div>
+                            <div class="output">Press <kbd style="background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 3px; padding: 2px 4px; font-family: monospace;">Ctrl+C</kbd> to copy.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">16</span></td>
+                        <td><span class="element-tag">&lt;label&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Form label</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;label for="email"&gt;Email:&lt;/label&gt;<br>&lt;input type="email" id="email"&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Form accessibility</div>
+                            <div class="output">Email: <input type="email" style="padding: 2px 6px; border: 1px solid #d1d5db; border-radius: 3px; font-size: 0.8rem;"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">17</span></td>
+                        <td><span class="element-tag">&lt;mark&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Highlighted text</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;Search for &lt;mark&gt;HTML&lt;/mark&gt; elements.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Search results, highlights</div>
+                            <div class="output">Search for <mark style="background: #fef08a;">HTML</mark> elements.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">18</span></td>
+                        <td><span class="element-tag">&lt;meter&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Scalar measurement</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;meter value="6" min="0" max="10"&gt;6 out of 10&lt;/meter&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Ratings, scores</div>
+                            <div class="output">▓▓▓▓▓▓░░░░ 6/10</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">19</span></td>
+                        <td><span class="element-tag">&lt;output&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Calculation result</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;output name="result"&gt;42&lt;/output&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Form calculations</div>
+                            <div class="output">42</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">20</span></td>
+                        <td><span class="element-tag">&lt;picture&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Responsive image</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;picture&gt;<br>&lt;source media="(min-width: 800px)" srcset="large.jpg"&gt;<br>&lt;img src="small.jpg"&gt;<br>&lt;/picture&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Responsive images</div>
+                            <div class="output">🖼️ [Responsive Image]</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">21</span></td>
+                        <td><span class="element-tag">&lt;progress&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Progress bar</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Loading, completion</div>
+                            <div class="output">▓▓▓▓▓▓▓░░░ 70%</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">22</span></td>
+                        <td><span class="element-tag">&lt;q&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Inline quotation</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;He said &lt;q&gt;Hello world&lt;/q&gt; to everyone.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Short quotes</div>
+                            <div class="output">He said "Hello world" to everyone.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">23</span></td>
+                        <td><span class="element-tag">&lt;ruby&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Ruby annotation</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;ruby&gt;漢&lt;rt&gt;kan&lt;/rt&gt;&lt;/ruby&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Asian text pronunciation</div>
+                            <div class="output">漢<sup style="font-size: 0.6em;">kan</sup></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">24</span></td>
+                        <td><span class="element-tag">&lt;s&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Strikethrough</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;Price: &lt;s&gt;$100&lt;/s&gt; $80&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Outdated info, sales</div>
+                            <div class="output">Price: <s>$100</s> $80</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">25</span></td>
+                        <td><span class="element-tag">&lt;samp&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Sample output</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;Output: &lt;samp&gt;Hello World&lt;/samp&gt;&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Program output</div>
+                            <div class="output">Output: <samp style="font-family: monospace; background: #f1f5f9; padding: 2px 4px;">Hello World</samp></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">26</span></td>
+                        <td><span class="element-tag">&lt;select&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Dropdown list</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;select&gt;<br>&lt;option&gt;Option 1&lt;/option&gt;<br>&lt;option&gt;Option 2&lt;/option&gt;<br>&lt;/select&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Form dropdowns</div>
+                            <div class="output"><select style="padding: 2px 6px; border: 1px solid #d1d5db; border-radius: 3px; font-size: 0.8rem;"><option>Option 1</option><option>Option 2</option></select></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">27</span></td>
+                        <td><span class="element-tag">&lt;small&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Smaller text</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;Price: $100 &lt;small&gt;(tax included)&lt;/small&gt;&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Fine print, disclaimers</div>
+                            <div class="output">Price: $100 <small>(tax included)</small></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">28</span></td>
+                        <td><span class="element-tag">&lt;span&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Generic inline container</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;Price: &lt;span class="price"&gt;$29.99&lt;/span&gt;&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Styling, JavaScript hooks</div>
+                            <div class="output">Price: <span style="color: #059669; font-weight: 600;">$29.99</span></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">29</span></td>
+                        <td><span class="element-tag">&lt;strong&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Strong importance</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;This is &lt;strong&gt;important&lt;/strong&gt; text.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Important text, warnings</div>
+                            <div class="output">This is <strong>important</strong> text.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">30</span></td>
+                        <td><span class="element-tag">&lt;sub&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Subscript</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O is water.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Chemical formulas</div>
+                            <div class="output">H<sub>2</sub>O is water.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">31</span></td>
+                        <td><span class="element-tag">&lt;sup&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Superscript</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Math equations, footnotes</div>
+                            <div class="output">E = mc<sup>2</sup></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">32</span></td>
+                        <td><span class="element-tag">&lt;textarea&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Multi-line text field</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;textarea rows="3" cols="30"&gt;Enter text here...&lt;/textarea&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Comments, messages</div>
+                            <div class="output"><textarea rows="2" cols="20" style="padding: 4px; border: 1px solid #d1d5db; border-radius: 3px; font-size: 0.8rem; resize: none;">Enter text here...</textarea></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">33</span></td>
+                        <td><span class="element-tag">&lt;time&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Date/time value</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;time datetime="2025-01-06"&gt;January 6, 2025&lt;/time&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Dates, timestamps</div>
+                            <div class="output">January 6, 2025</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">34</span></td>
+                        <td><span class="element-tag">&lt;u&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Underlined text</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;This is &lt;u&gt;underlined&lt;/u&gt; text.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Misspelled words, proper names</div>
+                            <div class="output">This is <u>underlined</u> text.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">35</span></td>
+                        <td><span class="element-tag">&lt;var&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Variable name</div>
+                        </td>
+                        <td>
+                            <div class="example">&lt;p&gt;The variable &lt;var&gt;x&lt;/var&gt; equals 5.&lt;/p&gt;</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Math variables, programming</div>
+                            <div class="output">The variable <var style="font-style: italic; font-family: monospace;">x</var> equals 5.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="serial-number">36</span></td>
+                        <td><span class="element-tag">&lt;wbr&gt;</span></td>
+                        <td>
+                            <div class="tag-type inline-type">Inline</div>
+                            <div class="description">Optional word break</div>
+                        </td>
+                        <td>
+                            <div class="example">supercali&lt;wbr&gt;fragilistic&lt;wbr&gt;expialidocious</div>
+                        </td>
+                        <td>
+                            <div class="use-case">Long words, URLs</div>
+                            <div class="output">supercali<wbr>fragilistic<wbr>expialidocious</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <h2>✏️ Inline Elements</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Element</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>&lt;a&gt;</td><td>Hyperlink</td></tr>
-                <tr><td>&lt;abbr&gt;</td><td>Abbreviation</td></tr>
-                <tr><td>&lt;b&gt;</td><td>Bold (stylistic)</td></tr>
-                <tr><td>&lt;bdi&gt;</td><td>Bi-directional isolation</td></tr>
-                <tr><td>&lt;bdo&gt;</td><td>Override text direction</td></tr>
-                <tr><td>&lt;br&gt;</td><td>Line break</td></tr>
-                <tr><td>&lt;cite&gt;</td><td>Citation title</td></tr>
-                <tr><td>&lt;code&gt;</td><td>Inline code</td></tr>
-                <tr><td>&lt;data&gt;</td><td>Machine-readable data</td></tr>
-                <tr><td>&lt;dfn&gt;</td><td>Definition term</td></tr>
-                <tr><td>&lt;em&gt;</td><td>Emphasis (italic)</td></tr>
-                <tr><td>&lt;i&gt;</td><td>Italic (stylistic)</td></tr>
-                <tr><td>&lt;img&gt;</td><td>Image</td></tr>
-                <tr><td>&lt;input&gt;</td><td>Input field</td></tr>
-                <tr><td>&lt;kbd&gt;</td><td>Keyboard input</td></tr>
-                <tr><td>&lt;label&gt;</td><td>Label for form</td></tr>
-                <tr><td>&lt;mark&gt;</td><td>Highlighted text</td></tr>
-                <tr><td>&lt;meter&gt;</td><td>Scalar measurement</td></tr>
-                <tr><td>&lt;output&gt;</td><td>Output of a calculation</td></tr>
-                <tr><td>&lt;picture&gt;</td><td>Responsive image</td></tr>
-                <tr><td>&lt;progress&gt;</td><td>Progress bar</td></tr>
-                <tr><td>&lt;q&gt;</td><td>Inline quotation</td></tr>
-                <tr><td>&lt;ruby&gt;</td><td>Ruby annotation (Asian text)</td></tr>
-                <tr><td>&lt;s&gt;</td><td>Strikethrough (no longer correct)</td></tr>
-                <tr><td>&lt;samp&gt;</td><td>Sample output</td></tr>
-                <tr><td>&lt;select&gt;</td><td>Dropdown list</td></tr>
-                <tr><td>&lt;small&gt;</td><td>Smaller text</td></tr>
-                <tr><td>&lt;span&gt;</td><td>Generic inline container</td></tr>
-                <tr><td>&lt;strong&gt;</td><td>Strong importance (bold)</td></tr>
-                <tr><td>&lt;sub&gt;</td><td>Subscript</td></tr>
-                <tr><td>&lt;sup&gt;</td><td>Superscript</td></tr>
-                <tr><td>&lt;textarea&gt;</td><td>Multi-line text field</td></tr>
-                <tr><td>&lt;time&gt;</td><td>Date/time value</td></tr>
-                <tr><td>&lt;u&gt;</td><td>Underlined text (non-link)</td></tr>
-                <tr><td>&lt;var&gt;</td><td>Variable name</td></tr>
-                <tr><td>&lt;wbr&gt;</td><td>Optional word break</td></tr>
-            </tbody>
-        </table>
+        <div class="footer">
+            <p>&copy; 2025 Complete HTML Elements Reference | Master Every Tag</p>
+        </div>
     </div>
-
-    <footer>
-        &copy; 2025 ZN Infotech | HTML Tutorial Content
-    </footer>
-
 </body>
 </html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>System Design - Explained in Depth</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #0070f3, #ff0080);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1, h2 {
+      margin: 0.5rem 0;
+    }
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #0070f3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 0.8rem;
+      text-align: left;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    code {
+      background: #eef;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+    }
+    abbr {
+      text-decoration: dotted underline;
+      cursor: help;
+    }
+    @media (max-width: 768px) {
+      section {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>System Design</h1>
+    <p><strong>Understand what it is, why it's important, and how to master it.</strong></p>
+  </header>
+
+  <section>
+    <h2>🔍 What is System Design?</h2>
+    <p>
+      <strong>System Design</strong> is the process of defining the architecture, components, data flow, and interactions of a software system to meet specific business and technical requirements.
+    </p>
+    <p>It is not a <strong>tool</strong>, <strong>technology</strong>, or <strong>software</strong>, but rather an <strong>approach</strong> or <abbr title="A disciplined method or plan to solve a problem">methodology</abbr>.</p>
+
+    <table>
+      <tr><th>Type</th><th>Explanation</th></tr>
+      <tr><td>📘 Approach</td><td>A structured way to break complex software systems into smaller parts.</td></tr>
+      <tr><td>⚙️ Process</td><td>Includes steps like requirement analysis, architecture, database design, APIs, etc.</td></tr>
+      <tr><td>🧠 Skill</td><td>Requires decision-making, trade-off analysis, and deep technical knowledge.</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>✅ Why is System Design Important?</h2>
+    <table>
+      <tr><th>Area</th><th>Reason</th></tr>
+      <tr><td>🔄 Scalability</td><td>Supports millions of users efficiently.</td></tr>
+      <tr><td>⚡ Performance</td><td>Ensures fast responses and low latency.</td></tr>
+      <tr><td>🛡️ Reliability</td><td>Maintains system availability and reduces downtime.</td></tr>
+      <tr><td>🧩 Modularity</td><td>Helps organize code and components clearly.</td></tr>
+      <tr><td>💼 Business Value</td><td>Directly impacts user satisfaction and growth.</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>📚 Core Areas to Master</h2>
+    <ol>
+      <li><strong>Requirements Gathering</strong>: Functional vs Non-functional</li>
+      <li><strong>High-Level Design (HLD)</strong>: Architecture, data flow, services</li>
+      <li><strong>Low-Level Design (LLD)</strong>: Class diagrams, database schema, APIs</li>
+      <li><strong>System Components</strong>: Load balancers, databases, caches, etc.</li>
+      <li><strong>Scalability Concepts</strong>: Horizontal/Vertical scaling, replication</li>
+      <li><strong>Design Patterns</strong>: MVC, Microservices, Event-driven</li>
+      <li><strong>Trade-offs</strong>: Consistency vs Availability, Simplicity vs Flexibility</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>🧱 Common System Components</h2>
+    <table>
+      <tr><th>Component</th><th>Use</th></tr>
+      <tr><td>🌐 Load Balancer</td><td>Distributes traffic among servers</td></tr>
+      <tr><td>🗃️ Databases</td><td>SQL for relational, NoSQL for scalable/flexible storage</td></tr>
+      <tr><td>🔁 Cache</td><td>Speed up access with Redis or Memcached</td></tr>
+      <tr><td>📩 Message Queues</td><td>Asynchronous tasks handling (e.g., Kafka, RabbitMQ)</td></tr>
+      <tr><td>🛡️ Security</td><td>Authentication, authorization, encryption</td></tr>
+      <tr><td>🌍 CDN</td><td>Global delivery of static assets</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>🚀 Scalability Techniques</h2>
+    <ul>
+      <li><strong>Horizontal Scaling</strong>: Add more servers</li>
+      <li><strong>Vertical Scaling</strong>: Upgrade existing server capacity</li>
+      <li><strong>Sharding</strong>: Split database by key/range</li>
+      <li><strong>Replication</strong>: Duplicate DB for reads</li>
+      <li><strong>Asynchronous Processing</strong>: Use queues for long tasks</li>
+      <li><strong><abbr title="Consistency, Availability, Partition Tolerance">CAP Theorem</abbr></strong>: Choose between trade-offs</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧑‍💻 Example: Design a URL Shortener</h2>
+    <ul>
+      <li><strong>Requirement:</strong> Shorten URLs, redirect, track clicks</li>
+      <li><strong>HLD:</strong> Web server + Hash generator + DB + Caching</li>
+      <li><strong>LLD:</strong> API endpoints, DB schema, Redis cache</li>
+      <li><strong>Scalability:</strong> Load balancer + Caching + DB replication</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📌 Summary</h2>
+    <table>
+      <tr><th>Aspect</th><th>Description</th></tr>
+      <tr><td>Nature</td><td>Process + Mindset</td></tr>
+      <tr><td>Goal</td><td>Design systems that are scalable, efficient, and maintainable</td></tr>
+      <tr><td>Includes</td><td>HLD, LLD, APIs, Databases, Caching, Queues, Security</td></tr>
+      <tr><td>Used By</td><td>Backend developers, system architects, full stack engineers</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    © 2025 ZN Infotech Pvt. Ltd. | Contact: 9565017342 | 
+    Website: <a href="https://zninfotech.com" target="_blank" style="color: #00d4ff;">zninfotech.com</a><br/>
+    We specialize in <abbr title="Internet of Things">IoT</abbr>, Programming Languages, Web & Mobile App Development, and more.<br/>
+    References: 
+    <a href="https://github.com/donnemartin/system-design-primer" target="_blank" style="color:#ff6;">System Design Primer</a>, 
+    <a href="https://roadmap.sh/system-design" target="_blank" style="color:#ff6;">System Design Roadmap</a>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Table Attributes with Real-Life Examples</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #0a3d62;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #0a3d62;
+      color: white;
+    }
+
+    pre {
+      background-color: #ecf0f1;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+      padding: 10px;
+      background-color: #0a3d62;
+      color: white;
+      border-radius: 0 0 10px 10px;
+    }
+
+    a {
+      color: #f6e58d;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      th, td {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>HTML Table Attributes: <code>colspan</code> and <code>rowspan</code> with Real-Life Examples</h1>
+  <p>
+    Let's understand how <abbr title="Column Span">colspan</abbr> and <abbr title="Row Span">rowspan</abbr> work in real business scenarios like employee records, attendance sheets, and evaluations.
+  </p>
+
+  <hr>
+  <h2>📁 Example 1: Employee Directory using <code>colspan</code></h2>
+  <table>
+    <tr>
+      <th>Employee Name</th>
+      <th colspan="2">Contact Info</th>
+    </tr>
+    <tr>
+      <td>Priya Sharma</td>
+      <td>priya@example.com</td>
+      <td>9876543210</td>
+    </tr>
+    <tr>
+      <td>Rohit Verma</td>
+      <td>rohit@example.com</td>
+      <td>8765432109</td>
+    </tr>
+  </table>
+
+  <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Employee Name&lt;/th&gt;
+    &lt;th colspan="2"&gt;Contact Info&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Priya Sharma&lt;/td&gt;
+    &lt;td&gt;priya@example.com&lt;/td&gt;
+    &lt;td&gt;9876543210&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+  <p><strong>Explanation:</strong> The "Contact Info" header uses <code>colspan="2"</code> to span over Email and Phone columns.</p>
+
+  <hr>
+  <h2>🗓️ Example 2: Attendance Sheet using <code>rowspan</code></h2>
+  <table>
+    <tr>
+      <th rowspan="2">Employee</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td>2025-07-05</td>
+      <td>Present</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Amit Singh</td>
+      <td>2025-07-05</td>
+      <td>Present</td>
+    </tr>
+    <tr>
+      <td>2025-07-06</td>
+      <td>Absent</td>
+    </tr>
+  </table>
+
+  <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th rowspan="2"&gt;Employee&lt;/th&gt;
+    &lt;th&gt;Date&lt;/th&gt;
+    &lt;th&gt;Status&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;2025-07-05&lt;/td&gt;
+    &lt;td&gt;Present&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="2"&gt;Amit Singh&lt;/td&gt;
+    &lt;td&gt;2025-07-05&lt;/td&gt;
+    &lt;td&gt;Present&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;2025-07-06&lt;/td&gt;
+    &lt;td&gt;Absent&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+  <p><strong>Explanation:</strong> Amit Singh appears once in the first column for 2 rows using <code>rowspan="2"</code>.</p>
+
+  <hr>
+  <h2>⭐ Example 3: Performance Review (Combining <code>colspan</code> & <code>rowspan</code>)</h2>
+  <table>
+    <tr>
+      <th rowspan="2">Name</th>
+      <th colspan="2">Q1</th>
+      <th colspan="2">Q2</th>
+    </tr>
+    <tr>
+      <th>Score</th>
+      <th>Remarks</th>
+      <th>Score</th>
+      <th>Remarks</th>
+    </tr>
+    <tr>
+      <td>Neha Patel</td>
+      <td>85</td>
+      <td>Good</td>
+      <td>90</td>
+      <td>Excellent</td>
+    </tr>
+    <tr>
+      <td>Ravi Kumar</td>
+      <td>75</td>
+      <td>Average</td>
+      <td>80</td>
+      <td>Good</td>
+    </tr>
+  </table>
+
+  <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th rowspan="2"&gt;Name&lt;/th&gt;
+    &lt;th colspan="2"&gt;Q1&lt;/th&gt;
+    &lt;th colspan="2"&gt;Q2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Score&lt;/th&gt;
+    &lt;th&gt;Remarks&lt;/th&gt;
+    &lt;th&gt;Score&lt;/th&gt;
+    &lt;th&gt;Remarks&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Neha Patel&lt;/td&gt;
+    &lt;td&gt;85&lt;/td&gt;
+    &lt;td&gt;Good&lt;/td&gt;
+    &lt;td&gt;90&lt;/td&gt;
+    &lt;td&gt;Excellent&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+  <p><strong>Explanation:</strong> The header row uses <code>rowspan</code> for the Name and <code>colspan</code> to group scores and remarks under each quarter.</p>
+
+</div>
+
+<footer>
+  ZN Infotech Pvt. Ltd. | Contact: 9565017342 | <a href="https://zninfotech.com" target="_blank">zninfotech.com</a><br>
+  We offer training in <abbr title="Internet of Things">IoT</abbr>, Programming, Web & App Development, AI, and more.
+</footer>
+
+</body>
+</html>

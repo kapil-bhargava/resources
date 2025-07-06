@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Guide to HTML Table Tags and Attributes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation List */
+        .nav-list {
+            background: #34495e;
+            padding: 1rem 0;
+        }
+
+        .nav-list ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .nav-list li {
+            background: #2c3e50;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-list li:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            display: block;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 100px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .description {
+            background: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 5px solid #3498db;
+        }
+
+        /* Table Styles */
+        .example-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .example-table th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .example-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .example-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .example-table tr:hover {
+            background-color: #e3f2fd;
+        }
+
+        /* Code Styles */
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+        }
+
+        .code-block code {
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background: #f39c12;
+            color: #2c3e50;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* Attribute Table */
+        .attr-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .attr-table th {
+            background: #34495e;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .attr-table td {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .attr-table .attr-name {
+            font-family: 'Courier New', monospace;
+            background: #ecf0f1;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #5dade2;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-list ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .example-table th,
+            .example-table td {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Complete Guide to HTML Tables</h1>
+            <p>Master table tags, attributes, and best practices with real-world examples</p>
+        </header>
+
+        <nav class="nav-list">
+            <ul>
+                <li><a href="#basics">Table Basics</a></li>
+                <li><a href="#structure">Table Structure</a></li>
+                <li><a href="#attributes">Attributes</a></li>
+                <li><a href="#spanning">Colspan & Rowspan</a></li>
+                <li><a href="#semantic">Semantic Tables</a></li>
+                <li><a href="#accessibility">Accessibility</a></li>
+                <li><a href="#examples">Real Examples</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- Table Basics Section -->
+            <section id="basics" class="section">
+                <h2>📚 Table Basics</h2>
+                <div class="description">
+                    <p><strong>HTML tables</strong> are used to display data in rows and columns. They consist of several key elements that work together to create structured, readable data presentations. Tables are essential for displaying tabular data like spreadsheets, databases, and comparison charts.</p>
+                </div>
+
+                <h3>Essential Table Tags</h3>
+                <table class="attr-table">
+                    <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Purpose</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="attr-name">&lt;table&gt;</td>
+                            <td>Container</td>
+                            <td>Defines the entire table structure</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">&lt;tr&gt;</td>
+                            <td>Table Row</td>
+                            <td>Creates a horizontal row in the table</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">&lt;td&gt;</td>
+                            <td>Table Data</td>
+                            <td>Contains actual data in a cell</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">&lt;th&gt;</td>
+                            <td>Table Header</td>
+                            <td>Defines header cells (bold and centered by default)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Basic Table Example</h3>
+                <table class="example-table">
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                    </tr>
+                    <tr>
+                        <td>Laptop</td>
+                        <td>₹45,000</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile</td>
+                        <td>₹25,000</td>
+                        <td>32</td>
+                    </tr>
+                </table>
+
+                <div class="code-block">
+                    <code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Product&lt;/th&gt;
+    &lt;th&gt;Price&lt;/th&gt;
+    &lt;th&gt;Stock&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Laptop&lt;/td&gt;
+    &lt;td&gt;₹45,000&lt;/td&gt;
+    &lt;td&gt;15&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Mobile&lt;/td&gt;
+    &lt;td&gt;₹25,000&lt;/td&gt;
+    &lt;td&gt;32&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code>
+                </div>
+            </section>
+
+            <!-- Table Structure Section -->
+            <section id="structure" class="section">
+                <h2>🏗️ Table Structure Elements</h2>
+                <div class="description">
+                    <p>Modern HTML tables use semantic elements to improve structure, accessibility, and styling. These elements help screen readers and search engines understand your table better.</p>
+                </div>
+
+                <table class="attr-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Purpose</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="attr-name">&lt;thead&gt;</td>
+                            <td>Table Head</td>
+                            <td>Groups header content</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">&lt;tbody&gt;</td>
+                            <td>Table Body</td>
+                            <td>Groups main table content</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">&lt;tfoot&gt;</td>
+                            <td>Table Footer</td>
+                            <td>Groups footer content (totals, summaries)</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">&lt;caption&gt;</td>
+                            <td>Table Caption</td>
+                            <td>Provides table title/description</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">&lt;colgroup&gt;</td>
+                            <td>Column Group</td>
+                            <td>Groups columns for styling</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">&lt;col&gt;</td>
+                            <td>Column</td>
+                            <td>Defines column properties</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Structured Table Example</h3>
+                <table class="example-table">
+                    <caption style="font-weight: bold; margin-bottom: 1rem; font-size: 1.2rem;">Monthly Sales Report</caption>
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Sales</th>
+                            <th>Profit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>January</td>
+                            <td>₹1,50,000</td>
+                            <td>₹30,000</td>
+                        </tr>
+                        <tr>
+                            <td>February</td>
+                            <td>₹1,80,000</td>
+                            <td>₹36,000</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: #3498db; color: white; font-weight: bold;">
+                            <td>Total</td>
+                            <td>₹3,30,000</td>
+                            <td>₹66,000</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+
+            <!-- Attributes Section -->
+            <section id="attributes" class="section">
+                <h2>⚙️ Important Table Attributes</h2>
+                <div class="description">
+                    <p>Table attributes control appearance, behavior, and accessibility. While many styling attributes are deprecated in favor of CSS, some remain important for functionality and accessibility.</p>
+                </div>
+
+                <h3>Common Table Attributes</h3>
+                <table class="attr-table">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Element</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="attr-name">border</td>
+                            <td>&lt;table&gt;</td>
+                            <td>Sets border width (deprecated, use CSS)</td>
+                            <td>border="1"</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">cellpadding</td>
+                            <td>&lt;table&gt;</td>
+                            <td>Space inside cells (deprecated, use CSS)</td>
+                            <td>cellpadding="10"</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">cellspacing</td>
+                            <td>&lt;table&gt;</td>
+                            <td>Space between cells (deprecated, use CSS)</td>
+                            <td>cellspacing="5"</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">width</td>
+                            <td>&lt;table&gt;, &lt;td&gt;, &lt;th&gt;</td>
+                            <td>Sets width (deprecated, use CSS)</td>
+                            <td>width="100%"</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">scope</td>
+                            <td>&lt;th&gt;</td>
+                            <td>Defines header scope for accessibility</td>
+                            <td>scope="col"</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">headers</td>
+                            <td>&lt;td&gt;</td>
+                            <td>Associates cell with headers</td>
+                            <td>headers="h1 h2"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Colspan and Rowspan Section -->
+            <section id="spanning" class="section">
+                <h2>🔗 Colspan and Rowspan</h2>
+                <div class="description">
+                    <p><span class="highlight">colspan</span> allows a cell to span multiple columns, while <span class="highlight">rowspan</span> allows a cell to span multiple rows. These attributes are essential for creating complex table layouts.</p>
+                </div>
+
+                <h3>Employee Schedule (Colspan Example)</h3>
+                <table class="example-table">
+                    <tr>
+                        <th>Employee</th>
+                        <th colspan="3">Work Schedule</th>
+                        <th>Total Hours</th>
+                    </tr>
+                    <tr>
+                        <td>Rahul Sharma</td>
+                        <td>Mon-Wed</td>
+                        <td>Thu-Fri</td>
+                        <td>Weekend</td>
+                        <td>40 hrs</td>
+                    </tr>
+                    <tr>
+                        <td>Priya Singh</td>
+                        <td>Mon-Tue</td>
+                        <td>Wed-Thu</td>
+                        <td>Friday</td>
+                        <td>35 hrs</td>
+                    </tr>
+                </table>
+
+                <div class="code-block">
+                    <code>&lt;th colspan="3"&gt;Work Schedule&lt;/th&gt;</code>
+                </div>
+
+                <h3>Project Timeline (Rowspan Example)</h3>
+                <table class="example-table">
+                    <tr>
+                        <th>Project</th>
+                        <th>Phase</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Website Development</td>
+                        <td>Planning</td>
+                        <td>2 weeks</td>
+                        <td>✅ Complete</td>
+                    </tr>
+                    <tr>
+                        <td>Development</td>
+                        <td>6 weeks</td>
+                        <td>🔄 In Progress</td>
+                    </tr>
+                    <tr>
+                        <td>Testing</td>
+                        <td>2 weeks</td>
+                        <td>⏳ Pending</td>
+                    </tr>
+                </table>
+
+                <div class="code-block">
+                    <code>&lt;td rowspan="3"&gt;Website Development&lt;/td&gt;</code>
+                </div>
+
+                <h3>Complex Table (Combining Both)</h3>
+                <table class="example-table">
+                    <tr>
+                        <th rowspan="2">Department</th>
+                        <th colspan="2">Q1 Performance</th>
+                        <th colspan="2">Q2 Performance</th>
+                    </tr>
+                    <tr>
+                        <th>Target</th>
+                        <th>Achieved</th>
+                        <th>Target</th>
+                        <th>Achieved</th>
+                    </tr>
+                    <tr>
+                        <td>Sales</td>
+                        <td>₹10L</td>
+                        <td>₹12L</td>
+                        <td>₹15L</td>
+                        <td>₹14L</td>
+                    </tr>
+                    <tr>
+                        <td>Marketing</td>
+                        <td>₹5L</td>
+                        <td>₹4.5L</td>
+                        <td>₹6L</td>
+                        <td>₹6.2L</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Semantic Tables Section -->
+            <section id="semantic" class="section">
+                <h2>🎯 Semantic Table Best Practices</h2>
+                <div class="description">
+                    <p>Semantic HTML makes tables more accessible and meaningful. Use proper structure, captions, and scope attributes to create tables that work well for all users, including those using screen readers.</p>
+                </div>
+
+                <h3>Well-Structured Data Table</h3>
+                <table class="example-table">
+                    <caption style="font-weight: bold; margin-bottom: 1rem;">Student Grade Report - Computer Science Department</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" id="student">Student Name</th>
+                            <th scope="col" id="math">Mathematics</th>
+                            <th scope="col" id="physics">Physics</th>
+                            <th scope="col" id="cs">Computer Science</th>
+                            <th scope="col" id="total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Arjun Patel</th>
+                            <td headers="student math">85</td>
+                            <td headers="student physics">92</td>
+                            <td headers="student cs">88</td>
+                            <td headers="student total">265</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sneha Gupta</th>
+                            <td headers="student math">90</td>
+                            <td headers="student physics">87</td>
+                            <td headers="student cs">95</td>
+                            <td headers="student total">272</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: #e8f5e8;">
+                            <th scope="row">Class Average</th>
+                            <td>87.5</td>
+                            <td>89.5</td>
+                            <td>91.5</td>
+                            <td>268.5</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div class="code-block">
+                    <code>&lt;th scope="col" id="student"&gt;Student Name&lt;/th&gt;
+&lt;td headers="student math"&gt;85&lt;/td&gt;</code>
+                </div>
+            </section>
+
+            <!-- Accessibility Section -->
+            <section id="accessibility" class="section">
+                <h2>♿ Table Accessibility</h2>
+                <div class="description">
+                    <p>Accessible tables ensure that all users, including those using assistive technologies, can understand and navigate your data effectively.</p>
+                </div>
+
+                <h3>Accessibility Checklist</h3>
+                <table class="attr-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Implementation</th>
+                            <th>Benefit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="attr-name">Caption</td>
+                            <td>&lt;caption&gt;Table description&lt;/caption&gt;</td>
+                            <td>Provides table context</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Scope</td>
+                            <td>scope="col" or scope="row"</td>
+                            <td>Defines header relationships</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Headers</td>
+                            <td>headers="id1 id2"</td>
+                            <td>Associates cells with headers</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Summary</td>
+                            <td>Add summary in caption or aria-describedby</td>
+                            <td>Explains complex table structure</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Real Examples Section -->
+            <section id="examples" class="section">
+                <h2>🌟 Real-World Examples</h2>
+                
+                <h3>1. E-commerce Product Comparison</h3>
+                <table class="example-table">
+                    <caption>Smartphone Comparison Chart</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Feature</th>
+                            <th scope="col">iPhone 15</th>
+                            <th scope="col">Samsung S24</th>
+                            <th scope="col">OnePlus 12</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Price</th>
+                            <td>₹79,900</td>
+                            <td>₹74,999</td>
+                            <td>₹64,999</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Display</th>
+                            <td>6.1" OLED</td>
+                            <td>6.2" AMOLED</td>
+                            <td>6.82" AMOLED</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Camera</th>
+                            <td>48MP + 12MP</td>
+                            <td>50MP + 12MP + 10MP</td>
+                            <td>50MP + 64MP + 48MP</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Battery</th>
+                            <td>3349 mAh</td>
+                            <td>4000 mAh</td>
+                            <td>5400 mAh</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>2. Financial Report</h3>
+                <table class="example-table">
+                    <caption>Quarterly Financial Summary (in ₹ Lakhs)</caption>
+                    <thead>
+                        <tr>
+                            <th rowspan="2" scope="col">Quarter</th>
+                            <th colspan="2" scope="colgroup">Revenue</th>
+                            <th colspan="2" scope="colgroup">Expenses</th>
+                            <th rowspan="2" scope="col">Net Profit</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Domestic</th>
+                            <th scope="col">International</th>
+                            <th scope="col">Operational</th>
+                            <th scope="col">Marketing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Q1 2024</th>
+                            <td>150</td>
+                            <td>75</td>
+                            <td>120</td>
+                            <td>30</td>
+                            <td>75</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Q2 2024</th>
+                            <td>180</td>
+                            <td>90</td>
+                            <td>140</td>
+                            <td>35</td>
+                            <td>95</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr style="background: #d5f4e6; font-weight: bold;">
+                            <th scope="row">Total</th>
+                            <td>330</td>
+                            <td>165</td>
+                            <td>260</td>
+                            <td>65</td>
+                            <td>170</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <h3>3. Class Schedule</h3>
+                <table class="example-table">
+                    <caption>Weekly Class Schedule - Computer Science Department</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Time</th>
+                            <th scope="col">Monday</th>
+                            <th scope="col">Tuesday</th>
+                            <th scope="col">Wednesday</th>
+                            <th scope="col">Thursday</th>
+                            <th scope="col">Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">9:00-10:00</th>
+                            <td>Data Structures</td>
+                            <td>Mathematics</td>
+                            <td>Data Structures</td>
+                            <td>Web Development</td>
+                            <td>Database Systems</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10:00-11:00</th>
+                            <td>Web Development</td>
+                            <td>Database Systems</td>
+                            <td>Mathematics</td>
+                            <td>Data Structures</td>
+                            <td>Project Work</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">11:00-12:00</th>
+                            <td colspan="5" style="background: #fff3cd; text-align: center; font-style: italic;">Break Time</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12:00-1:00</th>
+                            <td>Lab Session</td>
+                            <td>Theory Class</td>
+                            <td>Lab Session</td>
+                            <td>Theory Class</td>
+                            <td>Seminar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <footer>
+            <h3>🎓 ZN Infotech Pvt. Ltd.</h3>
+            <p><strong>📞 Contact:</strong> <a href="tel:9565017342">9565017342</a></p>
+            <p><strong>🌐 Website:</strong> <a href="https://zninfotech.com" target="_blank">zninfotech.com</a></p>
+            <p><strong>📚 Training Programs:</strong></p>
+            <p>Internet of Things (IoT) • Programming • Web & App Development • Artificial Intelligence • Machine Learning • Data Science</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                © 2025 ZN Infotech Pvt. Ltd. All rights reserved. | Empowering students with cutting-edge technology education.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
