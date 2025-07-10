@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Follow-up Notes - Dark Mode</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .modal-container {
+            max-width: 700px;
+            margin: 20px auto;
+            background-color: #1E293B;
+            border-radius: 10px;
+            padding: 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            overflow: hidden;
+            color: white;
+        }
+
+        .modal-header {
+            background: linear-gradient(to right, #3B82F6, #2563EB);
+            padding: 15px 20px;
+            border-radius: 10px 10px 0 0;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .close-notes {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .close-notes button {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            padding: 2px 0
+            ;
+            /* background-color: rgb(63, 81, 248); */
+        }
+        .close-notes button:hover {
+            transform: rotate(90deg);
+        }
+
+        .timeline-container {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .timeline-bar {
+            border-left: 3px solid #3B82F6;
+            padding-left: 15px;
+            margin-top: 10px;
+        }
+
+        .note-wrapper {
+            position: relative;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #3B82F6;
+            border-radius: 50%;
+            position: absolute;
+            left: -13px;
+            top: 16px;
+        }
+
+        .note {
+            background-color: #334155;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .note time {
+            font-size: 13px;
+            color: #94A3B8;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .note-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .note button {
+            border: none;
+            padding: 6px 12px;
+            margin-left: 5px;
+            border-radius: 5px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #FACC15;
+            color: #1e1e2f;
+        }
+
+        .delete-btn {
+            background-color: #EF4444;
+            color: #fff;
+        }
+
+        .add-note {
+            background-color: #1E293B;
+            border-top: 1px solid #334155;
+            padding: 15px 20px;
+        }
+
+        .add-note textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            resize: vertical;
+            background-color: #334155;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .add-note textarea::placeholder {
+            color: #61656B;
+        }
+
+        .save-container {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .save-container button {
+            background-color: #3B82F6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .save-container button:hover {
+            background-color: #2563EB;
+        }
+
+        /* Scrollbar Styling */
+        .timeline-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .timeline-container::-webkit-scrollbar-thumb {
+            background-color: #475569;
+            border-radius: 4px;
+        }
+
+        .timeline-container::-webkit-scrollbar-track {
+            background-color: #1E293B;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                height: 85vh;
+            }
+
+            .modal-header {
+                font-size: 16px;
+            }
+
+            .note {
+                font-size: 14px;
+            }
+
+            .add-note textarea {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="modal-container">
+        <div class="modal-header">👤 Rahul Sharma - Follow-up Notes
+            <div class="close-notes">
+                <button onclick="closeNotes();">❌</button>
+            </div>
+        </div>
+
+
+        <div class="timeline-container">
+            <div class="timeline-bar">
+                <div class="note-wrapper">
+                    <div class="dot"></div>
+                    <div class="note">
+                        <time>6 Jan 2025 at 02:30 pm</time>
+                        Initial enquiry about full stack course. Very interested in MERN stack and asked about placement
+                        assistance.
+                        <div class="note-actions">
+                            <button class="edit-btn">✏️ Edit</button>
+                            <button class="delete-btn">🗑 Delete</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-wrapper">
+                    <div class="dot"></div>
+                    <div class="note">
+                        <time>5 Jan 2025 at 10:15 am</time>
+                        Sent detailed course brochure and fee structure via WhatsApp. Student requested demo class for
+                        next week.
+                        <div class="note-actions">
+                            <button class="edit-btn">✏️ Edit</button>
+                            <button class="delete-btn">🗑 Delete</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional notes go here -->
+            </div>
+        </div>
+
+        <div class="add-note">
+            <textarea rows="3"
+                placeholder="Enter your follow-up note here... (e.g., Called student, sent brochure, scheduled demo, etc.)"></textarea>
+            <div class="save-container">
+                <button>💾 Save Note</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

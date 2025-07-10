@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Upload System Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.7;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+      background: #f7f9fb;
+    }
+
+    h1, h2 {
+      color: #1d3557;
+    }
+
+    code {
+      background: #e1ecf4;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 0.9em;
+      color: #2d3142;
+      display: block;
+      margin: 10px 0;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #444;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 Resume Upload & View System – Conceptual Guide</h1>
+
+  <div class="section">
+    <h2>1. 🔧 What Are We Building?</h2>
+    <p>
+      A user uploads their resume (PDF or DOCX), and we show it as a clickable link in a table on the frontend.
+      The uploaded file is saved on the server (backend), and a URL is generated to access it.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>2. 🤔 Why Do We Need This?</h2>
+    <ul>
+      <li>🔐 So resumes can be reviewed later by admins, HR, or recruiters.</li>
+      <li>📦 We need to <strong>store the file safely</strong> on the server, not in the database.</li>
+      <li>🔗 We want a <strong>public or protected URL</strong> so the file can be viewed/downloaded.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. 🧠 How It Works (High-Level)</h2>
+    <ol>
+      <li><strong>Frontend:</strong> User uploads the resume via a form.</li>
+      <li><strong>Backend (Express):</strong> Uses <code>multer</code> middleware to handle file upload.</li>
+      <li><strong>Server saves the file</strong> to a folder like <code>./resumes</code>.</li>
+      <li><strong>Server sends back the filename or URL</strong> to the frontend.</li>
+      <li><strong>Frontend table shows</strong> that filename as a downloadable link.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>4. 🧩 Understanding Each Part (What, Why, How, When)</h2>
+
+    <h3>📥 Multer Module</h3>
+    <p><strong>What:</strong> A Node.js middleware for handling <em>multipart/form-data</em> (file uploads).</p>
+    <p><strong>Why:</strong> Express doesn't support file uploads by default.</p>
+    <p><strong>How:</strong> Install using <code>npm install multer</code>, and configure storage destination and filename.</p>
+    <p><strong>When:</strong> Anytime you need to handle uploaded files (images, resumes, reports).</p>
+
+    <code>
+// Multer basic config
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, './resumes'),
+  filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
+});
+const upload = multer({ storage });
+    </code>
+
+    <h3>🛠 Saving Resume on Server</h3>
+    <p><strong>What:</strong> A folder (e.g., <code>resumes/</code>) inside your backend.</p>
+    <p><strong>Why:</strong> Saves space in DB and makes access easier through URLs.</p>
+    <p><strong>How:</strong> You must <code>mkdir</code> this folder manually or using <code>fs.mkdir()</code> in Node.</p>
+    <p><strong>When:</strong> Before the first resume is uploaded.</p>
+
+    <code>
+if (!fs.existsSync('./resumes')) {
+  fs.mkdirSync('./resumes');
+}
+    </code>
+
+    <h3>📤 Upload API Endpoint</h3>
+    <p><strong>What:</strong> A POST API like <code>/upload-resume</code>.</p>
+    <p><strong>Why:</strong> Backend needs a route to accept and process file data.</p>
+    <p><strong>How:</strong> Use <code>upload.single('resume')</code> in your POST route.</p>
+    <p><strong>When:</strong> When a user submits a file via the form.</p>
+
+    <code>
+app.post('/upload-resume', upload.single('resume'), (req, res) => {
+  const fileUrl = '/resumes/' + req.file.filename;
+  res.json({ url: fileUrl });
+});
+    </code>
+
+    <h3>🌐 Serving Static Files</h3>
+    <p><strong>What:</strong> Allows the uploaded file to be accessed through a URL.</p>
+    <p><strong>Why:</strong> Frontend needs a valid link to show/download the file.</p>
+    <p><strong>How:</strong> Use <code>express.static()</code> for the <code>resumes</code> folder.</p>
+    <p><strong>When:</strong> As soon as you upload files to your backend server.</p>
+
+    <code>
+app.use('/resumes', express.static('resumes'));
+    </code>
+
+    <h3>📄 Showing in Frontend Table</h3>
+    <p><strong>What:</strong> A table with a link to the uploaded resume.</p>
+    <p><strong>Why:</strong> To let the admin/reviewer view/download the resume.</p>
+    <p><strong>How:</strong> Use <code>&lt;a href="URL" target="_blank"&gt;Download&lt;/a&gt;</code></p>
+    <p><strong>When:</strong> When listing applicants or entries.</p>
+
+    <code>
+<tr>
+  <td>John Doe</td>
+  <td><a href="http://localhost:5000/resumes/1712369841-resume.pdf" target="_blank">Download</a></td>
+</tr>
+    </code>
+  </div>
+
+  <div class="section">
+    <h2>5. ✅ Final Thoughts</h2>
+    <ul>
+      <li>✔ Uploads should be restricted to only PDFs/DOCX using MIME type check (<code>file.mimetype</code>).</li>
+      <li>✔ Filenames should be unique to avoid overwriting (<code>Date.now()</code>).</li>
+      <li>✔ Backend must handle errors (file too large, invalid format, missing fields).</li>
+      <li>✔ Links must point to the correct static path on the backend server.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <strong>ZN Infotech Pvt. Ltd.</strong> – Expert in IoT, Programming, Web & Mobile Development  
+    📞 +91-9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a>  
+    <br><br>
+    <em>References: <a href="https://expressjs.com" target="_blank">Express.js</a>, <a href="https://www.npmjs.com/package/multer" target="_blank">Multer Docs</a></em>
+  </footer>
+</body>
+</html>

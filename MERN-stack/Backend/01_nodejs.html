@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Node.js Explained in Detail</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      color: #1d1d1d;
+    }
+
+    header {
+      background-color: #1d3557;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: #ffffff;
+      border-left: 5px solid #457b9d;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .card h2 {
+      color: #1d3557;
+      margin-top: 0;
+    }
+
+    .card p {
+      line-height: 1.7;
+    }
+
+    code {
+      background: #edf2f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    footer {
+      background: #1d3557;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: #fcbf49;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🟢 Node.js – A Complete Backend Engine</h1>
+    <p>What, Why, How, When explained clearly for learners</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>🔍 What is Node.js?</h2>
+      <p>
+        <strong>Node.js</strong> is an open-source, cross-platform <abbr title="JavaScript runtime environment">runtime</abbr> that allows you to run JavaScript **outside the browser**, usually on the **server-side**.
+        It uses the **V8 engine** (from Chrome) to execute JS code very fast.
+      </p>
+      <p>
+        It's not a programming language or framework — it’s a runtime that lets JavaScript work as a **backend language**.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>❓ Why Use Node.js?</h2>
+      <ul>
+        <li>✅ You can build **fast, scalable server-side apps** using JavaScript.</li>
+        <li>✅ It’s event-driven and non-blocking (asynchronous) — perfect for **real-time apps** like chats or APIs.</li>
+        <li>✅ You can use **the same language (JavaScript)** for both frontend and backend.</li>
+        <li>✅ It has **npm** (Node Package Manager) with access to 2M+ libraries.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>⚙️ How Does Node.js Work?</h2>
+      <p>Node.js uses the <strong>V8 engine</strong> to run JavaScript, and a powerful internal system called the <strong>event loop</strong> to handle tasks asynchronously.</p>
+
+      <p>Instead of creating multiple threads (like Java), it uses a **single-threaded model** with **non-blocking I/O**. This makes it lightweight and highly efficient.</p>
+
+      <p><strong>Simple Code Example:</strong></p>
+      <code>
+// hello.js
+console.log("Hello from Node.js!");
+      </code>
+      <p>Run it in terminal using:</p>
+      <code>node hello.js</code>
+    </div>
+
+    <div class="card">
+      <h2>📦 What is NPM?</h2>
+      <p>
+        <strong>NPM</strong> (Node Package Manager) comes with Node.js.
+        It helps you install and manage **third-party libraries** (called packages).
+      </p>
+
+      <p>Example:</p>
+      <code>npm install express</code>
+      <p>This installs the popular web framework Express.js.</p>
+    </div>
+
+    <div class="card">
+      <h2>📁 When and Where to Use Node.js?</h2>
+      <ul>
+        <li>📡 Building APIs (REST, GraphQL)</li>
+        <li>📦 Creating backend services (authentication, file uploads)</li>
+        <li>📲 Real-time apps (chat apps, sockets)</li>
+        <li>📂 File system tools, CLI apps</li>
+        <li>🚀 Microservices or backend for React/Vue frontend</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📚 Popular Modules in Node.js</h2>
+      <ul>
+        <li><code>fs</code> – File System (read/write/delete files)</li>
+        <li><code>http</code> – Create basic HTTP server</li>
+        <li><code>path</code> – Work with file paths</li>
+        <li><code>express</code> – Framework for building REST APIs</li>
+        <li><code>dotenv</code> – Load environment variables</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🚀 First API Example (Without Express)</h2>
+      <code>
+// api.js
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.end('Hello from backend!');
+});
+
+server.listen(3000);
+      </code>
+      <p>Run it with <code>node api.js</code> and open <code>http://localhost:3000</code> in your browser.</p>
+    </div>
+
+    <div class="card">
+      <h2>✅ Summary</h2>
+      <ul>
+        <li>Node.js lets JavaScript run on the backend.</li>
+        <li>It’s asynchronous and fast, perfect for scalable apps.</li>
+        <li>Use NPM to install packages and build faster.</li>
+        <li>Pair Node.js with Express, MongoDB, and JWT for real apps.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    Created by ZN Infotech Pvt. Ltd. – Programming, Web, IoT & App Experts  
+    📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a>  
+    <br><br>
+    Reference: <a href="https://nodejs.org/en" target="_blank">Node.js Official Website</a>
+  </footer>
+
+</body>
+</html>

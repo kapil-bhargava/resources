@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Backend Development Roadmap (In Sequence)</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            color: #1d1d1d;
+        }
+
+        header {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            border-left: 5px solid #457b9d;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #1d3557;
+            margin-top: 0;
+        }
+
+        .card span {
+            font-size: 0.85rem;
+            color: #999;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin: 8px 0;
+        }
+
+        footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: #fcbf49;
+            text-decoration: none;
+        }
+
+        @media (max-width: 500px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .card>h3>a {
+            color: #1d3557;
+            text-decoration: underline;
+            
+        }
+        .card>h3>a:hover {
+            color: #5696f7;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>📘 Backend Development Roadmap (Step-by-Step)</h1>
+        <p>Each step explained with What, Why, How, and When</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <span>Step 1</span>
+
+            <h3><a href="01_nodejs.html">Setup Node.js & NPM</a></h3>
+
+            <p><strong>What:</strong> Node.js lets you run JavaScript on the server.</p>
+            <p><strong>Why:</strong> Required for all JS backend tools.</p>
+            <p><strong>How:</strong> Install from <a href="https://nodejs.org" target="_blank">nodejs.org</a>, use
+                <code>npm init</code> to start a project.
+            </p>
+            <p><strong>When:</strong> Before any backend coding.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 2</span>
+            <h3><a href="01_nodejs.html">Use Express.js</a></h3>
+            <p><strong>What:</strong> A lightweight web framework for Node.js.</p>
+            <p><strong>Why:</strong> Makes routing, middleware, and APIs easy.</p>
+            <p><strong>How:</strong> Install using <code>npm install express</code>.</p>
+            <p><strong>When:</strong> When you want to handle routes like <code>/users</code>, <code>/login</code>.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 3</span>
+            <h3>Create RESTful APIs</h3>
+            <p><strong>What:</strong> APIs using HTTP methods (GET, POST, PUT, DELETE).</p>
+            <p><strong>Why:</strong> Standard way to connect frontend and backend.</p>
+            <p><strong>How:</strong> Use Express routes to handle each API.</p>
+            <p><strong>When:</strong> When your frontend needs data from backend.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 4</span>
+            <h3>Test APIs with Postman</h3>
+            <p><strong>What:</strong> A tool to manually test your APIs.</p>
+            <p><strong>Why:</strong> Helps verify logic before connecting to frontend.</p>
+            <p><strong>How:</strong> Use GET/POST/PUT/DELETE with headers and body.</p>
+            <p><strong>When:</strong> After creating each route or endpoint.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 5</span>
+            <h3>Connect to MongoDB using Mongoose</h3>
+            <p><strong>What:</strong> NoSQL database + ODM library.</p>
+            <p><strong>Why:</strong> To store user data, products, etc. in document form.</p>
+            <p><strong>How:</strong> Use <code>mongoose.connect()</code> and define schemas.</p>
+            <p><strong>When:</strong> When data needs to be saved permanently.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 6</span>
+            <h3>Use Middleware (Like body-parser, auth)</h3>
+            <p><strong>What:</strong> Functions that run between request and response.</p>
+            <p><strong>Why:</strong> Useful for parsing, logging, authentication.</p>
+            <p><strong>How:</strong> Use <code>app.use()</code> in Express.</p>
+            <p><strong>When:</strong> For every request that needs processing before route.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 7</span>
+            <h3>File Uploads with Multer</h3>
+            <p><strong>What:</strong> Middleware to handle form-data file uploads.</p>
+            <p><strong>Why:</strong> Required for uploading images, resumes, PDFs.</p>
+            <p><strong>How:</strong> Use <code>multer.diskStorage()</code> with routes.</p>
+            <p><strong>When:</strong> When you want to save files to server.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 8</span>
+            <h3>Use Environment Variables</h3>
+            <p><strong>What:</strong> External config using <code>.env</code> files.</p>
+            <p><strong>Why:</strong> To hide secrets like DB passwords or JWT keys.</p>
+            <p><strong>How:</strong> Use <code>dotenv</code> package + <code>process.env</code>.</p>
+            <p><strong>When:</strong> Before deploying or sharing project.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 9</span>
+            <h3>JWT Authentication</h3>
+            <p><strong>What:</strong> JSON Web Tokens to verify users.</p>
+            <p><strong>Why:</strong> Needed for secure login and protected routes.</p>
+            <p><strong>How:</strong> Use <code>jsonwebtoken</code> to sign/verify tokens.</p>
+            <p><strong>When:</strong> After user login/register system is ready.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 10</span>
+            <h3>Handle CORS</h3>
+            <p><strong>What:</strong> CORS is browser security for cross-origin requests.</p>
+            <p><strong>Why:</strong> Needed when frontend and backend are on different domains (e.g. Vercel + Railway).
+            </p>
+            <p><strong>How:</strong> Use <code>npm install cors</code> and <code>app.use(cors())</code>.</p>
+            <p><strong>When:</strong> When connecting frontend to backend.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 11</span>
+            <h3>Error Handling</h3>
+            <p><strong>What:</strong> Gracefully managing unexpected errors.</p>
+            <p><strong>Why:</strong> To avoid crashes and show helpful messages.</p>
+            <p><strong>How:</strong> Use <code>try/catch</code> or custom Express error middleware.</p>
+            <p><strong>When:</strong> After building your routes and logic.</p>
+        </div>
+
+        <div class="card">
+            <span>Step 12</span>
+            <h3>Deploy Backend (Railway / Render)</h3>
+            <p><strong>What:</strong> Hosting your backend on the internet.</p>
+            <p><strong>Why:</strong> So users can access APIs remotely.</p>
+            <p><strong>How:</strong> Push code to GitHub, connect to Railway/Render, set up environment variables.</p>
+            <p><strong>When:</strong> When your APIs are ready for production.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        🔧 Built by ZN Infotech Pvt. Ltd. | Web, IoT, Mobile, Programming
+        📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a>
+    </footer>
+</body>
+
+</html>
