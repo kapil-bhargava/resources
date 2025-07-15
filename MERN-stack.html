@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learning Resources - MERN</title>
+  <title>MERN Stack Learning Path | ZN Infotech - Master Full Stack Development</title>
+  <meta name="description" content="Master the MERN Stack with our comprehensive learning path. Learn HTML, CSS, JavaScript, React, and Backend development with hands-on projects and real-world examples.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <style>
     :root {
-      --primary-color: #0097fa;
-      --card-bg: #fff;
-      --text-dark: #333;
-      --btn-color: #fff;
+      --primary-color: #2563eb;
+      --primary-hover: #1d4ed8;
+      --secondary-color: #f8fafc;
+      --accent-color: #0ea5e9;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      --card-bg: #ffffff;
       --nav-bg: #ffffff;
-      --footer-bg: #eaf4fb;
+      --footer-bg: #f8fafc;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     }
 
     * {
@@ -23,166 +34,690 @@
     }
 
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      color: var(--text-dark);
-
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #fafbfc;
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      background-color: #eee;
     }
 
+    /* Header Styles */
     header {
-      background-color: var(--nav-bg);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      padding: 15px 20px;
-      text-align: center;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
     }
 
-    header h2 {
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .logo-text h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .logo-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    .breadcrumb a {
       color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
 
+    .breadcrumb a:hover {
+      color: var(--primary-hover);
+    }
+
+    .breadcrumb span {
+      color: var(--text-muted);
+    }
+
+    /* Main Content */
     .container {
       text-align: center;
-      padding: 40px 20px 10px;
-    }
-
-    .container h1 {
-      color: var(--primary-color);
-      margin-bottom: 10px;
-    }
-
-    .container p {
-      font-size: 16px;
-      color: #555;
-      max-width: 700px;
+      padding: 80px 20px 60px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    .divs {
+    .container h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      letter-spacing: -0.025em;
+    }
+
+    .container p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .learning-path {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 16px;
+      margin: 40px auto;
+      max-width: 800px;
+    }
+
+    .learning-path h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .learning-path p {
+      font-size: 16px;
+      opacity: 0.9;
+      margin: 0;
+      color: white;
+    }
+
+    .progress-indicator {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
       gap: 20px;
-      padding: 30px 20px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .progress-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    .step-number {
+      width: 24px;
+      height: 24px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .step-arrow {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    /* Cards Section */
+    .divs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .cards {
-      background-color: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 280px;
-      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      padding: 32px 28px;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cards::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 16px 16px 0 0;
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .cards:hover::before {
+      transform: scaleX(1);
     }
 
     .cards:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-color);
     }
 
+    .cards:nth-child(1)::before { background: #e34c26; } /* HTML */
+    .cards:nth-child(2)::before { background: #1572b6; } /* CSS */
+    .cards:nth-child(3)::before { background: #f7df1e; } /* JavaScript */
+    .cards:nth-child(4)::before { background: #61dafb; } /* React */
+    .cards:nth-child(5)::before { background: #68a063; } /* Backend */
+
     .cards img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       object-fit: contain;
-      margin-bottom: 15px;
+      margin-bottom: 24px;
+      border-radius: 12px;
+      padding: 12px;
+      background: var(--secondary-color);
+      transition: all 0.3s ease;
+    }
+
+    .cards:hover img {
+      transform: scale(1.1);
+      background: #e0f2fe;
     }
 
     .cards h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-      color: #222;
+      margin-bottom: 16px;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
     }
 
+    .card-description {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .difficulty {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .difficulty.beginner { background: #dcfce7; color: #166534; }
+    .difficulty.intermediate { background: #fef3c7; color: #92400e; }
+    .difficulty.advanced { background: #fecaca; color: #991b1b; }
+
     .cards a {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
-      background-color: var(--primary-color);
-      color: var(--btn-color);
-      padding: 10px 20px;
+      background: var(--primary-color);
+      color: white;
+      padding: 12px 24px;
       border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      min-width: 140px;
     }
 
     .cards a:hover {
-      background-color: #0073c7;
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
     }
 
+    /* Footer Styles */
     footer {
-      background-color: var(--footer-bg);
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #666;
-      margin-top: 40px;
+      background: var(--footer-bg);
+      border-top: 1px solid var(--border-color);
+      padding: 60px 0 30px;
+      margin-top: 80px;
     }
 
-    @media (max-width: 600px) {
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .footer-section p,
+    .footer-section li {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary-color);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background: var(--border-color);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-bottom p {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 16px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .breadcrumb {
+        justify-content: center;
+      }
+
+      .divs {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 40px 15px;
+      }
+
+      .container {
+        padding: 60px 15px 40px;
+      }
+
+      .progress-indicator {
+        gap: 10px;
+      }
+
+      .step-arrow {
+        display: none;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
       .cards {
-        width: 90%;
+        padding: 24px 20px;
       }
 
-      .container h1 {
-        font-size: 22px;
+      .cards img {
+        width: 60px;
+        height: 60px;
       }
 
-      .container p {
-        font-size: 14px;
+      .learning-path {
+        padding: 20px;
+        margin: 30px 15px;
+      }
+    }
+
+    /* Animation */
+    .cards {
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .cards:nth-child(1) { animation-delay: 0.1s; }
+    .cards:nth-child(2) { animation-delay: 0.2s; }
+    .cards:nth-child(3) { animation-delay: 0.3s; }
+    .cards:nth-child(4) { animation-delay: 0.4s; }
+    .cards:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
 </head>
-
 <body id="body">
-
   <header>
-    <h2>ZN Infotech - Learning Hub</h2>
+    <div class="header-container">
+      <div class="logo-section">
+        <div class="logo-icon">ZN</div>
+        <div class="logo-text">
+          <h1>ZN Infotech</h1>
+          <p>Learning Hub</p>
+        </div>
+      </div>
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>→</span>
+        <span>MERN Stack</span>
+      </nav>
+    </div>
   </header>
-
+  
   <div class="container">
-    <h1 class="animate__rubberBand">What do you want to learn today?</h1>
-    <p>Welcome to our MERN Learning Resources. Begin your journey by selecting one of the core front-end technologies.
-      Each topic includes detailed explanations, examples, and practical use cases.</p>
-  </div>
+    <h1 class="animate__animated animate__rubberBand">What do you want to learn today?</h1>
+    <p>Welcome to our comprehensive MERN Stack learning path. Master full-stack web development by progressing through each core technology. Each module includes detailed explanations, practical examples, and real-world projects to build your expertise step by step.</p>
+    
+    <div class="learning-path">
+      <h2>🚀 Your MERN Stack Journey</h2>
+      <p>Follow this structured path to become a full-stack developer. Start with the fundamentals and progress to advanced backend development.</p>
+    </div>
 
+    <div class="progress-indicator">
+      <div class="progress-step">
+        <div class="step-number">1</div>
+        <span>HTML Basics</span>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="progress-step">
+        <div class="step-number">2</div>
+        <span>CSS Styling</span>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="progress-step">
+        <div class="step-number">3</div>
+        <span>JavaScript</span>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="progress-step">
+        <div class="step-number">4</div>
+        <span>React</span>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="progress-step">
+        <div class="step-number">5</div>
+        <span>Backend</span>
+      </div>
+    </div>
+  </div>
+  
   <section class="divs">
     <div class="cards">
       <img src="images/HTML.png" alt="HTML Logo">
+      <div class="card-meta">
+        <span class="difficulty beginner">Beginner</span>
+        <!-- <span>~8 hours</span> -->
+      </div>
       <h3>HTML</h3>
-      <a href="HTML.html">Learn It</a>
+      <p class="card-description">Learn the foundation of web development with HTML. Master semantic markup, forms, and modern HTML5 features.</p>
+      <a href="HTML.html">Start Learning</a>
     </div>
+    
     <div class="cards">
       <img src="images/CSS.png" alt="CSS Logo">
+      <div class="card-meta">
+        <span class="difficulty beginner">Beginner</span>
+        <!-- <span>~12 hours</span> -->
+      </div>
       <h3>CSS</h3>
-      <a href="CSS.html">Learn It</a>
+      <p class="card-description">Style your web pages with CSS. Learn layouts, animations, responsive design, and modern CSS techniques.</p>
+      <a href="CSS.html">Start Learning</a>
     </div>
+    
     <div class="cards">
       <img src="images/JS.png" alt="JavaScript Logo">
+      <div class="card-meta">
+        <span class="difficulty intermediate">Intermediate</span>
+        <!-- <span>~20 hours</span> -->
+      </div>
       <h3>JavaScript</h3>
-      <a href="JS.html">Learn It</a>
+      <p class="card-description">Master the programming language of the web. Learn ES6+, DOM manipulation, and asynchronous programming.</p>
+      <a href="JS.html">Start Learning</a>
     </div>
+    
     <div class="cards">
-      <img src="images/react.png" alt="JavaScript Logo">
+      <img src="images/react.png" alt="React Logo">
+      <div class="card-meta">
+        <span class="difficulty intermediate">Intermediate</span>
+        <!-- <span>~25 hours</span> -->
+      </div>
       <h3>React</h3>
-      <a href="MERN-stack/React/Topics/React-Topics.html">Learn It</a>
+      <p class="card-description">Build dynamic user interfaces with React. Learn components, hooks, state management, and modern React patterns.</p>
+      <a href="MERN-stack/React/Topics/React-Topics.html">Start Learning</a>
     </div>
+    
     <div class="cards">
-      <img src="images//backend.jpg" alt="JavaScript Logo">
+      <img src="images/backend.jpg" alt="Backend Logo">
+      <div class="card-meta">
+        <span class="difficulty advanced">Advanced</span>
+        <!-- <span>~30 hours</span> -->
+      </div>
       <h3>Backend</h3>
-      <a href="MERN-stack/Backend/Topics.html">Learn It</a>
+      <p class="card-description">Complete your full-stack journey with Node.js, Express, MongoDB, and API development.</p>
+      <a href="MERN-stack/Backend/Topics.html">Start Learning</a>
     </div>
   </section>
-
+  
   <footer>
-    &copy; 2025 ZN Infotech. All rights reserved. | Designed with 💙 for learners.
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>MERN Stack Mastery</h3>
+          <p>Complete your full-stack development journey with our comprehensive MERN Stack curriculum. From HTML basics to advanced backend development, we provide structured learning paths with hands-on projects.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="GitHub">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Discord">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Learning Path</h3>
+          <ul>
+            <li><a href="HTML.html">HTML Fundamentals</a></li>
+            <li><a href="CSS.html">CSS & Styling</a></li>
+            <li><a href="JS.html">JavaScript Essentials</a></li>
+            <li><a href="MERN-stack/React/Topics/React-Topics.html">React Development</a></li>
+            <li><a href="MERN-stack/Backend/Topics.html">Backend & APIs</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#cheatsheets">Cheat Sheets</a></li>
+            <li><a href="#projects">Practice Projects</a></li>
+            <li><a href="#exercises">Coding Exercises</a></li>
+            <li><a href="#examples">Code Examples</a></li>
+            <li><a href="#tools">Developer Tools</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Community</h3>
+          <ul>
+            <li><a href="#forum">Discussion Forum</a></li>
+            <li><a href="#mentorship">Mentorship Program</a></li>
+            <li><a href="#study-groups">Study Groups</a></li>
+            <li><a href="#code-review">Code Reviews</a></li>
+            <li><a href="#career">Career Guidance</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 ZN Infotech. All rights reserved. Empowering the next generation of developers.</p>
+        <div class="footer-links">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms of Service</a>
+          <a href="#accessibility">Accessibility</a>
+          <a href="#sitemap">Sitemap</a>
+        </div>
+      </div>
+    </div>
   </footer>
+  
   <script>
     const targeted = document.getElementById("body");
-    // function to disable right click 
+    // Function to disable right click 
     targeted.addEventListener("contextmenu", function (e) {
       e.preventDefault(); // Prevents the default context menu
     });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add loading effect for images
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.cards img');
+      images.forEach(img => {
+        img.addEventListener('load', function() {
+          this.style.opacity = '1';
+        });
+      });
+    });
   </script>
-
 </body>
-
 </html>
