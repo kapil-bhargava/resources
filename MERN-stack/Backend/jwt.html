@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JWT (JSON Web Token) Explained</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f9fc;
+      color: #1d1d1d;
+    }
+
+    header {
+      background: #2b2d42;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: white;
+      border-left: 5px solid #4ecdc4;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #2b2d42;
+    }
+
+    code, pre {
+      background: #f1f1f1;
+      padding: 10px;
+      display: block;
+      white-space: pre-wrap;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #2b2d42;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: #ffb703;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔐 JSON Web Token (JWT) - Complete Guide</h1>
+    <p>Understand, install, and implement JWT with Node.js and Frontend</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>📌 What is JWT?</h2>
+      <p>
+        <strong>JWT (JSON Web Token)</strong> is a compact, URL-safe way of representing claims securely between two parties.
+        It is commonly used for <strong>authentication</strong> and <strong>authorization</strong> in web applications.
+      </p>
+      <p>It looks like this:</p>
+      <code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjM0IiwiaWF0IjoxNjk1NzA5ODAyfQ.mXUeFvQrPgAf0df9VNzKs_Y12nA8vn10QYFF6PvzHcQ</code>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Why Use JWT?</h2>
+      <ul>
+        <li>✅ Stateless authentication — no session storage needed</li>
+        <li>✅ Token is stored in the frontend and sent with each request</li>
+        <li>✅ Works great for SPAs (Single Page Apps) and mobile apps</li>
+        <li>✅ Scalable across multiple servers</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📦 How to Install JWT in Node.js</h2>
+      <p>Install the required package:</p>
+      <code>npm install jsonwebtoken</code>
+    </div>
+
+    <div class="card">
+      <h2>⚙️ Backend Code (Node.js + Express)</h2>
+      <p><strong>Login API that issues a token</strong></p>
+      <pre><code>const express = require('express');
+const jwt = require('jsonwebtoken');
+const app = express();
+app.use(express.json());
+
+const SECRET = 'your_secret_key';
+
+// Dummy login
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  if (username === 'admin' && password === '1234') {
+    const token = jwt.sign({ username }, SECRET, { expiresIn: '1h' });
+    res.json({ token });
+  } else {
+    res.status(401).json({ message: 'Invalid credentials' });
+  }
+});
+
+// Middleware to protect routes
+function verifyToken(req, res, next) {
+  const bearer = req.headers['authorization'];
+  const token = bearer && bearer.split(' ')[1];
+
+  if (!token) return res.status(403).json({ message: 'Token required' });
+
+  jwt.verify(token, SECRET, (err, user) => {
+    if (err) return res.status(401).json({ message: 'Invalid token' });
+    req.user = user;
+    next();
+  });
+}
+
+// Protected route
+app.get('/dashboard', verifyToken, (req, res) => {
+  res.send(`Hello ${req.user.username}, welcome to your dashboard`);
+});
+
+app.listen(3000, () => console.log('Server started'));
+</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>🖥️ Frontend Code (Fetch API Example)</h2>
+      <p><strong>Login and access protected data</strong></p>
+      <pre><code>// Login and save token
+fetch('http://localhost:3000/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ username: 'admin', password: '1234' })
+})
+.then(res => res.json())
+.then(data => {
+  localStorage.setItem('token', data.token);
+  alert('Login successful');
+});
+
+// Access dashboard
+const token = localStorage.getItem('token');
+
+fetch('http://localhost:3000/dashboard', {
+  headers: {
+    'Authorization': 'Bearer ' + token
+  }
+})
+.then(res => res.text())
+.then(data => console.log(data));
+</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>🔍 Structure of a JWT</h2>
+      <p>JWT has 3 parts:</p>
+      <ul>
+        <li><strong>Header</strong>: Token type & algorithm</li>
+        <li><strong>Payload</strong>: Claims like userId, role, etc.</li>
+        <li><strong>Signature</strong>: Validates token using a secret</li>
+      </ul>
+      <p>You can decode JWT on <a href="https://jwt.io/" target="_blank">jwt.io</a></p>
+    </div>
+
+    <div class="card">
+      <h2>📅 When to Use JWT?</h2>
+      <ul>
+        <li>✅ When building secure REST APIs</li>
+        <li>✅ In Single Page Applications (React, Angular)</li>
+        <li>✅ When you need scalable, stateless auth</li>
+        <li>❌ Don’t use JWT to store sensitive data (like passwords)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>✅ Summary</h2>
+      <ul>
+        <li>JWT is a way to safely send data between frontend & backend</li>
+        <li>Backend creates the token after login</li>
+        <li>Frontend stores it and sends it with each request</li>
+        <li>Backend verifies token to allow or reject request</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    🔐 JWT Guide by ZN Infotech Pvt. Ltd.  
+    📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a><br>
+    We teach: Web Dev, IoT, App Dev, Python, C/C++, JS, and more.
+  </footer>
+</body>
+</html>

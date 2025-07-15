@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>JWT Methods Explained - jsonwebtoken</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background: #f2f5f9;
+            color: #1d1d1d;
+        }
+
+        header {
+            background: #003049;
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        header code {
+            margin: 2px;
+            background: #31c3e7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #003049;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 6px solid #219ebc;
+            border-radius: 8px;
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            color: #003049;
+        }
+
+        code,
+        pre {
+            background: #f1f1f1;
+            padding: 10px;
+            display: block;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        footer {
+            background: #003049;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: #ffb703;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🔐 JWT Methods Explained</h1>
+        <p>Learn jsonwebtoken methods like <code>sign</code>, <code>verify</code>, and <code>decode</code> with examples
+        </p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>📦 Installation</h2>
+            <p>Install the jsonwebtoken package in your Node.js backend:</p>
+            <code>npm install jsonwebtoken</code>
+        </div>
+
+        <div class="card">
+            <h2>🧠 1. jwt.sign(payload, secret, options)</h2>
+            <p><strong>Purpose:</strong> Create a new token (encode + sign)</p>
+            <p><strong>Parameters:</strong></p>
+            <ul>
+                <li><code>payload</code>: Data to store (userId, email, etc.)</li>
+                <li><code>secret</code>: Private key used to sign</li>
+                <li><code>options</code> (optional): Expiration, issuer, etc.</li>
+            </ul>
+            <pre><code>const jwt = require('jsonwebtoken');
+
+const token = jwt.sign(
+  { userId: 'admin123', role: 'admin' }, 
+  'SECRET_KEY',
+  { expiresIn: '2h', issuer: 'zn-erp' }
+);
+
+console.log(token);</code></pre>
+        </div>
+
+        <div class="card">
+            <h2>🛡️ 2. jwt.verify(token, secret, callback)</h2>
+            <p><strong>Purpose:</strong> Verify the token and decode it</p>
+            <p><strong>Use:</strong> Protect routes and check validity</p>
+            <pre><code>try {
+  const decoded = jwt.verify(token, 'SECRET_KEY');
+  console.log(decoded.userId); // admin123
+} catch (err) {
+  console.log("Invalid or expired token");
+}</code></pre>
+
+            <p><strong>Async Version with callback:</strong></p>
+            <pre><code>jwt.verify(token, 'SECRET_KEY', (err, decoded) => {
+  if (err) return console.log("Invalid token");
+  console.log(decoded);
+});</code></pre>
+        </div>
+
+        <div class="card">
+            <h2>👁️ 3. jwt.decode(token)</h2>
+            <p><strong>Purpose:</strong> Decode token without verifying it</p>
+            <p><strong>Use case:</strong> View token payload temporarily (Not secure!)</p>
+            <pre><code>const decoded = jwt.decode(token);
+console.log(decoded);
+// { userId: 'admin123', iat: 12345, exp: 12345 }</code></pre>
+        </div>
+
+        <div class="card">
+            <h2>⚙️ Optional Options in jwt.sign()</h2>
+            <ul>
+                <li><code>expiresIn</code>: Time before token expires (e.g., '1h', '7d')</li>
+                <li><code>issuer</code>: Who created the token</li>
+                <li><code>audience</code>: Who the token is meant for</li>
+                <li><code>subject</code>: Subject of the token (user/email)</li>
+            </ul>
+            <pre><code>jwt.sign(
+  { userId: '101' },
+  'secret',
+  { expiresIn: '1h', issuer: 'zninfotech' }
+);</code></pre>
+        </div>
+
+        <div class="card">
+            <h2>📊 Summary Table</h2>
+            <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+                <thead style="background: #eaeaea;">
+                    <tr>
+                        <th>Method</th>
+                        <th>Purpose</th>
+                        <th>Verifies Signature?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>jwt.sign()</code></td>
+                        <td>Create token</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td><code>jwt.verify()</code></td>
+                        <td>Check token & decode</td>
+                        <td>✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td><code>jwt.decode()</code></td>
+                        <td>Read payload only</td>
+                        <td>❌ No</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <footer>
+        📚 JWT Education by ZN Infotech Pvt. Ltd.
+        📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a><br>
+        Training in IoT, Programming, Web & Mobile Development, Python, Node.js & more.
+    </footer>
+</body>
+
+</html>
