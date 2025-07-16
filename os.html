@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tracking Login Details with Node.js OS Module</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f6ff;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: #003366;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      padding: 30px 50px;
+    }
+    h2 {
+      color: #003366;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border-left: 4px solid #007acc;
+      overflow-x: auto;
+    }
+    code {
+      font-family: 'Courier New', monospace;
+      color: #004d99;
+    }
+    ul {
+      margin-left: 25px;
+    }
+    footer {
+      background: #001f33;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+    a {
+      color: #ffe600;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .note {
+      background: #e8f4ff;
+      border-left: 4px solid #3399ff;
+      padding: 15px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Tracking Multiple Login Details using Node.js OS Module</h1>
+  <p>Log and Send User System Info to Admin</p>
+</header>
+
+<section>
+  <h2>📌 Why Use the <code>os</code> Module?</h2>
+  <p>
+    The <code>os</code> module is a built-in Node.js utility that helps fetch details about the operating system, user session, network interfaces, CPU, and memory. While it doesn't handle logins directly, it’s powerful when you want to capture user environment info when a login occurs.
+  </p>
+
+  <h2>✅ Use Case: Logging Login Meta and Sending to Admin</h2>
+  <p>You can gather and send the following details on each login:</p>
+  <ul>
+    <li>Username on system</li>
+    <li>Device hostname</li>
+    <li>OS platform and architecture</li>
+    <li>Local IP address</li>
+    <li>Login time</li>
+  </ul>
+
+  <div class="note">
+    💡 Example: When a user logs in, this metadata is sent to an admin dashboard or email for monitoring or audit purposes.
+  </div>
+
+  <h2>📦 Step-by-Step Code Example</h2>
+  <pre><code>// server.js
+const os = require('os');
+const axios = require('axios'); // npm install axios
+
+function getLoginMetaData() {
+  const user = os.userInfo();
+  const device = os.hostname();
+  const platform = os.platform();
+  const arch = os.arch();
+  const ip = Object.values(os.networkInterfaces())
+    .flat()
+    .find(net => net.family === 'IPv4' && !net.internal)?.address;
+
+  return {
+    user: user.username,
+    device,
+    platform,
+    arch,
+    ip,
+    loginTime: new Date().toISOString()
+  };
+}
+
+// Send login data to admin backend
+async function sendLoginToAdmin() {
+  const data = getLoginMetaData();
+  try {
+    await axios.post('https://your-admin-api.com/logins', data);
+    console.log("Login data sent to admin successfully!");
+  } catch (err) {
+    console.error("Error sending login data:", err.message);
+  }
+}
+
+// Trigger this function after user login
+sendLoginToAdmin();
+</code></pre>
+
+  <h2>🧠 Summary of Useful <code>os</code> Methods</h2>
+  <ul>
+    <li><code>os.userInfo()</code> – Get the current system username</li>
+    <li><code>os.hostname()</code> – Get the computer name/device</li>
+    <li><code>os.platform()</code> – OS type like 'win32', 'linux'</li>
+    <li><code>os.arch()</code> – CPU architecture (e.g., 'x64')</li>
+    <li><code>os.networkInterfaces()</code> – IP addresses and interface info</li>
+  </ul>
+
+  <h2>🚫 What the <code>os</code> Module Can't Do</h2>
+  <ul>
+    <li>It can't track actual user credentials or login events.</li>
+    <li>It can't send emails or store in database by itself — you'll need external tools like Axios, Nodemailer, MongoDB.</li>
+  </ul>
+
+  <h2>🔐 When to Use This?</h2>
+  <ul>
+    <li>To track suspicious login patterns</li>
+    <li>To build an admin panel showing all login devices/IPs</li>
+    <li>To monitor internal system logins (e.g., employee systems)</li>
+  </ul>
+</section>
+
+<footer>
+  &copy; 2025 ZN Infotech Pvt. Ltd. | Phone: 9565017342 |
+  <a href="https://zninfotech.com" target="_blank">www.zninfotech.com</a><br>
+  <small>We provide training in IoT, Programming Languages, Web Development, Data Science, and more.</small>
+</footer>
+
+</body>
+</html>
