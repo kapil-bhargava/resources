@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Memory Allocation in C</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f9fa;
+      color: #2c3e50;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #34495e;
+    }
+    section {
+      margin-bottom: 30px;
+      padding: 15px 25px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    code {
+       /* background: #ffffff; */
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+    pre {
+      background: #2d3436;
+      color: #dfe6e9;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+    footer {
+      margin-top: 40px;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    footer a {
+      color: #00d8ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌟 Dynamic Memory Allocation in C</h1>
+
+  <section>
+    <h2>🔍 What is Dynamic Memory Allocation?</h2>
+    <p>
+      Dynamic memory allocation in C means allocating memory at **runtime** using pointers.
+      It allows us to create variables or arrays when we don't know the size in advance.
+    </p>
+  </section>
+
+  <section>
+    <h2>📌 Why and When to Use</h2>
+    <ul>
+      <li>When array size is not known at compile time</li>
+      <li>To avoid wastage of memory</li>
+      <li>Used in data structures like Linked List, Stack, Tree, etc.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>⚙️ Dynamic Allocation Functions</h2>
+    <ul>
+      <li><code>malloc()</code>: Allocates single block, contains garbage values</li>
+      <li><code>calloc()</code>: Allocates multiple blocks, initializes with 0</li>
+      <li><code>realloc()</code>: Resizes previously allocated memory</li>
+      <li><code>free()</code>: Frees the allocated memory</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧪 Demo Code: Using malloc()</h2>
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int *ptr;
+    int n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    ptr = (int*) malloc(n * sizeof(int));  // Allocate memory
+
+    if(ptr == NULL) {
+        printf("Memory not allocated!");
+        return 1;
+    }
+
+    printf("Enter %d values:\n", n);
+    for(i = 0; i &lt; n; i++) {
+        scanf("%d", &ptr[i]);
+    }
+
+    printf("Values entered:\n");
+    for(i = 0; i &lt; n; i++) {
+        printf("%d ", ptr[i]);
+    }
+
+    free(ptr);  // Free memory
+    return 0;
+}
+</code></pre>
+  </section>
+
+  <section>
+    <h2>📘 calloc() vs malloc()</h2>
+    <pre><code>int *arr1 = (int*) malloc(5 * sizeof(int));  // Garbage values
+int *arr2 = (int*) calloc(5, sizeof(int));   // All values = 0</code></pre>
+  </section>
+
+  <section>
+    <h2>♻️ realloc() Example</h2>
+    <pre><code>int *ptr = (int*) malloc(2 * sizeof(int));
+ptr = (int*) realloc(ptr, 4 * sizeof(int)); // Resize to 4 ints</code></pre>
+  </section>
+
+  <section>
+    <h2>🚫 Always Free Memory!</h2>
+    <p>Use <code>free(ptr);</code> when memory is no longer needed to avoid memory leaks.</p>
+  </section>
+
+  <footer>
+    <p><strong>ZN Infotech Pvt. Ltd.</strong> | 📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a></p>
+    <p>We offer training in IoT, Web & App Development, Programming Languages (C, C++, Python, Java, etc.), Data Science, and more.</p>
+  </footer>
+</body>
+</html>
