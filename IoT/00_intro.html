@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete IoT Development Roadmap - 6-7 Months</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e40af;
+            --accent-color: #06b6d4;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+            --purple-color: #7c3aed;
+            --orange-color: #ea580c;
+            --dark-color: #111827;
+            --light-color: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--success-color));
+            --gradient-tech: linear-gradient(135deg, var(--purple-color), var(--orange-color));
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/><path d="M0,10 L20,10 M10,0 L10,20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
+            opacity: 0.4;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ffffff, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section:nth-child(even) {
+            background-color: white;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .intro-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border-left: 6px solid var(--secondary-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-accent);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .intro-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .intro-card h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .intro-card .icon {
+            font-size: 2.5rem;
+        }
+
+        .intro-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 3px solid var(--accent-color);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '🔗';
+            position: absolute;
+            top: -20px;
+            left: 40px;
+            background: var(--accent-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .example-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--success-color);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .example-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .example-item strong {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .tech-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border-top: 6px solid var(--purple-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .tech-card h4 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tech-card .tech-icon-small {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-tech);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .tech-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .tech-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-card li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .tech-card li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .syllabus-timeline {
+            position: relative;
+            margin: 60px 0;
+        }
+
+        .syllabus-timeline::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--gradient-primary);
+            border-radius: 3px;
+        }
+
+        .month-card {
+            position: relative;
+            margin-left: 100px;
+            margin-bottom: 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border-left: 6px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .month-card:hover {
+            transform: translateX(10px);
+        }
+
+        .month-card::before {
+            content: '';
+            position: absolute;
+            left: -120px;
+            top: 40px;
+            width: 30px;
+            height: 30px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 0 0 6px var(--secondary-color);
+        }
+
+        .month-number {
+            position: absolute;
+            left: -135px;
+            top: 25px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .month-title {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .month-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .topic-item {
+            background: var(--light-color);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .topic-item h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .topic-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .topic-item li {
+            padding: 5px 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .topic-item li::before {
+            content: '🔧';
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        .project-highlight {
+            background: var(--gradient-tech);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .project-highlight h5 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .project-highlight p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .career-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 100px 0;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .career-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .career-card .salary {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .career-card h4 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .career-card p {
+            opacity: 0.9;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .industries-section {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .industry-card {
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 5px solid var(--success-color);
+            transition: all 0.3s ease;
+        }
+
+        .industry-card:hover {
+            background: white;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .industry-card h4 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        footer .company-info {
+            margin-bottom: 40px;
+        }
+
+        footer .company-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 1.5rem;
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .month-card {
+                margin-left: 60px;
+            }
+
+            .syllabus-timeline::before {
+                left: 20px;
+            }
+
+            .month-card::before {
+                left: -80px;
+            }
+
+            .month-number {
+                left: -95px;
+            }
+
+            .intro-grid,
+            .tech-stack-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="floating-elements">
+            <div class="floating-element">🔗</div>
+            <div class="floating-element">📡</div>
+            <div class="floating-element">⚡</div>
+        </div>
+        <div class="container">
+            <h1>🌐 Complete IoT Development Roadmap</h1>
+            <p>Master Internet of Things from Hardware to Cloud in 6-7 Months - Build Smart Connected Solutions</p>
+            <div class="tech-icons">
+                <div class="tech-icon">🔧</div>
+                <div class="tech-icon">📡</div>
+                <div class="tech-icon">☁️</div>
+                <div class="tech-icon">📱</div>
+                <div class="tech-icon">🤖</div>
+                <div class="tech-icon">🔒</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Understanding IoT Ecosystem</h2>
+
+            <div class="intro-grid">
+                <div class="intro-card">
+                    <h3><span class="icon">🌐</span>Internet of Things (IoT)</h3>
+                    <p>IoT is a network of interconnected physical devices embedded with sensors, software, and
+                        connectivity to collect and exchange data. It enables smart automation, remote monitoring, and
+                        data-driven decision making across various industries.</p>
+                </div>
+
+                <div class="intro-card">
+                    <h3><span class="icon">🔧</span>Embedded Systems</h3>
+                    <p>Specialized computing systems designed to perform dedicated functions within larger mechanical or
+                        electrical systems. They form the foundation of IoT devices, combining hardware and software for
+                        specific applications.</p>
+                </div>
+
+                <div class="intro-card">
+                    <h3><span class="icon">📡</span>Connectivity & Communication</h3>
+                    <p>Various protocols and technologies that enable IoT devices to communicate with each other and
+                        cloud services, including WiFi, Bluetooth, LoRaWAN, 5G, and specialized IoT protocols like MQTT
+                        and CoAP.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Real-World IoT Applications Transforming Industries</h4>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <strong>🏠 Smart Homes</strong><br>
+                        Automated lighting, climate control, security systems, and voice assistants creating intelligent
+                        living spaces with energy efficiency and convenience.
+                    </div>
+                    <div class="example-item">
+                        <strong>🏭 Industrial IoT (IIoT)</strong><br>
+                        Predictive maintenance, real-time monitoring, supply chain optimization, and automated quality
+                        control in manufacturing environments.
+                    </div>
+                    <div class="example-item">
+                        <strong>🚗 Connected Vehicles</strong><br>
+                        Vehicle telematics, fleet management, autonomous driving features, and real-time traffic
+                        optimization systems.
+                    </div>
+                    <div class="example-item">
+                        <strong>🏥 Healthcare IoT</strong><br>
+                        Remote patient monitoring, wearable health devices, smart medical equipment, and telemedicine
+                        solutions.
+                    </div>
+                    <div class="example-item">
+                        <strong>🌾 Smart Agriculture</strong><br>
+                        Precision farming, soil monitoring, automated irrigation, livestock tracking, and crop yield
+                        optimization.
+                    </div>
+                    <div class="example-item">
+                        <strong>🏙️ Smart Cities</strong><br>
+                        Traffic management, waste management, environmental monitoring, smart street lighting, and
+                        public safety systems.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Essential Technologies & Platforms</h2>
+
+            <div class="tech-stack-grid">
+                <div class="tech-card">
+                    <h4><span class="tech-icon-small">🔧</span>Hardware Platforms</h4>
+                    <p><strong>Microcontrollers & Development Boards:</strong> The foundation of IoT devices, providing
+                        processing power, connectivity, and I/O capabilities for sensor integration and control.</p>
+                    <ul>
+                        <li><strong>Arduino:</strong> Beginner-friendly, extensive library support</li>
+                        <li><strong>Raspberry Pi:</strong> Linux-based, full computer capabilities</li>
+                        <li><strong>ESP32/ESP8266:</strong> Built-in WiFi/Bluetooth, low power</li>
+                        <li><strong>NodeMCU:</strong> WiFi-enabled, Arduino-compatible</li>
+                        <li><strong>STM32:</strong> Professional-grade, high performance</li>
+                        <li><strong>BeagleBone:</strong> Real-time processing capabilities</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card">
+                    <h4><span class="tech-icon-small">📡</span>Communication Protocols</h4>
+                    <p><strong>Connectivity Solutions:</strong> Various protocols enabling device-to-device and
+                        device-to-cloud communication with different range, power, and bandwidth requirements.</p>
+                    <ul>
+                        <li><strong>WiFi:</strong> High bandwidth, local network connectivity</li>
+                        <li><strong>Bluetooth/BLE:</strong> Low power, short-range communication</li>
+                        <li><strong>LoRaWAN:</strong> Long-range, low-power wide area network</li>
+                        <li><strong>Zigbee:</strong> Mesh networking, home automation</li>
+                        <li><strong>NB-IoT:</strong> Cellular IoT, wide coverage</li>
+                        <li><strong>MQTT:</strong> Lightweight messaging protocol</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card">
+                    <h4><span class="tech-icon-small">💻</span>Programming Languages</h4>
+                    <p><strong>Development Languages:</strong> Different programming languages suited for various
+                        aspects of IoT development from embedded programming to cloud services.</p>
+                    <ul>
+                        <li><strong>C/C++:</strong> Embedded systems, real-time applications</li>
+                        <li><strong>Python:</strong> Rapid prototyping, data analysis, AI/ML</li>
+                        <li><strong>JavaScript/Node.js:</strong> Web interfaces, server-side</li>
+                        <li><strong>MicroPython:</strong> Python for microcontrollers</li>
+                        <li><strong>Java:</strong> Enterprise applications, Android</li>
+                        <li><strong>Rust:</strong> System programming, memory safety</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card">
+                    <h4><span class="tech-icon-small">☁️</span>Cloud Platforms</h4>
+                    <p><strong>IoT Cloud Services:</strong> Managed platforms providing device management, data storage,
+                        analytics, and scalable infrastructure for IoT applications.</p>
+                    <ul>
+                        <li><strong>AWS IoT Core:</strong> Comprehensive IoT platform</li>
+                        <li><strong>Google Cloud IoT:</strong> Machine learning integration</li>
+                        <li><strong>Azure IoT Hub:</strong> Enterprise-grade solutions</li>
+                        <li><strong>ThingSpeak:</strong> Open-source IoT analytics</li>
+                        <li><strong>Blynk:</strong> Mobile app development</li>
+                        <li><strong>Firebase:</strong> Real-time database, mobile backend</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card">
+                    <h4><span class="tech-icon-small">📊</span>Sensors & Actuators</h4>
+                    <p><strong>Physical Interface Components:</strong> Devices that enable IoT systems to sense the
+                        environment and perform physical actions based on data and commands.</p>
+                    <ul>
+                        <li><strong>Environmental:</strong> Temperature, humidity, pressure</li>
+                        <li><strong>Motion:</strong> Accelerometer, gyroscope, PIR</li>
+                        <li><strong>Optical:</strong> Light sensors, cameras, LiDAR</li>
+                        <li><strong>Actuators:</strong> Motors, relays, solenoids</li>
+                        <li><strong>Communication:</strong> GPS, RFID, NFC modules</li>
+                        <li><strong>Power:</strong> Battery management, solar panels</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card">
+                    <h4><span class="tech-icon-small">🔒</span>Security & Analytics</h4>
+                    <p><strong>Data Protection & Intelligence:</strong> Essential components for securing IoT networks
+                        and extracting meaningful insights from collected data.</p>
+                    <ul>
+                        <li><strong>Encryption:</strong> TLS/SSL, AES, RSA protocols</li>
+                        <li><strong>Authentication:</strong> Device certificates, OAuth</li>
+                        <li><strong>Edge Computing:</strong> Local data processing</li>
+                        <li><strong>Machine Learning:</strong> Predictive analytics, anomaly detection</li>
+                        <li><strong>Blockchain:</strong> Decentralized security</li>
+                        <li><strong>Data Visualization:</strong> Dashboards, real-time monitoring</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Comprehensive 6-7 Month IoT Syllabus</h2>
+
+            <div class="syllabus-timeline">
+                <div class="month-card">
+                    <div class="month-number">1</div>
+                    <h3 class="month-title">Month 1: Electronics & Programming Fundamentals</h3>
+                    <p class="month-subtitle">Build strong foundation in electronics, circuits, and programming basics
+                    </p>
+
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Electronics Basics</h5>
+                            <ul>
+                                <li>Ohm's Law and basic circuit analysis</li>
+                                <li>Resistors, capacitors, inductors</li>
+                                <li>Diodes, transistors, and switches</li>
+                                <li>Digital vs analog signals</li>
+                                <li>Breadboard and circuit construction</li>
+                                <li>Multimeter usage and measurements</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Arduino Programming</h5>
+                            <ul>
+                                <li>Arduino IDE setup and configuration</li>
+                                <li>C/C++ programming fundamentals</li>
+                                <li>Digital I/O operations</li>
+                                <li>Analog input/output (ADC/PWM)</li>
+                                <li>Serial communication basics</li>
+                                <li>Libraries and code organization</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Basic Sensors Integration</h5>
+                            <ul>
+                                <li>LED control and patterns</li>
+                                <li>Push buttons and switches</li>
+                                <li>Temperature sensors (LM35, DS18B20)</li>
+                                <li>Light sensors (LDR, photodiode)</li>
+                                <li>Ultrasonic distance sensor</li>
+                                <li>Servo motor control</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Development Environment</h5>
+                            <ul>
+                                <li>Arduino IDE advanced features</li>
+                                <li>Library management</li>
+                                <li>Serial monitor and debugging</li>
+                                <li>Code version control with Git</li>
+                                <li>Circuit simulation tools</li>
+                                <li>Documentation best practices</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 1 Projects</h5>
+                        <p><strong>Smart Home Lighting System:</strong> Build an automatic lighting system using light
+                            sensors and LEDs that adjusts brightness based on ambient light conditions. Include manual
+                            override with push buttons and create different lighting patterns for various scenarios.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">2</div>
+                    <h3 class="month-title">Month 2: Advanced Hardware & Communication</h3>
+                    <p class="month-subtitle">Explore advanced microcontrollers and wireless communication protocols</p>
+
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>ESP32/ESP8266 Development</h5>
+                            <ul>
+                                <li>ESP32 architecture and capabilities</li>
+                                <li>WiFi connectivity and web servers</li>
+                                <li>Bluetooth and BLE communication</li>
+                                <li>Deep sleep and power management</li>
+                                <li>OTA (Over-The-Air) updates</li>
+                                <li>FreeRTOS multitasking</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Raspberry Pi Fundamentals</h5>
+                            <ul>
+                                <li>Linux basics and command line</li>
+                                <li>Python programming for IoT</li>
+                                <li>GPIO programming and interfacing</li>
+                                <li>Camera module integration</li>
+                                <li>SSH and remote access</li>
+                                <li>System administration basics</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Communication Protocols</h5>
+                            <ul>
+                                <li>I2C and SPI protocols</li>
+                                <li>UART serial communication</li>
+                                <li>HTTP/HTTPS web protocols</li>
+                                <li>WebSocket real-time communication</li>
+                                <li>JSON data format</li>
+                                <li>API design and consumption</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Advanced Sensors</h5>
+                            <ul>
+                                <li>Environmental sensors (BME280)</li>
+                                <li>Motion detection (PIR, accelerometer)</li>
+                                <li>GPS and location services</li>
+                                <li>Camera and image processing</li>
+                                <li>Gas and air quality sensors</li>
+                                <li>Sensor calibration techniques</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 2 Projects</h5>
+                        <p><strong>Weather Monitoring Station:</strong> Create a comprehensive weather station using
+                            ESP32 with multiple environmental sensors. Display data on a web interface, send alerts for
+                            extreme conditions, and log historical data with timestamps.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">3</div>
+                    <h3 class="month-title">Month 3: IoT Protocols & Cloud Integration</h3>
+                    <p class="month-subtitle">Master IoT-specific protocols and connect devices to cloud platforms</p>
+
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>MQTT Protocol</h5>
+                            <ul>
+                                <li>MQTT broker setup and configuration</li>
+                                <li>Publish/Subscribe messaging pattern</li>
+                                <li>Quality of Service (QoS) levels</li>
+                                <li>Topic design and best practices</li>
+                                <li>Security and authentication</li>
+                                <li>Retained messages and last will</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Cloud Platforms</h5>
+                            <ul>
+                                <li>AWS IoT Core setup and device management</li>
+                                <li>Google Cloud IoT Core integration</li>
+                                <li>Azure IoT Hub configuration</li>
+                                <li>ThingSpeak data logging</li>
+                                <li>Firebase real-time database</li>
+                                <li>Cloud security and device certificates</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Data Management</h5>
+                            <ul>
+                                <li>Time-series databases</li>
+                                <li>Data aggregation and filtering</li>
+                                <li>Real-time data streaming</li>
+                                <li>Data backup and recovery</li>
+                                <li>Edge computing concepts</li>
+                                <li>Data compression techniques</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Web Technologies</h5>
+                            <ul>
+                                <li>HTML/CSS for IoT interfaces</li>
+                                <li>JavaScript and AJAX</li>
+                                <li>RESTful API development</li>
+                                <li>Node.js for IoT applications</li>
+                                <li>Express.js web framework</li>
+                                <li>WebSocket implementation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 3 Projects</h5>
+                        <p><strong>Smart Agriculture System:</strong> Develop a soil monitoring system with multiple
+                            sensors (moisture, pH, temperature) connected to cloud platforms via MQTT. Create a web
+                            dashboard for remote monitoring and automated irrigation control.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">4</div>
+                    <h3 class="month-title">Month 4: Mobile Apps & Advanced Connectivity</h3>
+                    <p class="month-subtitle">Build mobile applications and explore advanced communication technologies
+                    </p>
+
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Mobile App Development</h5>
+                            <ul>
+                                <li>Flutter/React Native basics</li>
+                                <li>Bluetooth connectivity in apps</li>
+                                <li>WiFi provisioning and setup</li>
+                                <li>Push notifications</li>
+                                <li>Local storage and caching</li>
+                                <li>User interface design for IoT</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Advanced Communication</h5>
+                            <ul>
+                                <li>LoRaWAN network setup</li>
+                                <li>Zigbee mesh networking</li>
+                                <li>NB-IoT and cellular connectivity</li>
+                                <li>Satellite communication basics</li>
+                                <li>Network topology design</li>
+                                <li>Protocol selection criteria</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Data Visualization</h5>
+                            <ul>
+                                <li>Chart.js and D3.js libraries</li>
+                                <li>Real-time dashboard creation</li>
+                                <li>Grafana for IoT monitoring</li>
+                                <li>Custom visualization components</li>
+                                <li>Mobile-responsive design</li>
+                                <li>Alert and notification systems</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Device Management</h5>
+                            <ul>
+                                <li>Over-the-air (OTA) updates</li>
+                                <li>Remote configuration management</li>
+                                <li>Device provisioning and onboarding</li>
+                                <li>Firmware version control</li>
+                                <li>Device health monitoring</li>
+                                <li>Troubleshooting and diagnostics</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 4 Projects</h5>
+                        <p><strong>Smart Home Control System:</strong> Build a comprehensive home automation system with
+                            mobile app control, voice commands, scheduling features, and integration with multiple smart
+                            devices. Include security features and energy monitoring.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">5</div>
+                    <h3 class="month-title">Month 5: AI/ML Integration & Edge Computing</h3>
+                    <p class="month-subtitle">Implement artificial intelligence and machine learning in IoT systems</p>
+
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Machine Learning for IoT</h5>
+                            <ul>
+                                <li>TensorFlow Lite for microcontrollers</li>
+                                <li>Edge AI and inference optimization</li>
+                                <li>Anomaly detection algorithms</li>
+                                <li>Predictive maintenance models</li>
+                                <li>Computer vision on edge devices</li>
+                                <li>Natural language processing</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Edge Computing</h5>
+                            <ul>
+                                <li>Edge vs cloud computing trade-offs</li>
+                                <li>Local data processing strategies</li>
+                                <li>Fog computing architecture</li>
+                                <li>Real-time decision making</li>
+                                <li>Bandwidth optimization</li>
+                                <li>Latency reduction techniques</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Computer Vision</h5>
+                            <ul>
+                                <li>OpenCV for embedded systems</li>
+                                <li>Image classification and detection</li>
+                                <li>Facial recognition systems</li>
+                                <li>Object tracking and counting</li>
+                                <li>Quality control automation</li>
+                                <li>Camera calibration and setup</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Voice and Audio Processing</h5>
+                            <ul>
+                                <li>Speech recognition integration</li>
+                                <li>Voice command processing</li>
+                                <li>Audio signal analysis</li>
+                                <li>Noise cancellation techniques</li>
+                                <li>Smart speaker development</li>
+                                <li>Audio streaming protocols</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 5 Projects</h5>
+                        <p><strong>Intelligent Security System:</strong> Develop an AI-powered security system with
+                            facial recognition, motion detection, voice alerts, and predictive analytics. Include mobile
+                            notifications and cloud-based learning capabilities.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">6</div>
+                    <h3 class="month-title">Month 6: Industrial IoT & Security</h3>
+                    <p class="month-subtitle">Explore industrial applications and implement comprehensive security
+                        measures</p>
+
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Industrial IoT (IIoT)</h5>
+                            <ul>
+                                <li>SCADA systems integration</li>
+                                <li>PLC communication protocols</li>
+                                <li>Modbus and industrial standards</li>
+                                <li>Predictive maintenance systems</li>
+                                <li>Asset tracking and management</li>
+                                <li>Industrial safety systems</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>IoT Security</h5>
+                            <ul>
+                                <li>Encryption and key management</li>
+                                <li>Secure boot and firmware protection</li>
+                                <li>Network security protocols</li>
+                                <li>Vulnerability assessment</li>
+                                <li>Penetration testing for IoT</li>
+                                <li>Security compliance standards</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Blockchain Integration</h5>
+                            <ul>
+                                <li>Blockchain basics for IoT</li>
+                                <li>Smart contracts development</li>
+                                <li>Decentralized device management</li>
+                                <li>Supply chain tracking</li>
+                                <li>Identity and access management</li>
+                                <li>Cryptocurrency integration</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>System Integration</h5>
+                            <ul>
+                                <li>Enterprise system integration</li>
+                                <li>ERP and CRM connectivity</li>
+                                <li>API gateway implementation</li>
+                                <li>Microservices architecture</li>
+                                <li>Container deployment (Docker)</li>
+                                <li>Kubernetes orchestration</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 6 Projects</h5>
+                        <p><strong>Industrial Monitoring System:</strong> Create a comprehensive industrial monitoring
+                            solution with predictive maintenance, real-time alerts, blockchain-based audit trails, and
+                            integration with existing enterprise systems.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">7</div>
+                    <h3 class="month-title">Month 7: Capstone Project & Career Preparation</h3>
+                    <p class="month-subtitle">Complete end-to-end IoT solution and prepare for professional
+                        opportunities</p>
+
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Capstone Project Development</h5>
+                            <ul>
+                                <li>Project planning and requirements</li>
+                                <li>System architecture design</li>
+                                <li>Hardware selection and procurement</li>
+                                <li>Software development lifecycle</li>
+                                <li>Testing and validation</li>
+                                <li>Documentation and presentation</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Deployment & DevOps</h5>
+                            <ul>
+                                <li>CI/CD pipelines for IoT</li>
+                                <li>Cloud deployment strategies</li>
+                                <li>Monitoring and logging</li>
+                                <li>Performance optimization</li>
+                                <li>Scalability planning</li>
+                                <li>Maintenance and support</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Business & Entrepreneurship</h5>
+                            <ul>
+                                <li>IoT business models</li>
+                                <li>Market analysis and validation</li>
+                                <li>Intellectual property protection</li>
+                                <li>Funding and investment</li>
+                                <li>Product commercialization</li>
+                                <li>Startup ecosystem navigation</li>
+                            </ul>
+                        </div>
+
+                        <div class="topic-item">
+                            <h5>Portfolio & Career Prep</h5>
+                            <ul>
+                                <li>GitHub portfolio development</li>
+                                <li>Technical documentation writing</li>
+                                <li>Resume and LinkedIn optimization</li>
+                                <li>Interview preparation</li>
+                                <li>Networking and community building</li>
+                                <li>Continuous learning strategies</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Capstone Project Options</h5>
+                        <p><strong>Choose Your Specialization:</strong> Smart City Traffic Management, Healthcare
+                            Monitoring System, Agricultural Automation, Industrial Predictive Maintenance, or
+                            Environmental Monitoring Network. Complete end-to-end solution with hardware, software,
+                            mobile app, and cloud integration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="career-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Career Opportunities & Growth</h2>
+
+            <div class="highlight-box" style="background: rgba(255,255,255,0.1); border-color: var(--accent-color);">
+                <h4 style="color: white;">IoT Industry Growth & Future</h4>
+                <p style="color: rgba(255,255,255,0.9);">The IoT industry is projected to reach $1.1 trillion by 2028,
+                    with over 75 billion connected devices worldwide. This explosive growth creates unprecedented
+                    opportunities across all industries, from healthcare and manufacturing to smart cities and
+                    agriculture.</p>
+            </div>
+
+            <div class="career-grid">
+                <div class="career-card">
+                    <h4>IoT Developer</h4>
+                    <div class="salary">₹6-20 LPA</div>
+                    <p>Design and develop IoT applications, integrate sensors and devices, and create connected
+                        solutions for various industries.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Arduino/ESP32</span>
+                        <span class="skill-tag">MQTT</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>Embedded Systems Engineer</h4>
+                    <div class="salary">₹8-25 LPA</div>
+                    <p>Develop firmware and hardware solutions for IoT devices, optimize performance, and ensure
+                        reliable operation.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Embedded C</span>
+                        <span class="skill-tag">RTOS</span>
+                        <span class="skill-tag">Hardware Design</span>
+                        <span class="skill-tag">Debugging</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>IoT Solutions Architect</h4>
+                    <div class="salary">₹15-40 LPA</div>
+                    <p>Design end-to-end IoT solutions, select appropriate technologies, and ensure scalable and secure
+                        implementations.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">System Design</span>
+                        <span class="skill-tag">Cloud Platforms</span>
+                        <span class="skill-tag">Security</span>
+                        <span class="skill-tag">Architecture</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>IoT Security Specialist</h4>
+                    <div class="salary">₹12-30 LPA</div>
+                    <p>Implement security measures for IoT networks, conduct vulnerability assessments, and ensure data
+                        protection.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Cybersecurity</span>
+                        <span class="skill-tag">Encryption</span>
+                        <span class="skill-tag">Penetration Testing</span>
+                        <span class="skill-tag">Compliance</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>Industrial IoT Engineer</h4>
+                    <div class="salary">₹10-28 LPA</div>
+                    <p>Implement IoT solutions in manufacturing and industrial environments, focusing on automation and
+                        efficiency.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">SCADA</span>
+                        <span class="skill-tag">PLC</span>
+                        <span class="skill-tag">Modbus</span>
+                        <span class="skill-tag">Industrial Protocols</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>IoT Product Manager</h4>
+                    <div class="salary">₹18-45 LPA</div>
+                    <p>Lead IoT product development, define requirements, coordinate teams, and drive product strategy
+                        and roadmap.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Product Strategy</span>
+                        <span class="skill-tag">Market Analysis</span>
+                        <span class="skill-tag">Team Leadership</span>
+                        <span class="skill-tag">Business Development</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>Smart City Consultant</h4>
+                    <div class="salary">₹14-35 LPA</div>
+                    <p>Design and implement smart city solutions, work with government agencies, and optimize urban
+                        infrastructure.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Urban Planning</span>
+                        <span class="skill-tag">Government Relations</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Public Policy</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>IoT Entrepreneur</h4>
+                    <div class="salary">₹0-∞ LPA</div>
+                    <p>Start your own IoT company, develop innovative products, and create solutions for emerging market
+                        needs.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Business Planning</span>
+                        <span class="skill-tag">Innovation</span>
+                        <span class="skill-tag">Fundraising</span>
+                        <span class="skill-tag">Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="industries-section">
+        <div class="container">
+            <h2 class="section-title">Industries Embracing IoT</h2>
+
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <h4>🏭 Manufacturing & Industry 4.0</h4>
+                    <p>Smart factories, predictive maintenance, quality control automation, supply chain optimization,
+                        and real-time production monitoring.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>🏥 Healthcare & Medical</h4>
+                    <p>Remote patient monitoring, wearable health devices, smart medical equipment, telemedicine, and
+                        hospital asset tracking.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>🌾 Agriculture & Farming</h4>
+                    <p>Precision agriculture, soil monitoring, automated irrigation, livestock tracking, crop yield
+                        optimization, and weather monitoring.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>🚗 Automotive & Transportation</h4>
+                    <p>Connected vehicles, fleet management, autonomous driving, traffic optimization, vehicle
+                        diagnostics, and smart parking.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>🏠 Smart Homes & Buildings</h4>
+                    <p>Home automation, energy management, security systems, HVAC optimization, smart appliances, and
+                        building management.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>🏙️ Smart Cities & Infrastructure</h4>
+                    <p>Traffic management, waste management, environmental monitoring, smart lighting, public safety,
+                        and utility management.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>⚡ Energy & Utilities</h4>
+                    <p>Smart grids, renewable energy monitoring, utility metering, energy efficiency, power
+                        distribution, and demand response.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>🛒 Retail & E-commerce</h4>
+                    <p>Inventory management, customer analytics, smart shelves, supply chain tracking, personalized
+                        shopping, and store optimization.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>🌍 Environmental Monitoring</h4>
+                    <p>Air quality monitoring, water quality assessment, wildlife tracking, climate research, pollution
+                        control, and disaster management.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>🏦 Banking & Finance</h4>
+                    <p>ATM monitoring, branch security, customer analytics, fraud detection, asset tracking, and digital
+                        payment systems.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>📚 Education & Research</h4>
+                    <p>Smart classrooms, campus security, attendance tracking, research equipment monitoring, and
+                        educational analytics.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h4>🎯 Sports & Entertainment</h4>
+                    <p>Athlete performance monitoring, stadium management, fan engagement, equipment tracking, and venue
+                        optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="company-info">
+                <h3>🚀 ZN Infotech Pvt. Ltd.</h3>
+                <p>Leading the IoT Revolution through Comprehensive Education & Training</p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>+91 9565017342</span>
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <a href="https://zninfotech.com" target="_blank">www.zninfotech.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>info@zninfotech.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Innovation Hub, Tech City</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #374151;">
+                <p><strong>🎓 Our Comprehensive Training Programs:</strong></p>
+                <p>Internet of Things (IoT) • Embedded Systems • Data Science & AI • Full Stack Development • Mobile App
+                    Development • Cloud Computing • Cybersecurity • Digital Marketing • Blockchain Technology</p>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <p><strong>🏆 Why Choose ZN Infotech?</strong></p>
+                <p>✅ Industry-Expert Instructors • ✅ Hands-on Project-Based Learning • ✅ 100% Placement Assistance • ✅
+                    State-of-the-Art Labs • ✅ Industry Partnerships • ✅ Flexible Learning Options</p>
+            </div>
+
+            <div style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
+                <p>&copy; 2025 ZN Infotech Pvt. Ltd. All rights reserved. | Empowering the next generation of IoT
+                    innovators since 2018</p>
+                <p>🌟 Join 10,000+ successful graduates who are now leading IoT projects worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-to-top" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function () {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 300) {
+                scrollButton.style.display = 'flex';
+            } else {
+                scrollButton.style.display = 'none';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.intro-card, .tech-card, .month-card, .career-card, .industry-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(card);
+        });
+
+        // Tech icons floating animation
+        const techIcons = document.querySelectorAll('.tech-icon');
+        techIcons.forEach((icon, index) => {
+            icon.style.animationDelay = `${index * 0.2}s`;
+            icon.style.animation = 'float 3s ease-in-out infinite';
+        });
+
+        // Add floating animation keyframes dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+            
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+            
+            .month-card:hover {
+                animation: pulse 0.6s ease-in-out;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Interactive tech icons in header
+        const headerTechIcons = document.querySelectorAll('.tech-icon');
+        headerTechIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.2) rotate(10deg)';
+                this.style.background = 'rgba(255,255,255,0.2)';
+            });
+
+            icon.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.background = 'rgba(255,255,255,0.1)';
+            });
+        });
+
+        // Progress indicator for timeline
+        function updateTimelineProgress() {
+            const timeline = document.querySelector('.syllabus-timeline');
+            const timelineRect = timeline.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            if (timelineRect.top < windowHeight && timelineRect.bottom > 0) {
+                const progress = Math.max(0, Math.min(1, (windowHeight - timelineRect.top) / (windowHeight + timelineRect.height)));
+                const timelineLine = timeline.querySelector('::before');
+                // Visual progress indication could be added here
+            }
+        }
+
+        window.addEventListener('scroll', updateTimelineProgress);
+
+        // Add interactive hover effects for career cards
+        const careerCards = document.querySelectorAll('.career-card');
+        careerCards.forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+                this.style.background = 'rgba(255,255,255,0.2)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(-10px) scale(1)';
+                this.style.background = 'rgba(255,255,255,0.1)';
+            });
+        });
+
+        // Add click-to-expand functionality for project highlights
+        const projectHighlights = document.querySelectorAll('.project-highlight');
+        projectHighlights.forEach(highlight => {
+            highlight.style.cursor = 'pointer';
+            highlight.addEventListener('click', function () {
+                const isExpanded = this.classList.contains('expanded');
+
+                if (!isExpanded) {
+                    this.classList.add('expanded');
+                    this.style.transform = 'scale(1.02)';
+                    this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)';
+                } else {
+                    this.classList.remove('expanded');
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+        });
+
+        // Add typing effect for header subtitle
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function () {
+            const headerSubtitle = document.querySelector('header p');
+            const originalText = headerSubtitle.textContent;
+            typeWriter(headerSubtitle, originalText, 30);
+        });
+
+        // Add particle effect to header background
+        function createParticles() {
+            const header = document.querySelector('header');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 2px;
+                    height: 2px;
+                    background: rgba(255,255,255,0.3);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: particleFloat ${5 + Math.random() * 10}s linear infinite;
+                `;
+                header.appendChild(particle);
+            }
+        }
+
+        // Add particle animation keyframes
+        const particleStyle = document.createElement('style');
+        particleStyle.textContent = `
+            @keyframes particleFloat {
+                0% {
+                    transform: translateY(100vh) rotate(0deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(particleStyle);
+
+        // Initialize particles
+        createParticles();
+
+        // Add interactive skill tags
+        const skillTags = document.querySelectorAll('.skill-tag');
+        skillTags.forEach(tag => {
+            tag.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.1)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+            });
+
+            tag.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Add section visibility tracking
+        const sections = document.querySelectorAll('.section');
+        const navObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Could add navigation highlighting here
+                    console.log(`Section ${entry.target.querySelector('.section-title')?.textContent} is visible`);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => {
+            navObserver.observe(section);
+        });
+
+        // Add responsive menu functionality (if needed)
+        function handleResize() {
+            const isMobile = window.innerWidth <= 768;
+            const monthCards = document.querySelectorAll('.month-card');
+
+            monthCards.forEach(card => {
+                if (isMobile) {
+                    card.style.marginLeft = '30px';
+                } else {
+                    card.style.marginLeft = '100px';
+                }
+            });
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Call once on load
+
+        // Add loading animation
+        window.addEventListener('load', function () {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add easter egg - Konami code
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up Up Down Down Left Right Left Right B A
+
+        document.addEventListener('keydown', function (e) {
+            konamiCode.push(e.keyCode);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                // Easter egg activated
+                document.body.style.filter = 'hue-rotate(180deg)';
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                }, 3000);
+
+                // Show special message
+                const message = document.createElement('div');
+                message.textContent = '🎉 IoT Master Mode Activated! 🚀';
+                message.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: var(--gradient-primary);
+                    color: white;
+                    padding: 20px 40px;
+                    border-radius: 15px;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    z-index: 10000;
+                    box-shadow: var(--shadow-xl);
+                    animation: bounce 0.5s ease-in-out;
+                `;
+
+                document.body.appendChild(message);
+
+                setTimeout(() => {
+                    message.remove();
+                }, 3000);
+
+                konamiCode = [];
+            }
+        });
+
+        // Add bounce animation for easter egg
+        const bounceStyle = document.createElement('style');
+        bounceStyle.textContent = `
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translate(-50%, -50%) translateY(0);
+                }
+                40% {
+                    transform: translate(-50%, -50%) translateY(-30px);
+                }
+                60% {
+                    transform: translate(-50%, -50%) translateY(-15px);
+                }
+            }
+        `;
+        document.head.appendChild(bounceStyle);
+
+        // Performance optimization - Lazy load images if any were added
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Add print styles optimization
+        window.addEventListener('beforeprint', function () {
+            document.body.classList.add('printing');
+        });
+
+        window.addEventListener('afterprint', function () {
+            document.body.classList.remove('printing');
+        });
+
+        // Console welcome message for developers
+        console.log(`
+        🌐 Welcome to ZN Infotech IoT Roadmap! 🚀
+        
+        Interested in the code? We're always looking for talented developers!
+        Contact us at: info@zninfotech.com
+        
+        Built with ❤️ using modern web technologies:
+        - CSS Grid & Flexbox for responsive layouts
+        - CSS Custom Properties for theming
+        - Intersection Observer API for animations
+        - Modern JavaScript ES6+ features
+        
+        Happy coding! 👨‍💻👩‍💻
+        `);
+    </script>
+</body>
+
+</html>

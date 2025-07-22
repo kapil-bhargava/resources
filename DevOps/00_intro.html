@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete DevOps Engineering Roadmap - 6-7 Months</title>
+    <style>
+        :root {
+            --primary-color: #0d1117;
+            --secondary-color: #1f2937;
+            --accent-color: #3b82f6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --purple-color: #8b5cf6;
+            --orange-color: #f97316;
+            --teal-color: #14b8a6;
+            --pink-color: #ec4899;
+            --dark-color: #111827;
+            --light-color: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--teal-color));
+            --gradient-tech: linear-gradient(135deg, var(--purple-color), var(--pink-color));
+            --gradient-devops: linear-gradient(135deg, var(--orange-color), var(--danger-color));
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="devops-pattern" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="12.5" cy="12.5" r="3" fill="rgba(59,130,246,0.1)"/><path d="M0,12.5 L25,12.5 M12.5,0 L12.5,25" stroke="rgba(59,130,246,0.05)" stroke-width="1"/><path d="M6.25,6.25 L18.75,18.75 M18.75,6.25 L6.25,18.75" stroke="rgba(16,185,129,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23devops-pattern)"/></svg>');
+            opacity: 0.4;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            background: linear-gradient(45deg, #ffffff, #3b82f6, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(20deg); }
+        }
+
+        header p {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .devops-cycle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .cycle-item {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .cycle-item:hover {
+            transform: scale(1.2) rotate(10deg);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .cycle-arrow {
+            font-size: 2rem;
+            color: var(--accent-color);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .section {
+            padding: 120px 0;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .intro-card {
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-xl);
+            border-left: 8px solid var(--accent-color);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: var(--gradient-accent);
+            opacity: 0.05;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .intro-card:hover::before {
+            transform: scale(1.2);
+            opacity: 0.1;
+        }
+
+        .intro-card h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-weight: 600;
+        }
+
+        .intro-card .icon {
+            font-size: 3rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .intro-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.15rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #f0fdfa);
+            border: 4px solid var(--accent-color);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '⚙️';
+            position: absolute;
+            top: -25px;
+            left: 50px;
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .example-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 6px solid var(--success-color);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .example-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .example-item strong {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .tools-ecosystem {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .tool-category {
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-xl);
+            border-top: 8px solid var(--purple-color);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .tool-category:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .tool-category h4 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-weight: 600;
+        }
+
+        .tool-category .category-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-tech);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .tool-category p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .tools-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .tool-item {
+            background: var(--light-color);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .tool-item:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .tool-item h6 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .tool-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .syllabus-timeline {
+            position: relative;
+            margin: 80px 0;
+        }
+
+        .syllabus-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 8px;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+
+        .month-card {
+            position: relative;
+            margin-left: 120px;
+            margin-bottom: 80px;
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-xl);
+            border-left: 8px solid var(--accent-color);
+            transition: all 0.4s ease;
+        }
+
+        .month-card:hover {
+            transform: translateX(15px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .month-card::before {
+            content: '';
+            position: absolute;
+            left: -140px;
+            top: 50px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 8px solid white;
+            box-shadow: 0 0 0 8px var(--accent-color);
+        }
+
+        .month-number {
+            position: absolute;
+            left: -160px;
+            top: 30px;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .month-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .month-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .topic-item {
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 5px solid var(--teal-color);
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: white;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .topic-item h5 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .topic-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .topic-item li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+
+        .topic-item li::before {
+            content: '🔧';
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+
+        .project-highlight {
+            background: var(--gradient-devops);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-highlight h5 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .project-highlight p {
+            opacity: 0.95;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .career-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .career-card {
+            background: rgba(255,255,255,0.1);
+            padding: 50px;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,255,255,0.2);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .career-card .salary {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--teal-color);
+            margin: 25px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .career-card h4 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .career-card p {
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .companies-section {
+            background: white;
+            padding: 120px 0;
+        }
+
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .company-card {
+            background: var(--light-color);
+            padding: 40px;
+            border-radius: 20px;
+            border-top: 6px solid var(--success-color);
+            transition: all 0.3s ease;
+        }
+
+        .company-card:hover {
+            background: white;
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-8px);
+        }
+
+        .company-card h4 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+        }
+
+        .company-card .company-icon {
+            font-size: 2rem;
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 100px 0 50px;
+            text-align: center;
+        }
+
+        footer .company-info {
+            margin-bottom: 50px;
+        }
+
+        footer .company-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--gradient-primary);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-2xl);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .month-card {
+                margin-left: 80px;
+            }
+            
+            .syllabus-timeline::before {
+                left: 30px;
+            }
+            
+            .month-card::before {
+                left: -100px;
+            }
+            
+            .month-number {
+                left: -120px;
+            }
+            
+            .intro-grid,
+            .tools-ecosystem {
+                grid-template-columns: 1fr;
+            }
+            
+            .devops-cycle {
+                gap: 10px;
+            }
+            
+            .cycle-item {
+                width: 60px;
+                height: 60px;
+                font-size: 1.4rem;
+            }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+            font-size: 2rem;
+        }
+
+        .floating-element:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 70%; left: 85%; animation-delay: 3s; }
+        .floating-element:nth-child(3) { top: 40%; left: 5%; animation-delay: 6s; }
+        .floating-element:nth-child(4) { top: 80%; left: 15%; animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(-30px) rotate(3deg); }
+        }
+
+        .pipeline-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .pipeline-step {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .pipeline-step:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+
+        .pipeline-arrow {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="floating-elements">
+            <div class="floating-element">🔧</div>
+            <div class="floating-element">⚙️</div>
+            <div class="floating-element">🚀</div>
+            <div class="floating-element">☁️</div>
+        </div>
+        <div class="container">
+            <h1>🚀 Complete DevOps Engineering Roadmap</h1>
+            <p>Master DevOps Culture, Tools & Practices in 6-7 Months - From Development to Production Excellence</p>
+            
+            <div class="pipeline-visual">
+                <div class="pipeline-step">Plan</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">Code</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">Build</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">Test</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">Deploy</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">Monitor</div>
+            </div>
+            
+            <div class="devops-cycle">
+                <div class="cycle-item">📋</div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-item">💻</div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-item">🔨</div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-item">🧪</div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-item">🚀</div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-item">📊</div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-item">🔄</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Understanding DevOps Philosophy</h2>
+            
+            <div class="intro-grid">
+                <div class="intro-card">
+                    <h3><span class="icon">🤝</span>DevOps Culture</h3>
+                    <p>DevOps is a cultural and professional movement that emphasizes collaboration between Development and Operations teams. It breaks down silos, promotes shared responsibility, and focuses on delivering value to customers through improved communication, automation, and continuous improvement.</p>
+                </div>
+                
+                <div class="intro-card">
+                    <h3><span class="icon">🔄</span>CI/CD Pipeline</h3>
+                    <p>Continuous Integration and Continuous Deployment form the backbone of DevOps practices. CI/CD automates the software delivery process, enabling teams to integrate code changes frequently, test automatically, and deploy reliably to production environments.</p>
+                </div>
+                
+                <div class="intro-card">
+                    <h3><span class="icon">☁️</span>Infrastructure as Code</h3>
+                    <p>IaC treats infrastructure provisioning and management as software development, using version control, testing, and automation. This approach ensures consistency, repeatability, and scalability across different environments while reducing manual errors.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Real-World DevOps Transformations</h4>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <strong>🎬 Netflix</strong><br>
+                        Deploys thousands of times per day using microservices architecture, automated testing, and chaos engineering to ensure reliability at massive scale.
+                    </div>
+                    <div class="example-item">
+                        <strong>🛒 Amazon</strong><br>
+                        Pioneered DevOps practices with continuous deployment, infrastructure automation, and the "you build it, you run it" philosophy for service ownership.
+                    </div>
+                    <div class="example-item">
+                        <strong>🚗 Tesla</strong><br>
+                        Uses over-the-air updates and continuous deployment to deliver new features and improvements directly to vehicles worldwide.
+                    </div>
+                    <div class="example-item">
+                        <strong>💳 Capital One</strong><br>
+                        Transformed from traditional banking to cloud-native architecture using DevOps practices, reducing deployment time from months to minutes.
+                    </div>
+                    <div class="example-item">
+                        <strong>🎵 Spotify</strong><br>
+                        Implements the "Spotify Model" with autonomous squads, tribes, and guilds, enabling rapid feature delivery and experimentation.
+                    </div>
+                    <div class="example-item">
+                        <strong>🏦 ING Bank</strong><br>
+                        Adopted DevOps to transform from a traditional bank to a digital-first organization, improving deployment frequency by 10x.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Essential DevOps Tools & Technologies</h2>
+            
+            <div class="tools-ecosystem">
+                <div class="tool-category">
+                    <h4><span class="category-icon">📝</span>Version Control & Collaboration</h4>
+                    <p><strong>Source Code Management:</strong> Foundation of DevOps practices, enabling team collaboration, code versioning, and change tracking across distributed development teams.</p>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h6>Git</h6>
+                            <p>Distributed version control system for tracking changes and collaboration</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>GitHub</h6>
+                            <p>Cloud-based Git repository hosting with CI/CD integration</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>GitLab</h6>
+                            <p>Complete DevOps platform with integrated CI/CD and monitoring</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Bitbucket</h6>
+                            <p>Atlassian's Git solution with Jira integration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">🔨</span>CI/CD & Build Automation</h4>
+                    <p><strong>Continuous Integration/Deployment:</strong> Automated pipelines that build, test, and deploy applications, ensuring rapid and reliable software delivery with minimal manual intervention.</p>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h6>Jenkins</h6>
+                            <p>Open-source automation server with extensive plugin ecosystem</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>GitHub Actions</h6>
+                            <p>Native CI/CD platform integrated with GitHub repositories</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>GitLab CI</h6>
+                            <p>Built-in CI/CD with GitLab, supporting Docker and Kubernetes</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Azure DevOps</h6>
+                            <p>Microsoft's comprehensive DevOps platform and services</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">📦</span>Containerization & Orchestration</h4>
+                    <p><strong>Container Technologies:</strong> Lightweight, portable application packaging that ensures consistency across development, testing, and production environments.</p>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h6>Docker</h6>
+                            <p>Container platform for packaging and running applications</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Kubernetes</h6>
+                            <p>Container orchestration platform for managing containerized applications</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Docker Compose</h6>
+                            <p>Tool for defining and running multi-container applications</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Helm</h6>
+                            <p>Package manager for Kubernetes applications</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">☁️</span>Cloud Platforms & Services</h4>
+                    <p><strong>Cloud Infrastructure:</strong> Scalable, on-demand computing resources that provide the foundation for modern DevOps practices and global application deployment.</p>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h6>AWS</h6>
+                            <p>Amazon Web Services - comprehensive cloud platform</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Azure</h6>
+                            <p>Microsoft's cloud computing platform and services</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Google Cloud</h6>
+                            <p>Google's cloud platform with AI/ML integration</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>DigitalOcean</h6>
+                            <p>Developer-friendly cloud infrastructure platform</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">🏗️</span>Infrastructure as Code</h4>
+                    <p><strong>Infrastructure Automation:</strong> Tools that manage and provision infrastructure through machine-readable definition files, ensuring consistency and repeatability.</p>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h6>Terraform</h6>
+                            <p>Infrastructure provisioning tool supporting multiple cloud providers</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Ansible</h6>
+                            <p>Configuration management and application deployment automation</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>CloudFormation</h6>
+                            <p>AWS native infrastructure as code service</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Pulumi</h6>
+                            <p>Modern infrastructure as code using familiar programming languages</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">📊</span>Monitoring & Observability</h4>
+                    <p><strong>System Monitoring:</strong> Tools that provide visibility into application performance, infrastructure health, and user experience across distributed systems.</p>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h6>Prometheus</h6>
+                            <p>Open-source monitoring and alerting toolkit</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Grafana</h6>
+                            <p>Analytics and interactive visualization platform</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>ELK Stack</h6>
+                            <p>Elasticsearch, Logstash, and Kibana for log analysis</p>
+                        </div>
+                        <div class="tool-item">
+                            <h6>Datadog</h6>
+                            <p>Cloud-scale monitoring and analytics platform</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Comprehensive 6-7 Month DevOps Syllabus</h2>
+            
+            <div class="syllabus-timeline">
+                <div class="month-card">
+                    <div class="month-number">1</div>
+                    <h3 class="month-title">Month 1: Foundations & Version Control</h3>
+                    <p class="month-subtitle">Build strong foundations in Linux, networking, and version control systems</p>
+                    
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Linux Fundamentals</h5>
+                            <ul>
+                                <li>Command line basics and navigation</li>
+                                <li>File system structure and permissions</li>
+                                <li>Process management and system monitoring</li>
+                                <li>Package management (apt, yum, dnf)</li>
+                                <li>Text processing (grep, sed, awk)</li>
+                                <li>Shell scripting basics</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Networking Essentials</h5>
+                            <ul>
+                                <li>TCP/IP protocol suite</li>
+                                <li>DNS and domain name resolution</li>
+                                <li>HTTP/HTTPS protocols</li>
+                                <li>Load balancing concepts</li>
+                                <li>Firewalls and security groups</li>
+                                <li>Network troubleshooting tools</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Git & Version Control</h5>
+                            <ul>
+                                <li>Git fundamentals and workflow</li>
+                                <li>Branching and merging strategies</li>
+                                <li>Conflict resolution techniques</li>
+                                <li>GitHub/GitLab collaboration</li>
+                                <li>Pull requests and code reviews</li>
+                                <li>Git hooks and automation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Development Environment</h5>
+                            <ul>
+                                <li>IDE setup and configuration</li>
+                                <li>Virtual machines and environments</li>
+                                <li>SSH key management</li>
+                                <li>Development workflow optimization</li>
+                                <li>Code quality tools and linters</li>
+                                <li>Documentation best practices</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 1 Project</h5>
+                        <p><strong>Personal Development Environment:</strong> Set up a complete development environment with Linux VM, configure Git workflows, create shell scripts for automation, and establish a personal project repository with proper documentation and branching strategies.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">2</div>
+                    <h3 class="month-title">Month 2: Scripting & Automation</h3>
+                    <p class="month-subtitle">Master scripting languages and automation tools for system administration</p>
+                    
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Advanced Shell Scripting</h5>
+                            <ul>
+                                <li>Bash scripting advanced concepts</li>
+                                <li>Functions and modular programming</li>
+                                <li>Error handling and debugging</li>
+                                <li>Regular expressions and pattern matching</li>
+                                <li>Cron jobs and task scheduling</li>
+                                <li>System administration scripts</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Python for DevOps</h5>
+                            <ul>
+                                <li>Python fundamentals for automation</li>
+                                <li>File handling and system operations</li>
+                                <li>API interactions and web scraping</li>
+                                <li>Database connectivity and operations</li>
+                                <li>Error handling and logging</li>
+                                <li>DevOps libraries (paramiko, requests)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Configuration Management</h5>
+                            <ul>
+                                <li>Configuration management principles</li>
+                                <li>YAML and JSON data formats</li>
+                                <li>Environment variable management</li>
+                                <li>Configuration templates and generation</li>
+                                <li>Secrets management basics</li>
+                                <li>Configuration validation and testing</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>System Monitoring</h5>
+                            <ul>
+                                <li>System performance metrics</li>
+                                <li>Log file analysis and rotation</li>
+                                <li>Process monitoring and alerting</li>
+                                <li>Disk space and resource monitoring</li>
+                                <li>Network monitoring tools</li>
+                                <li>Custom monitoring scripts</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 2 Project</h5>
+                        <p><strong>System Administration Toolkit:</strong> Create a comprehensive toolkit of Python and Bash scripts for system monitoring, log analysis, backup automation, and server health checks. Include automated reporting and alerting mechanisms.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">3</div>
+                    <h3 class="month-title">Month 3: CI/CD Pipelines & Build Automation</h3>
+                    <p class="month-subtitle">Implement continuous integration and deployment pipelines</p>
+                    
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Jenkins Mastery</h5>
+                            <ul>
+                                <li>Jenkins installation and configuration</li>
+                                <li>Job creation and pipeline design</li>
+                                <li>Plugin ecosystem and management</li>
+                                <li>Jenkinsfile and pipeline as code</li>
+                                <li>Build triggers and webhooks</li>
+                                <li>Distributed builds and agents</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>GitHub Actions</h5>
+                            <ul>
+                                <li>Workflow creation and syntax</li>
+                                <li>Actions marketplace and custom actions</li>
+                                <li>Matrix builds and parallel execution</li>
+                                <li>Secrets and environment management</li>
+                                <li>Integration with external services</li>
+                                <li>Self-hosted runners setup</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Build Tools & Testing</h5>
+                            <ul>
+                                <li>Maven, Gradle, and npm builds</li>
+                                <li>Automated testing integration</li>
+                                <li>Code quality gates and SonarQube</li>
+                                <li>Artifact management and repositories</li>
+                                <li>Build optimization and caching</li>
+                                <li>Multi-stage build processes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Pipeline Design Patterns</h5>
+                            <ul>
+                                <li>Pipeline architecture best practices</li>
+                                <li>Blue-green deployment strategies</li>
+                                <li>Canary releases and feature flags</li>
+                                <li>Rollback and recovery procedures</li>
+                                <li>Pipeline security and compliance</li>
+                                <li>Performance optimization techniques</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 3 Project</h5>
+                        <p><strong>Multi-Stage CI/CD Pipeline:</strong> Build a complete CI/CD pipeline using Jenkins and GitHub Actions that includes automated testing, code quality checks, security scanning, artifact management, and deployment to multiple environments with rollback capabilities.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">4</div>
+                    <h3 class="month-title">Month 4: Containerization & Docker</h3>
+                    <p class="month-subtitle">Master containerization technologies and container orchestration</p>
+                    
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Docker Fundamentals</h5>
+                            <ul>
+                                <li>Container concepts and architecture</li>
+                                <li>Docker installation and configuration</li>
+                                <li>Image creation and Dockerfile best practices</li>
+                                <li>Container lifecycle management</li>
+                                <li>Volume management and data persistence</li>
+                                <li>Network configuration and port mapping</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Docker Compose</h5>
+                            <ul>
+                                <li>Multi-container application orchestration</li>
+                                <li>Docker Compose file structure</li>
+                                <li>Service dependencies and networking</li>
+                                <li>Environment variable management</li>
+                                <li>Development and production configurations</li>
+                                <li>Scaling and load balancing</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Container Registry & Security</h5>
+                            <ul>
+                                <li>Docker Hub and private registries</li>
+                                <li>Image tagging and versioning strategies</li>
+                                <li>Container security best practices</li>
+                                <li>Image vulnerability scanning</li>
+                                <li>Secrets management in containers</li>
+                                <li>Container runtime security</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Container Optimization</h5>
+                            <ul>
+                                <li>Multi-stage builds and image optimization</li>
+                                <li>Layer caching and build efficiency</li>
+                                <li>Resource limits and constraints</li>
+                                <li>Health checks and monitoring</li>
+                                <li>Container debugging and troubleshooting</li>
+                                <li>Performance tuning and optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 4 Project</h5>
+                        <p><strong>Microservices Application:</strong> Containerize a multi-tier application with Docker, create optimized images, implement Docker Compose for local development, set up private registry, and integrate container security scanning into CI/CD pipeline.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">5</div>
+                    <h3 class="month-title">Month 5: Kubernetes & Container Orchestration</h3>
+                    <p class="month-subtitle">Deploy and manage applications at scale with Kubernetes</p>
+                    
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Kubernetes Architecture</h5>
+                            <ul>
+                                <li>Kubernetes cluster components</li>
+                                <li>Master and worker node architecture</li>
+                                <li>etcd and cluster state management</li>
+                                <li>Kubernetes API and kubectl</li>
+                                <li>Namespaces and resource isolation</li>
+                                <li>Cluster networking and DNS</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Workload Management</h5>
+                            <ul>
+                                <li>Pods, Deployments, and ReplicaSets</li>
+                                <li>Services and load balancing</li>
+                                <li>ConfigMaps and Secrets management</li>
+                                <li>Persistent Volumes and storage</li>
+                                <li>StatefulSets and DaemonSets</li>
+                                <li>Jobs and CronJobs</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Kubernetes Networking</h5>
+                            <ul>
+                                <li>Container Network Interface (CNI)</li>
+                                <li>Ingress controllers and routing</li>
+                                <li>Network policies and security</li>
+                                <li>Service mesh introduction</li>
+                                <li>Load balancing strategies</li>
+                                <li>DNS and service discovery</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Helm & Package Management</h5>
+                            <ul>
+                                <li>Helm charts and templating</li>
+                                <li>Chart repositories and management</li>
+                                <li>Values files and customization</li>
+                                <li>Helm hooks and lifecycle management</li>
+                                <li>Chart testing and validation</li>
+                                <li>Helm in CI/CD pipelines</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 5 Project</h5>
+                        <p><strong>Production Kubernetes Cluster:</strong> Deploy a complete application stack on Kubernetes with proper resource management, implement Helm charts for deployment automation, configure ingress and load balancing, and set up monitoring and logging.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">6</div>
+                    <h3 class="month-title">Month 6: Infrastructure as Code & Cloud Platforms</h3>
+                    <p class="month-subtitle">Automate infrastructure provisioning and management</p>
+                    
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Terraform Mastery</h5>
+                            <ul>
+                                <li>Infrastructure as Code principles</li>
+                                <li>Terraform syntax and configuration</li>
+                                <li>State management and backends</li>
+                                <li>Modules and code reusability</li>
+                                <li>Multi-cloud and multi-environment</li>
+                                <li>Terraform Cloud and Enterprise</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Ansible Automation</h5>
+                            <ul>
+                                <li>Ansible architecture and inventory</li>
+                                <li>Playbooks and task automation</li>
+                                <li>Roles and collections</li>
+                                <li>Variables and templating with Jinja2</li>
+                                <li>Ansible Vault for secrets</li>
+                                <li>Integration with CI/CD pipelines</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>AWS Cloud Services</h5>
+                            <ul>
+                                <li>EC2, VPC, and networking</li>
+                                <li>S3, RDS, and data services</li>
+                                <li>IAM and security management</li>
+                                <li>CloudFormation and CDK</li>
+                                <li>Lambda and serverless computing</li>
+                                <li>CloudWatch monitoring and logging</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Multi-Cloud Strategy</h5>
+                            <ul>
+                                <li>Azure and Google Cloud basics</li>
+                                <li>Cloud-agnostic tooling</li>
+                                <li>Cost optimization strategies</li>
+                                <li>Disaster recovery and backup</li>
+                                <li>Compliance and governance</li>
+                                <li>Cloud migration strategies</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Month 6 Project</h5>
+                        <p><strong>Cloud Infrastructure Automation:</strong> Design and implement a complete cloud infrastructure using Terraform and Ansible, including VPC setup, auto-scaling groups, load balancers, databases, and monitoring. Deploy across multiple environments with proper state management.</p>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-number">7</div>
+                    <h3 class="month-title">Month 7: Monitoring, Security & Career Preparation</h3>
+                    <p class="month-subtitle">Implement comprehensive monitoring, security practices, and build professional portfolio</p>
+                    
+                    <div class="topics-grid">
+                        <div class="topic-item">
+                            <h5>Monitoring & Observability</h5>
+                            <ul>
+                                <li>Prometheus and Grafana setup</li>
+                                <li>Metrics collection and alerting</li>
+                                <li>ELK Stack for log management</li>
+                                <li>Distributed tracing concepts</li>
+                                <li>SLA/SLO/SLI implementation</li>
+                                <li>Incident response and on-call</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>DevSecOps & Security</h5>
+                            <ul>
+                                <li>Security in CI/CD pipelines</li>
+                                <li>Static and dynamic code analysis</li>
+                                <li>Container and infrastructure security</li>
+                                <li>Secrets management solutions</li>
+                                <li>Compliance and audit trails</li>
+                                <li>Security monitoring and incident response</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Performance & Optimization</h5>
+                            <ul>
+                                <li>Application performance monitoring</li>
+                                <li>Database optimization techniques</li>
+                                <li>Caching strategies and CDN</li>
+                                <li>Load testing and capacity planning</li>
+                                <li>Cost optimization and FinOps</li>
+                                <li>Green computing and sustainability</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-item">
+                            <h5>Career Development</h5>
+                            <ul>
+                                <li>Portfolio and GitHub showcase</li>
+                                <li>Technical documentation writing</li>
+                                <li>Interview preparation and practice</li>
+                                <li>Industry certifications (AWS, Azure, K8s)</li>
+                                <li>Open source contributions</li>
+                                <li>Networking and community building</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-highlight">
+                        <h5>🚀 Capstone Project</h5>
+                        <p><strong>End-to-End DevOps Platform:</strong> Build a complete DevOps platform with automated CI/CD, infrastructure as code, container orchestration, comprehensive monitoring, security scanning, and disaster recovery. Document everything and present as a professional portfolio project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="career-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">DevOps Career Opportunities & Growth</h2>
+            
+            <div class="highlight-box" style="background: rgba(255,255,255,0.1); border-color: var(--accent-color);">
+                <h4 style="color: white;">DevOps Market Growth & Future</h4>
+                <p style="color: rgba(255,255,255,0.9);">The DevOps market is projected to reach $57 billion by 2030, with a 19.7% CAGR. Organizations adopting DevOps practices report 200x more frequent deployments, 24x faster recovery times, and 3x lower change failure rates, creating massive demand for skilled professionals.</p>
+            </div>
+
+            <div class="career-grid">
+                <div class="career-card">
+                    <h4>DevOps Engineer</h4>
+                    <div class="salary">₹8-25 LPA</div>
+                    <p>Design and implement CI/CD pipelines, automate infrastructure, and bridge development and operations teams for efficient software delivery.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>Site Reliability Engineer</h4>
+                    <div class="salary">₹12-35 LPA</div>
+                    <p>Ensure system reliability, scalability, and performance while maintaining high availability and implementing monitoring solutions.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Monitoring</span>
+                        <span class="skill-tag">Incident Response</span>
+                        <span class="skill-tag">Automation</span>
+                        <span class="skill-tag">Performance</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>Cloud Engineer</h4>
+                    <div class="salary">₹10-30 LPA</div>
+                    <p>Design, deploy, and manage cloud infrastructure, implement cloud-native solutions, and optimize cloud costs and performance.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">AWS/Azure/GCP</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Serverless</span>
+                        <span class="skill-tag">Migration</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>Platform Engineer</h4>
+                    <div class="salary">₹15-40 LPA</div>
+                    <p>Build and maintain internal developer platforms, create self-service tools, and enable development teams with efficient workflows.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Platform Design</span>
+                        <span class="skill-tag">Developer Experience</span>
+                        <span class="skill-tag">API Design</span>
+                        <span class="skill-tag">Tooling</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>DevSecOps Engineer</h4>
+                    <div class="salary">₹14-38 LPA</div>
+                    <p>Integrate security practices into DevOps workflows, implement security automation, and ensure compliance across the software delivery lifecycle.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Security Scanning</span>
+                        <span class="skill-tag">Compliance</span>
+                        <span class="skill-tag">Vulnerability Assessment</span>
+                        <span class="skill-tag">Policy as Code</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>Infrastructure Engineer</h4>
+                    <div class="salary">₹9-28 LPA</div>
+                    <p>Design and manage scalable infrastructure, implement Infrastructure as Code, and ensure high availability and disaster recovery.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Infrastructure as Code</span>
+                        <span class="skill-tag">Networking</span>
+                        <span class="skill-tag">High Availability</span>
+                        <span class="skill-tag">Disaster Recovery</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>Release Manager</h4>
+                    <div class="salary">₹12-32 LPA</div>
+                    <p>Coordinate software releases, manage deployment schedules, and ensure smooth delivery of applications across environments.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Release Planning</span>
+                        <span class="skill-tag">Change Management</span>
+                        <span class="skill-tag">Risk Assessment</span>
+                        <span class="skill-tag">Coordination</span>
+                    </div>
+                </div>
+
+                <div class="career-card">
+                    <h4>DevOps Architect</h4>
+                    <div class="salary">₹20-50 LPA</div>
+                    <p>Design enterprise-level DevOps strategies, lead digital transformation initiatives, and architect scalable solutions for large organizations.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Solution Architecture</span>
+                        <span class="skill-tag">Strategy</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Enterprise Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="companies-section">
+        <div class="container">
+            <h2 class="section-title">Industries & Companies Embracing DevOps</h2>
+            
+            <div class="companies-grid">
+                <div class="company-card">
+                    <h4><span class="company-icon">💻</span>Technology & Software</h4>
+                    <p>Leading tech companies like Google, Microsoft, Amazon, and Netflix pioneered DevOps practices, setting industry standards for continuous delivery, microservices, and cloud-native architectures.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">🏦</span>Banking & Financial Services</h4>
+                    <p>Banks like JPMorgan Chase, Goldman Sachs, and Capital One use DevOps for faster feature delivery, regulatory compliance, and improved security in financial applications.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">🛒</span>E-commerce & Retail</h4>
+                    <p>Companies like Amazon, Shopify, and Walmart leverage DevOps for handling massive traffic spikes, inventory management, and personalized customer experiences.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">🏥</span>Healthcare & Life Sciences</h4>
+                    <p>Healthcare organizations implement DevOps for HIPAA compliance, medical device software, telemedicine platforms, and clinical trial management systems.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">🚗</span>Automotive & Manufacturing</h4>
+                    <p>Tesla, Ford, and BMW use DevOps for over-the-air updates, connected vehicle platforms, and smart manufacturing processes with IoT integration.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">📱</span>Telecommunications</h4>
+                    <p>Telecom giants like Verizon, AT&T, and T-Mobile adopt DevOps for network automation, 5G deployment, and customer service platforms.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">🎮</span>Gaming & Entertainment</h4>
+                    <p>Gaming companies like Epic Games, Riot Games, and streaming platforms use DevOps for game updates, content delivery, and real-time multiplayer experiences.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">✈️</span>Travel & Transportation</h4>
+                    <p>Airlines like Delta, Uber, and Airbnb implement DevOps for booking systems, real-time tracking, dynamic pricing, and customer mobile applications.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">🏛️</span>Government & Public Sector</h4>
+                    <p>Government agencies adopt DevOps for digital transformation, citizen services, cybersecurity, and compliance with regulations like FedRAMP.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">📚</span>Education & EdTech</h4>
+                    <p>Educational institutions and EdTech companies use DevOps for learning management systems, online assessments, and scalable educational platforms.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">⚡</span>Energy & Utilities</h4>
+                    <p>Energy companies implement DevOps for smart grid management, renewable energy monitoring, and utility customer portals with real-time data.</p>
+                </div>
+                
+                <div class="company-card">
+                    <h4><span class="company-icon">🏢</span>Consulting & Services</h4>
+                    <p>Consulting firms like Accenture, Deloitte, and IBM help enterprises adopt DevOps practices, providing transformation services and managed solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="company-info">
+                <h3>🚀 ZN Infotech Pvt. Ltd.</h3>
+                <p>Transforming Careers Through DevOps Excellence & Innovation</p>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>+91 9565017342</span>
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <a href="https://zninfotech.com" target="_blank">www.zninfotech.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>info@zninfotech.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>DevOps Center of Excellence</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 50px; padding-top: 40px; border-top: 1px solid #374151;">
+                <p><strong>🎓 Our Comprehensive Technology Training Programs:</strong></p>
+                <p>DevOps Engineering • Cloud Computing (AWS/Azure/GCP) • Kubernetes & Container Orchestration • Infrastructure as Code • Site Reliability Engineering • Data Science & AI • Full Stack Development • Cybersecurity • IoT Development • Blockchain Technology</p>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <p><strong>🏆 Why Choose ZN Infotech for DevOps Training?</strong></p>
+                <p>✅ Industry-Expert DevOps Practitioners • ✅ Hands-on Labs with Real Cloud Environments • ✅ 100% Job Placement Assistance • ✅ Industry-Standard Tools & Technologies • ✅ Live Project Experience • ✅ 24/7 Learning Support • ✅ Industry Certifications Preparation</p>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <p><strong>🌟 Student Success Stories:</strong></p>
+                <p>📈 95% Placement Rate • 💰 Average Salary Increase: 150% • 🏢 Placed in Top Companies: Amazon, Microsoft, Google, Flipkart, Zomato • 🌍 Global Opportunities in 15+ Countries</p>
+            </div>
+            
+            <div style="margin-top: 40px; font-size: 0.95rem; opacity: 0.8;">
+                <p>&copy; 2025 ZN Infotech Pvt. Ltd. All rights reserved. | Pioneering DevOps education and transformation since 2018</p>
+                <p>🚀 Join 15,000+ successful DevOps professionals who started their journey with us</p>
+                <p>💡 "Automate Everything, Monitor Everything, Improve Everything" - Our DevOps Philosophy</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-to-top" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 400) {
+                scrollButton.style.display = 'flex';
+            } else {
+                scrollButton.style.display = 'none';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.intro-card, .tool-category, .month-card, .career-card, .company-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(40px)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(card);
+        });
+
+        // DevOps cycle animation
+        const cycleItems = document.querySelectorAll('.cycle-item');
+        cycleItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.3}s`;
+            item.style.animation = 'cycleFloat 4s ease-in-out infinite';
+        });
+
+        // Add floating animation keyframes dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes cycleFloat {
+                0%, 100% { transform: translateY(0px) scale(1); }
+                50% { transform: translateY(-15px) scale(1.05); }
+            }
+            
+            @keyframes pipelineGlow {
+                0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
+                50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+            }
+            
+            .pipeline-step:hover {
+                animation: pipelineGlow 1s ease-in-out infinite;
+            }
+            
+            @keyframes toolHover {
+                0%, 100% { transform: translateX(0px); }
+                50% { transform: translateX(8px); }
+            }
+            
+            .tool-item:hover {
+                animation: toolHover 0.6s ease-in-out;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Interactive pipeline visualization
+        const pipelineSteps = document.querySelectorAll('.pipeline-step');
+        pipelineSteps.forEach((step, index) => {
+            step.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.background = 'rgba(255,255,255,0.3)';
+                this.style.color = '#ffffff';
+            });
+            
+            step.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.background = 'rgba(255,255,255,0.2)';
+                this.style.color = 'inherit';
+            });
+        });
+
+        // DevOps cycle interaction
+        const devopsCycleItems = document.querySelectorAll('.cycle-item');
+        const cycleDescriptions = [
+            'Plan: Define requirements and roadmap',
+            'Code: Develop and version control',
+            'Build: Compile and package applications',
+            'Test: Automated testing and quality assurance',
+            'Deploy: Release to production environments',
+            'Monitor: Track performance and issues',
+            'Feedback: Continuous improvement cycle'
+        ];
+
+        devopsCycleItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', function() {
+                // Create tooltip
+                const tooltip = document.createElement('div');
+                tooltip.textContent = cycleDescriptions[index] || 'DevOps Process';
+                tooltip.style.cssText = `
+                    position: absolute;
+                    bottom: -40px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0,0,0,0.8);
+                    color: white;
+                    padding: 8px 12px;
+                    border-radius: 6px;
+                    font-size: 0.9rem;
+                    white-space: nowrap;
+                    z-index: 1000;
+                    pointer-events: none;
+                `;
+                this.appendChild(tooltip);
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                const tooltip = this.querySelector('div');
+                if (tooltip) {
+                    tooltip.remove();
+                }
+            });
+        });
+
+        // Add interactive hover effects for career cards
+        const careerCards = document.querySelectorAll('.career-card');
+        careerCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-20px) scale(1.02)';
+                this.style.background = 'rgba(255,255,255,0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-15px) scale(1)';
+                this.style.background = 'rgba(255,255,255,0.1)';
+            });
+        });
+
+        // Add click-to-expand functionality for project highlights
+        const projectHighlights = document.querySelectorAll('.project-highlight');
+        projectHighlights.forEach(highlight => {
+            highlight.style.cursor = 'pointer';
+            highlight.addEventListener('click', function() {
+                const isExpanded = this.classList.contains('expanded');
+                
+                if (!isExpanded) {
+                    this.classList.add('expanded');
+                    this.style.transform = 'scale(1.02)';
+                    this.style.boxShadow = '0 25px 50px rgba(0,0,0,0.3)';
+                } else {
+                    this.classList.remove('expanded');
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = 'var(--shadow-xl)';
+                }
+            });
+        });
+
+        // Add typing effect for header subtitle
+        function typeWriter(element, text, speed = 40) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            const headerSubtitle = document.querySelector('header p');
+            const originalText = headerSubtitle.textContent;
+            setTimeout(() => {
+                typeWriter(headerSubtitle, originalText, 25);
+            }, 1000);
+        });
+
+        // Add progress indicator for timeline
+        function updateTimelineProgress() {
+            const timeline = document.querySelector('.syllabus-timeline');
+            const timelineRect = timeline.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            if (timelineRect.top < windowHeight && timelineRect.bottom > 0) {
+                const progress = Math.max(0, Math.min(1, (windowHeight - timelineRect.top) / (windowHeight + timelineRect.height)));
+                // Visual progress indication could be enhanced here
+            }
+        }
+
+        window.addEventListener('scroll', updateTimelineProgress);
+
+        // Add interactive skill tags
+        const skillTags = document.querySelectorAll('.skill-tag');
+        skillTags.forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) rotate(2deg)';
+                this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.boxShadow = 'var(--shadow-md)';
+            });
+        });
+
+        // Add section visibility tracking
+        const sections = document.querySelectorAll('.section');
+        const navObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log(`Section ${entry.target.querySelector('.section-title')?.textContent} is visible`);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => {
+            navObserver.observe(section);
+        });
+
+        // Add responsive handling
+        function handleResize() {
+            const isMobile = window.innerWidth <= 768;
+            const monthCards = document.querySelectorAll('.month-card');
+            
+            monthCards.forEach(card => {
+                if (isMobile) {
+                    card.style.marginLeft = '40px';
+                } else {
+                    card.style.marginLeft = '120px';
+                }
+            });
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Call once on load
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.6s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // DevOps Easter egg - Konami code variation
+        let devopsCode = [];
+        const devopsSequence = [68, 69, 86, 79, 80, 83]; // D-E-V-O-P-S
+        
+        document.addEventListener('keydown', function(e) {
+            devopsCode.push(e.keyCode);
+            if (devopsCode.length > devopsSequence.length) {
+                devopsCode.shift();
+            }
+            
+            if (devopsCode.join(',') === devopsSequence.join(',')) {
+                // DevOps easter egg activated
+                document.body.style.filter = 'hue-rotate(120deg)';
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                }, 4000);
+                
+                // Show special message
+                const message = document.createElement('div');
+                message.innerHTML = '🚀 DevOps Master Mode Activated!<br>🔧 Automate Everything! ⚙️';
+                message.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: var(--gradient-primary);
+                    color: white;
+                    padding: 30px 50px;
+                    border-radius: 20px;
+                    font-size: 1.8rem;
+                    font-weight: bold;
+                    z-index: 10000;
+                    box-shadow: var(--shadow-2xl);
+                    animation: devopsBounce 0.6s ease-in-out;
+                    text-align: center;
+                    line-height: 1.4;
+                `;
+                
+                document.body.appendChild(message);
+                
+                setTimeout(() => {
+                    message.remove();
+                }, 4000);
+                
+                devopsCode = [];
+            }
+        });
+
+        // Add bounce animation for easter egg
+        const devopsBounceStyle = document.createElement('style');
+        devopsBounceStyle.textContent = `
+            @keyframes devopsBounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translate(-50%, -50%) translateY(0);
+                }
+                40% {
+                    transform: translate(-50%, -50%) translateY(-40px);
+                }
+                60% {
+                    transform: translate(-50%, -50%) translateY(-20px);
+                }
+            }
+        `;
+        document.head.appendChild(devopsBounceStyle);
+
+        // Console welcome message for developers
+        console.log(`
+        🚀 Welcome to ZN Infotech DevOps Roadmap! ⚙️
+        
+        Interested in the code? We're hiring DevOps Engineers!
+        Contact us at: careers@zninfotech.com
+        
+        Built with modern DevOps principles:
+        - Infrastructure as Code approach
+        - Responsive and scalable design
+        - Performance optimized
+        - Security best practices
+        - Continuous improvement mindset
+        
+        "Automate Everything, Monitor Everything, Improve Everything" 🔧
+        
+        Happy DevOps-ing! 👨‍💻👩‍💻
+        `);
+
+        // Add print optimization
+        window.addEventListener('beforeprint', function() {
+            document.body.classList.add('printing');
+        });
+
+        window.addEventListener('afterprint', function() {
+            document.body.classList.remove('printing');
+        });
+    </script>
+</body>
+</html>
