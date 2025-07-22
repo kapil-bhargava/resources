@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete System Design Mastery Guide</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e293b;
+            --accent-color: #3b82f6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --purple-color: #8b5cf6;
+            --orange-color: #f97316;
+            --teal-color: #14b8a6;
+            --pink-color: #ec4899;
+            --indigo-color: #6366f1;
+            --emerald-color: #059669;
+            --dark-color: #111827;
+            --light-color: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--teal-color));
+            --gradient-tech: linear-gradient(135deg, var(--purple-color), var(--pink-color));
+            --gradient-system: linear-gradient(135deg, var(--indigo-color), var(--emerald-color));
+            --gradient-performance: linear-gradient(135deg, var(--orange-color), var(--danger-color));
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="system-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(59,130,246,0.1)"/><path d="M0,10 L20,10 M10,0 L10,20" stroke="rgba(59,130,246,0.05)" stroke-width="1"/><rect x="5" y="5" width="10" height="10" fill="none" stroke="rgba(16,185,129,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23system-grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #ffffff, #3b82f6, #10b981, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(30deg);
+            }
+        }
+
+        header p {
+            font-size: 1.6rem;
+            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+
+        .system-architecture {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .arch-component {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .arch-component:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .arch-arrow {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .section {
+            padding: 120px 0;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+        }
+
+        .section-title {
+            font-size: 4rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            font-weight: 800;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 6px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 60px;
+            margin-bottom: 100px;
+        }
+
+        .concept-card {
+            background: white;
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-2xl);
+            border-left: 10px solid var(--accent-color);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-accent);
+            opacity: 0.03;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-20px);
+            box-shadow: var(--shadow-2xl);
+            border-left-color: var(--success-color);
+        }
+
+        .concept-card:hover::before {
+            transform: scale(1.3);
+            opacity: 0.06;
+        }
+
+        .concept-card h3 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-weight: 700;
+        }
+
+        .concept-card .icon {
+            font-size: 3.5rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .concept-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .concept-details {
+            background: var(--light-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+        }
+
+        .concept-details h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .concept-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .concept-details li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 30px;
+            line-height: 1.6;
+        }
+
+        .concept-details li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .architecture-diagram {
+            background: white;
+            padding: 60px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-xl);
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .diagram-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .diagram-layer {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .diagram-component {
+            background: var(--gradient-system);
+            color: white;
+            padding: 25px 35px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .diagram-component:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .diagram-component.load-balancer {
+            background: var(--gradient-tech);
+        }
+
+        .diagram-component.database {
+            background: var(--gradient-performance);
+        }
+
+        .diagram-component.cache {
+            background: linear-gradient(135deg, var(--warning-color), var(--orange-color));
+        }
+
+        .layer-arrow {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            margin: 60px 0;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--light-color);
+        }
+
+        tr {
+            transition: 0.3s ease !important;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .pros-cons {
+            display: flex;
+            /* grid-template-columns: 1fr 1fr; */
+            /* gap: 40px; */
+            flex-direction: column;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .pros,
+        .cons {
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .pros {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-left: 5px solid var(--success-color);
+        }
+
+        .cons {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border-left: 5px solid var(--danger-color);
+        }
+
+        .pros h4,
+        .cons h4 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .pros h4 {
+            color: var(--success-color);
+        }
+
+        .cons h4 {
+            color: var(--danger-color);
+        }
+
+        .case-study {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 80px;
+            border-radius: 25px;
+            margin: 80px 0;
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .case-study h3 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .case-study-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .case-study-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .case-study-item h4 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .case-study-item p {
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            border-top: 5px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .metric-label {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .metric-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .design-process {
+            background: white;
+            padding: 80px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-xl);
+            margin: 80px 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 40px;
+            background: var(--light-color);
+            border-radius: 20px;
+            border-left: 6px solid var(--purple-color);
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            background: white;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: var(--purple-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .tools-section {
+            background: var(--gradient-tech);
+            color: white;
+            padding: 100px 0;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .tool-category {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .tool-category:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .tool-category h4 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tool-category .category-icon {
+            font-size: 2.5rem;
+        }
+
+        .tool-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .tool-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tool-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .interview-section {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .interview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .interview-card {
+            background: var(--light-color);
+            padding: 50px;
+            border-radius: 25px;
+            border-top: 8px solid var(--indigo-color);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .interview-card:hover {
+            background: white;
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-8px);
+        }
+
+        .interview-card h4 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .question-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .question-list li {
+            padding: 12px 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 30px;
+            line-height: 1.6;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .question-list li::before {
+            content: '❓';
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+        }
+
+        .question-list li:last-child {
+            border-bottom: none;
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 100px 0 50px;
+            text-align: center;
+        }
+
+        footer .company-info {
+            margin-bottom: 50px;
+        }
+
+        footer .company-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--gradient-primary);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-2xl);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 10s ease-in-out infinite;
+            font-size: 2.5rem;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            animation-delay: 3s;
+        }
+
+        .floating-element:nth-child(3) {
+            top: 30%;
+            left: 5%;
+            animation-delay: 6s;
+        }
+
+        .floating-element:nth-child(4) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(5) {
+            top: 40%;
+            left: 90%;
+            animation-delay: 8s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(-5deg);
+            }
+
+            75% {
+                transform: translateY(-40px) rotate(3deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .concept-grid,
+            .tools-grid,
+            .interview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .system-architecture {
+                gap: 15px;
+            }
+
+            .arch-component {
+                min-width: 100px;
+                padding: 15px 20px;
+            }
+
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+
+            .diagram-layer {
+                gap: 15px;
+            }
+
+            .diagram-component {
+                min-width: 120px;
+                padding: 20px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #f0fdfa);
+            border: 4px solid var(--accent-color);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '🏗️';
+            position: absolute;
+            top: -25px;
+            left: 50px;
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .scalability-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .scale-option {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .scale-option:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scale-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .scale-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .scale-description {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .performance-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border-top: 4px solid var(--success-color);
+        }
+
+        .performance-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--success-color);
+            margin-bottom: 10px;
+        }
+
+        .performance-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .trade-offs {
+            background: var(--light-color);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .trade-offs h4 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .trade-off-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .trade-off-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--warning-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .trade-off-item h5 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .trade-off-item p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="floating-elements">
+            <div class="floating-element">🏗️</div>
+            <div class="floating-element">⚡</div>
+            <div class="floating-element">🔧</div>
+            <div class="floating-element">📊</div>
+            <div class="floating-element">🚀</div>
+        </div>
+        <div class="container">
+            <h1>🏗️ System Design Mastery</h1>
+            <p>Complete Guide to Designing Scalable, Reliable, and High-Performance Systems</p>
+
+            <div class="system-architecture">
+                <div class="arch-component">Client</div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-component">Load Balancer</div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-component">Web Servers</div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-component">Database</div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-component">Cache</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">System Design Fundamentals</h2>
+
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3><span class="icon">🏗️</span>What is System Design?</h3>
+                    <p>System Design is the process of defining the architecture, components, modules, interfaces, and
+                        data for a system to satisfy specified requirements. It involves making high-level decisions
+                        about how different parts of a system will work together to achieve scalability, reliability,
+                        and performance goals.</p>
+                    <div class="concept-details">
+                        <h4>Key Objectives:</h4>
+                        <ul>
+                            <li>Scalability - Handle increasing load gracefully</li>
+                            <li>Reliability - System continues to work correctly</li>
+                            <li>Availability - System remains operational</li>
+                            <li>Consistency - Data remains accurate across system</li>
+                            <li>Performance - Fast response times and high throughput</li>
+                            <li>Security - Protect against threats and vulnerabilities</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">📈</span>Scalability Principles</h3>
+                    <p>Scalability is the ability of a system to handle increased load by adding resources. It's crucial
+                        for systems that need to grow with user demand and data volume while maintaining performance and
+                        reliability.</p>
+                    <div class="concept-details">
+                        <h4>Types of Scaling:</h4>
+                        <ul>
+                            <li>Horizontal Scaling - Add more servers (scale out)</li>
+                            <li>Vertical Scaling - Add more power to existing servers (scale up)</li>
+                            <li>Elastic Scaling - Automatically adjust resources based on demand</li>
+                            <li>Geographic Scaling - Distribute across multiple regions</li>
+                            <li>Functional Scaling - Split system by features/services</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">⚖️</span>Load Balancing</h3>
+                    <p>Load balancing distributes incoming requests across multiple servers to ensure no single server
+                        becomes overwhelmed. It improves system reliability, performance, and enables horizontal
+                        scaling.</p>
+                    <div class="concept-details">
+                        <h4>Load Balancing Algorithms:</h4>
+                        <ul>
+                            <li>Round Robin - Requests distributed sequentially</li>
+                            <li>Least Connections - Route to server with fewest active connections</li>
+                            <li>Weighted Round Robin - Assign weights based on server capacity</li>
+                            <li>IP Hash - Route based on client IP hash</li>
+                            <li>Geographic - Route based on client location</li>
+                            <li>Health Check - Only route to healthy servers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">⚡</span>Caching Strategies</h3>
+                    <p>Caching stores frequently accessed data in fast storage to reduce latency and database load. It's
+                        one of the most effective ways to improve system performance and user experience.</p>
+                    <div class="concept-details">
+                        <h4>Caching Levels:</h4>
+                        <ul>
+                            <li>Browser Cache - Client-side caching in web browsers</li>
+                            <li>CDN Cache - Content Delivery Network for static assets</li>
+                            <li>Reverse Proxy Cache - Server-side caching (Nginx, Varnish)</li>
+                            <li>Application Cache - In-memory caching (Redis, Memcached)</li>
+                            <li>Database Cache - Query result caching</li>
+                            <li>CPU Cache - Hardware-level caching</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4>System Design Trade-offs</h4>
+                <p>Every system design decision involves trade-offs. Understanding these trade-offs is crucial for
+                    making informed architectural decisions that align with business requirements and constraints.</p>
+
+                <div class="scalability-visual">
+                    <div class="scale-option">
+                        <span class="scale-icon">📊</span>
+                        <div class="scale-title">Consistency</div>
+                        <div class="scale-description">All nodes see the same data simultaneously</div>
+                    </div>
+                    <div class="scale-option">
+                        <span class="scale-icon">🌐</span>
+                        <div class="scale-title">Availability</div>
+                        <div class="scale-description">System remains operational and accessible</div>
+                    </div>
+                    <div class="scale-option">
+                        <span class="scale-icon">🔗</span>
+                        <div class="scale-title">Partition Tolerance</div>
+                        <div class="scale-description">System continues despite network failures</div>
+                    </div>
+                </div>
+
+                <div class="trade-offs">
+                    <h4>Common Trade-offs in System Design</h4>
+                    <div class="trade-off-grid">
+                        <div class="trade-off-item">
+                            <h5>Performance vs Consistency</h5>
+                            <p>Faster systems may sacrifice strong consistency for eventual consistency</p>
+                        </div>
+                        <div class="trade-off-item">
+                            <h5>Availability vs Consistency</h5>
+                            <p>High availability systems may allow temporary inconsistencies</p>
+                        </div>
+                        <div class="trade-off-item">
+                            <h5>Space vs Time</h5>
+                            <p>Using more memory (space) can reduce computation time</p>
+                        </div>
+                        <div class="trade-off-item">
+                            <h5>Latency vs Throughput</h5>
+                            <p>Optimizing for low latency may reduce overall throughput</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Database Design & Data Storage</h2>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>SQL Databases</th>
+                            <th>NoSQL Databases</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Data Model</strong></td>
+                            <td>Structured, relational tables with fixed schema</td>
+                            <td>Flexible schema: document, key-value, graph, column-family</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ACID Properties</strong></td>
+                            <td>Full ACID compliance (Atomicity, Consistency, Isolation, Durability)</td>
+                            <td>Eventually consistent, BASE properties (Basically Available, Soft state, Eventual
+                                consistency)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scalability</strong></td>
+                            <td>Vertical scaling (scale up), limited horizontal scaling</td>
+                            <td>Horizontal scaling (scale out), designed for distributed systems</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Query Language</strong></td>
+                            <td>Standardized SQL with complex joins and transactions</td>
+                            <td>Varied query languages, often simpler but less standardized</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Use Cases</strong></td>
+                            <td>Complex transactions, financial systems, traditional applications</td>
+                            <td>Big data, real-time analytics, content management, IoT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Examples</strong></td>
+                            <td>MySQL, PostgreSQL, Oracle, SQL Server</td>
+                            <td>MongoDB, Cassandra, Redis, DynamoDB, Neo4j</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3><span class="icon">🗄️</span>Database Sharding</h3>
+                    <p>Sharding is a database partitioning technique that splits large databases into smaller, more
+                        manageable pieces called shards. Each shard is held on a separate database server instance to
+                        spread the load.</p>
+                    <div class="concept-details">
+                        <h4>Sharding Strategies:</h4>
+                        <ul>
+                            <li>Range-based Sharding - Partition by data ranges</li>
+                            <li>Hash-based Sharding - Use hash function to determine shard</li>
+                            <li>Directory-based Sharding - Lookup service to find shard</li>
+                            <li>Geographic Sharding - Partition by geographic location</li>
+                            <li>Feature-based Sharding - Partition by application features</li>
+                        </ul>
+                    </div>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>✅ Advantages</h4>
+                            <ul>
+                                <li>Improved performance and scalability</li>
+                                <li>Reduced query response time</li>
+                                <li>Increased storage capacity</li>
+                                <li>Better fault isolation</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>❌ Challenges</h4>
+                            <ul>
+                                <li>Increased complexity</li>
+                                <li>Cross-shard queries are expensive</li>
+                                <li>Rebalancing shards is difficult</li>
+                                <li>Potential for hotspots</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">🔄</span>Database Replication</h3>
+                    <p>Database replication involves copying and maintaining database objects in multiple databases that
+                        make up a distributed database system. It improves availability, fault tolerance, and read
+                        performance.</p>
+                    <div class="concept-details">
+                        <h4>Replication Types:</h4>
+                        <ul>
+                            <li>Master-Slave Replication - One write node, multiple read replicas</li>
+                            <li>Master-Master Replication - Multiple write nodes with conflict resolution</li>
+                            <li>Synchronous Replication - Immediate consistency across replicas</li>
+                            <li>Asynchronous Replication - Eventual consistency with better performance</li>
+                            <li>Semi-synchronous - Hybrid approach balancing consistency and performance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">System Architecture Patterns</h2>
+
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">Microservices Architecture</h3>
+                <div class="diagram-container">
+                    <div class="diagram-layer">
+                        <div class="diagram-component">API Gateway</div>
+                    </div>
+                    <div class="layer-arrow">↓</div>
+                    <div class="diagram-layer">
+                        <div class="diagram-component load-balancer">Load Balancer</div>
+                    </div>
+                    <div class="layer-arrow">↓</div>
+                    <div class="diagram-layer">
+                        <div class="diagram-component">User Service</div>
+                        <div class="diagram-component">Order Service</div>
+                        <div class="diagram-component">Payment Service</div>
+                        <div class="diagram-component">Inventory Service</div>
+                    </div>
+                    <div class="layer-arrow">↓</div>
+                    <div class="diagram-layer">
+                        <div class="diagram-component database">User DB</div>
+                        <div class="diagram-component database">Order DB</div>
+                        <div class="diagram-component database">Payment DB</div>
+                        <div class="diagram-component database">Inventory DB</div>
+                    </div>
+                    <div class="layer-arrow">↓</div>
+                    <div class="diagram-layer">
+                        <div class="diagram-component cache">Redis Cache</div>
+                        <div class="diagram-component">Message Queue</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3><span class="icon">🏢</span>Monolithic Architecture</h3>
+                    <p>A monolithic architecture is a traditional software design pattern where all components of an
+                        application are interconnected and interdependent, deployed as a single unit.</p>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>✅ Advantages</h4>
+                            <ul>
+                                <li>Simple to develop and test</li>
+                                <li>Easy to deploy initially</li>
+                                <li>Better performance for small applications</li>
+                                <li>Easier debugging and monitoring</li>
+                                <li>Strong consistency</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>❌ Disadvantages</h4>
+                            <ul>
+                                <li>Difficult to scale specific components</li>
+                                <li>Technology stack lock-in</li>
+                                <li>Large codebase becomes unwieldy</li>
+                                <li>Single point of failure</li>
+                                <li>Slower development cycles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">🔧</span>Microservices Architecture</h3>
+                    <p>Microservices architecture breaks down applications into small, independent services that
+                        communicate over well-defined APIs. Each service is owned by a small team and can be developed,
+                        deployed, and scaled independently.</p>
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h4>✅ Advantages</h4>
+                            <ul>
+                                <li>Independent scaling and deployment</li>
+                                <li>Technology diversity</li>
+                                <li>Better fault isolation</li>
+                                <li>Faster development cycles</li>
+                                <li>Team autonomy</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>❌ Disadvantages</h4>
+                            <ul>
+                                <li>Increased complexity</li>
+                                <li>Network latency and reliability issues</li>
+                                <li>Data consistency challenges</li>
+                                <li>More difficult testing</li>
+                                <li>Operational overhead</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">🌐</span>Service-Oriented Architecture (SOA)</h3>
+                    <p>SOA is an architectural pattern where services are provided to other components through
+                        communication protocols over a network. It emphasizes reusability and modularity.</p>
+                    <div class="concept-details">
+                        <h4>Key Principles:</h4>
+                        <ul>
+                            <li>Service Reusability - Services can be reused across applications</li>
+                            <li>Service Autonomy - Services have control over their logic</li>
+                            <li>Service Abstraction - Hide implementation details</li>
+                            <li>Service Composability - Services can be combined</li>
+                            <li>Service Discoverability - Services can be found and understood</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">⚡</span>Serverless Architecture</h3>
+                    <p>Serverless computing allows developers to build and run applications without managing servers.
+                        The cloud provider handles server management, scaling, and maintenance automatically.</p>
+                    <div class="concept-details">
+                        <h4>Serverless Benefits:</h4>
+                        <ul>
+                            <li>No server management required</li>
+                            <li>Automatic scaling based on demand</li>
+                            <li>Pay only for actual usage</li>
+                            <li>Built-in high availability</li>
+                            <li>Faster time to market</li>
+                            <li>Reduced operational complexity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Performance & Optimization</h2>
+
+            <div class="performance-metrics">
+                <div class="performance-card">
+                    <div class="performance-number">99.9%</div>
+                    <div class="performance-label">Availability</div>
+                    <div class="performance-description">System uptime target for most applications</div>
+                </div>
+                <div class="performance-card">
+                    <div class="performance-number">&lt;100ms</div>
+                    <div class="performance-label">Response Time</div>
+                    <div class="performance-description">Target latency for user-facing operations</div>
+                </div>
+                <div class="performance-card">
+                    <div class="performance-number">10K+</div>
+                    <div class="performance-label">Requests/sec</div>
+                    <div class="performance-description">Typical throughput for web applications</div>
+                </div>
+                <div class="performance-card">
+                    <div class="performance-number">99%</div>
+                    <div class="performance-label">Cache Hit Rate</div>
+                    <div class="performance-description">Optimal caching performance target</div>
+                </div>
+            </div>
+
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3><span class="icon">🚀</span>Content Delivery Network (CDN)</h3>
+                    <p>A CDN is a geographically distributed network of servers that deliver web content and services to
+                        users based on their geographic location, improving performance and reducing latency.</p>
+                    <div class="concept-details">
+                        <h4>CDN Benefits:</h4>
+                        <ul>
+                            <li>Reduced latency through geographic distribution</li>
+                            <li>Decreased server load on origin servers</li>
+                            <li>Improved website availability and uptime</li>
+                            <li>Better user experience globally</li>
+                            <li>DDoS protection and security features</li>
+                            <li>Bandwidth cost reduction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">📊</span>Monitoring & Observability</h3>
+                    <p>Monitoring involves collecting, analyzing, and acting on data about system performance and
+                        health. Observability provides deep insights into system behavior and helps identify issues
+                        quickly.</p>
+                    <div class="concept-details">
+                        <h4>Three Pillars of Observability:</h4>
+                        <ul>
+                            <li>Metrics - Numerical data about system performance</li>
+                            <li>Logs - Detailed records of system events</li>
+                            <li>Traces - Request flow through distributed systems</li>
+                            <li>Alerts - Automated notifications for issues</li>
+                            <li>Dashboards - Visual representation of system health</li>
+                            <li>SLA/SLO monitoring - Service level tracking</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">🔒</span>Security Considerations</h3>
+                    <p>Security must be built into every layer of system design, from network security to application
+                        security, data protection, and access control mechanisms.</p>
+                    <div class="concept-details">
+                        <h4>Security Layers:</h4>
+                        <ul>
+                            <li>Network Security - Firewalls, VPNs, network segmentation</li>
+                            <li>Application Security - Input validation, authentication</li>
+                            <li>Data Security - Encryption at rest and in transit</li>
+                            <li>Access Control - Role-based access, least privilege</li>
+                            <li>Infrastructure Security - Secure configurations</li>
+                            <li>Monitoring - Security event detection and response</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">📈</span>Auto Scaling</h3>
+                    <p>Auto scaling automatically adjusts the number of compute resources based on demand, ensuring
+                        optimal performance while minimizing costs during low-traffic periods.</p>
+                    <div class="concept-details">
+                        <h4>Scaling Strategies:</h4>
+                        <ul>
+                            <li>Reactive Scaling - Scale based on current metrics</li>
+                            <li>Predictive Scaling - Scale based on forecasted demand</li>
+                            <li>Scheduled Scaling - Scale based on time patterns</li>
+                            <li>Target Tracking - Maintain specific metric targets</li>
+                            <li>Step Scaling - Scale in increments based on thresholds</li>
+                            <li>Custom Metrics - Scale based on application-specific metrics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Message Queues & Communication</h2>
+
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3><span class="icon">📬</span>Message Queues</h3>
+                    <p>Message queues enable asynchronous communication between different parts of a system, improving
+                        reliability, scalability, and decoupling of components.</p>
+                    <div class="concept-details">
+                        <h4>Queue Patterns:</h4>
+                        <ul>
+                            <li>Point-to-Point - One producer, one consumer</li>
+                            <li>Publish-Subscribe - One producer, multiple consumers</li>
+                            <li>Request-Reply - Synchronous-like communication</li>
+                            <li>Work Queue - Distribute tasks among workers</li>
+                            <li>Priority Queue - Process messages by priority</li>
+                            <li>Dead Letter Queue - Handle failed messages</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">🔄</span>Event-Driven Architecture</h3>
+                    <p>Event-driven architecture uses events to trigger and communicate between decoupled services. It
+                        enables real-time processing and reactive systems.</p>
+                    <div class="concept-details">
+                        <h4>Event Patterns:</h4>
+                        <ul>
+                            <li>Event Sourcing - Store events as primary data</li>
+                            <li>CQRS - Separate read and write models</li>
+                            <li>Saga Pattern - Manage distributed transactions</li>
+                            <li>Event Streaming - Continuous event processing</li>
+                            <li>Event Choreography - Decentralized event handling</li>
+                            <li>Event Orchestration - Centralized event coordination</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">🌐</span>API Design</h3>
+                    <p>Well-designed APIs are crucial for system integration and communication. They should be
+                        intuitive, consistent, and provide clear contracts between services.</p>
+                    <div class="concept-details">
+                        <h4>API Best Practices:</h4>
+                        <ul>
+                            <li>RESTful design principles</li>
+                            <li>Consistent naming conventions</li>
+                            <li>Proper HTTP status codes</li>
+                            <li>Versioning strategy</li>
+                            <li>Rate limiting and throttling</li>
+                            <li>Comprehensive documentation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <h3><span class="icon">🔗</span>Service Mesh</h3>
+                    <p>A service mesh is a dedicated infrastructure layer that handles service-to-service communication,
+                        providing features like load balancing, service discovery, and security.</p>
+                    <div class="concept-details">
+                        <h4>Service Mesh Features:</h4>
+                        <ul>
+                            <li>Traffic Management - Load balancing, routing</li>
+                            <li>Security - mTLS, authentication, authorization</li>
+                            <li>Observability - Metrics, logging, tracing</li>
+                            <li>Policy Enforcement - Rate limiting, access control</li>
+                            <li>Service Discovery - Automatic service registration</li>
+                            <li>Circuit Breaking - Fault tolerance patterns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">System Design Process</h2>
+
+            <div class="design-process">
+                <h3 style="text-align: center; color: var(--primary-color); font-size: 2.5rem; margin-bottom: 40px;">
+                    Step-by-Step Design Approach</h3>
+
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Understand Requirements</div>
+                        <div class="step-description">
+                            Clarify functional and non-functional requirements. Ask about scale, performance
+                            expectations, consistency requirements, and constraints. Define success metrics and SLAs.
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Estimate Scale</div>
+                        <div class="step-description">
+                            Calculate expected load, storage requirements, bandwidth needs, and growth projections. This
+                            helps determine the appropriate architecture and technology choices.
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Define System Interface</div>
+                        <div class="step-description">
+                            Design APIs and define the system's external interface. Specify input/output formats,
+                            authentication mechanisms, and error handling approaches.
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">High-Level Design</div>
+                        <div class="step-description">
+                            Create a high-level architecture diagram showing major components, their relationships, and
+                            data flow. Focus on the overall system structure.
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Database Design</div>
+                        <div class="step-description">
+                            Choose appropriate database technologies, design schema, plan for sharding and replication.
+                            Consider data consistency and query patterns.
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">6</div>
+                        <div class="step-title">Detailed Design</div>
+                        <div class="step-description">
+                            Dive deeper into each component, specify algorithms, data structures, and detailed
+                            workflows. Address edge cases and error scenarios.
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">7</div>
+                        <div class="step-title">Scale the Design</div>
+                        <div class="step-description">
+                            Identify bottlenecks and add scaling solutions like load balancers, caches, CDNs, and
+                            database optimizations. Plan for horizontal scaling.
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">8</div>
+                        <div class="step-title">Address Reliability</div>
+                        <div class="step-description">
+                            Add fault tolerance mechanisms, backup strategies, monitoring, and alerting. Plan for
+                            disaster recovery and data consistency.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-study">
+        <div class="container">
+            <h3>🎯 Real-World System Design Examples</h3>
+            <div class="case-study-content">
+                <div class="case-study-item">
+                    <h4>🐦 Twitter-like Social Media</h4>
+                    <p><strong>Key Challenges:</strong> Handle millions of tweets per day, real-time timeline
+                        generation, celebrity user fanout problem, global distribution.</p>
+                    <p><strong>Solutions:</strong> Microservices architecture, Redis for timeline caching, Cassandra for
+                        tweet storage, CDN for media, push/pull hybrid model for timeline generation.</p>
+                </div>
+
+                <div class="case-study-item">
+                    <h4>🎬 Netflix-like Video Streaming</h4>
+                    <p><strong>Key Challenges:</strong> Global content delivery, personalized recommendations, video
+                        encoding/transcoding, massive storage requirements.</p>
+                    <p><strong>Solutions:</strong> Global CDN network, microservices for different features, machine
+                        learning for recommendations, cloud storage with multiple replicas.</p>
+                </div>
+
+                <div class="case-study-item">
+                    <h4>🚗 Uber-like Ride Sharing</h4>
+                    <p><strong>Key Challenges:</strong> Real-time location tracking, efficient driver-rider matching,
+                        dynamic pricing, high availability during peak hours.</p>
+                    <p><strong>Solutions:</strong> Geospatial databases for location services, real-time matching
+                        algorithms, surge pricing models, distributed architecture across multiple regions.</p>
+                </div>
+
+                <div class="case-study-item">
+                    <h4>💬 WhatsApp-like Messaging</h4>
+                    <p><strong>Key Challenges:</strong> Real-time message delivery, end-to-end encryption, handling
+                        billions of messages, offline message storage.</p>
+                    <p><strong>Solutions:</strong> WebSocket connections for real-time communication, message queues for
+                        reliability, distributed databases, efficient compression algorithms.</p>
+                </div>
+
+                <div class="case-study-item">
+                    <h4>🛒 Amazon-like E-commerce</h4>
+                    <p><strong>Key Challenges:</strong> Product catalog management, inventory tracking, order
+                        processing, payment handling, recommendation engine.</p>
+                    <p><strong>Solutions:</strong> Microservices for different domains, event-driven architecture, CQRS
+                        for read/write separation, machine learning for recommendations.</p>
+                </div>
+
+                <div class="case-study-item">
+                    <h4>📺 YouTube-like Video Platform</h4>
+                    <p><strong>Key Challenges:</strong> Video upload and processing, global content delivery, search and
+                        discovery, monetization, content moderation.</p>
+                    <p><strong>Solutions:</strong> Distributed video processing pipeline, global CDN, search indexing,
+                        machine learning for content analysis and recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">System Design Tools & Technologies</h2>
+
+            <div class="tools-grid">
+                <div class="tool-category">
+                    <h4><span class="category-icon">🗄️</span>Databases</h4>
+                    <p>Choose the right database technology based on your data model, consistency requirements, and
+                        scale needs.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">MySQL</div>
+                        <div class="tool-item">PostgreSQL</div>
+                        <div class="tool-item">MongoDB</div>
+                        <div class="tool-item">Cassandra</div>
+                        <div class="tool-item">Redis</div>
+                        <div class="tool-item">DynamoDB</div>
+                        <div class="tool-item">Elasticsearch</div>
+                        <div class="tool-item">Neo4j</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">📬</span>Message Queues</h4>
+                    <p>Enable asynchronous communication and decouple system components for better scalability and
+                        reliability.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">Apache Kafka</div>
+                        <div class="tool-item">RabbitMQ</div>
+                        <div class="tool-item">Amazon SQS</div>
+                        <div class="tool-item">Apache Pulsar</div>
+                        <div class="tool-item">Redis Pub/Sub</div>
+                        <div class="tool-item">Google Pub/Sub</div>
+                        <div class="tool-item">Azure Service Bus</div>
+                        <div class="tool-item">Apache ActiveMQ</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">⚡</span>Caching</h4>
+                    <p>Improve performance by storing frequently accessed data in fast, temporary storage systems.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">Redis</div>
+                        <div class="tool-item">Memcached</div>
+                        <div class="tool-item">Hazelcast</div>
+                        <div class="tool-item">Apache Ignite</div>
+                        <div class="tool-item">Varnish</div>
+                        <div class="tool-item">CloudFlare</div>
+                        <div class="tool-item">Amazon ElastiCache</div>
+                        <div class="tool-item">Nginx</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">⚖️</span>Load Balancers</h4>
+                    <p>Distribute incoming requests across multiple servers to ensure high availability and performance.
+                    </p>
+                    <div class="tool-list">
+                        <div class="tool-item">Nginx</div>
+                        <div class="tool-item">HAProxy</div>
+                        <div class="tool-item">AWS ALB</div>
+                        <div class="tool-item">Google Cloud LB</div>
+                        <div class="tool-item">Azure Load Balancer</div>
+                        <div class="tool-item">Traefik</div>
+                        <div class="tool-item">Envoy Proxy</div>
+                        <div class="tool-item">F5 BIG-IP</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">📊</span>Monitoring</h4>
+                    <p>Track system performance, health, and user experience to ensure optimal operation.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">Prometheus</div>
+                        <div class="tool-item">Grafana</div>
+                        <div class="tool-item">Datadog</div>
+                        <div class="tool-item">New Relic</div>
+                        <div class="tool-item">Splunk</div>
+                        <div class="tool-item">ELK Stack</div>
+                        <div class="tool-item">Jaeger</div>
+                        <div class="tool-item">Zipkin</div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4><span class="category-icon">☁️</span>Cloud Platforms</h4>
+                    <p>Leverage cloud services for scalable, managed infrastructure and platform services.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">AWS</div>
+                        <div class="tool-item">Google Cloud</div>
+                        <div class="tool-item">Microsoft Azure</div>
+                        <div class="tool-item">DigitalOcean</div>
+                        <div class="tool-item">Heroku</div>
+                        <div class="tool-item">Vercel</div>
+                        <div class="tool-item">Netlify</div>
+                        <div class="tool-item">Linode</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interview-section">
+        <div class="container">
+            <h2 class="section-title">System Design Interview Preparation</h2>
+
+            <div class="interview-grid">
+                <div class="interview-card">
+                    <h4>🎯 Common Interview Questions</h4>
+                    <ul class="question-list">
+                        <li>Design a URL shortener like bit.ly</li>
+                        <li>Design a chat system like WhatsApp</li>
+                        <li>Design a social media feed like Twitter</li>
+                        <li>Design a video streaming service like Netflix</li>
+                        <li>Design a ride-sharing service like Uber</li>
+                        <li>Design a search engine like Google</li>
+                        <li>Design a distributed cache system</li>
+                        <li>Design a notification system</li>
+                        <li>Design a web crawler</li>
+                        <li>Design a rate limiter</li>
+                    </ul>
+                </div>
+
+                <div class="interview-card">
+                    <h4>💡 Interview Tips</h4>
+                    <ul class="question-list">
+                        <li>Always clarify requirements first</li>
+                        <li>Start with high-level design</li>
+                        <li>Estimate scale and capacity</li>
+                        <li>Identify and resolve bottlenecks</li>
+                        <li>Discuss trade-offs openly</li>
+                        <li>Consider failure scenarios</li>
+                        <li>Think about monitoring and metrics</li>
+                        <li>Be prepared to dive deep into components</li>
+                        <li>Practice drawing diagrams quickly</li>
+                        <li>Stay calm and think out loud</li>
+                    </ul>
+                </div>
+
+                <div class="interview-card">
+                    <h4>📚 Key Concepts to Master</h4>
+                    <ul class="question-list">
+                        <li>Scalability patterns and techniques</li>
+                        <li>Database design and sharding</li>
+                        <li>Caching strategies and cache patterns</li>
+                        <li>Load balancing algorithms</li>
+                        <li>Microservices vs monolithic architecture</li>
+                        <li>Message queues and event-driven design</li>
+                        <li>CAP theorem and consistency models</li>
+                        <li>Security and authentication</li>
+                        <li>Monitoring and observability</li>
+                        <li>Performance optimization techniques</li>
+                    </ul>
+                </div>
+
+                <div class="interview-card">
+                    <h4>🔧 Hands-on Practice</h4>
+                    <ul class="question-list">
+                        <li>Build a simple distributed system</li>
+                        <li>Implement a basic load balancer</li>
+                        <li>Create a caching layer with Redis</li>
+                        <li>Design and implement REST APIs</li>
+                        <li>Set up database replication</li>
+                        <li>Implement a message queue system</li>
+                        <li>Build a monitoring dashboard</li>
+                        <li>Practice with cloud services</li>
+                        <li>Study open-source system architectures</li>
+                        <li>Participate in system design discussions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">45-60</div>
+                    <div class="metric-label">Minutes</div>
+                    <div class="metric-description">Typical system design interview duration</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5-7</div>
+                    <div class="metric-label">Key Areas</div>
+                    <div class="metric-description">Main topics covered in interviews</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">80%</div>
+                    <div class="metric-label">Success Rate</div>
+                    <div class="metric-description">With proper preparation and practice</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3-6</div>
+                    <div class="metric-label">Months</div>
+                    <div class="metric-description">Recommended preparation time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="company-info">
+                <h3>🏗️ ZN Infotech Pvt. Ltd.</h3>
+                <p>Mastering System Design for Scalable Solutions</p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>+91 9565017342</span>
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <a href="https://zninfotech.com" target="_blank">www.zninfotech.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>info@zninfotech.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>System Design Excellence Center</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; padding-top: 40px; border-top: 1px solid #374151;">
+                <p><strong>🎓 Our Advanced Technology Programs:</strong></p>
+                <p>System Design & Architecture • Cloud Computing & DevOps • Data Science & Machine Learning • Full
+                    Stack Development • Microservices Architecture • Distributed Systems • Software Engineering •
+                    Database Design • Performance Optimization</p>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <p><strong>🏆 Why Choose ZN Infotech for System Design?</strong></p>
+                <p>✅ Industry-Expert System Architects • ✅ Real-world Case Studies & Projects • ✅ Hands-on Experience
+                    with Scalable Systems • ✅ Interview Preparation & Mock Sessions • ✅ Industry Partnerships with Tech
+                    Giants • ✅ Comprehensive Curriculum covering Latest Trends • ✅ 24/7 Mentorship & Support</p>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <p><strong>🌟 Student Success Metrics:</strong></p>
+                <p>📈 92% Interview Success Rate • 💰 Average Salary: ₹15-45 LPA • 🏢 Placed in: Google, Amazon,
+                    Microsoft, Netflix, Uber, Airbnb • 🌍 Global Opportunities in 20+ Countries • 🎯 System Design
+                    Expertise Certification</p>
+            </div>
+
+            <div style="margin-top: 40px; font-size: 0.95rem; opacity: 0.8;">
+                <p>&copy; 2025 ZN Infotech Pvt. Ltd. All rights reserved. | Building scalable systems and careers since
+                    2018</p>
+                <p>🚀 Join 12,000+ engineers who mastered system design with us</p>
+                <p>💡 "Design for Scale, Build for Reliability, Optimize for Performance" - Our System Design Philosophy
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-to-top" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function () {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 400) {
+                scrollButton.style.display = 'flex';
+            } else {
+                scrollButton.style.display = 'none';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.concept-card, .tool-category, .interview-card, .case-study-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(40px)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(card);
+        });
+
+        // Interactive architecture components
+        const archComponents = document.querySelectorAll('.arch-component');
+        archComponents.forEach((component, index) => {
+            component.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.2)';
+                this.style.background = 'rgba(255,255,255,0.3)';
+
+                // Show tooltip
+                const tooltip = document.createElement('div');
+                tooltip.textContent = getComponentDescription(this.textContent);
+                tooltip.style.cssText = `
+                    position: absolute;
+                    bottom: -50px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0,0,0,0.8);
+                    color: white;
+                    padding: 10px 15px;
+                    border-radius: 8px;
+                    font-size: 0.9rem;
+                    white-space: nowrap;
+                    z-index: 1000;
+                    pointer-events: none;
+                `;
+                this.appendChild(tooltip);
+            });
+
+            component.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1)';
+                this.style.background = 'rgba(255,255,255,0.1)';
+
+                // Remove tooltip
+                const tooltip = this.querySelector('div');
+                if (tooltip) {
+                    tooltip.remove();
+                }
+            });
+        });
+
+        function getComponentDescription(componentName) {
+            const descriptions = {
+                'Client': 'User interface or application making requests',
+                'Load Balancer': 'Distributes requests across multiple servers',
+                'Web Servers': 'Handle HTTP requests and business logic',
+                'Database': 'Stores and manages application data',
+                'Cache': 'Fast storage for frequently accessed data'
+            };
+            return descriptions[componentName] || 'System component';
+        }
+
+        // Interactive diagram components
+        const diagramComponents = document.querySelectorAll('.diagram-component');
+        diagramComponents.forEach(component => {
+            component.addEventListener('click', function () {
+                // Add click effect
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.05)';
+                }, 150);
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 300);
+            });
+        });
+
+        // Performance metrics animation
+        const metricValues = document.querySelectorAll('.metric-value, .performance-number');
+        const animateNumbers = () => {
+            metricValues.forEach(metric => {
+                const finalValue = metric.textContent;
+                if (finalValue.includes('%') || finalValue.includes('K') || finalValue.includes('ms')) {
+                    // Animate percentage, K values, or ms values
+                    let currentValue = 0;
+                    const increment = finalValue.includes('%') ? 1 :
+                        finalValue.includes('K') ? 100 : 1;
+                    const target = parseInt(finalValue);
+
+                    const timer = setInterval(() => {
+                        currentValue += increment;
+                        if (currentValue >= target) {
+                            currentValue = target;
+                            clearInterval(timer);
+                        }
+                        metric.textContent = currentValue + finalValue.replace(/\d+/g, '');
+                    }, 50);
+                }
+            });
+        };
+
+        // Trigger animation when metrics come into view
+        const metricsObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    metricsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const metricsSection = document.querySelector('.performance-metrics, .metrics-grid');
+        if (metricsSection) {
+            metricsObserver.observe(metricsSection);
+        }
+
+        // Interactive process steps
+        const processSteps = document.querySelectorAll('.process-step');
+        processSteps.forEach((step, index) => {
+            step.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+                this.style.boxShadow = 'var(--shadow-xl)';
+
+                // Highlight step number
+                const stepNumber = this.querySelector('.step-number');
+                stepNumber.style.transform = 'scale(1.2)';
+                stepNumber.style.background = 'var(--success-color)';
+            });
+
+            step.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(-5px) scale(1)';
+                this.style.boxShadow = 'var(--shadow-lg)';
+
+                // Reset step number
+                const stepNumber = this.querySelector('.step-number');
+                stepNumber.style.transform = 'scale(1)';
+                stepNumber.style.background = 'var(--purple-color)';
+            });
+        });
+
+        // Tool items interaction
+        const toolItems = document.querySelectorAll('.tool-item');
+        toolItems.forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.1) rotate(2deg)';
+                this.style.background = 'rgba(255,255,255,0.3)';
+                this.style.fontWeight = 'bold';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.background = 'rgba(255,255,255,0.1)';
+                this.style.fontWeight = '500';
+            });
+        });
+
+        // Question list interaction
+        const questionItems = document.querySelectorAll('.question-list li');
+        questionItems.forEach(item => {
+            item.addEventListener('click', function () {
+                this.style.background = 'rgba(59, 130, 246, 0.1)';
+                this.style.borderLeft = '4px solid var(--accent-color)';
+                this.style.paddingLeft = '26px';
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    this.style.background = 'transparent';
+                    this.style.borderLeft = 'none';
+                    this.style.paddingLeft = '30px';
+                }, 2000);
+            });
+        });
+
+        // Comparison table row highlighting
+        const tableRows = document.querySelectorAll('.comparison-table tr');
+        tableRows.forEach(row => {
+            row.addEventListener('mouseenter', function () {
+                this.style.background = 'rgba(59, 130, 246, 0.1)';
+                this.style.transform = 'scale(1.01)';
+            });
+
+            row.addEventListener('mouseleave', function () {
+                this.style.background = '';
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // System Design Easter Egg
+        let designCode = [];
+        const designSequence = [83, 89, 83, 84, 69, 77]; // S-Y-S-T-E-M
+
+        document.addEventListener('keydown', function (e) {
+            designCode.push(e.keyCode);
+            if (designCode.length > designSequence.length) {
+                designCode.shift();
+            }
+
+            if (designCode.join(',') === designSequence.join(',')) {
+                // System Design easter egg activated
+                document.body.style.filter = 'hue-rotate(180deg)';
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                }, 5000);
+
+                // Show special message
+                const message = document.createElement('div');
+                message.innerHTML = '🏗️ System Architect Mode Activated!<br>🚀 Design for Scale! ⚡';
+                message.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: var(--gradient-primary);
+                    color: white;
+                    padding: 40px 60px;
+                    border-radius: 25px;
+                    font-size: 2rem;
+                    font-weight: bold;
+                    z-index: 10000;
+                    box-shadow: var(--shadow-2xl);
+                    animation: systemBounce 0.8s ease-in-out;
+                    text-align: center;
+                    line-height: 1.4;
+                `;
+
+                document.body.appendChild(message);
+
+                setTimeout(() => {
+                    message.remove();
+                }, 5000);
+
+                designCode = [];
+            }
+        });
+
+        // Add bounce animation for easter egg
+        const systemBounceStyle = document.createElement('style');
+        systemBounceStyle.textContent = `
+            @keyframes systemBounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translate(-50%, -50%) translateY(0);
+                }
+                40% {
+                    transform: translate(-50%, -50%) translateY(-50px);
+                }
+                60% {
+                    transform: translate(-50%, -50%) translateY(-25px);
+                }
+            }
+        `;
+        document.head.appendChild(systemBounceStyle);
+
+        // Console welcome message for developers
+        console.log(`
+        🏗️ Welcome to System Design Mastery! ⚡
+        
+        Interested in system architecture? We're hiring!
+        Contact us at: careers@zninfotech.com
+        
+        Built with scalable design principles:
+        - Modular and maintainable code
+        - Performance optimized
+        - Responsive and accessible
+        - Security best practices
+        - Scalable architecture patterns
+        
+        "Design for Scale, Build for Reliability, Optimize for Performance" 🚀
+        
+        Happy System Designing! 👨‍💻👩‍💻
+        `);
+
+        // Add loading animation
+        window.addEventListener('load', function () {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease-in-out';
+
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Responsive handling
+        function handleResize() {
+            const isMobile = window.innerWidth <= 768;
+            const archComponents = document.querySelectorAll('.arch-component');
+
+            archComponents.forEach(component => {
+                if (isMobile) {
+                    component.style.minWidth = '80px';
+                    component.style.padding = '10px 15px';
+                    component.style.fontSize = '0.9rem';
+                } else {
+                    component.style.minWidth = '120px';
+                    component.style.padding = '20px 30px';
+                    component.style.fontSize = '1rem';
+                }
+            });
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Call once on load
+
+        // Add section visibility tracking
+        const sections = document.querySelectorAll('.section');
+        const sectionObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionTitle = entry.target.querySelector('.section-title')?.textContent;
+                    console.log(`📍 Now viewing: ${sectionTitle}`);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Add print optimization
+        window.addEventListener('beforeprint', function () {
+            document.body.classList.add('printing');
+            // Expand all collapsed sections for printing
+            document.querySelectorAll('.concept-card').forEach(card => {
+                card.style.pageBreakInside = 'avoid';
+            });
+        });
+
+        window.addEventListener('afterprint', function () {
+            document.body.classList.remove('printing');
+        });
+
+        // Performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', function () {
+                setTimeout(() => {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    console.log(`⚡ Page Load Performance:
+                    - DOM Content Loaded: ${Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart)}ms
+                    - Load Complete: ${Math.round(perfData.loadEventEnd - perfData.loadEventStart)}ms
+                    - Total Load Time: ${Math.round(perfData.loadEventEnd - perfData.fetchStart)}ms`);
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+
+</html>
