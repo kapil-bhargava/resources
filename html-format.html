@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Boilerplate Breakdown</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      padding: 30px;
+      line-height: 1.7;
+      color: #333;
+    }
+    h1 {
+      color: #005792;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+    code {
+      background-color: #eef1f5;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: block;
+      padding: 12px;
+      margin: 15px 0;
+      white-space: pre-wrap;
+      font-family: Consolas, monospace;
+    }
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧱 Full HTML Boilerplate with Detailed Explanation</h1>
+
+  <div class="section">
+    <h2>🔹 Full Boilerplate Code</h2>
+    <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code>
+  </div>
+
+  <!-- 1. DOCTYPE -->
+  <div class="section">
+    <h2>1. <code>&lt;!DOCTYPE html&gt;</code></h2>
+    <p>This declares the document type and version of HTML. It must be the first line in your HTML document.</p>
+    <ul>
+      <li><strong>HTML5:</strong> <code>&lt;!DOCTYPE html&gt;</code> — Recommended for modern websites.</li>
+      <li><strong>HTML 4.01 Strict:</strong> <code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;</code></li>
+      <li><strong>XHTML 1.0:</strong> <code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</code></li>
+    </ul>
+    <p><strong>Why needed?</strong> Helps browsers render the page correctly and use proper rendering modes (standards mode).</p>
+  </div>
+
+  <!-- 2. html lang -->
+  <div class="section">
+    <h2>2. <code>&lt;html lang="en"&gt;</code></h2>
+    <p>This is the root element of your HTML document.</p>
+    <ul>
+      <li><code>lang="en"</code> means English language is used.</li>
+      <li>Other examples:
+        <ul>
+          <li><code>lang="fr"</code> → French</li>
+          <li><code>lang="hi"</code> → Hindi</li>
+          <li><code>lang="zh"</code> → Chinese</li>
+          <li><code>lang="ar"</code> → Arabic</li>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>Why important?</strong> Helps screen readers and search engines understand the content's language.</p>
+  </div>
+
+  <!-- 3. charset -->
+  <div class="section">
+    <h2>3. <code>&lt;meta charset="UTF-8"&gt;</code></h2>
+    <p>Defines the character encoding of your document (how characters are stored and read).</p>
+    <ul>
+      <li><code>UTF-8</code>: Most popular. Supports almost every language and emoji. Recommended.</li>
+      <li><code>ISO-8859-1</code>: Western European languages only (outdated).</li>
+      <li><code>UTF-16</code>: Less common, used internally in some systems.</li>
+    </ul>
+    <p><strong>Tip:</strong> Always use <code>UTF-8</code> for web compatibility and multi-language support.</p>
+  </div>
+
+  <!-- 4. viewport -->
+  <div class="section">
+    <h2>4. <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></h2>
+    <p>This makes the webpage responsive and mobile-friendly.</p>
+    <ul>
+      <li><code>width=device-width</code>: Sets the width of the page to the screen’s width.</li>
+      <li><code>initial-scale=1.0</code>: Sets the default zoom level.</li>
+      <li>Other options:
+        <ul>
+          <li><code>maximum-scale=2.0</code>: Limits zooming</li>
+          <li><code>user-scalable=no</code>: Prevents pinch zooming (not recommended for accessibility)</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. title -->
+  <div class="section">
+    <h2>5. <code>&lt;title&gt;Document&lt;/title&gt;</code></h2>
+    <p>Specifies the title of the page that appears in the browser tab and when bookmarked.</p>
+    <ul>
+      <li>Example: <code>&lt;title&gt;Welcome to ZN Infotech&lt;/title&gt;</code></li>
+    </ul>
+    <p><strong>SEO Tip:</strong> Keep title relevant and under 60 characters.</p>
+  </div>
+
+  <!-- 6. body -->
+  <div class="section">
+    <h2>6. <code>&lt;body&gt; ... &lt;/body&gt;</code></h2>
+    <p>This contains all the visible content of the webpage: headings, paragraphs, images, buttons, etc.</p>
+    <code>
+&lt;body&gt;<br>
+  &nbsp;&nbsp;&lt;h1&gt;Hello World!&lt;/h1&gt;<br>
+  &nbsp;&nbsp;&lt;p&gt;This is a sample webpage.&lt;/p&gt;<br>
+&lt;/body&gt;
+    </code>
+    <p><strong>Tip:</strong> Keep body content semantic using proper HTML tags like <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, etc.</p>
+  </div>
+
+  <!-- Summary -->
+  <div class="section">
+    <h2>✅ Summary Table</h2>
+    <ul>
+      <li><code>&lt;!DOCTYPE html&gt;</code>: Declares HTML5 document.</li>
+      <li><code>&lt;html lang="en"&gt;</code>: Root element with language set.</li>
+      <li><code>&lt;meta charset="UTF-8"&gt;</code>: Character encoding.</li>
+      <li><code>&lt;meta name="viewport" ...&gt;</code>: Responsive behavior for mobile screens.</li>
+      <li><code>&lt;title&gt;</code>: Page title in browser tab.</li>
+      <li><code>&lt;body&gt;</code>: Visible content of the page.</li>
+    </ul>
+  </div>
+
+</body>
+</html>
