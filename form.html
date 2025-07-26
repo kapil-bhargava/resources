@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration Form</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      padding: 40px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    legend {
+      font-weight: bold;
+      color: #005792;
+      padding: 0 10px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    button {
+      background-color: #007acc;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005f99;
+    }
+    .note {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎓 Student Registration Form</h1>
+
+  <form action="#" method="post">
+    
+    <fieldset>
+      <legend>Personal Details</legend>
+      
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob">
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender">
+        <option value="">-- Select Gender --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Academic Information</legend>
+      
+      <label for="course">Course:</label>
+      <select id="course" name="course">
+        <option value="">-- Select Course --</option>
+        <option value="bca">BCA</option>
+        <option value="bsc">B.Sc</option>
+        <option value="btech">B.Tech</option>
+        <option value="mca">MCA</option>
+      </select>
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" placeholder="Write your full address here..."></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Login Credentials</legend>
+      
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username">
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+    </fieldset>
+
+    <button type="submit">Submit Registration</button>
+
+  </form>
+
+  <hr>
+  <h2>📘 Explanation of Tags Used:</h2>
+
+  <ul>
+    <li><strong>&lt;form&gt;</strong>: Creates the form element that wraps all inputs. Use <code>action</code> for backend URL, and <code>method="post"</code> to submit data securely.</li>
+    
+    <li><strong>&lt;fieldset&gt;</strong>: Groups related fields together inside the form, adds a visual box.</li>
+    
+    <li><strong>&lt;legend&gt;</strong>: Adds a title or label to each <code>&lt;fieldset&gt;</code>, improving accessibility and readability.</li>
+
+    <li><strong>&lt;label&gt;</strong>: Describes each form input. The <code>for</code> attribute should match the input’s <code>id</code>.</li>
+
+    <li><strong>&lt;input&gt;</strong>: Used for various user inputs like text, email, password, date, etc. Attributes like <code>type="text"</code> or <code>type="email"</code> determine the kind of input allowed.</li>
+
+    <li><strong>&lt;select&gt;</strong>: Creates a dropdown menu. The <code>&lt;option&gt;</code> tags inside define the choices.</li>
+
+    <li><strong>&lt;option&gt;</strong>: Each item in the dropdown is created using this tag, and its <code>value</code> is sent when the form is submitted.</li>
+
+    <li><strong>&lt;textarea&gt;</strong>: For multi-line text input (like address, feedback, etc.). It supports styling and resizing.</li>
+
+    <li><strong>&lt;button type="submit"&gt;</strong>: A clickable button that triggers form submission.</li>
+  </ul>
+
+</body>
+</html>

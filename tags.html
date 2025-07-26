@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,7 +84,7 @@
             font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 25px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
             background: linear-gradient(45deg, #ffffff, #f97316, #ef4444);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -92,8 +93,13 @@
         }
 
         @keyframes htmlGlow {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(20deg); }
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(20deg);
+            }
         }
 
         header p {
@@ -114,20 +120,20 @@
         }
 
         .tag-demo {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             padding: 15px 25px;
             border-radius: 12px;
             backdrop-filter: blur(15px);
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             font-family: 'Courier New', monospace;
             font-weight: bold;
             transition: all 0.4s ease;
         }
 
         .tag-demo:hover {
-            transform: scale(1.1);
-            background: rgba(255,255,255,0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            /* transform: scale(1.1); */
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .section {
@@ -195,7 +201,7 @@
         .tags-table {
             border-radius: 0 0 20px 20px;
             overflow-x: scroll;
-            
+
             box-shadow: var(--shadow-xl);
         }
 
@@ -203,11 +209,13 @@
             .tags-table {
                 overflow-x: auto;
             }
-            .category-container{
+
+            .category-container {
                 margin: 0 !important;
 
             }
         }
+
         .tags-table table {
             width: 100%;
             border-collapse: collapse;
@@ -236,7 +244,7 @@
 
         .tags-table tr:hover {
             background: rgba(59, 130, 246, 0.05);
-            transform: scale(1.01);
+            /* transform: scale(1.01); */
             transition: all 0.3s ease;
         }
 
@@ -326,17 +334,17 @@
         }
 
         .stat-card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             padding: 40px;
             border-radius: 20px;
             backdrop-filter: blur(15px);
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             transition: all 0.4s ease;
         }
 
         .stat-card:hover {
             transform: translateY(-10px);
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             box-shadow: var(--shadow-2xl);
         }
 
@@ -345,7 +353,7 @@
             font-weight: bold;
             color: var(--orange-color);
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .stat-label {
@@ -379,7 +387,7 @@
 
         .nav-item:hover {
             background: var(--accent-color);
-            transform: scale(1.3);
+            /* transform: scale(1.3); */
         }
 
         .nav-item.active {
@@ -470,7 +478,7 @@
         }
 
         .scroll-to-top:hover {
-            transform: scale(1.1);
+            /* transform: scale(1.1); */
         }
 
         .search-container {
@@ -508,27 +516,27 @@
             header h1 {
                 font-size: 3rem;
             }
-            
+
             .section {
                 padding: 60px 0;
             }
-            
+
             .tags-table th,
             .tags-table td {
                 padding: 15px 10px;
                 font-size: 0.9rem;
             }
-            
+
             .navigation {
                 display: none;
             }
-            
+
             .category-title {
                 font-size: 1.8rem;
                 flex-direction: column;
                 gap: 10px;
             }
-            
+
             .stats-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 20px;
@@ -553,18 +561,60 @@
             font-family: 'Courier New', monospace;
         }
 
-        .floating-element:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .floating-element:nth-child(2) { top: 60%; left: 80%; animation-delay: 4s; }
-        .floating-element:nth-child(3) { top: 30%; left: 5%; animation-delay: 8s; }
-        .floating-element:nth-child(4) { top: 80%; left: 20%; animation-delay: 2s; }
-        .floating-element:nth-child(5) { top: 40%; left: 90%; animation-delay: 6s; }
-        .floating-element:nth-child(6) { top: 70%; left: 60%; animation-delay: 10s; }
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        .floating-element:nth-child(3) {
+            top: 30%;
+            left: 5%;
+            animation-delay: 8s;
+        }
+
+        .floating-element:nth-child(4) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(5) {
+            top: 40%;
+            left: 90%;
+            animation-delay: 6s;
+        }
+
+        .floating-element:nth-child(6) {
+            top: 70%;
+            left: 60%;
+            animation-delay: 10s;
+        }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-30px) rotate(5deg); }
-            50% { transform: translateY(-15px) rotate(-5deg); }
-            75% { transform: translateY(-40px) rotate(3deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(-5deg);
+            }
+
+            75% {
+                transform: translateY(-40px) rotate(3deg);
+            }
         }
 
         .highlight {
@@ -596,6 +646,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="floating-elements">
@@ -609,7 +660,7 @@
         <div class="container">
             <h1>📝 Complete HTML Tags Reference</h1>
             <p>Comprehensive guide to all HTML elements with examples, use cases, and live demonstrations</p>
-            
+
             <div class="html-tags-demo">
                 <div class="tag-demo">&lt;html&gt;</div>
                 <div class="tag-demo">&lt;head&gt;</div>
@@ -682,11 +733,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;!DOCTYPE&gt;</span></td>
                                 <td class="description-text">Declares the document type and HTML version</td>
-                                <td><div class="example-code">&lt;!DOCTYPE html&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;!DOCTYPE html&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Must be the first line in HTML5 documents to ensure proper rendering</div>
+                                        <div class="use-case-text">Must be the first line in HTML5 documents to ensure
+                                            proper rendering</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -697,13 +751,16 @@
                             <tr>
                                 <td><span class="element-tag">&lt;html&gt;</span></td>
                                 <td class="description-text">Root element that wraps all content on the page</td>
-                                <td><div class="example-code">&lt;html lang="en"&gt;
-  &lt;!-- content --&gt;
-&lt;/html&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;html lang="en"&gt;
+                                        &lt;!-- content --&gt;
+                                        &lt;/html&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Container for entire HTML document, includes lang attribute for accessibility</div>
+                                        <div class="use-case-text">Container for entire HTML document, includes lang
+                                            attribute for accessibility</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -714,14 +771,17 @@
                             <tr>
                                 <td><span class="element-tag">&lt;head&gt;</span></td>
                                 <td class="description-text">Contains metadata about the document</td>
-                                <td><div class="example-code">&lt;head&gt;
-  &lt;title&gt;Page Title&lt;/title&gt;
-  &lt;meta charset="UTF-8"&gt;
-&lt;/head&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;head&gt;
+                                        &lt;title&gt;Page Title&lt;/title&gt;
+                                        &lt;meta charset="UTF-8"&gt;
+                                        &lt;/head&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Contains title, meta tags, links to CSS/JS files, not visible to users</div>
+                                        <div class="use-case-text">Contains title, meta tags, links to CSS/JS files, not
+                                            visible to users</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -732,14 +792,17 @@
                             <tr>
                                 <td><span class="element-tag">&lt;body&gt;</span></td>
                                 <td class="description-text">Contains all visible content of the webpage</td>
-                                <td><div class="example-code">&lt;body&gt;
-  &lt;h1&gt;Welcome&lt;/h1&gt;
-  &lt;p&gt;Content here&lt;/p&gt;
-&lt;/body&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;body&gt;
+                                        &lt;h1&gt;Welcome&lt;/h1&gt;
+                                        &lt;p&gt;Content here&lt;/p&gt;
+                                        &lt;/body&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">All visible content like text, images, links goes inside body</div>
+                                        <div class="use-case-text">All visible content like text, images, links goes
+                                            inside body</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -751,11 +814,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;title&gt;</span></td>
                                 <td class="description-text">Sets the title shown in browser tab</td>
-                                <td><div class="example-code">&lt;title&gt;My Website&lt;/title&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;title&gt;My Website&lt;/title&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Appears in browser tab, bookmarks, and search results</div>
+                                        <div class="use-case-text">Appears in browser tab, bookmarks, and search results
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -766,12 +832,15 @@
                             <tr>
                                 <td><span class="element-tag">&lt;meta&gt;</span></td>
                                 <td class="description-text">Provides metadata about the HTML document</td>
-                                <td><div class="example-code">&lt;meta charset="UTF-8"&gt;
-&lt;meta name="viewport" content="width=device-width"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;meta charset="UTF-8"&gt;
+                                        &lt;meta name="viewport" content="width=device-width"&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Character encoding, viewport settings, SEO descriptions</div>
+                                        <div class="use-case-text">Character encoding, viewport settings, SEO
+                                            descriptions</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -782,11 +851,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;link&gt;</span></td>
                                 <td class="description-text">Links external resources like CSS files</td>
-                                <td><div class="example-code">&lt;link rel="stylesheet" href="style.css"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;link rel="stylesheet" href="style.css"&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Link CSS files, fonts, favicons, and other external resources</div>
+                                        <div class="use-case-text">Link CSS files, fonts, favicons, and other external
+                                            resources</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -797,12 +869,15 @@
                             <tr>
                                 <td><span class="element-tag">&lt;script&gt;</span></td>
                                 <td class="description-text">Embeds or references JavaScript code</td>
-                                <td><div class="example-code">&lt;script src="script.js"&gt;&lt;/script&gt;
-&lt;script&gt;alert('Hello');&lt;/script&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;script src="script.js"&gt;&lt;/script&gt;
+                                        &lt;script&gt;alert('Hello');&lt;/script&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Add interactivity, dynamic behavior, and functionality</div>
+                                        <div class="use-case-text">Add interactivity, dynamic behavior, and
+                                            functionality</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -813,13 +888,16 @@
                             <tr>
                                 <td><span class="element-tag">&lt;style&gt;</span></td>
                                 <td class="description-text">Contains CSS styles for the document</td>
-                                <td><div class="example-code">&lt;style&gt;
-  body { background: blue; }
-&lt;/style&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;style&gt;
+                                        body { background: blue; }
+                                        &lt;/style&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Internal CSS styles, usually placed in head section</div>
+                                        <div class="use-case-text">Internal CSS styles, usually placed in head section
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -830,11 +908,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;base&gt;</span></td>
                                 <td class="description-text">Sets base URL for all relative URLs in document</td>
-                                <td><div class="example-code">&lt;base href="https://example.com/"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;base href="https://example.com/"&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Useful when all links should be relative to a specific base URL</div>
+                                        <div class="use-case-text">Useful when all links should be relative to a
+                                            specific base URL</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -859,7 +940,8 @@
                         Text Content Tags
                     </h2>
                     <p class="category-description">
-                        Tags used to structure and format text content, including headings, paragraphs, and text formatting
+                        Tags used to structure and format text content, including headings, paragraphs, and text
+                        formatting
                     </p>
                 </div>
                 <div class="tags-table">
@@ -876,13 +958,16 @@
                             <tr>
                                 <td><span class="element-tag">&lt;h1&gt; - &lt;h6&gt;</span></td>
                                 <td class="description-text">Heading elements from largest (h1) to smallest (h6)</td>
-                                <td><div class="example-code">&lt;h1&gt;Main Title&lt;/h1&gt;
-&lt;h2&gt;Subtitle&lt;/h2&gt;
-&lt;h3&gt;Section&lt;/h3&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;h1&gt;Main Title&lt;/h1&gt;
+                                        &lt;h2&gt;Subtitle&lt;/h2&gt;
+                                        &lt;h3&gt;Section&lt;/h3&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Create document hierarchy, improve SEO and accessibility</div>
+                                        <div class="use-case-text">Create document hierarchy, improve SEO and
+                                            accessibility</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -895,7 +980,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;p&gt;</span></td>
                                 <td class="description-text">Paragraph element for blocks of text</td>
-                                <td><div class="example-code">&lt;p&gt;This is a paragraph of text.&lt;/p&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;p&gt;This is a paragraph of text.&lt;/p&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -910,11 +997,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;br&gt;</span></td>
                                 <td class="description-text">Line break element (self-closing)</td>
-                                <td><div class="example-code">First line&lt;br&gt;Second line</div></td>
+                                <td>
+                                    <div class="example-code">First line&lt;br&gt;Second line</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Force line breaks in addresses, poems, or short lines</div>
+                                        <div class="use-case-text">Force line breaks in addresses, poems, or short lines
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -925,7 +1015,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;hr&gt;</span></td>
                                 <td class="description-text">Horizontal rule/line separator</td>
-                                <td><div class="example-code">Section 1&lt;hr&gt;Section 2</div></td>
+                                <td>
+                                    <div class="example-code">Section 1&lt;hr&gt;Section 2</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -933,17 +1025,20 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        Section 1<hr style="margin:5px 0;">Section 2
+                                        Section 1
+                                        <hr style="margin:5px 0;">Section 2
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;pre&gt;</span></td>
                                 <td class="description-text">Preformatted text with preserved whitespace</td>
-                                <td><div class="example-code">&lt;pre&gt;
-  Code here
-    with spacing
-&lt;/pre&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;pre&gt;
+                                        Code here
+                                        with spacing
+                                        &lt;/pre&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -959,9 +1054,11 @@
                             <tr>
                                 <td><span class="element-tag">&lt;blockquote&gt;</span></td>
                                 <td class="description-text">Block-level quotation element</td>
-                                <td><div class="example-code">&lt;blockquote cite="source"&gt;
-  "Quote text here"
-&lt;/blockquote&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;blockquote cite="source"&gt;
+                                        "Quote text here"
+                                        &lt;/blockquote&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -969,28 +1066,73 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <blockquote style="margin:0; padding-left:20px; border-left:3px solid #ccc;">"Quote text here"</blockquote>
+                                        <blockquote style="margin:0; padding-left:20px; border-left:3px solid #ccc;">
+                                            "Quote text here"</blockquote>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;address&gt;</span></td>
                                 <td class="description-text">Contact information for author or owner</td>
-                                <td><div class="example-code">&lt;address&gt;
-  123 Main St&lt;br&gt;
-  City, State 12345
-&lt;/address&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;address&gt;
+                                        123 Main St&lt;br&gt;
+                                        City, State 12345
+                                        &lt;/address&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Contact details, author information, business addresses</div>
+                                        <div class="use-case-text">Contact details, author information, business
+                                            addresses</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <address style="margin:0; font-style:italic;">123 Main St<br>City, State 12345</address>
+                                        <address style="margin:0; font-style:italic;">123 Main St<br>City, State 12345
+                                        </address>
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td><span class="element-tag">&lt;bdi&gt;</span></td>
+                                <td class="description-text">Isolates text direction in bidirectional text environments
+                                </td>
+                                <td>
+                                    <div class="example-code">&lt;p&gt;Usernames: &lt;bdi&gt;علي&lt;/bdi&gt;,
+                                        &lt;bdi&gt;John&lt;/bdi&gt;&lt;/p&gt;</div>
+                                </td>
+                                <td>
+                                    <div class="use-case">
+                                        <div class="use-case-title">Use Case:</div>
+                                        <div class="use-case-text">When inserting user-generated names or content into a
+                                            multilingual site to preserve correct direction</div>
+                                    </div>
+                                    <div class="output-demo">
+                                        <div class="output-label">Output:</div>
+                                        <p style="margin: 0;">Usernames: <bdi>علي</bdi>, <bdi>John</bdi></p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="element-tag">&lt;bdo&gt;</span></td>
+                                <td class="description-text">Overrides the text direction (LTR or RTL) manually</td>
+                                <td>
+                                    <div class="example-code">&lt;p&gt;&lt;bdo dir="rtl"&gt;This is reversed
+                                        text.&lt;/bdo&gt;&lt;/p&gt;</div>
+                                </td>
+                                <td>
+                                    <div class="use-case">
+                                        <div class="use-case-title">Use Case:</div>
+                                        <div class="use-case-text">Forcing direction on content (e.g., for Arabic/Hebrew
+                                            styling or testing)</div>
+                                    </div>
+                                    <div class="output-demo">
+                                        <div class="output-label">Output:</div>
+                                        <p style="margin: 0;"><bdo dir="rtl">This is reversed text.</bdo></p>
+                                    </div>
+                                </td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -1008,7 +1150,8 @@
                         Text Formatting Tags
                     </h2>
                     <p class="category-description">
-                        Inline elements used to format and style text content for emphasis, importance, and semantic meaning
+                        Inline elements used to format and style text content for emphasis, importance, and semantic
+                        meaning
                     </p>
                 </div>
                 <div class="tags-table">
@@ -1025,11 +1168,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;strong&gt;</span></td>
                                 <td class="description-text">Strong importance, typically bold</td>
-                                <td><div class="example-code">&lt;strong&gt;Important text&lt;/strong&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;strong&gt;Important text&lt;/strong&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Emphasize important content, warnings, key points</div>
+                                        <div class="use-case-text">Emphasize important content, warnings, key points
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1040,7 +1186,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;em&gt;</span></td>
                                 <td class="description-text">Emphasized text, typically italic</td>
-                                <td><div class="example-code">&lt;em&gt;Emphasized text&lt;/em&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;em&gt;Emphasized text&lt;/em&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1055,7 +1203,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;b&gt;</span></td>
                                 <td class="description-text">Bold text without semantic importance</td>
-                                <td><div class="example-code">&lt;b&gt;Bold text&lt;/b&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;b&gt;Bold text&lt;/b&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1070,7 +1220,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;i&gt;</span></td>
                                 <td class="description-text">Italic text without semantic emphasis</td>
-                                <td><div class="example-code">&lt;i&gt;Italic text&lt;/i&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;i&gt;Italic text&lt;/i&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1085,7 +1237,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;u&gt;</span></td>
                                 <td class="description-text">Underlined text</td>
-                                <td><div class="example-code">&lt;u&gt;Underlined text&lt;/u&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;u&gt;Underlined text&lt;/u&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1100,7 +1254,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;small&gt;</span></td>
                                 <td class="description-text">Smaller text, fine print</td>
-                                <td><div class="example-code">&lt;small&gt;Fine print text&lt;/small&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;small&gt;Fine print text&lt;/small&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1115,7 +1271,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;mark&gt;</span></td>
                                 <td class="description-text">Highlighted/marked text</td>
-                                <td><div class="example-code">&lt;mark&gt;Highlighted text&lt;/mark&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;mark&gt;Highlighted text&lt;/mark&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1130,11 +1288,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;del&gt;</span></td>
                                 <td class="description-text">Deleted/removed text</td>
-                                <td><div class="example-code">&lt;del&gt;Deleted text&lt;/del&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;del&gt;Deleted text&lt;/del&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Show removed content, document changes, corrections</div>
+                                        <div class="use-case-text">Show removed content, document changes, corrections
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1145,7 +1306,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;ins&gt;</span></td>
                                 <td class="description-text">Inserted/added text</td>
-                                <td><div class="example-code">&lt;ins&gt;Inserted text&lt;/ins&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;ins&gt;Inserted text&lt;/ins&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1160,11 +1323,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;sub&gt;</span></td>
                                 <td class="description-text">Subscript text</td>
-                                <td><div class="example-code">H&lt;sub&gt;2&lt;/sub&gt;O</div></td>
+                                <td>
+                                    <div class="example-code">H&lt;sub&gt;2&lt;/sub&gt;O</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Chemical formulas, mathematical expressions, footnotes</div>
+                                        <div class="use-case-text">Chemical formulas, mathematical expressions,
+                                            footnotes</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1175,11 +1341,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;sup&gt;</span></td>
                                 <td class="description-text">Superscript text</td>
-                                <td><div class="example-code">E=mc&lt;sup&gt;2&lt;/sup&gt;</div></td>
+                                <td>
+                                    <div class="example-code">E=mc&lt;sup&gt;2&lt;/sup&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Mathematical powers, ordinal numbers, footnote references</div>
+                                        <div class="use-case-text">Mathematical powers, ordinal numbers, footnote
+                                            references</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1190,11 +1359,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;code&gt;</span></td>
                                 <td class="description-text">Inline code element</td>
-                                <td><div class="example-code">&lt;code&gt;console.log()&lt;/code&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;code&gt;console.log()&lt;/code&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Code snippets, function names, programming terms</div>
+                                        <div class="use-case-text">Code snippets, function names, programming terms
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1205,7 +1377,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;kbd&gt;</span></td>
                                 <td class="description-text">Keyboard input element</td>
-                                <td><div class="example-code">Press &lt;kbd&gt;Ctrl+C&lt;/kbd&gt;</div></td>
+                                <td>
+                                    <div class="example-code">Press &lt;kbd&gt;Ctrl+C&lt;/kbd&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1213,14 +1387,17 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        Press <kbd style="background:#f0f0f0; padding:2px 4px; border-radius:3px;">Ctrl+C</kbd>
+                                        Press <kbd
+                                            style="background:#f0f0f0; padding:2px 4px; border-radius:3px;">Ctrl+C</kbd>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;samp&gt;</span></td>
                                 <td class="description-text">Sample output from computer program</td>
-                                <td><div class="example-code">&lt;samp&gt;Error: File not found&lt;/samp&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;samp&gt;Error: File not found&lt;/samp&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1235,7 +1412,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;var&gt;</span></td>
                                 <td class="description-text">Variable in mathematical or programming context</td>
-                                <td><div class="example-code">&lt;var&gt;x&lt;/var&gt; = 10</div></td>
+                                <td>
+                                    <div class="example-code">&lt;var&gt;x&lt;/var&gt; = 10</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1264,7 +1443,8 @@
                         Links and Navigation Tags
                     </h2>
                     <p class="category-description">
-                        Elements for creating hyperlinks, navigation menus, and connecting different parts of web content
+                        Elements for creating hyperlinks, navigation menus, and connecting different parts of web
+                        content
                     </p>
                 </div>
                 <div class="tags-table">
@@ -1281,13 +1461,16 @@
                             <tr>
                                 <td><span class="element-tag">&lt;a&gt;</span></td>
                                 <td class="description-text">Anchor element for hyperlinks</td>
-                                <td><div class="example-code">&lt;a href="https://example.com"&gt;Visit Site&lt;/a&gt;
-&lt;a href="#section"&gt;Go to Section&lt;/a&gt;
-&lt;a href="mailto:email@example.com"&gt;Email&lt;/a&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;a href="https://example.com"&gt;Visit Site&lt;/a&gt;
+                                        &lt;a href="#section"&gt;Go to Section&lt;/a&gt;
+                                        &lt;a href="mailto:email@example.com"&gt;Email&lt;/a&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">External links, internal navigation, email links, phone links</div>
+                                        <div class="use-case-text">External links, internal navigation, email links,
+                                            phone links</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1300,12 +1483,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;nav&gt;</span></td>
                                 <td class="description-text">Navigation section container</td>
-                                <td><div class="example-code">&lt;nav&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;nav&gt;
+                                        &lt;ul&gt;
+                                        &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                        &lt;/nav&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1315,8 +1500,10 @@
                                         <div class="output-label">Output:</div>
                                         <nav>
                                             <ul style="list-style:none; margin:0; padding:0;">
-                                                <li style="display:inline; margin-right:15px;"><a href="#" style="color:#3b82f6;">Home</a></li>
-                                                <li style="display:inline;"><a href="#" style="color:#3b82f6;">About</a></li>
+                                                <li style="display:inline; margin-right:15px;"><a href="#"
+                                                        style="color:#3b82f6;">Home</a></li>
+                                                <li style="display:inline;"><a href="#" style="color:#3b82f6;">About</a>
+                                                </li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -1356,14 +1543,17 @@
                             <tr>
                                 <td><span class="element-tag">&lt;ul&gt;</span></td>
                                 <td class="description-text">Unordered list container</td>
-                                <td><div class="example-code">&lt;ul&gt;
-  &lt;li&gt;Item 1&lt;/li&gt;
-  &lt;li&gt;Item 2&lt;/li&gt;
-&lt;/ul&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;ul&gt;
+                                        &lt;li&gt;Item 1&lt;/li&gt;
+                                        &lt;li&gt;Item 2&lt;/li&gt;
+                                        &lt;/ul&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Bullet point lists, navigation menus, feature lists</div>
+                                        <div class="use-case-text">Bullet point lists, navigation menus, feature lists
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1377,14 +1567,17 @@
                             <tr>
                                 <td><span class="element-tag">&lt;ol&gt;</span></td>
                                 <td class="description-text">Ordered list container</td>
-                                <td><div class="example-code">&lt;ol&gt;
-  &lt;li&gt;First step&lt;/li&gt;
-  &lt;li&gt;Second step&lt;/li&gt;
-&lt;/ol&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;ol&gt;
+                                        &lt;li&gt;First step&lt;/li&gt;
+                                        &lt;li&gt;Second step&lt;/li&gt;
+                                        &lt;/ol&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Numbered lists, instructions, rankings, procedures</div>
+                                        <div class="use-case-text">Numbered lists, instructions, rankings, procedures
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1398,7 +1591,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;li&gt;</span></td>
                                 <td class="description-text">List item element</td>
-                                <td><div class="example-code">&lt;li&gt;List item content&lt;/li&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;li&gt;List item content&lt;/li&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1413,10 +1608,12 @@
                             <tr>
                                 <td><span class="element-tag">&lt;dl&gt;</span></td>
                                 <td class="description-text">Description list container</td>
-                                <td><div class="example-code">&lt;dl&gt;
-  &lt;dt&gt;Term&lt;/dt&gt;
-  &lt;dd&gt;Definition&lt;/dd&gt;
-&lt;/dl&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;dl&gt;
+                                        &lt;dt&gt;Term&lt;/dt&gt;
+                                        &lt;dd&gt;Definition&lt;/dd&gt;
+                                        &lt;/dl&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1434,7 +1631,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;dt&gt;</span></td>
                                 <td class="description-text">Description term</td>
-                                <td><div class="example-code">&lt;dt&gt;HTML&lt;/dt&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;dt&gt;HTML&lt;/dt&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1449,11 +1648,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;dd&gt;</span></td>
                                 <td class="description-text">Description definition</td>
-                                <td><div class="example-code">&lt;dd&gt;HyperText Markup Language&lt;/dd&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;dd&gt;HyperText Markup Language&lt;/dd&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Definitions or descriptions in description lists</div>
+                                        <div class="use-case-text">Definitions or descriptions in description lists
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1495,7 +1697,10 @@
                             <tr>
                                 <td><span class="element-tag">&lt;img&gt;</span></td>
                                 <td class="description-text">Image element (self-closing)</td>
-                                <td><div class="example-code">&lt;img src="image.jpg" alt="Description" width="200"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;img src="image.jpg" alt="Description" width="200"&gt;
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1503,54 +1708,69 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <div style="width:100px; height:60px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">Image</div>
+                                        <div
+                                            style="width:100px; height:60px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">
+                                            Image</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;video&gt;</span></td>
                                 <td class="description-text">Video content element</td>
-                                <td><div class="example-code">&lt;video controls width="320"&gt;
-  &lt;source src="video.mp4" type="video/mp4"&gt;
-  Your browser doesn't support video.
-&lt;/video&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;video controls width="320"&gt;
+                                        &lt;source src="video.mp4" type="video/mp4"&gt;
+                                        Your browser doesn't support video.
+                                        &lt;/video&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Movie clips, tutorials, presentations, advertisements</div>
+                                        <div class="use-case-text">Movie clips, tutorials, presentations, advertisements
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <div style="width:200px; height:120px; background:#000; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; color:white; font-size:0.8rem;">Video Player</div>
+                                        <div
+                                            style="width:200px; height:120px; background:#000; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; color:white; font-size:0.8rem;">
+                                            Video Player</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;audio&gt;</span></td>
                                 <td class="description-text">Audio content element</td>
-                                <td><div class="example-code">&lt;audio controls&gt;
-  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
-  Your browser doesn't support audio.
-&lt;/audio&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;audio controls&gt;
+                                        &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+                                        Your browser doesn't support audio.
+                                        &lt;/audio&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Music, podcasts, sound effects, voice recordings</div>
+                                        <div class="use-case-text">Music, podcasts, sound effects, voice recordings
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <div style="width:200px; height:40px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">Audio Player</div>
+                                        <div
+                                            style="width:200px; height:40px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">
+                                            Audio Player</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;source&gt;</span></td>
                                 <td class="description-text">Media resource for video/audio</td>
-                                <td><div class="example-code">&lt;source src="video.webm" type="video/webm"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;source src="video.webm" type="video/webm"&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Multiple format support for cross-browser compatibility</div>
+                                        <div class="use-case-text">Multiple format support for cross-browser
+                                            compatibility</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1561,11 +1781,15 @@
                             <tr>
                                 <td><span class="element-tag">&lt;track&gt;</span></td>
                                 <td class="description-text">Text tracks for video/audio</td>
-                                <td><div class="example-code">&lt;track kind="subtitles" src="subs.vtt" srclang="en"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;track kind="subtitles" src="subs.vtt" srclang="en"&gt;
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Subtitles, captions, descriptions for accessibility</div>
+                                        <div class="use-case-text">Subtitles, captions, descriptions for accessibility
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -1576,24 +1800,33 @@
                             <tr>
                                 <td><span class="element-tag">&lt;embed&gt;</span></td>
                                 <td class="description-text">Embeds external content</td>
-                                <td><div class="example-code">&lt;embed src="document.pdf" type="application/pdf" width="500" height="600"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;embed src="document.pdf" type="application/pdf"
+                                        width="500" height="600"&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">PDFs, Flash content, plugins, external applications</div>
+                                        <div class="use-case-text">PDFs, Flash content, plugins, external applications
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <div style="width:150px; height:100px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">Embedded Content</div>
+                                        <div
+                                            style="width:150px; height:100px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">
+                                            Embedded Content</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;object&gt;</span></td>
                                 <td class="description-text">Generic embedded object</td>
-                                <td><div class="example-code">&lt;object data="movie.swf" type="application/x-shockwave-flash"&gt;
-  &lt;param name="movie" value="movie.swf"&gt;
-&lt;/object&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;object data="movie.swf"
+                                        type="application/x-shockwave-flash"&gt;
+                                        &lt;param name="movie" value="movie.swf"&gt;
+                                        &lt;/object&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1601,14 +1834,18 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <div style="width:150px; height:100px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">Object Content</div>
+                                        <div
+                                            style="width:150px; height:100px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">
+                                            Object Content</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;param&gt;</span></td>
                                 <td class="description-text">Parameters for object element</td>
-                                <td><div class="example-code">&lt;param name="autoplay" value="false"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;param name="autoplay" value="false"&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1623,43 +1860,56 @@
                             <tr>
                                 <td><span class="element-tag">&lt;iframe&gt;</span></td>
                                 <td class="description-text">Inline frame for embedding content</td>
-                                <td><div class="example-code">&lt;iframe src="https://example.com" width="500" height="300"&gt;&lt;/iframe&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;iframe src="https://example.com" width="500"
+                                        height="300"&gt;&lt;/iframe&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Embed websites, maps, videos, social media content</div>
+                                        <div class="use-case-text">Embed websites, maps, videos, social media content
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <div style="width:200px; height:120px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">Embedded Page</div>
+                                        <div
+                                            style="width:200px; height:120px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">
+                                            Embedded Page</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;picture&gt;</span></td>
                                 <td class="description-text">Responsive image container</td>
-                                <td><div class="example-code">&lt;picture&gt;
-  &lt;source media="(min-width: 800px)" srcset="large.jpg"&gt;
-  &lt;img src="small.jpg" alt="Image"&gt;
-&lt;/picture&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;picture&gt;
+                                        &lt;source media="(min-width: 800px)" srcset="large.jpg"&gt;
+                                        &lt;img src="small.jpg" alt="Image"&gt;
+                                        &lt;/picture&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Responsive images, art direction, different formats</div>
+                                        <div class="use-case-text">Responsive images, art direction, different formats
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <div style="width:100px; height:60px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">Responsive Image</div>
+                                        <div
+                                            style="width:100px; height:60px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.8rem;">
+                                            Responsive Image</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;figure&gt;</span></td>
                                 <td class="description-text">Self-contained content with caption</td>
-                                <td><div class="example-code">&lt;figure&gt;
-  &lt;img src="chart.png" alt="Sales Chart"&gt;
-  &lt;figcaption&gt;Q1 Sales Data&lt;/figcaption&gt;
-&lt;/figure&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;figure&gt;
+                                        &lt;img src="chart.png" alt="Sales Chart"&gt;
+                                        &lt;figcaption&gt;Q1 Sales Data&lt;/figcaption&gt;
+                                        &lt;/figure&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1668,8 +1918,11 @@
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <figure style="margin:0; text-align:center;">
-                                            <div style="width:80px; height:50px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.7rem; margin:0 auto;">Chart</div>
-                                            <figcaption style="font-size:0.8rem; margin-top:5px;">Q1 Sales Data</figcaption>
+                                            <div
+                                                style="width:80px; height:50px; background:#f0f0f0; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; font-size:0.7rem; margin:0 auto;">
+                                                Chart</div>
+                                            <figcaption style="font-size:0.8rem; margin-top:5px;">Q1 Sales Data
+                                            </figcaption>
                                         </figure>
                                     </div>
                                 </td>
@@ -1677,7 +1930,10 @@
                             <tr>
                                 <td><span class="element-tag">&lt;figcaption&gt;</span></td>
                                 <td class="description-text">Caption for figure element</td>
-                                <td><div class="example-code">&lt;figcaption&gt;Image caption text&lt;/figcaption&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;figcaption&gt;Image caption text&lt;/figcaption&gt;
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1685,7 +1941,8 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <figcaption style="font-size:0.9rem; font-style:italic;">Image caption text</figcaption>
+                                        <figcaption style="font-size:0.9rem; font-style:italic;">Image caption text
+                                        </figcaption>
                                     </div>
                                 </td>
                             </tr>
@@ -1723,27 +1980,32 @@
                             <tr>
                                 <td><span class="element-tag">&lt;table&gt;</span></td>
                                 <td class="description-text">Table container element</td>
-                                <td><div class="example-code">&lt;table&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Name&lt;/th&gt;
-    &lt;th&gt;Age&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;John&lt;/td&gt;
-    &lt;td&gt;25&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;table&gt;
+                                        &lt;tr&gt;
+                                        &lt;th&gt;Name&lt;/th&gt;
+                                        &lt;th&gt;Age&lt;/th&gt;
+                                        &lt;/tr&gt;
+                                        &lt;tr&gt;
+                                        &lt;td&gt;John&lt;/td&gt;
+                                        &lt;td&gt;25&lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;/table&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Data tables, pricing tables, schedules, comparisons</div>
+                                        <div class="use-case-text">Data tables, pricing tables, schedules, comparisons
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <table style="border-collapse:collapse; border:1px solid #ccc;">
                                             <tr>
-                                                <th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">Name</th>
-                                                <th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">Age</th>
+                                                <th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">Name
+                                                </th>
+                                                <th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">Age
+                                                </th>
                                             </tr>
                                             <tr>
                                                 <td style="border:1px solid #ccc; padding:5px;">John</td>
@@ -1756,10 +2018,12 @@
                             <tr>
                                 <td><span class="element-tag">&lt;tr&gt;</span></td>
                                 <td class="description-text">Table row element</td>
-                                <td><div class="example-code">&lt;tr&gt;
-  &lt;td&gt;Cell 1&lt;/td&gt;
-  &lt;td&gt;Cell 2&lt;/td&gt;
-&lt;/tr&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;tr&gt;
+                                        &lt;td&gt;Cell 1&lt;/td&gt;
+                                        &lt;td&gt;Cell 2&lt;/td&gt;
+                                        &lt;/tr&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1779,7 +2043,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;td&gt;</span></td>
                                 <td class="description-text">Table data cell</td>
-                                <td><div class="example-code">&lt;td&gt;Data content&lt;/td&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;td&gt;Data content&lt;/td&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1798,7 +2064,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;th&gt;</span></td>
                                 <td class="description-text">Table header cell</td>
-                                <td><div class="example-code">&lt;th&gt;Header&lt;/th&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;th&gt;Header&lt;/th&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1808,7 +2076,9 @@
                                         <div class="output-label">Output:</div>
                                         <table style="border-collapse:collapse; border:1px solid #ccc;">
                                             <tr>
-                                                <th style="border:1px solid #ccc; padding:5px; background:#f0f0f0; font-weight:bold;">Header</th>
+                                                <th
+                                                    style="border:1px solid #ccc; padding:5px; background:#f0f0f0; font-weight:bold;">
+                                                    Header</th>
                                             </tr>
                                         </table>
                                     </div>
@@ -1817,12 +2087,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;thead&gt;</span></td>
                                 <td class="description-text">Table header group</td>
-                                <td><div class="example-code">&lt;thead&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Column 1&lt;/th&gt;
-    &lt;th&gt;Column 2&lt;/th&gt;
-  &lt;/tr&gt;
-&lt;/thead&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;thead&gt;
+                                        &lt;tr&gt;
+                                        &lt;th&gt;Column 1&lt;/th&gt;
+                                        &lt;th&gt;Column 2&lt;/th&gt;
+                                        &lt;/tr&gt;
+                                        &lt;/thead&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1833,8 +2105,10 @@
                                         <table style="border-collapse:collapse; border:1px solid #ccc;">
                                             <thead>
                                                 <tr>
-                                                    <th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">Column 1</th>
-                                                    <th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">Column 2</th>
+                                                    <th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">
+                                                        Column 1</th>
+                                                    <th style="border:1px solid #ccc; padding:5px; background:#f0f0f0;">
+                                                        Column 2</th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -1844,12 +2118,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;tbody&gt;</span></td>
                                 <td class="description-text">Table body group</td>
-                                <td><div class="example-code">&lt;tbody&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Data 1&lt;/td&gt;
-    &lt;td&gt;Data 2&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;tbody&gt;
+                                        &lt;tr&gt;
+                                        &lt;td&gt;Data 1&lt;/td&gt;
+                                        &lt;td&gt;Data 2&lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;/tbody&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1871,12 +2147,14 @@
                             <tr>
                                 <td><span class="element-tag">&lt;tfoot&gt;</span></td>
                                 <td class="description-text">Table footer group</td>
-                                <td><div class="example-code">&lt;tfoot&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Total&lt;/td&gt;
-    &lt;td&gt;$100&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tfoot&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;tfoot&gt;
+                                        &lt;tr&gt;
+                                        &lt;td&gt;Total&lt;/td&gt;
+                                        &lt;td&gt;$100&lt;/td&gt;
+                                        &lt;/tr&gt;
+                                        &lt;/tfoot&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1887,8 +2165,10 @@
                                         <table style="border-collapse:collapse; border:1px solid #ccc;">
                                             <tfoot>
                                                 <tr>
-                                                    <td style="border:1px solid #ccc; padding:5px; background:#f9f9f9;">Total</td>
-                                                    <td style="border:1px solid #ccc; padding:5px; background:#f9f9f9;">$100</td>
+                                                    <td style="border:1px solid #ccc; padding:5px; background:#f9f9f9;">
+                                                        Total</td>
+                                                    <td style="border:1px solid #ccc; padding:5px; background:#f9f9f9;">
+                                                        $100</td>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -1898,7 +2178,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;caption&gt;</span></td>
                                 <td class="description-text">Table caption/title</td>
-                                <td><div class="example-code">&lt;caption&gt;Sales Data 2024&lt;/caption&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;caption&gt;Sales Data 2024&lt;/caption&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1907,8 +2189,11 @@
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <table style="border-collapse:collapse; border:1px solid #ccc;">
-                                            <caption style="font-weight:bold; margin-bottom:5px;">Sales Data 2024</caption>
-                                            <tr><td style="border:1px solid #ccc; padding:5px;">Sample data</td></tr>
+                                            <caption style="font-weight:bold; margin-bottom:5px;">Sales Data 2024
+                                            </caption>
+                                            <tr>
+                                                <td style="border:1px solid #ccc; padding:5px;">Sample data</td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </td>
@@ -1916,10 +2201,12 @@
                             <tr>
                                 <td><span class="element-tag">&lt;colgroup&gt;</span></td>
                                 <td class="description-text">Column group for styling</td>
-                                <td><div class="example-code">&lt;colgroup&gt;
-  &lt;col style="background-color: yellow"&gt;
-  &lt;col span="2" style="background-color: red"&gt;
-&lt;/colgroup&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;colgroup&gt;
+                                        &lt;col style="background-color: yellow"&gt;
+                                        &lt;col span="2" style="background-color: red"&gt;
+                                        &lt;/colgroup&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1934,7 +2221,10 @@
                             <tr>
                                 <td><span class="element-tag">&lt;col&gt;</span></td>
                                 <td class="description-text">Column properties</td>
-                                <td><div class="example-code">&lt;col span="2" style="background-color: #f0f0f0"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;col span="2" style="background-color: #f0f0f0"&gt;
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -1980,19 +2270,23 @@
                             <tr>
                                 <td><span class="element-tag">&lt;form&gt;</span></td>
                                 <td class="description-text">Form container element</td>
-                                <td><div class="example-code">&lt;form action="/submit" method="post"&gt;
-  &lt;input type="text" name="username"&gt;
-  &lt;button type="submit"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;form action="/submit" method="post"&gt;
+                                        &lt;input type="text" name="username"&gt;
+                                        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+                                        &lt;/form&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Contact forms, login forms, surveys, data collection</div>
+                                        <div class="use-case-text">Contact forms, login forms, surveys, data collection
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <form style="border:1px solid #ccc; padding:10px; border-radius:5px;">
-                                            <input type="text" placeholder="Username" style="margin-right:10px; padding:5px;">
+                                            <input type="text" placeholder="Username"
+                                                style="margin-right:10px; padding:5px;">
                                             <button type="button" style="padding:5px 10px;">Submit</button>
                                         </form>
                                     </div>
@@ -2001,65 +2295,84 @@
                             <tr>
                                 <td><span class="element-tag">&lt;input&gt;</span></td>
                                 <td class="description-text">Input field (various types)</td>
-                                <td><div class="example-code">&lt;input type="text" name="name" placeholder="Enter name"&gt;
-&lt;input type="email" name="email"&gt;
-&lt;input type="password" name="pass"&gt;
-&lt;input type="checkbox" name="agree"&gt;
-&lt;input type="radio" name="gender" value="male"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;input type="text" name="name" placeholder="Enter
+                                        name"&gt;
+                                        &lt;input type="email" name="email"&gt;
+                                        &lt;input type="password" name="pass"&gt;
+                                        &lt;input type="checkbox" name="agree"&gt;
+                                        &lt;input type="radio" name="gender" value="male"&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Text input, email, passwords, checkboxes, radio buttons</div>
+                                        <div class="use-case-text">Text input, email, passwords, checkboxes, radio
+                                            buttons</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <input type="text" placeholder="Text" style="margin:2px; padding:3px; font-size:0.8rem;"><br>
-                                        <input type="email" placeholder="Email" style="margin:2px; padding:3px; font-size:0.8rem;"><br>
-                                        <input type="checkbox" style="margin:2px;"> <input type="radio" style="margin:2px;">
+                                        <input type="text" placeholder="Text"
+                                            style="margin:2px; padding:3px; font-size:0.8rem;"><br>
+                                        <input type="email" placeholder="Email"
+                                            style="margin:2px; padding:3px; font-size:0.8rem;"><br>
+                                        <input type="checkbox" style="margin:2px;"> <input type="radio"
+                                            style="margin:2px;">
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;textarea&gt;</span></td>
                                 <td class="description-text">Multi-line text input</td>
-                                <td><div class="example-code">&lt;textarea name="message" rows="4" cols="50" placeholder="Enter message"&gt;&lt;/textarea&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;textarea name="message" rows="4" cols="50"
+                                        placeholder="Enter message"&gt;&lt;/textarea&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Comments, messages, descriptions, long text input</div>
+                                        <div class="use-case-text">Comments, messages, descriptions, long text input
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <textarea placeholder="Enter message" style="width:150px; height:60px; padding:5px; font-size:0.8rem;"></textarea>
+                                        <textarea placeholder="Enter message"
+                                            style="width:150px; height:60px; padding:5px; font-size:0.8rem;"></textarea>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;button&gt;</span></td>
                                 <td class="description-text">Clickable button element</td>
-                                <td><div class="example-code">&lt;button type="submit"&gt;Submit&lt;/button&gt;
-&lt;button type="button" onclick="alert('Hi')"&gt;Click Me&lt;/button&gt;
-&lt;button type="reset"&gt;Reset&lt;/button&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;button type="submit"&gt;Submit&lt;/button&gt;
+                                        &lt;button type="button" onclick="alert('Hi')"&gt;Click Me&lt;/button&gt;
+                                        &lt;button type="reset"&gt;Reset&lt;/button&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Form submission, actions, navigation, interactions</div>
+                                        <div class="use-case-text">Form submission, actions, navigation, interactions
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <button type="button" style="margin:2px; padding:5px 10px; font-size:0.8rem;">Submit</button>
-                                        <button type="button" style="margin:2px; padding:5px 10px; font-size:0.8rem;">Click Me</button>
+                                        <button type="button"
+                                            style="margin:2px; padding:5px 10px; font-size:0.8rem;">Submit</button>
+                                        <button type="button"
+                                            style="margin:2px; padding:5px 10px; font-size:0.8rem;">Click Me</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag">&lt;select&gt;</span></td>
                                 <td class="description-text">Dropdown selection list</td>
-                                <td><div class="example-code">&lt;select name="country"&gt;
-  &lt;option value="us"&gt;United States&lt;/option&gt;
-  &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
-  &lt;option value="ca"&gt;Canada&lt;/option&gt;
-&lt;/select&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;select name="country"&gt;
+                                        &lt;option value="us"&gt;United States&lt;/option&gt;
+                                        &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+                                        &lt;option value="ca"&gt;Canada&lt;/option&gt;
+                                        &lt;/select&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2078,7 +2391,10 @@
                             <tr>
                                 <td><span class="element-tag">&lt;option&gt;</span></td>
                                 <td class="description-text">Option in select dropdown</td>
-                                <td><div class="example-code">&lt;option value="red" selected&gt;Red&lt;/option&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;option value="red" selected&gt;Red&lt;/option&gt;
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2095,14 +2411,17 @@
                             <tr>
                                 <td><span class="element-tag">&lt;optgroup&gt;</span></td>
                                 <td class="description-text">Option group in select</td>
-                                <td><div class="example-code">&lt;optgroup label="Colors"&gt;
-  &lt;option value="red"&gt;Red&lt;/option&gt;
-  &lt;option value="blue"&gt;Blue&lt;/option&gt;
-&lt;/optgroup&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;optgroup label="Colors"&gt;
+                                        &lt;option value="red"&gt;Red&lt;/option&gt;
+                                        &lt;option value="blue"&gt;Blue&lt;/option&gt;
+                                        &lt;/optgroup&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Group related options, organize dropdown choices</div>
+                                        <div class="use-case-text">Group related options, organize dropdown choices
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -2118,12 +2437,15 @@
                             <tr>
                                 <td><span class="element-tag">&lt;label&gt;</span></td>
                                 <td class="description-text">Label for form controls</td>
-                                <td><div class="example-code">&lt;label for="username"&gt;Username:&lt;/label&gt;
-&lt;input type="text" id="username" name="username"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;label for="username"&gt;Username:&lt;/label&gt;
+                                        &lt;input type="text" id="username" name="username"&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Accessibility, form field descriptions, click targets</div>
+                                        <div class="use-case-text">Accessibility, form field descriptions, click targets
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -2135,15 +2457,18 @@
                             <tr>
                                 <td><span class="element-tag">&lt;fieldset&gt;</span></td>
                                 <td class="description-text">Group related form controls</td>
-                                <td><div class="example-code">&lt;fieldset&gt;
-  &lt;legend&gt;Personal Info&lt;/legend&gt;
-  &lt;input type="text" name="name"&gt;
-  &lt;input type="email" name="email"&gt;
-&lt;/fieldset&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;fieldset&gt;
+                                        &lt;legend&gt;Personal Info&lt;/legend&gt;
+                                        &lt;input type="text" name="name"&gt;
+                                        &lt;input type="email" name="email"&gt;
+                                        &lt;/fieldset&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Group related fields, form sections, accessibility</div>
+                                        <div class="use-case-text">Group related fields, form sections, accessibility
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -2158,7 +2483,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;legend&gt;</span></td>
                                 <td class="description-text">Caption for fieldset</td>
-                                <td><div class="example-code">&lt;legend&gt;Contact Information&lt;/legend&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;legend&gt;Contact Information&lt;/legend&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2167,7 +2494,8 @@
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <fieldset style="border:1px solid #ccc; padding:10px;">
-                                            <legend style="font-weight:bold; font-size:0.8rem;">Contact Information</legend>
+                                            <legend style="font-weight:bold; font-size:0.8rem;">Contact Information
+                                            </legend>
                                         </fieldset>
                                     </div>
                                 </td>
@@ -2175,12 +2503,14 @@
                             <tr>
                                 <td><span class="element-tag new-tag">&lt;datalist&gt;</span></td>
                                 <td class="description-text">Predefined options for input</td>
-                                <td><div class="example-code">&lt;input list="browsers" name="browser"&gt;
-&lt;datalist id="browsers"&gt;
-  &lt;option value="Chrome"&gt;
-  &lt;option value="Firefox"&gt;
-  &lt;option value="Safari"&gt;
-&lt;/datalist&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;input list="browsers" name="browser"&gt;
+                                        &lt;datalist id="browsers"&gt;
+                                        &lt;option value="Chrome"&gt;
+                                        &lt;option value="Firefox"&gt;
+                                        &lt;option value="Safari"&gt;
+                                        &lt;/datalist&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2188,19 +2518,24 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <input type="text" placeholder="Type browser name" style="padding:5px; font-size:0.8rem;">
-                                        <div style="font-size:0.7rem; color:#666;">Provides autocomplete suggestions</div>
+                                        <input type="text" placeholder="Type browser name"
+                                            style="padding:5px; font-size:0.8rem;">
+                                        <div style="font-size:0.7rem; color:#666;">Provides autocomplete suggestions
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag new-tag">&lt;output&gt;</span></td>
                                 <td class="description-text">Result of calculation or user action</td>
-                                <td><div class="example-code">&lt;form oninput="result.value=parseInt(a.value)+parseInt(b.value)"&gt;
-  &lt;input type="range" id="a" value="50"&gt; +
-  &lt;input type="number" id="b" value="50"&gt; =
-  &lt;output name="result" for="a b"&gt;100&lt;/output&gt;
-&lt;/form&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;form
+                                        oninput="result.value=parseInt(a.value)+parseInt(b.value)"&gt;
+                                        &lt;input type="range" id="a" value="50"&gt; +
+                                        &lt;input type="number" id="b" value="50"&gt; =
+                                        &lt;output name="result" for="a b"&gt;100&lt;/output&gt;
+                                        &lt;/form&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2208,7 +2543,9 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <input type="range" style="width:60px;"> + <input type="number" value="50" style="width:50px; padding:2px;"> = <output style="font-weight:bold;">100</output>
+                                        <input type="range" style="width:60px;"> + <input type="number" value="50"
+                                            style="width:50px; padding:2px;"> = <output
+                                            style="font-weight:bold;">100</output>
                                     </div>
                                 </td>
                             </tr>
@@ -2229,7 +2566,8 @@
                         Semantic Structure Tags
                     </h2>
                     <p class="category-description">
-                        HTML5 semantic elements that provide meaning and structure to web content for better accessibility and SEO
+                        HTML5 semantic elements that provide meaning and structure to web content for better
+                        accessibility and SEO
                     </p>
                 </div>
                 <div class="tags-table">
@@ -2246,14 +2584,17 @@
                             <tr>
                                 <td><span class="element-tag">&lt;header&gt;</span></td>
                                 <td class="description-text">Header section of document or section</td>
-                                <td><div class="example-code">&lt;header&gt;
-  &lt;h1&gt;Site Title&lt;/h1&gt;
-  &lt;nav&gt;Navigation&lt;/nav&gt;
-&lt;/header&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;header&gt;
+                                        &lt;h1&gt;Site Title&lt;/h1&gt;
+                                        &lt;nav&gt;Navigation&lt;/nav&gt;
+                                        &lt;/header&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Site headers, article headers, section introductions</div>
+                                        <div class="use-case-text">Site headers, article headers, section introductions
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -2267,10 +2608,12 @@
                             <tr>
                                 <td><span class="element-tag">&lt;main&gt;</span></td>
                                 <td class="description-text">Main content area of document</td>
-                                <td><div class="example-code">&lt;main&gt;
-  &lt;article&gt;Main article content&lt;/article&gt;
-  &lt;aside&gt;Sidebar content&lt;/aside&gt;
-&lt;/main&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;main&gt;
+                                        &lt;article&gt;Main article content&lt;/article&gt;
+                                        &lt;aside&gt;Sidebar content&lt;/aside&gt;
+                                        &lt;/main&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2288,10 +2631,12 @@
                             <tr>
                                 <td><span class="element-tag">&lt;footer&gt;</span></td>
                                 <td class="description-text">Footer section of document or section</td>
-                                <td><div class="example-code">&lt;footer&gt;
-  &lt;p&gt;&copy; 2024 Company Name&lt;/p&gt;
-  &lt;nav&gt;Footer links&lt;/nav&gt;
-&lt;/footer&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;footer&gt;
+                                        &lt;p&gt;&copy; 2024 Company Name&lt;/p&gt;
+                                        &lt;nav&gt;Footer links&lt;/nav&gt;
+                                        &lt;/footer&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2299,7 +2644,8 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <footer style="background:#f0f0f0; padding:10px; border-radius:5px; font-size:0.8rem;">
+                                        <footer
+                                            style="background:#f0f0f0; padding:10px; border-radius:5px; font-size:0.8rem;">
                                             <p style="margin:0;">&copy; 2024 Company Name</p>
                                             <nav style="font-size:0.7rem;">Footer links</nav>
                                         </footer>
@@ -2309,22 +2655,27 @@
                             <tr>
                                 <td><span class="element-tag">&lt;article&gt;</span></td>
                                 <td class="description-text">Independent, self-contained content</td>
-                                <td><div class="example-code">&lt;article&gt;
-  &lt;h2&gt;Article Title&lt;/h2&gt;
-  &lt;p&gt;Article content goes here...&lt;/p&gt;
-  &lt;footer&gt;Published: Jan 1, 2024&lt;/footer&gt;
-&lt;/article&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;article&gt;
+                                        &lt;h2&gt;Article Title&lt;/h2&gt;
+                                        &lt;p&gt;Article content goes here...&lt;/p&gt;
+                                        &lt;footer&gt;Published: Jan 1, 2024&lt;/footer&gt;
+                                        &lt;/article&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Blog posts, news articles, forum posts, comments</div>
+                                        <div class="use-case-text">Blog posts, news articles, forum posts, comments
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <article style="border:1px solid #ddd; padding:10px; border-radius:5px;">
                                             <h2 style="margin:0 0 5px 0; font-size:1rem;">Article Title</h2>
-                                            <p style="margin:0 0 5px 0; font-size:0.8rem;">Article content goes here...</p>
-                                            <footer style="font-size:0.7rem; color:#666;">Published: Jan 1, 2024</footer>
+                                            <p style="margin:0 0 5px 0; font-size:0.8rem;">Article content goes here...
+                                            </p>
+                                            <footer style="font-size:0.7rem; color:#666;">Published: Jan 1, 2024
+                                            </footer>
                                         </article>
                                     </div>
                                 </td>
@@ -2332,10 +2683,12 @@
                             <tr>
                                 <td><span class="element-tag">&lt;section&gt;</span></td>
                                 <td class="description-text">Thematic grouping of content</td>
-                                <td><div class="example-code">&lt;section&gt;
-  &lt;h2&gt;Section Title&lt;/h2&gt;
-  &lt;p&gt;Section content...&lt;/p&gt;
-&lt;/section&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;section&gt;
+                                        &lt;h2&gt;Section Title&lt;/h2&gt;
+                                        &lt;p&gt;Section content...&lt;/p&gt;
+                                        &lt;/section&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2353,21 +2706,25 @@
                             <tr>
                                 <td><span class="element-tag">&lt;aside&gt;</span></td>
                                 <td class="description-text">Content aside from main content</td>
-                                <td><div class="example-code">&lt;aside&gt;
-  &lt;h3&gt;Related Links&lt;/h3&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Link 2&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/aside&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;aside&gt;
+                                        &lt;h3&gt;Related Links&lt;/h3&gt;
+                                        &lt;ul&gt;
+                                        &lt;li&gt;&lt;a href="#"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a href="#"&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                        &lt;/aside&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Sidebars, related content, advertisements, pull quotes</div>
+                                        <div class="use-case-text">Sidebars, related content, advertisements, pull
+                                            quotes</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <aside style="background:#f0f0f0; padding:10px; border-radius:5px; border-left:3px solid #ccc;">
+                                        <aside
+                                            style="background:#f0f0f0; padding:10px; border-radius:5px; border-left:3px solid #ccc;">
                                             <h3 style="margin:0 0 5px 0; font-size:0.9rem;">Related Links</h3>
                                             <ul style="margin:0; padding-left:15px; font-size:0.7rem;">
                                                 <li><a href="#" style="color:#3b82f6;">Link 1</a></li>
@@ -2380,20 +2737,25 @@
                             <tr>
                                 <td><span class="element-tag">&lt;details&gt;</span></td>
                                 <td class="description-text">Disclosure widget for additional details</td>
-                                <td><div class="example-code">&lt;details&gt;
-  &lt;summary&gt;Click to expand&lt;/summary&gt;
-  &lt;p&gt;Hidden content that can be shown/hidden&lt;/p&gt;
-&lt;/details&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;details&gt;
+                                        &lt;summary&gt;Click to expand&lt;/summary&gt;
+                                        &lt;p&gt;Hidden content that can be shown/hidden&lt;/p&gt;
+                                        &lt;/details&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">FAQ sections, expandable content, progressive disclosure</div>
+                                        <div class="use-case-text">FAQ sections, expandable content, progressive
+                                            disclosure</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <details style="border:1px solid #ccc; padding:5px; border-radius:3px;">
-                                            <summary style="cursor:pointer; font-weight:bold; font-size:0.8rem;">Click to expand</summary>
-                                            <p style="margin:5px 0 0 0; font-size:0.7rem;">Hidden content that can be shown/hidden</p>
+                                            <summary style="cursor:pointer; font-weight:bold; font-size:0.8rem;">Click
+                                                to expand</summary>
+                                            <p style="margin:5px 0 0 0; font-size:0.7rem;">Hidden content that can be
+                                                shown/hidden</p>
                                         </details>
                                     </div>
                                 </td>
@@ -2401,7 +2763,9 @@
                             <tr>
                                 <td><span class="element-tag">&lt;summary&gt;</span></td>
                                 <td class="description-text">Summary/caption for details element</td>
-                                <td><div class="example-code">&lt;summary&gt;Show more information&lt;/summary&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;summary&gt;Show more information&lt;/summary&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2409,19 +2773,24 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <summary style="cursor:pointer; font-weight:bold; font-size:0.8rem;">▶ Show more information</summary>
+                                        <summary style="cursor:pointer; font-weight:bold; font-size:0.8rem;">▶ Show more
+                                            information</summary>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag new-tag">&lt;time&gt;</span></td>
                                 <td class="description-text">Date/time element</td>
-                                <td><div class="example-code">&lt;time datetime="2024-01-15"&gt;January 15, 2024&lt;/time&gt;
-&lt;time datetime="2024-01-15T14:30"&gt;2:30 PM&lt;/time&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;time datetime="2024-01-15"&gt;January 15,
+                                        2024&lt;/time&gt;
+                                        &lt;time datetime="2024-01-15T14:30"&gt;2:30 PM&lt;/time&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Publication dates, event times, machine-readable dates</div>
+                                        <div class="use-case-text">Publication dates, event times, machine-readable
+                                            dates</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
@@ -2464,11 +2833,15 @@
                             <tr>
                                 <td><span class="element-tag new-tag">&lt;dialog&gt;</span></td>
                                 <td class="description-text">Dialog box or modal window</td>
-                                <td><div class="example-code">&lt;dialog id="myDialog"&gt;
-  &lt;p&gt;This is a dialog box&lt;/p&gt;
-  &lt;button onclick="document.getElementById('myDialog').close()"&gt;Close&lt;/button&gt;
-&lt;/dialog&gt;
-&lt;button onclick="document.getElementById('myDialog').showModal()"&gt;Open Dialog&lt;/button&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;dialog id="myDialog"&gt;
+                                        &lt;p&gt;This is a dialog box&lt;/p&gt;
+                                        &lt;button
+                                        onclick="document.getElementById('myDialog').close()"&gt;Close&lt;/button&gt;
+                                        &lt;/dialog&gt;
+                                        &lt;button onclick="document.getElementById('myDialog').showModal()"&gt;Open
+                                        Dialog&lt;/button&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2476,15 +2849,20 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <button type="button" style="padding:5px 10px; font-size:0.8rem;">Open Dialog</button>
-                                        <div style="font-size:0.7rem; color:#666; margin-top:5px;">Creates modal dialog window</div>
+                                        <button type="button" style="padding:5px 10px; font-size:0.8rem;">Open
+                                            Dialog</button>
+                                        <div style="font-size:0.7rem; color:#666; margin-top:5px;">Creates modal dialog
+                                            window</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag new-tag">&lt;progress&gt;</span></td>
                                 <td class="description-text">Progress indicator</td>
-                                <td><div class="example-code">&lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2500,8 +2878,11 @@
                             <tr>
                                 <td><span class="element-tag new-tag">&lt;meter&gt;</span></td>
                                 <td class="description-text">Scalar measurement within range</td>
-                                <td><div class="example-code">&lt;meter value="6" min="0" max="10"&gt;6 out of 10&lt;/meter&gt;
-&lt;meter value="0.6"&gt;60%&lt;/meter&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;meter value="6" min="0" max="10"&gt;6 out of
+                                        10&lt;/meter&gt;
+                                        &lt;meter value="0.6"&gt;60%&lt;/meter&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2548,17 +2929,21 @@
                             <tr>
                                 <td><span class="element-tag">&lt;div&gt;</span></td>
                                 <td class="description-text">Generic block-level container</td>
-                                <td><div class="example-code">&lt;div class="container"&gt;
-  &lt;p&gt;Content inside div&lt;/p&gt;
-&lt;/div&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;div class="container"&gt;
+                                        &lt;p&gt;Content inside div&lt;/p&gt;
+                                        &lt;/div&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Layout containers, styling wrappers, grouping elements</div>
+                                        <div class="use-case-text">Layout containers, styling wrappers, grouping
+                                            elements</div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <div style="border:1px solid #ccc; padding:10px; background:#f9f9f9; border-radius:5px;">
+                                        <div
+                                            style="border:1px solid #ccc; padding:10px; background:#f9f9f9; border-radius:5px;">
                                             <p style="margin:0; font-size:0.8rem;">Content inside div</p>
                                         </div>
                                     </div>
@@ -2567,15 +2952,21 @@
                             <tr>
                                 <td><span class="element-tag">&lt;span&gt;</span></td>
                                 <td class="description-text">Generic inline container</td>
-                                <td><div class="example-code">&lt;p&gt;This is &lt;span class="highlight"&gt;highlighted text&lt;/span&gt; in a paragraph.&lt;/p&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;p&gt;This is &lt;span class="highlight"&gt;highlighted
+                                        text&lt;/span&gt; in a paragraph.&lt;/p&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
-                                        <div class="use-case-text">Inline styling, text highlighting, JavaScript targets</div>
+                                        <div class="use-case-text">Inline styling, text highlighting, JavaScript targets
+                                        </div>
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <p style="margin:0; font-size:0.8rem;">This is <span style="background:yellow; padding:2px;">highlighted text</span> in a paragraph.</p>
+                                        <p style="margin:0; font-size:0.8rem;">This is <span
+                                                style="background:yellow; padding:2px;">highlighted text</span> in a
+                                            paragraph.</p>
                                     </div>
                                 </td>
                             </tr>
@@ -2613,7 +3004,10 @@
                             <tr>
                                 <td><span class="element-tag deprecated">&lt;font&gt;</span></td>
                                 <td class="description-text">Font styling (use CSS instead)</td>
-                                <td><div class="example-code">&lt;font color="red" size="4"&gt;Red text&lt;/font&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;font color="red" size="4"&gt;Red text&lt;/font&gt;
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2622,14 +3016,17 @@
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <span style="color:red; font-size:1.2rem;">Red text</span>
-                                        <div style="font-size:0.7rem; color:#dc2626;">Use CSS: style="color:red; font-size:1.2rem;"</div>
+                                        <div style="font-size:0.7rem; color:#dc2626;">Use CSS: style="color:red;
+                                            font-size:1.2rem;"</div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag deprecated">&lt;center&gt;</span></td>
                                 <td class="description-text">Center alignment (use CSS instead)</td>
-                                <td><div class="example-code">&lt;center&gt;Centered content&lt;/center&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;center&gt;Centered content&lt;/center&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2645,7 +3042,9 @@
                             <tr>
                                 <td><span class="element-tag deprecated">&lt;marquee&gt;</span></td>
                                 <td class="description-text">Scrolling text (use CSS animations)</td>
-                                <td><div class="example-code">&lt;marquee&gt;Scrolling text&lt;/marquee&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;marquee&gt;Scrolling text&lt;/marquee&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2653,15 +3052,19 @@
                                     </div>
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
-                                        <div style="font-size:0.8rem; border:1px solid #ccc; padding:5px;">Scrolling text</div>
-                                        <div style="font-size:0.7rem; color:#dc2626;">Use CSS: @keyframes for animations</div>
+                                        <div style="font-size:0.8rem; border:1px solid #ccc; padding:5px;">Scrolling
+                                            text</div>
+                                        <div style="font-size:0.7rem; color:#dc2626;">Use CSS: @keyframes for animations
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag deprecated">&lt;blink&gt;</span></td>
                                 <td class="description-text">Blinking text (removed from browsers)</td>
-                                <td><div class="example-code">&lt;blink&gt;Blinking text&lt;/blink&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;blink&gt;Blinking text&lt;/blink&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2670,14 +3073,17 @@
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <span style="font-size:0.8rem;">Blinking text</span>
-                                        <div style="font-size:0.7rem; color:#dc2626;">No longer works in modern browsers</div>
+                                        <div style="font-size:0.7rem; color:#dc2626;">No longer works in modern browsers
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><span class="element-tag deprecated">&lt;frame&gt;</span></td>
                                 <td class="description-text">Frame for framesets (use iframe instead)</td>
-                                <td><div class="example-code">&lt;frame src="page.html" name="content"&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;frame src="page.html" name="content"&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2693,10 +3099,12 @@
                             <tr>
                                 <td><span class="element-tag deprecated">&lt;frameset&gt;</span></td>
                                 <td class="description-text">Container for frames (obsolete)</td>
-                                <td><div class="example-code">&lt;frameset cols="50%,50%"&gt;
-  &lt;frame src="left.html"&gt;
-  &lt;frame src="right.html"&gt;
-&lt;/frameset&gt;</div></td>
+                                <td>
+                                    <div class="example-code">&lt;frameset cols="50%,50%"&gt;
+                                        &lt;frame src="left.html"&gt;
+                                        &lt;frame src="right.html"&gt;
+                                        &lt;/frameset&gt;</div>
+                                </td>
                                 <td>
                                     <div class="use-case">
                                         <div class="use-case-title">Use Case:</div>
@@ -2705,7 +3113,8 @@
                                     <div class="output-demo">
                                         <div class="output-label">Output:</div>
                                         <div style="font-size:0.8rem; color:#666;">Frameset layout</div>
-                                        <div style="font-size:0.7rem; color:#dc2626;">Use modern CSS layout methods</div>
+                                        <div style="font-size:0.7rem; color:#dc2626;">Use modern CSS layout methods
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -2762,7 +3171,7 @@
                 <h3>📝 ZN Infotech Pvt. Ltd.</h3>
                 <p>Mastering HTML for Modern Web Development</p>
             </div>
-            
+
             <div class="contact-info">
                 <div class="contact-item">
                     <span>📞</span>
@@ -2781,26 +3190,31 @@
                     <span>HTML Excellence Center</span>
                 </div>
             </div>
-            
+
             <div style="margin-top: 50px; padding-top: 40px; border-top: 1px solid #374151;">
                 <p><strong>🎓 Our Web Development Programs:</strong></p>
-                <p>HTML5 & CSS3 • JavaScript & ES6+ • React & Vue.js • Node.js & Express • Full Stack Development • Responsive Design • Web Accessibility • Progressive Web Apps • Modern Web Standards</p>
+                <p>HTML5 & CSS3 • JavaScript & ES6+ • React & Vue.js • Node.js & Express • Full Stack Development •
+                    Responsive Design • Web Accessibility • Progressive Web Apps • Modern Web Standards</p>
             </div>
-            
+
             <div style="margin-top: 40px;">
                 <p><strong>🏆 Why Choose ZN Infotech for HTML Training?</strong></p>
-                <p>✅ Industry-Expert Web Developers • ✅ Hands-on Coding Practice • ✅ Real-world Projects • ✅ Modern Web Standards • ✅ Accessibility Best Practices • ✅ SEO Optimization • ✅ Cross-browser Compatibility • ✅ 100% Job Placement Support</p>
+                <p>✅ Industry-Expert Web Developers • ✅ Hands-on Coding Practice • ✅ Real-world Projects • ✅ Modern Web
+                    Standards • ✅ Accessibility Best Practices • ✅ SEO Optimization • ✅ Cross-browser Compatibility • ✅
+                    100% Job Placement Support</p>
             </div>
-            
+
             <div style="margin-top: 40px;">
                 <p><strong>🌟 Student Success Metrics:</strong></p>
-                <p>📈 96% Course Completion Rate • 💰 Average Salary: ₹4-18 LPA • 🏢 Placed in: TCS, Infosys, Wipro, Accenture, Startups • 🌍 Remote Opportunities Worldwide • 🎯 HTML5 Certification</p>
+                <p>📈 96% Course Completion Rate • 💰 Average Salary: ₹4-18 LPA • 🏢 Placed in: TCS, Infosys, Wipro,
+                    Accenture, Startups • 🌍 Remote Opportunities Worldwide • 🎯 HTML5 Certification</p>
             </div>
-            
+
             <div style="margin-top: 40px; font-size: 0.95rem; opacity: 0.8;">
                 <p>&copy; 2025 ZN Infotech Pvt. Ltd. All rights reserved. | Building web foundations since 2018</p>
                 <p>📝 Join 8,000+ developers who mastered HTML with us</p>
-                <p>💡 "Semantic HTML is the foundation of accessible, SEO-friendly web development" - Our HTML Philosophy</p>
+                <p>💡 "Semantic HTML is the foundation of accessible, SEO-friendly web development" - Our HTML
+                    Philosophy</p>
             </div>
         </div>
     </footer>
@@ -2824,21 +3238,21 @@
             });
         });
 
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             const query = this.value.toLowerCase();
             if (query.length < 2) {
                 searchResults.textContent = '';
                 return;
             }
 
-            const matches = allTags.filter(tag => 
-                tag.element.toLowerCase().includes(query) || 
+            const matches = allTags.filter(tag =>
+                tag.element.toLowerCase().includes(query) ||
                 tag.description.toLowerCase().includes(query)
             );
 
             if (matches.length > 0) {
                 searchResults.textContent = `Found ${matches.length} matching tag${matches.length > 1 ? 's' : ''}`;
-                
+
                 // Highlight matching tags
                 document.querySelectorAll('.element-tag').forEach(tag => {
                     tag.classList.remove('highlight');
@@ -2859,10 +3273,10 @@
         const sections = document.querySelectorAll('.section[id]');
 
         navItems.forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 const targetId = this.getAttribute('data-target');
                 const targetSection = document.getElementById(targetId);
-                
+
                 if (targetSection) {
                     targetSection.scrollIntoView({
                         behavior: 'smooth',
@@ -2873,7 +3287,7 @@
         });
 
         // Update active navigation on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -2900,7 +3314,7 @@
         }
 
         // Show/hide scroll to top button
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const scrollButton = document.querySelector('.scroll-to-top');
             if (window.pageYOffset > 400) {
                 scrollButton.style.display = 'flex';
@@ -2910,33 +3324,33 @@
         });
 
         // Table row interactions
-        const tableRows = document.querySelectorAll('.tags-table tr');
-        tableRows.forEach(row => {
-            row.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.01)';
-                this.style.zIndex = '10';
-            });
-            
-            row.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-                this.style.zIndex = '1';
-            });
-        });
+        // const tableRows = document.querySelectorAll('.tags-table tr');
+        // tableRows.forEach(row => {
+        //     row.addEventListener('mouseenter', function() {
+        //         this.style.transform = 'scale(1.01)';
+        //         this.style.zIndex = '10';
+        //     });
+
+        //     row.addEventListener('mouseleave', function() {
+        //         this.style.transform = 'scale(1)';
+        //         this.style.zIndex = '1';
+        //     });
+        // });
 
         // Copy code functionality
         document.querySelectorAll('.example-code').forEach(codeBlock => {
-            codeBlock.addEventListener('click', function() {
+            codeBlock.addEventListener('click', function () {
                 navigator.clipboard.writeText(this.textContent).then(() => {
                     const originalBg = this.style.backgroundColor;
                     this.style.backgroundColor = '#d1fae5';
                     this.style.transition = 'background-color 0.3s ease';
-                    
+
                     setTimeout(() => {
                         this.style.backgroundColor = originalBg;
                     }, 1000);
                 });
             });
-            
+
             // Add click hint
             codeBlock.style.cursor = 'pointer';
             codeBlock.title = 'Click to copy code';
@@ -2951,7 +3365,7 @@
                     const number = parseInt(finalValue);
                     let currentValue = 0;
                     const increment = Math.ceil(number / 50);
-                    
+
                     const timer = setInterval(() => {
                         currentValue += increment;
                         if (currentValue >= number) {
@@ -2965,7 +3379,7 @@
         };
 
         // Trigger animation when stats come into view
-        const statsObserver = new IntersectionObserver(function(entries) {
+        const statsObserver = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     animateStats();
@@ -2985,7 +3399,7 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
@@ -3005,20 +3419,20 @@
         // HTML Easter Egg
         let htmlCode = [];
         const htmlSequence = [72, 84, 77, 76]; // H-T-M-L
-        
-        document.addEventListener('keydown', function(e) {
+
+        document.addEventListener('keydown', function (e) {
             htmlCode.push(e.keyCode);
             if (htmlCode.length > htmlSequence.length) {
                 htmlCode.shift();
             }
-            
+
             if (htmlCode.join(',') === htmlSequence.join(',')) {
                 // HTML easter egg activated
                 document.body.style.filter = 'hue-rotate(90deg)';
                 setTimeout(() => {
                     document.body.style.filter = 'none';
                 }, 3000);
-                
+
                 // Show special message
                 const message = document.createElement('div');
                 message.innerHTML = '📝 HTML Master Mode Activated!<br>🚀 Semantic Web Power! ✨';
@@ -3039,13 +3453,13 @@
                     text-align: center;
                     line-height: 1.4;
                 `;
-                
+
                 document.body.appendChild(message);
-                
+
                 setTimeout(() => {
                     message.remove();
                 }, 3000);
-                
+
                 htmlCode = [];
             }
         });
@@ -3068,29 +3482,12 @@
         document.head.appendChild(htmlBounceStyle);
 
         // Console welcome message
-        console.log(`
-        📝 Welcome to Complete HTML Tags Reference! ✨
-        
-        Interested in web development? We're hiring!
-        Contact us at: careers@zninfotech.com
-        
-        Built with semantic HTML principles:
-        - Accessible and inclusive design
-        - SEO-optimized structure
-        - Modern web standards
-        - Cross-browser compatibility
-        - Performance optimized
-        
-        "Semantic HTML is the foundation of the web" 🌐
-        
-        Happy coding! 👨‍💻👩‍💻
-        `);
 
         // Add loading animation
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.6s ease-in-out';
-            
+
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
@@ -3100,7 +3497,7 @@
         function handleResize() {
             const isMobile = window.innerWidth <= 768;
             const navigation = document.querySelector('.navigation');
-            
+
             if (isMobile) {
                 navigation.style.display = 'none';
             } else {
@@ -3112,7 +3509,7 @@
         handleResize(); // Call once on load
 
         // Add print optimization
-        window.addEventListener('beforeprint', function() {
+        window.addEventListener('beforeprint', function () {
             document.body.classList.add('printing');
             // Expand all sections for printing
             document.querySelectorAll('.category-container').forEach(container => {
@@ -3120,25 +3517,25 @@
             });
         });
 
-        window.addEventListener('afterprint', function() {
+        window.addEventListener('afterprint', function () {
             document.body.classList.remove('printing');
         });
 
         // Performance monitoring
         if ('performance' in window) {
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 setTimeout(() => {
                     const perfData = performance.getEntriesByType('navigation')[0];
-                    console.log(`⚡ Page Performance:
-                    - DOM Content Loaded: ${Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart)}ms
-                    - Load Complete: ${Math.round(perfData.loadEventEnd - perfData.loadEventStart)}ms
-                    - Total Load Time: ${Math.round(perfData.loadEventEnd - perfData.fetchStart)}ms`);
+                    // console.log(`⚡ Page Performance:
+                    // - DOM Content Loaded: ${Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart)}ms
+                    // - Load Complete: ${Math.round(perfData.loadEventEnd - perfData.loadEventStart)}ms
+                    // - Total Load Time: ${Math.round(perfData.loadEventEnd - perfData.fetchStart)}ms`);
                 }, 1000);
             });
         }
 
         // Add keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.ctrlKey && e.key === 'f') {
                 e.preventDefault();
                 searchInput.focus();
@@ -3147,16 +3544,17 @@
 
         // Add tag interaction effects
         document.querySelectorAll('.element-tag').forEach(tag => {
-            tag.addEventListener('mouseenter', function() {
+            tag.addEventListener('mouseenter', function () {
                 this.style.transform = 'scale(1.05)';
                 this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
             });
-            
-            tag.addEventListener('mouseleave', function() {
+
+            tag.addEventListener('mouseleave', function () {
                 this.style.transform = 'scale(1)';
                 this.style.boxShadow = 'var(--shadow-sm)';
             });
         });
     </script>
 </body>
+
 </html>

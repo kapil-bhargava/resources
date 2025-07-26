@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>&lt;param&gt; Tag Example</title>
 </head>
 <body>
-    
+  <h2>Video Player with &lt;param&gt; Tag</h2>
+
+  <object data="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" width="400" height="300">
+    <param name="autoplay" value="true">
+    <param name="controls" value="true">
+    Your browser does not support embedded objects.
+  </object>
+
+  <p><strong>Note:</strong> Most modern browsers ignore &lt;param&gt; for videos — it's mainly for older plugins. Use &lt;video&gt; instead for reliable behavior.</p>
 </body>
 </html>
+        
