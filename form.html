@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Student Registration Form</title>
   <style>
-    *{
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -75,15 +75,14 @@
   <h1>🎓 Student Registration Form</h1>
 
   <form action="#" method="post">
-    
     <fieldset>
       <legend>Personal Details</legend>
       
       <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
       <label for="email">Email Address:</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" placeholder="Enter your email address" required>
 
       <label for="dob">Date of Birth:</label>
       <input type="date" id="dob" name="dob">
@@ -117,38 +116,52 @@
       <legend>Login Credentials</legend>
       
       <label for="username">Username:</label>
-      <input type="text" id="username" name="username">
+      <input type="text" id="username" name="username" placeholder="Choose a username">
 
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password">
+      <input type="password" id="password" name="password" placeholder="Choose a strong password">
     </fieldset>
 
     <button type="submit">Submit Registration</button>
-
   </form>
 
   <hr>
   <h2>📘 Explanation of Tags Used:</h2>
 
   <ul>
-    <li><strong>&lt;form&gt;</strong>: Creates the form element that wraps all inputs. Use <code>action</code> for backend URL, and <code>method="post"</code> to submit data securely.</li>
-    
-    <li><strong>&lt;fieldset&gt;</strong>: Groups related fields together inside the form, adds a visual box.</li>
-    
-    <li><strong>&lt;legend&gt;</strong>: Adds a title or label to each <code>&lt;fieldset&gt;</code>, improving accessibility and readability.</li>
-
-    <li><strong>&lt;label&gt;</strong>: Describes each form input. The <code>for</code> attribute should match the input’s <code>id</code>.</li>
-
-    <li><strong>&lt;input&gt;</strong>: Used for various user inputs like text, email, password, date, etc. Attributes like <code>type="text"</code> or <code>type="email"</code> determine the kind of input allowed.</li>
-
-    <li><strong>&lt;select&gt;</strong>: Creates a dropdown menu. The <code>&lt;option&gt;</code> tags inside define the choices.</li>
-
-    <li><strong>&lt;option&gt;</strong>: Each item in the dropdown is created using this tag, and its <code>value</code> is sent when the form is submitted.</li>
-
-    <li><strong>&lt;textarea&gt;</strong>: For multi-line text input (like address, feedback, etc.). It supports styling and resizing.</li>
-
-    <li><strong>&lt;button type="submit"&gt;</strong>: A clickable button that triggers form submission.</li>
+    <li><strong>&lt;form&gt;</strong>: Wraps all input elements. Sends data to the server.</li>
+    <li><strong>&lt;fieldset&gt;</strong>: Groups related form fields with a border.</li>
+    <li><strong>&lt;legend&gt;</strong>: Describes each fieldset's purpose.</li>
+    <li><strong>&lt;label&gt;</strong>: Labels inputs. Improves accessibility.</li>
+    <li><strong>&lt;input&gt;</strong>: For user input — text, email, date, password, etc.</li>
+    <li><strong>&lt;select&gt;</strong>: Dropdown menu. Paired with &lt;option&gt; tags.</li>
+    <li><strong>&lt;option&gt;</strong>: Individual choices inside a dropdown.</li>
+    <li><strong>&lt;textarea&gt;</strong>: Multi-line text area. Ideal for address/feedback.</li>
+    <li><strong>&lt;button&gt;</strong>: Submits the form when clicked.</li>
   </ul>
+
+  <!-- Disable Developer Tools Script -->
+  <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+      alert("You can't do it");
+    });
+
+    // Disable common developer shortcuts
+    document.addEventListener('keydown', function (e) {
+      if (
+        e.key === "F12" ||                         // F12
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||  // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.key === 'J') ||  // Ctrl+Shift+J
+        (e.ctrlKey && e.key === 'U') ||               // Ctrl+U (view source)
+        (e.ctrlKey && e.shiftKey && e.key === 'C')    // Ctrl+Shift+C
+      ) {
+        e.preventDefault();
+        alert("You can't do it");
+      }
+    });
+  </script>
 
 </body>
 </html>
