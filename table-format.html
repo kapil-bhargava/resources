@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 60%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Table with &lt;colgroup&gt; Styling</h2>
+
+  <table>
+    <colgroup>
+      <col style="background-color: yellow">
+      <col span="0" style="background-color: red">
+      <col span="1" style="background-color: blue">
+    </colgroup>
+    
+    <tr>
+      <th>Name</th>
+      <th>Math</th>
+      <th>Science</th>
+    </tr>
+    <tr>
+      <td>Alice</td>
+      <td>85</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>Bob</td>
+      <td>78</td>
+      <td>82</td>
+    </tr>
+  </table>
+
+</body>
+</html>
