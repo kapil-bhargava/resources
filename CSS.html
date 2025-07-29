@@ -124,6 +124,30 @@
                 font-size: 14px;
             }
         }
+
+        .cheatsheet-btn {
+            background-color: #3498db;
+            border-radius: 8px;
+            animation: glow 2s infinite alternate;
+            box-shadow: 0 0 10px #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .cheatsheet-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes glow {
+            0% {
+                background-color: #3498db;
+                /* box-shadow: 0 0 10px #3498db, 0 0 20px #3498db, 0 0 30px #3498db; */
+            }
+
+            100% {
+                background-color: #1abc9c;
+                /* box-shadow: 0 0 15px #1abc9c, 0 0 25px #1abc9c, 0 0 35px #1abc9c; */
+            }
+        }
     </style>
 </head>
 
@@ -207,6 +231,7 @@
             <p>In CSS, a <strong>property</strong> is a styling rule (like <code>color</code>), and a
                 <strong>value</strong> defines how that rule is applied (like <code>blue</code>).
             </p>
+            <a href="csscheatsheet.html" class="anchor cheatsheet-btn">CSS Cheatsheet</a>
             <p><strong>Example:</strong></p>
             <div class="code">
                 h1 {

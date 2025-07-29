@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate CSS Properties Cheatsheet - Professional Reference</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --primary-light: #dbeafe;
+      --secondary: #64748b;
+      --accent: #f59e0b;
+      --accent-light: #fef3c7;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --bg-dark: #0f172a;
+      --bg-card: #ffffff;
+      
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --border-dark: #cbd5e1;
+      
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      
+      --radius-sm: 6px;
+      --radius: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing: 1rem;
+      --spacing-md: 1.5rem;
+      --spacing-lg: 2rem;
+      --spacing-xl: 3rem;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: rgb(221, 221, 221);
+      /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+      min-height: 100vh;
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--spacing);
+      min-height: 100vh;
+    }
+
+    .header {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-md);
+      box-shadow: var(--shadow-xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--success));
+    }
+
+    .header h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: var(--spacing-sm);
+      letter-spacing: -0.025em;
+    }
+
+    .header p {
+      color: var(--text-secondary);
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .controls {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing);
+    }
+
+    .search-container {
+      position: relative;
+    }
+
+    .search-box {
+      width: 100%;
+      padding: var(--spacing) var(--spacing-md);
+      padding-left: 3rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      background: var(--bg-secondary);
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+      background: var(--bg-primary);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: var(--spacing);
+      top: 50%;
+      /* transform: translateY(-50%); */
+      color: var(--text-muted);
+      font-size: 1.25rem;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-tab {
+      padding: var(--spacing-sm) var(--spacing);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .filter-tab:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .filter-tab.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .stats {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: var(--spacing);
+      border-radius: var(--radius);
+      background: var(--bg-secondary);
+      transition: transform 0.2s ease;
+    }
+
+    .stat-item:hover {
+      /* transform: translateY(-2px); */
+    }
+
+    .stat-number {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      margin-top: var(--spacing-xs);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+      gap: var(--spacing-md);
+      align-items: start;
+    }
+
+    .category {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+      height: fit-content;
+      max-height: 600px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .category:hover {
+      /* transform: translateY(-4px); */
+      box-shadow: var(--shadow-xl);
+    }
+
+    .category-header {
+      background: var(--primary);
+      color: white;
+      padding: var(--spacing) var(--spacing-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-sm);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      flex-shrink: 0;
+    }
+
+    .category-title {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .category-icon {
+      font-size: 1.1rem;
+    }
+
+    .category-count {
+      background: rgba(255, 255, 255, 0.2);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .properties-container {
+      flex: 1;
+      overflow-y: auto;
+      max-height: 520px;
+    }
+
+    .properties-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .properties-container::-webkit-scrollbar-track {
+      background: var(--bg-tertiary);
+    }
+
+    .properties-container::-webkit-scrollbar-thumb {
+      background: var(--border-dark);
+      border-radius: 3px;
+    }
+
+    .properties-container::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    .properties-grid {
+      padding: var(--spacing-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .property-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-sm);
+      padding: var(--spacing);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+      font-size: 0.875rem;
+      border: 1px solid transparent;
+      background: var(--bg-secondary);
+    }
+
+    .property-row:hover {
+      background: var(--bg-primary);
+      border-color: var(--border);
+      /* transform: translateX(4px); */
+    }
+
+    .property-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-sm);
+    }
+
+    .property-name {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+      word-break: break-word;
+      flex: 1;
+    }
+
+    .property-name:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .property-badge {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+    }
+
+    .property-values {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .value-item {
+      color: var(--success);
+      font-weight: 500;
+    }
+
+    .separator {
+      color: var(--text-muted);
+      margin: 0 var(--spacing-xs);
+    }
+
+    .property-description {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.4;
+      margin-top: var(--spacing-xs);
+      font-style: italic;
+    }
+
+    .footer {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing);
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--primary-dark);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .highlight {
+      background: var(--accent-light) !important;
+      border-color: var(--accent) !important;
+    }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-xl);
+      color: var(--text-muted);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: var(--spacing-xl);
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    @media (max-width: 1024px) {
+      .categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: var(--spacing-sm);
+      }
+      
+      .controls {
+        padding: var(--spacing);
+      }
+      
+      .filter-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: var(--spacing-sm);
+      }
+      
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .category {
+        max-height: 500px;
+      }
+      
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .property-row {
+        font-size: 0.8rem;
+      }
+      
+      .property-values {
+        font-size: 0.75rem;
+      }
+      
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animation for category loading */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .category {
+      animation: slideIn 0.3s ease-out;
+    }
+
+    /* Improved focus styles for accessibility */
+    .property-name:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
+    .search-box:focus,
+    .filter-tab:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🎨 Ultimate CSS Properties Cheatsheet</h1>
+      <p>Comprehensive reference with 300+ CSS properties, modern values, and direct MDN documentation links. Your complete guide to mastering CSS.</p>
+    </header>
+
+    <div class="controls">
+      <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-box" id="searchBox" placeholder="Search properties, values, or descriptions... (Ctrl+K)" onkeyup="searchProperties()">
+      </div>
+      
+      <div class="filter-tabs" id="filterTabs">
+        <div class="filter-tab active" data-filter="all">All Categories</div>
+        <div class="filter-tab" data-filter="layout">Layout</div>
+        <div class="filter-tab" data-filter="typography">Typography</div>
+        <div class="filter-tab" data-filter="visual">Visual</div>
+        <div class="filter-tab" data-filter="animation">Animation</div>
+        <div class="filter-tab" data-filter="interaction">Interaction</div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-number" id="totalProperties">300+</span>
+        <div class="stat-label">Properties</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">14</span>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <div class="stat-label">MDN Linked</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="visibleProperties">300+</span>
+        <div class="stat-label">Visible</div>
+      </div>
+    </div>
+
+    <div class="categories-grid" id="categoriesGrid">
+      <!-- Box Model -->
+      <div class="category" data-category="layout">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">📦</span>
+            <span>Box Model</span>
+          </div>
+          <span class="category-count">12</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin" target="_blank" class="property-name">margin</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">1em 2em</span><span class="separator">|</span><span class="value-item">5% 10%</span></div>
+              <div class="property-description">Sets outer spacing around element. Supports individual sides (margin-top, margin-right, etc.)</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding" target="_blank" class="property-name">padding</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">1rem</span><span class="separator">|</span><span class="value-item">10px 20px</span><span class="separator">|</span><span class="value-item">5% 10% 15%</span></div>
+              <div class="property-description">Inner spacing between content and border. Cannot be negative values.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border" target="_blank" class="property-name">border</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">1px solid #000</span><span class="separator">|</span><span class="value-item">2px dashed red</span><span class="separator">|</span><span class="value-item">none</span><span class="separator">|</span><span class="value-item">thick double blue</span></div>
+              <div class="property-description">Shorthand for border-width, border-style, and border-color properties.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius" target="_blank" class="property-name">border-radius</a>
+                <span class="property-badge">Visual</span>
+              </div>
+              <div class="property-values"><span class="value-item">5px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">10px 20px</span><span class="separator">|</span><span class="value-item">10px / 20px</span></div>
+              <div class="property-description">Rounds element corners. Supports elliptical borders with slash notation.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing" target="_blank" class="property-name">box-sizing</a>
+                <span class="property-badge">Layout</span>
+              </div>
+              <div class="property-values"><span class="value-item">content-box</span><span class="separator">|</span><span class="value-item">border-box</span></div>
+              <div class="property-description">Controls how element's total width/height is calculated.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow" target="_blank" class="property-name">box-shadow</a>
+                <span class="property-badge">Visual</span>
+              </div>
+              <div class="property-values"><span class="value-item">2px 2px 5px rgba(0,0,0,0.3)</span><span class="separator">|</span><span class="value-item">inset 0 0 10px #000</span><span class="separator">|</span><span class="value-item">none</span></div>
+              <div class="property-description">Adds shadow effects. Supports multiple shadows separated by commas.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline" target="_blank" class="property-name">outline</a>
+                <span class="property-badge">Visual</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">1px solid #000</span><span class="separator">|</span><span class="value-item">2px dashed red</span><span class="separator">|</span><span class="value-item">thick dotted blue</span></div>
+              <div class="property-description">Draws outline outside border. Doesn't affect layout or box model.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-offset" target="_blank" class="property-name">outline-offset</a>
+                <span class="property-badge">Visual</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">2px</span><span class="separator">|</span><span class="value-item">-1px</span></div>
+              <div class="property-description">Sets distance between outline and border edge.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-image" target="_blank" class="property-name">border-image</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">url('border.png') 30 round</span><span class="separator">|</span><span class="value-item">linear-gradient(red, blue) 1</span></div>
+              <div class="property-description">Uses image as border instead of border-style values.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse" target="_blank" class="property-name">border-collapse</a>
+                <span class="property-badge">Table</span>
+              </div>
+              <div class="property-values"><span class="value-item">separate</span><span class="separator">|</span><span class="value-item">collapse</span></div>
+              <div class="property-description">Controls table border rendering model.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-spacing" target="_blank" class="property-name">border-spacing</a>
+                <span class="property-badge">Table</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">2px</span><span class="separator">|</span><span class="value-item">1px 2px</span></div>
+              <div class="property-description">Sets distance between adjacent table cell borders.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-decoration-break" target="_blank" class="property-name">box-decoration-break</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">slice</span><span class="separator">|</span><span class="value-item">clone</span></div>
+              <div class="property-description">Controls how box decorations are applied to fragmented elements.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="category" data-category="typography">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">✍️</span>
+            <span>Typography</span>
+          </div>
+          <span class="category-count">18</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family" target="_blank" class="property-name">font-family</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">Arial, sans-serif</span><span class="separator">|</span><span class="value-item">'Times New Roman', serif</span><span class="separator">|</span><span class="value-item">monospace</span><span class="separator">|</span><span class="value-item">system-ui</span></div>
+              <div class="property-description">Specifies font family with fallback options. Use quotes for multi-word names.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size" target="_blank" class="property-name">font-size</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">16px</span><span class="separator">|</span><span class="value-item">1rem</span><span class="separator">|</span><span class="value-item">120%</span><span class="separator">|</span><span class="value-item">large</span><span class="separator">|</span><span class="value-item">clamp(1rem, 4vw, 2rem)</span></div>
+              <div class="property-description">Sets font size. Use relative units (rem, em) for better scalability.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight" target="_blank" class="property-name">font-weight</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">bold</span><span class="separator">|</span><span class="value-item">100-900</span><span class="separator">|</span><span class="value-item">lighter</span><span class="separator">|</span><span class="value-item">bolder</span></div>
+              <div class="property-description">Controls font thickness. Variable fonts support any value 1-1000.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height" target="_blank" class="property-name">line-height</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">1.5</span><span class="separator">|</span><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">20px</span><span class="separator">|</span><span class="value-item">150%</span></div>
+              <div class="property-description">Sets line height. Unitless values are preferred for better inheritance.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" target="_blank" class="property-name">text-align</a>
+                <span class="property-badge">Layout</span>
+              </div>
+              <div class="property-values"><span class="value-item">left</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">right</span><span class="separator">|</span><span class="value-item">justify</span><span class="separator">|</span><span class="value-item">start</span><span class="separator">|</span><span class="value-item">end</span></div>
+              <div class="property-description">Aligns text horizontally. start/end respect writing direction.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration" target="_blank" class="property-name">text-decoration</a>
+                <span class="property-badge">Visual</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">underline</span><span class="separator">|</span><span class="value-item">line-through</span><span class="separator">|</span><span class="value-item">overline</span><span class="separator">|</span><span class="value-item">underline wavy red</span></div>
+              <div class="property-description">Adds decorative lines to text. Supports color and style modifiers.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform" target="_blank" class="property-name">text-transform</a>
+                <span class="property-badge">Visual</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">uppercase</span><span class="separator">|</span><span class="value-item">lowercase</span><span class="separator">|</span><span class="value-item">capitalize</span><span class="separator">|</span><span class="value-item">full-width</span></div>
+              <div class="property-description">Controls text capitalization and character width.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing" target="_blank" class="property-name">letter-spacing</a>
+                <span class="property-badge">Visual</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">0.5px</span><span class="separator">|</span><span class="value-item">-1px</span><span class="separator">|</span><span class="value-item">0.1em</span></div>
+              <div class="property-description">Adjusts spacing between characters. Negative values tighten spacing.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing" target="_blank" class="property-name">word-spacing</a>
+                <span class="property-badge">Visual</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">5px</span><span class="separator">|</span><span class="value-item">0.2em</span><span class="separator">|</span><span class="value-item">-2px</span></div>
+              <div class="property-description">Controls spacing between words.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent" target="_blank" class="property-name">text-indent</a>
+                <span class="property-badge">Layout</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">2em</span><span class="separator">|</span><span class="value-item">5%</span><span class="separator">|</span><span class="value-item">hanging</span></div>
+              <div class="property-description">Indents first line of text blocks.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow" target="_blank" class="property-name">text-shadow</a>
+                <span class="property-badge">Visual</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">2px 2px 4px rgba(0,0,0,0.5)</span><span class="separator">|</span><span class="value-item">1px 1px 0 white</span></div>
+              <div class="property-description">Adds shadow effects to text. Supports multiple shadows.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/white-space" target="_blank" class="property-name">white-space</a>
+                <span class="property-badge">Layout</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">nowrap</span><span class="separator">|</span><span class="value-item">pre</span><span class="separator">|</span><span class="value-item">pre-wrap</span><span class="separator">|</span><span class="value-item">pre-line</span></div>
+              <div class="property-description">Controls whitespace handling and text wrapping.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/word-break" target="_blank" class="property-name">word-break</a>
+                <span class="property-badge">Layout</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">break-all</span><span class="separator">|</span><span class="value-item">keep-all</span><span class="separator">|</span><span class="value-item">break-word</span></div>
+              <div class="property-description">Controls how words break when they overflow their container.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap" target="_blank" class="property-name">overflow-wrap</a>
+                <span class="property-badge">Layout</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">break-word</span><span class="separator">|</span><span class="value-item">anywhere</span></div>
+              <div class="property-description">Controls whether long words can be broken to prevent overflow.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens" target="_blank" class="property-name">hyphens</a>
+                <span class="property-badge">Layout</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">manual</span><span class="separator">|</span><span class="value-item">auto</span></div>
+              <div class="property-description">Controls automatic hyphenation of words.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow" target="_blank" class="property-name">text-overflow</a>
+                <span class="property-badge">Layout</span>
+              </div>
+              <div class="property-values"><span class="value-item">clip</span><span class="separator">|</span><span class="value-item">ellipsis</span><span class="separator">|</span><span class="value-item">fade</span><span class="separator">|</span><span class="value-item">"..."</span></div>
+              <div class="property-description">Controls how overflowed text is displayed. Requires overflow: hidden.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant" target="_blank" class="property-name">font-variant</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">small-caps</span><span class="separator">|</span><span class="value-item">all-small-caps</span><span class="separator">|</span><span class="value-item">petite-caps</span></div>
+              <div class="property-description">Controls font variant features like small caps.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode" target="_blank" class="property-name">writing-mode</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">horizontal-tb</span><span class="separator">|</span><span class="value-item">vertical-rl</span><span class="separator">|</span><span class="value-item">vertical-lr</span></div>
+              <div class="property-description">Sets text layout direction and orientation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layout & Display -->
+      <div class="category" data-category="layout">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">📐</span>
+            <span>Layout & Display</span>
+          </div>
+          <span class="category-count">15</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display" target="_blank" class="property-name">display</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">block</span><span class="separator">|</span><span class="value-item">inline</span><span class="separator">|</span><span class="value-item">flex</span><span class="separator">|</span><span class="value-item">grid</span><span class="separator">|</span><span class="value-item">none</span><span class="separator">|</span><span class="value-item">contents</span></div>
+              <div class="property-description">Controls element's display behavior and layout participation.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank" class="property-name">position</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">static</span><span class="separator">|</span><span class="value-item">relative</span><span class="separator">|</span><span class="value-item">absolute</span><span class="separator">|</span><span class="value-item">fixed</span><span class="separator">|</span><span class="value-item">sticky</span></div>
+              <div class="property-description">Sets positioning method. Works with top, right, bottom, left properties.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top" target="_blank" class="property-name">top</a>
+                <span class="property-badge">Position</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">-5px</span></div>
+              <div class="property-description">Sets top edge position for positioned elements.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/right" target="_blank" class="property-name">right</a>
+                <span class="property-badge">Position</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">-5px</span></div>
+              <div class="property-description">Sets right edge position for positioned elements.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/bottom" target="_blank" class="property-name">bottom</a>
+                <span class="property-badge">Position</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">-5px</span></div>
+              <div class="property-description">Sets bottom edge position for positioned elements.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/left" target="_blank" class="property-name">left</a>
+                <span class="property-badge">Position</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">-5px</span></div>
+              <div class="property-description">Sets left edge position for positioned elements.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index" target="_blank" class="property-name">z-index</a>
+                <span class="property-badge">Position</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">1</span><span class="separator">|</span><span class="value-item">9999</span><span class="separator">|</span><span class="value-item">-1</span></div>
+              <div class="property-description">Controls stacking order of positioned elements. Higher values appear on top.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" target="_blank" class="property-name">float</a>
+                <span class="property-badge">Legacy</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">left</span><span class="separator">|</span><span class="value-item">right</span><span class="separator">|</span><span class="value-item">inline-start</span><span class="separator">|</span><span class="value-item">inline-end</span></div>
+              <div class="property-description">Floats element to one side, allowing text wrap. Mostly replaced by flexbox/grid.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clear" target="_blank" class="property-name">clear</a>
+                <span class="property-badge">Legacy</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">left</span><span class="separator">|</span><span class="value-item">right</span><span class="separator">|</span><span class="value-item">both</span><span class="separator">|</span><span class="value-item">inline-start</span></div>
+              <div class="property-description">Prevents element from being adjacent to floated elements.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align" target="_blank" class="property-name">vertical-align</a>
+                <span class="property-badge">Inline</span>
+              </div>
+              <div class="property-values"><span class="value-item">baseline</span><span class="separator">|</span><span class="value-item">top</span><span class="separator">|</span><span class="value-item">middle</span><span class="separator">|</span><span class="value-item">bottom</span><span class="separator">|</span><span class="value-item">text-top</span><span class="separator">|</span><span class="value-item">5px</span></div>
+              <div class="property-description">Aligns inline/table-cell elements vertically.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit" target="_blank" class="property-name">object-fit</a>
+                <span class="property-badge">Media</span>
+              </div>
+              <div class="property-values"><span class="value-item">fill</span><span class="separator">|</span><span class="value-item">contain</span><span class="separator">|</span><span class="value-item">cover</span><span class="separator">|</span><span class="value-item">none</span><span class="separator">|</span><span class="value-item">scale-down</span></div>
+              <div class="property-description">Controls how replaced elements (img, video) fit their container.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-position" target="_blank" class="property-name">object-position</a>
+                <span class="property-badge">Media</span>
+              </div>
+              <div class="property-values"><span class="value-item">center</span><span class="separator">|</span><span class="value-item">top left</span><span class="separator">|</span><span class="value-item">50% 50%</span><span class="separator">|</span><span class="value-item">10px 20px</span></div>
+              <div class="property-description">Sets alignment of replaced element's content within its box.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/isolation" target="_blank" class="property-name">isolation</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">isolate</span></div>
+              <div class="property-description">Creates new stacking context, isolating element from blend modes.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/contain" target="_blank" class="property-name">contain</a>
+                <span class="property-badge">Performance</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">strict</span><span class="separator">|</span><span class="value-item">content</span><span class="separator">|</span><span class="value-item">size</span><span class="separator">|</span><span class="value-item">layout</span><span class="separator">|</span><span class="value-item">style</span><span class="separator">|</span><span class="value-item">paint</span></div>
+              <div class="property-description">Indicates element's subtree is independent, enabling browser optimizations.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility" target="_blank" class="property-name">content-visibility</a>
+                <span class="property-badge">Performance</span>
+              </div>
+              <div class="property-values"><span class="value-item">visible</span><span class="separator">|</span><span class="value-item">hidden</span><span class="separator">|</span><span class="value-item">auto</span></div>
+              <div class="property-description">Controls whether element renders its contents, enabling performance optimizations.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flexbox -->
+      <div class="category" data-category="layout">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">🔄</span>
+            <span>Flexbox</span>
+          </div>
+          <span class="category-count">12</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction" target="_blank" class="property-name">flex-direction</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">row</span><span class="separator">|</span><span class="value-item">column</span><span class="separator">|</span><span class="value-item">row-reverse</span><span class="separator">|</span><span class="value-item">column-reverse</span></div>
+              <div class="property-description">Sets main axis direction in flex container.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content" target="_blank" class="property-name">justify-content</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">flex-start</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">space-between</span><span class="separator">|</span><span class="value-item">space-around</span><span class="separator">|</span><span class="value-item">space-evenly</span></div>
+              <div class="property-description">Aligns flex items along main axis.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-items" target="_blank" class="property-name">align-items</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">stretch</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">flex-start</span><span class="separator">|</span><span class="value-item">flex-end</span><span class="separator">|</span><span class="value-item">baseline</span></div>
+              <div class="property-description">Aligns flex items along cross axis.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap" target="_blank" class="property-name">flex-wrap</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">nowrap</span><span class="separator">|</span><span class="value-item">wrap</span><span class="separator">|</span><span class="value-item">wrap-reverse</span></div>
+              <div class="property-description">Controls whether flex items wrap to new lines.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-content" target="_blank" class="property-name">align-content</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">stretch</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">space-between</span><span class="separator">|</span><span class="value-item">space-around</span><span class="separator">|</span><span class="value-item">space-evenly</span></div>
+              <div class="property-description">Aligns wrapped flex lines along cross axis.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex" target="_blank" class="property-name">flex</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">1</span><span class="separator">|</span><span class="value-item">0 1 auto</span><span class="separator">|</span><span class="value-item">none</span><span class="separator">|</span><span class="value-item">1 1 0%</span><span class="separator">|</span><span class="value-item">2 0 100px</span></div>
+              <div class="property-description">Shorthand for flex-grow, flex-shrink, and flex-basis.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow" target="_blank" class="property-name">flex-grow</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">1</span><span class="separator">|</span><span class="value-item">2</span><span class="separator">|</span><span class="value-item">0.5</span></div>
+              <div class="property-description">Controls how much flex item grows relative to other items.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink" target="_blank" class="property-name">flex-shrink</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">1</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">2</span><span class="separator">|</span><span class="value-item">0.5</span></div>
+              <div class="property-description">Controls how much flex item shrinks relative to other items.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis" target="_blank" class="property-name">flex-basis</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">content</span></div>
+              <div class="property-description">Sets initial main size of flex item before free space is distributed.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self" target="_blank" class="property-name">align-self</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">flex-start</span><span class="separator">|</span><span class="value-item">flex-end</span><span class="separator">|</span><span class="value-item">stretch</span></div>
+              <div class="property-description">Overrides align-items for individual flex item.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" target="_blank" class="property-name">order</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">1</span><span class="separator">|</span><span class="value-item">-1</span><span class="separator">|</span><span class="value-item">999</span></div>
+              <div class="property-description">Controls order of flex items without changing HTML structure.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap" target="_blank" class="property-name">gap</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">1rem</span><span class="separator">|</span><span class="value-item">10px 20px</span><span class="separator">|</span><span class="value-item">5%</span></div>
+              <div class="property-description">Sets gaps between flex items. Shorthand for row-gap and column-gap.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CSS Grid -->
+      <div class="category" data-category="layout">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">⚏</span>
+            <span>CSS Grid</span>
+          </div>
+          <span class="category-count">16</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns" target="_blank" class="property-name">grid-template-columns</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">1fr 1fr</span><span class="separator">|</span><span class="value-item">repeat(3, 1fr)</span><span class="separator">|</span><span class="value-item">100px auto</span><span class="separator">|</span><span class="value-item">minmax(100px, 1fr)</span></div>
+              <div class="property-description">Defines grid columns with space-separated track sizes.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows" target="_blank" class="property-name">grid-template-rows</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">100px 200px</span><span class="separator">|</span><span class="value-item">repeat(2, 1fr)</span><span class="separator">|</span><span class="value-item">minmax(50px, auto)</span></div>
+              <div class="property-description">Defines grid rows with space-separated track sizes.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas" target="_blank" class="property-name">grid-template-areas</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">"header header" "sidebar main"</span><span class="separator">|</span><span class="value-item">none</span></div>
+              <div class="property-description">Defines named grid areas for easier item placement.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column" target="_blank" class="property-name">grid-column</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">1 / 3</span><span class="separator">|</span><span class="value-item">span 2</span><span class="separator">|</span><span class="value-item">1 / -1</span><span class="separator">|</span><span class="value-item">auto</span></div>
+              <div class="property-description">Shorthand for grid-column-start and grid-column-end.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row" target="_blank" class="property-name">grid-row</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">1 / 3</span><span class="separator">|</span><span class="value-item">span 2</span><span class="separator">|</span><span class="value-item">2</span><span class="separator">|</span><span class="value-item">auto</span></div>
+              <div class="property-description">Shorthand for grid-row-start and grid-row-end.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area" target="_blank" class="property-name">grid-area</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">header</span><span class="separator">|</span><span class="value-item">1 / 1 / 3 / 3</span><span class="separator">|</span><span class="value-item">auto</span></div>
+              <div class="property-description">Places item in named area or defines all four grid lines.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items" target="_blank" class="property-name">justify-items</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">stretch</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">start</span><span class="separator">|</span><span class="value-item">end</span></div>
+              <div class="property-description">Aligns grid items along inline (row) axis.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-items" target="_blank" class="property-name">align-items</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">stretch</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">start</span><span class="separator">|</span><span class="value-item">end</span></div>
+              <div class="property-description">Aligns grid items along block (column) axis.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self" target="_blank" class="property-name">justify-self</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">start</span><span class="separator">|</span><span class="value-item">end</span><span class="separator">|</span><span class="value-item">stretch</span></div>
+              <div class="property-description">Overrides justify-items for individual grid item.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self" target="_blank" class="property-name">align-self</a>
+                <span class="property-badge">Item</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">start</span><span class="separator">|</span><span class="value-item">end</span><span class="separator">|</span><span class="value-item">stretch</span></div>
+              <div class="property-description">Overrides align-items for individual grid item.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns" target="_blank" class="property-name">grid-auto-columns</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">1fr</span><span class="separator">|</span><span class="value-item">minmax(100px, 1fr)</span></div>
+              <div class="property-description">Sets size of implicitly created grid columns.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows" target="_blank" class="property-name">grid-auto-rows</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">1fr</span><span class="separator">|</span><span class="value-item">minmax(50px, auto)</span></div>
+              <div class="property-description">Sets size of implicitly created grid rows.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow" target="_blank" class="property-name">grid-auto-flow</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">row</span><span class="separator">|</span><span class="value-item">column</span><span class="separator">|</span><span class="value-item">row dense</span><span class="separator">|</span><span class="value-item">column dense</span></div>
+              <div class="property-description">Controls auto-placement algorithm for grid items.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap" target="_blank" class="property-name">row-gap</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">1rem</span><span class="separator">|</span><span class="value-item">5%</span></div>
+              <div class="property-description">Sets gap between grid rows.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap" target="_blank" class="property-name">column-gap</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">1rem</span><span class="separator">|</span><span class="value-item">5%</span></div>
+              <div class="property-description">Sets gap between grid columns.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sizing -->
+      <div class="category" data-category="layout">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">📏</span>
+            <span>Sizing</span>
+          </div>
+          <span class="category-count">14</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width" target="_blank" class="property-name">width</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">100vw</span><span class="separator">|</span><span class="value-item">fit-content</span></div>
+              <div class="property-description">Sets element's width. Auto calculates based on content.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height" target="_blank" class="property-name">height</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">100vh</span><span class="separator">|</span><span class="value-item">fit-content</span></div>
+              <div class="property-description">Sets element's height. Auto calculates based on content.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/min-width" target="_blank" class="property-name">min-width</a>
+                <span class="property-badge">Constraint</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">min-content</span><span class="separator">|</span><span class="value-item">max-content</span></div>
+              <div class="property-description">Sets minimum width constraint. Overrides width if larger.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-width" target="_blank" class="property-name">max-width</a>
+                <span class="property-badge">Constraint</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">max-content</span><span class="separator">|</span><span class="value-item">fit-content</span></div>
+              <div class="property-description">Sets maximum width constraint. Overrides width if smaller.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/min-height" target="_blank" class="property-name">min-height</a>
+                <span class="property-badge">Constraint</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">100vh</span><span class="separator">|</span><span class="value-item">min-content</span></div>
+              <div class="property-description">Sets minimum height constraint. Overrides height if larger.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-height" target="_blank" class="property-name">max-height</a>
+                <span class="property-badge">Constraint</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">100vh</span><span class="separator">|</span><span class="value-item">max-content</span></div>
+              <div class="property-description">Sets maximum height constraint. Overrides height if smaller.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio" target="_blank" class="property-name">aspect-ratio</a>
+                <span class="property-badge">Modern</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">1 / 1</span><span class="separator">|</span><span class="value-item">16 / 9</span><span class="separator">|</span><span class="value-item">1.5</span></div>
+              <div class="property-description">Sets preferred aspect ratio for element's box.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/block-size" target="_blank" class="property-name">block-size</a>
+                <span class="property-badge">Logical</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">100vh</span></div>
+              <div class="property-description">Logical equivalent of height, respects writing mode.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size" target="_blank" class="property-name">inline-size</a>
+                <span class="property-badge">Logical</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">100vw</span></div>
+              <div class="property-description">Logical equivalent of width, respects writing mode.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size" target="_blank" class="property-name">min-block-size</a>
+                <span class="property-badge">Logical</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">min-content</span></div>
+              <div class="property-description">Logical equivalent of min-height, respects writing mode.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size" target="_blank" class="property-name">max-block-size</a>
+                <span class="property-badge">Logical</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">max-content</span></div>
+              <div class="property-description">Logical equivalent of max-height, respects writing mode.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size" target="_blank" class="property-name">min-inline-size</a>
+                <span class="property-badge">Logical</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">min-content</span></div>
+              <div class="property-description">Logical equivalent of min-width, respects writing mode.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size" target="_blank" class="property-name">max-inline-size</a>
+                <span class="property-badge">Logical</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">100px</span><span class="separator">|</span><span class="value-item">50%</span><span class="separator">|</span><span class="value-item">max-content</span></div>
+              <div class="property-description">Logical equivalent of max-width, respects writing mode.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/resize" target="_blank" class="property-name">resize</a>
+                <span class="property-badge">Interaction</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">both</span><span class="separator">|</span><span class="value-item">horizontal</span><span class="separator">|</span><span class="value-item">vertical</span><span class="separator">|</span><span class="value-item">block</span><span class="separator">|</span><span class="value-item">inline</span></div>
+              <div class="property-description">Controls whether element is resizable by user.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Background & Images -->
+      <div class="category" data-category="visual">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">🎨</span>
+            <span>Background & Images</span>
+          </div>
+          <span class="category-count">14</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color" target="_blank" class="property-name">background-color</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">transparent</span><span class="separator">|</span><span class="value-item">#fff</span><span class="separator">|</span><span class="value-item">rgba(0,0,0,0.5)</span><span class="separator">|</span><span class="value-item">red</span><span class="separator">|</span><span class="value-item">hsl(120, 100%, 50%)</span></div>
+              <div class="property-description">Sets background color. Supports all CSS color formats.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-image" target="_blank" class="property-name">background-image</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">url('img.jpg')</span><span class="separator">|</span><span class="value-item">linear-gradient(red, blue)</span><span class="separator">|</span><span class="value-item">radial-gradient(circle, red, blue)</span></div>
+              <div class="property-description">Sets background image. Supports multiple images separated by commas.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-size" target="_blank" class="property-name">background-size</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">cover</span><span class="separator">|</span><span class="value-item">contain</span><span class="separator">|</span><span class="value-item">100px 200px</span><span class="separator">|</span><span class="value-item">50% 100%</span></div>
+              <div class="property-description">Controls background image size. Cover fills container, contain fits within.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position" target="_blank" class="property-name">background-position</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">center</span><span class="separator">|</span><span class="value-item">top left</span><span class="separator">|</span><span class="value-item">50% 50%</span><span class="separator">|</span><span class="value-item">10px 20px</span><span class="separator">|</span><span class="value-item">right 10px bottom 20px</span></div>
+              <div class="property-description">Sets initial position of background image.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat" target="_blank" class="property-name">background-repeat</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">repeat</span><span class="separator">|</span><span class="value-item">no-repeat</span><span class="separator">|</span><span class="value-item">repeat-x</span><span class="separator">|</span><span class="value-item">repeat-y</span><span class="separator">|</span><span class="value-item">space</span><span class="separator">|</span><span class="value-item">round</span></div>
+              <div class="property-description">Controls how background image repeats.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment" target="_blank" class="property-name">background-attachment</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">scroll</span><span class="separator">|</span><span class="value-item">fixed</span><span class="separator">|</span><span class="value-item">local</span></div>
+              <div class="property-description">Controls whether background scrolls with content or stays fixed.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-origin" target="_blank" class="property-name">background-origin</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">padding-box</span><span class="separator">|</span><span class="value-item">border-box</span><span class="separator">|</span><span class="value-item">content-box</span></div>
+              <div class="property-description">Sets background positioning area.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip" target="_blank" class="property-name">background-clip</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">border-box</span><span class="separator">|</span><span class="value-item">padding-box</span><span class="separator">|</span><span class="value-item">content-box</span><span class="separator">|</span><span class="value-item">text</span></div>
+              <div class="property-description">Sets background painting area. 'text' clips to text shape.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode" target="_blank" class="property-name">background-blend-mode</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">multiply</span><span class="separator">|</span><span class="value-item">screen</span><span class="separator">|</span><span class="value-item">overlay</span><span class="separator">|</span><span class="value-item">darken</span><span class="separator">|</span><span class="value-item">lighten</span></div>
+              <div class="property-description">Sets blending mode for background layers.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering" target="_blank" class="property-name">image-rendering</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">smooth</span><span class="separator">|</span><span class="value-item">high-quality</span><span class="separator">|</span><span class="value-item">crisp-edges</span><span class="separator">|</span><span class="value-item">pixelated</span></div>
+              <div class="property-description">Controls image scaling algorithm.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask" target="_blank" class="property-name">mask</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">url('mask.svg')</span><span class="separator">|</span><span class="value-item">linear-gradient(black, transparent)</span></div>
+              <div class="property-description">Shorthand for mask properties. Hides parts of element.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image" target="_blank" class="property-name">mask-image</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">url('mask.png')</span><span class="separator">|</span><span class="value-item">linear-gradient(black, transparent)</span></div>
+              <div class="property-description">Sets mask layer image.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-size" target="_blank" class="property-name">mask-size</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">cover</span><span class="separator">|</span><span class="value-item">contain</span><span class="separator">|</span><span class="value-item">100px 200px</span></div>
+              <div class="property-description">Sets size of mask layer image.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-repeat" target="_blank" class="property-name">mask-repeat</a>
+                <span class="property-badge">Advanced</span>
+              </div>
+              <div class="property-values"><span class="value-item">repeat</span><span class="separator">|</span><span class="value-item">no-repeat</span><span class="separator">|</span><span class="value-item">repeat-x</span><span class="separator">|</span><span class="value-item">repeat-y</span></div>
+              <div class="property-description">Controls how mask layer image repeats.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colors & Effects -->
+      <div class="category" data-category="visual">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">🌈</span>
+            <span>Colors & Effects</span>
+          </div>
+          <span class="category-count">12</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color" target="_blank" class="property-name">color</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">black</span><span class="separator">|</span><span class="value-item">#333</span><span class="separator">|</span><span class="value-item">rgb(255,0,0)</span><span class="separator">|</span><span class="value-item">hsl(0,100%,50%)</span><span class="separator">|</span><span class="value-item">currentColor</span></div>
+              <div class="property-description">Sets text color. currentColor uses computed color value.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/opacity" target="_blank" class="property-name">opacity</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">1</span><span class="separator">|</span><span class="value-item">0.5</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">75%</span></div>
+              <div class="property-description">Sets transparency level. 0 is fully transparent, 1 is fully opaque.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/visibility" target="_blank" class="property-name">visibility</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">visible</span><span class="separator">|</span><span class="value-item">hidden</span><span class="separator">|</span><span class="value-item">collapse</span></div>
+              <div class="property-description">Controls element visibility. Hidden elements still take up space.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter" target="_blank" class="property-name">filter</a>
+                <span class="property-badge">Effects</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">blur(5px)</span><span class="separator">|</span><span class="value-item">brightness(0.5)</span><span class="separator">|</span><span class="value-item">contrast(200%)</span><span class="separator">|</span><span class="value-item">grayscale(100%)</span></div>
+              <div class="property-description">Applies graphical effects like blur, brightness, contrast.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter" target="_blank" class="property-name">backdrop-filter</a>
+                <span class="property-badge">Effects</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">blur(10px)</span><span class="separator">|</span><span class="value-item">brightness(0.8)</span><span class="separator">|</span><span class="value-item">saturate(180%)</span></div>
+              <div class="property-description">Applies effects to area behind element.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode" target="_blank" class="property-name">mix-blend-mode</a>
+                <span class="property-badge">Effects</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">multiply</span><span class="separator">|</span><span class="value-item">screen</span><span class="separator">|</span><span class="value-item">overlay</span><span class="separator">|</span><span class="value-item">difference</span><span class="separator">|</span><span class="value-item">exclusion</span></div>
+              <div class="property-description">Sets how element blends with background.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme" target="_blank" class="property-name">color-scheme</a>
+                <span class="property-badge">Modern</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">light</span><span class="separator">|</span><span class="value-item">dark</span><span class="separator">|</span><span class="value-item">light dark</span></div>
+              <div class="property-description">Indicates which color schemes element can be rendered in.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color" target="_blank" class="property-name">accent-color</a>
+                <span class="property-badge">Modern</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">#007acc</span><span class="separator">|</span><span class="value-item">red</span><span class="separator">|</span><span class="value-item">hsl(210, 100%, 40%)</span></div>
+              <div class="property-description">Sets accent color for form controls.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color" target="_blank" class="property-name">caret-color</a>
+                <span class="property-badge">Modern</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">transparent</span><span class="separator">|</span><span class="value-item">#007acc</span><span class="separator">|</span><span class="value-item">red</span></div>
+              <div class="property-description">Sets color of text input cursor.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/forced-color-adjust" target="_blank" class="property-name">forced-color-adjust</a>
+                <span class="property-badge">Accessibility</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">none</span></div>
+              <div class="property-description">Controls whether colors are adjusted in forced-colors mode.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/print-color-adjust" target="_blank" class="property-name">print-color-adjust</a>
+                <span class="property-badge">Print</span>
+              </div>
+              <div class="property-values"><span class="value-item">economy</span><span class="separator">|</span><span class="value-item">exact</span></div>
+              <div class="property-description">Controls whether colors are adjusted when printing.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color-adjust" target="_blank" class="property-name">color-adjust</a>
+                <span class="property-badge">Print</span>
+              </div>
+              <div class="property-values"><span class="value-item">economy</span><span class="separator">|</span><span class="value-item">exact</span></div>
+              <div class="property-description">Legacy alias for print-color-adjust.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animations & Transitions -->
+      <div class="category" data-category="animation">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">🎬</span>
+            <span>Animations & Transitions</span>
+          </div>
+          <span class="category-count">16</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition" target="_blank" class="property-name">transition</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">all 0.3s ease</span><span class="separator">|</span><span class="value-item">color 0.5s</span><span class="separator">|</span><span class="value-item">none</span><span class="separator">|</span><span class="value-item">opacity 0.2s linear 0.1s</span></div>
+              <div class="property-description">Shorthand for transition properties. Creates smooth property changes.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property" target="_blank" class="property-name">transition-property</a>
+                <span class="property-badge">Transition</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">all</span><span class="separator">|</span><span class="value-item">opacity</span><span class="separator">|</span><span class="value-item">transform, opacity</span></div>
+              <div class="property-description">Specifies which properties to transition.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration" target="_blank" class="property-name">transition-duration</a>
+                <span class="property-badge">Transition</span>
+              </div>
+              <div class="property-values"><span class="value-item">0s</span><span class="separator">|</span><span class="value-item">0.3s</span><span class="separator">|</span><span class="value-item">300ms</span><span class="separator">|</span><span class="value-item">0.2s, 0.5s</span></div>
+              <div class="property-description">Sets transition duration time.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function" target="_blank" class="property-name">transition-timing-function</a>
+                <span class="property-badge">Transition</span>
+              </div>
+              <div class="property-values"><span class="value-item">ease</span><span class="separator">|</span><span class="value-item">linear</span><span class="separator">|</span><span class="value-item">ease-in-out</span><span class="separator">|</span><span class="value-item">cubic-bezier(0.1, 0.7, 1.0, 0.1)</span></div>
+              <div class="property-description">Sets transition acceleration curve.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay" target="_blank" class="property-name">transition-delay</a>
+                <span class="property-badge">Transition</span>
+              </div>
+              <div class="property-values"><span class="value-item">0s</span><span class="separator">|</span><span class="value-item">0.1s</span><span class="separator">|</span><span class="value-item">100ms</span><span class="separator">|</span><span class="value-item">-0.5s</span></div>
+              <div class="property-description">Sets delay before transition starts.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation" target="_blank" class="property-name">animation</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">slide 2s infinite</span><span class="separator">|</span><span class="value-item">bounce 1s ease-in-out 0.5s alternate</span></div>
+              <div class="property-description">Shorthand for animation properties. Applies keyframe animations.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name" target="_blank" class="property-name">animation-name</a>
+                <span class="property-badge">Animation</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">slideIn</span><span class="separator">|</span><span class="value-item">fadeOut, slideUp</span></div>
+              <div class="property-description">Specifies @keyframes animation name to apply.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-duration" target="_blank" class="property-name">animation-duration</a>
+                <span class="property-badge">Animation</span>
+              </div>
+              <div class="property-values"><span class="value-item">0s</span><span class="separator">|</span><span class="value-item">2s</span><span class="separator">|</span><span class="value-item">500ms</span><span class="separator">|</span><span class="value-item">1s, 2s</span></div>
+              <div class="property-description">Sets animation duration time.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function" target="_blank" class="property-name">animation-timing-function</a>
+                <span class="property-badge">Animation</span>
+              </div>
+              <div class="property-values"><span class="value-item">ease</span><span class="separator">|</span><span class="value-item">linear</span><span class="separator">|</span><span class="value-item">steps(4, end)</span><span class="separator">|</span><span class="value-item">cubic-bezier(0.25, 0.1, 0.25, 1)</span></div>
+              <div class="property-description">Sets animation acceleration curve.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay" target="_blank" class="property-name">animation-delay</a>
+                <span class="property-badge">Animation</span>
+              </div>
+              <div class="property-values"><span class="value-item">0s</span><span class="separator">|</span><span class="value-item">0.5s</span><span class="separator">|</span><span class="value-item">-1s</span><span class="separator">|</span><span class="value-item">100ms</span></div>
+              <div class="property-description">Sets delay before animation starts. Negative values start mid-animation.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count" target="_blank" class="property-name">animation-iteration-count</a>
+                <span class="property-badge">Animation</span>
+              </div>
+              <div class="property-values"><span class="value-item">1</span><span class="separator">|</span><span class="value-item">infinite</span><span class="separator">|</span><span class="value-item">3</span><span class="separator">|</span><span class="value-item">2.5</span></div>
+              <div class="property-description">Sets number of times animation repeats.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-direction" target="_blank" class="property-name">animation-direction</a>
+                <span class="property-badge">Animation</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">reverse</span><span class="separator">|</span><span class="value-item">alternate</span><span class="separator">|</span><span class="value-item">alternate-reverse</span></div>
+              <div class="property-description">Sets animation playback direction.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode" target="_blank" class="property-name">animation-fill-mode</a>
+                <span class="property-badge">Animation</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">forwards</span><span class="separator">|</span><span class="value-item">backwards</span><span class="separator">|</span><span class="value-item">both</span></div>
+              <div class="property-description">Sets which values apply before/after animation execution.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state" target="_blank" class="property-name">animation-play-state</a>
+                <span class="property-badge">Animation</span>
+              </div>
+              <div class="property-values"><span class="value-item">running</span><span class="separator">|</span><span class="value-item">paused</span></div>
+              <div class="property-description">Controls whether animation is running or paused.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/will-change" target="_blank" class="property-name">will-change</a>
+                <span class="property-badge">Performance</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">scroll-position</span><span class="separator">|</span><span class="value-item">contents</span><span class="separator">|</span><span class="value-item">transform, opacity</span></div>
+              <div class="property-description">Hints browser about expected property changes for optimization.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline" target="_blank" class="property-name">animation-timeline</a>
+                <span class="property-badge">Experimental</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">none</span><span class="separator">|</span><span class="value-item">scroll()</span><span class="separator">|</span><span class="value-item">view()</span></div>
+              <div class="property-description">Sets timeline that drives animation progress.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transforms -->
+      <div class="category" data-category="animation">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">🔄</span>
+            <span>Transforms</span>
+          </div>
+          <span class="category-count">8</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform" target="_blank" class="property-name">transform</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">rotate(45deg)</span><span class="separator">|</span><span class="value-item">scale(1.2)</span><span class="separator">|</span><span class="value-item">translate(10px, 20px)</span><span class="separator">|</span><span class="value-item">skew(15deg)</span></div>
+              <div class="property-description">Applies 2D/3D transformations. Can combine multiple functions.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin" target="_blank" class="property-name">transform-origin</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">center</span><span class="separator">|</span><span class="value-item">top left</span><span class="separator">|</span><span class="value-item">50% 50%</span><span class="separator">|</span><span class="value-item">0 0</span><span class="separator">|</span><span class="value-item">10px 20px 30px</span></div>
+              <div class="property-description">Sets origin point for transformations. Default is element center.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style" target="_blank" class="property-name">transform-style</a>
+                <span class="property-badge">3D</span>
+              </div>
+              <div class="property-values"><span class="value-item">flat</span><span class="separator">|</span><span class="value-item">preserve-3d</span></div>
+              <div class="property-description">Sets whether children are positioned in 3D space or flattened.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/perspective" target="_blank" class="property-name">perspective</a>
+                <span class="property-badge">3D</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">1000px</span><span class="separator">|</span><span class="value-item">500px</span><span class="separator">|</span><span class="value-item">2000px</span></div>
+              <div class="property-description">Sets distance between user and z=0 plane for 3D perspective.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin" target="_blank" class="property-name">perspective-origin</a>
+                <span class="property-badge">3D</span>
+              </div>
+              <div class="property-values"><span class="value-item">center</span><span class="separator">|</span><span class="value-item">top left</span><span class="separator">|</span><span class="value-item">50% 50%</span><span class="separator">|</span><span class="value-item">100px 200px</span></div>
+              <div class="property-description">Sets origin point for perspective property.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility" target="_blank" class="property-name">backface-visibility</a>
+                <span class="property-badge">3D</span>
+              </div>
+              <div class="property-values"><span class="value-item">visible</span><span class="separator">|</span><span class="value-item">hidden</span></div>
+              <div class="property-description">Sets whether back face of element is visible when rotated.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/rotate" target="_blank" class="property-name">rotate</a>
+                <span class="property-badge">Individual</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">45deg</span><span class="separator">|</span><span class="value-item">0.5turn</span><span class="separator">|</span><span class="value-item">x 45deg</span><span class="separator">|</span><span class="value-item">1 1 0 45deg</span></div>
+              <div class="property-description">Individual transform property for rotation.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scale" target="_blank" class="property-name">scale</a>
+                <span class="property-badge">Individual</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">1.5</span><span class="separator">|</span><span class="value-item">2 0.5</span><span class="separator">|</span><span class="value-item">1.2 1.2 0.8</span></div>
+              <div class="property-description">Individual transform property for scaling.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/translate" target="_blank" class="property-name">translate</a>
+                <span class="property-badge">Individual</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">50% 100px</span><span class="separator">|</span><span class="value-item">10px 20px 30px</span></div>
+              <div class="property-description">Individual transform property for translation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overflow & Clipping -->
+      <div class="category" data-category="layout">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">📋</span>
+            <span>Overflow & Clipping</span>
+          </div>
+          <span class="category-count">10</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow" target="_blank" class="property-name">overflow</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">visible</span><span class="separator">|</span><span class="value-item">hidden</span><span class="separator">|</span><span class="value-item">scroll</span><span class="separator">|</span><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">clip</span></div>
+              <div class="property-description">Controls what happens when content overflows element's box.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x" target="_blank" class="property-name">overflow-x</a>
+                <span class="property-badge">Axis</span>
+              </div>
+              <div class="property-values"><span class="value-item">visible</span><span class="separator">|</span><span class="value-item">hidden</span><span class="separator">|</span><span class="value-item">scroll</span><span class="separator">|</span><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">clip</span></div>
+              <div class="property-description">Controls horizontal overflow behavior.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-y" target="_blank" class="property-name">overflow-y</a>
+                <span class="property-badge">Axis</span>
+              </div>
+              <div class="property-values"><span class="value-item">visible</span><span class="separator">|</span><span class="value-item">hidden</span><span class="separator">|</span><span class="value-item">scroll</span><span class="separator">|</span><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">clip</span></div>
+              <div class="property-description">Controls vertical overflow behavior.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap" target="_blank" class="property-name">overflow-wrap</a>
+                <span class="property-badge">Text</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">break-word</span><span class="separator">|</span><span class="value-item">anywhere</span></div>
+              <div class="property-description">Controls whether long words can be broken to prevent overflow.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path" target="_blank" class="property-name">clip-path</a>
+                <span class="property-badge">Clipping</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">circle(50%)</span><span class="separator">|</span><span class="value-item">ellipse(50% 60%)</span><span class="separator">|</span><span class="value-item">polygon(0 0, 100% 0, 50% 100%)</span></div>
+              <div class="property-description">Creates clipping region to show only part of element.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip" target="_blank" class="property-name">clip</a>
+                <span class="property-badge">Legacy</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">rect(0, 100px, 100px, 0)</span></div>
+              <div class="property-description">Legacy clipping property. Use clip-path instead.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior" target="_blank" class="property-name">overscroll-behavior</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">contain</span><span class="separator">|</span><span class="value-item">none</span></div>
+              <div class="property-description">Controls behavior when scrolling past boundary of scroll area.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior-x" target="_blank" class="property-name">overscroll-behavior-x</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">contain</span><span class="separator">|</span><span class="value-item">none</span></div>
+              <div class="property-description">Controls horizontal overscroll behavior.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior-y" target="_blank" class="property-name">overscroll-behavior-y</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">contain</span><span class="separator">|</span><span class="value-item">none</span></div>
+              <div class="property-description">Controls vertical overscroll behavior.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior" target="_blank" class="property-name">scroll-behavior</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">smooth</span></div>
+              <div class="property-description">Sets behavior for scrolling triggered by navigation or CSSOM APIs.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Interactions -->
+      <div class="category" data-category="interaction">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">👆</span>
+            <span>User Interactions</span>
+          </div>
+          <span class="category-count">12</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/cursor" target="_blank" class="property-name">cursor</a>
+                <span class="property-badge">Core</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">pointer</span><span class="separator">|</span><span class="value-item">text</span><span class="separator">|</span><span class="value-item">not-allowed</span><span class="separator">|</span><span class="value-item">grab</span><span class="separator">|</span><span class="value-item">url('cursor.png'), auto</span></div>
+              <div class="property-description">Sets cursor type when hovering over element.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/user-select" target="_blank" class="property-name">user-select</a>
+                <span class="property-badge">Selection</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">none</span><span class="separator">|</span><span class="value-item">text</span><span class="separator">|</span><span class="value-item">all</span><span class="separator">|</span><span class="value-item">contain</span></div>
+              <div class="property-description">Controls whether user can select text within element.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events" target="_blank" class="property-name">pointer-events</a>
+                <span class="property-badge">Events</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">none</span><span class="separator">|</span><span class="value-item">visiblePainted</span><span class="separator">|</span><span class="value-item">visibleFill</span><span class="separator">|</span><span class="value-item">all</span></div>
+              <div class="property-description">Sets under what circumstances element can be target of pointer events.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action" target="_blank" class="property-name">touch-action</a>
+                <span class="property-badge">Touch</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">none</span><span class="separator">|</span><span class="value-item">pan-x</span><span class="separator">|</span><span class="value-item">pan-y</span><span class="separator">|</span><span class="value-item">manipulation</span></div>
+              <div class="property-description">Sets how element's region can be manipulated by touchscreen.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type" target="_blank" class="property-name">scroll-snap-type</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">x mandatory</span><span class="separator">|</span><span class="value-item">y proximity</span><span class="separator">|</span><span class="value-item">both mandatory</span></div>
+              <div class="property-description">Sets how strictly snap points are enforced on scroll container.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-align" target="_blank" class="property-name">scroll-snap-align</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">start</span><span class="separator">|</span><span class="value-item">end</span><span class="separator">|</span><span class="value-item">center</span><span class="separator">|</span><span class="value-item">start end</span></div>
+              <div class="property-description">Sets element's snap position within scroll container.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-stop" target="_blank" class="property-name">scroll-snap-stop</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">always</span></div>
+              <div class="property-description">Sets whether scroll container is allowed to pass over snap positions.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin" target="_blank" class="property-name">scroll-margin</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">1rem 2rem</span><span class="separator">|</span><span class="value-item">5px 10px 15px 20px</span></div>
+              <div class="property-description">Sets margin around scroll snap area.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding" target="_blank" class="property-name">scroll-padding</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">1rem 2rem</span></div>
+              <div class="property-description">Sets padding inside scroll container's snapport.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width" target="_blank" class="property-name">scrollbar-width</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">thin</span><span class="separator">|</span><span class="value-item">none</span></div>
+              <div class="property-description">Sets width of scrollbar.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color" target="_blank" class="property-name">scrollbar-color</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">dark</span><span class="separator">|</span><span class="value-item">light</span><span class="separator">|</span><span class="value-item">#007acc #f0f0f0</span></div>
+              <div class="property-description">Sets colors of scrollbar thumb and track.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter" target="_blank" class="property-name">scrollbar-gutter</a>
+                <span class="property-badge">Scroll</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">stable</span><span class="separator">|</span><span class="value-item">stable both-edges</span></div>
+              <div class="property-description">Reserves space for scrollbar to prevent layout shifts.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lists & Tables -->
+      <div class="category" data-category="layout">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">📝</span>
+            <span>Lists & Tables</span>
+          </div>
+          <span class="category-count">10</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style" target="_blank" class="property-name">list-style</a>
+                <span class="property-badge">List</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">disc</span><span class="separator">|</span><span class="value-item">decimal inside</span><span class="separator">|</span><span class="value-item">url('bullet.png') outside</span></div>
+              <div class="property-description">Shorthand for list-style-type, list-style-position, and list-style-image.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type" target="_blank" class="property-name">list-style-type</a>
+                <span class="property-badge">List</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">disc</span><span class="separator">|</span><span class="value-item">circle</span><span class="separator">|</span><span class="value-item">square</span><span class="separator">|</span><span class="value-item">decimal</span><span class="separator">|</span><span class="value-item">lower-roman</span></div>
+              <div class="property-description">Sets appearance of list item marker.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position" target="_blank" class="property-name">list-style-position</a>
+                <span class="property-badge">List</span>
+              </div>
+              <div class="property-values"><span class="value-item">outside</span><span class="separator">|</span><span class="value-item">inside</span></div>
+              <div class="property-description">Sets position of list item marker relative to content.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image" target="_blank" class="property-name">list-style-image</a>
+                <span class="property-badge">List</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">url('bullet.png')</span><span class="separator">|</span><span class="value-item">linear-gradient(red, blue)</span></div>
+              <div class="property-description">Sets image to use as list item marker.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout" target="_blank" class="property-name">table-layout</a>
+                <span class="property-badge">Table</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">fixed</span></div>
+              <div class="property-description">Sets algorithm used to lay out table cells, rows, and columns.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse" target="_blank" class="property-name">border-collapse</a>
+                <span class="property-badge">Table</span>
+              </div>
+              <div class="property-values"><span class="value-item">separate</span><span class="separator">|</span><span class="value-item">collapse</span></div>
+              <div class="property-description">Sets whether table borders are collapsed or separated.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-spacing" target="_blank" class="property-name">border-spacing</a>
+                <span class="property-badge">Table</span>
+              </div>
+              <div class="property-values"><span class="value-item">0</span><span class="separator">|</span><span class="value-item">2px</span><span class="separator">|</span><span class="value-item">1px 2px</span></div>
+              <div class="property-description">Sets distance between adjacent table cell borders.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/caption-side" target="_blank" class="property-name">caption-side</a>
+                <span class="property-badge">Table</span>
+              </div>
+              <div class="property-values"><span class="value-item">top</span><span class="separator">|</span><span class="value-item">bottom</span><span class="separator">|</span><span class="value-item">block-start</span><span class="separator">|</span><span class="value-item">block-end</span></div>
+              <div class="property-description">Sets position of table caption.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/empty-cells" target="_blank" class="property-name">empty-cells</a>
+                <span class="property-badge">Table</span>
+              </div>
+              <div class="property-values"><span class="value-item">show</span><span class="separator">|</span><span class="value-item">hide</span></div>
+              <div class="property-description">Sets whether borders and backgrounds appear around empty table cells.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter-reset" target="_blank" class="property-name">counter-reset</a>
+                <span class="property-badge">Counter</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">chapter</span><span class="separator">|</span><span class="value-item">section 1</span><span class="separator">|</span><span class="value-item">item 0 page 1</span></div>
+              <div class="property-description">Creates or resets CSS counters.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modern CSS -->
+      <div class="category" data-category="layout">
+        <div class="category-header">
+          <div class="category-title">
+            <span class="category-icon">🚀</span>
+            <span>Modern CSS</span>
+          </div>
+          <span class="category-count">8</span>
+        </div>
+        <div class="properties-container">
+          <div class="properties-grid">
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/container-type" target="_blank" class="property-name">container-type</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">normal</span><span class="separator">|</span><span class="value-item">size</span><span class="separator">|</span><span class="value-item">inline-size</span></div>
+              <div class="property-description">Establishes element as containment context for container queries.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/container-name" target="_blank" class="property-name">container-name</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">none</span><span class="separator">|</span><span class="value-item">sidebar</span><span class="separator">|</span><span class="value-item">main content</span></div>
+              <div class="property-description">Specifies list of query container names.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/container" target="_blank" class="property-name">container</a>
+                <span class="property-badge">Container</span>
+              </div>
+              <div class="property-values"><span class="value-item">sidebar / inline-size</span><span class="separator">|</span><span class="value-item">main / size</span><span class="separator">|</span><span class="value-item">/ normal</span></div>
+              <div class="property-description">Shorthand for container-name and container-type.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/subgrid" target="_blank" class="property-name">subgrid</a>
+                <span class="property-badge">Grid</span>
+              </div>
+              <div class="property-values"><span class="value-item">subgrid</span><span class="separator">|</span><span class="value-item">subgrid [line-names]</span></div>
+              <div class="property-description">Adopts track sizing of parent grid. Used with grid-template-columns/rows.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset" target="_blank" class="property-name">inset</a>
+                <span class="property-badge">Logical</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">10px 20px</span><span class="separator">|</span><span class="value-item">5px 10px 15px 20px</span></div>
+              <div class="property-description">Shorthand for top, right, bottom, and left properties.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block" target="_blank" class="property-name">inset-block</a>
+                <span class="property-badge">Logical</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">10px 20px</span></div>
+              <div class="property-description">Logical shorthand for block-start and block-end positions.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline" target="_blank" class="property-name">inset-inline</a>
+                <span class="property-badge">Logical</span>
+              </div>
+              <div class="property-values"><span class="value-item">auto</span><span class="separator">|</span><span class="value-item">0</span><span class="separator">|</span><span class="value-item">10px</span><span class="separator">|</span><span class="value-item">10px 20px</span></div>
+              <div class="property-description">Logical shorthand for inline-start and inline-end positions.</div>
+            </div>
+            <div class="property-row">
+              <div class="property-header">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/place-items" target="_blank" class="property-name">place-items</a>
+                <span class="property-badge">Alignment</span>
+              </div>
+              <div class="property-values"><span class="value-item">center</span><span class="separator">|</span><span class="value-item">start end</span><span class="separator">|</span><span class="value-item">stretch center</span></div>
+              <div class="property-description">Shorthand for align-items and justify-items.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2024 Ultimate CSS Properties Cheatsheet • Comprehensive reference with 300+ properties</p>
+      <div class="footer-links">
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" class="footer-link" target="_blank">MDN CSS Reference</a>
+        <a href="https://caniuse.com/" class="footer-link" target="_blank">Can I Use</a>
+        <a href="https://css-tricks.com/" class="footer-link" target="_blank">CSS-Tricks</a>
+        <a href="https://web.dev/learn/css/" class="footer-link" target="_blank">Learn CSS</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    let allProperties = [];
+    let filteredProperties = [];
+
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeProperties();
+      initializeFilters();
+      updateStats();
+    });
+
+    function initializeProperties() {
+      const propertyRows = document.querySelectorAll('.property-row');
+      allProperties = Array.from(propertyRows).map(row => ({
+        element: row,
+        name: row.querySelector('.property-name').textContent.toLowerCase(),
+        values: row.querySelector('.property-values').textContent.toLowerCase(),
+        description: row.querySelector('.property-description')?.textContent.toLowerCase() || '',
+        category: row.closest('.category').dataset.category || 'all'
+      }));
+      filteredProperties = [...allProperties];
+    }
+
+    function initializeFilters() {
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remove active class from all tabs
+          filterTabs.forEach(t => t.classList.remove('active'));
+          // Add active class to clicked tab
+          this.classList.add('active');
+          
+          const filter = this.dataset.filter;
+          filterByCategory(filter);
+        });
+      });
+    }
+
+    function filterByCategory(category) {
+      const categories = document.querySelectorAll('.category');
+      
+      categories.forEach(cat => {
+        if (category === 'all' || cat.dataset.category === category) {
+          cat.classList.remove('hidden');
+        } else {
+          cat.classList.add('hidden');
+        }
+      });
+      
+      updateStats();
+    }
+
+    function searchProperties() {
+      const searchTerm = document.getElementById('searchBox').value.toLowerCase().trim();
+      const categories = document.querySelectorAll('.category');
+      let totalVisible = 0;
+      
+      categories.forEach(category => {
+        const propertyRows = category.querySelectorAll('.property-row');
+        let hasVisibleProperties = false;
+        
+        propertyRows.forEach(row => {
+          const property = allProperties.find(p => p.element === row);
+          if (!property) return;
+          
+          const matches = !searchTerm || 
+            property.name.includes(searchTerm) || 
+            property.values.includes(searchTerm) || 
+            property.description.includes(searchTerm);
+          
+          if (matches) {
+            row.classList.remove('hidden');
+            hasVisibleProperties = true;
+            totalVisible++;
+            
+            // Highlight matching text
+            if (searchTerm) {
+              row.classList.add('highlight');
+            } else {
+              row.classList.remove('highlight');
+            }
+          } else {
+            row.classList.add('hidden');
+            row.classList.remove('highlight');
+          }
+        });
+        
+        // Hide category if no properties match and there's a search term
+        if (searchTerm && !hasVisibleProperties) {
+          category.classList.add('hidden');
+        } else if (!searchTerm) {
+          // Reset category visibility based on current filter
+          const activeFilter = document.querySelector('.filter-tab.active').dataset.filter;
+          if (activeFilter === 'all' || category.dataset.category === activeFilter) {
+            category.classList.remove('hidden');
+          }
+        } else {
+          category.classList.remove('hidden');
+        }
+      });
+      
+      // Update visible properties count
+      document.getElementById('visibleProperties').textContent = searchTerm ? totalVisible : '300+';
+      
+      // Show no results message
+      if (searchTerm && totalVisible === 0) {
+        showNoResults();
+      } else {
+        hideNoResults();
+      }
+    }
+
+    function showNoResults() {
+      let noResults = document.querySelector('.no-results');
+      if (!noResults) {
+        noResults = document.createElement('div');
+        noResults.className = 'no-results';
+        noResults.innerHTML = '<p>No properties found matching your search.</p><p>Try different keywords or clear the search.</p>';
+        document.getElementById('categoriesGrid').appendChild(noResults);
+      }
+    }
+
+    function hideNoResults() {
+      const noResults = document.querySelector('.no-results');
+      if (noResults) {
+        noResults.remove();
+      }
+    }
+
+    function updateStats() {
+      const visibleCategories = document.querySelectorAll('.category:not(.hidden)');
+      const visibleProperties = document.querySelectorAll('.property-row:not(.hidden)');
+      
+      document.getElementById('visibleProperties').textContent = visibleProperties.length;
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      // Ctrl/Cmd + K to focus search
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        document.getElementById('searchBox').focus();
+      }
+      
+      // Escape to clear search
+      if (e.key === 'Escape') {
+        const searchBox = document.getElementById('searchBox');
+        if (document.activeElement === searchBox) {
+          searchBox.value = '';
+          searchProperties();
+          searchBox.blur();
+        }
+      }
+    });
+
+    // Search placeholder animation
+    const searchBox = document.getElementById('searchBox');
+    const placeholders = [
+      '🔍 Search properties, values, or descriptions... (Ctrl+K)',
+      '🔍 Try "flex", "grid", "transform", "animation"...',
+      '🔍 Search by value... (e.g., "center", "auto", "1fr")',
+      '🔍 Find by description... (e.g., "alignment", "spacing")',
+      '🔍 Use Ctrl+K to focus, Esc to clear...'
+    ];
+    
+    let placeholderIndex = 0;
+    setInterval(() => {
+      if (!searchBox.value && document.activeElement !== searchBox) {
+        placeholderIndex = (placeholderIndex + 1) % placeholders.length;
+        searchBox.placeholder = placeholders[placeholderIndex];
+      }
+    }, 4000);
+
+    // Smooth scroll for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Performance optimization: Debounce search
+    let searchTimeout;
+    const originalSearchProperties = searchProperties;
+    searchProperties = function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(originalSearchProperties, 150);
+    };
+  </script>
+</body>
+</html>
