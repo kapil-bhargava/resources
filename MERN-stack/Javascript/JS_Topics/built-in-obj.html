@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Date & Math Object in JavaScript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0066cc;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 900px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #444;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    code {
+      background: #eef;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+
+    pre {
+      background: #222;
+      color: rgb(0, 0, 0);
+      padding: 12px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Date & Math Objects</h1>
+
+  <section>
+    <h2>📆 Date Object</h2>
+    <p>The <code>Date</code> object in JavaScript is used to work with **dates and times**. It can be used to get the current date, time, calculate differences, format time, etc.</p>
+
+    <h3>Creating Date Objects:</h3>
+    <pre><code>const now = new Date();
+const specific = new Date('2025-08-05T10:30:00');</code></pre>
+
+    <h3>Useful Date Methods:</h3>
+    <ul>
+      <li><code>getFullYear()</code> → Returns the 4-digit year</li>
+      <li><code>getMonth()</code> → Month (0-11)</li>
+      <li><code>getDate()</code> → Day of the month</li>
+      <li><code>getHours(), getMinutes(), getSeconds()</code></li>
+      <li><code>getTime()</code> → Timestamp (ms since Jan 1, 1970)</li>
+      <li><code>toLocaleDateString()</code> → Format date nicely</li>
+    </ul>
+
+    <h3>Popular Use Cases:</h3>
+    <ul>
+      <li>Get current timestamp for logs or analytics</li>
+      <li>Show booking or order dates</li>
+      <li>Countdown timers</li>
+      <li>Calculate age or date difference</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code>const now = new Date();
+console.log(now.toLocaleDateString()); // 8/5/2025
+console.log(now.getFullYear()); // 2025
+</code></pre>
+
+    <p>📚 Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">MDN Web Docs - Date</a></p>
+  </section>
+
+  <section>
+    <h2>🧮 Math Object</h2>
+    <p>The <code>Math</code> object provides basic mathematics functions and constants. It's used for rounding, generating random numbers, getting min/max, etc.</p>
+
+    <h3>Popular Math Methods:</h3>
+    <ul>
+      <li><code>Math.random()</code> → Returns a random number between 0 and 1</li>
+      <li><code>Math.floor()</code> → Rounds down</li>
+      <li><code>Math.ceil()</code> → Rounds up</li>
+      <li><code>Math.round()</code> → Rounds to nearest</li>
+      <li><code>Math.max(), Math.min()</code> → Highest/Lowest number in a list</li>
+      <li><code>Math.abs()</code> → Absolute value</li>
+      <li><code>Math.pow(x, y)</code> → x to the power of y</li>
+      <li><code>Math.sqrt(x)</code> → Square root</li>
+    </ul>
+
+    <h3>Common Use Cases:</h3>
+    <ul>
+      <li>Generate random OTP, game values, IDs</li>
+      <li>Price rounding in shopping apps</li>
+      <li>Calculations in animations or layouts</li>
+      <li>Min/Max checks for inputs</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code>const otp = Math.floor(Math.random() * 9000 + 1000); // 4-digit OTP
+console.log(otp); // e.g., 4821
+
+console.log(Math.max(10, 2, 99)); // 99
+</code></pre>
+
+    <p>📚 Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math" target="_blank">MDN Web Docs - Math</a></p>
+  </section>
+
+  <footer>
+    🔧 Created by ZN Infotech Pvt. Ltd. | 📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a><br/>
+    💻 Technologies: IoT, Web, Mobile App, Programming Languages
+  </footer>
+
+</body>
+</html>

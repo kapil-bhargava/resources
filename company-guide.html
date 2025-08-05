@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Categories Guide for Freshers - 165+ Companies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .explanation {
+            margin-bottom: 30px;
+        }
+
+        .explanation h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 5px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .category-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .category-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 700px;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        th {
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tbody tr:hover {
+            background-color: #e3f2fd;
+            transform: scale(1.01);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        td:last-child {
+            border-right: none;
+        }
+
+        .serial-no {
+            font-weight: 600;
+            color: #666;
+            text-align: center;
+            width: 50px;
+        }
+
+        .company-name {
+            font-weight: 600;
+            color: #2c3e50;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .company-name a {
+            color: #2c3e50;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .company-name a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        .company-logo {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            object-fit: contain;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-based {
+            background-color: #e8f5e8;
+            color: #2e7d32;
+            border: 1px solid #4caf50;
+        }
+
+        .service-based {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #2196f3;
+        }
+
+        .hybrid {
+            background-color: #fff3e0;
+            color: #ef6c00;
+            border: 1px solid #ff9800;
+        }
+
+        .consulting {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+            border: 1px solid #9c27b0;
+        }
+
+        .size-badge {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .mnc {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .startup {
+            background-color: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .mid-size {
+            background-color: #fff8e1;
+            color: #f57c00;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .scrollbar-custom::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        .scrollbar-custom::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 4px;
+        }
+
+        .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+            background: #2980b9;
+        }
+
+        .country-flag {
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .table-wrapper {
+                max-height: 500px;
+            }
+
+            th, td {
+                padding: 8px 6px;
+                font-size: 0.8rem;
+            }
+
+            .company-logo {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Company Categories Guide</h1>
+            <p>Complete Guide for Freshers - Understanding 165+ Companies Worldwide</p>
+        </div>
+
+        <div class="content">
+            <div class="explanation">
+                <h2>📚 Understanding Company Categories</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <h3>🏭 Product-Based Companies</h3>
+                        <p><strong>Definition:</strong> Companies that develop, manufacture, and sell their own products or software solutions. They focus on creating innovative products for end consumers or businesses.</p>
+                        <p><strong>Examples:</strong> Google, Microsoft, Apple, Amazon, Netflix</p>
+                        <p><strong>Work Culture:</strong> Innovation-focused, long-term projects, better work-life balance, higher compensation</p>
+                    </div>
+
+                    <div class="category-card">
+                        <h3>🛠️ Service-Based Companies</h3>
+                        <p><strong>Definition:</strong> Companies that provide services to other businesses, including consulting, software development, maintenance, and support services for client projects.</p>
+                        <p><strong>Examples:</strong> TCS, Infosys, Wipro, Accenture, Cognizant</p>
+                        <p><strong>Work Culture:</strong> Client-focused, project-based work, faster career growth initially, extensive training programs</p>
+                    </div>
+
+                    <div class="category-card">
+                        <h3>🔄 Hybrid Companies</h3>
+                        <p><strong>Definition:</strong> Companies that combine both product development and service offerings. They may have their own products while also providing services to clients.</p>
+                        <p><strong>Examples:</strong> IBM, Oracle, SAP, Adobe</p>
+                        <p><strong>Work Culture:</strong> Diverse opportunities, both product and service experience</p>
+                    </div>
+
+                    <div class="category-card">
+                        <h3>💼 Consulting Companies</h3>
+                        <p><strong>Definition:</strong> Specialized firms that provide expert advice and solutions to businesses across various domains like technology, management, and strategy.</p>
+                        <p><strong>Examples:</strong> McKinsey, BCG, Deloitte, PwC</p>
+                        <p><strong>Work Culture:</strong> High-pressure environment, excellent learning opportunities, premium compensation</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalCompanies">165+</div>
+                    <div class="stat-label">Companies Listed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="mncCount">85+</div>
+                    <div class="stat-label">MNCs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="startupCount">80+</div>
+                    <div class="stat-label">Startups</div>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search companies by name, category, technology, or location...">
+            </div>
+
+            <div class="table-container">
+                <div class="table-wrapper scrollbar-custom">
+                    <table id="companyTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Company Name</th>
+                                <th>Category</th>
+                                <th>Company Size</th>
+                                <th>Primary Focus</th>
+                                <th>Technologies</th>
+                                <th>Headquarters</th>
+                                <th>Hiring Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- US Product-Based Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.google.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/google.com" alt="Google" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Google (Alphabet)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Search, Cloud, AI</td>
+                                <td>Java, Python, Go, JavaScript</td>
+                                <td>Mountain View, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.microsoft.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Microsoft
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Software, Cloud, AI</td>
+                                <td>C#, .NET, Azure, Python</td>
+                                <td>Redmond, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.apple.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/apple.com" alt="Apple" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Apple
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Consumer Electronics</td>
+                                <td>Swift, Objective-C, C++</td>
+                                <td>Cupertino, USA</td>
+                                <td>Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.amazon.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/amazon.com" alt="Amazon" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Amazon
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>E-commerce, Cloud</td>
+                                <td>Java, Python, AWS, JavaScript</td>
+                                <td>Seattle, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.meta.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/meta.com" alt="Meta" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Meta (Facebook)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Social Media, VR/AR</td>
+                                <td>React, PHP, Python, C++</td>
+                                <td>Menlo Park, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.netflix.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/netflix.com" alt="Netflix" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Netflix
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Streaming Platform</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Los Gatos, USA</td>
+                                <td>Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.tesla.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/tesla.com" alt="Tesla" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Tesla
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Electric Vehicles, Energy</td>
+                                <td>Python, C++, JavaScript</td>
+                                <td>Austin, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.uber.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/uber.com" alt="Uber" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Uber
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Ride-sharing, Delivery</td>
+                                <td>Java, Python, Go, React</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.airbnb.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/airbnb.com" alt="Airbnb" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Airbnb
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Travel, Hospitality</td>
+                                <td>Ruby, JavaScript, React, Java</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.salesforce.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/salesforce.com" alt="Salesforce" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Salesforce
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>CRM, Cloud</td>
+                                <td>Java, JavaScript, Apex, Lightning</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.adobe.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/adobe.com" alt="Adobe" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Adobe
+                                    </a>
+                                </td>
+                                <td><span class="category-badge hybrid">Hybrid</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Creative Software, Marketing</td>
+                                <td>Java, JavaScript, C++, Python</td>
+                                <td>San Jose, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.vmware.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/vmware.com" alt="VMware" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 VMware
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Virtualization, Cloud</td>
+                                <td>Java, C++, Python, JavaScript</td>
+                                <td>Palo Alto, USA</td>
+                                <td>Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.servicenow.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/servicenow.com" alt="ServiceNow" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 ServiceNow
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Enterprise Software</td>
+                                <td>JavaScript, Java, AngularJS</td>
+                                <td>Santa Clara, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.slack.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/slack.com" alt="Slack" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Slack
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Communication Platform</td>
+                                <td>JavaScript, PHP, Java, React</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.zoom.us" target="_blank">
+                                        <img src="https://logo.clearbit.com/zoom.us" alt="Zoom" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Zoom
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Video Communications</td>
+                                <td>C++, JavaScript, Java, Python</td>
+                                <td>San Jose, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.snowflake.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/snowflake.com" alt="Snowflake" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Snowflake
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Cloud Data Platform</td>
+                                <td>Java, Python, JavaScript, SQL</td>
+                                <td>Bozeman, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.databricks.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/databricks.com" alt="Databricks" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Databricks
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Data Analytics, AI</td>
+                                <td>Scala, Python, Java, Spark</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.stripe.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Stripe
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Fintech, Payments</td>
+                                <td>Ruby, JavaScript, Python, Go</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.block.xyz" target="_blank">
+                                        <img src="https://logo.clearbit.com/block.xyz" alt="Block" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Square (Block)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Fintech, Payments</td>
+                                <td>Java, Ruby, JavaScript, Go</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.paypal.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/paypal.com" alt="PayPal" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 PayPal
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Fintech, Payments</td>
+                                <td>Java, JavaScript, Python, React</td>
+                                <td>San Jose, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.ebay.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/ebay.com" alt="eBay" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 eBay
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>E-commerce Marketplace</td>
+                                <td>Java, JavaScript, Python, React</td>
+                                <td>San Jose, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.x.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/x.com" alt="X" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Twitter (X)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Social Media</td>
+                                <td>Scala, Java, JavaScript, React</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.linkedin.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/linkedin.com" alt="LinkedIn" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 LinkedIn
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Professional Network</td>
+                                <td>Java, Scala, JavaScript, Python</td>
+                                <td>Sunnyvale, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.pinterest.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/pinterest.com" alt="Pinterest" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Pinterest
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Social Media, Discovery</td>
+                                <td>Python, Java, JavaScript, React</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.snapchat.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/snapchat.com" alt="Snapchat" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Snapchat
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Social Media, AR</td>
+                                <td>Java, Python, JavaScript, C++</td>
+                                <td>Santa Monica, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.reddit.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/reddit.com" alt="Reddit" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Reddit
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Social Media, Forums</td>
+                                <td>Python, JavaScript, React, Go</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.discord.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/discord.com" alt="Discord" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Discord
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Communication, Gaming</td>
+                                <td>JavaScript, Python, Rust, React</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.dropbox.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/dropbox.com" alt="Dropbox" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Dropbox
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Cloud Storage</td>
+                                <td>Python, Go, JavaScript, React</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.box.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/box.com" alt="Box" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Box
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Cloud Storage, Enterprise</td>
+                                <td>Java, JavaScript, Python, React</td>
+                                <td>Redwood City, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.twilio.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/twilio.com" alt="Twilio" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Twilio
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Communication APIs</td>
+                                <td>Java, Python, JavaScript, Node.js</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.okta.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/okta.com" alt="Okta" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Okta
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Identity Management</td>
+                                <td>Java, JavaScript, Python, React</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.paloaltonetworks.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/paloaltonetworks.com" alt="Palo Alto Networks" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Palo Alto Networks
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Cybersecurity</td>
+                                <td>Python, C++, Java, Go</td>
+                                <td>Santa Clara, USA</td>
+                                <td>Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.crowdstrike.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/crowdstrike.com" alt="CrowdStrike" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 CrowdStrike
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Cybersecurity</td>
+                                <td>Python, Go, JavaScript, C++</td>
+                                <td>Austin, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.splunk.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/splunk.com" alt="Splunk" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Splunk
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Data Analytics, Security</td>
+                                <td>Python, Java, JavaScript, C++</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Gaming Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.ea.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/ea.com" alt="EA" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Electronic Arts (EA)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Gaming</td>
+                                <td>C++, C#, Unity, Unreal</td>
+                                <td>Redwood City, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.activisionblizzard.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/activisionblizzard.com" alt="Activision Blizzard" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Activision Blizzard
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Gaming</td>
+                                <td>C++, C#, Unity, Python</td>
+                                <td>Santa Monica, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.epicgames.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/epicgames.com" alt="Epic Games" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Epic Games
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Gaming, Game Engine</td>
+                                <td>C++, Unreal Engine, C#</td>
+                                <td>Cary, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.riotgames.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/riotgames.com" alt="Riot Games" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Riot Games
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Gaming</td>
+                                <td>C++, C#, Java, Python</td>
+                                <td>Los Angeles, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Indian Product-Based Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.flipkart.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/flipkart.com" alt="Flipkart" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Flipkart
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>E-commerce</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.zomato.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/zomato.com" alt="Zomato" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Zomato
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Food Delivery</td>
+                                <td>Python, Java, React, Node.js</td>
+                                <td>Gurgaon, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.swiggy.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/swiggy.com" alt="Swiggy" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Swiggy
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Food Delivery</td>
+                                <td>Python, Java, React, Go</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.paytm.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/paytm.com" alt="Paytm" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Paytm
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Fintech, Payments</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Noida, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.olacabs.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/olacabs.com" alt="Ola" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Ola
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Ride-sharing</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.razorpay.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/razorpay.com" alt="Razorpay" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Razorpay
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Fintech, Payments</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.byjus.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/byjus.com" alt="BYJU'S" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 BYJU'S
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>EdTech</td>
+                                <td>React Native, Node.js, Python</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.unacademy.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/unacademy.com" alt="Unacademy" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Unacademy
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>EdTech</td>
+                                <td>React, Node.js, Python, Java</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.freshworks.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/freshworks.com" alt="Freshworks" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Freshworks
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>SaaS, CRM</td>
+                                <td>Ruby, JavaScript, React</td>
+                                <td>Chennai, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.zerodha.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/zerodha.com" alt="Zerodha" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Zerodha
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Fintech, Trading</td>
+                                <td>Python, JavaScript, Go</td>
+                                <td>Bangalore, India</td>
+                                <td>Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.dream11.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/dream11.com" alt="Dream11" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Dream11
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Fantasy Sports</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Mumbai, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.phonepe.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/phonepe.com" alt="PhonePe" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 PhonePe
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Fintech, Payments</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.cred.club" target="_blank">
+                                        <img src="https://logo.clearbit.com/cred.club" alt="Cred" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Cred
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Fintech, Credit Cards</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Bangalore, India</td>
+                                <td>Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.nykaa.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/nykaa.com" alt="Nykaa" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Nykaa
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>E-commerce, Beauty</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Mumbai, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.lenskart.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/lenskart.com" alt="Lenskart" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Lenskart
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>E-commerce, Eyewear</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Gurgaon, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.urbancompany.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/urbancompany.com" alt="Urban Company" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Urban Company
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Home Services</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Gurgaon, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.blinkit.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/blinkit.com" alt="Blinkit" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Grofers (Blinkit)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Quick Commerce</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Gurgaon, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.meesho.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/meesho.com" alt="Meesho" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Meesho
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Social Commerce</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.sharechat.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/sharechat.com" alt="ShareChat" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 ShareChat
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Social Media</td>
+                                <td>Java, Python, React, Node.js</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.postman.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/postman.com" alt="Postman" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Postman
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>API Development</td>
+                                <td>JavaScript, Node.js, Go, React</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- European Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.spotify.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/spotify.com" alt="Spotify" class="company-logo" onerror="this.style.display='none'">
+                                        🇸🇪 Spotify
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Music Streaming</td>
+                                <td>Java, Python, JavaScript, React</td>
+                                <td>Stockholm, Sweden</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.booking.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/booking.com" alt="Booking.com" class="company-logo" onerror="this.style.display='none'">
+                                        🇳🇱 Booking.com
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Travel, Hospitality</td>
+                                <td>Java, JavaScript, React, Python</td>
+                                <td>Amsterdam, Netherlands</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.sap.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/sap.com" alt="SAP" class="company-logo" onerror="this.style.display='none'">
+                                        🇩🇪 SAP
+                                    </a>
+                                </td>
+                                <td><span class="category-badge hybrid">Hybrid</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Enterprise Software</td>
+                                <td>Java, JavaScript, ABAP, Python</td>
+                                <td>Walldorf, Germany</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.ubisoft.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/ubisoft.com" alt="Ubisoft" class="company-logo" onerror="this.style.display='none'">
+                                        🇫🇷 Ubisoft
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Gaming</td>
+                                <td>C++, C#, Unity, Python</td>
+                                <td>Montreuil, France</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.unity.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/unity.com" alt="Unity" class="company-logo" onerror="this.style.display='none'">
+                                        🇩🇰 Unity Technologies
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Game Engine, Development</td>
+                                <td>C#, C++, JavaScript, Unity</td>
+                                <td>Copenhagen, Denmark</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.deepmind.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/deepmind.com" alt="DeepMind" class="company-logo" onerror="this.style.display='none'">
+                                        🇬🇧 DeepMind
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>AI Research</td>
+                                <td>Python, TensorFlow, JAX, C++</td>
+                                <td>London, UK</td>
+                                <td>Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.revolut.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/revolut.com" alt="Revolut" class="company-logo" onerror="this.style.display='none'">
+                                        🇬🇧 Revolut
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Fintech, Banking</td>
+                                <td>Java, Kotlin, JavaScript, React</td>
+                                <td>London, UK</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.monzo.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/monzo.com" alt="Monzo" class="company-logo" onerror="this.style.display='none'">
+                                        🇬🇧 Monzo
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Digital Banking</td>
+                                <td>Go, JavaScript, React, Python</td>
+                                <td>London, UK</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.wise.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/wise.com" alt="Wise" class="company-logo" onerror="this.style.display='none'">
+                                        🇬🇧 Wise (TransferWise)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Fintech, Money Transfer</td>
+                                <td>Java, JavaScript, React, Python</td>
+                                <td>London, UK</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.cabify.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/cabify.com" alt="Cabify" class="company-logo" onerror="this.style.display='none'">
+                                        🇪🇸 Cabify
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Ride-sharing</td>
+                                <td>Ruby, JavaScript, React, Go</td>
+                                <td>Madrid, Spain</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Canadian Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.shopify.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/shopify.com" alt="Shopify" class="company-logo" onerror="this.style.display='none'">
+                                        🇨🇦 Shopify
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>E-commerce Platform</td>
+                                <td>Ruby, JavaScript, React, GraphQL</td>
+                                <td>Ottawa, Canada</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.blackberry.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/blackberry.com" alt="BlackBerry" class="company-logo" onerror="this.style.display='none'">
+                                        🇨🇦 BlackBerry
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Cybersecurity, IoT</td>
+                                <td>Java, C++, JavaScript, Python</td>
+                                <td>Waterloo, Canada</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Australian Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.atlassian.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/atlassian.com" alt="Atlassian" class="company-logo" onerror="this.style.display='none'">
+                                        🇦🇺 Atlassian
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Collaboration Software</td>
+                                <td>Java, JavaScript, React, Python</td>
+                                <td>Sydney, Australia</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.canva.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/canva.com" alt="Canva" class="company-logo" onerror="this.style.display='none'">
+                                        🇦🇺 Canva
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Design Platform</td>
+                                <td>JavaScript, TypeScript, React, Java</td>
+                                <td>Sydney, Australia</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Chinese Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.bytedance.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/bytedance.com" alt="ByteDance" class="company-logo" onerror="this.style.display='none'">
+                                        🇨🇳 ByteDance (TikTok)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Social Media, AI</td>
+                                <td>Python, Go, JavaScript, React</td>
+                                <td>Beijing, China</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.alibaba.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/alibaba.com" alt="Alibaba" class="company-logo" onerror="this.style.display='none'">
+                                        🇨🇳 Alibaba
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>E-commerce, Cloud</td>
+                                <td>Java, JavaScript, Python, React</td>
+                                <td>Hangzhou, China</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.tencent.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/tencent.com" alt="Tencent" class="company-logo" onerror="this.style.display='none'">
+                                        🇨🇳 Tencent
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Social Media, Gaming</td>
+                                <td>C++, Java, JavaScript, Python</td>
+                                <td>Shenzhen, China</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.baidu.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/baidu.com" alt="Baidu" class="company-logo" onerror="this.style.display='none'">
+                                        🇨🇳 Baidu
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Search, AI</td>
+                                <td>C++, Python, JavaScript, Java</td>
+                                <td>Beijing, China</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Japanese Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.nintendo.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/nintendo.com" alt="Nintendo" class="company-logo" onerror="this.style.display='none'">
+                                        🇯🇵 Nintendo
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Gaming, Hardware</td>
+                                <td>C++, C#, Unity, JavaScript</td>
+                                <td>Kyoto, Japan</td>
+                                <td>Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.sony.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/sony.com" alt="Sony" class="company-logo" onerror="this.style.display='none'">
+                                        🇯🇵 Sony
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Electronics, Gaming, Entertainment</td>
+                                <td>C++, Java, JavaScript, Python</td>
+                                <td>Tokyo, Japan</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.rakuten.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/rakuten.com" alt="Rakuten" class="company-logo" onerror="this.style.display='none'">
+                                        🇯🇵 Rakuten
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>E-commerce, Fintech</td>
+                                <td>Java, JavaScript, React, Python</td>
+                                <td>Tokyo, Japan</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Service-Based Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.tcs.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/tcs.com" alt="TCS" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Tata Consultancy Services (TCS)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services, Consulting</td>
+                                <td>Java, .NET, Python, Angular</td>
+                                <td>Mumbai, India</td>
+                                <td>Freshers + Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.infosys.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/infosys.com" alt="Infosys" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Infosys
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services, Consulting</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Bangalore, India</td>
+                                <td>Freshers + Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.wipro.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/wipro.com" alt="Wipro" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Wipro
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services, Consulting</td>
+                                <td>Java, .NET, Python, Angular</td>
+                                <td>Bangalore, India</td>
+                                <td>Freshers + Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.hcltech.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/hcltech.com" alt="HCL" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 HCL Technologies
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services, Engineering</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Noida, India</td>
+                                <td>Freshers + Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.techmahindra.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/techmahindra.com" alt="Tech Mahindra" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Tech Mahindra
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services, Telecom</td>
+                                <td>Java, .NET, Python, Angular</td>
+                                <td>Pune, India</td>
+                                <td>Freshers + Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.accenture.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/accenture.com" alt="Accenture" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Accenture
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Consulting, Technology</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Dublin, Ireland</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.cognizant.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/cognizant.com" alt="Cognizant" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Cognizant
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services, Consulting</td>
+                                <td>Java, .NET, Python, Angular</td>
+                                <td>Teaneck, USA</td>
+                                <td>Freshers + Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.capgemini.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/capgemini.com" alt="Capgemini" class="company-logo" onerror="this.style.display='none'">
+                                        🇫🇷 Capgemini
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Consulting, Technology</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Paris, France</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.ltimindtree.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/ltimindtree.com" alt="LTIMindtree" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 L&T Infotech
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Mumbai, India</td>
+                                <td>Freshers + Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.mindtree.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/mindtree.com" alt="Mindtree" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Mindtree
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services, Digital</td>
+                                <td>Java, .NET, Python, Angular</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.mphasis.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/mphasis.com" alt="Mphasis" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Mphasis
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.hexaware.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/hexaware.com" alt="Hexaware" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Hexaware
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>IT Services, Automation</td>
+                                <td>Java, .NET, Python, RPA</td>
+                                <td>Mumbai, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.persistent.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/persistent.com" alt="Persistent" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Persistent Systems
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>Software Development</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Pune, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.dxc.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/dxc.com" alt="DXC" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 DXC Technology
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services</td>
+                                <td>Java, .NET, Python, Cloud</td>
+                                <td>Tysons, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.nttdata.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/nttdata.com" alt="NTT Data" class="company-logo" onerror="this.style.display='none'">
+                                        🇯🇵 NTT Data
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>IT Services, Consulting</td>
+                                <td>Java, .NET, Python, Cloud</td>
+                                <td>Tokyo, Japan</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.zensar.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/zensar.com" alt="Zensar" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Zensar Technologies
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>Digital Solutions</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Pune, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.cyient.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/cyient.com" alt="Cyient" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Cyient
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>Engineering Services</td>
+                                <td>Java, .NET, Python, CAD</td>
+                                <td>Hyderabad, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.ltts.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/ltts.com" alt="LTTS" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 LTTS
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Engineering Services</td>
+                                <td>C++, Java, Python, Embedded</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.birlasoft.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/birlasoft.com" alt="Birlasoft" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Birlasoft
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>IT Services</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Pune, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.mastek.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/mastek.com" alt="Mastek" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Mastek
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>Digital Transformation</td>
+                                <td>Java, .NET, Python, Angular</td>
+                                <td>Mumbai, India</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Hybrid Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.ibm.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/ibm.com" alt="IBM" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 IBM
+                                    </a>
+                                </td>
+                                <td><span class="category-badge hybrid">Hybrid</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Cloud, AI, Services</td>
+                                <td>Java, Python, Node.js, AI/ML</td>
+                                <td>Armonk, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.oracle.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/oracle.com" alt="Oracle" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Oracle
+                                    </a>
+                                </td>
+                                <td><span class="category-badge hybrid">Hybrid</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Database, Cloud, Services</td>
+                                <td>Java, SQL, PL/SQL, Cloud</td>
+                                <td>Austin, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.cisco.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/cisco.com" alt="Cisco" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Cisco
+                                    </a>
+                                </td>
+                                <td><span class="category-badge hybrid">Hybrid</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Networking, Security</td>
+                                <td>C, C++, Python, Java</td>
+                                <td>San Jose, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.intel.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/intel.com" alt="Intel" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Intel
+                                    </a>
+                                </td>
+                                <td><span class="category-badge hybrid">Hybrid</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Semiconductors, Hardware</td>
+                                <td>C++, Python, Verilog, VHDL</td>
+                                <td>Santa Clara, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.dell.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/dell.com" alt="Dell" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Dell Technologies
+                                    </a>
+                                </td>
+                                <td><span class="category-badge hybrid">Hybrid</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Hardware, Software, Services</td>
+                                <td>Java, C++, Python, JavaScript</td>
+                                <td>Round Rock, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.hp.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/hp.com" alt="HP" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 HP Inc.
+                                    </a>
+                                </td>
+                                <td><span class="category-badge hybrid">Hybrid</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Hardware, Software</td>
+                                <td>C++, Java, Python, JavaScript</td>
+                                <td>Palo Alto, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Consulting Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.mckinsey.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/mckinsey.com" alt="McKinsey" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 McKinsey & Company
+                                    </a>
+                                </td>
+                                <td><span class="category-badge consulting">Consulting</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Management Consulting</td>
+                                <td>Analytics, Strategy, Digital</td>
+                                <td>New York, USA</td>
+                                <td>MBA/Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.bcg.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/bcg.com" alt="BCG" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Boston Consulting Group
+                                    </a>
+                                </td>
+                                <td><span class="category-badge consulting">Consulting</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Strategy Consulting</td>
+                                <td>Analytics, Digital, Strategy</td>
+                                <td>Boston, USA</td>
+                                <td>MBA/Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.deloitte.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/deloitte.com" alt="Deloitte" class="company-logo" onerror="this.style.display='none'">
+                                        🇬🇧 Deloitte
+                                    </a>
+                                </td>
+                                <td><span class="category-badge consulting">Consulting</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Consulting, Audit, Tax</td>
+                                <td>Various Technologies</td>
+                                <td>London, UK</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.pwc.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/pwc.com" alt="PwC" class="company-logo" onerror="this.style.display='none'">
+                                        🇬🇧 PwC
+                                    </a>
+                                </td>
+                                <td><span class="category-badge consulting">Consulting</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Consulting, Audit, Tax</td>
+                                <td>Various Technologies</td>
+                                <td>London, UK</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.kpmg.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/kpmg.com" alt="KPMG" class="company-logo" onerror="this.style.display='none'">
+                                        🇳🇱 KPMG
+                                    </a>
+                                </td>
+                                <td><span class="category-badge consulting">Consulting</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Consulting, Audit, Tax</td>
+                                <td>Various Technologies</td>
+                                <td>Amstelveen, Netherlands</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.ey.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/ey.com" alt="EY" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 EY (Ernst & Young)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge consulting">Consulting</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Consulting, Audit, Tax</td>
+                                <td>Various Technologies</td>
+                                <td>London, UK</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.bain.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/bain.com" alt="Bain" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Bain & Company
+                                    </a>
+                                </td>
+                                <td><span class="category-badge consulting">Consulting</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Strategy Consulting</td>
+                                <td>Analytics, Strategy, Digital</td>
+                                <td>Boston, USA</td>
+                                <td>MBA/Experienced</td>
+                            </tr>
+
+                            <!-- More Startups and Mid-Size Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.palantir.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/palantir.com" alt="Palantir" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Palantir
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Big Data Analytics</td>
+                                <td>Java, Python, TypeScript, Go</td>
+                                <td>Denver, USA</td>
+                                <td>Experienced</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.coinbase.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/coinbase.com" alt="Coinbase" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Coinbase
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Cryptocurrency Exchange</td>
+                                <td>Ruby, JavaScript, Go, Python</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.robinhood.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/robinhood.com" alt="Robinhood" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Robinhood
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Fintech, Trading</td>
+                                <td>Python, Django, React, Swift</td>
+                                <td>Menlo Park, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.doordash.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/doordash.com" alt="DoorDash" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 DoorDash
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Food Delivery</td>
+                                <td>Python, Go, JavaScript, React</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.instacart.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/instacart.com" alt="Instacart" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Instacart
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Grocery Delivery</td>
+                                <td>Ruby, JavaScript, React, Python</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.lyft.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/lyft.com" alt="Lyft" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Lyft
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Ride-sharing</td>
+                                <td>Python, Go, JavaScript, React</td>
+                                <td>San Francisco, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.grubhub.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/grubhub.com" alt="Grubhub" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Grubhub
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Food Delivery</td>
+                                <td>Python, JavaScript, React, Java</td>
+                                <td>Chicago, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.onepeloton.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/onepeloton.com" alt="Peloton" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Peloton
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Fitness Technology</td>
+                                <td>JavaScript, React, Python, Swift</td>
+                                <td>New York, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.roku.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/roku.com" alt="Roku" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Roku
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Streaming Platform</td>
+                                <td>C++, JavaScript, BrightScript</td>
+                                <td>San Jose, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.hulu.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/hulu.com" alt="Hulu" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Hulu
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Streaming Platform</td>
+                                <td>Python, JavaScript, React, Go</td>
+                                <td>Santa Monica, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.paramountplus.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/paramountplus.com" alt="Paramount+" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Paramount+
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Streaming Platform</td>
+                                <td>JavaScript, React, Node.js, Java</td>
+                                <td>New York, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.hbomax.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/hbomax.com" alt="HBO Max" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 HBO Max
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Streaming Platform</td>
+                                <td>JavaScript, React, Node.js, Python</td>
+                                <td>New York, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.disneyplus.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/disneyplus.com" alt="Disney+" class="company-logo" onerror="this.style.display='none'">
+                                        🇺🇸 Disney+
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Streaming Platform</td>
+                                <td>JavaScript, React, Java, Python</td>
+                                <td>Burbank, USA</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- More International Startups -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.grab.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/grab.com" alt="Grab" class="company-logo" onerror="this.style.display='none'">
+                                        🇸🇬 Grab
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Super App, Ride-sharing</td>
+                                <td>Go, Java, JavaScript, React</td>
+                                <td>Singapore</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.sea.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/sea.com" alt="Sea Limited" class="company-logo" onerror="this.style.display='none'">
+                                        🇸🇬 Sea Limited
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Gaming, E-commerce, Fintech</td>
+                                <td>Java, Python, JavaScript, React</td>
+                                <td>Singapore</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.gotocompany.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/gotocompany.com" alt="GoTo" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇩 GoTo (Gojek + Tokopedia)
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Super App, E-commerce</td>
+                                <td>Go, Java, JavaScript, React</td>
+                                <td>Jakarta, Indonesia</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.coupang.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/coupang.com" alt="Coupang" class="company-logo" onerror="this.style.display='none'">
+                                        🇰🇷 Coupang
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>E-commerce</td>
+                                <td>Java, JavaScript, React, Python</td>
+                                <td>Seoul, South Korea</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.navercorp.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/navercorp.com" alt="Naver" class="company-logo" onerror="this.style.display='none'">
+                                        🇰🇷 Naver
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Search, Web Services</td>
+                                <td>Java, JavaScript, Python, C++</td>
+                                <td>Seongnam, South Korea</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.kakaocorp.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/kakaocorp.com" alt="Kakao" class="company-logo" onerror="this.style.display='none'">
+                                        🇰🇷 Kakao
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Messaging, Internet Services</td>
+                                <td>Java, JavaScript, Python, Kotlin</td>
+                                <td>Jeju, South Korea</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.nubank.com.br" target="_blank">
+                                        <img src="https://logo.clearbit.com/nubank.com.br" alt="Nubank" class="company-logo" onerror="this.style.display='none'">
+                                        🇧🇷 Nubank
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Digital Banking</td>
+                                <td>Clojure, Java, Kotlin, React</td>
+                                <td>São Paulo, Brazil</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.mercadolibre.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/mercadolibre.com" alt="MercadoLibre" class="company-logo" onerror="this.style.display='none'">
+                                        🇦🇷 MercadoLibre
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>E-commerce, Fintech</td>
+                                <td>Java, JavaScript, React, Python</td>
+                                <td>Buenos Aires, Argentina</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.wix.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/wix.com" alt="Wix" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇱 Wix
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge mnc">MNC</span></td>
+                                <td>Website Builder</td>
+                                <td>JavaScript, React, Node.js, Java</td>
+                                <td>Tel Aviv, Israel</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.monday.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/monday.com" alt="Monday.com" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇱 Monday.com
+                                    </a>
+                                </td>
+                                <td><span class="category-badge product-based">Product-Based</span></td>
+                                <td><span class="size-badge startup">Startup</span></td>
+                                <td>Work Management Platform</td>
+                                <td>JavaScript, React, Node.js, Python</td>
+                                <td>Tel Aviv, Israel</td>
+                                <td>All Levels</td>
+                            </tr>
+
+                            <!-- Additional Service Companies -->
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.coforge.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/coforge.com" alt="Coforge" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Coforge
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>IT Services</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Noida, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.sonata-software.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/sonata-software.com" alt="Sonata Software" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Sonata Software
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>Digital Transformation</td>
+                                <td>Java, .NET, Python, Angular</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.rampgroup.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/rampgroup.com" alt="Rampgroup" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Rampgroup
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>IT Services</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Hyderabad, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.kelltontech.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/kelltontech.com" alt="Kellton Tech" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Kellton Tech
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>Digital Solutions</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Gurgaon, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                            <tr>
+                                <td class="serial-no"></td>
+                                <td class="company-name">
+                                    <a href="https://www.happiestminds.com" target="_blank">
+                                        <img src="https://logo.clearbit.com/happiestminds.com" alt="Happiest Minds" class="company-logo" onerror="this.style.display='none'">
+                                        🇮🇳 Happiest Minds
+                                    </a>
+                                </td>
+                                <td><span class="category-badge service-based">Service-Based</span></td>
+                                <td><span class="size-badge mid-size">Mid-Size</span></td>
+                                <td>Digital Transformation</td>
+                                <td>Java, .NET, Python, React</td>
+                                <td>Bangalore, India</td>
+                                <td>All Levels</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamic serial number generation
+        function updateSerialNumbers() {
+            const rows = document.querySelectorAll('#companyTable tbody tr');
+            rows.forEach((row, index) => {
+                const serialCell = row.querySelector('.serial-no');
+                if (serialCell) {
+                    serialCell.textContent = index + 1;
+                }
+            });
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('companyTable');
+        const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+        searchInput.addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            let visibleCount = 0;
+            
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const cells = row.getElementsByTagName('td');
+                let found = false;
+                
+                for (let j = 0; j < cells.length; j++) {
+                    const cellText = cells[j].textContent.toLowerCase();
+                    if (cellText.includes(searchTerm)) {
+                        found = true;
+                        break;
+                    }
+                }
+                
+                if (found) {
+                    row.style.display = '';
+                    visibleCount++;
+                    // Update serial number for visible rows
+                    const serialCell = row.querySelector('.serial-no');
+                    if (serialCell) {
+                        serialCell.textContent = visibleCount;
+                    }
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+
+            // Update stats
+            updateStats();
+        });
+
+        // Update statistics dynamically
+        function updateStats() {
+            const visibleRows = Array.from(rows).filter(row => row.style.display !== 'none');
+            const totalCompanies = visibleRows.length;
+            
+            let mncCount = 0;
+            let startupCount = 0;
+            
+            visibleRows.forEach(row => {
+                const sizeCell = row.querySelector('.size-badge');
+                if (sizeCell) {
+                    if (sizeCell.classList.contains('mnc')) mncCount++;
+                    if (sizeCell.classList.contains('startup')) startupCount++;
+                }
+            });
+
+            document.getElementById('totalCompanies').textContent = totalCompanies;
+            document.getElementById('mncCount').textContent = mncCount;
+            document.getElementById('startupCount').textContent = startupCount;
+        }
+
+        // Add smooth scrolling for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSerialNumbers();
+            updateStats();
+            
+            const tableWrapper = document.querySelector('.table-wrapper');
+            let isScrolling = false;
+            
+            tableWrapper.addEventListener('scroll', function() {
+                if (!isScrolling) {
+                    window.requestAnimationFrame(function() {
+                        isScrolling = false;
+                    });
+                    isScrolling = true;
+                }
+            });
+        });
+
+        // Add click to copy functionality for company names
+        document.addEventListener('DOMContentLoaded', function() {
+            const companyNames = document.querySelectorAll('.company-name a');
+            
+            companyNames.forEach(function(element) {
+                element.addEventListener('click', function(e) {
+                    // Allow normal link behavior but also copy text
+                    const text = this.textContent.replace(/🇺🇸|🇮🇳|🇬🇧|🇫🇷|🇩🇪|🇸🇪|🇳🇱|🇩🇰|🇨🇦|🇦🇺|🇨🇳|🇯🇵|🇰🇷|🇸🇬|🇮🇩|🇧🇷|🇦🇷|🇮🇱|🇪🇸/g, '').trim();
+                    
+                    // Copy to clipboard on right-click or ctrl+click
+                    if (e.ctrlKey || e.metaKey || e.button === 2) {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(text).then(function() {
+                            // Show temporary feedback
+                            const originalText = element.textContent;
+                            const flagMatch = originalText.match(/🇺🇸|🇮🇳|🇬🇧|🇫🇷|🇩🇪|🇸🇪|🇳🇱|🇩🇰|🇨🇦|🇦🇺|🇨🇳|🇯🇵|🇰🇷|🇸🇬|🇮🇩|🇧🇷|🇦🇷|🇮🇱|🇪🇸/);
+                            const flag = flagMatch ? flagMatch[0] + ' ' : '';
+                            
+                            element.textContent = flag + '✓ Copied!';
+                            element.style.color = '#27ae60';
+                            
+                            setTimeout(function() {
+                                element.textContent = originalText;
+                                element.style.color = '#2c3e50';
+                            }, 1000);
+                        });
+                    }
+                });
+                
+                // Add context menu event for right-click copy
+                element.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    const text = this.textContent.replace(/🇺🇸|🇮🇳|🇬🇧|🇫🇷|🇩🇪|🇸🇪|🇳🇱|🇩🇰|🇨🇦|🇦🇺|🇨🇳|🇯🇵|🇰🇷|🇸🇬|🇮🇩|🇧🇷|🇦🇷|🇮🇱|🇪🇸/g, '').trim();
+                    navigator.clipboard.writeText(text);
+                });
+            });
+        });
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + F to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            
+            // Escape to clear search
+            if (e.key === 'Escape' && document.activeElement === searchInput) {
+                searchInput.value = '';
+                searchInput.dispatchEvent(new Event('keyup'));
+            }
+        });
+    </script>
+</body>
+</html>

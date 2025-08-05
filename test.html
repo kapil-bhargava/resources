@@ -2,18 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>&lt;param&gt; Tag Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Grid Layout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom background colors for demo */
+    .bg-pink { background-color: lightpink !important; }
+    .bg-teal { background-color: lightseagreen !important; }
+    li:hover { background-color: #add8e6 !important; }
+    li:active { background-color: lightcoral !important; }
+  </style>
 </head>
 <body>
-  <h2>Video Player with &lt;param&gt; Tag</h2>
 
-  <object data="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" width="400" height="300">
-    <param name="autoplay" value="true">
-    <param name="controls" value="true">
-    Your browser does not support embedded objects.
-  </object>
+<div class="container-fluid" style="height: 800px;">
+  <div class="row h-100">
+    
+    <!-- Sidebar (30%) -->
+    <div class="col-3 bg-danger bg-opacity-50 p-3">
+      <ul class="list-unstyled">
+        <li class="mb-2 p-2 bg-white border border-dark">Item 1</li>
+        <li class="mb-2 p-2 bg-white border border-dark">Item 2</li>
+        <li class="mb-2 p-2 bg-white border border-dark">Item 3</li>
+        <li class="mb-2 p-2 bg-white border border-dark">Item 4</li>
+      </ul>
+    </div>
 
-  <p><strong>Note:</strong> Most modern browsers ignore &lt;param&gt; for videos — it's mainly for older plugins. Use &lt;video&gt; instead for reliable behavior.</p>
+    <!-- Main content (70%) -->
+    <div class="col-9 bg-success bg-opacity-50 p-4">
+      <div class="row g-3">
+        <div class="col-6 col-md-4">
+          <div class="p-3 h-100 border border-dark bg-warning">child2-1</div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="p-3 h-100 border border-dark bg-secondary bg-opacity-50">child2-2</div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="p-3 h-100 border border-dark bg-pink">child2-3</div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="p-3 h-100 border border-dark bg-info bg-opacity-50">child2-4</div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="p-3 h-100 border border-dark bg-warning bg-opacity-25">child2-5</div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="p-3 h-100 border border-dark bg-teal">child2-6</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
-        

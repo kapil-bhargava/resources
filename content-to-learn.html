@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frontend Developer Guide – ZN Infotech</title>
+  <style>
+    :root {
+      --primary: #2b6cb0;
+      --bg-light: #f5f7fa;
+      --bg-dark: #1a202c;
+      --text-light: #fff;
+      --text-dark: #2d3748;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    header {
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav {
+      flex: 0 0 260px;
+      background: #edf2f7;
+      padding: 2rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      border-right: 1px solid #ccc;
+      overflow-y: auto;
+    }
+
+    nav a {
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease-in-out;
+    }
+
+    nav a:hover {
+      padding-left: 4px;
+      color: #1a365d;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-2px);
+    }
+
+    section h2 a {
+      text-decoration: none;
+      color: var(--primary);
+    }
+
+    section h2 a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    footer {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      text-align: center;
+      padding: 1.2rem;
+    }
+
+    footer a {
+      color: #90cdf4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      nav {
+        position: relative;
+        height: auto;
+        border-right: none;
+      }
+
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📘 Frontend Developer Guide – ZN Infotech</h1>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="#advanced-css">🎨 Advanced CSS Techniques</a>
+      <a href="#dom-apis">🧠 DOM & JS APIs</a>
+      <a href="#react-tools">⚛️ React Tooling</a>
+      <a href="#design-systems">🧩 Component Design Systems</a>
+      <a href="#frontend-architecture">🏗️ Frontend Architecture</a>
+      <a href="#build-automation">🛠️ Build Tools & Dev Setup</a>
+      <a href="#practice-projects">🚀 Project Ideas</a>
+    </nav>
+
+    <main>
+      <section id="advanced-css">
+        <h2><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">🎨 Advanced CSS Techniques</a></h2>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has" target="_blank"><code>:has()</code></a> – Parent styling based on child state</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp" target="_blank"><code>clamp()</code></a>, <code>min()</code>, <code>max()</code> – fluid typography/layout</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout" target="_blank">CSS Grid</a> – powerful 2D layout system</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll_snap" target="_blank">Scroll Snap</a> & <a href="https://developer.mozilla.org/en-US/docs/Web/API/ScrollTimeline" target="_blank">Scroll Timeline</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*" target="_blank">CSS Variables</a> – custom properties</li>
+        </ul>
+      </section>
+
+      <section id="dom-apis">
+        <h2><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" target="_blank">🧠 DOM & JavaScript APIs</a></h2>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver" target="_blank">IntersectionObserver</a> – detect visibility</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver" target="_blank">MutationObserver</a> – watch DOM changes</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">Drag & Drop API</a> – native interactions</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#debouncing-and-throttling" target="_blank">Debounce & Throttle</a> – optimize performance</li>
+        </ul>
+      </section>
+
+      <section id="react-tools">
+        <h2><a href="https://react.dev/" target="_blank">⚛️ React Tooling</a></h2>
+        <ul>
+          <li><a href="https://www.framer.com/motion/" target="_blank">Framer Motion</a> – animations in React</li>
+          <li><a href="https://tanstack.com/query/latest" target="_blank">React Query (TanStack)</a> – data fetching</li>
+          <li><a href="https://github.com/pmndrs/zustand" target="_blank">Zustand</a> / <a href="https://jotai.org/" target="_blank">Jotai</a> – minimal global state</li>
+          <li><a href="https://tailwindcss.com/docs/plugins" target="_blank">Tailwind Plugins</a> – extend utility classes</li>
+        </ul>
+      </section>
+
+      <section id="design-systems">
+        <h2><a href="https://bradfrost.com/blog/post/atomic-web-design/" target="_blank">🧩 Component Design Systems</a></h2>
+        <ul>
+          <li><a href="https://bradfrost.com/blog/post/atomic-web-design/" target="_blank">Atomic Design Principles</a></li>
+          <li><a href="https://mui.com/components/" target="_blank">Reusable UI libraries</a> (buttons, modals, forms)</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" target="_blank">Accessibility-first (ARIA)</a></li>
+          <li><a href="https://headlessui.com/" target="_blank">Headless UI design strategy</a></li>
+        </ul>
+      </section>
+
+      <section id="frontend-architecture">
+        <h2><a href="https://addyosmani.com/blog/large-scale-webapp-architecture/" target="_blank">🏗️ Frontend Architecture</a></h2>
+        <ul>
+          <li>Folder & module structuring for scalability</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank">Code Splitting</a> with dynamic imports</li>
+          <li><a href="https://react.dev/reference/react/lazy" target="_blank">Lazy Loading</a> React components</li>
+          <li><a href="https://developer.chrome.com/docs/lighthouse/performance/" target="_blank">Lighthouse</a> for performance auditing</li>
+        </ul>
+      </section>
+
+      <section id="build-automation">
+        <h2><a href="https://vitejs.dev/" target="_blank">🛠️ Build Tools & Dev Setup</a></h2>
+        <ul>
+          <li><a href="https://vitejs.dev/" target="_blank">Vite</a> or <a href="https://parceljs.org/" target="_blank">Parcel</a> – modern bundlers</li>
+          <li><a href="https://postcss.org/" target="_blank">PostCSS</a> – autoprefixing, nesting</li>
+          <li><a href="https://turbo.build/repo" target="_blank">Turborepo</a> / <a href="https://nx.dev/" target="_blank">Nx</a> – monorepo tooling</li>
+          <li><a href="https://www.typescriptlang.org/docs/" target="_blank">TypeScript</a>, <a href="https://eslint.org/" target="_blank">ESLint</a> – static type checking & linting</li>
+        </ul>
+      </section>
+
+      <section id="practice-projects">
+        <h2>🚀 Practice Project Ideas</h2>
+        <ul>
+          <li>WhatsApp-style real-time chat app using Socket.IO</li>
+          <li>Scroll-snap image carousel with CSS-only animation</li>
+          <li>Dark/light theme toggle with <code>localStorage</code></li>
+          <li>Admin dashboard with filters, charts, and responsive UI</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    ZN Infotech Pvt. Ltd. – Web & App Dev | AI | IoT | Training<br>
+    📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a>
+  </footer>
+</body>
+</html>

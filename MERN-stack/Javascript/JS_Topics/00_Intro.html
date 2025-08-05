@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Engines Explained</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fc;
+      color: #222;
+      line-height: 1.7;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      color: #0a4d8c;
+    }
+
+    a {
+      color: #0a84ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background: #eef2f7;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .engine-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .engine-table th, .engine-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .engine-table th {
+      background-color: #e2ecf8;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>What is a JavaScript Engine?</h1>
+  <p>
+    A <strong>JavaScript engine</strong> is a program that executes JavaScript code. It is built into web browsers and environments like Node.js. Each major browser has its own engine to run and optimize JavaScript efficiently.
+  </p>
+
+  <h2>🧠 What Does a JavaScript Engine Do?</h2>
+  <ul>
+    <li><strong>Parses</strong> the JavaScript code (reads and understands it).</li>
+    <li><strong>Compiles</strong> the code into optimized machine code using Just-In-Time (JIT) compilation.</li>
+    <li><strong>Executes</strong> the code inside the browser or runtime environment.</li>
+    <li><strong>Optimizes</strong> code performance during runtime using memory management, caching, etc.</li>
+  </ul>
+
+  <h2>🌐 JavaScript Engines by Browser</h2>
+  <p>Each browser uses a different engine, developed by different companies:</p>
+
+  <table class="engine-table">
+    <thead>
+      <tr>
+        <th>Browser</th>
+        <th>Engine</th>
+        <th>Developer</th>
+        <th>Reference</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Google Chrome, Node.js, Brave, Opera</td>
+        <td><strong>V8</strong></td>
+        <td>Google</td>
+        <td><a href="https://v8.dev" target="_blank">v8.dev</a></td>
+      </tr>
+      <tr>
+        <td>Firefox</td>
+        <td><strong>SpiderMonkey</strong></td>
+        <td>Mozilla</td>
+        <td><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey" target="_blank">MDN SpiderMonkey</a></td>
+      </tr>
+      <tr>
+        <td>Safari</td>
+        <td><strong>JavaScriptCore (Nitro)</strong></td>
+        <td>Apple</td>
+        <td><a href="https://webkit.org/projects/javascript/" target="_blank">WebKit JSCore</a></td>
+      </tr>
+      <tr>
+        <td>Old Microsoft Edge</td>
+        <td><strong>Chakra</strong></td>
+        <td>Microsoft</td>
+        <td><a href="https://github.com/chakra-core/ChakraCore" target="_blank">ChakraCore GitHub</a></td>
+      </tr>
+      <tr>
+        <td>New Microsoft Edge</td>
+        <td><strong>V8</strong> (Chromium-based)</td>
+        <td>Google & Microsoft</td>
+        <td><a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>💡 Key Notes</h2>
+  <ul>
+    <li><strong>V8</strong> is the fastest and most widely used engine (used in Chrome, Edge, Node.js).</li>
+    <li><strong>SpiderMonkey</strong> was the first JavaScript engine ever made (by Brendan Eich).</li>
+    <li><strong>JavaScriptCore</strong> powers Safari and WebKit-based apps.</li>
+    <li><strong>Chakra</strong> is now deprecated, only used in old Edge versions.</li>
+  </ul>
+
+  <h2>🔎 Want to Explore More?</h2>
+  <ul>
+    <li><a href="https://v8.dev/docs" target="_blank">V8 Documentation</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript on MDN</a></li>
+    <li><a href="https://web.dev/learn/javascript/" target="_blank">Learn JavaScript – web.dev</a></li>
+  </ul>
+
+  <footer>
+    © 2025 | ZN Infotech Pvt. Ltd. — Empowering students with modern technologies. <br />
+    📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a> <br />
+    Tech Stack: IoT, Programming Languages, Web & App Development, AI/ML, and more.
+  </footer>
+
+</body>
+</html>
