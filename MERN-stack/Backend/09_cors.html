@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Handle CORS in Express</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      color: #1f2937;
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      font-size: 1.4rem;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+
+    pre {
+      background-color: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #e5e7eb;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Handle CORS in Express.js</h1>
+
+    <div class="section">
+      <h2>What is CORS?</h2>
+      <p>
+        <abbr title="Cross-Origin Resource Sharing">CORS</abbr> is a security feature implemented by browsers that prevents frontend JavaScript code from making requests to a different domain or port than the one from which it was loaded. It protects users from malicious websites trying to access sensitive data.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Why is CORS Important?</h2>
+      <p>
+        CORS is necessary when your frontend and backend are hosted on different domains or ports. For example, if your React app is hosted on <code>vercel.app</code> and your backend is hosted on <code>railway.app</code>, CORS must be enabled on the backend to allow the frontend to communicate with it.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>How to Enable CORS in Express</h2>
+      <p>
+        First, install the <code>cors</code> middleware:
+      </p>
+      <pre><code>npm install cors</code></pre>
+      <p>
+        Then, use it in your Express app:
+      </p>
+      <pre><code>const express = require('express');
+const cors = require('cors');
+
+const app = express();
+app.use(cors()); // Enables CORS for all routes
+
+// Your routes here
+app.get('/api', (req, res) => {
+  res.json({ message: 'CORS enabled!' });
+});
+
+app.listen(5000, () => console.log('Server running on port 5000'));</code></pre>
+
+      <p>
+        You can also customize CORS settings to allow only certain domains:
+      </p>
+      <pre><code>app.use(cors({
+  origin: 'https://your-frontend.vercel.app'
+}));</code></pre>
+    </div>
+
+    <div class="section">
+      <h2>When Should You Use It?</h2>
+      <p>
+        Use CORS when:
+        <ul>
+          <li>Your frontend and backend are on different domains (e.g., Vercel + Railway).</li>
+          <li>You get browser errors like <code>Access-Control-Allow-Origin</code> missing.</li>
+          <li>You are making fetch/Axios requests from the client-side.</li>
+        </ul>
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Helpful Resources</h2>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank">MDN Web Docs - CORS</a></li>
+        <li><a href="https://expressjs.com/en/resources/middleware/cors.html" target="_blank">Express CORS Middleware Docs</a></li>
+        <li><a href="https://youtu.be/4KHiSt0oLJ0" target="_blank">YouTube: CORS Explained in 6 Minutes</a></li>
+      </ul>
+    </div>
+
+    <footer>
+      <p><strong>ZN Infotech Pvt. Ltd.</strong> | +91-9565017342 | <a href="https://zninfotech.com" target="_blank">zninfotech.com</a></p>
+      <p>We specialize in IoT, Web & Mobile App Development, Programming Training, and more.</p>
+    </footer>
+  </div>
+</body>
+</html>

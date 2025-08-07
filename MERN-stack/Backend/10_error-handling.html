@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Error Handling in Express.js</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+    header {
+      background-color: #1f2937;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #1d4ed8;
+    }
+    .card {
+      background: #e0f2fe;
+      border-left: 6px solid #0284c7;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+    code, pre {
+      background: #f1f5f9;
+      padding: 12px;
+      display: block;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Error Handling in Express.js</h1>
+    <p>Gracefully managing unexpected failures in your backend</p>
+  </header>
+
+  <div class="container">
+    <h2>What is Error Handling?</h2>
+    <div class="card">
+      Error handling is the process of catching and responding to unexpected issues that occur during execution—like invalid data, failed database queries, or broken APIs—without crashing the entire application.
+    </div>
+
+    <h2>Why is it Important?</h2>
+    <ul>
+      <li>Prevents your server from crashing due to minor bugs.</li>
+      <li>Helps show meaningful messages to frontend or users.</li>
+      <li>Improves debugging and logs error causes efficiently.</li>
+    </ul>
+
+    <h2>How to Implement in Express?</h2>
+    <ol>
+      <li>Use <code>try...catch</code> blocks for async operations.</li>
+      <li>Use centralized error-handling middleware.</li>
+      <li>Send proper status codes (like 400, 500) and messages.</li>
+    </ol>
+
+    <h3>Example: Basic Error Handling with try...catch</h3>
+    <pre><code>app.get("/user/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: "Server Error" });
+  }
+});</code></pre>
+
+    <h3>Example: Centralized Error Handler</h3>
+    <pre><code>// middleware/errorHandler.js
+function errorHandler(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).json({ message: "Something went wrong!" });
+}
+module.exports = errorHandler;
+
+// Use it in server.js
+const errorHandler = require('./middleware/errorHandler');
+app.use(errorHandler);</code></pre>
+
+    <h2>When Should You Use It?</h2>
+    <div class="card">
+      Implement error handling after your routes and logic are built, especially when:
+      <ul>
+        <li>You're connecting to a database (MongoDB, MySQL).</li>
+        <li>Calling 3rd-party APIs that may fail.</li>
+        <li>Parsing request body or handling file uploads.</li>
+      </ul>
+    </div>
+
+    <h2>Best Practices</h2>
+    <ul>
+      <li>Never expose internal errors to users.</li>
+      <li>Log errors for later analysis using tools like <code>winston</code> or <code>morgan</code>.</li>
+      <li>Use status codes correctly: 400 for client errors, 500 for server errors.</li>
+    </ul>
+
+    <h2>References</h2>
+    <ul>
+      <li><a href="https://expressjs.com/en/guide/error-handling.html" target="_blank">Official Express Error Handling Docs</a></li>
+      <li><a href="https://www.youtube.com/watch?v=1rD4ewC2-mw" target="_blank">YouTube: Express Error Handling (Codevolution)</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    © 2025 ZN Infotech Pvt. Ltd. | Web, IoT, Mobile & Programming Solutions | 📞 9565017342 | 🌐 <a href="https://zninfotech.com" target="_blank">zninfotech.com</a>
+  </footer>
+</body>
+</html>

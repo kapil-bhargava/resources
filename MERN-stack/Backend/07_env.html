@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Environment Variables in Node.js</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+    h1 {
+      color: #1f2937;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 17px;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      background: #111827;
+      color: #000000;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+    .tip {
+      background: #e0f2fe;
+      border-left: 4px solid #0284c7;
+      padding: 12px 18px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Use Environment Variables</h1>
+
+    <p><strong>🔍 What:</strong> Environment variables are key-value pairs defined outside your code in a file like <code>.env</code>. These are accessed using <code>process.env</code> in Node.js.</p>
+
+    <p><strong>💡 Why:</strong> To secure sensitive data (e.g., database credentials, API keys, secrets) by keeping them separate from your codebase. This also improves flexibility across environments (dev, test, production).</p>
+
+    <p><strong>⚙️ How:</strong></p>
+    <ol>
+      <li>Install <code>dotenv</code>:
+        <pre><code>npm install dotenv</code></pre>
+      </li>
+      <li>Create a <code>.env</code> file in your root directory:
+        <pre><code>PORT=5000
+DB_URL=mongodb://localhost:27017/myapp
+JWT_SECRET=your_jwt_secret</code></pre>
+      </li>
+      <li>Use the values in your Node.js project:
+        <pre><code>require('dotenv').config();
+
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
+
+mongoose.connect(process.env.DB_URL)
+  .then(() => console.log("Connected to MongoDB"));
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
+});</code></pre>
+      </li>
+    </ol>
+
+    <p><strong>📅 When:</strong> Use environment variables from the very beginning of your backend project to keep your application secure and environment-agnostic.</p>
+
+    <div class="tip">
+      <strong>🛡️ Best Practice:</strong><br/>
+      Never push your <code>.env</code> file to GitHub. Always add it to your <code>.gitignore</code> file:
+      <pre><code>.env</code></pre>
+    </div>
+
+    <p><strong>🔗 References:</strong></p>
+    <ul>
+      <li><a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv package on npm</a></li>
+      <li><a href="https://12factor.net/config" target="_blank">12 Factor App: Config</a></li>
+      <li><a href="https://nodejs.org/api/process.html#processenv" target="_blank">Node.js process.env Docs</a></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    ⓘ ZN Infotech Pvt. Ltd. | IoT, Web Dev, App Dev, Programming Languages | <a href="https://zninfotech.com">zninfotech.com</a> | 📞 9565017342
+  </div>
+</body>
+</html>

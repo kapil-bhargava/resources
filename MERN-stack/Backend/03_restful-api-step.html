@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create RESTful APIs</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #2b6cb0;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    main {
+      padding: 30px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .card h2 {
+      color: #2b6cb0;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      margin: 10px 0;
+    }
+
+    .code-block {
+      background-color: #edf2f7;
+      padding: 15px;
+      border-left: 4px solid #2b6cb0;
+      font-family: monospace;
+      white-space: pre-wrap;
+      border-radius: 5px;
+      margin-top: 15px;
+    }
+
+    footer {
+      background-color: #2b6cb0;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header, main {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Create RESTful APIs</h1>
+</header>
+
+<main>
+  <section class="card">
+    <h2>🔍 What are RESTful APIs?</h2>
+    <p>RESTful APIs are APIs that follow the <strong>REST</strong> (Representational State Transfer) architectural style, using HTTP methods like <code>GET</code>, <code>POST</code>, <code>PUT</code>, and <code>DELETE</code>.</p>
+    <p>They are designed to perform CRUD (Create, Read, Update, Delete) operations on resources over the internet.</p>
+  </section>
+
+  <section class="card">
+    <h2>🎯 Why Use RESTful APIs?</h2>
+    <ul>
+      <li>💡 Universal: Follows standard HTTP protocols understood by any platform.</li>
+      <li>⚡ Fast & Lightweight: Minimal overhead compared to SOAP or GraphQL.</li>
+      <li>📱 Mobile-friendly: Easily consumed by web or mobile applications.</li>
+      <li>🔄 Stateless: Each request contains all information needed (no session memory).</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>🛠️ How to Create REST APIs in Express</h2>
+    <p>Use Node.js with the Express framework to define routes and handle client requests.</p>
+    <div class="code-block">
+<pre>
+// Basic RESTful routes in Express
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+// GET - Read
+app.get('/api/products', (req, res) => {
+  res.send('All Products');
+});
+
+// POST - Create
+app.post('/api/products', (req, res) => {
+  res.send('Product Created');
+});
+
+// PUT - Update
+app.put('/api/products/:id', (req, res) => {
+  res.send('Product Updated');
+});
+
+// DELETE - Remove
+app.delete('/api/products/:id', (req, res) => {
+  res.send('Product Deleted');
+});
+
+app.listen(5000, () => console.log('Server running on port 5000'));
+</pre>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>📅 When to Use RESTful APIs?</h2>
+    <p>Use them when your frontend (React, Vue, mobile app, etc.) needs to exchange data with your backend server. For example:</p>
+    <ul>
+      <li>Displaying product lists or user profiles</li>
+      <li>Submitting forms, like registrations or bookings</li>
+      <li>Saving and retrieving chat messages</li>
+      <li>Managing data from an admin dashboard</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  © 2025 ZN Infotech Pvt. Ltd. | IoT, Programming, Web & Mobile App Development<br>
+  📞 9565017342 | 🌐 <a href="https://zninfotech.com" style="color: #fff; text-decoration: underline;">zninfotech.com</a>
+</footer>
+
+</body>
+</html>

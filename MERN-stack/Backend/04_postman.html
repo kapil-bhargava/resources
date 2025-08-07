@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test APIs with Postman</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+      border-left: 6px solid #3b82f6;
+    }
+
+    .card h2 {
+      color: #1e3a8a;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      line-height: 1.7;
+      margin: 10px 0;
+    }
+
+    .card code {
+      background: #e0f2fe;
+      color: #1e40af;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .code-block {
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      color: #111827;
+      margin-top: 20px;
+    }
+
+    .note {
+      background-color: #ecfeff;
+      padding: 10px 15px;
+      border-left: 4px solid #06b6d4;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Test APIs with Postman</h2>
+
+      <p><strong>📌 What:</strong> Postman is a popular API testing tool that allows you to manually send <code>GET</code>, <code>POST</code>, <code>PUT</code>, and <code>DELETE</code> requests to your backend.</p>
+
+      <p><strong>🎯 Why:</strong> Before connecting your frontend to the backend, it's essential to verify that your APIs work as expected. Postman provides an interface to test all aspects of an API — headers, body, params, etc.</p>
+
+      <p><strong>⚙️ How:</strong> Open Postman and:</p>
+      <ul>
+        <li>Select the HTTP method (e.g., <code>GET</code>, <code>POST</code>)</li>
+        <li>Enter the endpoint URL (e.g., <code>http://localhost:5000/api/users</code>)</li>
+        <li>Add any necessary <code>headers</code> like <code>Content-Type: application/json</code></li>
+        <li>Include a request <code>body</code> for <code>POST</code> or <code>PUT</code></li>
+        <li>Click "Send" and view the response</li>
+      </ul>
+
+      <p><strong>🕐 When:</strong> Use Postman every time you create or update an API route. It helps quickly detect issues with logic, validation, or data flow before moving to frontend integration.</p>
+
+      <div class="code-block">
+        POST http://localhost:5000/api/register
+        Headers:
+          Content-Type: application/json
+
+        Body (raw JSON):
+        {
+          "name": "John Doe",
+          "email": "john@example.com",
+          "password": "securePassword"
+        }
+      </div>
+
+      <div class="note">
+        💡 <strong>Tip:</strong> You can also save collections of APIs in Postman to test them repeatedly during development or share with your team.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect to MongoDB using Mongoose</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9fafb;
+      padding: 20px;
+      margin: 0;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      margin-bottom: 30px;
+      border-left: 6px solid #10b981;
+    }
+
+    h2 {
+      color: #065f46;
+      margin-bottom: 12px;
+    }
+
+    p {
+      line-height: 1.7;
+      margin: 8px 0;
+    }
+
+    code {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    .code-block {
+      background: #f3f4f6;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      margin-top: 18px;
+      color: #111827;
+    }
+
+    .note {
+      background: #ecfdf5;
+      padding: 12px 16px;
+      border-left: 4px solid #10b981;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin: 6px 0;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Connect to MongoDB using Mongoose</h2>
+
+      <p><strong>📌 What:</strong> MongoDB is a <abbr title="Not Only SQL">NoSQL</abbr> database that stores data in flexible, JSON-like documents. <code>Mongoose</code> is an ODM (<abbr title="Object Data Modeling">Object Data Modeling</abbr>) library for Node.js that simplifies interactions with MongoDB.</p>
+
+      <p><strong>🎯 Why:</strong> To store and retrieve structured data such as users, products, or bookings in an organized, schema-based way that supports validation and middleware.</p>
+
+      <p><strong>⚙️ How:</strong></p>
+      <ul>
+        <li>Install mongoose: <code>npm install mongoose</code></li>
+        <li>Use <code>mongoose.connect()</code> to connect to your MongoDB Atlas/local database</li>
+        <li>Define schemas and models for your data</li>
+      </ul>
+
+      <div class="code-block">
+// db.js (MongoDB connection)
+
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/myapp', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ MongoDB Connected"))
+.catch(err => console.error("❌ Connection Error", err));
+
+
+// user.model.js (Schema & Model)
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: { type: String, required: true, unique: true },
+  password: String
+});
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
+      </div>
+
+      <p><strong>🕐 When:</strong> Use Mongoose whenever your app needs to persist structured data — such as user details, messages, or inventory — in a MongoDB database.</p>
+
+      <div class="note">
+        💡 <strong>Tip:</strong> Use MongoDB Atlas for cloud-based databases and environment variables to secure your DB URI in production (<code>.env</code>).
+      </div>
+    </div>
+  </div>
+</body>
+</html>

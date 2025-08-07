@@ -82,15 +82,16 @@
                 font-size: 1.5rem;
             }
         }
-        
+
         .card>h3>a {
             color: #1d3557;
             text-decoration: underline;
-            
+
         }
+
         .card>h3>a:hover {
             color: #5696f7;
-            
+
         }
     </style>
 </head>
@@ -118,7 +119,7 @@
 
         <div class="card">
             <span>Step 2</span>
-            <h3><a href="01_nodejs.html">Use Express.js</a></h3>
+            <h3><a href="02_express.html">Use Express.js</a></h3>
             <p><strong>What:</strong> A lightweight web framework for Node.js.</p>
             <p><strong>Why:</strong> Makes routing, middleware, and APIs easy.</p>
             <p><strong>How:</strong> Install using <code>npm install express</code>.</p>
@@ -127,7 +128,7 @@
 
         <div class="card">
             <span>Step 3</span>
-            <h3>Create RESTful APIs</h3>
+            <h3><a href="03_restful-api-step.html" class="anchor">Create RESTful APIs</a></h3>
             <p><strong>What:</strong> APIs using HTTP methods (GET, POST, PUT, DELETE).</p>
             <p><strong>Why:</strong> Standard way to connect frontend and backend.</p>
             <p><strong>How:</strong> Use Express routes to handle each API.</p>
@@ -136,7 +137,7 @@
 
         <div class="card">
             <span>Step 4</span>
-            <h3>Test APIs with Postman</h3>
+            <h3><a href="04_postman.html" class="anchor">Test APIs with Postman</a></h3>
             <p><strong>What:</strong> A tool to manually test your APIs.</p>
             <p><strong>Why:</strong> Helps verify logic before connecting to frontend.</p>
             <p><strong>How:</strong> Use GET/POST/PUT/DELETE with headers and body.</p>
@@ -145,7 +146,7 @@
 
         <div class="card">
             <span>Step 5</span>
-            <h3>Connect to MongoDB using Mongoose</h3>
+            <h3><a href="05_Mongodb.html" class="anchor">Connect to MongoDB using Mongoose</a></h3>
             <p><strong>What:</strong> NoSQL database + ODM library.</p>
             <p><strong>Why:</strong> To store user data, products, etc. in document form.</p>
             <p><strong>How:</strong> Use <code>mongoose.connect()</code> and define schemas.</p>
@@ -154,7 +155,7 @@
 
         <div class="card">
             <span>Step 6</span>
-            <h3>Use Middleware (Like body-parser, auth)</h3>
+            <h3><a href="06_middlewares.html" class="anchor">Use Middleware (Like body-parser, auth)</a></h3>
             <p><strong>What:</strong> Functions that run between request and response.</p>
             <p><strong>Why:</strong> Useful for parsing, logging, authentication.</p>
             <p><strong>How:</strong> Use <code>app.use()</code> in Express.</p>
@@ -163,7 +164,7 @@
 
         <div class="card">
             <span>Step 7</span>
-            <h3>File Uploads with Multer</h3>
+            <h3><a href="07_multer.html" class="anchor">File Uploads with Multer</a></h3>
             <p><strong>What:</strong> Middleware to handle form-data file uploads.</p>
             <p><strong>Why:</strong> Required for uploading images, resumes, PDFs.</p>
             <p><strong>How:</strong> Use <code>multer.diskStorage()</code> with routes.</p>
@@ -172,7 +173,7 @@
 
         <div class="card">
             <span>Step 8</span>
-            <h3>Use Environment Variables</h3>
+            <h3><a href="07_env.html" class="anchor">Use Environment Variables</a></h3>
             <p><strong>What:</strong> External config using <code>.env</code> files.</p>
             <p><strong>Why:</strong> To hide secrets like DB passwords or JWT keys.</p>
             <p><strong>How:</strong> Use <code>dotenv</code> package + <code>process.env</code>.</p>
@@ -181,7 +182,7 @@
 
         <div class="card">
             <span>Step 9</span>
-            <h3>JWT Authentication</h3>
+            <h3><a href="08_jwt.html" class="anchor">JWT Authentication</a></h3>
             <p><strong>What:</strong> JSON Web Tokens to verify users.</p>
             <p><strong>Why:</strong> Needed for secure login and protected routes.</p>
             <p><strong>How:</strong> Use <code>jsonwebtoken</code> to sign/verify tokens.</p>
@@ -190,7 +191,7 @@
 
         <div class="card">
             <span>Step 10</span>
-            <h3>Handle CORS</h3>
+            <h3><a href="09_cors.html">Handle CORS</a></h3>
             <p><strong>What:</strong> CORS is browser security for cross-origin requests.</p>
             <p><strong>Why:</strong> Needed when frontend and backend are on different domains (e.g. Vercel + Railway).
             </p>
@@ -200,7 +201,7 @@
 
         <div class="card">
             <span>Step 11</span>
-            <h3>Error Handling</h3>
+            <h3><a href="10_error-handling.html">Error Handling</a></h3>
             <p><strong>What:</strong> Gracefully managing unexpected errors.</p>
             <p><strong>Why:</strong> To avoid crashes and show helpful messages.</p>
             <p><strong>How:</strong> Use <code>try/catch</code> or custom Express error middleware.</p>
@@ -209,12 +210,28 @@
 
         <div class="card">
             <span>Step 12</span>
-            <h3>Deploy Backend (Railway / Render)</h3>
+            <h3><a href="11_deployment.html">Deploy Backend (Railway / Render)</a></h3>
             <p><strong>What:</strong> Hosting your backend on the internet.</p>
             <p><strong>Why:</strong> So users can access APIs remotely.</p>
             <p><strong>How:</strong> Push code to GitHub, connect to Railway/Render, set up environment variables.</p>
             <p><strong>When:</strong> When your APIs are ready for production.</p>
         </div>
+
+        <!-- Status Codes Table -->
+        <div class="card">
+            <span>Status Code</span>
+            <h3><a href="statuscode.html">Understanding HTTP Status Codes</a></h3>
+            <p><strong>What:</strong> Status codes are 3-digit responses returned by a server to indicate the result of
+                a client's request.</p>
+            <p><strong>Why:</strong> They help developers and users understand what happened with a request (success,
+                redirect, error, etc.).</p>
+            <p><strong>How:</strong> Status codes are automatically returned with HTTP responses. For example,
+                <code>200</code> means OK, <code>404</code> means Not Found.</p>
+            <p><strong>When:</strong> Every time a client (like a browser or mobile app) makes a request to a server.
+            </p>
+        </div>
+
+
 
     </div>
 

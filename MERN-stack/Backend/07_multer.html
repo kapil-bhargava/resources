@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multer File Upload in Node.js</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0d47a1;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #0d47a1;
+    }
+
+    code {
+      background: #e0e0e0;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background: #263238;
+      color: #000000;
+      padding: 1rem;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+
+    a {
+      color: #0d47a1;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 1rem;
+        padding: 1.2rem;
+      }
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📁 File Uploads with Multer in Node.js</h1>
+</header>
+
+<div class="container">
+  <h2>📌 What is Multer?</h2>
+  <a href="multerdetail.html" class="anchor">Multer in detail</a>
+  <p>
+    <strong>Multer</strong> is a <abbr title="Node.js middleware">middleware</abbr> used to handle <strong><code>multipart/form-data</code></strong>, which is primarily used for uploading files. It is written on top of the <code>busboy</code> library and integrates easily with <strong>Express.js</strong>.
+  </p>
+
+  <h2>🎯 Why Use Multer?</h2>
+  <ul>
+    <li>To allow users to upload files like images, PDFs, resumes, etc.</li>
+    <li>It parses incoming file data from forms and saves it to the server.</li>
+    <li>Customizable for file type validation, storage location, and naming.</li>
+  </ul>
+
+  <h2>⚙️ How to Use Multer?</h2>
+  <p>Follow these steps:</p>
+  <ol>
+    <li>Install using <code>npm install multer</code></li>
+    <li>Configure storage with <code>multer.diskStorage()</code></li>
+    <li>Set up an Express route to handle file uploads</li>
+  </ol>
+
+  <h2>🕒 When to Use Multer?</h2>
+  <p>When you need to accept and store files sent via an HTML form or an API request (like image uploads in a profile form or documents in a resume upload form).</p>
+
+  <h2>🧪 Example Code</h2>
+  <pre><code>// server.js
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+
+const app = express();
+
+// Storage configuration
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Upload folder
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Rename with timestamp
+  }
+});
+
+// Multer middleware
+const upload = multer({ storage: storage });
+
+// POST Route
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.send('File uploaded successfully!');
+});
+
+app.listen(5000, () => {
+  console.log('Server running on http://localhost:5000');
+});
+</code></pre>
+
+  <h2>🌐 Frontend HTML Form</h2>
+  <pre><code>&lt;form action="/upload" method="POST" enctype="multipart/form-data"&gt;
+  &lt;input type="file" name="file" /&gt;
+  &lt;button type="submit"&gt;Upload&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+  <h2>📚 References</h2>
+  <ul>
+    <li><a href="https://www.npmjs.com/package/multer" target="_blank">Multer on NPM</a></li>
+    <li><a href="https://expressjs.com/en/resources/middleware/multer.html" target="_blank">Express Multer Docs</a></li>
+    <li><a href="https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/" target="_blank">Upload & Retrieve Image with Mongoose</a></li>
+  </ul>
+</div>
+
+<div class="footer">
+  &copy; 2025 ZN Infotech Pvt. Ltd. | <a href="https://zninfotech.com" target="_blank">zninfotech.com</a> <br/>
+  IoT, Web & App Development, Programming, and More | 📞 9565017342
+</div>
+
+</body>
+</html>

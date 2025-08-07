@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete HTTP Status Codes Guide</title>
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-header: #1e40af;
+            --bg-table-header: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-white: #ffffff;
+            --border-color: #e5e7eb;
+            --hover-bg: #f1f5f9;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --accent-color: #3b82f6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #06b6d4;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+
+                --bg-primary: #f8fafc;
+                --bg-secondary: #ffffff;
+                --bg-header: #1e40af;
+                --bg-table-header: #3b82f6;
+                --text-primary: #1f2937;
+                --text-secondary: #6b7280;
+                --text-white: #ffffff;
+                --border-color: #e5e7eb;
+                --hover-bg: #f1f5f9;
+                --shadow: rgba(0, 0, 0, 0.1);
+                --accent-color: #3b82f6;
+                --success-color: #10b981;
+                --warning-color: #f59e0b;
+                --error-color: #ef4444;
+                --info-color: #06b6d4;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #0f172a;
+                --bg-secondary: #1e293b;
+                --bg-header: #0f172a;
+                --bg-table-header: #334155;
+                --text-primary: #f1f5f9;
+                --text-secondary: #94a3b8;
+                --text-white: #f1f5f9;
+                --border-color: #334155;
+                --hover-bg: #334155;
+                --shadow: rgba(0, 0, 0, 0.3);
+                --accent-color: #60a5fa;
+                --success-color: #34d399;
+                --warning-color: #fbbf24;
+                --error-color: #f87171;
+                --info-color: #22d3ee;
+            }
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-header: #0f172a;
+            --bg-table-header: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-white: #f1f5f9;
+            --border-color: #334155;
+            --hover-bg: #334155;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --accent-color: #60a5fa;
+            --success-color: #34d399;
+            --warning-color: #fbbf24;
+            --error-color: #f87171;
+            --info-color: #22d3ee;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            margin: 0;
+            padding: 0;
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header {
+            background: var(--bg-header);
+            color: var(--text-white);
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            border: none;
+            color: var(--text-white);
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .intro {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .intro h2 {
+            color: var(--accent-color);
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+
+        .status-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-1xx {
+            border-left: 5px solid var(--info-color);
+        }
+
+        .category-2xx {
+            border-left: 5px solid var(--success-color);
+        }
+
+        .category-3xx {
+            border-left: 5px solid var(--warning-color);
+        }
+
+        .category-4xx {
+            border-left: 5px solid var(--error-color);
+        }
+
+        .category-5xx {
+            border-left: 5px solid #8b5cf6;
+        }
+
+        .category-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+        }
+
+        .category-card p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        thead {
+            background: var(--bg-table-header);
+            color: var(--text-white);
+        }
+
+        th,
+        td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        tr:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .status-code {
+            font-weight: 700;
+            font-size: 1.1em;
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: inline-block;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .status-1xx {
+            background: var(--info-color);
+            color: white;
+        }
+
+        .status-2xx {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .status-3xx {
+            background: var(--warning-color);
+            color: white;
+        }
+
+        .status-4xx {
+            background: var(--error-color);
+            color: white;
+        }
+
+        .status-5xx {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .meaning {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .example {
+            background: var(--bg-primary);
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin-top: 8px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .use-case {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 20px;
+            background: var(--bg-header);
+            color: var(--text-white);
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .theme-toggle {
+                position: static;
+                margin: 20px auto 0;
+                display: inline-flex;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid var(--border-color);
+                margin-bottom: 15px;
+                border-radius: 8px;
+                padding: 15px;
+                background: var(--bg-secondary);
+            }
+
+            td {
+                border: none;
+                position: relative;
+                padding: 10px 0;
+            }
+
+            td::before {
+                content: attr(data-label) ": ";
+                font-weight: bold;
+                color: var(--accent-color);
+                display: inline-block;
+                width: 120px;
+            }
+
+            .status-categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <span id="theme-icon">🌙</span>
+            <span id="theme-text">Dark Mode</span>
+        </button>
+        <h1>🌐 Complete HTTP Status Codes Guide</h1>
+        <p>Master Web Development with Comprehensive Status Code Reference</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Understanding HTTP Status Codes</h2>
+            <p>HTTP status codes are three-digit numbers returned by web servers to indicate the result of a client's
+                request. They are essential for web development, API design, and troubleshooting. Each code provides
+                specific information about what happened when processing the request.</p>
+        </div>
+
+        <div class="status-categories">
+            <div class="category-card category-1xx">
+                <h3>1xx - Informational</h3>
+                <p>Request received, continuing process</p>
+            </div>
+            <div class="category-card category-2xx">
+                <h3>2xx - Success</h3>
+                <p>Request successfully received and processed</p>
+            </div>
+            <div class="category-card category-3xx">
+                <h3>3xx - Redirection</h3>
+                <p>Further action needed to complete request</p>
+            </div>
+            <div class="category-card category-4xx">
+                <h3>4xx - Client Error</h3>
+                <p>Request contains bad syntax or cannot be fulfilled</p>
+            </div>
+            <div class="category-card category-5xx">
+                <h3>5xx - Server Error</h3>
+                <p>Server failed to fulfill valid request</p>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Status Code</th>
+                    <th>Meaning</th>
+                    <th>Description & Examples</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 1xx Informational -->
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-1xx">100</span></td>
+                    <td data-label="Meaning"><span class="meaning">Continue</span></td>
+                    <td data-label="Description">
+                        Client should continue sending the request body.
+                        <div class="example">curl -X POST -H "Expect: 100-continue" -d "data" /api/upload</div>
+                        <div class="use-case">Used when uploading large files to check if server can accept the request
+                            before sending data.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-1xx">101</span></td>
+                    <td data-label="Meaning"><span class="meaning">Switching Protocols</span></td>
+                    <td data-label="Description">
+                        Server agrees to switch protocols as requested by client.
+                        <div class="example">WebSocket handshake: HTTP → WebSocket protocol</div>
+                        <div class="use-case">Essential for real-time applications like chat systems, live updates, and
+                            gaming.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-1xx">102</span></td>
+                    <td data-label="Meaning"><span class="meaning">Processing</span></td>
+                    <td data-label="Description">
+                        Server has received and is processing the request, but no response is available yet.
+                        <div class="example">Long-running operations like data processing or file conversion</div>
+                        <div class="use-case">Prevents client timeout during lengthy server operations.</div>
+                    </td>
+                </tr>
+
+                <!-- 2xx Success -->
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-2xx">200</span></td>
+                    <td data-label="Meaning"><span class="meaning">OK</span></td>
+                    <td data-label="Description">
+                        Standard response for successful HTTP requests.
+                        <div class="example">GET /api/users → Returns user list successfully</div>
+                        <div class="use-case">Most common success response for GET, POST, PUT requests with content.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-2xx">201</span></td>
+                    <td data-label="Meaning"><span class="meaning">Created</span></td>
+                    <td data-label="Description">
+                        Request succeeded and a new resource has been created.
+                        <div class="example">POST /api/users → New user account created</div>
+                        <div class="use-case">RESTful APIs when creating new resources like users, posts, or records.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-2xx">202</span></td>
+                    <td data-label="Meaning"><span class="meaning">Accepted</span></td>
+                    <td data-label="Description">
+                        Request accepted for processing, but processing not completed.
+                        <div class="example">POST /api/batch-process → Job queued for background processing</div>
+                        <div class="use-case">Asynchronous operations, batch processing, email sending queues.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-2xx">204</span></td>
+                    <td data-label="Meaning"><span class="meaning">No Content</span></td>
+                    <td data-label="Description">
+                        Request succeeded, but no content to return.
+                        <div class="example">DELETE /api/users/123 → User deleted successfully</div>
+                        <div class="use-case">DELETE operations, PUT updates that don't return data, successful form
+                            submissions.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-2xx">206</span></td>
+                    <td data-label="Meaning"><span class="meaning">Partial Content</span></td>
+                    <td data-label="Description">
+                        Server is delivering only part of the resource due to a range header.
+                        <div class="example">Video streaming: bytes 200-1023/2048</div>
+                        <div class="use-case">Video streaming, file downloads with resume capability, pagination.</div>
+                    </td>
+                </tr>
+
+                <!-- 3xx Redirection -->
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-3xx">301</span></td>
+                    <td data-label="Meaning"><span class="meaning">Moved Permanently</span></td>
+                    <td data-label="Description">
+                        Resource has moved permanently to a new URL.
+                        <div class="example">example.com/old-page → example.com/new-page</div>
+                        <div class="use-case">Website restructuring, domain changes, SEO URL optimization.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-3xx">302</span></td>
+                    <td data-label="Meaning"><span class="meaning">Found (Temporary Redirect)</span></td>
+                    <td data-label="Description">
+                        Resource temporarily moved to a different URL.
+                        <div class="example">Maintenance page redirect, A/B testing redirects</div>
+                        <div class="use-case">Temporary maintenance, load balancing, feature flags.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-3xx">304</span></td>
+                    <td data-label="Meaning"><span class="meaning">Not Modified</span></td>
+                    <td data-label="Description">
+                        Cached version is still valid, no need to re-download.
+                        <div class="example">If-Modified-Since header check → Resource unchanged</div>
+                        <div class="use-case">Browser caching, CDN optimization, bandwidth saving.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-3xx">307</span></td>
+                    <td data-label="Meaning"><span class="meaning">Temporary Redirect</span></td>
+                    <td data-label="Description">
+                        Temporary redirect that preserves the request method.
+                        <div class="example">POST request redirected while maintaining POST method</div>
+                        <div class="use-case">Maintaining HTTP method during temporary redirects.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-3xx">308</span></td>
+                    <td data-label="Meaning"><span class="meaning">Permanent Redirect</span></td>
+                    <td data-label="Description">
+                        Permanent redirect that preserves the request method.
+                        <div class="example">API versioning: /v1/users → /v2/users (keeping POST)</div>
+                        <div class="use-case">API versioning, permanent URL changes while preserving HTTP methods.</div>
+                    </td>
+                </tr>
+
+                <!-- 4xx Client Errors -->
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-4xx">400</span></td>
+                    <td data-label="Meaning"><span class="meaning">Bad Request</span></td>
+                    <td data-label="Description">
+                        Server couldn't understand the request due to invalid syntax.
+                        <div class="example">Invalid JSON: {"name": "John", "age": } → Missing value</div>
+                        <div class="use-case">Malformed JSON, missing required fields, invalid data types.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-4xx">401</span></td>
+                    <td data-label="Meaning"><span class="meaning">Unauthorized</span></td>
+                    <td data-label="Description">
+                        Authentication is required but not provided or invalid.
+                        <div class="example">API call without Authorization header or invalid token</div>
+                        <div class="use-case">Missing login credentials, expired tokens, invalid API keys.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-4xx">403</span></td>
+                    <td data-label="Meaning"><span class="meaning">Forbidden</span></td>
+                    <td data-label="Description">
+                        User authenticated but doesn't have permission to access resource.
+                        <div class="example">Regular user trying to access admin panel</div>
+                        <div class="use-case">Role-based access control, insufficient permissions, blocked IP addresses.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-4xx">404</span></td>
+                    <td data-label="Meaning"><span class="meaning">Not Found</span></td>
+                    <td data-label="Description">
+                        Requested resource not found on the server.
+                        <div class="example">GET /api/users/999 → User ID 999 doesn't exist</div>
+                        <div class="use-case">Broken links, deleted resources, typos in URLs, non-existent API
+                            endpoints.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-4xx">405</span></td>
+                    <td data-label="Meaning"><span class="meaning">Method Not Allowed</span></td>
+                    <td data-label="Description">
+                        HTTP method not supported for the requested resource.
+                        <div class="example">DELETE /api/users → Endpoint only supports GET and POST</div>
+                        <div class="use-case">API design restrictions, read-only endpoints, method-specific handlers.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-4xx">409</span></td>
+                    <td data-label="Meaning"><span class="meaning">Conflict</span></td>
+                    <td data-label="Description">
+                        Request conflicts with current server state.
+                        <div class="example">Creating user with email that already exists</div>
+                        <div class="use-case">Duplicate entries, version conflicts, concurrent modifications.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-4xx">410</span></td>
+                    <td data-label="Meaning"><span class="meaning">Gone</span></td>
+                    <td data-label="Description">
+                        Resource was available previously but has been permanently removed.
+                        <div class="example">Deleted blog post, discontinued product page</div>
+                        <div class="use-case">Permanently deleted content, discontinued services, expired promotions.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-4xx">422</span></td>
+                    <td data-label="Meaning"><span class="meaning">Unprocessable Entity</span></td>
+                    <td data-label="Description">
+                        Request is well-formed but contains semantic errors.
+                        <div class="example">Valid JSON but email format is invalid: "email": "not-an-email"</div>
+                        <div class="use-case">Form validation errors, business logic violations, data format issues.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-4xx">429</span></td>
+                    <td data-label="Meaning"><span class="meaning">Too Many Requests</span></td>
+                    <td data-label="Description">
+                        User has sent too many requests in a given time period.
+                        <div class="example">API rate limit: 100 requests per hour exceeded</div>
+                        <div class="use-case">API rate limiting, DDoS protection, spam prevention.</div>
+                    </td>
+                </tr>
+
+                <!-- 5xx Server Errors -->
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-5xx">500</span></td>
+                    <td data-label="Meaning"><span class="meaning">Internal Server Error</span></td>
+                    <td data-label="Description">
+                        Generic error when server fails unexpectedly.
+                        <div class="example">Database connection failed, unhandled exception in code</div>
+                        <div class="use-case">Programming errors, database issues, server misconfigurations.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-5xx">501</span></td>
+                    <td data-label="Meaning"><span class="meaning">Not Implemented</span></td>
+                    <td data-label="Description">
+                        Server doesn't support the functionality required to fulfill the request.
+                        <div class="example">HTTP method not implemented: PATCH requests not supported</div>
+                        <div class="use-case">Unsupported HTTP methods, missing features, incomplete API
+                            implementations.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-5xx">502</span></td>
+                    <td data-label="Meaning"><span class="meaning">Bad Gateway</span></td>
+                    <td data-label="Description">
+                        Invalid response received from upstream server.
+                        <div class="example">Load balancer receives invalid response from backend server</div>
+                        <div class="use-case">Proxy server issues, microservice communication failures, CDN problems.
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-5xx">503</span></td>
+                    <td data-label="Meaning"><span class="meaning">Service Unavailable</span></td>
+                    <td data-label="Description">
+                        Server is temporarily unable to handle requests.
+                        <div class="example">Server maintenance, overloaded with requests</div>
+                        <div class="use-case">Scheduled maintenance, server overload, temporary outages.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-5xx">504</span></td>
+                    <td data-label="Meaning"><span class="meaning">Gateway Timeout</span></td>
+                    <td data-label="Description">
+                        Upstream server didn't respond within the timeout period.
+                        <div class="example">API gateway timeout waiting for microservice response</div>
+                        <div class="use-case">Slow database queries, network issues, overloaded backend services.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Status Code"><span class="status-code status-5xx">507</span></td>
+                    <td data-label="Meaning"><span class="meaning">Insufficient Storage</span></td>
+                    <td data-label="Description">
+                        Server cannot store the representation needed to complete the request.
+                        <div class="example">File upload fails due to disk space limitations</div>
+                        <div class="use-case">Disk space issues, storage quota exceeded, large file uploads.</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p><strong>Designed by ZN Infotech Pvt. Ltd.</strong> | 📞 +91-9565017342 | 🌐 <a
+                href="https://zninfotech.com">zninfotech.com</a></p>
+        <p>Services: IoT Development, Web & Mobile App Development, Python, Java, C Programming, AI/ML Solutions, Full
+            Stack Development</p>
+        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+            💡 <strong>Pro Tip:</strong> Understanding HTTP status codes is crucial for debugging web applications,
+            designing robust APIs, and providing better user experiences.
+        </p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme based on user preference or system preference
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+            } else {
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark Mode';
+            }
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                const themeIcon = document.getElementById('theme-icon');
+                const themeText = document.getElementById('theme-text');
+
+                if (e.matches) {
+                    document.body.setAttribute('data-theme', 'dark');
+                    themeIcon.textContent = '☀️';
+                    themeText.textContent = 'Light Mode';
+                } else {
+                    document.body.removeAttribute('data-theme');
+                    themeIcon.textContent = '🌙';
+                    themeText.textContent = 'Dark Mode';
+                }
+            }
+        });
+
+        // Initialize theme on page load
+        initializeTheme();
+    </script>
+</body>
+
+</html>
