@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Model Training Explained</title>
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --accent: #ff006e;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .training-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .step {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-number {
+            background: white;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+        }
+        
+        .step-body {
+            padding: 1.5rem;
+        }
+        
+        h3 {
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .tools-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tool-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        th {
+            background: #f1f3f5;
+            color: var(--primary);
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #dee2e6;
+            color: var(--gray);
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        /* Animation for steps */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .step {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+        .step:nth-child(4) { animation-delay: 0.4s; }
+        .step:nth-child(5) { animation-delay: 0.5s; }
+        .step:nth-child(6) { animation-delay: 0.6s; }
+        .step:nth-child(7) { animation-delay: 0.7s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>How AI Models Are Trained</h1>
+            <p class="subtitle">A step-by-step guide to the AI training process with tools and techniques used at each stage</p>
+        </header>
+        
+        <div class="training-steps">
+            <!-- Step 1: Data Collection -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h2 class="step-title">Data Collection</h2>
+                </div>
+                <div class="step-body">
+                    <p>AI models require large datasets to learn effectively. Data can come from various sources:</p>
+                    <ul>
+                        <li><strong>Public Datasets:</strong> Kaggle, UCI Machine Learning Repository</li>
+                        <li><strong>Web Scraping:</strong> Extracting data from websites</li>
+                        <li><strong>APIs:</strong> Twitter API, Google Maps API</li>
+                        <li><strong>Synthetic Data:</strong> Artificially generated data</li>
+                    </ul>
+                    
+                    <div class="tools-container">
+                        <h3>Popular Tools:</h3>
+                        <div class="tools-grid">
+                            <div class="tool-card">Pandas</div>
+                            <div class="tool-card">Scrapy</div>
+                            <div class="tool-card">BeautifulSoup</div>
+                            <div class="tool-card">Apache NiFi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2: Data Preprocessing -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h2 class="step-title">Data Preprocessing</h2>
+                </div>
+                <div class="step-body">
+                    <p>Raw data is cleaned and transformed into a usable format:</p>
+                    <ul>
+                        <li><strong>Handling Missing Data:</strong> Imputation or deletion</li>
+                        <li><strong>Normalization:</strong> Scaling numerical features</li>
+                        <li><strong>Text Processing:</strong> Tokenization, stemming</li>
+                        <li><strong>Image Processing:</strong> Rotation, resizing</li>
+                    </ul>
+                    
+                    <div class="tools-container">
+                        <h3>Popular Tools:</h3>
+                        <div class="tools-grid">
+                            <div class="tool-card">NumPy</div>
+                            <div class="tool-card">OpenCV</div>
+                            <div class="tool-card">NLTK</div>
+                            <div class="tool-card">SpaCy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 3: Feature Engineering -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h2 class="step-title">Feature Engineering</h2>
+                </div>
+                <div class="step-body">
+                    <p>Improving model performance by selecting/extracting relevant features:</p>
+                    <ul>
+                        <li><strong>Dimensionality Reduction:</strong> PCA, t-SNE</li>
+                        <li><strong>Feature Extraction:</strong> CNN for images</li>
+                        <li><strong>Feature Selection:</strong> Removing irrelevant features</li>
+                    </ul>
+                    
+                    <div class="tools-container">
+                        <h3>Popular Tools:</h3>
+                        <div class="tools-grid">
+                            <div class="tool-card">Scikit-Learn</div>
+                            <div class="tool-card">TensorFlow</div>
+                            <div class="tool-card">FeatureTools</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 4: Model Selection -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <h2 class="step-title">Model Selection</h2>
+                </div>
+                <div class="step-body">
+                    <p>Choosing the right algorithm based on the problem type:</p>
+                    
+                    <div class="comparison">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Problem Type</th>
+                                    <th>Algorithms</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Classification</strong></td>
+                                    <td>Logistic Regression, Random Forest, CNN</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Regression</strong></td>
+                                    <td>Linear Regression, XGBoost</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Clustering</strong></td>
+                                    <td>K-Means, DBSCAN</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Generative AI</strong></td>
+                                    <td>GPT, GANs, VAEs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="tools-container">
+                        <h3>Popular Tools:</h3>
+                        <div class="tools-grid">
+                            <div class="tool-card">Scikit-Learn</div>
+                            <div class="tool-card">TensorFlow</div>
+                            <div class="tool-card">PyTorch</div>
+                            <div class="tool-card">Hugging Face</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 5: Training the Model -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <h2 class="step-title">Training the Model</h2>
+                </div>
+                <div class="step-body">
+                    <p>The model learns from data by adjusting weights to minimize errors:</p>
+                    <ul>
+                        <li><strong>Split Data:</strong> Train/Validation/Test sets</li>
+                        <li><strong>Loss Function:</strong> Measures model error</li>
+                        <li><strong>Optimization:</strong> Gradient Descent, Adam</li>
+                        <li><strong>Hyperparameter Tuning:</strong> Finding optimal settings</li>
+                    </ul>
+                    
+                    <div class="tools-container">
+                        <h3>Popular Tools:</h3>
+                        <div class="tools-grid">
+                            <div class="tool-card">Keras</div>
+                            <div class="tool-card">PyTorch Lightning</div>
+                            <div class="tool-card">Weights & Biases</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 6: Model Evaluation -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <h2 class="step-title">Model Evaluation</h2>
+                </div>
+                <div class="step-body">
+                    <p>Testing performance on unseen data:</p>
+                    
+                    <div class="comparison">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Task</th>
+                                    <th>Evaluation Metrics</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Classification</strong></td>
+                                    <td>Accuracy, Precision, Recall, F1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Regression</strong></td>
+                                    <td>RMSE, MAE, R²</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Object Detection</strong></td>
+                                    <td>mAP, IoU</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="tools-container">
+                        <h3>Popular Tools:</h3>
+                        <div class="tools-grid">
+                            <div class="tool-card">Scikit-Learn Metrics</div>
+                            <div class="tool-card">TensorBoard</div>
+                            <div class="tool-card">MLflow</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 7: Deployment -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">7</div>
+                    <h2 class="step-title">Deployment</h2>
+                </div>
+                <div class="step-body">
+                    <p>Making the model available for real-world use:</p>
+                    <ul>
+                        <li><strong>Web API:</strong> Flask, FastAPI</li>
+                        <li><strong>Cloud Deployment:</strong> AWS SageMaker, Google Vertex AI</li>
+                        <li><strong>Edge Devices:</strong> TensorFlow Lite</li>
+                    </ul>
+                    
+                    <div class="tools-container">
+                        <h3>Popular Tools:</h3>
+                        <div class="tools-grid">
+                            <div class="tool-card">Docker</div>
+                            <div class="tool-card">Kubernetes</div>
+                            <div class="tool-card">Gradio</div>
+                            <div class="tool-card">Streamlit</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison">
+            <h2>AI Training Platforms</h2>
+            <div class="tools-grid">
+                <div class="tool-card">Google Colab</div>
+                <div class="tool-card">Kaggle</div>
+                <div class="tool-card">AWS SageMaker</div>
+                <div class="tool-card">Google Vertex AI</div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 AI Model Training Explained | Use this guide to understand the complete AI training pipeline</p>
+        </footer>
+    </div>
+</body>
+</html>
