@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Logic Gates & IoT Circuits with Arduino Code</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #16a085;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    header h1 { margin: 0; font-size: 2rem; }
+    section {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 { color: #16a085; margin-bottom: 10px; }
+    h3 { color: #117a65; margin-bottom: 8px; }
+    button {
+        padding: 8px 15px;
+        margin: 5px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: #2980b9;
+        color: white;
+    }
+    .led {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+        border-radius: 50%;
+        background-color: #ccc;
+        border: 2px solid #333;
+        vertical-align: middle;
+    }
+    .led.on {
+        background-color: #e74c3c;
+        box-shadow: 0 0 8px #e74c3c;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+    th { background-color: #16a085; color: white; }
+    .diagram, pre {
+        width: 100%;
+        max-width: 500px;
+        display: block;
+        margin: 10px auto;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #fafafa;
+        text-align: left;
+        overflow-x: auto;
+    }
+    pre { background-color: #ecf0f1; }
+    footer {
+        background-color: #16a085;
+        color: white;
+        text-align: center;
+        padding: 15px 10px;
+        margin-top: 30px;
+    }
+    a { color: #2980b9; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Interactive Logic Gates & IoT Circuits with Arduino Code</h1>
+    <p>Learn electronics, logic gates, and microcontroller circuits for IoT</p>
+</header>
+
+<section>
+    <h2>AND Gate</h2>
+    <button onclick="toggleInput('and', 1)">Input A</button><span id="andA" class="led"></span>
+    <button onclick="toggleInput('and', 2)">Input B</button><span id="andB" class="led"></span>
+    <h3>Output:</h3>
+    <span id="andOut" class="led"></span>
+    <h3>Arduino/ESP32 Circuit:</h3>
+    <div class="diagram">
+        <p>Connect two push buttons to D2 & D3, LED to D13 with resistor. LED lights only if both buttons pressed.</p>
+        <img src="https://www.tinkercad.com/things/and-gate-circuit.png" alt="AND Gate Circuit" />
+    </div>
+    <h3>Arduino Code:</h3>
+    <pre>
+const int buttonA = 2;
+const int buttonB = 3;
+const int led = 13;
+
+void setup() {
+  pinMode(buttonA, INPUT_PULLUP);
+  pinMode(buttonB, INPUT_PULLUP);
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  int a = !digitalRead(buttonA); // pressed = HIGH
+  int b = !digitalRead(buttonB);
+  digitalWrite(led, a & b);
+}
+    </pre>
+</section>
+
+<section>
+    <h2>OR Gate</h2>
+    <button onclick="toggleInput('or', 1)">Input A</button><span id="orA" class="led"></span>
+    <button onclick="toggleInput('or', 2)">Input B</button><span id="orB" class="led"></span>
+    <h3>Output:</h3>
+    <span id="orOut" class="led"></span>
+    <h3>Arduino/ESP32 Circuit:</h3>
+    <div class="diagram">
+        <p>Connect two push buttons to D2 & D3, LED to D13. LED lights if any button is pressed.</p>
+        <img src="https://www.tinkercad.com/things/or-gate-circuit.png" alt="OR Gate Circuit" />
+    </div>
+    <h3>Arduino Code:</h3>
+    <pre>
+const int buttonA = 2;
+const int buttonB = 3;
+const int led = 13;
+
+void setup() {
+  pinMode(buttonA, INPUT_PULLUP);
+  pinMode(buttonB, INPUT_PULLUP);
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  int a = !digitalRead(buttonA);
+  int b = !digitalRead(buttonB);
+  digitalWrite(led, a | b);
+}
+    </pre>
+</section>
+
+<section>
+    <h2>NOT Gate</h2>
+    <button onclick="toggleInput('not')">Input A</button><span id="notA" class="led"></span>
+    <h3>Output:</h3>
+    <span id="notOut" class="led"></span>
+    <h3>Arduino/ESP32 Circuit:</h3>
+    <div class="diagram">
+        <p>Connect push button to D2, LED to D13. LED is ON when button NOT pressed.</p>
+        <img src="https://www.tinkercad.com/things/not-gate-circuit.png" alt="NOT Gate Circuit" />
+    </div>
+    <h3>Arduino Code:</h3>
+    <pre>
+const int buttonA = 2;
+const int led = 13;
+
+void setup() {
+  pinMode(buttonA, INPUT_PULLUP);
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  int a = !digitalRead(buttonA);
+  digitalWrite(led, !a); // NOT logic
+}
+    </pre>
+</section>
+
+<section>
+    <h2>NAND Gate</h2>
+    <button onclick="toggleInput('nand', 1)">Input A</button><span id="nandA" class="led"></span>
+    <button onclick="toggleInput('nand', 2)">Input B</button><span id="nandB" class="led"></span>
+    <h3>Output:</h3>
+    <span id="nandOut" class="led"></span>
+    <h3>Arduino/ESP32 Circuit:</h3>
+    <div class="diagram">
+        <p>LED is ON unless both buttons pressed.</p>
+        <img src="https://www.tinkercad.com/things/nand-gate-circuit.png" alt="NAND Gate Circuit" />
+    </div>
+    <h3>Arduino Code:</h3>
+    <pre>
+const int buttonA = 2;
+const int buttonB = 3;
+const int led = 13;
+
+void setup() {
+  pinMode(buttonA, INPUT_PULLUP);
+  pinMode(buttonB, INPUT_PULLUP);
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  int a = !digitalRead(buttonA);
+  int b = !digitalRead(buttonB);
+  digitalWrite(led, !(a & b));
+}
+    </pre>
+</section>
+
+<section>
+    <h2>NOR Gate</h2>
+    <button onclick="toggleInput('nor', 1)">Input A</button><span id="norA" class="led"></span>
+    <button onclick="toggleInput('nor', 2)">Input B</button><span id="norB" class="led"></span>
+    <h3>Output:</h3>
+    <span id="norOut" class="led"></span>
+    <h3>Arduino/ESP32 Circuit:</h3>
+    <div class="diagram">
+        <p>LED lights only if neither button is pressed.</p>
+        <img src="https://www.tinkercad.com/things/nor-gate-circuit.png" alt="NOR Gate Circuit" />
+    </div>
+    <h3>Arduino Code:</h3>
+    <pre>
+const int buttonA = 2;
+const int buttonB = 3;
+const int led = 13;
+
+void setup() {
+  pinMode(buttonA, INPUT_PULLUP);
+  pinMode(buttonB, INPUT_PULLUP);
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  int a = !digitalRead(buttonA);
+  int b = !digitalRead(buttonB);
+  digitalWrite(led, !(a | b));
+}
+    </pre>
+</section>
+
+<section>
+    <h2>XOR Gate</h2>
+    <button onclick="toggleInput('xor', 1)">Input A</button><span id="xorA" class="led"></span>
+    <button onclick="toggleInput('xor', 2)">Input B</button><span id="xorB" class="led"></span>
+    <h3>Output:</h3>
+    <span id="xorOut" class="led"></span>
+    <h3>Arduino/ESP32 Circuit:</h3>
+    <div class="diagram">
+        <p>LED lights if exactly one button is pressed.</p>
+        <img src="https://www.tinkercad.com/things/xor-gate-circuit.png" alt="XOR Gate Circuit" />
+    </div>
+    <h3>Arduino Code:</h3>
+    <pre>
+const int buttonA = 2;
+const int buttonB = 3;
+const int led = 13;
+
+void setup() {
+  pinMode(buttonA, INPUT_PULLUP);
+  pinMode(buttonB, INPUT_PULLUP);
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  int a = !digitalRead(buttonA);
+  int b = !digitalRead(buttonB);
+  digitalWrite(led, a ^ b);
+}
+    </pre>
+</section>
+
+<section>
+    <h2>Truth Table Reference</h2>
+    <table>
+        <tr><th>Gate</th><th>Inputs</th><th>Output</th></tr>
+        <tr><td>AND</td><td>0 0 → 0, 0 1 → 0, 1 0 → 0, 1 1 → 1</td><td>0 or 1</td></tr>
+        <tr><td>OR</td><td>0 0 → 0, 0 1 → 1, 1 0 → 1, 1 1 → 1</td><td>0 or 1</td></tr>
+        <tr><td>NOT</td><td>0 → 1, 1 → 0</td><td>1 or 0</td></tr>
+        <tr><td>NAND</td><td>0 0 → 1, 0 1 → 1, 1 0 → 1, 1 1 → 0</td><td>0 or 1</td></tr>
+        <tr><td>NOR</td><td>0 0 → 1, 0 1 → 0, 1 0 → 0, 1 1 → 0</td><td>0 or 1</td></tr>
+        <tr><td>XOR</td><td>0 0 → 0, 0 1 → 1, 1 0 → 1, 1 1 → 0</td><td>0 or 1</td></tr>
+    </table>
+</section>
+
+<footer>
+    <p>&copy; 2025 ZN Infotech Pvt. Ltd.</p>
+    <p>Phone: 9565017342 | Website: <a href="https://zninfotech.com" target="_blank">zninfotech.com</a></p>
+    <p>Technologies: IoT, Programming Languages, Web Development, Electronics</p>
+</footer>
+
+<script>
+let state = {
+    and: [0,0],
+    or: [0,0],
+    not: [0],
+    nand: [0,0],
+    nor: [0,0],
+    xor: [0,0]
+};
+
+function toggleInput(gate, input=1) {
+    if (gate === 'not') {
+        state.not[0] = state.not[0] ? 0 : 1;
+        document.getElementById('notA').className = state.not[0] ? 'led on' : 'led';
+        document.getElementById('notOut').className = state.not[0] ? 'led' : 'led on';
+        return;
+    }
+    state[gate][input-1] = state[gate][input-1] ? 0 : 1;
+    document.getElementById(`${gate}${input===1?'A':'B'}`).className = state[gate][input-1] ? 'led on' : 'led';
+    switch(gate) {
+        case 'and': document.getElementById('andOut').className = (state.and[0] && state.and[1]) ? 'led on' : 'led'; break;
+        case 'or': document.getElementById('orOut').className = (state.or[0] || state.or[1]) ? 'led on' : 'led'; break;
+        case 'nand': document.getElementById('nandOut').className = (!(state.nand[0] && state.nand[1])) ? 'led on' : 'led'; break;
+        case 'nor': document.getElementById('norOut').className = (!(state.nor[0] || state.nor[1])) ? 'led on' : 'led'; break;
+        case 'xor': document.getElementById('xorOut').className = (state.xor[0] ^ state.xor[1]) ? 'led on' : 'led'; break;
+    }
+}
+</script>
+
+</body>
+</html>

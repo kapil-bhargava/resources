@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Gates & Circuit Basics</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #16a085;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        section {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #16a085;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #117a65;
+            margin-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #16a085;
+            color: white;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        footer {
+            background-color: #16a085;
+            color: white;
+            text-align: center;
+            padding: 15px 10px;
+            margin-top: 30px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Logic Gates & Circuit Basics</h1>
+    <p>Beginner’s guide to electronics, currents, and digital logic gates</p>
+</header>
+
+<section>
+    <h2>1. Basic Electrical Concepts</h2>
+    <ul>
+        <li><strong>Voltage (V):</strong> Electrical pressure or potential difference.</li>
+        <li><strong>Current (I):</strong> Flow of electrons in a circuit, measured in Amperes (A).</li>
+        <li><strong>Resistance (R):</strong> Opposition to current flow, measured in Ohms (Ω). <code>V = I * R</code> (Ohm’s Law)</li>
+        <li><strong>Power (P):</strong> Energy used by a device: <code>P = V * I</code></li>
+    </ul>
+    <h3>Common Components</h3>
+    <ul>
+        <li>Resistors, capacitors, LEDs, diodes, transistors</li>
+        <li>Switches / buttons</li>
+        <li>Sensors (temperature, motion, humidity)</li>
+        <li>Breadboards and jumper wires</li>
+    </ul>
+    <h3>Learn More:</h3>
+    <ul>
+        <li><a href="https://www.allaboutcircuits.com/" target="_blank">All About Circuits</a></li>
+        <li><a href="https://www.youtube.com/c/CircuitBasics" target="_blank">Circuit Basics YouTube Channel</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>2. Logic Gates</h2>
+    <p>Logic gates are the building blocks of digital electronics. They process one or more input signals and produce an output according to a logical rule.</p>
+
+    <h3>Basic Gates</h3>
+    <table>
+        <tr>
+            <th>Gate</th>
+            <th>Symbol</th>
+            <th>Inputs</th>
+            <th>Output</th>
+            <th>Boolean Expression</th>
+            <th>Example Use</th>
+        </tr>
+        <tr>
+            <td>AND</td>
+            <td>&amp;</td>
+            <td>2</td>
+            <td>1</td>
+            <td>A·B</td>
+            <td>Motor ON only if two switches pressed</td>
+        </tr>
+        <tr>
+            <td>OR</td>
+            <td>≥1</td>
+            <td>2</td>
+            <td>1</td>
+            <td>A + B</td>
+            <td>Light ON if either sensor triggers</td>
+        </tr>
+        <tr>
+            <td>NOT</td>
+            <td>¬</td>
+            <td>1</td>
+            <td>1</td>
+            <td>¬A</td>
+            <td>Inverts signal</td>
+        </tr>
+        <tr>
+            <td>NAND</td>
+            <td>↑</td>
+            <td>2</td>
+            <td>1</td>
+            <td>¬(A·B)</td>
+            <td>Safety circuits</td>
+        </tr>
+        <tr>
+            <td>NOR</td>
+            <td>↓</td>
+            <td>2</td>
+            <td>1</td>
+            <td>¬(A + B)</td>
+            <td>Alarm systems</td>
+        </tr>
+        <tr>
+            <td>XOR</td>
+            <td>⊕</td>
+            <td>2</td>
+            <td>1</td>
+            <td>A⊕B</td>
+            <td>Toggle circuits, e.g., lamp ON if only one switch is pressed</td>
+        </tr>
+    </table>
+
+    <h3>Learn More:</h3>
+    <ul>
+        <li><a href="https://www.electronics-tutorials.ws/logic/logic_1.html" target="_blank">Electronics Tutorials – Logic Gates</a></li>
+        <li><a href="https://www.tinkercad.com/circuits" target="_blank">Tinkercad Circuits Simulator</a></li>
+        <li><a href="https://everycircuit.com/" target="_blank">EveryCircuit Simulator</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>3. Practical Circuits for IoT</h2>
+    <p>Once you understand logic gates, you can implement them using microcontrollers like Arduino or ESP32.</p>
+    <ul>
+        <li>Use GPIO pins as digital inputs and outputs (HIGH/LOW) corresponding to logic 1/0.</li>
+        <li>Combine sensors and buttons using AND, OR, and NOT logic to control LEDs, motors, or relays.</li>
+        <li>Use resistors for pull-up/pull-down configurations to stabilize input pins.</li>
+        <li>Understand series and parallel circuits for multiple components.</li>
+        <li>Start with simple LED + button circuits and gradually add sensors and actuators.</li>
+    </ul>
+    <h3>Simulation & Learning Tools:</h3>
+    <ul>
+        <li><a href="https://www.tinkercad.com/circuits" target="_blank">Tinkercad Circuits</a> – Build and simulate circuits online</li>
+        <li><a href="https://everycircuit.com/" target="_blank">EveryCircuit</a> – Interactive circuit simulator</li>
+        <li><a href="https://www.allaboutcircuits.com/technical-articles/" target="_blank">All About Circuits – Tutorials & Articles</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>4. Beginner Project Ideas</h2>
+    <ul>
+        <li>LED blink using Arduino or ESP32</li>
+        <li>AND gate with two buttons → LED lights up only if both pressed</li>
+        <li>OR gate with motion sensors → Alarm triggers if any sensor detects motion</li>
+        <li>Temperature sensor + fan → Fan ON if temperature > threshold AND humidity > threshold</li>
+    </ul>
+</section>
+
+<footer>
+    <p>&copy; 2025 ZN Infotech Pvt. Ltd.</p>
+    <p>Phone: 9565017342 | Website: <a href="https://zninfotech.com" target="_blank">zninfotech.com</a></p>
+    <p>Technologies: IoT, Programming Languages, Web Development, Mobile App Development, Electronics</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Learning Roadmap</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        header {
+            background-color: #2e86de;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        section {
+            padding: 20px 15px;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2e86de;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #1b4f72;
+            margin-bottom: 8px;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        footer {
+            background-color: #2e86de;
+            color: white;
+            text-align: center;
+            padding: 15px 10px;
+            margin-top: 30px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>IoT Learning Roadmap</h1>
+    <p>Step-by-step guide to become proficient in Internet of Things (IoT)</p>
+</header>
+
+<section>
+    <h2>1. Understand IoT Basics</h2>
+    <p>IoT (Internet of Things) is a network of physical devices connected to the internet to collect and exchange data.</p>
+    <h3>Core Components:</h3>
+    <ul>
+        <li>Devices & Sensors</li>
+        <li>Actuators</li>
+        <li>Communication Protocols: MQTT, HTTP, CoAP, Bluetooth, Zigbee</li>
+        <li>Edge Devices & Gateways</li>
+        <li>Cloud / Data Analytics</li>
+        <li>User Interface / Dashboard</li>
+    </ul>
+    <h3>Learn in Detail:</h3>
+    <ul>
+        <li><a href="https://microsoft.github.io/IoT-For-Beginners/" target="_blank">IoT for Beginners – Microsoft</a></li>
+        <li><a href="https://www.tutorialspoint.com/internet_of_things/index.htm" target="_blank">IoT Tutorials – TutorialsPoint</a></li>
+        <li><a href="https://www.youtube.com/results?search_query=freecodecamp+iot+full+course" target="_blank">freeCodeCamp IoT Courses on YouTube</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>2. Required Programming Languages</h2>
+    <h3>A. Microcontroller / Embedded Programming</h3>
+    <p><strong>C / C++</strong>: Used for Arduino, ESP32, controlling GPIOs, timers, interrupts.</p>
+    <ul>
+        <li><a href="https://www.arduino.cc/en/Tutorial/HomePage" target="_blank">Arduino Official Tutorials</a></li>
+        <li><a href="https://www.learn-c.org/" target="_blank">Learn C/C++ Online</a></li>
+    </ul>
+    <p><strong>Python:</strong> Used for Raspberry Pi, MicroPython boards, sensor integration.</p>
+    <ul>
+        <li><a href="https://projects.raspberrypi.org/en/projects/physical-computing" target="_blank">Raspberry Pi GPIO Python Tutorial</a></li>
+        <li><a href="https://docs.micropython.org/" target="_blank">MicroPython Documentation</a></li>
+    </ul>
+
+    <h3>B. Web & Cloud Programming</h3>
+    <ul>
+        <li>JavaScript / Node.js – Real-time dashboards, server-side handling</li>
+        <li>Python (Flask/Django/FastAPI) – APIs for remote control and data storage</li>
+        <li>MQTT Libraries: Python <code>paho-mqtt</code>, Node.js <code>mqtt</code></li>
+    </ul>
+
+    <h3>C. Optional but Recommended</h3>
+    <ul>
+        <li>Java/Kotlin – Android IoT apps</li>
+        <li>SQL / NoSQL Databases – MySQL, MongoDB, Firebase</li>
+        <li>Cloud Platforms – AWS IoT Core, Azure IoT Hub, Google Cloud IoT</li>
+    </ul>
+</section>
+
+<section>
+    <h2>3. Electronics Basics</h2>
+    <ul>
+        <li>Learn resistors, capacitors, LEDs, motors, relays, sensors</li>
+        <li>Use breadboard and multimeter for prototyping</li>
+    </ul>
+    <h3>References:</h3>
+    <ul>
+        <li><a href="https://www.allaboutcircuits.com/" target="_blank">All About Circuits</a></li>
+        <li><a href="https://www.youtube.com/c/CircuitBasics" target="_blank">Circuit Basics YouTube Channel</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>4. Practice with Real IoT Boards</h2>
+    <h3>Recommended Boards:</h3>
+    <ul>
+        <li>Arduino Uno / Nano – Beginner-friendly</li>
+        <li>ESP8266 / ESP32 – WiFi-enabled boards for cloud projects</li>
+        <li>Raspberry Pi – Linux-based, can run Python and Node.js dashboards</li>
+    </ul>
+    <h3>Starter Projects:</h3>
+    <ul>
+        <li>LED blink & button control</li>
+        <li>Temperature & humidity sensor reading (DHT11/DHT22)</li>
+        <li>Motor control via smartphone (ESP32 + Blynk)</li>
+        <li>Smart home automation project</li>
+    </ul>
+</section>
+
+<section>
+    <h2>5. IoT Communication Protocols</h2>
+    <ul>
+        <li>MQTT – lightweight publish/subscribe protocol</li>
+        <li>HTTP / REST APIs – device-to-server communication</li>
+        <li>WebSocket – real-time communication with dashboards</li>
+        <li>Bluetooth / Zigbee / LoRa – device-to-device communication</li>
+    </ul>
+    <h3>References:</h3>
+    <ul>
+        <li><a href="https://mqtt.org/" target="_blank">MQTT Official</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API" target="_blank">WebSocket Documentation – MDN</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>6. Build Dashboards & Cloud Integration</h2>
+    <ul>
+        <li>Local Dashboard: Python + Flask + Chart.js, Node.js + Socket.io + HTML/CSS</li>
+        <li>Cloud Dashboard: ThingsBoard, Blynk, Node-RED</li>
+        <li>Database: MongoDB, Firebase, MySQL</li>
+    </ul>
+</section>
+
+<section>
+    <h2>7. Recommended Learning Flow</h2>
+    <ol>
+        <li>Learn C/C++ basics → Arduino projects</li>
+        <li>Learn Python basics → Raspberry Pi projects</li>
+        <li>Learn electronics basics → build sensor/motor circuits</li>
+        <li>Learn communication protocols → MQTT, HTTP</li>
+        <li>Build small IoT projects → LED, motor, sensors</li>
+        <li>Learn web/cloud programming → Flask / Node.js + database</li>
+        <li>Build real IoT system with dashboard</li>
+        <li>Explore advanced IoT → AI on edge, IoT security, industrial IoT</li>
+    </ol>
+</section>
+
+<section>
+    <h2>8. Additional Resources</h2>
+    <ul>
+        <li>Books: 
+            <ul>
+                <li><em>Getting Started with Arduino</em> – Massimo Banzi</li>
+                <li><em>Python Programming for Raspberry Pi</em> – Richard Blum</li>
+            </ul>
+        </li>
+        <li>YouTube: Paul McWhorter Arduino tutorials, Andreas Spiess ESP32 tutorials</li>
+        <li>Platforms: 
+            <ul>
+                <li><a href="https://www.hackster.io/" target="_blank">Hackster.io IoT Projects</a></li>
+                <li><a href="https://microsoft.github.io/IoT-For-Beginners/" target="_blank">Microsoft IoT Beginner Guide</a></li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<footer>
+    <p>&copy; 2025 ZN Infotech Pvt. Ltd.</p>
+    <p>Phone: 9565017342 | Website: <a href="https://zninfotech.com" target="_blank">zninfotech.com</a></p>
+    <p>Technologies: IoT, Programming Languages, Web Development, Mobile App Development, Data Analytics, AI/ML</p>
+</footer>
+
+</body>
+</html>
