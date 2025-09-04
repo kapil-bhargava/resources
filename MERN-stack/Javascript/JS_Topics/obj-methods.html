@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Object Methods Explained</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #ffffff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    h1 {
+      color: #333;
+    }
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #444;
+      margin-top: 30px;
+      border-left: 5px solid #0078d7;
+      padding-left: 10px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-left: 4px solid #0078d7;
+      overflow-x: auto;
+      border-radius: 4px;
+    }
+    footer {
+      background: #ffffff;
+      text-align: center;
+      padding: 15px;
+      border-top: 2px solid #e0e0e0;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+    footer a {
+      color: #0078d7;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JavaScript Object Methods (Detailed Explanation)</h1>
+    <p>Learn about the built-in methods of the <code>Object</code> class in JavaScript with definitions, meanings, and examples.</p>
+  </header>
+
+  <section>
+    <h2>🔹 What are Object Methods?</h2>
+    <p>
+      In JavaScript, <code>Object</code> methods are built-in functions that allow developers to work with objects effectively. They help in retrieving keys, values, entries, assigning properties, preventing modifications, and much more. 
+    </p>
+  </section>
+
+  <section>
+    <h2>1. Object.keys()</h2>
+    <p><b>Definition:</b> Returns an array of a given object's own enumerable property names (keys).</p>
+    <p><b>Meaning:</b> Helps you extract all the keys from an object for iteration or logic building.</p>
+    <pre>
+// Example:
+const student = { name: "Ravi", age: 21, course: "BCA" };
+console.log(Object.keys(student));
+// Output: ["name", "age", "course"]
+    </pre>
+  </section>
+
+  <section>
+    <h2>2. Object.values()</h2>
+    <p><b>Definition:</b> Returns an array of an object's own enumerable property values.</p>
+    <p><b>Meaning:</b> Useful when you need all the values without caring about the keys.</p>
+    <pre>
+// Example:
+console.log(Object.values(student));
+// Output: ["Ravi", 21, "BCA"]
+    </pre>
+  </section>
+
+  <section>
+    <h2>3. Object.entries()</h2>
+    <p><b>Definition:</b> Returns an array of an object's own enumerable <code>[key, value]</code> pairs.</p>
+    <p><b>Meaning:</b> Handy for iterating both keys and values together.</p>
+    <pre>
+// Example:
+console.log(Object.entries(student));
+// Output: [["name","Ravi"], ["age",21], ["course","BCA"]]
+    </pre>
+  </section>
+
+  <section>
+    <h2>4. Object.assign()</h2>
+    <p><b>Definition:</b> Copies the values of all enumerable own properties from one or more source objects to a target object.</p>
+    <p><b>Meaning:</b> Used for cloning or merging objects.</p>
+    <pre>
+// Example:
+const details = { city: "Lucknow" };
+const merged = Object.assign({}, student, details);
+console.log(merged);
+// Output: {name: "Ravi", age: 21, course: "BCA", city: "Lucknow"}
+    </pre>
+  </section>
+
+  <section>
+    <h2>5. Object.freeze()</h2>
+    <p><b>Definition:</b> Freezes an object, preventing new properties from being added or existing properties from being changed.</p>
+    <p><b>Meaning:</b> Used to make an object immutable.</p>
+    <pre>
+// Example:
+Object.freeze(student);
+student.age = 22; // ignored
+console.log(student.age); // 21
+    </pre>
+  </section>
+
+  <section>
+    <h2>6. Object.seal()</h2>
+    <p><b>Definition:</b> Prevents new properties from being added, but existing properties can still be modified.</p>
+    <p><b>Meaning:</b> Useful when you want to restrict object structure but allow updates.</p>
+    <pre>
+// Example:
+const teacher = { name: "Arun", subject: "Math" };
+Object.seal(teacher);
+teacher.subject = "Physics"; // allowed
+teacher.age = 40; // not allowed
+console.log(teacher);
+// Output: {name: "Arun", subject: "Physics"}
+    </pre>
+  </section>
+
+  <section>
+    <h2>7. Object.create()</h2>
+    <p><b>Definition:</b> Creates a new object with the specified prototype object.</p>
+    <p><b>Meaning:</b> Used for inheritance and prototype-based object creation.</p>
+    <pre>
+// Example:
+const person = { greet() { console.log("Hello!"); } };
+const newPerson = Object.create(person);
+newPerson.greet(); // Hello!
+    </pre>
+  </section>
+
+  <section>
+    <h2>8. Object.hasOwnProperty()</h2>
+    <p><b>Definition:</b> Returns a boolean indicating whether the object has the specified property as its own property.</p>
+    <p><b>Meaning:</b> Helps in checking property existence without checking the prototype chain.</p>
+    <pre>
+// Example:
+console.log(student.hasOwnProperty("name")); // true
+console.log(student.hasOwnProperty("toString")); // false
+    </pre>
+  </section>
+
+  <section>
+    <h2>9. Object.getOwnPropertyNames()</h2>
+    <p><b>Definition:</b> Returns an array of all properties (including non-enumerable) found directly in an object.</p>
+    <p><b>Meaning:</b> Unlike <code>Object.keys()</code>, it includes hidden properties too.</p>
+    <pre>
+// Example:
+console.log(Object.getOwnPropertyNames(student));
+// Output: ["name","age","course"]
+    </pre>
+  </section>
+
+  <footer>
+    <p>📘 Created by <b>ZN Infotech Pvt. Ltd.</b> | Phone: 9565017342 | <a href="https://zninfotech.com" target="_blank">zninfotech.com</a></p>
+    <p>We provide training in IoT, Programming Languages, Web Development, Mobile App Development, and more.</p>
+    <p>References: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">MDN Docs</a></p>
+  </footer>
+</body>
+</html>

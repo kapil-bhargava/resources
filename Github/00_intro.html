@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Git & GitHub Mastery Guide</title>
+  <style>
+    :root {
+      --primary: #238636;
+      --secondary: #2f81f7;
+      --dark: #0d1117;
+      --light: #f0f6fc;
+      --accent: #ff7b72;
+      --gray: #8b949e;
+    }
+    
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--light);
+      margin: 0;
+      padding: 0;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    header {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+    
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    
+    main {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    
+    section {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    section:last-child {
+      border-bottom: none;
+    }
+    
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.3em;
+      height: 1em;
+      width: 0.5em;
+      background: var(--secondary);
+      border-radius: 4px;
+    }
+    
+    h3 {
+      color: var(--secondary);
+      margin: 1.5rem 0 0.5rem;
+    }
+    
+    p {
+      margin: 1rem 0;
+    }
+    
+    ul, ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    code {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      background: rgba(175,184,193,0.2);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    
+    .command-block {
+      background: var(--dark);
+      color: white;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    
+    .command {
+      display: block;
+      margin: 0.5rem 0;
+      white-space: nowrap;
+    }
+    
+    .command-comment {
+      color: var(--gray);
+      font-style: italic;
+      margin-left: 1rem;
+    }
+    
+    .note {
+      background: rgba(46,160,67,0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1rem;
+      border-radius: 0 4px 4px 0;
+      margin: 1.5rem 0;
+    }
+    
+    .note-title {
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 0;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+      margin: 1rem 0;
+    }
+    
+    .cta-button:hover {
+      background: #2ea043;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .card h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+    
+    .footer-links a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+    
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      section {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Git & GitHub Complete Guide</h1>
+    <p>Master Version Control and Collaborative Development</p>
+  </header>
+  
+  <div class="container">
+    <main>
+      <section id="what-is-git">
+        <h2>What is Git?</h2>
+        <p><strong>Git</strong> is a distributed version control system (DVCS) created by Linus Torvalds in 2005 for Linux kernel development. It's now the most widely used version control system in software development.</p>
+        
+        <div class="grid">
+          <div class="card">
+            <h3>Key Features</h3>
+            <ul>
+              <li>Distributed architecture (every clone is a full repository)</li>
+              <li>Lightweight branching and merging</li>
+              <li>Data integrity through SHA-1 hashing</li>
+              <li>Non-linear development support</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3>How Git Works</h3>
+            <p>Git takes snapshots of your project at different points in time. Each snapshot (commit) contains:</p>
+            <ul>
+              <li>Pointer to the previous commit</li>
+              <li>Author information</li>
+              <li>Commit message</li>
+              <li>Hash of the file tree</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      
+      <section id="what-is-github">
+        <h2>What is GitHub?</h2>
+        <p><strong>GitHub</strong> is a cloud-based platform built around Git that provides:</p>
+        <ul>
+          <li>Remote repository hosting</li>
+          <li>Collaboration tools (issues, pull requests)</li>
+          <li>Project management features</li>
+          <li>CI/CD integration (GitHub Actions)</li>
+          <li>Package registry</li>
+        </ul>
+        
+        <div class="note">
+          <p class="note-title">GitHub vs Git</p>
+          <p>While Git is the version control software you run locally, GitHub is a platform that hosts Git repositories in the cloud with additional collaboration features.</p>
+        </div>
+        
+        <a href="https://github.com/signup" target="_blank" class="cta-button">Create Free GitHub Account</a>
+      </section>
+      
+      <section id="why-use">
+        <h2>Why Use Git & GitHub?</h2>
+        
+        <h3>For Individual Developers</h3>
+        <ul>
+          <li><strong>Version history:</strong> Track every change and revert when needed</li>
+          <li><strong>Experimentation:</strong> Create branches to try new ideas safely</li>
+          <li><strong>Portfolio:</strong> Showcase your work to potential employers</li>
+        </ul>
+        
+        <h3>For Teams</h3>
+        <ul>
+          <li><strong>Collaboration:</strong> Multiple developers can work simultaneously</li>
+          <li><strong>Code review:</strong> Pull requests enable peer review</li>
+          <li><strong>Conflict resolution:</strong> Built-in tools to manage merge conflicts</li>
+        </ul>
+        
+        <h3>For Organizations</h3>
+        <ul>
+          <li><strong>Workflow automation:</strong> CI/CD pipelines with GitHub Actions</li>
+          <li><strong>Access control:</strong> Granular permissions management</li>
+          <li><strong>Project management:</strong> Integrated with issues, milestones, and projects</li>
+        </ul>
+      </section>
+      
+      <section id="getting-started">
+        <h2>Getting Started with Git</h2>
+        
+        <h3>Installation</h3>
+        <div class="command-block">
+          <span class="command"># Windows (download installer)</span>
+          <span class="command">https://git-scm.com/download/win</span>
+          
+          <span class="command"># macOS (using Homebrew)</span>
+          <span class="command">brew install git</span>
+          
+          <span class="command"># Linux (Debian/Ubuntu)</span>
+          <span class="command">sudo apt install git</span>
+        </div>
+        
+        <h3>Initial Configuration</h3>
+        <div class="command-block">
+          <span class="command">git config --global user.name "Your Name"</span>
+          <span class="command-comment"># Set your username</span>
+          
+          <span class="command">git config --global user.email "your@email.com"</span>
+          <span class="command-comment"># Set your email</span>
+          
+          <span class="command">git config --global init.defaultBranch main</span>
+          <span class="command-comment"># Set default branch name</span>
+        </div>
+      </section>
+      
+      <section id="basic-workflow">
+        <h2>Basic Git Workflow</h2>
+        
+        <ol>
+          <li><strong>Initialize</strong> a new repository or <strong>clone</strong> an existing one</li>
+          <li>Create or modify files in your working directory</li>
+          <li><strong>Stage</strong> changes you want to commit</li>
+          <li><strong>Commit</strong> the staged changes with a descriptive message</li>
+          <li><strong>Push</strong> your commits to a remote repository (like GitHub)</li>
+        </ol>
+        
+        <h3>Essential Commands</h3>
+        <div class="command-block">
+          <span class="command">git init</span>
+          <span class="command-comment"># Initialize new repository</span>
+          
+          <span class="command">git clone https://github.com/user/repo.git</span>
+          <span class="command-comment"># Clone existing repository</span>
+          
+          <span class="command">git status</span>
+          <span class="command-comment"># View changed files</span>
+          
+          <span class="command">git add file.txt</span>
+          <span class="command-comment"># Stage specific file</span>
+          
+          <span class="command">git add .</span>
+          <span class="command-comment"># Stage all changes</span>
+          
+          <span class="command">git commit -m "Descriptive message"</span>
+          <span class="command-comment"># Commit staged changes</span>
+          
+          <span class="command">git push origin main</span>
+          <span class="command-comment"># Push commits to remote</span>
+          
+          <span class="command">git pull</span>
+          <span class="command-comment"># Fetch and merge remote changes</span>
+        </div>
+      </section>
+      
+      <section id="branching">
+        <h2>Branching & Merging</h2>
+        
+        <p>Branches allow you to work on different versions of your code simultaneously. The default branch is typically called <code>main</code> or <code>master</code>.</p>
+        
+        <div class="command-block">
+          <span class="command">git branch</span>
+          <span class="command-comment"># List all branches</span>
+          
+          <span class="command">git branch new-feature</span>
+          <span class="command-comment"># Create new branch</span>
+          
+          <span class="command">git checkout new-feature</span>
+          <span class="command-comment"># Switch to branch</span>
+          
+          <span class="command">git checkout -b new-feature</span>
+          <span class="command-comment"># Create and switch to new branch</span>
+          
+          <span class="command">git merge new-feature</span>
+          <span class="command-comment"># Merge branch into current branch</span>
+          
+          <span class="command">git branch -d new-feature</span>
+          <span class="command-comment"># Delete branch</span>
+        </div>
+        
+        <div class="note">
+          <p class="note-title">Branching Strategies</p>
+          <p>Common workflows include:</p>
+          <ul>
+            <li><strong>Feature branching:</strong> Each new feature gets its own branch</li>
+            <li><strong>Git Flow:</strong> Formal model with develop, feature, release branches</li>
+            <li><strong>GitHub Flow:</strong> Simpler model focused on pull requests</li>
+          </ul>
+        </div>
+      </section>
+      
+      <section id="github-workflow">
+        <h2>GitHub Collaboration Workflow</h2>
+        
+        <ol>
+          <li><strong>Fork</strong> the repository (creates your personal copy)</li>
+          <li><strong>Clone</strong> your fork locally</li>
+          <li>Create a <strong>feature branch</strong> for your changes</li>
+          <li>Make changes and <strong>commit</strong> them</li>
+          <li><strong>Push</strong> your branch to your fork</li>
+          <li>Create a <strong>pull request</strong> (PR) to propose your changes</li>
+          <li>Address any <strong>review feedback</strong></li>
+          <li>After approval, your changes get <strong>merged</strong></li>
+        </ol>
+        
+        <h3>GitHub-Specific Commands</h3>
+        <div class="command-block">
+          <span class="command">git remote add upstream https://github.com/original/repo.git</span>
+          <span class="command-comment"># Connect to original repo</span>
+          
+          <span class="command">git fetch upstream</span>
+          <span class="command-comment"># Get updates from original repo</span>
+          
+          <span class="command">git merge upstream/main</span>
+          <span class="command-comment"># Sync your main branch with original</span>
+        </div>
+      </section>
+      
+      <section id="advanced">
+        <h2>Advanced Topics</h2>
+        
+        <h3>Undoing Changes</h3>
+        <div class="command-block">
+          <span class="command">git restore file.txt</span>
+          <span class="command-comment"># Discard unstaged changes</span>
+          
+          <span class="command">git reset --hard HEAD</span>
+          <span class="command-comment"># Discard all uncommitted changes</span>
+          
+          <span class="command">git revert commit-hash</span>
+          <span class="command-comment"># Create new commit that undoes a previous commit</span>
+        </div>
+        
+        <h3>Rebasing</h3>
+        <p>Alternative to merging that creates linear history:</p>
+        <div class="command-block">
+          <span class="command">git rebase main</span>
+          <span class="command-comment"># Rebase current branch onto main</span>
+        </div>
+        
+        <h3>Stashing</h3>
+        <p>Temporarily save changes without committing:</p>
+        <div class="command-block">
+          <span class="command">git stash</span>
+          <span class="command-comment"># Save changes</span>
+          
+          <span class="command">git stash pop</span>
+          <span class="command-comment"># Restore most recent stash</span>
+        </div>
+      </section>
+      
+      <section id="resources">
+        <h2>Learning Resources</h2>
+        
+        <div class="grid">
+          <div class="card">
+            <h3>Official Documentation</h3>
+            <ul>
+              <li><a href="https://git-scm.com/doc" target="_blank">Git Documentation</a></li>
+              <li><a href="https://docs.github.com" target="_blank">GitHub Docs</a></li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3>Interactive Learning</h3>
+            <ul>
+              <li><a href="https://learngitbranching.js.org" target="_blank">Learn Git Branching</a></li>
+              <li><a href="https://github.com/skills/introduction-to-github" target="_blank">GitHub Skills</a></li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3>Books</h3>
+            <ul>
+              <li>Pro Git (free online)</li>
+              <li>Git Pocket Guide</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <footer>
+    <div class="footer-links">
+      <a href="https://zninfotech.com" target="_blank">Website</a>
+      <a href="mailto:info@zninfotech.com">Contact</a>
+      <a href="tel:+919565017342">+91 9565017342</a>
+    </div>
+    <p>© 2023 ZN Infotech Pvt. Ltd. | Providing training in Git, GitHub, DevOps, and modern software development practices</p>
+  </footer>
+</body>
+</html>

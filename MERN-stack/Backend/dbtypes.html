@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Databases Deep Dive — Types, Storage Formats, and MySQL vs NoSQL</title>
+    <style>
+        :root {
+            --bg: #0b1220;
+            --panel: #0f172a;
+            --ink: #e5e7eb;
+            --muted: #94a3b8;
+            --brand: #22c55e;
+            --accent: #38bdf8;
+            --card: #0b1730;
+            --code: #0b1326;
+            --kbd: #111827;
+            --border: #1a2a41;
+        }
+
+        /* :root{
+      --bg:#f8fafc; 
+      --panel:#ffffff; 
+      --ink:#221e3b; 
+      --muted:#64748b; 
+      --brand:#16a34a; 
+      --accent:#0284c7; 
+      --card:#f1f5f9;
+      --code:#e2e8f0; 
+      --kbd:#f1f5f9; 
+      --border:#cbd5e1;
+} */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #0a0f1a);
+            color: var(--ink);
+            font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: auto;
+            padding: 32px
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(11, 18, 32, .8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 2
+        }
+
+        header .wrap {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 14px 32px
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: .3px
+        }
+
+        .logo b {
+            color: var(--brand)
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 12px
+        }
+
+        nav a:hover {
+            background: #0f1a2e;
+            color: #cbd5e1
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 18px 0
+        }
+
+        h2 {
+            font-size: 26px;
+            margin: 26px 0 10px
+        }
+
+        h3 {
+            font-size: 20px;
+            margin: 22px 0 8px
+        }
+
+        p,
+        li {
+            color: #d1d5db
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px
+        }
+
+        .grid.two {
+            grid-template-columns: repeat(2, minmax(0, 1fr))
+        }
+
+        .grid.three {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        @media (max-width:900px) {
+
+            .grid.two,
+            .grid.three {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .callout {
+            border: 1px dashed #214061;
+            background: #0c1933;
+            border-radius: 16px;
+            padding: 14px
+        }
+
+        code,
+        pre {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+        }
+
+        pre {
+            background: var(--code);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px;
+            overflow: auto
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: #0d1a30;
+            color: #cbd5e1;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            font-size: 12px
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid var(--border)
+        }
+
+        .table thead th {
+            background: #0e1a31;
+            color: #cbd5e1;
+            padding: 12px;
+            text-align: left;
+            font-weight: 700
+        }
+
+        .table tbody td {
+            border-top: 1px solid var(--border);
+            padding: 12px;
+            vertical-align: top
+        }
+
+        .kbd {
+            background: var(--kbd);
+            border: 1px solid var(--border);
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 12px
+        }
+
+        abbr {
+            border-bottom: 1px dotted #94a3b8;
+            cursor: help
+        }
+
+        .toc {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .toc a {
+            border: 1px solid var(--border);
+            background: #0c152a;
+            border-radius: 12px;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: #cbd5e1
+        }
+
+        .toc a:hover {
+            border-color: #23406d;
+            color: #e2e8f0
+        }
+
+        footer {
+            margin-top: 48px;
+            background: #07101f;
+            border-top: 1px solid var(--border)
+        }
+
+        footer .wrap {
+            display: grid;
+            gap: 10px
+        }
+
+        .ref a {
+            color: #93c5fd
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <div class="logo">Database Guide <b>ZN</b></div>
+            <nav>
+                <a href="#types">Types of Databases</a>
+                <a href="#storage">Physical Storage Formats</a>
+                <a href="#mysql">Deep Dive: MySQL</a>
+                <a href="#nosql">Deep Dive: NoSQL</a>
+                <a href="#compare">MySQL vs NoSQL</a>
+                <a href="#choose">How to Choose</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <h1>Databases Deep Dive — Types, Storage Formats, and <span style="color:var(--accent)">MySQL vs NoSQL</span>
+        </h1>
+        <p class="muted">A practical, in‑depth explainer on how different databases store data, with a special focus on
+            <strong>MySQL (Relational)</strong> and <strong>NoSQL families</strong>. Includes examples, trade‑offs, and
+            when to choose what.
+        </p>
+
+        <div class="card">
+            <div class="toc">
+                <a href="#glossary">Glossary</a>
+                <a href="#types">Database Types Overview</a>
+                <a href="#storage">Physical Storage & Indexing</a>
+                <a href="#mysql">MySQL: Engine, Files, Indexes, Transactions</a>
+                <a href="#nosql">NoSQL: Key-Value, Document, Column, Graph</a>
+                <a href="#compare">MySQL vs NoSQL: Differences</a>
+                <a href="#examples">Hands‑on Examples</a>
+                <a href="#choose">How to Choose + Checklist</a>
+                <a href="#refs">References</a>
+            </div>
+        </div>
+
+        <section id="glossary">
+            <h2>Quick Glossary (hover the <abbr
+                    title="A small dotted underline appears. Hover to see definitions.">abbr</abbr>s)</h2>
+            <p>
+                <span class="tag"><abbr
+                        title="Atomicity, Consistency, Isolation, Durability — classic transactional guarantees.">ACID</abbr></span>
+                <span class="tag"><abbr
+                        title="Consistency, Availability, Partition tolerance — can only strongly optimize for two in a partitioned network.">CAP</abbr></span>
+                <span class="tag"><abbr
+                        title="Multi-Version Concurrency Control — readers see snapshots, writers create new versions.">MVCC</abbr></span>
+                <span class="tag"><abbr title="A balanced tree structure widely used for indexes.">B+Tree</abbr></span>
+                <span class="tag"><abbr
+                        title="Log-Structured Merge Tree — write-optimized structure that merges sorted files.">LSM
+                        Tree</abbr></span>
+                <span class="tag"><abbr
+                        title="Online Transaction Processing — many small reads/writes.">OLTP</abbr></span>
+                <span class="tag"><abbr
+                        title="Online Analytical Processing — big scans/aggregations.">OLAP</abbr></span>
+                <span class="tag"><abbr title="Data Definition Language — CREATE/ALTER/DROP.">DDL</abbr></span>
+                <span class="tag"><abbr
+                        title="Data Manipulation Language — SELECT/INSERT/UPDATE/DELETE.">DML</abbr></span>
+            </p>
+        </section>
+
+        <section id="types">
+            <h2>Major Types of Databases & Their Data Models</h2>
+            <div class="grid two">
+                <div class="card">
+                    <h3>1) Relational (RDBMS)</h3>
+                    <p>Data is organized into <strong>tables</strong> (relations) of <strong>rows</strong> and
+                        <strong>columns</strong>. Schema is defined upfront (schema‑on‑write). Joins are first‑class.
+                        Examples: MySQL, PostgreSQL, SQL Server, Oracle.
+                    </p>
+                    <p><em>Storage style:</em> generally <strong>row‑oriented</strong>; indexes via <abbr
+                            title="Balanced + leaf nodes contain record pointers/primary keys">B+Trees</abbr>. Strong
+                        <abbr title="Transactions obey ACID guarantees.">ACID</abbr> with <abbr
+                            title="Snapshot reads via multi versions.">MVCC</abbr>.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>2) Key‑Value Stores</h3>
+                    <p>Everything is a large dictionary: <code>key → opaque value</code>. Blazing fast for simple
+                        get/put. Examples: Redis (in‑memory), Riak, Amazon Dynamo‑style systems.</p>
+                    <p><em>Storage style:</em> hash tables, skip lists, or <abbr
+                            title="Write‑optimized tables merged over time">LSM</abbr>. Values can be JSON, blobs, or
+                        binary.</p>
+                </div>
+                <div class="card">
+                    <h3>3) Document Stores</h3>
+                    <p>Data stored as self‑describing <strong>documents</strong> (JSON/<abbr
+                            title="Binary JSON used by MongoDB">BSON</abbr>). Flexible schema (schema‑on‑read).
+                        Examples: MongoDB, Couchbase, Firebase Firestore.</p>
+                    <p><em>Storage style:</em> B‑Trees or LSM + per‑document indexes; nested fields can be indexed.</p>
+                </div>
+                <div class="card">
+                    <h3>4) Wide‑Column (Column‑Family)</h3>
+                    <p>Rows with sparse, dynamic columns grouped into families; great for time‑series/high write.
+                        Examples: Apache Cassandra, HBase.</p>
+                    <p><em>Storage style:</em> LSM‑based SSTables; sequential appends + compactions.</p>
+                </div>
+                <div class="card">
+                    <h3>5) Graph Databases</h3>
+                    <p>Data as <strong>nodes</strong> and <strong>edges</strong> with properties; optimal for traversals
+                        (e.g., shortest path). Examples: Neo4j, JanusGraph.</p>
+                    <p><em>Storage style:</em> adjacency lists, index‑free adjacency, B‑Trees/LSM for properties.</p>
+                </div>
+                <div class="card">
+                    <h3>6) Columnar Analytics (OLAP)</h3>
+                    <p>Stores by <strong>column</strong> for compression and vectorized scans; ideal for analytics
+                        dashboards. Examples: ClickHouse, BigQuery, Redshift.</p>
+                    <p><em>Storage style:</em> column files, dictionary encoding, run‑length encoding, Parquet/ORC.</p>
+                </div>
+                <div class="card">
+                    <h3>7) Time‑Series</h3>
+                    <p>Optimized for timestamped metrics/events. Examples: InfluxDB, TimescaleDB (Postgres ext.).</p>
+                    <p><em>Storage style:</em> append‑only + downsampling/retention policies.</p>
+                </div>
+                <div class="card">
+                    <h3>8) Others (Legacy / Niche)</h3>
+                    <p>Hierarchical (IMS), Network (CODASYL), Object‑Oriented (db4o), In‑Memory OLTP (Hekaton), <abbr
+                            title="Blend of SQL + horizontal scale">NewSQL</abbr> (CockroachDB, TiDB).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="storage">
+            <h2>Physical Storage & Indexing (What lives on disk?)</h2>
+            <div class="grid two">
+                <div class="card">
+                    <h3>Row‑Store vs Column‑Store</h3>
+                    <ul>
+                        <li><strong>Row‑store:</strong> entire row laid out together → great for OLTP (many small
+                            inserts/updates). Typical for MySQL/InnoDB.</li>
+                        <li><strong>Column‑store:</strong> each column stored separately → superb for
+                            aggregation/analytics (OLAP). Typical for ClickHouse/Redshift.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>B+Tree vs LSM Tree</h3>
+                    <ul>
+                        <li><strong>B+Tree:</strong> balanced tree; great for random reads, range scans; steady writes.
+                        </li>
+                        <li><strong>LSM Tree:</strong> buffer writes in memory, flush sorted <em>runs</em> to disk, then
+                            <em>compact</em>. High write throughput; reads may touch multiple runs until compacted.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Indexes</h3>
+                    <ul>
+                        <li><strong>Primary/Clustered index:</strong> defines the physical order (InnoDB clusters by
+                            primary key).</li>
+                        <li><strong>Secondary index:</strong> points to primary key (InnoDB) or direct record pointer.
+                        </li>
+                        <li><strong>Other:</strong> hash, bitmap, full‑text, geospatial (R‑tree), partial/functional
+                            indexes.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Durability Files</h3>
+                    <ul>
+                        <li><strong>Redo/Write‑Ahead Logs (WAL):</strong> crash recovery.</li>
+                        <li><strong>Undo/Version logs:</strong> MVCC snapshots & rollbacks.</li>
+                        <li><strong>Checkpoints & snapshots:</strong> fast restart, backup/restore.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="mysql">
+            <h2>Deep Dive: MySQL (Relational RDBMS)</h2>
+            <div class="callout">
+                <p><strong>MySQL = ACID RDBMS</strong> with SQL, joins, constraints, transactions, and robust indexing.
+                    Default engine is <strong>InnoDB</strong> (row‑store, clustered primary key, MVCC).</p>
+            </div>
+            <div class="grid two">
+                <div class="card">
+                    <h3>Storage Engine (InnoDB)</h3>
+                    <ul>
+                        <li><strong>Tablespaces & Pages:</strong> data and indexes live in 16KB (typical) pages within
+                            tablespaces (file‑per‑table or shared).</li>
+                        <li><strong>Clustered Primary Key:</strong> table data is ordered by the primary key; each
+                            secondary index stores the primary key as the row locator.</li>
+                        <li><strong>B+Trees:</strong> for both primary and secondary indexes; excellent range scans.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Logs & Durability</h3>
+                    <ul>
+                        <li><strong>Redo Log (WAL):</strong> guarantees durability; flushed on commit (configurable
+                            <code>innodb_flush_log_at_trx_commit</code>).
+                        </li>
+                        <li><strong>Undo Log:</strong> supports <abbr
+                                title="Multi-Version Concurrency Control">MVCC</abbr> and rollbacks.</li>
+                        <li><strong>Binary Log (binlog):</strong> for replication & PITR backups (row/statement/mixed
+                            formats).</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Query Engine</h3>
+                    <ul>
+                        <li><strong>Parser/Planner/Optimizer:</strong> builds plans, uses statistics, chooses indexes,
+                            join orders, access methods.</li>
+                        <li><strong>Isolation Levels:</strong> READ COMMITTED, REPEATABLE READ (default), SERIALIZABLE.
+                        </li>
+                        <li><strong>Locks:</strong> row‑level locking; gap/next‑key locks prevent phantom reads at RR.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Schema & Constraints</h3>
+                    <ul>
+                        <li><strong>DDL:</strong> CREATE TABLE, ALTER, etc. Strong types: INT, DECIMAL, VARCHAR, JSON,
+                            DATE/TIME, spatial.</li>
+                        <li><strong>Constraints:</strong> PRIMARY/UNIQUE KEY, FOREIGN KEY (referential integrity),
+                            CHECK, NOT NULL.</li>
+                        <li><strong>Transactions:</strong> BEGIN/COMMIT/ROLLBACK with ACID guarantees.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Scaling & HA</h3>
+                    <ul>
+                        <li><strong>Replication:</strong> async/semisync, GTID; read replicas for scale‑out reads.</li>
+                        <li><strong>Sharding:</strong> app‑level or proxy‑based (Vitess); partitioning supported per
+                            table.</li>
+                        <li><strong>Backups:</strong> logical (mysqldump) or physical (xtrabackup); snapshots via cloud.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Strengths</h3>
+                    <ul>
+                        <li>Strong consistency & integrity with joins and transactions.</li>
+                        <li>Mature tooling & ecosystem; great for OLTP.</li>
+                        <li>Powerful indexing, query optimization, and stored programs.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosql">
+            <h2>Deep Dive: NoSQL (Families & Storage Models)</h2>
+            <p>"NoSQL" isn’t one product — it’s a family of stores designed around specific access patterns, typically
+                prioritizing horizontal scale and flexible schema. Consistency models vary from strong to eventual
+                depending on the system.</p>
+            <div class="grid two">
+                <div class="card">
+                    <h3>Document Stores (e.g., MongoDB)</h3>
+                    <ul>
+                        <li><strong>Model:</strong> JSON/BSON documents in collections; schema optional, validation
+                            rules possible.</li>
+                        <li><strong>Indexes:</strong> B‑Trees on single fields, compound, text, geospatial; secondary
+                            indexes are common.</li>
+                        <li><strong>Transactions:</strong> Single‑document atomic by default; multi‑document ACID
+                            supported in modern versions.</li>
+                        <li><strong>Sharding:</strong> automatic via shard keys; replica sets for HA.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Key‑Value (e.g., Redis)</h3>
+                    <ul>
+                        <li><strong>Model:</strong> in‑memory structures (strings, lists, sets, sorted sets, hashes)
+                            keyed by a string.</li>
+                        <li><strong>Use:</strong> caching, sessions, rate limiting, leaderboards; persistence optional
+                            via AOF/RDB.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Wide‑Column (e.g., Cassandra)</h3>
+                    <ul>
+                        <li><strong>Model:</strong> partition key → ordered rows with flexible columns; denormalized for
+                            specific queries.</li>
+                        <li><strong>Storage:</strong> LSM‑based SSTables; high write throughput, tunable consistency.
+                        </li>
+                        <li><strong>Topology:</strong> masterless ring; linear horizontal scale, high availability.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Graph (e.g., Neo4j)</h3>
+                    <ul>
+                        <li><strong>Model:</strong> nodes/edges with labels and properties; query with <abbr
+                                title="Cypher is a declarative graph query language">Cypher</abbr>.</li>
+                        <li><strong>Use:</strong> relationships‑heavy queries: recommendations, fraud, knowledge graphs.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>General NoSQL Trade‑offs</h3>
+                    <ul>
+                        <li><strong>Schema flexibility:</strong> evolve fields anytime; fits event/user‑profile/content
+                            domains.</li>
+                        <li><strong>Scale‑out first:</strong> sharding/partitioning are built‑in (varies by system).
+                        </li>
+                        <li><strong>Consistency:</strong> from strong to eventual (<abbr
+                                title="Choose per read/write if supported">tunable</abbr>).</li>
+                        <li><strong>Joins:</strong> usually not native — model with denormalization or app‑side joins.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>When NoSQL Shines</h3>
+                    <ul>
+                        <li>Massive write throughput (logs, metrics, IoT).</li>
+                        <li>Flexible, nested content (catalogs, user content, CMS).</li>
+                        <li>Globally distributed, high‑availability services.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="compare">
+            <h2>MySQL vs NoSQL — Key Differences</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>MySQL (Relational)</th>
+                        <th>NoSQL (Family)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data Model</td>
+                        <td>Tables, rows, fixed schema; strong types; foreign keys.</td>
+                        <td>Documents (JSON/BSON), key‑value, wide‑column, graphs; flexible schema.</td>
+                    </tr>
+                    <tr>
+                        <td>Schema</td>
+                        <td>Schema‑on‑write; ALTER TABLE changes.</td>
+                        <td>Schema‑on‑read; evolve documents/columns freely.</td>
+                    </tr>
+                    <tr>
+                        <td>Joins</td>
+                        <td>Native, optimized joins with indexes.</td>
+                        <td>Generally avoided; denormalize or app‑side joins.</td>
+                    </tr>
+                    <tr>
+                        <td>Transactions</td>
+                        <td>Strong ACID across multiple rows/tables.</td>
+                        <td>Varies: single‑record atomicity is common; some support multi‑record ACID (e.g., MongoDB)
+                            but with constraints.</td>
+                    </tr>
+                    <tr>
+                        <td>Consistency Model</td>
+                        <td>Strong (per transaction) with MVCC.</td>
+                        <td>Tunable/Eventually consistent common in distributed NoSQL; some offer strong consistency
+                            modes.</td>
+                    </tr>
+                    <tr>
+                        <td>Scaling</td>
+                        <td>Vertical + read replicas; sharding via app/Vitess.</td>
+                        <td>Horizontal sharding/partitioning built‑in (varies by system).</td>
+                    </tr>
+                    <tr>
+                        <td>Query Language</td>
+                        <td>SQL (declarative joins, window functions, aggregates).</td>
+                        <td>API‑style or JSON queries (Mongo), CQL (Cassandra), Cypher (Neo4j), commands (Redis).</td>
+                    </tr>
+                    <tr>
+                        <td>Access Patterns</td>
+                        <td>Ad‑hoc queries across normalized data; complex joins.</td>
+                        <td>Pre‑planned queries; denormalized, partition‑friendly models.</td>
+                    </tr>
+                    <tr>
+                        <td>Typical Use‑Cases</td>
+                        <td>Financial apps, orders, inventory, CRM, core business OLTP.</td>
+                        <td>Event streams, catalogs, content feeds, IoT metrics, caching, graph relationships.</td>
+                    </tr>
+                    <tr>
+                        <td>Storage Structures</td>
+                        <td>Row‑store; B+Tree indexes; redo/undo logs.</td>
+                        <td>Document blobs (BSON/JSON), LSM or B‑Trees; compaction & replicas.</td>
+                    </tr>
+                    <tr>
+                        <td>Analytics</td>
+                        <td>Works, but heavy OLAP better offloaded to columnar warehouses.</td>
+                        <td>Some provide aggregations, but serious OLAP → columnar/warehouse.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout">
+                <p><strong>Rule of thumb:</strong> If you need <em>strong integrity, complex joins, and transactional
+                        guarantees</em> → start with MySQL. If you need <em>flexible schemas, massive write throughput,
+                        global distribution, or graph traversals</em> → pick the appropriate NoSQL type.</p>
+            </div>
+        </section>
+
+        <section id="examples">
+            <h2>Hands‑on: Modeling the Same Domain</h2>
+            <p>Domain: a simple <strong>Orders</strong> system with users, products, and orders containing line‑items.
+            </p>
+
+            <div class="grid two">
+                <div class="card">
+                    <h3>MySQL (Normalized, Joins)</h3>
+                    <pre><code>-- DDL
+CREATE TABLE users (
+  user_id BIGINT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE products (
+  product_id BIGINT PRIMARY KEY,
+  name VARCHAR(160) NOT NULL,
+  price DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE orders (
+  order_id BIGINT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE order_items (
+  order_id BIGINT,
+  product_id BIGINT,
+  qty INT NOT NULL,
+  price_at_purchase DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (order_id, product_id),
+  FOREIGN KEY (order_id) REFERENCES orders(order_id),
+  FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+-- Query: total spent by a user in a date range
+SELECT u.user_id, u.name, SUM(oi.qty * oi.price_at_purchase) AS total_spent
+FROM users u
+JOIN orders o ON o.user_id = u.user_id
+JOIN order_items oi ON oi.order_id = o.order_id
+WHERE u.user_id = 42 AND o.created_at &gt;= '2025-01-01' AND o.created_at &lt; '2026-01-01'
+GROUP BY u.user_id, u.name;
+</code></pre>
+                </div>
+
+                <div class="card">
+                    <h3>MongoDB (Document, Denormalized)</h3>
+                    <pre><code>// Orders collection: embed items; reference user by id
+{
+  _id: ObjectId("..."),
+  user_id: 42,
+  created_at: ISODate("2025-06-01T10:20:00Z"),
+  items: [
+    { product_id: 1001, name: "Mouse", qty: 2, price_at_purchase: 499.00 },
+    { product_id: 2002, name: "Keyboard", qty: 1, price_at_purchase: 1599.00 }
+  ]
+}
+
+// Index for reporting by user and date
+// db.orders.createIndex({ user_id: 1, created_at: 1 })
+
+// Aggregation: total spent by a user in a year
+[
+  { $match: { user_id: 42, created_at: { $gte: ISODate('2025-01-01'), $lt: ISODate('2026-01-01') } } },
+  { $unwind: "$items" },
+  { $group: { _id: "$user_id", total_spent: { $sum: { $multiply: ["$items.qty", "$items.price_at_purchase"] } } } }
+]
+</code></pre>
+                </div>
+            </div>
+
+            <div class="grid two">
+                <div class="card">
+                    <h3>Notes on the Models</h3>
+                    <ul>
+                        <li><strong>MySQL:</strong> Referential integrity and normalized tables avoid duplication; joins
+                            reconstruct order views.</li>
+                        <li><strong>MongoDB:</strong> Embedding keeps order + items together for fast order reads;
+                            product names/prices copied for historical accuracy (denormalized).</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Performance Considerations</h3>
+                    <ul>
+                        <li><strong>MySQL:</strong> Index joins; beware of N+1 queries; use covering indexes and careful
+                            PK design.</li>
+                        <li><strong>MongoDB:</strong> Choose shard key wisely; keep documents under size limits; avoid
+                            unbounded array growth.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="choose">
+            <h2>How to Choose (Checklist)</h2>
+            <div class="grid three">
+                <div class="card">
+                    <h3>Pick <span style="color:var(--accent)">MySQL</span> if…</h3>
+                    <ul>
+                        <li>You need strong <abbr title="Atomicity, Consistency, Isolation, Durability">ACID</abbr>
+                            transactions across multiple tables.</li>
+                        <li>Your queries require complex joins and constraints.</li>
+                        <li>Data is highly structured and stable; integrity matters (finance, inventory).</li>
+                        <li>You want mature tooling and predictable performance for OLTP.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Pick <span style="color:var(--brand)">NoSQL (Document)</span> if…</h3>
+                    <ul>
+                        <li>Schemas evolve rapidly (user profiles, content, catalogs).</li>
+                        <li>You mostly read/write whole aggregates (a document at a time).</li>
+                        <li>You need auto‑sharding and easy horizontal scale‑out.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Pick <span style="color:var(--brand)">NoSQL (Wide‑Column / KV / Graph)</span> if…</h3>
+                    <ul>
+                        <li>Extreme write throughput with predictable access patterns (Cassandra).</li>
+                        <li>Low‑latency caching & ephemeral data (Redis).</li>
+                        <li>Relationship‑centric queries (Neo4j).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="callout">
+                <p><strong>Hybrid architectures</strong> are common: MySQL for core transactions, Redis for caching,
+                    Elasticsearch for search, and a warehouse (e.g., BigQuery/ClickHouse) for analytics.</p>
+            </div>
+        </section>
+
+        <section id="refs">
+            <h2>References & Further Reading</h2>
+            <ul class="ref">
+                <li><a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener">MySQL Reference Manual</a></li>
+                <li><a href="https://www.mongodb.com/docs/" target="_blank" rel="noopener">MongoDB Manual</a></li>
+                <li><a href="https://cassandra.apache.org/doc/latest/" target="_blank" rel="noopener">Apache Cassandra
+                        Documentation</a></li>
+                <li><a href="https://redis.io/docs/" target="_blank" rel="noopener">Redis Documentation</a></li>
+                <li><a href="https://clickhouse.com/docs" target="_blank" rel="noopener">ClickHouse Docs (Columnar)</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div>
+                <strong>ZN Infotech Pvt. Ltd.</strong> — Training & Development
+                <div class="muted">Technologies: IoT, Programming Languages, Web Development, Mobile App Development,
+                    and more.</div>
+            </div>
+            <div>
+                <span class="kbd">Call</span> 9565017342 • <a href="https://zninfotech.com" target="_blank"
+                    rel="noopener">zninfotech.com</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

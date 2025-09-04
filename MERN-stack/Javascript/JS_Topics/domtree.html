@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Professional Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --dark: #1a1a2e;
+            --darker: #0d0d1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+            --warning: #f9c74f;
+            --danger: #f94144;
+            --code-bg: #2d3748;
+            --card-bg: #2d3748;
+            --header-bg: #1a202c;
+            --sidebar-bg: #2d3748;
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            --gradient: linear-gradient(135deg, #4361ee, #7209b7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--darker);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background: var(--sidebar-bg);
+            padding: 25px 0;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            padding: 0 25px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0 15px;
+        }
+
+        .nav-links li {
+            margin-bottom: 8px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(67, 97, 238, 0.15);
+            color: var(--primary);
+        }
+
+        .nav-links i {
+            font-size: 1.2rem;
+            width: 24px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section {
+            background: var(--dark);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            scroll-margin-top: 20px;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-icon {
+            background: var(--gradient);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 i {
+            color: var(--accent);
+        }
+
+        .section p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h4 i {
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+        }
+
+        /* Code Examples */
+        .code-example {
+            background: var(--code-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            overflow: auto;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-example pre {
+            margin: 0;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            tab-size: 2;
+        }
+
+        .tag {
+            color: #ff79c6;
+        }
+
+        .attr {
+            color: #50fa7b;
+        }
+
+        .val {
+            color: #f1fa8c;
+        }
+
+        .comment {
+            color: #6272a4;
+        }
+
+        .text {
+            color: #f8f8f2;
+        }
+
+        /* DOM Visualization */
+        .dom-visualization {
+            background: var(--code-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 30px 0;
+            overflow: auto;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .dom-tree {
+            font-family: 'Fira Code', monospace;
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+
+        .dom-tree .element {
+            color: #ff79c6;
+        }
+
+        .dom-tree .attribute {
+            color: #50fa7b;
+        }
+
+        .dom-tree .value {
+            color: #f1fa8c;
+        }
+
+        /* Interactive Demo */
+        .interactive-demo {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .demo-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .demo-result {
+            background: #1a202c;
+            border: 2px solid #2d3748;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .demo-result h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .dom-node {
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 6px;
+            background: #2d3748;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .dom-node:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .element-node {
+            border-left: 4px solid var(--primary);
+        }
+
+        .text-node {
+            border-left: 4px solid var(--success);
+            margin-left: 30px;
+        }
+
+        .comment-node {
+            border-left: 4px solid var(--warning);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: var(--header-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            grid-column: 1 / -1;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            body {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h1><i class="fas fa-code"></i> DOM <span>Mastery</span></h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#bom" class="active"><i class="fas fa-home"></i> What is BOM?</a></li>
+            <li><a href="#what-is-dom" class=""><i class="fas fa-home"></i> What is DOM?</a></li>
+            <li><a href="#dom-tree"><i class="fas fa-sitemap"></i> DOM Tree Structure</a></li>
+            <li><a href="#node-types"><i class="fas fa-cube"></i> Node Types</a></li>
+            <li><a href="#traversal"><i class="fas fa-road"></i> DOM Traversal</a></li>
+            <li><a href="#manipulation"><i class="fas fa-wrench"></i> DOM Manipulation</a></li>
+            <li><a href="#events"><i class="fas fa-bell"></i> DOM Events</a></li>
+            <li><a href="#performance"><i class="fas fa-tachometer-alt"></i> Performance</a></li>
+            <li><a href="#interactive-demo"><i class="fas fa-play-circle"></i> Interactive Demo</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- What is DOM Section -->
+        <!-- Browser Object Model Section -->
+        <section id="bom" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h2>Browser Object Model (BOM)</h2>
+            </div>
+
+            <p>
+                The <b>Browser Object Model (BOM)</b> represents everything provided by the browser
+                (outside the document). It gives access to the browser window, screen details,
+                navigation, location, alerts, and more. Unlike the <b>DOM</b>, which handles
+                page content, the BOM handles the browser environment itself.
+            </p>
+
+            <h3><i class="fas fa-window-maximize"></i> Window Object</h3>
+            <p>
+                The <code>window</code> object is the root of the BOM. All global variables and functions
+                are properties of the window.
+            </p>
+            <div class="code-example">
+                <pre><code><span class="comment">// Window dimensions</span>
+<span class="tag">console</span>.<span class="val">log</span>(<span class="attr">window</span>.<span class="val">innerWidth</span>);  <span class="comment">// width of viewport</span>
+<span class="tag">console</span>.<span class="val">log</span>(<span class="attr">window</span>.<span class="val">innerHeight</span>); <span class="comment">// height of viewport</span>
+
+<span class="comment">// Opening a new window</span>
+<span class="tag">window</span>.<span class="val">open</span>(<span class="val">"https://www.example.com"</span>, <span class="val">"_blank"</span>);
+
+<span class="comment">// Alerts and prompts</span>
+<span class="tag">window</span>.<span class="val">alert</span>(<span class="val">"Hello from BOM!"</span>);
+<span class="tag">const</span> name = <span class="tag">window</span>.<span class="val">prompt</span>(<span class="val">"Enter your name:"</span>);
+<span class="tag">console</span>.<span class="val">log</span>(name);</code></pre>
+            </div>
+
+            <h3><i class="fas fa-map-marker-alt"></i> Location Object</h3>
+            <p>
+                The <code>location</code> object gives details about the current URL and allows
+                navigation to new pages.
+            </p>
+            <div class="code-example">
+                <pre><code><span class="comment">// Get current URL</span>
+<span class="tag">console</span>.<span class="val">log</span>(<span class="attr">window</span>.<span class="val">location</span>.<span class="val">href</span>);
+
+<span class="comment">// Redirect to another page</span>
+<span class="attr">window</span>.<span class="val">location</span>.<span class="val">href</span> = <span class="val">"https://www.google.com"</span>;
+
+<span class="comment">// Reload the page</span>
+<span class="attr">window</span>.<span class="val">location</span>.<span class="val">reload</span>();</code></pre>
+            </div>
+
+            <h3><i class="fas fa-route"></i> Navigator Object</h3>
+            <p>
+                The <code>navigator</code> object provides information about the browser and user environment.
+            </p>
+            <div class="code-example">
+                <pre><code><span class="comment">// Browser details</span>
+<span class="tag">console</span>.<span class="val">log</span>(<span class="attr">navigator</span>.<span class="val">userAgent</span>);
+
+<span class="comment">// Online/Offline status</span>
+<span class="tag">console</span>.<span class="val">log</span>(<span class="attr">navigator</span>.<span class="val">onLine</span>);  <span class="comment">// true or false</span></code></pre>
+            </div>
+
+            <h3><i class="fas fa-desktop"></i> Screen Object</h3>
+            <p>
+                The <code>screen</code> object gives information about the user's screen.
+            </p>
+            <div class="code-example">
+                <pre><code><span class="comment">// Screen details</span>
+<span class="tag">console</span>.<span class="val">log</span>(<span class="attr">screen</span>.<span class="val">width</span>);   <span class="comment">// screen width</span>
+<span class="tag">console</span>.<span class="val">log</span>(<span class="attr">screen</span>.<span class="val">height</span>);  <span class="comment">// screen height</span></code></pre>
+            </div>
+
+            <h3><i class="fas fa-history"></i> History Object</h3>
+            <p>
+                The <code>history</code> object lets you navigate through the browser session history.
+            </p>
+            <div class="code-example">
+                <pre><code><span class="comment">// Move back and forward</span>
+<span class="attr">history</span>.<span class="val">back</span>();   <span class="comment">// previous page</span>
+<span class="attr">history</span>.<span class="val">forward</span>();<span class="comment">// next page</span></code></pre>
+            </div>
+        </section>
+
+        <!-- What is DOM Section -->
+        <section id="what-is-dom" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h2>What is the Document Object Model (DOM)?</h2>
+            </div>
+
+            <p>The Document Object Model (DOM) is a programming interface for web documents. It represents the page so
+                that programs can change the document structure, style, and content. The DOM represents the document as
+                nodes and objects; that way, programming languages can interact with the page.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4><i class="fas fa-sitemap"></i> Tree Structure</h4>
+                    <p>The DOM represents documents as a tree structure where each node is an object representing a part
+                        of the document.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-code"></i> Programming Interface</h4>
+                    <p>The DOM provides a programming interface that allows scripts to access and update the content,
+                        structure, and style of documents.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-window-restore"></i> Cross-Platform</h4>
+                    <p>The DOM is a cross-platform and language-independent convention for representing and interacting
+                        with objects in HTML, XHTML, and XML documents.</p>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-question-circle"></i> Why is the DOM Important?</h3>
+            <p>The DOM is fundamental to web development because it enables JavaScript to access and manipulate the
+                content and structure of web pages in real time. Without the DOM, web pages would be static and unable
+                to respond to user interactions.</p>
+
+            <div class="code-example">
+                <pre><code><span class="comment">// Example: Accessing DOM elements</span>
+<span class="tag">const</span> heading = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'main-heading'</span>);
+<span class="tag">const</span> paragraphs = <span class="attr">document</span>.<span class="val">getElementsByTagName</span>(<span class="val">'p'</span>);
+<span class="tag">const</span> buttons = <span class="attr">document</span>.<span class="val">querySelectorAll</span>(<span class="val">'.btn'</span>);
+
+<span class="comment">// Example: Changing content</span>
+<span class="attr">heading</span>.<span class="val">textContent</span> = <span class="val">'New Heading Text'</span>;
+<span class="attr">heading</span>.<span class="val">style</span>.<span class="attr">color</span> = <span class="val">'blue'</span>;</code></pre>
+            </div>
+        </section>
+
+        <!-- DOM Tree Structure Section -->
+        <section id="dom-tree" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-sitemap"></i>
+                </div>
+                <h2>DOM Tree Structure</h2>
+            </div>
+
+            <p>The DOM represents an HTML document as a tree of nodes. This tree structure is often referred to as the
+                DOM tree. Each branch of the tree ends in a node, and each node contains objects.</p>
+
+            <div class="dom-visualization">
+                <div class="dom-tree">
+                    <div class="element">document</div>
+                    <div style="margin-left: 20px;">
+                        <div class="element">html</div>
+                        <div style="margin-left: 20px;">
+                            <div class="element">head</div>
+                            <div style="margin-left: 20px;">
+                                <div class="element">title</div>
+                                <div style="margin-left: 20px;">
+                                    <div class="text">"DOM Mastery"</div>
+                                </div>
+                                <div class="element">meta <span class="attribute">charset=</span><span
+                                        class="value">"UTF-8"</span></div>
+                                <div class="element">link <span class="attribute">rel=</span><span
+                                        class="value">"stylesheet"</span> <span class="attribute">href=</span><span
+                                        class="value">"styles.css"</span></div>
+                            </div>
+                            <div class="element">body</div>
+                            <div style="margin-left: 20px;">
+                                <div class="element">header</div>
+                                <div style="margin-left: 20px;">
+                                    <div class="element">h1 <span class="attribute">id=</span><span
+                                            class="value">"main-heading"</span></div>
+                                    <div style="margin-left: 20px;">
+                                        <div class="text">"Welcome to DOM Mastery"</div>
+                                    </div>
+                                </div>
+                                <div class="element">div <span class="attribute">class=</span><span
+                                        class="value">"content"</span></div>
+                                <div style="margin-left: 20px;">
+                                    <div class="element">p</div>
+                                    <div style="margin-left: 20px;">
+                                        <div class="text">"Learn about the DOM structure"</div>
+                                    </div>
+                                    <div class="element">ul <span class="attribute">class=</span><span
+                                            class="value">"list"</span></div>
+                                    <div style="margin-left: 20px;">
+                                        <div class="element">li</div>
+                                        <div style="margin-left: 20px;">
+                                            <div class="text">"Item 1"</div>
+                                        </div>
+                                        <div class="element">li</div>
+                                        <div style="margin-left: 20px;">
+                                            <div class="text">"Item 2"</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment">&lt;!-- This is a comment --&gt;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-code-branch"></i> How the DOM Tree Works</h3>
+            <p>The DOM tree is structured as a hierarchy of nodes, with the document node at the root. Each node has
+                properties and methods that allow you to traverse and manipulate the tree.</p>
+
+            <div class="code-example">
+                <pre><code><span class="comment">// Example: Traversing the DOM tree</span>
+<span class="tag">const</span> root = <span class="attr">document</span>.<span class="val">documentElement</span>; <span class="comment">// Root html element</span>
+<span class="tag">const</span> head = <span class="attr">document</span>.<span class="val">head</span>; <span class="comment">// Head element</span>
+<span class="tag">const</span> body = <span class="attr">document</span>.<span class="val">body</span>; <span class="comment">// Body element</span>
+
+<span class="comment">// Accessing child nodes</span>
+<span class="tag">const</span> firstChild = <span class="attr">body</span>.<span class="val">firstChild</span>;
+<span class="tag">const</span> lastChild = <span class="attr">body</span>.<span class="val">lastChild</span>;
+<span class="tag">const</span> children = <span class="attr">body</span>.<span class="val">children</span>; <span class="comment">// HTMLCollection of elements</span>
+
+<span class="comment">// Accessing parent node</span>
+<span class="tag">const</span> parent = <span class="attr">body</span>.<span class="val">parentNode</span>; <span class="comment">// html element</span></code></pre>
+            </div>
+        </section>
+
+        <!-- Node Types Section -->
+        <section id="node-types" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <h2>DOM Node Types</h2>
+            </div>
+
+            <p>The DOM consists of several different types of nodes. Understanding these node types is essential for
+                effective DOM manipulation.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Node Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Element Node</td>
+                        <td>Represents an HTML element</td>
+                        <td>&lt;div&gt;, &lt;p&gt;, &lt;span&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>Text Node</td>
+                        <td>Contains the text content of an element</td>
+                        <td>"Hello World"</td>
+                    </tr>
+                    <tr>
+                        <td>Comment Node</td>
+                        <td>Represents an HTML comment</td>
+                        <td>&lt;!-- This is a comment --&gt;</td>
+                    </tr>
+                    <tr>
+                        <td>Document Node</td>
+                        <td>Represents the entire document</td>
+                        <td>document</td>
+                    </tr>
+                    <tr>
+                        <td>Document Type Node</td>
+                        <td>Represents the document type declaration</td>
+                        <td>&lt;!DOCTYPE html&gt;</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3><i class="fas fa-code"></i> Working with Node Types</h3>
+            <p>Each node type has specific properties and methods. You can check the node type using the nodeType
+                property.</p>
+
+            <div class="code-example">
+                <pre><code><span class="comment">// Example: Checking node types</span>
+<span class="tag">const</span> element = <span class="attr">document</span>.<span class="val">querySelector</span>(<span class="val">'p'</span>);
+<span class="tag">const</span> textNode = <span class="attr">element</span>.<span class="val">firstChild</span>;
+
+<span class="attr">console</span>.<span class="val">log</span>(<span class="attr">element</span>.<span class="val">nodeType</span>); <span class="comment">// 1 (Element node)</span>
+<span class="attr">console</span>.<span class="val">log</span>(<span class="attr">textNode</span>.<span class="val">nodeType</span>); <span class="comment">// 3 (Text node)</span>
+
+<span class="comment">// Common node type constants</span>
+<span class="attr">console</span>.<span class="val">log</span>(<span class="attr">Node</span>.<span class="val">ELEMENT_NODE</span>); <span class="comment">// 1</span>
+<span class="attr">console</span>.<span class="val">log</span>(<span class="attr">Node</span>.<span class="val">TEXT_NODE</span>); <span class="comment">// 3</span>
+<span class="attr">console</span>.<span class="val">log</span>(<span class="attr">Node</span>.<span class="val">COMMENT_NODE</span>); <span class="comment">// 8</span></code></pre>
+            </div>
+        </section>
+
+        <!-- DOM Traversal Section -->
+        <section id="traversal" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <h2>DOM Traversal</h2>
+            </div>
+
+            <p>DOM traversal refers to navigating through the DOM tree, moving from one node to another based on their
+                relationships.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4><i class="fas fa-arrow-up"></i> Parent Nodes</h4>
+                    <p>Access the parent of a node using parentNode or parentElement.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-arrow-down"></i> Child Nodes</h4>
+                    <p>Access children of a node using childNodes, children, firstChild, or lastChild.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-arrows-alt-h"></i> Sibling Nodes</h4>
+                    <p>Access siblings of a node using previousSibling, nextSibling, previousElementSibling, or
+                        nextElementSibling.</p>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-code"></i> DOM Traversal Examples</h3>
+
+            <div class="code-example">
+                <pre><code><span class="comment">// Example: DOM traversal methods</span>
+<span class="tag">const</span> element = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'example'</span>);
+
+<span class="comment">// Access parent</span>
+<span class="tag">const</span> parent = <span class="attr">element</span>.<span class="val">parentNode</span>;
+
+<span class="comment">// Access children</span>
+<span class="tag">const</span> firstChild = <span class="attr">element</span>.<span class="val">firstChild</span>;
+<span class="tag">const</span> lastChild = <span class="attr">element</span>.<span class="val">lastChild</span>;
+<span class="tag">const</span> children = <span class="attr">element</span>.<span class="val">children</span>;
+
+<span class="comment">// Access siblings</span>
+<span class="tag">const</span> previousSibling = <span class="attr">element</span>.<span class="val">previousElementSibling</span>;
+<span class="tag">const</span> nextSibling = <span class="attr">element</span>.<span class="val">nextElementSibling</span>;
+
+<span class="comment">// Using querySelector for complex traversal</span>
+<span class="tag">const</span> nestedElement = <span class="attr">element</span>.<span class="val">querySelector</span>(<span class="val">'.nested-class'</span>);</code></pre>
+            </div>
+        </section>
+
+        <!-- DOM Manipulation Section -->
+        <section id="manipulation" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-wrench"></i>
+                </div>
+                <h2>DOM Manipulation</h2>
+            </div>
+
+            <p>DOM manipulation is the process of modifying the document structure, style, or content using JavaScript.
+            </p>
+
+            <h3><i class="fas fa-plus-circle"></i> Creating and Adding Elements</h3>
+
+            <div class="code-example">
+                <pre><code><span class="comment">// Example: Creating and adding elements</span>
+<span class="tag">const</span> newDiv = <span class="attr">document</span>.<span class="val">createElement</span>(<span class="val">'div'</span>);
+<span class="attr">newDiv</span>.<span class="val">className</span> = <span class="val">'new-class'</span>;
+<span class="attr">newDiv</span>.<span class="val">textContent</span> = <span class="val">'This is a new div'</span>;
+
+<span class="comment">// Adding to the DOM</span>
+<span class="tag">const</span> container = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'container'</span>);
+<span class="attr">container</span>.<span class="val">appendChild</span>(newDiv);
+
+<span class="comment">// Inserting before an element</span>
+<span class="tag">const</span> referenceElement = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'reference'</span>);
+<span class="attr">container</span>.<span class="val">insertBefore</span>(newDiv, referenceElement);
+
+<span class="comment">// Using insertAdjacentHTML for more control</span>
+<span class="attr">container</span>.<span class="val">insertAdjacentHTML</span>(<span class="val">'beforeend'</span>, <span class="val">'&lt;p&gt;New paragraph&lt;/p&gt;'</span>);</code></pre>
+            </div>
+
+            <h3><i class="fas fa-minus-circle"></i> Removing and Replacing Elements</h3>
+
+            <div class="code-example">
+                <pre><code><span class="comment">// Example: Removing and replacing elements</span>
+<span class="tag">const</span> elementToRemove = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'remove'</span>);
+
+<span class="comment">// Removing an element</span>
+<span class="attr">elementToRemove</span>.<span class="val">parentNode</span>.<span class="val">removeChild</span>(elementToRemove);
+<span class="comment">// Or using modern approach:</span>
+<span class="attr">elementToRemove</span>.<span class="val">remove</span>();
+
+<span class="comment">// Replacing an element</span>
+<span class="tag">const</span> newElement = <span class="attr">document</span>.<span class="val">createElement</span>(<span class="val">'div'</span>);
+<span class="attr">newElement</span>.<span class="val">textContent</span> = <span class="val">'Replacement content'</span>;
+
+<span class="tag">const</span> oldElement = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'old'</span>);
+<span class="attr">oldElement</span>.<span class="val">parentNode</span>.<span class="val">replaceChild</span>(newElement, oldElement);</code></pre>
+            </div>
+        </section>
+
+        <!-- DOM Events Section -->
+        <section id="events" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h2>DOM Events</h2>
+            </div>
+
+            <p>DOM events are actions that occur in the browser, such as user interactions (clicks, keypresses) or
+                browser events (page load, resize).</p>
+
+            <h3><i class="fas fa-mouse-pointer"></i> Event Handling</h3>
+
+            <div class="code-example">
+                <pre><code><span class="comment">// Example: Adding event listeners</span>
+<span class="tag">const</span> button = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'myButton'</span>);
+
+<span class="comment">// Using addEventListener (recommended)</span>
+<span class="attr">button</span>.<span class="val">addEventListener</span>(<span class="val">'click'</span>, <span class="tag">function</span>(<span class="attr">event</span>) {
+  <span class="attr">console</span>.<span class="val">log</span>(<span class="val">'Button clicked!'</span>);
+  <span class="attr">event</span>.<span class="val">preventDefault</span>(); <span class="comment">// Prevent default behavior</span>
+});
+
+<span class="comment">// Using inline event handlers (not recommended)</span>
+<span class="comment">// &lt;button onclick="handleClick()"&gt;Click me&lt;/button&gt;</span>
+
+<span class="comment">// Event delegation example</span>
+<span class="tag">const</span> list = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'myList'</span>);
+<span class="attr">list</span>.<span class="val">addEventListener</span>(<span class="val">'click'</span>, <span class="tag">function</span>(<span class="attr">event</span>) {
+  <span class="tag">if</span> (<span class="attr">event</span>.<span class="val">target</span>.<span class="val">tagName</span> === <span class="val">'LI'</span>) {
+    <span class="attr">console</span>.<span class="val">log</span>(<span class="val">'List item clicked: '</span> + <span class="attr">event</span>.<span class="val">target</span>.<span class="val">textContent</span>);
+  }
+});</code></pre>
+            </div>
+
+            <h3><i class="fas fa-list"></i> Common DOM Events</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event Type</th>
+                        <th>Description</th>
+                        <th>Example Events</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mouse Events</td>
+                        <td>Events related to mouse interactions</td>
+                        <td>click, dblclick, mousedown, mouseup, mousemove</td>
+                    </tr>
+                    <tr>
+                        <td>Keyboard Events</td>
+                        <td>Events related to keyboard interactions</td>
+                        <td>keydown, keyup, keypress</td>
+                    </tr>
+                    <tr>
+                        <td>Form Events</td>
+                        <td>Events related to form elements</td>
+                        <td>submit, change, focus, blur, input</td>
+                    </tr>
+                    <tr>
+                        <td>Window Events</td>
+                        <td>Events related to browser window</td>
+                        <td>load, resize, scroll, hashchange</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Performance Section -->
+        <section id="performance" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h2>DOM Performance</h2>
+            </div>
+
+            <p>Efficient DOM manipulation is crucial for web performance. Poorly optimized DOM operations can lead to
+                slow page rendering and janky user experiences.</p>
+
+            <h3><i class="fas fa-lightbulb"></i> Performance Best Practices</h3>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4><i class="fas fa-database"></i> Batch DOM Changes</h4>
+                    <p>Make multiple changes offline before adding to the DOM to minimize reflows.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-memory"></i> Use DocumentFragment</h4>
+                    <p>Use DocumentFragment for complex DOM manipulations to avoid excessive reflows.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-search"></i> Efficient Selectors</h4>
+                    <p>Use efficient selectors and cache references to DOM elements.</p>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <pre><code><span class="comment">// Example: Using DocumentFragment for better performance</span>
+<span class="tag">const</span> fragment = <span class="attr">document</span>.<span class="val">createDocumentFragment</span>();
+
+<span class="comment">// Add multiple elements to the fragment</span>
+<span class="tag">for</span> (<span class="tag">let</span> i = 0; i < 100; i++) {
+  <span class="tag">const</span> li = <span class="attr">document</span>.<span class="val">createElement</span>(<span class="val">'li'</span>);
+  <span class="attr">li</span>.<span class="val">textContent</span> = <span class="val">'Item '</span> + i;
+  <span class="attr">fragment</span>.<span class="val">appendChild</span>(li);
+}
+
+<span class="comment">// Add the fragment to the DOM in a single operation</span>
+<span class="tag">const</span> list = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'myList'</span>);
+<span class="attr">list</span>.<span class="val">appendChild</span>(fragment);
+
+<span class="comment">// Example: Debouncing scroll events for performance</span>
+<span class="tag">function</span> <span class="val">debounce</span>(<span class="attr">func</span>, <span class="attr">wait</span>) {
+  <span class="tag">let</span> timeout;
+  <span class="tag">return</span> <span class="tag">function</span>() {
+    <span class="tag">const</span> context = <span class="tag">this</span>, args = arguments;
+    <span class="attr">clearTimeout</span>(timeout);
+    timeout = <span class="attr">setTimeout</span>(<span class="tag">function</span>() {
+      <span class="attr">func</span>.<span class="val">apply</span>(context, args);
+    }, wait);
+  };
+}
+
+<span class="attr">window</span>.<span class="val">addEventListener</span>(<span class="val">'scroll'</span>, <span class="attr">debounce</span>(<span class="tag">function</span>() {
+  <span class="attr">console</span>.<span class="val">log</span>(<span class="val">'Scrolled!'</span>);
+}, 250));</code></pre>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="interactive-demo" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <h2>Interactive DOM Demo</h2>
+            </div>
+
+            <p>Try these interactive examples to see DOM manipulation in action. Experiment with adding, modifying, and
+                removing DOM nodes to understand how the DOM works.</p>
+
+            <div class="demo-actions">
+                <button class="btn" onclick="addNewNode()"><i class="fas fa-plus"></i> Add New Node</button>
+                <button class="btn" onclick="changeNodeColor()"><i class="fas fa-palette"></i> Change Color</button>
+                <button class="btn" onclick="removeLastNode()"><i class="fas fa-minus"></i> Remove Last Node</button>
+                <button class="btn btn-outline" onclick="resetDemo()"><i class="fas fa-redo"></i> Reset Demo</button>
+            </div>
+
+            <div class="demo-container">
+                <div>
+                    <h4>DOM Tree Visualization</h4>
+                    <div id="dom-tree-view" class="demo-result">
+                        <div class="dom-node element-node">
+                            <div>div#demo-container</div>
+                            <div class="dom-node text-node">"Demo Content"</div>
+                            <div class="dom-node element-node">
+                                <div>p</div>
+                                <div class="dom-node text-node">"This is a paragraph."</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>JavaScript Code</h4>
+                    <div class="code-example">
+                        <pre><code><span class="comment">// Function to add a new node</span>
+<span class="tag">function</span> <span class="val">addNewNode</span>() {
+  <span class="tag">const</span> newNode = <span class="attr">document</span>.<span class="val">createElement</span>(<span class="val">'div'</span>);
+  <span class="attr">newNode</span>.<span class="val">className</span> = <span class="val">'dom-node element-node'</span>;
+  <span class="attr">newNode</span>.<span class="val">innerHTML</span> = <span class="val">'&lt;div&gt;New Node&lt;/div&gt;'</span>;
+  
+  <span class="tag">const</span> container = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'dom-tree-view'</span>);
+  <span class="attr">container</span>.<span class="val">appendChild</span>(newNode);
+}
+
+<span class="comment">// Function to change node colors</span>
+<span class="tag">function</span> <span class="val">changeNodeColor</span>() {
+  <span class="tag">const</span> nodes = <span class="attr">document</span>.<span class="val">querySelectorAll</span>(<span class="val">'.dom-node'</span>);
+  <span class="attr">nodes</span>.<span class="val">forEach</span>(node => {
+    <span class="attr">node</span>.<span class="val">style</span>.<span class="attr">borderLeftColor</span> = 
+      <span class="attr">getRandomColor</span>();
+  });
+}
+
+<span class="comment">// Function to remove the last node</span>
+<span class="tag">function</span> <span class="val">removeLastNode</span>() {
+  <span class="tag">const</span> container = <span class="attr">document</span>.<span class="val">getElementById</span>(<span class="val">'dom-tree-view'</span>);
+  <span class="tag">if</span> (<span class="attr">container</span>.<span class="val">lastChild</span>) {
+    <span class="attr">container</span>.<span class="val">removeChild</span>(<span class="attr">container</span>.<span class="val">lastChild</span>);
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>DOM Mastery - Professional Guide to Document Object Model</p>
+        <p>Created with ❤️ for web developers | Refresh page to reset interactive demo</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive demo functions
+        function addNewNode() {
+            const newNode = document.createElement('div');
+            newNode.className = 'dom-node element-node';
+            newNode.innerHTML = '<div>New Node</div>';
+
+            const container = document.getElementById('dom-tree-view');
+            container.appendChild(newNode);
+        }
+
+        function changeNodeColor() {
+            const nodes = document.querySelectorAll('.dom-node');
+            nodes.forEach(node => {
+                node.style.borderLeftColor = getRandomColor();
+            });
+        }
+
+        function removeLastNode() {
+            const container = document.getElementById('dom-tree-view');
+            if (container.lastChild) {
+                container.removeChild(container.lastChild);
+            }
+        }
+
+        function resetDemo() {
+            const container = document.getElementById('dom-tree-view');
+            container.innerHTML = `
+                <div class="dom-node element-node">
+                    <div>div#demo-container</div>
+                    <div class="dom-node text-node">"Demo Content"</div>
+                    <div class="dom-node element-node">
+                        <div>p</div>
+                        <div class="dom-node text-node">"This is a paragraph."</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getRandomColor() {
+            const colors = ['#4361ee', '#7209b7', '#f72585', '#4cc9f0', '#f9c74f'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Update active class
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Highlight current section in navigation
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= (sectionTop - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
