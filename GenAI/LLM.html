@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -132,13 +133,14 @@
 
     /* Card styles */
     .card-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
     }
+
     .card-container h3 {
-        color: white;
+      color: white;
     }
 
     .card {
@@ -274,7 +276,8 @@
       overflow: hidden;
     }
 
-    th, td {
+    th,
+    td {
       padding: 15px;
       text-align: left;
       border-bottom: 1px solid var(--medium-gray);
@@ -412,6 +415,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Understanding Large Language Models (LLMs)</h1>
@@ -434,7 +438,10 @@
   <main>
     <section id="what-are-llms">
       <h2>What Are Large Language Models?</h2>
-      <p>Large Language Models (LLMs) are advanced artificial intelligence systems trained on vast amounts of text data to understand and generate human language. These models represent a significant leap in natural language processing (NLP) technology, enabling machines to perform a wide range of language tasks with unprecedented capabilities.</p>
+      <p>Large Language Models (LLMs) are advanced artificial intelligence systems trained on vast amounts of text data
+        to understand and generate human language. These models represent a significant leap in natural language
+        processing (NLP) technology, enabling machines to perform a wide range of language tasks with unprecedented
+        capabilities.</p>
 
       <div class="card-container">
         <div class="card">
@@ -442,7 +449,9 @@
             <h3>Definition</h3>
           </div>
           <div class="card-body">
-            <p>LLMs are neural network architectures (typically transformer-based) with billions or even trillions of parameters, trained on massive text corpora to predict and generate text based on patterns learned from the training data.</p>
+            <p>LLMs are neural network architectures (typically transformer-based) with billions or even trillions of
+              parameters, trained on massive text corpora to predict and generate text based on patterns learned from
+              the training data.</p>
           </div>
         </div>
 
@@ -451,7 +460,8 @@
             <h3>Core Technology</h3>
           </div>
           <div class="card-body">
-            <p>Most modern LLMs are based on the transformer architecture, which uses self-attention mechanisms to process and generate text by understanding relationships between words in a sequence.</p>
+            <p>Most modern LLMs are based on the transformer architecture, which uses self-attention mechanisms to
+              process and generate text by understanding relationships between words in a sequence.</p>
           </div>
         </div>
 
@@ -460,20 +470,24 @@
             <h3>Scale Factors</h3>
           </div>
           <div class="card-body">
-            <p>What makes LLMs "large" is a combination of three factors: model size (number of parameters), training data volume (often trillions of tokens), and computational resources used for training.</p>
+            <p>What makes LLMs "large" is a combination of three factors: model size (number of parameters), training
+              data volume (often trillions of tokens), and computational resources used for training.</p>
           </div>
         </div>
       </div>
 
       <h3>How LLMs Work</h3>
-      <p>At their core, LLMs operate on a simple principle: predicting the next word (or token) in a sequence based on the context of previous words. However, the scale and sophistication of these models allow them to perform this task with remarkable nuance and versatility.</p>
+      <p>At their core, LLMs operate on a simple principle: predicting the next word (or token) in a sequence based on
+        the context of previous words. However, the scale and sophistication of these models allow them to perform this
+        task with remarkable nuance and versatility.</p>
 
       <div class="process-flow">
         <div class="process-step">
           <div class="step-number">1</div>
           <div class="step-content">
             <h4>Tokenization</h4>
-            <p>Text is broken down into tokens (words or subwords) that the model can process. For example, the word "understanding" might be split into "under" and "standing" as separate tokens.</p>
+            <p>Text is broken down into tokens (words or subwords) that the model can process. For example, the word
+              "understanding" might be split into "under" and "standing" as separate tokens.</p>
           </div>
         </div>
 
@@ -481,7 +495,8 @@
           <div class="step-number">2</div>
           <div class="step-content">
             <h4>Embedding</h4>
-            <p>Tokens are converted into numerical vectors (embeddings) that represent their meaning in a high-dimensional space, capturing semantic relationships between words.</p>
+            <p>Tokens are converted into numerical vectors (embeddings) that represent their meaning in a
+              high-dimensional space, capturing semantic relationships between words.</p>
           </div>
         </div>
 
@@ -489,7 +504,8 @@
           <div class="step-number">3</div>
           <div class="step-content">
             <h4>Processing</h4>
-            <p>The transformer architecture processes these embeddings through multiple layers of attention mechanisms, allowing the model to weigh the importance of different words in relation to each other.</p>
+            <p>The transformer architecture processes these embeddings through multiple layers of attention mechanisms,
+              allowing the model to weigh the importance of different words in relation to each other.</p>
           </div>
         </div>
 
@@ -497,7 +513,8 @@
           <div class="step-number">4</div>
           <div class="step-content">
             <h4>Prediction</h4>
-            <p>Based on the processed context, the model predicts the probability distribution of the next token, selecting the most likely continuation of the text.</p>
+            <p>Based on the processed context, the model predicts the probability distribution of the next token,
+              selecting the most likely continuation of the text.</p>
           </div>
         </div>
 
@@ -505,36 +522,46 @@
           <div class="step-number">5</div>
           <div class="step-content">
             <h4>Generation</h4>
-            <p>This process repeats, with each newly generated token becoming part of the context for predicting the next one, creating a coherent sequence of text.</p>
+            <p>This process repeats, with each newly generated token becoming part of the context for predicting the
+              next one, creating a coherent sequence of text.</p>
           </div>
         </div>
       </div>
 
       <h3>Emergent Capabilities</h3>
-      <p>One of the most fascinating aspects of LLMs is their emergent capabilities—abilities that weren't explicitly programmed but arise from the scale and training methodology:</p>
-      
+      <p>One of the most fascinating aspects of LLMs is their emergent capabilities—abilities that weren't explicitly
+        programmed but arise from the scale and training methodology:</p>
+
       <ul>
-        <li><strong>In-context Learning:</strong> LLMs can adapt to new tasks based on examples provided in the prompt without additional training.</li>
-        <li><strong>Chain-of-thought Reasoning:</strong> When prompted to "think step by step," LLMs can break down complex problems into logical sequences.</li>
-        <li><strong>Zero-shot and Few-shot Learning:</strong> The ability to perform tasks with no examples (zero-shot) or just a few examples (few-shot) in the prompt.</li>
-        <li><strong>Instruction Following:</strong> Understanding and executing complex instructions provided in natural language.</li>
-        <li><strong>Knowledge Encoding:</strong> Storing vast amounts of factual information within their parameters, effectively serving as knowledge bases.</li>
+        <li><strong>In-context Learning:</strong> LLMs can adapt to new tasks based on examples provided in the prompt
+          without additional training.</li>
+        <li><strong>Chain-of-thought Reasoning:</strong> When prompted to "think step by step," LLMs can break down
+          complex problems into logical sequences.</li>
+        <li><strong>Zero-shot and Few-shot Learning:</strong> The ability to perform tasks with no examples (zero-shot)
+          or just a few examples (few-shot) in the prompt.</li>
+        <li><strong>Instruction Following:</strong> Understanding and executing complex instructions provided in natural
+          language.</li>
+        <li><strong>Knowledge Encoding:</strong> Storing vast amounts of factual information within their parameters,
+          effectively serving as knowledge bases.</li>
       </ul>
 
       <div class="image-container">
         <div class="image-placeholder">
           [Diagram: Transformer Architecture with Attention Mechanisms]
         </div>
-        <p><em>Figure 1: The transformer architecture that powers modern LLMs, showing the self-attention mechanism that allows the model to process relationships between words.</em></p>
+        <p><em>Figure 1: The transformer architecture that powers modern LLMs, showing the self-attention mechanism that
+            allows the model to process relationships between words.</em></p>
       </div>
     </section>
 
     <section id="data-collection">
       <h2>Data Collection for LLMs</h2>
-      <p>The quality, diversity, and scale of training data are critical factors in developing effective LLMs. The process of collecting, filtering, and preparing this data is complex and resource-intensive.</p>
+      <p>The quality, diversity, and scale of training data are critical factors in developing effective LLMs. The
+        process of collecting, filtering, and preparing this data is complex and resource-intensive.</p>
 
       <h3>Data Sources</h3>
-      <p>LLMs are typically trained on diverse text sources to develop a broad understanding of language and knowledge:</p>
+      <p>LLMs are typically trained on diverse text sources to develop a broad understanding of language and knowledge:
+      </p>
 
       <table>
         <thead>
@@ -597,7 +624,8 @@
             <h3>Research Labs</h3>
           </div>
           <div class="card-body">
-            <p>Organizations like OpenAI, Google DeepMind, Anthropic, and Meta AI maintain dedicated teams for data collection, curation, and processing.</p>
+            <p>Organizations like OpenAI, Google DeepMind, Anthropic, and Meta AI maintain dedicated teams for data
+              collection, curation, and processing.</p>
           </div>
         </div>
 
@@ -606,7 +634,8 @@
             <h3>Academic Institutions</h3>
           </div>
           <div class="card-body">
-            <p>Universities and research centers contribute to dataset creation, often focusing on specialized or high-quality collections for specific research purposes.</p>
+            <p>Universities and research centers contribute to dataset creation, often focusing on specialized or
+              high-quality collections for specific research purposes.</p>
           </div>
         </div>
 
@@ -615,7 +644,8 @@
             <h3>Data Companies</h3>
           </div>
           <div class="card-body">
-            <p>Specialized firms that collect, clean, and license data for AI training, often employing thousands of workers for data labeling and quality control.</p>
+            <p>Specialized firms that collect, clean, and license data for AI training, often employing thousands of
+              workers for data labeling and quality control.</p>
           </div>
         </div>
 
@@ -624,7 +654,8 @@
             <h3>Open-Source Communities</h3>
           </div>
           <div class="card-body">
-            <p>Collaborative efforts like EleutherAI and LAION that create and share open datasets for training language and multimodal models.</p>
+            <p>Collaborative efforts like EleutherAI and LAION that create and share open datasets for training language
+              and multimodal models.</p>
           </div>
         </div>
       </div>
@@ -637,7 +668,8 @@
           <div class="step-number">1</div>
           <div class="step-content">
             <h4>Raw Data Acquisition</h4>
-            <p>Web crawling, accessing digital archives, and partnering with content providers to obtain raw text data. This often involves petabytes of information from diverse sources.</p>
+            <p>Web crawling, accessing digital archives, and partnering with content providers to obtain raw text data.
+              This often involves petabytes of information from diverse sources.</p>
           </div>
         </div>
 
@@ -645,7 +677,8 @@
           <div class="step-number">2</div>
           <div class="step-content">
             <h4>Filtering & Cleaning</h4>
-            <p>Removing low-quality content, duplicates, and potentially harmful material. This includes filtering out spam, bot-generated content, and heavily templated text.</p>
+            <p>Removing low-quality content, duplicates, and potentially harmful material. This includes filtering out
+              spam, bot-generated content, and heavily templated text.</p>
           </div>
         </div>
 
@@ -653,7 +686,8 @@
           <div class="step-number">3</div>
           <div class="step-content">
             <h4>Deduplication</h4>
-            <p>Identifying and removing duplicate or near-duplicate content to prevent the model from overweighting repeated information. This is crucial for preventing memorization of specific texts.</p>
+            <p>Identifying and removing duplicate or near-duplicate content to prevent the model from overweighting
+              repeated information. This is crucial for preventing memorization of specific texts.</p>
           </div>
         </div>
 
@@ -661,7 +695,8 @@
           <div class="step-number">4</div>
           <div class="step-content">
             <h4>Content Moderation</h4>
-            <p>Screening for toxic, illegal, or harmful content to reduce the risk of the model learning and reproducing problematic outputs. This often combines automated tools and human review.</p>
+            <p>Screening for toxic, illegal, or harmful content to reduce the risk of the model learning and reproducing
+              problematic outputs. This often combines automated tools and human review.</p>
           </div>
         </div>
 
@@ -669,7 +704,8 @@
           <div class="step-number">5</div>
           <div class="step-content">
             <h4>Tokenization & Formatting</h4>
-            <p>Converting the cleaned text into a format suitable for model training, including tokenization (breaking text into words or subwords) and creating training examples.</p>
+            <p>Converting the cleaned text into a format suitable for model training, including tokenization (breaking
+              text into words or subwords) and creating training examples.</p>
           </div>
         </div>
 
@@ -677,7 +713,8 @@
           <div class="step-number">6</div>
           <div class="step-content">
             <h4>Quality Assurance</h4>
-            <p>Final checks to ensure the dataset meets quality standards, with sampling and human evaluation of representative portions of the data.</p>
+            <p>Final checks to ensure the dataset meets quality standards, with sampling and human evaluation of
+              representative portions of the data.</p>
           </div>
         </div>
       </div>
@@ -685,33 +722,45 @@
       <h3>Data Collection Challenges</h3>
       <p>The process of collecting training data for LLMs faces numerous challenges:</p>
       <ul>
-        <li><strong>Scale Requirements:</strong> Modern LLMs require trillions of tokens, necessitating enormous data collection efforts.</li>
-        <li><strong>Quality Control:</strong> Ensuring high-quality data when working at such massive scales is extremely difficult.</li>
-        <li><strong>Bias Mitigation:</strong> Identifying and addressing biases present in the source data to prevent their amplification in the model.</li>
-        <li><strong>Copyright Concerns:</strong> Navigating the legal complexities of using copyrighted material for training purposes.</li>
-        <li><strong>Multilingual Coverage:</strong> Obtaining sufficient high-quality data for languages other than English.</li>
-        <li><strong>Privacy Considerations:</strong> Ensuring that personal or sensitive information is not included in training data.</li>
-        <li><strong>Computational Costs:</strong> Processing and storing petabytes of text data requires significant computational resources.</li>
+        <li><strong>Scale Requirements:</strong> Modern LLMs require trillions of tokens, necessitating enormous data
+          collection efforts.</li>
+        <li><strong>Quality Control:</strong> Ensuring high-quality data when working at such massive scales is
+          extremely difficult.</li>
+        <li><strong>Bias Mitigation:</strong> Identifying and addressing biases present in the source data to prevent
+          their amplification in the model.</li>
+        <li><strong>Copyright Concerns:</strong> Navigating the legal complexities of using copyrighted material for
+          training purposes.</li>
+        <li><strong>Multilingual Coverage:</strong> Obtaining sufficient high-quality data for languages other than
+          English.</li>
+        <li><strong>Privacy Considerations:</strong> Ensuring that personal or sensitive information is not included in
+          training data.</li>
+        <li><strong>Computational Costs:</strong> Processing and storing petabytes of text data requires significant
+          computational resources.</li>
       </ul>
 
       <blockquote>
-        "The quality of an LLM is fundamentally limited by the quality of its training data. No amount of algorithmic sophistication can fully compensate for deficiencies in the underlying data."
+        "The quality of an LLM is fundamentally limited by the quality of its training data. No amount of algorithmic
+        sophistication can fully compensate for deficiencies in the underlying data."
       </blockquote>
     </section>
 
     <section id="training-process">
       <h2>The LLM Training Process</h2>
-      <p>Training a large language model is one of the most computationally intensive processes in artificial intelligence, requiring specialized infrastructure, expertise, and significant resources.</p>
+      <p>Training a large language model is one of the most computationally intensive processes in artificial
+        intelligence, requiring specialized infrastructure, expertise, and significant resources.</p>
 
       <h3>Pre-training Phase</h3>
-      <p>The initial training of an LLM involves exposing it to vast amounts of text data to learn the statistical patterns of language:</p>
+      <p>The initial training of an LLM involves exposing it to vast amounts of text data to learn the statistical
+        patterns of language:</p>
 
       <div class="process-flow">
         <div class="process-step">
           <div class="step-number">1</div>
           <div class="step-content">
             <h4>Architecture Design</h4>
-            <p>Determining the model architecture, including the number of layers, attention heads, and total parameters. These decisions significantly impact the model's capabilities and computational requirements.</p>
+            <p>Determining the model architecture, including the number of layers, attention heads, and total
+              parameters. These decisions significantly impact the model's capabilities and computational requirements.
+            </p>
           </div>
         </div>
 
@@ -719,7 +768,8 @@
           <div class="step-number">2</div>
           <div class="step-content">
             <h4>Infrastructure Setup</h4>
-            <p>Preparing the distributed computing environment, often involving thousands of GPUs or TPUs networked together to handle the massive computational load of training.</p>
+            <p>Preparing the distributed computing environment, often involving thousands of GPUs or TPUs networked
+              together to handle the massive computational load of training.</p>
           </div>
         </div>
 
@@ -727,7 +777,8 @@
           <div class="step-number">3</div>
           <div class="step-content">
             <h4>Tokenization</h4>
-            <p>Creating a vocabulary of tokens (words or subwords) and converting the training corpus into sequences of these tokens. The tokenizer is a critical component that affects how the model processes language.</p>
+            <p>Creating a vocabulary of tokens (words or subwords) and converting the training corpus into sequences of
+              these tokens. The tokenizer is a critical component that affects how the model processes language.</p>
           </div>
         </div>
 
@@ -735,7 +786,9 @@
           <div class="step-number">4</div>
           <div class="step-content">
             <h4>Initial Training</h4>
-            <p>Beginning the training process with the model learning to predict the next token in sequences from the training data. This phase typically uses a technique called "masked language modeling" or "causal language modeling."</p>
+            <p>Beginning the training process with the model learning to predict the next token in sequences from the
+              training data. This phase typically uses a technique called "masked language modeling" or "causal language
+              modeling."</p>
           </div>
         </div>
 
@@ -743,7 +796,8 @@
           <div class="step-number">5</div>
           <div class="step-content">
             <h4>Scaling Up</h4>
-            <p>Gradually increasing the batch size and learning rate according to a carefully designed schedule to maintain training stability while maximizing efficiency.</p>
+            <p>Gradually increasing the batch size and learning rate according to a carefully designed schedule to
+              maintain training stability while maximizing efficiency.</p>
           </div>
         </div>
 
@@ -751,7 +805,8 @@
           <div class="step-number">6</div>
           <div class="step-content">
             <h4>Continuous Monitoring</h4>
-            <p>Tracking training metrics, loss curves, and validation performance to detect issues like divergence, overfitting, or other training pathologies.</p>
+            <p>Tracking training metrics, loss curves, and validation performance to detect issues like divergence,
+              overfitting, or other training pathologies.</p>
           </div>
         </div>
       </div>
@@ -760,11 +815,13 @@
         <div class="image-placeholder">
           [Graph: Training Loss Curve Over Time]
         </div>
-        <p><em>Figure 2: Typical training loss curve for an LLM, showing how prediction accuracy improves over time as the model processes more training data.</em></p>
+        <p><em>Figure 2: Typical training loss curve for an LLM, showing how prediction accuracy improves over time as
+            the model processes more training data.</em></p>
       </div>
 
       <h3>Fine-tuning Phase</h3>
-      <p>After pre-training, models undergo additional training to enhance their capabilities and align them with human preferences:</p>
+      <p>After pre-training, models undergo additional training to enhance their capabilities and align them with human
+        preferences:</p>
 
       <div class="card-container">
         <div class="card">
@@ -772,7 +829,8 @@
             <h3>Supervised Fine-tuning (SFT)</h3>
           </div>
           <div class="card-body">
-            <p>Training the model on a smaller, high-quality dataset of examples that demonstrate desired behaviors, often including instruction-response pairs to teach the model to follow instructions.</p>
+            <p>Training the model on a smaller, high-quality dataset of examples that demonstrate desired behaviors,
+              often including instruction-response pairs to teach the model to follow instructions.</p>
           </div>
         </div>
 
@@ -781,7 +839,8 @@
             <h3>RLHF</h3>
           </div>
           <div class="card-body">
-            <p>Reinforcement Learning from Human Feedback involves collecting human preferences about model outputs and training the model to maximize a reward function based on these preferences.</p>
+            <p>Reinforcement Learning from Human Feedback involves collecting human preferences about model outputs and
+              training the model to maximize a reward function based on these preferences.</p>
           </div>
         </div>
 
@@ -790,7 +849,8 @@
             <h3>Constitutional AI</h3>
           </div>
           <div class="card-body">
-            <p>Training the model to critique and revise its own outputs according to a set of principles or "constitution," reducing the need for direct human feedback.</p>
+            <p>Training the model to critique and revise its own outputs according to a set of principles or
+              "constitution," reducing the need for direct human feedback.</p>
           </div>
         </div>
 
@@ -799,20 +859,23 @@
             <h3>Domain Adaptation</h3>
           </div>
           <div class="card-body">
-            <p>Specialized fine-tuning on domain-specific data to enhance performance in particular areas like medicine, law, programming, or scientific research.</p>
+            <p>Specialized fine-tuning on domain-specific data to enhance performance in particular areas like medicine,
+              law, programming, or scientific research.</p>
           </div>
         </div>
       </div>
 
       <h3>RLHF Process in Detail</h3>
-      <p>Reinforcement Learning from Human Feedback has become a critical component in developing helpful, harmless, and honest AI systems:</p>
+      <p>Reinforcement Learning from Human Feedback has become a critical component in developing helpful, harmless, and
+        honest AI systems:</p>
 
       <div class="process-flow">
         <div class="process-step">
           <div class="step-number">1</div>
           <div class="step-content">
             <h4>Collecting Demonstrations</h4>
-            <p>Human annotators provide examples of desired responses to various prompts, creating a dataset of high-quality outputs.</p>
+            <p>Human annotators provide examples of desired responses to various prompts, creating a dataset of
+              high-quality outputs.</p>
           </div>
         </div>
 
@@ -820,7 +883,8 @@
           <div class="step-number">2</div>
           <div class="step-content">
             <h4>Training a Reward Model</h4>
-            <p>Human evaluators compare different model responses, ranking them by quality. These comparisons train a reward model that can predict human preferences.</p>
+            <p>Human evaluators compare different model responses, ranking them by quality. These comparisons train a
+              reward model that can predict human preferences.</p>
           </div>
         </div>
 
@@ -828,7 +892,8 @@
           <div class="step-number">3</div>
           <div class="step-content">
             <h4>Reinforcement Learning</h4>
-            <p>The LLM is fine-tuned using reinforcement learning algorithms (typically Proximal Policy Optimization) to maximize the reward predicted by the reward model.</p>
+            <p>The LLM is fine-tuned using reinforcement learning algorithms (typically Proximal Policy Optimization) to
+              maximize the reward predicted by the reward model.</p>
           </div>
         </div>
 
@@ -836,7 +901,8 @@
           <div class="step-number">4</div>
           <div class="step-content">
             <h4>Iterative Refinement</h4>
-            <p>The process is repeated with new evaluations and feedback, gradually improving the model's alignment with human preferences.</p>
+            <p>The process is repeated with new evaluations and feedback, gradually improving the model's alignment with
+              human preferences.</p>
           </div>
         </div>
       </div>
@@ -887,13 +953,16 @@
       </table>
 
       <blockquote>
-        "Training a state-of-the-art LLM today requires more computing power than was used for all of deep learning research just a decade ago. This exponential increase in computational requirements has made LLM development increasingly concentrated among well-resourced organizations."
+        "Training a state-of-the-art LLM today requires more computing power than was used for all of deep learning
+        research just a decade ago. This exponential increase in computational requirements has made LLM development
+        increasingly concentrated among well-resourced organizations."
       </blockquote>
     </section>
 
     <section id="organizations">
       <h2>Key Organizations in LLM Development</h2>
-      <p>The development of large language models is concentrated among a relatively small number of organizations with the necessary resources, expertise, and infrastructure.</p>
+      <p>The development of large language models is concentrated among a relatively small number of organizations with
+        the necessary resources, expertise, and infrastructure.</p>
 
       <h3>Major Players</h3>
       <div class="card-container">
@@ -903,7 +972,9 @@
           </div>
           <div class="card-body">
             <p><strong>Notable Models:</strong> GPT-4, GPT-3.5, GPT-3, GPT-2</p>
-            <p><strong>Approach:</strong> Pioneer in scaling language models and alignment techniques like RLHF. Started as a non-profit but transitioned to a "capped-profit" structure with significant investment from Microsoft.</p>
+            <p><strong>Approach:</strong> Pioneer in scaling language models and alignment techniques like RLHF. Started
+              as a non-profit but transitioned to a "capped-profit" structure with significant investment from
+              Microsoft.</p>
           </div>
         </div>
 
@@ -913,7 +984,8 @@
           </div>
           <div class="card-body">
             <p><strong>Notable Models:</strong> Gemini, PaLM, LaMDA, BERT</p>
-            <p><strong>Approach:</strong> Leverages Google's vast computational resources and data. Focuses on both research advancement and product integration across Google services.</p>
+            <p><strong>Approach:</strong> Leverages Google's vast computational resources and data. Focuses on both
+              research advancement and product integration across Google services.</p>
           </div>
         </div>
 
@@ -923,7 +995,8 @@
           </div>
           <div class="card-body">
             <p><strong>Notable Models:</strong> Claude, Claude 2, Claude Instant</p>
-            <p><strong>Approach:</strong> Founded by former OpenAI researchers with a focus on AI safety. Pioneered Constitutional AI approach to alignment.</p>
+            <p><strong>Approach:</strong> Founded by former OpenAI researchers with a focus on AI safety. Pioneered
+              Constitutional AI approach to alignment.</p>
           </div>
         </div>
 
@@ -933,7 +1006,8 @@
           </div>
           <div class="card-body">
             <p><strong>Notable Models:</strong> LLaMA, LLaMA 2, OPT</p>
-            <p><strong>Approach:</strong> Emphasis on open research and releasing models to the research community, while maintaining some restrictions on commercial use.</p>
+            <p><strong>Approach:</strong> Emphasis on open research and releasing models to the research community,
+              while maintaining some restrictions on commercial use.</p>
           </div>
         </div>
 
@@ -943,7 +1017,8 @@
           </div>
           <div class="card-body">
             <p><strong>Notable Models:</strong> Turing-NLG, Phi series</p>
-            <p><strong>Approach:</strong> Major investor in OpenAI, integrating LLMs across its product suite while also developing specialized models internally.</p>
+            <p><strong>Approach:</strong> Major investor in OpenAI, integrating LLMs across its product suite while also
+              developing specialized models internally.</p>
           </div>
         </div>
 
@@ -953,20 +1028,27 @@
           </div>
           <div class="card-body">
             <p><strong>Notable Models:</strong> Command, Embed</p>
-            <p><strong>Approach:</strong> Focus on enterprise applications and developer tools, with specialized models for different use cases.</p>
+            <p><strong>Approach:</strong> Focus on enterprise applications and developer tools, with specialized models
+              for different use cases.</p>
           </div>
         </div>
       </div>
 
       <h3>Open Source Efforts</h3>
-      <p>Alongside commercial entities, several open-source initiatives are making significant contributions to LLM development:</p>
+      <p>Alongside commercial entities, several open-source initiatives are making significant contributions to LLM
+        development:</p>
 
       <ul>
-        <li><strong>EleutherAI:</strong> A collective of researchers who created GPT-Neo, GPT-J, and Pythia, some of the first open-source alternatives to commercial LLMs.</li>
-        <li><strong>HuggingFace:</strong> Platform for sharing and collaborating on machine learning models, including many open-source LLMs and tools for working with them.</li>
-        <li><strong>LAION:</strong> Organization focused on creating open datasets for AI training, including text corpora for language models.</li>
-        <li><strong>Together.ai:</strong> Building infrastructure and tools to make training and deploying LLMs more accessible.</li>
-        <li><strong>Academic Institutions:</strong> Universities like Stanford (Alpaca), Berkeley (Vicuna), and others have created fine-tuned open models.</li>
+        <li><strong>EleutherAI:</strong> A collective of researchers who created GPT-Neo, GPT-J, and Pythia, some of the
+          first open-source alternatives to commercial LLMs.</li>
+        <li><strong>HuggingFace:</strong> Platform for sharing and collaborating on machine learning models, including
+          many open-source LLMs and tools for working with them.</li>
+        <li><strong>LAION:</strong> Organization focused on creating open datasets for AI training, including text
+          corpora for language models.</li>
+        <li><strong>Together.ai:</strong> Building infrastructure and tools to make training and deploying LLMs more
+          accessible.</li>
+        <li><strong>Academic Institutions:</strong> Universities like Stanford (Alpaca), Berkeley (Vicuna), and others
+          have created fine-tuned open models.</li>
       </ul>
 
       <h3>Organizational Approaches</h3>
@@ -1012,14 +1094,16 @@
 
     <section id="timeline">
       <h2>Historical Timeline of LLM Development</h2>
-      <p>The evolution of large language models represents a fascinating journey from theoretical concepts to world-changing technology.</p>
+      <p>The evolution of large language models represents a fascinating journey from theoretical concepts to
+        world-changing technology.</p>
 
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-content">
             <h3 class="timeline-date">2017</h3>
             <h4>The Transformer Architecture</h4>
-            <p>Google researchers publish "Attention Is All You Need," introducing the transformer architecture that would become the foundation for modern LLMs.</p>
+            <p>Google researchers publish "Attention Is All You Need," introducing the transformer architecture that
+              would become the foundation for modern LLMs.</p>
           </div>
         </div>
 
@@ -1027,7 +1111,8 @@
           <div class="timeline-content">
             <h3 class="timeline-date">2018</h3>
             <h4>BERT & GPT-1</h4>
-            <p>Google releases BERT (Bidirectional Encoder Representations from Transformers), while OpenAI introduces GPT-1 with 117 million parameters, demonstrating the potential of transformer-based language models.</p>
+            <p>Google releases BERT (Bidirectional Encoder Representations from Transformers), while OpenAI introduces
+              GPT-1 with 117 million parameters, demonstrating the potential of transformer-based language models.</p>
           </div>
         </div>
 
@@ -1035,7 +1120,8 @@
           <div class="timeline-content">
             <h3 class="timeline-date">2019</h3>
             <h4>GPT-2</h4>
-            <p>OpenAI releases GPT-2 with 1.5 billion parameters, initially withholding the full model due to concerns about misuse. This marks the beginning of scaling as a path to improved capabilities.</p>
+            <p>OpenAI releases GPT-2 with 1.5 billion parameters, initially withholding the full model due to concerns
+              about misuse. This marks the beginning of scaling as a path to improved capabilities.</p>
           </div>
         </div>
 
@@ -1043,7 +1129,8 @@
           <div class="timeline-content">
             <h3 class="timeline-date">2020</h3>
             <h4>GPT-3</h4>
-            <p>OpenAI introduces GPT-3 with 175 billion parameters, demonstrating remarkable few-shot learning abilities and emergent capabilities not seen in smaller models.</p>
+            <p>OpenAI introduces GPT-3 with 175 billion parameters, demonstrating remarkable few-shot learning abilities
+              and emergent capabilities not seen in smaller models.</p>
           </div>
         </div>
 
@@ -1051,7 +1138,8 @@
           <div class="timeline-content">
             <h3 class="timeline-date">2021</h3>
             <h4>Codex & Jurassic-1</h4>
-            <p>OpenAI releases Codex for code generation, while AI21 Labs introduces Jurassic-1. Google presents LaMDA, focused on conversational applications.</p>
+            <p>OpenAI releases Codex for code generation, while AI21 Labs introduces Jurassic-1. Google presents LaMDA,
+              focused on conversational applications.</p>
           </div>
         </div>
 
@@ -1059,7 +1147,8 @@
           <div class="timeline-content">
             <h3 class="timeline-date">2022</h3>
             <h4>ChatGPT & Instruction Tuning</h4>
-            <p>OpenAI launches ChatGPT based on GPT-3.5, bringing LLMs to mainstream attention. Anthropic introduces Constitutional AI, while instruction tuning and RLHF become standard practices.</p>
+            <p>OpenAI launches ChatGPT based on GPT-3.5, bringing LLMs to mainstream attention. Anthropic introduces
+              Constitutional AI, while instruction tuning and RLHF become standard practices.</p>
           </div>
         </div>
 
@@ -1067,7 +1156,8 @@
           <div class="timeline-content">
             <h3 class="timeline-date">2023</h3>
             <h4>GPT-4 & Open-Weight Models</h4>
-            <p>OpenAI releases GPT-4, while Meta releases LLaMA and LLaMA 2 as open-weight models. Anthropic launches Claude 2, and Google introduces PaLM 2 and Bard.</p>
+            <p>OpenAI releases GPT-4, while Meta releases LLaMA and LLaMA 2 as open-weight models. Anthropic launches
+              Claude 2, and Google introduces PaLM 2 and Bard.</p>
           </div>
         </div>
 
@@ -1075,7 +1165,8 @@
           <div class="timeline-content">
             <h3 class="timeline-date">2024</h3>
             <h4>Multimodal Models & Specialization</h4>
-            <p>The industry shifts toward multimodal capabilities (text, images, audio) and specialized models optimized for specific tasks and domains.</p>
+            <p>The industry shifts toward multimodal capabilities (text, images, audio) and specialized models optimized
+              for specific tasks and domains.</p>
           </div>
         </div>
       </div>
@@ -1084,12 +1175,14 @@
       <div class="data-viz">
         [Graph: Exponential Growth in Model Parameters from 2018-2024]
       </div>
-      <p><em>Figure 3: The exponential growth in model size (measured by parameter count) from 2018 to 2024, showing how rapidly the field has scaled.</em></p>
+      <p><em>Figure 3: The exponential growth in model size (measured by parameter count) from 2018 to 2024, showing how
+          rapidly the field has scaled.</em></p>
     </section>
 
     <section id="applications">
       <h2>Applications of Large Language Models</h2>
-      <p>LLMs have rapidly transformed from research curiosities to practical tools with wide-ranging applications across industries and domains.</p>
+      <p>LLMs have rapidly transformed from research curiosities to practical tools with wide-ranging applications
+        across industries and domains.</p>
 
       <div class="card-container">
         <div class="card">
@@ -1191,7 +1284,8 @@
           <div class="step-number">1</div>
           <div class="step-content">
             <h4>Direct API Integration</h4>
-            <p>Applications connect to LLM providers through APIs, sending prompts and receiving responses for specific use cases.</p>
+            <p>Applications connect to LLM providers through APIs, sending prompts and receiving responses for specific
+              use cases.</p>
           </div>
         </div>
 
@@ -1199,7 +1293,8 @@
           <div class="step-number">2</div>
           <div class="step-content">
             <h4>Retrieval-Augmented Generation (RAG)</h4>
-            <p>Combining LLMs with external knowledge bases or document stores to ground responses in specific information sources.</p>
+            <p>Combining LLMs with external knowledge bases or document stores to ground responses in specific
+              information sources.</p>
           </div>
         </div>
 
@@ -1207,7 +1302,8 @@
           <div class="step-number">3</div>
           <div class="step-content">
             <h4>Fine-tuning</h4>
-            <p>Adapting pre-trained models to specific domains or tasks through additional training on specialized datasets.</p>
+            <p>Adapting pre-trained models to specific domains or tasks through additional training on specialized
+              datasets.</p>
           </div>
         </div>
 
@@ -1215,7 +1311,8 @@
           <div class="step-number">4</div>
           <div class="step-content">
             <h4>Agents & Tools</h4>
-            <p>Creating LLM-powered agents that can use external tools, APIs, and services to accomplish complex tasks.</p>
+            <p>Creating LLM-powered agents that can use external tools, APIs, and services to accomplish complex tasks.
+            </p>
           </div>
         </div>
 
@@ -1223,7 +1320,8 @@
           <div class="step-number">5</div>
           <div class="step-content">
             <h4>Embedding in Applications</h4>
-            <p>Deploying smaller, specialized models directly within applications for offline use or reduced latency.</p>
+            <p>Deploying smaller, specialized models directly within applications for offline use or reduced latency.
+            </p>
           </div>
         </div>
       </div>
@@ -1231,7 +1329,8 @@
 
     <section id="challenges">
       <h2>Challenges & Ethical Considerations</h2>
-      <p>Despite their impressive capabilities, LLMs face significant technical challenges and raise important ethical questions that researchers and developers are actively addressing.</p>
+      <p>Despite their impressive capabilities, LLMs face significant technical challenges and raise important ethical
+        questions that researchers and developers are actively addressing.</p>
 
       <h3>Technical Challenges</h3>
       <table>
@@ -1278,7 +1377,8 @@
             <h3>Bias & Fairness</h3>
           </div>
           <div class="card-body">
-            <p>LLMs can reflect and amplify biases present in their training data, potentially perpetuating stereotypes and unfair treatment of certain groups.</p>
+            <p>LLMs can reflect and amplify biases present in their training data, potentially perpetuating stereotypes
+              and unfair treatment of certain groups.</p>
           </div>
         </div>
 
@@ -1287,7 +1387,8 @@
             <h3>Misinformation</h3>
           </div>
           <div class="card-body">
-            <p>The ability to generate convincing text at scale raises concerns about automated production of misleading content and deepfakes.</p>
+            <p>The ability to generate convincing text at scale raises concerns about automated production of misleading
+              content and deepfakes.</p>
           </div>
         </div>
 
@@ -1296,7 +1397,8 @@
             <h3>Privacy</h3>
           </div>
           <div class="card-body">
-            <p>Questions about data used for training, potential memorization of sensitive information, and user data handling in deployed systems.</p>
+            <p>Questions about data used for training, potential memorization of sensitive information, and user data
+              handling in deployed systems.</p>
           </div>
         </div>
 
@@ -1305,7 +1407,8 @@
             <h3>Labor Impact</h3>
           </div>
           <div class="card-body">
-            <p>Potential disruption to jobs and labor markets as LLMs automate tasks previously requiring human language skills.</p>
+            <p>Potential disruption to jobs and labor markets as LLMs automate tasks previously requiring human language
+              skills.</p>
           </div>
         </div>
 
@@ -1314,7 +1417,8 @@
             <h3>Access & Equity</h3>
           </div>
           <div class="card-body">
-            <p>Concerns about who benefits from LLM technology, with potential to widen digital divides between those with and without access.</p>
+            <p>Concerns about who benefits from LLM technology, with potential to widen digital divides between those
+              with and without access.</p>
           </div>
         </div>
 
@@ -1323,29 +1427,37 @@
             <h3>Environmental Impact</h3>
           </div>
           <div class="card-body">
-            <p>The significant energy consumption and carbon footprint associated with training and running large AI models.</p>
+            <p>The significant energy consumption and carbon footprint associated with training and running large AI
+              models.</p>
           </div>
         </div>
       </div>
 
       <blockquote>
-        "The development of LLMs represents not just a technical challenge but a societal one. How we address questions of access, governance, and alignment will shape the impact these technologies have on humanity."
+        "The development of LLMs represents not just a technical challenge but a societal one. How we address questions
+        of access, governance, and alignment will shape the impact these technologies have on humanity."
       </blockquote>
 
       <h3>Governance Approaches</h3>
-      <p>Various stakeholders are developing frameworks to govern the responsible development and deployment of LLMs:</p>
+      <p>Various stakeholders are developing frameworks to govern the responsible development and deployment of LLMs:
+      </p>
       <ul>
-        <li><strong>Industry Self-regulation:</strong> Voluntary principles, safety teams, and release protocols adopted by AI labs</li>
-        <li><strong>Government Regulation:</strong> Emerging legal frameworks like the EU AI Act and executive orders on AI safety</li>
-        <li><strong>Standards Bodies:</strong> Organizations developing technical standards for AI safety, evaluation, and documentation</li>
-        <li><strong>Multi-stakeholder Initiatives:</strong> Collaborations between industry, academia, civil society, and government</li>
+        <li><strong>Industry Self-regulation:</strong> Voluntary principles, safety teams, and release protocols adopted
+          by AI labs</li>
+        <li><strong>Government Regulation:</strong> Emerging legal frameworks like the EU AI Act and executive orders on
+          AI safety</li>
+        <li><strong>Standards Bodies:</strong> Organizations developing technical standards for AI safety, evaluation,
+          and documentation</li>
+        <li><strong>Multi-stakeholder Initiatives:</strong> Collaborations between industry, academia, civil society,
+          and government</li>
         <li><strong>Open Source Governance:</strong> Community norms and licensing approaches for open models</li>
       </ul>
     </section>
 
     <section id="future">
       <h2>Future Directions</h2>
-      <p>The field of large language models continues to evolve rapidly, with several key trends likely to shape its future development.</p>
+      <p>The field of large language models continues to evolve rapidly, with several key trends likely to shape its
+        future development.</p>
 
       <h3>Technical Frontiers</h3>
       <div class="card-container">
@@ -1354,7 +1466,8 @@
             <h3>Multimodal Integration</h3>
           </div>
           <div class="card-body">
-            <p>Expanding beyond text to seamlessly work with images, audio, video, and other data types, creating more versatile AI systems.</p>
+            <p>Expanding beyond text to seamlessly work with images, audio, video, and other data types, creating more
+              versatile AI systems.</p>
           </div>
         </div>
 
@@ -1363,7 +1476,8 @@
             <h3>Reasoning Capabilities</h3>
           </div>
           <div class="card-body">
-            <p>Enhancing logical reasoning, planning, and problem-solving abilities through specialized architectures and training approaches.</p>
+            <p>Enhancing logical reasoning, planning, and problem-solving abilities through specialized architectures
+              and training approaches.</p>
           </div>
         </div>
 
@@ -1372,7 +1486,8 @@
             <h3>Long-term Memory</h3>
           </div>
           <div class="card-body">
-            <p>Developing mechanisms for models to maintain persistent memory across interactions and incorporate new information over time.</p>
+            <p>Developing mechanisms for models to maintain persistent memory across interactions and incorporate new
+              information over time.</p>
           </div>
         </div>
 
@@ -1381,7 +1496,8 @@
             <h3>Efficiency Improvements</h3>
           </div>
           <div class="card-body">
-            <p>Creating more compute-efficient architectures that deliver similar capabilities with fewer parameters and less energy consumption.</p>
+            <p>Creating more compute-efficient architectures that deliver similar capabilities with fewer parameters and
+              less energy consumption.</p>
           </div>
         </div>
 
@@ -1390,7 +1506,8 @@
             <h3>Tool Use & Agency</h3>
           </div>
           <div class="card-body">
-            <p>Enhancing models' ability to use external tools, APIs, and services to accomplish complex tasks and interact with the digital world.</p>
+            <p>Enhancing models' ability to use external tools, APIs, and services to accomplish complex tasks and
+              interact with the digital world.</p>
           </div>
         </div>
 
@@ -1399,7 +1516,8 @@
             <h3>Specialized Models</h3>
           </div>
           <div class="card-body">
-            <p>Development of purpose-built models optimized for specific domains like healthcare, law, science, and education.</p>
+            <p>Development of purpose-built models optimized for specific domains like healthcare, law, science, and
+              education.</p>
           </div>
         </div>
       </div>
@@ -1408,23 +1526,53 @@
       <p>As LLMs continue to advance, their impact on society will likely grow in several dimensions:</p>
 
       <ul>
-        <li><strong>Economic Transformation:</strong> Automation of knowledge work and creative tasks, potentially reshaping labor markets and creating new types of jobs</li>
-        <li><strong>Educational Change:</strong> Evolution of teaching and learning as AI assistants become ubiquitous in educational contexts</li>
-        <li><strong>Information Ecosystem:</strong> Shifts in how information is created, verified, and consumed in a world of AI-generated content</li>
-        <li><strong>Human-AI Collaboration:</strong> Development of new paradigms for humans and AI systems to work together effectively</li>
-        <li><strong>Accessibility:</strong> Potential to make advanced capabilities more widely available across languages and regions</li>
-        <li><strong>Governance Frameworks:</strong> Evolution of regulatory approaches, standards, and norms for managing AI development</li>
+        <li><strong>Economic Transformation:</strong> Automation of knowledge work and creative tasks, potentially
+          reshaping labor markets and creating new types of jobs</li>
+        <li><strong>Educational Change:</strong> Evolution of teaching and learning as AI assistants become ubiquitous
+          in educational contexts</li>
+        <li><strong>Information Ecosystem:</strong> Shifts in how information is created, verified, and consumed in a
+          world of AI-generated content</li>
+        <li><strong>Human-AI Collaboration:</strong> Development of new paradigms for humans and AI systems to work
+          together effectively</li>
+        <li><strong>Accessibility:</strong> Potential to make advanced capabilities more widely available across
+          languages and regions</li>
+        <li><strong>Governance Frameworks:</strong> Evolution of regulatory approaches, standards, and norms for
+          managing AI development</li>
       </ul>
 
       <blockquote>
-        "We stand at the beginning of a new era in human-machine collaboration. The development of LLMs represents not just a technological achievement but the opening of a new frontier in how we interact with information, create knowledge, and solve problems."
+        "We stand at the beginning of a new era in human-machine collaboration. The development of LLMs represents not
+        just a technological achievement but the opening of a new frontier in how we interact with information, create
+        knowledge, and solve problems."
       </blockquote>
     </section>
   </main>
 
   <footer>
-    <p>This document provides an educational overview of Large Language Models, their development, applications, and implications. The field continues to evolve rapidly, with new research and applications emerging regularly.</p>
+    <p>This document provides an educational overview of Large Language Models, their development, applications, and
+      implications. The field continues to evolve rapidly, with new research and applications emerging regularly.</p>
     <p>© 2025 - An educational resource on artificial intelligence and language models</p>
   </footer>
+
+  <script>
+    // Disable Right Click
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    // Disable certain key combinations
+    document.addEventListener("keydown", e => {
+      // F12
+      if (e.key === "F12") e.preventDefault();
+
+      // Ctrl+Shift+I or Ctrl+Shift+J (Inspect)
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) e.preventDefault();
+
+      // Ctrl+U (View Source)
+      if (e.ctrlKey && e.key === "u") e.preventDefault();
+
+      // Ctrl+Shift+C (Inspect element)
+      if (e.ctrlKey && e.shiftKey && e.key === "C") e.preventDefault();
+    });
+  </script>
 </body>
+
 </html>

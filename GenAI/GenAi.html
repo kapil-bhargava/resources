@@ -912,5 +912,24 @@
     <p>This document provides a hypothetical overview of how v0 might have been developed. The actual development process, team composition, and technologies used by Vercel may differ.</p>
     <p>© 2025 - An educational exploration of AI assistant development</p>
   </footer>
+  <script>
+     // Disable Right Click
+        document.addEventListener("contextmenu", e => e.preventDefault());
+
+        // Disable certain key combinations
+        document.addEventListener("keydown", e => {
+            // F12
+            if (e.key === "F12") e.preventDefault();
+
+            // Ctrl+Shift+I or Ctrl+Shift+J (Inspect)
+            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) e.preventDefault();
+
+            // Ctrl+U (View Source)
+            if (e.ctrlKey && e.key === "u") e.preventDefault();
+
+            // Ctrl+Shift+C (Inspect element)
+            if (e.ctrlKey && e.shiftKey && e.key === "C") e.preventDefault();
+        });
+  </script>
 </body>
 </html>
