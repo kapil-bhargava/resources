@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -486,27 +487,27 @@
             .container {
                 padding: 1rem;
             }
-            
+
             .header {
                 padding: 2rem 1rem;
             }
-            
+
             .header h1 {
                 font-size: 2rem;
             }
-            
+
             .section {
                 padding: 2rem 1rem;
             }
-            
+
             .nav-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .info-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .theme-toggle {
                 top: 1rem;
                 right: 1rem;
@@ -514,13 +515,19 @@
                 height: 40px;
                 font-size: 1.2rem;
             }
-            
+
             .flow-diagram {
                 gap: 2rem;
             }
-            
+
             .timeline-item {
                 padding-left: 60px;
+            }
+
+            .subsection {
+                /* font-size: 14px; */
+                overflow-x: scroll;
+                width: 100%;
             }
         }
 
@@ -533,6 +540,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -568,13 +576,16 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+            <!-- <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button> -->
             <h1>🇮🇳 Complete GST & Business Guide</h1>
-            <p>Everything you need to know about GST, company registration, and selling on Amazon in India. From understanding GST basics to getting your private limited company registered and starting your e-commerce journey.</p>
+            <p>Everything you need to know about GST, company registration, and selling on Amazon in India. From
+                understanding GST basics to getting your private limited company registered and starting your e-commerce
+                journey.</p>
         </div>
 
         <!-- Navigation Menu -->
@@ -624,8 +635,10 @@
 
             <div class="subsection">
                 <h3>GST (Goods and Services Tax) Explained</h3>
-                <p><strong>GST</strong> is a comprehensive indirect tax levied on the supply of goods and services in India. It replaced multiple indirect taxes like VAT, Service Tax, Excise Duty, etc., creating a unified tax system.</p>
-                
+                <p><strong>GST</strong> is a comprehensive indirect tax levied on the supply of goods and services in
+                    India. It replaced multiple indirect taxes like VAT, Service Tax, Excise Duty, etc., creating a
+                    unified tax system.</p>
+
                 <div class="highlight-box">
                     <h4>🎯 Key Features of GST</h4>
                     <ul>
@@ -642,7 +655,8 @@
                 <div class="info-grid">
                     <div class="info-card">
                         <h4>🏛️ CGST (Central GST)</h4>
-                        <p>Collected by Central Government on intra-state transactions. Rate varies from 2.5% to 14%.</p>
+                        <p>Collected by Central Government on intra-state transactions. Rate varies from 2.5% to 14%.
+                        </p>
                     </div>
                     <div class="info-card">
                         <h4>🏢 SGST (State GST)</h4>
@@ -702,7 +716,8 @@
             <div class="warning-box">
                 <h4>⚠️ Important GST Thresholds</h4>
                 <ul>
-                    <li><strong>₹20 Lakhs:</strong> Mandatory GST registration for goods (₹10 Lakhs for special category states)</li>
+                    <li><strong>₹20 Lakhs:</strong> Mandatory GST registration for goods (₹10 Lakhs for special category
+                        states)</li>
                     <li><strong>₹20 Lakhs:</strong> Mandatory GST registration for services</li>
                     <li><strong>₹40 Lakhs:</strong> Composition scheme limit for goods</li>
                     <li><strong>₹50 Lakhs:</strong> Composition scheme limit for services</li>
@@ -734,44 +749,50 @@
                 <div class="info-card">
                     <h4>👤 Sole Proprietorship</h4>
                     <p><strong>Ownership:</strong> Single person<br>
-                    <strong>Liability:</strong> Unlimited<br>
-                    <strong>Registration:</strong> Not mandatory<br>
-                    <strong>Best for:</strong> Small businesses, freelancers</p>
+                        <strong>Liability:</strong> Unlimited<br>
+                        <strong>Registration:</strong> Not mandatory<br>
+                        <strong>Best for:</strong> Small businesses, freelancers
+                    </p>
                 </div>
                 <div class="info-card">
                     <h4>🤝 Partnership</h4>
                     <p><strong>Ownership:</strong> 2-20 partners<br>
-                    <strong>Liability:</strong> Unlimited<br>
-                    <strong>Registration:</strong> Optional<br>
-                    <strong>Best for:</strong> Professional services, small businesses</p>
+                        <strong>Liability:</strong> Unlimited<br>
+                        <strong>Registration:</strong> Optional<br>
+                        <strong>Best for:</strong> Professional services, small businesses
+                    </p>
                 </div>
                 <div class="info-card">
                     <h4>🏛️ LLP (Limited Liability Partnership)</h4>
                     <p><strong>Ownership:</strong> 2+ partners<br>
-                    <strong>Liability:</strong> Limited<br>
-                    <strong>Registration:</strong> Mandatory with MCA<br>
-                    <strong>Best for:</strong> Professional services, consultancy</p>
+                        <strong>Liability:</strong> Limited<br>
+                        <strong>Registration:</strong> Mandatory with MCA<br>
+                        <strong>Best for:</strong> Professional services, consultancy
+                    </p>
                 </div>
                 <div class="info-card">
                     <h4>🏢 Private Limited Company</h4>
                     <p><strong>Ownership:</strong> 2-200 shareholders<br>
-                    <strong>Liability:</strong> Limited<br>
-                    <strong>Registration:</strong> Mandatory with MCA<br>
-                    <strong>Best for:</strong> Startups, growing businesses</p>
+                        <strong>Liability:</strong> Limited<br>
+                        <strong>Registration:</strong> Mandatory with MCA<br>
+                        <strong>Best for:</strong> Startups, growing businesses
+                    </p>
                 </div>
                 <div class="info-card">
                     <h4>🌐 Public Limited Company</h4>
                     <p><strong>Ownership:</strong> 7+ shareholders<br>
-                    <strong>Liability:</strong> Limited<br>
-                    <strong>Registration:</strong> Mandatory with MCA<br>
-                    <strong>Best for:</strong> Large businesses, IPO plans</p>
+                        <strong>Liability:</strong> Limited<br>
+                        <strong>Registration:</strong> Mandatory with MCA<br>
+                        <strong>Best for:</strong> Large businesses, IPO plans
+                    </p>
                 </div>
                 <div class="info-card">
                     <h4>🏛️ One Person Company (OPC)</h4>
                     <p><strong>Ownership:</strong> Single person<br>
-                    <strong>Liability:</strong> Limited<br>
-                    <strong>Registration:</strong> Mandatory with MCA<br>
-                    <strong>Best for:</strong> Solo entrepreneurs</p>
+                        <strong>Liability:</strong> Limited<br>
+                        <strong>Registration:</strong> Mandatory with MCA<br>
+                        <strong>Best for:</strong> Solo entrepreneurs
+                    </p>
                 </div>
             </div>
 
@@ -824,7 +845,8 @@
                 <div class="process-steps">
                     <div class="process-step">
                         <h4>Digital Signature Certificate (DSC)</h4>
-                        <p>Obtain DSC for all directors from authorized agencies. Required for online filing with MCA.</p>
+                        <p>Obtain DSC for all directors from authorized agencies. Required for online filing with MCA.
+                        </p>
                         <strong>Time:</strong> 1-2 days | <strong>Cost:</strong> ₹1,000-2,000 per DSC
                     </div>
                     <div class="process-step">
@@ -859,7 +881,8 @@
                     </li>
                     <li>
                         <span class="document-icon">🏠</span>
-                        <span><strong>Address Proof:</strong> Utility bills, bank statements (not older than 2 months)</span>
+                        <span><strong>Address Proof:</strong> Utility bills, bank statements (not older than 2
+                            months)</span>
                     </li>
                     <li>
                         <span class="document-icon">📸</span>
@@ -867,7 +890,8 @@
                     </li>
                     <li>
                         <span class="document-icon">🏢</span>
-                        <span><strong>Office Address Proof:</strong> Rent agreement, NOC from owner, utility bills</span>
+                        <span><strong>Office Address Proof:</strong> Rent agreement, NOC from owner, utility
+                            bills</span>
                     </li>
                     <li>
                         <span class="document-icon">📋</span>
@@ -883,9 +907,10 @@
             <div class="success-box">
                 <h4>✅ Total Time & Cost</h4>
                 <p><strong>Time:</strong> 15-20 working days<br>
-                <strong>Government Fees:</strong> ₹6,500-12,000<br>
-                <strong>Professional Fees:</strong> ₹5,000-15,000<br>
-                <strong>Total Cost:</strong> ₹12,000-30,000</p>
+                    <strong>Government Fees:</strong> ₹6,500-12,000<br>
+                    <strong>Professional Fees:</strong> ₹5,000-15,000<br>
+                    <strong>Total Cost:</strong> ₹12,000-30,000
+                </p>
             </div>
 
             <div class="subsection">
@@ -893,10 +918,12 @@
                 <a href="https://www.mca.gov.in/" target="_blank" class="link-button">
                     🏛️ MCA Official Website
                 </a>
-                <a href="https://www.mca.gov.in/content/mca/global/en/home.html" target="_blank" class="link-button secondary">
+                <a href="https://www.mca.gov.in/content/mca/global/en/home.html" target="_blank"
+                    class="link-button secondary">
                     📝 Company Registration Portal
                 </a>
-                <a href="https://www.mca.gov.in/content/mca/global/en/data-and-reports/statistical-reports.html" target="_blank" class="link-button warning">
+                <a href="https://www.mca.gov.in/content/mca/global/en/data-and-reports/statistical-reports.html"
+                    target="_blank" class="link-button warning">
                     📊 MCA Statistics & Reports
                 </a>
             </div>
@@ -952,23 +979,28 @@
                 <div class="process-steps">
                     <div class="process-step">
                         <h4>Visit GST Portal</h4>
-                        <p>Go to <strong>www.gst.gov.in</strong> and click on "Services" → "Registration" → "New Registration"</p>
+                        <p>Go to <strong>www.gst.gov.in</strong> and click on "Services" → "Registration" → "New
+                            Registration"</p>
                     </div>
                     <div class="process-step">
                         <h4>Fill Part A</h4>
-                        <p>Enter basic details like legal name, trade name, PAN, mobile number, email ID. Verify OTP.</p>
+                        <p>Enter basic details like legal name, trade name, PAN, mobile number, email ID. Verify OTP.
+                        </p>
                     </div>
                     <div class="process-step">
                         <h4>Fill Part B</h4>
-                        <p>Complete detailed application with business details, address, bank account, authorized signatory details.</p>
+                        <p>Complete detailed application with business details, address, bank account, authorized
+                            signatory details.</p>
                     </div>
                     <div class="process-step">
                         <h4>Upload Documents</h4>
-                        <p>Upload required documents like PAN card, address proof, bank statement, incorporation certificate.</p>
+                        <p>Upload required documents like PAN card, address proof, bank statement, incorporation
+                            certificate.</p>
                     </div>
                     <div class="process-step">
                         <h4>Submit & Pay</h4>
-                        <p>Review application, make payment if applicable, and submit. Track application status online.</p>
+                        <p>Review application, make payment if applicable, and submit. Track application status online.
+                        </p>
                     </div>
                     <div class="process-step">
                         <h4>Receive GSTIN</h4>
@@ -990,11 +1022,13 @@
                     </li>
                     <li>
                         <span class="document-icon">🏢</span>
-                        <span><strong>Business Registration:</strong> Certificate of Incorporation, Partnership Deed, etc.</span>
+                        <span><strong>Business Registration:</strong> Certificate of Incorporation, Partnership Deed,
+                            etc.</span>
                     </li>
                     <li>
                         <span class="document-icon">🏠</span>
-                        <span><strong>Address Proof:</strong> Rent agreement, electricity bill, property documents</span>
+                        <span><strong>Address Proof:</strong> Rent agreement, electricity bill, property
+                            documents</span>
                     </li>
                     <li>
                         <span class="document-icon">🏦</span>
@@ -1065,7 +1099,8 @@
                     </div>
                     <div class="process-step">
                         <h4>Amazon Seller Account</h4>
-                        <p>Visit <strong>sellercentral.amazon.in</strong> and create seller account with business details.</p>
+                        <p>Visit <strong>sellercentral.amazon.in</strong> and create seller account with business
+                            details.</p>
                     </div>
                     <div class="process-step">
                         <h4>Document Verification</h4>
@@ -1165,10 +1200,12 @@
                 <a href="https://sellercentral.amazon.in/" target="_blank" class="link-button">
                     🛒 Amazon Seller Central
                 </a>
-                <a href="https://services.amazon.in/services/sell-online.html" target="_blank" class="link-button secondary">
+                <a href="https://services.amazon.in/services/sell-online.html" target="_blank"
+                    class="link-button secondary">
                     📚 Seller Registration Guide
                 </a>
-                <a href="https://sellercentral.amazon.in/gp/help/external/G200399950" target="_blank" class="link-button warning">
+                <a href="https://sellercentral.amazon.in/gp/help/external/G200399950" target="_blank"
+                    class="link-button warning">
                     📋 GST Guidelines for Sellers
                 </a>
             </div>
@@ -1334,7 +1371,8 @@
                 <h3>What is MCA (Ministry of Corporate Affairs)</h3>
                 <div class="highlight-box">
                     <h4>🏛️ MCA Overview</h4>
-                    <p><strong>MCA</strong> is the government body responsible for regulating corporate affairs in India. It oversees company registration, compliance, and corporate governance.</p>
+                    <p><strong>MCA</strong> is the government body responsible for regulating corporate affairs in
+                        India. It oversees company registration, compliance, and corporate governance.</p>
                     <ul>
                         <li><strong>Company Registration:</strong> All companies must register with MCA</li>
                         <li><strong>Compliance Monitoring:</strong> Ensures companies follow regulations</li>
@@ -1349,11 +1387,13 @@
                 <div class="info-grid">
                     <div class="info-card">
                         <h4>🌐 MCA21 Portal</h4>
-                        <p>Main portal for company registration, filing returns, and compliance. All corporate activities are managed here.</p>
+                        <p>Main portal for company registration, filing returns, and compliance. All corporate
+                            activities are managed here.</p>
                     </div>
                     <div class="info-card">
                         <h4>🔍 Company Search</h4>
-                        <p>Search and verify company details, directors, financial information, and compliance status.</p>
+                        <p>Search and verify company details, directors, financial information, and compliance status.
+                        </p>
                     </div>
                     <div class="info-card">
                         <h4>📊 Data Downloads</h4>
@@ -1361,7 +1401,8 @@
                     </div>
                     <div class="info-card">
                         <h4>📋 e-Forms</h4>
-                        <p>Online filing of various forms like incorporation, annual returns, changes in company details.</p>
+                        <p>Online filing of various forms like incorporation, annual returns, changes in company
+                            details.</p>
                     </div>
                 </div>
             </div>
@@ -1371,7 +1412,8 @@
                 <div class="process-steps">
                     <div class="process-step">
                         <h4>Visit MCA Website</h4>
-                        <p>Go to <strong>www.mca.gov.in</strong> and click on "MCA Services" → "View Company/LLP Master Data"</p>
+                        <p>Go to <strong>www.mca.gov.in</strong> and click on "MCA Services" → "View Company/LLP Master
+                            Data"</p>
                     </div>
                     <div class="process-step">
                         <h4>Search Company</h4>
@@ -1379,7 +1421,8 @@
                     </div>
                     <div class="process-step">
                         <h4>View Basic Details</h4>
-                        <p>Check company name, CIN, registration date, status, registered office address, and authorized capital.</p>
+                        <p>Check company name, CIN, registration date, status, registered office address, and authorized
+                            capital.</p>
                     </div>
                     <div class="process-step">
                         <h4>Check Directors</h4>
@@ -1391,7 +1434,8 @@
                     </div>
                     <div class="process-step">
                         <h4>Download Documents</h4>
-                        <p>Download incorporation certificate, MOA, AOA, and annual returns for detailed verification.</p>
+                        <p>Download incorporation certificate, MOA, AOA, and annual returns for detailed verification.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1484,7 +1528,8 @@
                     <li><strong>Non-filing of Returns:</strong> Check if annual returns are filed regularly</li>
                     <li><strong>Frequent Director Changes:</strong> Too many director changes may indicate issues</li>
                     <li><strong>Inactive Status:</strong> Company marked as inactive or under striking off</li>
-                    <li><strong>Address Mismatch:</strong> Registered address doesn't match actual business location</li>
+                    <li><strong>Address Mismatch:</strong> Registered address doesn't match actual business location
+                    </li>
                 </ul>
             </div>
 
@@ -1493,10 +1538,12 @@
                 <a href="https://www.mca.gov.in/" target="_blank" class="link-button">
                     🏛️ MCA Official Website
                 </a>
-                <a href="https://www.mca.gov.in/content/mca/global/en/mca/master-data/MDS.html" target="_blank" class="link-button secondary">
+                <a href="https://www.mca.gov.in/content/mca/global/en/mca/master-data/MDS.html" target="_blank"
+                    class="link-button secondary">
                     🔍 Company Master Data Search
                 </a>
-                <a href="https://www.mca.gov.in/content/mca/global/en/data-and-reports.html" target="_blank" class="link-button warning">
+                <a href="https://www.mca.gov.in/content/mca/global/en/data-and-reports.html" target="_blank"
+                    class="link-button warning">
                     📊 MCA Data & Reports
                 </a>
             </div>
@@ -1516,56 +1563,70 @@
                         <div class="timeline-content">
                             <div class="timeline-title">Step 1: Business Planning</div>
                             <p><strong>Duration:</strong> 1-2 days<br>
-                            <strong>Action:</strong> Decide business structure, choose company name, identify directors/shareholders</p>
+                                <strong>Action:</strong> Decide business structure, choose company name, identify
+                                directors/shareholders
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <div class="timeline-title">Step 2: Hire CA</div>
                             <p><strong>Duration:</strong> 1 day<br>
-                            <strong>Action:</strong> Find and hire experienced CA for company registration and compliance</p>
+                                <strong>Action:</strong> Find and hire experienced CA for company registration and
+                                compliance
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <div class="timeline-title">Step 3: DSC & DIN</div>
                             <p><strong>Duration:</strong> 2-3 days<br>
-                            <strong>Action:</strong> Obtain Digital Signature Certificate and Director Identification Number</p>
+                                <strong>Action:</strong> Obtain Digital Signature Certificate and Director
+                                Identification Number
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <div class="timeline-title">Step 4: Company Registration</div>
                             <p><strong>Duration:</strong> 15-20 days<br>
-                            <strong>Action:</strong> File incorporation documents with MCA, get Certificate of Incorporation</p>
+                                <strong>Action:</strong> File incorporation documents with MCA, get Certificate of
+                                Incorporation
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <div class="timeline-title">Step 5: GST Registration</div>
                             <p><strong>Duration:</strong> 3-7 days<br>
-                            <strong>Action:</strong> Apply for GST registration with company documents, get GSTIN</p>
+                                <strong>Action:</strong> Apply for GST registration with company documents, get GSTIN
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <div class="timeline-title">Step 6: Bank Account</div>
                             <p><strong>Duration:</strong> 3-7 days<br>
-                            <strong>Action:</strong> Open current account with incorporation certificate and GST registration</p>
+                                <strong>Action:</strong> Open current account with incorporation certificate and GST
+                                registration
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <div class="timeline-title">Step 7: Amazon Registration</div>
                             <p><strong>Duration:</strong> 2-5 days<br>
-                            <strong>Action:</strong> Create Amazon seller account with all business documents</p>
+                                <strong>Action:</strong> Create Amazon seller account with all business documents
+                            </p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <div class="timeline-title">Step 8: Start Selling</div>
                             <p><strong>Duration:</strong> Ongoing<br>
-                            <strong>Action:</strong> List products, manage inventory, handle orders, maintain GST compliance</p>
+                                <strong>Action:</strong> List products, manage inventory, handle orders, maintain GST
+                                compliance
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1670,9 +1731,10 @@
             <div class="success-box">
                 <h4>✅ Success Timeline</h4>
                 <p><strong>Total Setup Time:</strong> 25-35 working days<br>
-                <strong>Total Investment:</strong> ₹22,000-30,000<br>
-                <strong>Monthly Ongoing Cost:</strong> ₹3,000-5,000<br>
-                <strong>Ready to Sell:</strong> Within 6 weeks</p>
+                    <strong>Total Investment:</strong> ₹22,000-30,000<br>
+                    <strong>Monthly Ongoing Cost:</strong> ₹3,000-5,000<br>
+                    <strong>Ready to Sell:</strong> Within 6 weeks
+                </p>
             </div>
 
             <div class="subsection">
@@ -1682,8 +1744,10 @@
                     <a href="https://www.gst.gov.in/" target="_blank" class="link-button">GST Portal</a>
                     <a href="https://sellercentral.amazon.in/" target="_blank" class="link-button">Amazon Seller</a>
                     <a href="https://www.icai.org/" target="_blank" class="link-button">ICAI Portal</a>
-                    <a href="https://services.gst.gov.in/services/login" target="_blank" class="link-button secondary">GST Registration</a>
-                    <a href="https://www.mca.gov.in/content/mca/global/en/mca/master-data/MDS.html" target="_blank" class="link-button secondary">Company Search</a>
+                    <a href="https://services.gst.gov.in/services/login" target="_blank"
+                        class="link-button secondary">GST Registration</a>
+                    <a href="https://www.mca.gov.in/content/mca/global/en/mca/master-data/MDS.html" target="_blank"
+                        class="link-button secondary">Company Search</a>
                 </div>
             </div>
         </section>
@@ -1694,8 +1758,8 @@
 
     <script>
         // Theme Management
-        let currentTheme = localStorage.getItem('theme') || 
-                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        let currentTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
         function applyTheme() {
             document.documentElement.setAttribute('data-theme', currentTheme);
@@ -1732,7 +1796,7 @@
         }
 
         // Show/Hide Scroll to Top Button
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const scrollButton = document.querySelector('.scroll-to-top');
             if (window.pageYOffset > 300) {
                 scrollButton.classList.add('visible');
@@ -1747,7 +1811,7 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('fade-in');
@@ -1761,12 +1825,12 @@
         });
 
         // Initialize theme on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             applyTheme();
         });
 
         // Handle system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
             if (!localStorage.getItem('theme')) {
                 currentTheme = e.matches ? 'dark' : 'light';
                 applyTheme();
@@ -1775,13 +1839,33 @@
 
         // Add loading animation to external links
         document.querySelectorAll('a[target="_blank"]').forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 this.style.opacity = '0.7';
                 setTimeout(() => {
                     this.style.opacity = '1';
                 }, 1000);
             });
         });
+
+
+        // Disable Right Click
+        document.addEventListener("contextmenu", e => e.preventDefault());
+
+        // Disable certain key combinations
+        document.addEventListener("keydown", e => {
+            // F12
+            if (e.key === "F12") e.preventDefault();
+
+            // Ctrl+Shift+I or Ctrl+Shift+J (Inspect)
+            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) e.preventDefault();
+
+            // Ctrl+U (View Source)
+            if (e.ctrlKey && e.key === "u") e.preventDefault();
+
+            // Ctrl+Shift+C (Inspect element)
+            if (e.ctrlKey && e.shiftKey && e.key === "C") e.preventDefault();
+        });
     </script>
 </body>
+
 </html>
