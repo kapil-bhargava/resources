@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web Fundamentals — Q&A (1–50)</title>
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#ffffff; --ink:#000000; --muted:#000000; --brand:#5eead4; --accent:#60a5fa;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      background:#feffff; color:var(--ink);
+    }
+    header{
+      padding:32px 16px; text-align:center;
+    }
+    header h1{margin:0 0 6px; font-size:clamp(24px,3.5vw,36px); letter-spacing:.3px}
+    header p{margin:0; color:var(--muted)}
+    main{
+      max-width:980px; margin:0 auto; padding:20px 16px 80px;
+      display:grid; gap:16px;
+    }
+    .qa{
+      background:var(--panel); border:1px solid rgba(255,255,255,.05);
+      border-radius:18px; padding:18px 18px;
+      box-shadow:0 1px 0 rgba(255,255,255,.06) inset, 0 10px 30px rgba(0,0,0,.25);
+    }
+    .q{
+      margin:0 0 6px; font-weight:700; font-size:18px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .q .num{
+      background:linear-gradient(135deg, var(--accent), var(--brand));
+      color:#081426; font-weight:800; width:32px; height:32px; border-radius:8px;
+      display:inline-grid; place-items:center; font-size:14px; flex:0 0 32px;
+    }
+    .a{margin:0; color:#000000}
+    abbr{border-bottom:1px dotted currentColor; text-decoration:none; cursor:help}
+    .refs{max-width:980px; margin:28px auto 90px; padding:0 16px;}
+    .refs h3{margin:0 0 10px}
+    .refs ul{margin:0; padding-left:18px}
+    .refs a{color:var(--brand)}
+    footer{
+      background:#ffffff; border-top:1px solid rgba(255,255,255,.06);
+      color:var(--ink); padding:22px 16px;
+    }
+    .footer-wrap{max-width:980px; margin:0 auto; display:grid; gap:8px;}
+    .brand{font-weight:800; letter-spacing:.3px}
+    .tagline{color:var(--muted)}
+    .contact a{color:var(--accent); text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Web Fundamentals — Questions & Answers</h1>
+    <p>Quick interview-style Q&A for frontend basics (1–50).</p>
+  </header>
+
+  <main>
+    <!-- Q1 to Q10 (already shared) -->
+    <section class="qa"><h2 class="q"><span class="num">1</span>What is HTML?</h2><p class="a">HTML (HyperText Markup Language) structures web content and elements on a webpage.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">2</span>What is the DOM?</h2><p class="a">The Document Object Model (DOM) is a programming interface for HTML and XML documents, representing the page so programs can change structure, style, and content.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">3</span>What is CSS?</h2><p class="a">CSS (Cascading Style Sheets) describes the presentation of a document written in HTML or XML.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">4</span>Explain the box model in CSS.</h2><p class="a">It includes content, padding, border, and margin, defining the total space an element occupies.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">5</span>What is Flexbox?</h2><p class="a">Flexbox is a CSS layout model that allows items to align and distribute space within a container efficiently.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">6</span>What are CSS preprocessors?</h2><p class="a">CSS preprocessors like Sass and Less extend CSS with variables, nesting, and functions.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">7</span>What is JavaScript?</h2><p class="a">JavaScript is a programming language for creating dynamic web content, such as interactive forms and animations.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">8</span>Explain event delegation.</h2><p class="a">Attaching one event listener to a parent element to handle events for multiple children using bubbling.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">9</span>What is AJAX?</h2><p class="a">AJAX (Asynchronous JavaScript and XML) lets pages update asynchronously by exchanging data with a server.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">10</span>What is React?</h2><p class="a">React is a JS library for building UIs with component-based architecture and state management.</p></section>
+
+    <!-- Q11 to Q20 -->
+    <section class="qa"><h2 class="q"><span class="num">11</span>What is JSX?</h2><p class="a">JSX is a syntax extension for JavaScript, used in React to describe UI elements.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">12</span>Explain virtual DOM.</h2><p class="a">A lightweight copy of the real DOM, used by React for efficient updates and rendering.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">13</span>What are hooks in React?</h2><p class="a">Hooks are functions that let functional components use state and lifecycle features.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">14</span>What is Redux?</h2><p class="a">Redux is a state management library for JavaScript applications, centralizing app state.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">15</span>Difference between props and state in React?</h2><p class="a">Props are read-only and passed from parent to child, while state is mutable data within a component.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">16</span>What is Angular?</h2><p class="a">Angular is a framework for building single-page client apps with HTML and TypeScript.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">17</span>What are directives in Angular?</h2><p class="a">Special markers in the DOM that extend HTML with new behavior.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">18</span>Explain data binding in Angular.</h2><p class="a">Synchronizes data between model and view, supporting one-way and two-way binding.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">19</span>What is Vue.js?</h2><p class="a">Vue.js is a progressive JS framework for building UIs and SPAs.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">20</span>What is the Vue instance?</h2><p class="a">The root of a Vue app, controlling its lifecycle.</p></section>
+
+    <!-- Q21 to Q30 -->
+    <section class="qa"><h2 class="q"><span class="num">21</span>What are single-file components in Vue.js?</h2><p class="a">They encapsulate HTML, CSS, and JS in a single .vue file.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">22</span>Explain lifecycle hooks in Vue.js.</h2><p class="a">Methods that run at specific stages like created, mounted, destroyed.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">23</span>What is TypeScript?</h2><p class="a">A superset of JS adding static types to improve code quality.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">24</span>Benefits of using TypeScript?</h2><p class="a">Better readability, early error detection, tooling support.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">25</span>What is Webpack?</h2><p class="a">A module bundler for JS applications, transforming and packaging code.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">26</span>Explain lazy loading.</h2><p class="a">Delays loading of non-critical resources until needed.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">27</span>What are service workers?</h2><p class="a">Scripts running in background for offline use and syncing.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">28</span>What is PWA?</h2><p class="a">Progressive Web Apps bring app-like experiences, offline access, push notifications.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">29</span>What is responsive design?</h2><p class="a">Adapts web content to different devices and screen sizes.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">30</span>What is a media query?</h2><p class="a">CSS technique to apply styles based on device characteristics like width.</p></section>
+
+    <!-- Q31 to Q40 -->
+    <section class="qa"><h2 class="q"><span class="num">31</span>What is a CSS grid?</h2><p class="a">A 2D layout system for creating complex web layouts.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">32</span>Difference between == and === in JS?</h2><p class="a">== checks equality with type coercion, === checks without coercion.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">33</span>What is a closure in JS?</h2><p class="a">A function that retains access to its lexical scope.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">34</span>What is 'this' keyword in JS?</h2><p class="a">Refers to the context of function execution.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">35</span>What is the event loop in JS?</h2><p class="a">Mechanism handling async operations by executing callbacks.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">36</span>Explain async/await.</h2><p class="a">Syntax for working with promises in a synchronous style.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">37</span>What is CORS?</h2><p class="a">A security feature allowing or restricting resource access across domains.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">38</span>What is REST API?</h2><p class="a">An architectural style using HTTP requests for CRUD operations.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">39</span>What is GraphQL?</h2><p class="a">A query language for APIs enabling clients to fetch specific data.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">40</span>Difference between localStorage & sessionStorage?</h2><p class="a">localStorage persists indefinitely; sessionStorage lasts for the session only.</p></section>
+
+    <!-- Q41 to Q50 -->
+    <section class="qa"><h2 class="q"><span class="num">41</span>What is JSON?</h2><p class="a">JSON is a lightweight data format, easy for humans to read and machines to parse.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">42</span>What is an IIFE in JS?</h2><p class="a">Immediately Invoked Function Expression runs right after definition.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">43</span>What is the Shadow DOM?</h2><p class="a">Encapsulates part of the DOM tree for scoped styling and behavior.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">44</span>What is a CSS transition?</h2><p class="a">Allows control over speed of CSS property changes (animations).</p></section>
+    <section class="qa"><h2 class="q"><span class="num">45</span>What is a polyfill?</h2><p class="a">Code that provides modern functionality on older browsers.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">46</span>What is BEM in CSS?</h2><p class="a">Block Element Modifier naming convention for scalable, maintainable CSS.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">47</span>What is a CSS variable?</h2><p class="a">Custom properties defined by authors to reuse values across stylesheets.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">48</span>What is a higher-order component (HOC) in React?</h2><p class="a">A function that takes a component and returns a new one with added functionality.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">49</span>What is memoization?</h2><p class="a">Optimization technique caching function results for performance.</p></section>
+    <section class="qa"><h2 class="q"><span class="num">50</span>Difference between let and const in JS?</h2><p class="a"><code>let</code> allows reassignment, <code>const</code> declares immutable references.</p></section>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div class="brand">ZN Infotech Pvt. Ltd.</div>
+      <div class="tagline">
+        We provide training and solutions in IoT, Programming Languages, Web Development, Mobile App Development, and more.
+      </div>
+      <div class="contact">
+        Phone: 9565017342 &nbsp;|&nbsp; Website: <a href="https://zninfotech.com" target="_blank" rel="noopener">zninfotech.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
