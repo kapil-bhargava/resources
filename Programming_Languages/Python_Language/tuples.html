@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Tuple - Detailed Explanation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+    }
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #4CAF50;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+    }
+    pre {
+      background: #f4f4f4;
+      border-left: 4px solid #4CAF50;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: "Courier New", monospace;
+      color: #d6336c;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #e8f5e9;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Python Tuple - Detailed Explanation</h1>
+  </header>
+
+  <section>
+    <h2>1. What is a Tuple?</h2>
+    <p>
+      A <strong>tuple</strong> in Python is a collection data type that is:
+    </p>
+    <ul>
+      <li><strong>Ordered</strong>: elements keep the order in which they are defined.</li>
+      <li><strong>Immutable</strong>: once created, elements cannot be changed.</li>
+      <li><strong>Heterogeneous</strong>: can store different data types (int, float, string, etc.).</li>
+    </ul>
+
+    <pre><code>my_tuple = (10, 20, 30, "hello", 3.14)
+print(my_tuple)   # (10, 20, 30, 'hello', 3.14)</code></pre>
+  </section>
+
+  <section>
+    <h2>2. Creating Tuples</h2>
+    <p>Tuples are created using <code>()</code> or without parentheses:</p>
+    <pre><code># With parentheses
+numbers = (1, 2, 3)
+
+# Without parentheses (tuple packing)
+student = "Alice", 21, "CS"
+
+# Single element tuple must have a comma
+x = (5,)   # tuple
+y = (5)    # just an integer</code></pre>
+  </section>
+
+  <section>
+    <h2>3. Accessing Tuple Elements</h2>
+    <pre><code>student = ("Alice", 21, "CS")
+
+print(student[0])   # Alice
+print(student[-1])  # CS (negative index)</code></pre>
+  </section>
+
+  <section>
+    <h2>4. Tuple Immutability</h2>
+    <p>Tuples cannot be modified after creation:</p>
+    <pre><code>numbers = (1, 2, 3)
+numbers[0] = 10   # ❌ Error: 'tuple' object does not support item assignment</code></pre>
+  </section>
+
+  <section>
+    <h2>5. Tuple Methods</h2>
+    <p>Tuples have only a few built-in methods:</p>
+    <table>
+      <tr><th>Method</th><th>Description</th><th>Example</th></tr>
+      <tr>
+        <td><code>count()</code></td>
+        <td>Returns number of occurrences of an element</td>
+        <td><pre><code>t = (1,2,2,3)
+print(t.count(2))   # 2</code></pre></td>
+      </tr>
+      <tr>
+        <td><code>index()</code></td>
+        <td>Returns the index of first occurrence of an element</td>
+        <td><pre><code>t = (1,2,3,2)
+print(t.index(3))   # 2</code></pre></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>6. Tuple Operations</h2>
+    <pre><code>t1 = (1, 2)
+t2 = (3, 4)
+
+# Concatenation
+print(t1 + t2)  # (1, 2, 3, 4)
+
+# Repetition
+print(t1 * 3)   # (1, 2, 1, 2, 1, 2)
+
+# Membership
+print(2 in t1)   # True</code></pre>
+  </section>
+
+  <section>
+    <h2>7. Uses of Tuples</h2>
+    <ul>
+      <li><strong>Store constant data</strong> (e.g., days of week).</li>
+      <li><strong>Dictionary keys</strong> (tuples are hashable).</li>
+      <li><strong>Return multiple values</strong> from a function.</li>
+      <li><strong>Data safety</strong> (cannot be accidentally modified).</li>
+      <li><strong>Faster and memory-efficient</strong> compared to lists.</li>
+    </ul>
+
+    <pre><code># Returning multiple values
+def get_student():
+    return ("Alice", 21, "CS")
+
+name, age, course = get_student()
+print(name, age, course)  # Alice 21 CS</code></pre>
+  </section>
+
+  <section>
+    <h2>8. Tuple vs List</h2>
+    <table>
+      <tr><th>Feature</th><th>List</th><th>Tuple</th></tr>
+      <tr><td>Syntax</td><td><code>[1, 2, 3]</code></td><td><code>(1, 2, 3)</code></td></tr>
+      <tr><td>Mutable?</td><td>✅ Yes</td><td>❌ No</td></tr>
+      <tr><td>Performance</td><td>Slower</td><td>Faster</td></tr>
+      <tr><td>Use case</td><td>When data changes</td><td>When data is constant</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    <p><strong>ZN Infotech Pvt. Ltd.</strong> | Call: 9565017342 | 
+    <a href="https://zninfotech.com" target="_blank">zninfotech.com</a></p>
+    <p>We provide training in IoT, Programming Languages, Web Development, Mobile App Development, and more.</p>
+    <p>References: <a href="https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences" target="_blank">Python Docs - Tuples</a></p>
+  </footer>
+</body>
+</html>

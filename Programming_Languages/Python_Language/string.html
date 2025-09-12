@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Strings Explained</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      line-height: 1.7;
+      margin: 20px;
+      padding: 0;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 900px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    pre {
+      background: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 12px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    code {
+      font-family: Consolas, monospace;
+      font-size: 14px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding: 15px;
+      background: #333;
+      color: #fff;
+      border-radius: 8px;
+    }
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+    .references {
+      background: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 900px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Python Strings</h1>
+    <p>
+      A <b>string</b> in Python is a sequence of characters enclosed within single quotes (<code>' '</code>), 
+      double quotes (<code>" "</code>), or triple quotes (<code>''' '''</code> or <code>""" """</code>).
+      Strings are <b>immutable</b>, meaning once created, their contents cannot be changed directly. 
+      Instead, any modification creates a new string.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Creating Strings</h2>
+    <pre><code>
+# Different ways of creating strings
+str1 = 'Hello'
+str2 = "World"
+str3 = '''This is
+a multi-line
+string.'''
+
+print(str1)   # Hello
+print(str2)   # World
+print(str3)   # Multi-line string
+    </code></pre>
+  </div>
+
+  <div class="card">
+    <h2>String Characteristics</h2>
+    <ul>
+      <li>Strings are <b>sequences</b> of characters.</li>
+      <li>They are <b>immutable</b> (cannot be modified in place).</li>
+      <li>They support <b>indexing</b> and <b>slicing</b>.</li>
+      <li>They support a wide range of <b>built-in methods</b> for manipulation.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>String Indexing and Slicing</h2>
+    <pre><code>
+text = "Python"
+
+# Indexing (0-based)
+print(text[0])   # P
+print(text[-1])  # n (last character)
+
+# Slicing
+print(text[0:4])  # Pyth
+print(text[:3])   # Pyt
+print(text[2:])   # thon
+    </code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Common String Methods</h2>
+    <table>
+      <tr>
+        <th>Method</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td><code>str.upper()</code></td>
+        <td>Converts to uppercase</td>
+        <td><code>"hello".upper()</code> → <code>"HELLO"</code></td>
+      </tr>
+      <tr>
+        <td><code>str.lower()</code></td>
+        <td>Converts to lowercase</td>
+        <td><code>"HELLO".lower()</code> → <code>"hello"</code></td>
+      </tr>
+      <tr>
+        <td><code>str.capitalize()</code></td>
+        <td>Capitalizes the first letter</td>
+        <td><code>"python".capitalize()</code> → <code>"Python"</code></td>
+      </tr>
+      <tr>
+        <td><code>str.title()</code></td>
+        <td>Capitalizes each word</td>
+        <td><code>"python string methods".title()</code></td>
+      </tr>
+      <tr>
+        <td><code>str.strip()</code></td>
+        <td>Removes whitespace from both ends</td>
+        <td><code>"  hello  ".strip()</code> → <code>"hello"</code></td>
+      </tr>
+      <tr>
+        <td><code>str.replace(a, b)</code></td>
+        <td>Replaces substring <code>a</code> with <code>b</code></td>
+        <td><code>"hello world".replace("world", "Python")</code></td>
+      </tr>
+      <tr>
+        <td><code>str.split()</code></td>
+        <td>Splits string into list</td>
+        <td><code>"a,b,c".split(",")</code> → <code>['a','b','c']</code></td>
+      </tr>
+      <tr>
+        <td><code>str.join()</code></td>
+        <td>Joins elements of a list into a string</td>
+        <td><code>",".join(["a","b","c"])</code> → <code>"a,b,c"</code></td>
+      </tr>
+      <tr>
+        <td><code>str.find()</code></td>
+        <td>Returns index of substring</td>
+        <td><code>"hello".find("e")</code> → <code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>str.count()</code></td>
+        <td>Counts occurrences of a substring</td>
+        <td><code>"banana".count("a")</code> → <code>3</code></td>
+      </tr>
+      <tr>
+        <td><code>str.startswith()</code></td>
+        <td>Checks if string starts with a prefix</td>
+        <td><code>"Python".startswith("Py")</code> → <code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>str.endswith()</code></td>
+        <td>Checks if string ends with a suffix</td>
+        <td><code>"Python".endswith("on")</code> → <code>True</code></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>String Formatting</h2>
+    <pre><code>
+name = "Alice"
+age = 21
+
+# Using f-strings (recommended)
+print(f"My name is {name}, and I am {age} years old.")
+
+# Using format()
+print("My name is {}, and I am {} years old.".format(name, age))
+
+# Using % formatting
+print("My name is %s, and I am %d years old." % (name, age))
+    </code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Escape Characters</h2>
+    <pre><code>
+text = "Hello\nWorld"   # New line
+print(text)
+
+path = "C:\\Users\\Admin"  # Backslash escape
+print(path)
+
+quote = "She said, \"Python is fun!\""
+print(quote)
+    </code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Use Cases of Strings</h2>
+    <ul>
+      <li>Storing textual information like names, emails, and addresses.</li>
+      <li>Processing natural language (NLP).</li>
+      <li>Working with file paths and configurations.</li>
+      <li>Building user interfaces and messages.</li>
+      <li>Data parsing (e.g., splitting CSV text).</li>
+    </ul>
+    <pre><code>
+# Example: Counting words in a sentence
+sentence = "Python is easy and powerful"
+words = sentence.split()
+print("Word Count:", len(words))  # 4
+    </code></pre>
+  </div>
+
+  <div class="references">
+    <h2>References</h2>
+    <ul>
+      <li><a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str" target="_blank">Python Official Docs - String</a></li>
+      <li><a href="https://realpython.com/python-strings/" target="_blank">Real Python - Strings</a></li>
+      <li><a href="https://www.w3schools.com/python/python_strings.asp" target="_blank">W3Schools - Python Strings</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    <p><b>ZN Infotech Pvt. Ltd.</b> | 📞 9565017342 | 🌐 <a href="https://zninfotech.com">zninfotech.com</a></p>
+    <p>We provide training in Python, Web Development, IoT, Mobile App Development, and more.</p>
+  </footer>
+
+</body>
+</html>

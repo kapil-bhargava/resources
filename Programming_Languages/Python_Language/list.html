@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python List - Detailed Explanation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: #2196F3;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #2196F3;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+    }
+    pre {
+      background: #f4f4f4;
+      border-left: 4px solid #2196F3;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: "Courier New", monospace;
+      color: #d6336c;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #e3f2fd;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    a {
+      color: #2196F3;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Python List - Detailed Explanation</h1>
+  </header>
+
+  <section>
+    <h2>1. What is a List?</h2>
+    <p>
+      A <strong>list</strong> in Python is a collection data type that is:
+    </p>
+    <ul>
+      <li><strong>Ordered</strong> – maintains insertion order.</li>
+      <li><strong>Mutable</strong> – can be modified after creation.</li>
+      <li><strong>Heterogeneous</strong> – can store different data types (int, string, float, etc.).</li>
+    </ul>
+    <pre><code>nums = [1, 2, 3]
+mixed = [1, "hello", 3.14, [4, 5]]</code></pre>
+  </section>
+
+  <section>
+    <h2>2. Creating Lists</h2>
+    <pre><code>a = []                 # empty list
+b = list()             # using constructor
+c = [1, 2, 3]          # literal
+d = list((1, 2, 3))    # from tuple
+e = list(range(5))     # [0, 1, 2, 3, 4]</code></pre>
+  </section>
+
+  <section>
+    <h2>3. Accessing and Slicing</h2>
+    <pre><code>lst = [10, 20, 30, 40, 50]
+print(lst[0])     # 10
+print(lst[-1])    # 50
+print(lst[1:4])   # [20, 30, 40]
+print(lst[::2])   # [10, 30, 50]</code></pre>
+  </section>
+
+  <section>
+    <h2>4. Modifying Lists</h2>
+    <p>Lists are <strong>mutable</strong>, so elements can be added, changed, or removed.</p>
+    <pre><code>lst = [10, 20, 30]
+
+lst[0] = 100             # change element
+lst.append(40)           # add at end
+lst.insert(1, 15)        # insert at index
+lst.extend([50, 60])     # add multiple
+lst.remove(20)           # remove by value
+lst.pop()                # remove last
+del lst[0]               # delete by index
+lst.clear()              # empty the list</code></pre>
+  </section>
+
+  <section>
+    <h2>5. List Methods</h2>
+    <table>
+      <tr><th>Method</th><th>Description</th><th>Example</th></tr>
+      <tr><td><code>append(x)</code></td><td>Adds single element at end</td>
+          <td><pre><code>lst.append(4)</code></pre></td></tr>
+      <tr><td><code>extend(iter)</code></td><td>Adds multiple elements</td>
+          <td><pre><code>lst.extend([5,6])</code></pre></td></tr>
+      <tr><td><code>insert(i, x)</code></td><td>Insert at index</td>
+          <td><pre><code>lst.insert(1,"a")</code></pre></td></tr>
+      <tr><td><code>remove(x)</code></td><td>Remove first occurrence</td>
+          <td><pre><code>lst.remove(3)</code></pre></td></tr>
+      <tr><td><code>pop([i])</code></td><td>Remove and return element</td>
+          <td><pre><code>lst.pop(0)</code></pre></td></tr>
+      <tr><td><code>index(x)</code></td><td>Find index of first occurrence</td>
+          <td><pre><code>lst.index("apple")</code></pre></td></tr>
+      <tr><td><code>count(x)</code></td><td>Count occurrences</td>
+          <td><pre><code>lst.count(2)</code></pre></td></tr>
+      <tr><td><code>sort()</code></td><td>Sort in place</td>
+          <td><pre><code>lst.sort()</code></pre></td></tr>
+      <tr><td><code>reverse()</code></td><td>Reverse in place</td>
+          <td><pre><code>lst.reverse()</code></pre></td></tr>
+      <tr><td><code>copy()</code></td><td>Shallow copy</td>
+          <td><pre><code>new = lst.copy()</code></pre></td></tr>
+      <tr><td><code>clear()</code></td><td>Remove all items</td>
+          <td><pre><code>lst.clear()</code></pre></td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>6. List Comprehensions</h2>
+    <p>Concise way to build lists:</p>
+    <pre><code># Squares
+squares = [x*x for x in range(5)]  # [0,1,4,9,16]
+
+# Conditional
+evens = [x for x in range(10) if x%2==0]  # [0,2,4,6,8]
+
+# Flatten
+matrix = [[1,2],[3,4]]
+flat = [n for row in matrix for n in row]  # [1,2,3,4]</code></pre>
+  </section>
+
+  <section>
+    <h2>7. Performance Notes</h2>
+    <ul>
+      <li>Indexing and appending are <strong>O(1)</strong>.</li>
+      <li>Insert/remove at front is <strong>O(n)</strong>.</li>
+      <li>Membership test (<code>x in lst</code>) is <strong>O(n)</strong>.</li>
+      <li>Use <code>collections.deque</code> if frequent front operations are needed.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>8. List vs Tuple</h2>
+    <table>
+      <tr><th>Feature</th><th>List</th><th>Tuple</th></tr>
+      <tr><td>Syntax</td><td><code>[1,2,3]</code></td><td><code>(1,2,3)</code></td></tr>
+      <tr><td>Mutable?</td><td>✅ Yes</td><td>❌ No</td></tr>
+      <tr><td>Performance</td><td>Slower</td><td>Faster</td></tr>
+      <tr><td>Use case</td><td>When data changes</td><td>When data is constant</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    <p><strong>ZN Infotech Pvt. Ltd.</strong> | Call: 9565017342 | 
+    <a href="https://zninfotech.com" target="_blank">zninfotech.com</a></p>
+    <p>We provide training in IoT, Programming Languages, Web Development, Mobile App Development, and more.</p>
+    <p>References: <a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists" target="_blank">Python Docs - Lists</a></p>
+  </footer>
+</body>
+</html>

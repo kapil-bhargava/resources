@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python Data Types</title>
   <style>
     :root {
@@ -69,8 +70,18 @@
       padding: 1rem;
       margin-top: 2rem;
     }
+
+    .anchor {
+      text-decoration: none;
+      /* color: var(--secondary); */
+      color: rgb(0, 0, 0);
+      padding: 5px;
+      display: inline-block;
+      background-color: rgb(233, 207, 60);
+    }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -91,25 +102,29 @@ print(type(age))  # Output: &lt;class 'int'&gt;</code></pre>
 price = 199.99
 print(type(price))  # Output: &lt;class 'float'&gt;</code></pre>
 
-    <h2>3. <code>str</code> - String</h2>
+<h2>3. <code>str</code> - String</h2>
+  <a href="string.html" class="anchor">String in Detail</a>
     <p>Used to represent textual data enclosed in quotes.</p>
     <pre><code># Example
 name = "Python"
 print(type(name))  # Output: &lt;class 'str'&gt;</code></pre>
 
     <h2>4. <code>list</code> - List</h2>
+    <a href="list.html" class="anchor">List in Detail</a>
     <p>An ordered, mutable collection. Can contain mixed data types.</p>
     <pre><code># Example
-colors = ["red", "blue", "green"]
-print(type(colors))  # Output: &lt;class 'list'&gt;</code></pre>
+      colors = ["red", "blue", "green"]
+      print(type(colors))  # Output: &lt;class 'list'&gt;</code></pre>
 
     <h2>5. <code>tuple</code> - Tuple</h2>
+    <a href="tuples.html" class="anchor">Tuple in Detail</a>
     <p>An ordered, immutable collection. Once created, cannot be changed.</p>
     <pre><code># Example
-coordinates = (10, 20)
-print(type(coordinates))  # Output: &lt;class 'tuple'&gt;</code></pre>
+        coordinates = (10, 20)
+        print(type(coordinates))  # Output: &lt;class 'tuple'&gt;</code></pre>
 
     <h2>6. <code>dict</code> - Dictionary</h2>
+    <a href="dict.html" class="anchor">Dict in Detail</a>
     <p>Used to store data in key-value pairs. Keys must be unique.</p>
     <pre><code># Example
 student = {"name": "Alice", "age": 22}
@@ -128,4 +143,5 @@ print(type(unique_numbers))  # Output: &lt;class 'set'&gt;</code></pre>
   </footer>
 
 </body>
+
 </html>

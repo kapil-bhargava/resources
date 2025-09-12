@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Python Modules — Complete Guide</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #306998;
+      --secondary: #FFD43B;
+      --accent: #4B8BBE;
+      --light: #f9f9f9;
+      --dark: #333;
+      --success: #4CAF50;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --info: #2196F3;
+      --card-bg: #ffffff;
+      --code-bg: #f4f4f4;
+      --border: #e6e6e6;
+      --text: #222;
+      --muted: #666;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      background: var(--light);
+      color: var(--text);
+      padding-bottom: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .nav-container {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0.8rem 0;
+    }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0.2rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.8rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid var(--primary);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-icon {
+      background: var(--primary);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      color: var(--accent);
+      margin: 1.2rem 0 0.6rem;
+      font-size: 1.4rem;
+    }
+
+    h4 {
+      color: var(--dark);
+      margin: 1rem 0 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 1.2rem;
+      border-left: 5px solid var(--primary);
+      overflow: auto;
+      border-radius: 6px;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    code {
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      color: var(--primary);
+      background: rgba(48, 105, 152, 0.1);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .note {
+      background: #e7f4e4;
+      border-left: 4px solid var(--success);
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .warning {
+      background: #fff3e0;
+      border-left: 4px solid var(--warning);
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .tip {
+      background: #e3f2fd;
+      border-left: 4px solid var(--info);
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .module-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+      border-top: 4px solid var(--primary);
+    }
+
+    .module-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .module-card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+
+    .module-card ul {
+      margin-left: 1rem;
+    }
+
+    .module-card li {
+      margin-bottom: 0.3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    .badge-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .badge-secondary {
+      background: var(--secondary);
+      color: var(--dark);
+    }
+
+    .badge-success {
+      background: var(--success);
+      color: white;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--dark), #222);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: #6ea8fe;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+
+    .back-to-top:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      nav a {
+        margin: 0.2rem 0;
+      }
+    }
+
+    .tab-container {
+      margin: 1.5rem 0;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .tab {
+      padding: 0.8rem 1.5rem;
+      background: #f1f1f1;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+      margin-right: 0.3rem;
+      font-weight: 500;
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .search-box {
+      margin: 1rem 0;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 40px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-cubes"></i> Python Modules — Complete Guide</h1>
+      <p>Learn how to organize, create, and use Python modules effectively with practical examples</p>
+    </div>
+  </header>
+
+  <div class="nav-container">
+    <nav class="container">
+      <a href="#intro" class="active">Introduction</a>
+      <a href="#user-defined">User-Defined</a>
+      <a href="#standard">Standard Library</a>
+      <a href="#collections">Collections</a>
+      <a href="#os">OS & Sys</a>
+      <a href="#math">Math & Random</a>
+      <a href="#other">Other Modules</a>
+      <a href="#best-practices">Best Practices</a>
+      <a href="#references">References</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search modules and functions...">
+    </div>
+
+    <section id="intro">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          <h2>What is a Python Module?</h2>
+        </div>
+        <p>A <strong>module</strong> is a file containing Python definitions and statements. The file name is the module name with the suffix <code>.py</code>. Modules allow you to organize code logically, reuse code across multiple programs, and avoid naming conflicts.</p>
+        
+        <div class="tip">
+          <p><strong>Tip:</strong> Think of modules as "libraries" or "toolkits" that you can import and use in your programs.</p>
+        </div>
+
+        <h3>Why Use Modules?</h3>
+        <ul>
+          <li><strong>Code Organization:</strong> Break down large programs into manageable pieces</li>
+          <li><strong>Reusability:</strong> Write code once and use it in multiple projects</li>
+          <li><strong>Namespacing:</strong> Avoid naming conflicts with unique module names</li>
+          <li><strong>Collaboration:</strong> Different team members can work on different modules</li>
+        </ul>
+
+        <h3>Basic Example</h3>
+        <div class="tab-container">
+          <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'tab1')">greetings.py</div>
+            <div class="tab" onclick="openTab(event, 'tab2')">main.py</div>
+          </div>
+          <div id="tab1" class="tab-content active">
+            <pre><code># greetings.py - a simple module
+def hello(name):
+    """Return a greeting message"""
+    return f"Hello, {name}!"
+
+def goodbye(name):
+    """Return a farewell message"""
+    return f"Goodbye, {name}!"
+
+version = "1.0"</code></pre>
+          </div>
+          <div id="tab2" class="tab-content">
+            <pre><code># main.py - using the greetings module
+import greetings
+
+print(greetings.hello("Alice"))  # Hello, Alice!
+print(greetings.goodbye("Bob"))  # Goodbye, Bob!
+print(f"Module version: {greetings.version}")</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="user-defined">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-file-code"></i>
+          </div>
+          <h2>User-Defined Modules</h2>
+        </div>
+        <p>User-defined modules are Python files you create to organize your code. Any Python file can be imported as a module in another Python script.</p>
+
+        <h3>Creating and Using Your Own Modules</h3>
+        <ol>
+          <li>Create a Python file (e.g., <code>mymodule.py</code>)</li>
+          <li>Define functions, classes, or variables in the file</li>
+          <li>Import and use the module in another Python file</li>
+        </ol>
+
+        <h3>Import Methods</h3>
+        <table>
+          <tr>
+            <th>Method</th>
+            <th>Syntax</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>Basic import</td>
+            <td><code>import module</code></td>
+            <td>Import entire module, access with module.function()</td>
+          </tr>
+          <tr>
+            <td>Selective import</td>
+            <td><code>from module import function</code></td>
+            <td>Import specific functions/classes</td>
+          </tr>
+          <tr>
+            <td>Alias import</td>
+            <td><code>import module as alias</code></td>
+            <td>Import with a different name</td>
+          </tr>
+          <tr>
+            <td>Wildcard import</td>
+            <td><code>from module import *</code></td>
+            <td>Import all names (not recommended)</td>
+          </tr>
+        </table>
+
+        <div class="warning">
+          <p><strong>Warning:</strong> Avoid wildcard imports (<code>from module import *</code>) as they can lead to naming conflicts and make code harder to understand.</p>
+        </div>
+
+        <h3>Package Structure</h3>
+        <p>For larger projects, you can organize modules into packages (directories containing an <code>__init__.py</code> file):</p>
+        <pre><code>my_package/
+    __init__.py
+    module1.py
+    module2.py
+    subpackage/
+        __init__.py
+        module3.py</code></pre>
+      </div>
+    </section>
+
+    <section id="standard">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-box-open"></i>
+          </div>
+          <h2>Standard Library Modules</h2>
+        </div>
+        <p>Python comes with a rich standard library - a collection of modules that provide common functionality. These modules are available without any additional installation.</p>
+
+        <div class="grid">
+          <div class="module-card">
+            <h3><i class="fas fa-archive"></i> Collections</h3>
+            <p>Specialized container datatypes</p>
+            <ul>
+              <li>Counter</li>
+              <li>defaultdict</li>
+              <li>deque</li>
+              <li>namedtuple</li>
+            </ul>
+            <p><span class="badge badge-primary">Data Structures</span></p>
+          </div>
+
+          <div class="module-card">
+            <h3><i class="fas fa-calculator"></i> Math</h3>
+            <p>Mathematical functions</p>
+            <ul>
+              <li>sqrt()</li>
+              <li>sin(), cos()</li>
+              <li>pi constant</li>
+              <li>factorial()</li>
+            </ul>
+            <p><span class="badge badge-primary">Mathematics</span></p>
+          </div>
+
+          <div class="module-card">
+            <h3><i class="fas fa-desktop"></i> OS</h3>
+            <p>Operating system interfaces</p>
+            <ul>
+              <li>File operations</li>
+              <li>Directory management</li>
+              <li>Environment variables</li>
+              <li>Process management</li>
+            </ul>
+            <p><span class="badge badge-secondary">System</span></p>
+          </div>
+
+          <div class="module-card">
+            <h3><i class="fas fa-random"></i> Random</h3>
+            <p>Generate random numbers</p>
+            <ul>
+              <li>random()</li>
+              <li>randint()</li>
+              <li>choice()</li>
+              <li>shuffle()</li>
+            </ul>
+            <p><span class="badge badge-primary">Utilities</span></p>
+          </div>
+
+          <div class="module-card">
+            <h3><i class="fas fa-chart-bar"></i> Statistics</h3>
+            <p>Statistical calculations</p>
+            <ul>
+              <li>mean()</li>
+              <li>median()</li>
+              <li>mode()</li>
+              <li>stdev()</li>
+            </ul>
+            <p><span class="badge badge-primary">Mathematics</span></p>
+          </div>
+
+          <div class="module-card">
+            <h3><i class="fas fa-cogs"></i> Sys</h3>
+            <p>System-specific parameters</p>
+            <ul>
+              <li>Command-line arguments</li>
+              <li>Python path</li>
+              <li>Standard streams</li>
+              <li>Exit functions</li>
+            </ul>
+            <p><span class="badge badge-secondary">System</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collections">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-archive"></i>
+          </div>
+          <h2>Collections Module</h2>
+        </div>
+        <p>The <code>collections</code> module provides specialized container datatypes as alternatives to Python's general-purpose built-in containers.</p>
+
+        <h3>Commonly Used Classes</h3>
+        <table>
+          <tr>
+            <th>Class</th>
+            <th>Description</th>
+            <th>Use Case</th>
+          </tr>
+          <tr>
+            <td><code>Counter</code></td>
+            <td>Count hashable objects</td>
+            <td>Frequency counting</td>
+          </tr>
+          <tr>
+            <td><code>defaultdict</code></td>
+            <td>Dictionary with default values</td>
+            <td>Handling missing keys</td>
+          </tr>
+          <tr>
+            <td><code>deque</code></td>
+            <td>Double-ended queue</td>
+            <td>Efficient appends/pops from both ends</td>
+          </tr>
+          <tr>
+            <td><code>namedtuple</code></td>
+            <td>Tuple with named fields</td>
+            <td>Readable, lightweight object</td>
+          </tr>
+          <tr>
+            <td><code>OrderedDict</code></td>
+            <td>Dictionary that remembers insertion order</td>
+            <td>When order matters (Python < 3.7)</td>
+          </tr>
+        </table>
+
+        <h3>Examples</h3>
+        <pre><code>from collections import Counter, defaultdict, deque, namedtuple
+
+# Counter - count elements
+words = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']
+word_count = Counter(words)
+print(word_count)  # Counter({'apple': 3, 'banana': 2, 'orange': 1})
+
+# defaultdict - dictionary with default values
+dd = defaultdict(int)  # default value is 0
+dd['a'] += 1
+print(dd['a'])  # 1
+print(dd['b'])  # 0 (default)
+
+# deque - double-ended queue
+dq = deque([1, 2, 3])
+dq.appendleft(0)  # add to left
+dq.append(4)      # add to right
+print(dq)         # deque([0, 1, 2, 3, 4])
+
+# namedtuple - readable tuples
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(10, 20)
+print(p.x, p.y)   # 10 20</code></pre>
+      </div>
+    </section>
+
+    <section id="os">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-desktop"></i>
+          </div>
+          <h2>OS and SYS Modules</h2>
+        </div>
+        <p>The <code>os</code> and <code>sys</code> modules provide ways to interact with the operating system and Python runtime environment.</p>
+
+        <h3>OS Module - Common Functions</h3>
+        <table>
+          <tr>
+            <th>Function</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>os.getcwd()</code></td>
+            <td>Get current working directory</td>
+          </tr>
+          <tr>
+            <td><code>os.listdir(path)</code></td>
+            <td>List files in a directory</td>
+          </tr>
+          <tr>
+            <td><code>os.mkdir(path)</code></td>
+            <td>Create a directory</td>
+          </tr>
+          <tr>
+            <td><code>os.remove(path)</code></td>
+            <td>Remove a file</td>
+          </tr>
+          <tr>
+            <td><code>os.rename(src, dst)</code></td>
+            <td>Rename a file or directory</td>
+          </tr>
+          <tr>
+            <td><code>os.path.join()</code></td>
+            <td>Join path components intelligently</td>
+          </tr>
+          <tr>
+            <td><code>os.path.exists()</code></td>
+            <td>Check if path exists</td>
+          </tr>
+        </table>
+
+        <h3>SYS Module - Common Functions</h3>
+        <table>
+          <tr>
+            <th>Function</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>sys.argv</code></td>
+            <td>Command-line arguments</td>
+          </tr>
+          <tr>
+            <td><code>sys.exit([code])</code></td>
+            <td>Exit the program</td>
+          </tr>
+          <tr>
+            <td><code>sys.version</code></td>
+            <td>Python version information</td>
+          </tr>
+          <tr>
+            <td><code>sys.path</code></td>
+            <td>Module search path</td>
+          </tr>
+          <tr>
+            <td><code>sys.stdin</code>, <code>sys.stdout</code>, <code>sys.stderr</code></td>
+            <td>Standard streams</td>
+          </tr>
+        </table>
+
+        <h3>Examples</h3>
+        <pre><code>import os
+import sys
+
+# OS module examples
+print(f"Current directory: {os.getcwd()}")
+print(f"Files in current directory: {os.listdir('.')}")
+
+# Create a directory if it doesn't exist
+if not os.path.exists('data'):
+    os.mkdir('data')
+
+# Join paths safely
+file_path = os.path.join('data', 'file.txt')
+print(f"Full path: {file_path}")
+
+# SYS module examples
+print(f"Python version: {sys.version}")
+print(f"Command line arguments: {sys.argv}")
+
+# Exit if no arguments provided
+if len(sys.argv) < 2:
+    print("Usage: python script.py [argument]")
+    sys.exit(1)</code></pre>
+
+        <div class="note">
+          <p><strong>Note:</strong> For modern path handling, consider using the <code>pathlib</code> module which provides an object-oriented approach to filesystem paths.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="math">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h2>Math and Random Modules</h2>
+        </div>
+        <p>The <code>math</code> module provides mathematical functions and constants, while the <code>random</code> module implements pseudo-random number generators.</p>
+
+        <h3>Math Module - Key Functions and Constants</h3>
+        <table>
+          <tr>
+            <th>Function/Constant</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>math.sqrt(x)</code></td>
+            <td>Square root of x</td>
+          </tr>
+          <tr>
+            <td><code>math.pow(x, y)</code></td>
+            <td>x raised to the power y</td>
+          </tr>
+          <tr>
+            <td><code>math.sin(x)</code>, <code>math.cos(x)</code>, <code>math.tan(x)</code></td>
+            <td>Trigonometric functions</td>
+          </tr>
+          <tr>
+            <td><code>math.pi</code></td>
+            <td>Mathematical constant π</td>
+          </tr>
+          <tr>
+            <td><code>math.e</code></td>
+            <td>Mathematical constant e</td>
+          </tr>
+          <tr>
+            <td><code>math.factorial(x)</code></td>
+            <td>Factorial of x</td>
+          </tr>
+          <tr>
+            <td><code>math.gcd(a, b)</code></td>
+            <td>Greatest common divisor</td>
+          </tr>
+        </table>
+
+        <h3>Random Module - Key Functions</h3>
+        <table>
+          <tr>
+            <th>Function</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>random.random()</code></td>
+            <td>Random float in [0.0, 1.0)</td>
+          </tr>
+          <tr>
+            <td><code>random.randint(a, b)</code></td>
+            <td>Random integer in [a, b]</td>
+          </tr>
+          <tr>
+            <td><code>random.choice(seq)</code></td>
+            <td>Random element from sequence</td>
+          </tr>
+          <tr>
+            <td><code>random.shuffle(seq)</code></td>
+            <td>Shuffle sequence in place</td>
+          </tr>
+          <tr>
+            <td><code>random.uniform(a, b)</code></td>
+            <td>Random float in [a, b]</td>
+          </tr>
+          <tr>
+            <td><code>random.seed(a)</code></td>
+            <td>Initialize random number generator</td>
+          </tr>
+        </table>
+
+        <h3>Examples</h3>
+        <pre><code>import math
+import random
+
+# Math examples
+print(f"Square root of 16: {math.sqrt(16)}")
+print(f"5 raised to power 3: {math.pow(5, 3)}")
+print(f"Value of pi: {math.pi}")
+print(f"Factorial of 5: {math.factorial(5)}")
+
+# Random examples
+print(f"Random float between 0 and 1: {random.random()}")
+print(f"Random integer between 1 and 10: {random.randint(1, 10)}")
+
+fruits = ['apple', 'banana', 'cherry']
+print(f"Random fruit: {random.choice(fruits)}")
+
+# Shuffle a list
+cards = ['Ace', 'King', 'Queen', 'Jack']
+random.shuffle(cards)
+print(f"Shuffled cards: {cards}")
+
+# Using seed for reproducible results
+random.seed(42)
+print(f"Random with seed: {random.random()}")  # Same every time</code></pre>
+
+        <div class="warning">
+          <p><strong>Security Note:</strong> The <code>random</code> module is not suitable for cryptographic purposes. Use the <code>secrets</code> module for security-sensitive applications.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="other">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-cube"></i>
+          </div>
+          <h2>Other Important Modules</h2>
+        </div>
+        <p>Python's standard library includes many other useful modules. Here are some commonly used ones:</p>
+
+        <h3>DateTime Module</h3>
+        <p>The <code>datetime</code> module supplies classes for manipulating dates and times.</p>
+        <pre><code>from datetime import datetime, date, timedelta
+
+# Current date and time
+now = datetime.now()
+print(f"Current datetime: {now}")
+
+# Specific date
+d = date(2023, 12, 25)
+print(f"Christmas: {d}")
+
+# Date arithmetic
+one_week = timedelta(days=7)
+next_week = now + one_week
+print(f"Next week: {next_week}")
+
+# Formatting dates
+formatted = now.strftime("%Y-%m-%d %H:%M:%S")
+print(f"Formatted: {formatted}")</code></pre>
+
+        <h3>JSON Module</h3>
+        <p>The <code>json</code> module provides functions for working with JSON data.</p>
+        <pre><code>import json
+
+# Convert Python object to JSON string
+data = {
+    "name": "John",
+    "age": 30,
+    "cities": ["New York", "London"]
+}
+json_str = json.dumps(data)
+print(f"JSON string: {json_str}")
+
+# Convert JSON string to Python object
+parsed = json.loads(json_str)
+print(f"Parsed data: {parsed}")
+
+# Working with files
+with open('data.json', 'w') as f:
+    json.dump(data, f)
+
+with open('data.json', 'r') as f:
+    loaded = json.load(f)
+print(f"Loaded from file: {loaded}")</code></pre>
+
+        <h3>RE (Regular Expressions) Module</h3>
+        <p>The <code>re</code> module provides regular expression matching operations.</p>
+        <pre><code>import re
+
+# Search for pattern
+text = "The rain in Spain"
+result = re.search("rain", text)
+print(f"Search result: {result.group()}")  # rain
+
+# Find all matches
+all_matches = re.findall("ai", text)
+print(f"All 'ai' matches: {all_matches}")  # ['ai', 'ai']
+
+# Split by pattern
+split_result = re.split("\s", text)  # split by whitespace
+print(f"Split result: {split_result}")  # ['The', 'rain', 'in', 'Spain']
+
+# Substitute
+new_text = re.sub("Spain", "France", text)
+print(f"Substituted text: {new_text}")  # The rain in France</code></pre>
+      </div>
+    </section>
+
+    <section id="best-practices">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h2>Module Best Practices</h2>
+        </div>
+        <p>Follow these best practices to write clean, maintainable, and efficient Python code using modules:</p>
+
+        <h3>Import Organization</h3>
+        <p>Organize imports in the following order with a blank line between each group:</p>
+        <ol>
+          <li>Standard library imports</li>
+          <li>Third-party imports</li>
+          <li>Local application imports</li>
+        </ol>
+        <pre><code># Standard library
+import os
+import sys
+from datetime import datetime
+
+# Third-party
+import requests
+import numpy as np
+
+# Local application
+from mymodule import myfunction</code></pre>
+
+        <h3>Module Structure</h3>
+        <p>A well-structured module should include:</p>
+        <ul>
+          <li>Module docstring at the top</li>
+          <li>Imports</li>
+          <li>Constants</li>
+          <li>Classes and functions</li>
+          <li>Main execution block (if applicable)</li>
+        </ul>
+
+        <h3>Avoid Circular Imports</h3>
+        <p>Circular imports occur when two modules import each other, which can cause problems. To avoid:</p>
+        <ul>
+          <li>Restructure code to eliminate circular dependencies</li>
+          <li>Import within functions instead of at module level</li>
+          <li>Use local imports when possible</li>
+        </ul>
+
+        <h3>Use if __name__ == "__main__"</h3>
+        <p>This idiom allows a module to provide code that should only run when executed directly, not when imported:</p>
+        <pre><code># mymodule.py
+def main():
+    # Code to run when executed directly
+    print("Running as main program")
+
+if __name__ == "__main__":
+    main()</code></pre>
+
+        <h3>Virtual Environments</h3>
+        <p>Use virtual environments to manage dependencies for different projects and avoid version conflicts:</p>
+        <pre><code># Create a virtual environment
+python -m venv myenv
+
+# Activate on Windows
+myenv\Scripts\activate.bat
+
+# Activate on macOS/Linux
+source myenv/bin/activate
+
+# Install packages in the virtual environment
+pip install requests numpy
+
+# Deactivate when done
+deactivate</code></pre>
+
+        <h3>Documentation and Type Hints</h3>
+        <p>Add docstrings to your modules, functions, and classes to make them more understandable:</p>
+        <pre><code>def calculate_area(radius: float) -> float:
+    """
+    Calculate the area of a circle.
+    
+    Args:
+        radius (float): The radius of the circle
+        
+    Returns:
+        float: The area of the circle
+    """
+    import math
+    return math.pi * radius ** 2</code></pre>
+      </div>
+    </section>
+
+    <section id="references">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h2>References and Further Reading</h2>
+        </div>
+        <p>Here are some valuable resources to deepen your understanding of Python modules:</p>
+
+        <h3>Official Documentation</h3>
+        <ul>
+          <li><a href="https://docs.python.org/3/tutorial/modules.html" target="_blank">Python Modules Tutorial</a> - Official Python documentation</li>
+          <li><a href="https://docs.python.org/3/library/index.html" target="_blank">Python Standard Library</a> - Complete reference</li>
+          <li><a href="https://peps.python.org/pep-0008/" target="_blank">PEP 8</a> - Python style guide</li>
+          <li><a href="https://peps.python.org/pep-0484/" target="_blank">PEP 484</a> - Type hints documentation</li>
+        </ul>
+
+        <h3>Recommended Books</h3>
+        <ul>
+          <li><strong>Fluent Python</strong> by Luciano Ramalho</li>
+          <li><strong>Effective Python</strong> by Brett Slatkin</li>
+          <li><strong>Python Cookbook</strong> by David Beazley and Brian K. Jones</li>
+          <li><strong>Automate the Boring Stuff with Python</strong> by Al Sweigart</li>
+        </ul>
+
+        <h3>Online Courses</h3>
+        <ul>
+          <li><a href="https://www.coursera.org/specializations/python" target="_blank">Python for Everybody</a> - University of Michigan</li>
+          <li><a href="https://www.edx.org/learn/python" target="_blank">Python courses</a> - Various providers on edX</li>
+          <li><a href="https://realpython.com/" target="_blank">Real Python</a> - Tutorials and articles</li>
+          <li><a href="https://docs.python-guide.org/" target="_blank>The Hitchhiker's Guide to Python</a> - Best practices guide</li>
+        </ul>
+
+        <div class="tip">
+          <p><strong>Tip:</strong> The best way to learn about modules is to practice creating your own and exploring the Python standard library. Try to read the source code of well-maintained open-source projects to see how they organize their code.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <footer class="container">
+    <p>Python Modules Guide &copy; 2023. This content is for educational purposes only.</p>
+    <p>Python is a registered trademark of the Python Software Foundation.</p>
+    <p>Found an issue or want to contribute? <a href="https://github.com/example/python-modules-guide" target="_blank">Visit the GitHub repository</a>.</p>
+  </footer>
+
+  <script>
+    // Tab functionality
+    function openTab(evt, tabId) {
+      const tabcontent = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      
+      const tablinks = document.getElementsByClassName("tab");
+      for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    
+    // Navigation highlighting
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+    
+    window.addEventListener("scroll", () => {
+      let current = "";
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute("id");
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").substring(1) === current) {
+          link.classList.add("active");
+        }
+      });
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (this.getAttribute('href') === '#') {
+          // Back to top
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return;
+        }
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      if (searchTerm.length < 2) {
+        // Show all cards if search term is too short
+        document.querySelectorAll('.card').forEach(card => {
+          card.classList.remove('hidden');
+        });
+        return;
+      }
+      
+      document.querySelectorAll('.card').forEach(card => {
+        const cardText = card.textContent.toLowerCase();
+        if (cardText.includes(searchTerm)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

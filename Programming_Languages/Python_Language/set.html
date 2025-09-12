@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Set Explained</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #4CAF50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 4px solid #388E3C;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    pre {
+      background: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 12px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    code {
+      font-family: Consolas, monospace;
+      font-size: 14px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    .references {
+      background: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+      border-top: 4px solid #4CAF50;
+    }
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Python Set</h1>
+    <p>A complete guide to understanding Python's set data type</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>📌 What is a Set?</h2>
+      <p>
+        A <b>set</b> in Python is a <b>collection of unique, unordered elements</b>.  
+        Sets are mainly used when you want to <b>store items without duplicates</b> and perform <b>mathematical set operations</b> like union, intersection, and difference.
+      </p>
+      <ul>
+        <li><b>Unordered</b>: Elements do not have a fixed order.</li>
+        <li><b>No duplicates</b>: Duplicate elements are automatically removed.</li>
+        <li><b>Mutable</b>: You can add or remove items.</li>
+        <li><b>Elements must be immutable</b> (numbers, strings, tuples).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📝 Creating a Set</h2>
+      <pre><code>
+# Empty set (must use set(), not {})
+my_set = set()
+
+# Set with data
+fruits = {"apple", "banana", "cherry"}
+
+print(fruits)  # {'banana', 'cherry', 'apple'}
+
+# Duplicates are removed automatically
+nums = {1, 2, 2, 3, 4}
+print(nums)    # {1, 2, 3, 4}
+      </code></pre>
+    </div>
+
+    <div class="card">
+      <h2>⚡ Adding & Removing Elements</h2>
+      <pre><code>
+fruits = {"apple", "banana"}
+
+# Add element
+fruits.add("cherry")
+
+# Add multiple elements
+fruits.update(["mango", "grape"])
+
+# Remove element (error if not found)
+fruits.remove("banana")
+
+# Remove element safely (no error if not found)
+fruits.discard("orange")
+
+# Remove and return a random element
+fruits.pop()
+
+# Clear all elements
+fruits.clear()
+
+print(fruits)  # set()
+      </code></pre>
+    </div>
+
+    <div class="card">
+      <h2>🛠️ Common Set Methods</h2>
+      <table>
+        <tr>
+          <th>Method</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td><code>set.add(x)</code></td>
+          <td>Adds element x</td>
+          <td><code>fruits.add("apple")</code></td>
+        </tr>
+        <tr>
+          <td><code>set.update(iterable)</code></td>
+          <td>Adds multiple elements</td>
+          <td><code>fruits.update(["mango","grape"])</code></td>
+        </tr>
+        <tr>
+          <td><code>set.remove(x)</code></td>
+          <td>Removes element x (error if missing)</td>
+          <td><code>fruits.remove("apple")</code></td>
+        </tr>
+        <tr>
+          <td><code>set.discard(x)</code></td>
+          <td>Removes element x (no error if missing)</td>
+          <td><code>fruits.discard("apple")</code></td>
+        </tr>
+        <tr>
+          <td><code>set.pop()</code></td>
+          <td>Removes and returns a random element</td>
+          <td><code>fruits.pop()</code></td>
+        </tr>
+        <tr>
+          <td><code>set.clear()</code></td>
+          <td>Removes all elements</td>
+          <td><code>fruits.clear()</code></td>
+        </tr>
+        <tr>
+          <td><code>set.union()</code></td>
+          <td>Returns union of sets</td>
+          <td><code>a.union(b)</code></td>
+        </tr>
+        <tr>
+          <td><code>set.intersection()</code></td>
+          <td>Returns common elements</td>
+          <td><code>a.intersection(b)</code></td>
+        </tr>
+        <tr>
+          <td><code>set.difference()</code></td>
+          <td>Returns elements in A not in B</td>
+          <td><code>a.difference(b)</code></td>
+        </tr>
+        <tr>
+          <td><code>set.symmetric_difference()</code></td>
+          <td>Returns elements not common to both</td>
+          <td><code>a.symmetric_difference(b)</code></td>
+        </tr>
+        <tr>
+          <td><code>set.issubset()</code></td>
+          <td>Checks if A is subset of B</td>
+          <td><code>a.issubset(b)</code></td>
+        </tr>
+        <tr>
+          <td><code>set.issuperset()</code></td>
+          <td>Checks if A is superset of B</td>
+          <td><code>a.issuperset(b)</code></td>
+        </tr>
+        <tr>
+          <td><code>set.isdisjoint()</code></td>
+          <td>Checks if A and B have no elements in common</td>
+          <td><code>a.isdisjoint(b)</code></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>📚 Set Operations</h2>
+      <pre><code>
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a | b)   # Union → {1, 2, 3, 4, 5}
+print(a & b)   # Intersection → {3}
+print(a - b)   # Difference → {1, 2}
+print(a ^ b)   # Symmetric Difference → {1, 2, 4, 5}
+      </code></pre>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Uses of Sets</h2>
+      <ul>
+        <li>Removing duplicates from a list.</li>
+        <li>Efficient membership testing (<code>in</code> keyword).</li>
+        <li>Performing mathematical set operations.</li>
+        <li>Storing unique items (e.g., unique users, unique words).</li>
+      </ul>
+      <pre><code>
+# Example: Removing duplicates
+nums = [1, 2, 2, 3, 4, 4, 5]
+unique_nums = set(nums)
+print(unique_nums)  # {1, 2, 3, 4, 5}
+      </code></pre>
+    </div>
+
+    <div class="card">
+      <h2>🔑 Key Points to Remember</h2>
+      <ul>
+        <li>Sets are <b>unordered</b> → no indexing.</li>
+        <li>No duplicates allowed.</li>
+        <li>Useful for fast lookups and unique collections.</li>
+        <li>Supports powerful <b>set operations</b>.</li>
+      </ul>
+    </div>
+
+    <div class="references">
+      <h2>📖 References</h2>
+      <ul>
+        <li><a href="https://docs.python.org/3/tutorial/datastructures.html#sets" target="_blank">Python Docs – Sets</a></li>
+        <li><a href="https://realpython.com/python-sets/" target="_blank">Real Python – Sets in Python</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <p><b>ZN Infotech Pvt. Ltd.</b> | 📞 9565017342 | 🌐 
+      <a href="https://zninfotech.com">zninfotech.com</a>
+    </p>
+    <p>We provide training in Python, Web Development, IoT, Mobile App Development, and more.</p>
+  </footer>
+
+</body>
+</html>

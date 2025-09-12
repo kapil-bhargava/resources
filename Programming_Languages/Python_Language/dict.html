@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Dictionary Explained</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #4CAF50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 4px solid #388E3C;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    pre {
+      background: #f4f4f4;
+      border-left: 5px solid #4CAF50;
+      padding: 12px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    code {
+      font-family: Consolas, monospace;
+      font-size: 14px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+      border-top: 4px solid #4CAF50;
+    }
+    footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Python Dictionary (dict)</h1>
+    <p>A complete guide to understanding Python's dictionary data type</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>📌 What is a Dictionary?</h2>
+      <p>
+        A <b>dictionary</b> in Python is a <b>collection of key-value pairs</b>. 
+        It works like a real-life dictionary: you use a <b>key</b> (the word) to find its <b>value</b> (the meaning).
+      </p>
+      <ul>
+        <li><b>Mutable</b>: You can change it after creation.</li>
+        <li><b>Unordered (before Python 3.7)</b>, but <b>insertion ordered from 3.7+</b>.</li>
+        <li><b>Keys must be unique</b> and immutable (string, number, tuple).</li>
+        <li><b>Values can be anything</b>: strings, numbers, lists, dicts, etc.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📝 Creating a Dictionary</h2>
+      <pre><code>
+# Empty dictionary
+my_dict = {}
+
+# Dictionary with data
+student = {
+    "name": "Alice",
+    "age": 21,
+    "course": "Computer Science"
+}
+
+print(student["name"])   # Alice
+print(student["age"])    # 21
+      </code></pre>
+    </div>
+
+    <div class="card">
+      <h2>⚡ Accessing and Modifying Data</h2>
+      <pre><code>
+student = {"name": "Alice", "age": 21}
+
+# Access value
+print(student["name"])   # Alice
+
+# Add new key-value pair
+student["course"] = "Python"
+
+# Modify existing value
+student["age"] = 22
+
+# Delete a key-value pair
+del student["name"]
+
+print(student)  # {'age': 22, 'course': 'Python'}
+      </code></pre>
+    </div>
+
+    <div class="card">
+      <h2>🛠️ Dictionary Methods</h2>
+      <p>Here are the most commonly used dictionary methods:</p>
+      <table>
+        <tr>
+          <th>Method</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td><code>dict.keys()</code></td>
+          <td>Returns all keys</td>
+          <td><code>student.keys()</code></td>
+        </tr>
+        <tr>
+          <td><code>dict.values()</code></td>
+          <td>Returns all values</td>
+          <td><code>student.values()</code></td>
+        </tr>
+        <tr>
+          <td><code>dict.items()</code></td>
+          <td>Returns key-value pairs as tuples</td>
+          <td><code>student.items()</code></td>
+        </tr>
+        <tr>
+          <td><code>dict.get(key)</code></td>
+          <td>Gets value safely (returns None if missing)</td>
+          <td><code>student.get("age")</code></td>
+        </tr>
+        <tr>
+          <td><code>dict.pop(key)</code></td>
+          <td>Removes and returns a value</td>
+          <td><code>student.pop("age")</code></td>
+        </tr>
+        <tr>
+          <td><code>dict.update()</code></td>
+          <td>Updates dictionary with new data</td>
+          <td><code>student.update({"age": 23})</code></td>
+        </tr>
+        <tr>
+          <td><code>dict.clear()</code></td>
+          <td>Removes all items</td>
+          <td><code>student.clear()</code></td>
+        </tr>
+        <tr>
+          <td><code>dict.copy()</code></td>
+          <td>Returns a shallow copy</td>
+          <td><code>student.copy()</code></td>
+        </tr>
+        <tr>
+          <td><code>dict.fromkeys()</code></td>
+          <td>Creates dict from keys with same value</td>
+          <td><code>dict.fromkeys(["a","b"], 0)</code></td>
+        </tr>
+        <tr>
+          <td><code>dict.setdefault()</code></td>
+          <td>Returns value if exists, else inserts default</td>
+          <td><code>student.setdefault("grade","A")</code></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>📚 Nested Dictionaries</h2>
+      <p>Dictionaries can contain other dictionaries, useful for structured data:</p>
+      <pre><code>
+students = {
+    "student1": {"name": "Alice", "age": 21},
+    "student2": {"name": "Bob", "age": 22}
+}
+
+print(students["student1"]["name"])  # Alice
+print(students["student2"]["age"])   # 22
+      </code></pre>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Uses of Dictionary</h2>
+      <ul>
+        <li>Storing structured data (student info, product details, configs).</li>
+        <li>Fast lookups using keys (like a hash map).</li>
+        <li>Counting items (frequency maps).</li>
+        <li>Representing JSON data (APIs, web data).</li>
+      </ul>
+      <pre><code>
+# Example: Counting character frequency
+text = "banana"
+freq = {}
+
+for char in text:
+    freq[char] = freq.get(char, 0) + 1
+
+print(freq)  # {'b': 1, 'a': 3, 'n': 2}
+      </code></pre>
+    </div>
+
+    <div class="card">
+      <h2>🔑 Key Points to Remember</h2>
+      <ul>
+        <li>Keys must be <b>immutable</b> (string, int, tuple).</li>
+        <li>Values can be <b>mutable</b> or immutable.</li>
+        <li>Dictionaries are <b>mutable</b> → you can add, modify, remove items.</li>
+        <li>Dictionaries are often used for <b>real-world mappings</b> like JSON, configs, lookups.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <p><b>ZN Infotech Pvt. Ltd.</b> | 📞 9565017342 | 🌐 
+      <a href="https://zninfotech.com">zninfotech.com</a>
+    </p>
+    <p>We provide training in Python, Web Development, IoT, Mobile App Development, and more.</p>
+    <p>References: 
+      <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries" target="_blank">
+        Python Docs - Dictionaries
+      </a>
+    </p>
+  </footer>
+
+</body>
+</html>
