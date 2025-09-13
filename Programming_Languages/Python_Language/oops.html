@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Object-Oriented Programming - Complete Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #306998;
+      --secondary: #FFD43B;
+      --accent: #4B8BBE;
+      --light: #f9f9f9;
+      --dark: #333;
+      --success: #4CAF50;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --info: #2196F3;
+      --code-bg: #f4f4f4;
+      --card-bg: #ffffff;
+      --border: #e6e6e6;
+      --text: #222;
+      --muted: #666;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      background: var(--light);
+      color: var(--text);
+      padding-bottom: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .nav-container {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0.8rem 0;
+    }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0.2rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.8rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid var(--primary);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-icon {
+      background: var(--primary);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      color: var(--accent);
+      margin: 1.2rem 0 0.6rem;
+      font-size: 1.4rem;
+    }
+
+    h4 {
+      color: var(--dark);
+      margin: 1rem 0 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 1.2rem;
+      border-left: 5px solid var(--primary);
+      overflow: auto;
+      border-radius: 6px;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    code {
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      color: var(--primary);
+      background: rgba(48, 105, 152, 0.1);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .note {
+      background: #e7f4e4;
+      border-left: 4px solid var(--success);
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .warning {
+      background: #fff3e0;
+      border-left: 4px solid var(--warning);
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .tip {
+      background: #e3f2fd;
+      border-left: 4px solid var(--info);
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .example-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+      border-top: 4px solid var(--primary);
+    }
+
+    .example-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .example-card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    .badge-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .badge-secondary {
+      background: var(--secondary);
+      color: var(--dark);
+    }
+
+    .badge-success {
+      background: var(--success);
+      color: white;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--dark), #222);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: #6ea8fe;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+
+    .back-to-top:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      nav a {
+        margin: 0.2rem 0;
+      }
+    }
+
+    .tab-container {
+      margin: 1.5rem 0;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .tab {
+      padding: 0.8rem 1.5rem;
+      background: #f1f1f1;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+      margin-right: 0.3rem;
+      font-weight: 500;
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .search-box {
+      margin: 1rem 0;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 40px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+
+    .interactive-demo {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .demo-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .demo-controls input, .demo-controls select {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .demo-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .demo-btn:hover {
+      background: var(--accent);
+    }
+
+    .demo-output {
+      background: white;
+      padding: 1rem;
+      border-radius: 4px;
+      border-left: 4px solid var(--primary);
+      min-height: 60px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th, .comparison-table td {
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      background: var(--primary);
+      color: white;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    .class-diagram {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .class-box {
+      border: 2px solid var(--primary);
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .class-name {
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .class-attributes, .class-methods {
+      padding: 0.8rem;
+    }
+
+    .class-attributes div, .class-methods div {
+      padding: 0.2rem 0;
+      font-family: monospace;
+    }
+
+    .inheritance-arrow {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 0.5rem 0;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-cube"></i> Python Object-Oriented Programming</h1>
+      <p>Master classes, objects, inheritance, and other OOP concepts with Python</p>
+    </div>
+  </header>
+
+  <div class="nav-container">
+    <nav class="container">
+      <a href="#intro" class="active">Introduction</a>
+      <a href="#classes-objects">Classes & Objects</a>
+      <a href="#inheritance">Inheritance</a>
+      <a href="#encapsulation">Encapsulation</a>
+      <a href="#polymorphism">Polymorphism</a>
+      <a href="#magic-methods">Magic Methods</a>
+      <a href="#examples">Examples</a>
+      <a href="#best-practices">Best Practices</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <section id="intro">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          <h2>What is Object-Oriented Programming?</h2>
+        </div>
+        <p>Object-Oriented Programming (OOP) is a programming paradigm based on the concept of "objects", which can contain data (attributes) and code (methods). OOP focuses on creating reusable, modular code that models real-world entities and relationships.</p>
+        
+        <div class="tip">
+          <p><strong>Analogy:</strong> Think of OOP like building with LEGO blocks. Each block (object) has specific properties and can connect with other blocks in defined ways. You can create complex structures by combining these reusable components.</p>
+        </div>
+
+        <h3>Why Use Object-Oriented Programming?</h3>
+        <ul>
+          <li><strong>Modularity:</strong> Code is organized into self-contained objects</li>
+          <li><strong>Reusability:</strong> Classes can be reused across programs</li>
+          <li><strong>Maintainability:</strong> Easier to update and maintain code</li>
+          <li><strong>Abstraction:</strong> Hide complex implementation details</li>
+          <li><strong>Modeling:</strong> Naturally represents real-world entities and relationships</li>
+        </ul>
+
+        <h3>Core OOP Concepts</h3>
+        <div class="grid">
+          <div class="example-card">
+            <h3><i class="fas fa-cube"></i> Classes & Objects</h3>
+            <p>Classes are blueprints, objects are instances</p>
+            <p><span class="badge badge-primary">Foundation</span></p>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-sitemap"></i> Inheritance</h3>
+            <p>Creating new classes based on existing ones</p>
+            <p><span class="badge badge-secondary">Reusability</span></p>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-lock"></i> Encapsulation</h3>
+            <p>Bundling data with methods that operate on that data</p>
+            <p><span class="badge badge-primary">Security</span></p>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-project-diagram"></i> Polymorphism</h3>
+            <p>Using a unified interface for different data types</p>
+            <p><span class="badge badge-secondary">Flexibility</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="classes-objects">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-cube"></i>
+          </div>
+          <h2>Classes and Objects</h2>
+        </div>
+        <p>Classes are blueprints for creating objects. They define the attributes (data) and methods (functions) that the objects will have. Objects are instances of classes.</p>
+
+        <h3>Class Definition Syntax</h3>
+        <pre><code>class ClassName:
+    """Optional class documentation string"""
+    
+    def __init__(self, parameters):
+        # Constructor - initializes new objects
+        self.attribute = value  # Instance attribute
+        
+    def method_name(self, parameters):
+        # Method definition
+        # method body</code></pre>
+
+        <h3>Creating and Using Objects</h3>
+        <div class="tab-container">
+          <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'tab1')">Class Definition</div>
+            <div class="tab" onclick="openTab(event, 'tab2')">Object Creation</div>
+            <div class="tab" onclick="openTab(event, 'tab3')">Accessing Members</div>
+          </div>
+          <div id="tab1" class="tab-content active">
+            <pre><code>class Car:
+    """A simple Car class"""
+    
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0  # Default value
+        
+    def get_descriptive_name(self):
+        """Return a formatted descriptive name"""
+        return f"{self.year} {self.make} {self.model}"
+        
+    def read_odometer(self):
+        """Print the car's mileage"""
+        print(f"This car has {self.odometer_reading} miles on it.")
+        
+    def update_odometer(self, mileage):
+        """Set the odometer reading"""
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")</code></pre>
+          </div>
+          <div id="tab2" class="tab-content">
+            <pre><code># Creating objects (instances) of the Car class
+my_car = Car('Toyota', 'Camry', 2022)
+your_car = Car('Honda', 'Civic', 2023)
+
+print(my_car)  # Output: <__main__.Car object at 0x...>
+print(your_car)  # Output: <__main__.Car object at 0x...></code></pre>
+          </div>
+          <div id="tab3" class="tab-content">
+            <pre><code># Accessing attributes
+print(my_car.make)  # Output: Toyota
+print(my_car.model)  # Output: Camry
+print(my_car.year)   # Output: 2022
+
+# Calling methods
+print(my_car.get_descriptive_name())  # Output: 2022 Toyota Camry
+my_car.read_odometer()  # Output: This car has 0 miles on it.
+
+# Modifying attributes directly
+my_car.odometer_reading = 100
+my_car.read_odometer()  # Output: This car has 100 miles on it.
+
+# Using a method to update attributes
+my_car.update_odometer(50)  # Output: You can't roll back an odometer!
+my_car.update_odometer(150)
+my_car.read_odometer()  # Output: This car has 150 miles on it.</code></pre>
+          </div>
+        </div>
+
+        <h3>Class vs Instance Attributes</h3>
+        <table class="comparison-table">
+          <tr>
+            <th>Type</th>
+            <th>Definition</th>
+            <th>Scope</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td>Instance Attributes</td>
+            <td>Defined inside methods, using <code>self</code></td>
+            <td>Specific to each object</td>
+            <td><code>self.name = "John"</code></td>
+          </tr>
+          <tr>
+            <td>Class Attributes</td>
+            <td>Defined directly in the class</td>
+            <td>Shared by all instances</td>
+            <td><code>class_var = "value"</code></td>
+          </tr>
+        </table>
+
+        <pre><code>class Dog:
+    # Class attribute - shared by all instances
+    species = "Canis familiaris"
+    
+    def __init__(self, name, age):
+        # Instance attributes - unique to each instance
+        self.name = name
+        self.age = age
+
+# Create instances
+buddy = Dog("Buddy", 9)
+miles = Dog("Miles", 4)
+
+# Access class attribute (same for all instances)
+print(buddy.species)  # Output: Canis familiaris
+print(miles.species)  # Output: Canis familiaris
+
+# Access instance attributes (different for each instance)
+print(buddy.name)  # Output: Buddy
+print(miles.name)  # Output: Miles</code></pre>
+      </div>
+    </section>
+
+    <section id="inheritance">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-sitemap"></i>
+          </div>
+          <h2>Inheritance</h2>
+        </div>
+        <p>Inheritance allows a class (child class) to inherit attributes and methods from another class (parent class). This promotes code reuse and establishes relationships between classes.</p>
+
+        <h3>Inheritance Syntax</h3>
+        <pre><code>class ParentClass:
+    # Parent class attributes and methods
+    pass
+
+class ChildClass(ParentClass):
+    # Child class inherits from ParentClass
+    # Can add new attributes and methods
+    # Can override parent methods
+    pass</code></pre>
+
+        <h3>Inheritance Example</h3>
+        <div class="class-diagram">
+          <div class="class-box">
+            <div class="class-name">Vehicle</div>
+            <div class="class-attributes">
+              <div>+ make: string</div>
+              <div>+ model: string</div>
+              <div>+ year: int</div>
+            </div>
+            <div class="class-methods">
+              <div>+ start_engine()</div>
+              <div>+ stop_engine()</div>
+            </div>
+          </div>
+          
+          <div class="inheritance-arrow">▼</div>
+          
+          <div class="class-box">
+            <div class="class-name">Car</div>
+            <div class="class-attributes">
+              <div>+ num_doors: int</div>
+              <div>+ fuel_type: string</div>
+            </div>
+            <div class="class-methods">
+              <div>+ open_trunk()</div>
+            </div>
+          </div>
+          
+          <div class="inheritance-arrow">▼</div>
+          
+          <div class="class-box">
+            <div class="class-name">ElectricCar</div>
+            <div class="class-attributes">
+              <div>+ battery_size: int</div>
+              <div>+ charge_level: float</div>
+            </div>
+            <div class="class-methods">
+              <div>+ charge_battery()</div>
+              <div>+ get_range()</div>
+            </div>
+          </div>
+        </div>
+
+        <pre><code>class Vehicle:
+    """A class representing a vehicle"""
+    
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        
+    def start_engine(self):
+        print("Engine started")
+        
+    def stop_engine(self):
+        print("Engine stopped")
+
+class Car(Vehicle):  # Inherits from Vehicle
+    """A class representing a car, specialized type of Vehicle"""
+    
+    def __init__(self, make, model, year, num_doors):
+        # Call parent class constructor
+        super().__init__(make, model, year)
+        self.num_doors = num_doors
+        
+    def open_trunk(self):
+        print("Trunk opened")
+
+class ElectricCar(Car):  # Inherits from Car
+    """A class representing an electric car"""
+    
+    def __init__(self, make, model, year, num_doors, battery_size):
+        super().__init__(make, model, year, num_doors)
+        self.battery_size = battery_size
+        self.charge_level = 100  # Start fully charged
+        
+    def charge_battery(self, amount):
+        """Charge the battery by specified amount"""
+        self.charge_level = min(100, self.charge_level + amount)
+        print(f"Battery charged to {self.charge_level}%")
+        
+    # Override parent method
+    def start_engine(self):
+        print("Electric motor activated")
+
+# Using the classes
+my_vehicle = Vehicle("Generic", "Model", 2020)
+my_car = Car("Toyota", "Camry", 2022, 4)
+my_tesla = ElectricCar("Tesla", "Model 3", 2023, 4, 75)
+
+my_vehicle.start_engine()  # Output: Engine started
+my_car.start_engine()      # Output: Engine started (inherited)
+my_car.open_trunk()        # Output: Trunk opened
+my_tesla.start_engine()    # Output: Electric motor activated (overridden)
+my_tesla.charge_battery(20)  # Output: Battery charged to 100%</code></pre>
+
+        <h3>Types of Inheritance</h3>
+        <table class="comparison-table">
+          <tr>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td>Single Inheritance</td>
+            <td>A class inherits from one parent class</td>
+            <td><code>class Child(Parent):</code></td>
+          </tr>
+          <tr>
+            <td>Multiple Inheritance</td>
+            <td>A class inherits from multiple parent classes</td>
+            <td><code>class Child(Parent1, Parent2):</code></td>
+          </tr>
+          <tr>
+            <td>Multilevel Inheritance</td>
+            <td>A class inherits from a child class</td>
+            <td><code>class GrandChild(Child):</code></td>
+          </tr>
+          <tr>
+            <td>Hierarchical Inheritance</td>
+            <td>Multiple classes inherit from one parent</td>
+            <td><code>class Child1(Parent):<br>class Child2(Parent):</code></td>
+          </tr>
+        </table>
+
+        <div class="warning">
+          <p><strong>Note:</strong> While multiple inheritance is powerful, it can lead to complexity and the "diamond problem" where a class inherits from two classes that have a common ancestor. Use it judiciously.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="encapsulation">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h2>Encapsulation</h2>
+        </div>
+        <p>Encapsulation is the bundling of data with the methods that operate on that data. It restricts direct access to some of an object's components, which is a way of preventing accidental interference and misuse.</p>
+
+        <h3>Access Modifiers in Python</h3>
+        <p>Python uses naming conventions to indicate access level rather than strict enforcement:</p>
+        <table class="comparison-table">
+          <tr>
+            <th>Access Level</th>
+            <th>Naming Convention</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td>Public</td>
+            <td><code>attribute_name</code></td>
+            <td>Accessible from anywhere</td>
+            <td><code>self.public_attr</code></td>
+          </tr>
+          <tr>
+            <td>Protected</td>
+            <td><code>_attribute_name</code></td>
+            <td>Should not be accessed outside class (convention)</td>
+            <td><code>self._protected_attr</code></td>
+          </tr>
+          <tr>
+            <td>Private</td>
+            <td><code>__attribute_name</code></td>
+            <td>Name mangling makes it harder to access</td>
+            <td><code>self.__private_attr</code></td>
+          </tr>
+        </table>
+
+        <h3>Encapsulation Example</h3>
+        <pre><code>class BankAccount:
+    """A class representing a bank account with encapsulation"""
+    
+    def __init__(self, account_holder, initial_balance=0):
+        self.account_holder = account_holder  # Public attribute
+        self._account_number = self._generate_account_number()  # Protected
+        self.__balance = initial_balance  # Private attribute
+        
+    def _generate_account_number(self):
+        """Protected method - for internal use only"""
+        import random
+        return random.randint(100000, 999999)
+        
+    def deposit(self, amount):
+        """Public method to deposit money"""
+        if amount > 0:
+            self.__balance += amount
+            print(f"Deposited ${amount}. New balance: ${self.__balance}")
+        else:
+            print("Deposit amount must be positive")
+            
+    def withdraw(self, amount):
+        """Public method to withdraw money"""
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+            print(f"Withdrew ${amount}. New balance: ${self.__balance}")
+        else:
+            print("Invalid withdrawal amount")
+            
+    def get_balance(self):
+        """Public method to get current balance"""
+        return self.__balance
+        
+    # Property for controlled access to account number
+    @property
+    def account_number(self):
+        return f"XXXX{str(self._account_number)[-4:]}"
+
+# Using the BankAccount class
+account = BankAccount("John Doe", 1000)
+
+# Accessing public attribute
+print(account.account_holder)  # Output: John Doe
+
+# Accessing protected attribute (not recommended but possible)
+print(account._account_number)  # Output: 123456 (example)
+
+# Trying to access private attribute directly
+# print(account.__balance)  # This would cause an AttributeError
+
+# Using public methods to interact with private data
+account.deposit(500)  # Output: Deposited $500. New balance: $1500
+account.withdraw(200)  # Output: Withdrew $200. New balance: $1300
+
+# Using property to access masked account number
+print(account.account_number)  # Output: XXXX3456</code></pre>
+
+        <h3>Properties for Controlled Access</h3>
+        <p>Python properties allow you to add getter, setter, and deleter methods to control access to attributes.</p>
+        
+        <pre><code>class Temperature:
+    def __init__(self, celsius=0):
+        self._celsius = celsius
+        
+    @property
+    def celsius(self):
+        """Getter for celsius"""
+        return self._celsius
+        
+    @celsius.setter
+    def celsius(self, value):
+        """Setter for celsius with validation"""
+        if value < -273.15:
+            raise ValueError("Temperature below absolute zero is not possible")
+        self._celsius = value
+        
+    @property
+    def fahrenheit(self):
+        """Read-only property for fahrenheit"""
+        return (self._celsius * 9/5) + 32
+
+# Using the Temperature class
+temp = Temperature(25)
+print(temp.celsius)     # Output: 25
+print(temp.fahrenheit)  # Output: 77.0
+
+temp.celsius = 30
+print(temp.celsius)     # Output: 30
+print(temp.fahrenheit)  # Output: 86.0
+
+# temp.celsius = -300  # Would raise ValueError</code></pre>
+      </div>
+    </section>
+
+    <section id="polymorphism">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h2>Polymorphism</h2>
+        </div>
+        <p>Polymorphism allows objects of different classes to be treated as objects of a common super class. It enables using a single interface to represent different underlying forms (data types).</p>
+
+        <h3>Polymorphism Through Inheritance</h3>
+        <pre><code>class Animal:
+    def speak(self):
+        raise NotImplementedError("Subclass must implement this method")
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+class Duck(Animal):
+    def speak(self):
+        return "Quack!"
+
+# Polymorphic function
+def animal_sound(animal):
+    print(animal.speak())
+
+# Create different animal objects
+animals = [Dog(), Cat(), Duck()]
+
+# Each animal responds differently to the same method call
+for animal in animals:
+    animal_sound(animal)
+# Output:
+# Woof!
+# Meow!
+# Quack!</code></pre>
+
+        <h3>Polymorphism With Duck Typing</h3>
+        <p>Python uses "duck typing" - if an object walks like a duck and quacks like a duck, it's treated as a duck, regardless of its actual type.</p>
+        
+        <pre><code>class TextFile:
+    def read(self):
+        return "Text content from file"
+
+class CSVFile:
+    def read(self):
+        return "CSV data from file"
+
+class Database:
+    def read(self):
+        return "Data from database"
+
+# This function doesn't care about the object's type
+# It only cares that the object has a read() method
+def process_data(data_source):
+    print(f"Processing: {data_source.read()}")
+
+# Different objects with the same method
+sources = [TextFile(), CSVFile(), Database()]
+
+for source in sources:
+    process_data(source)
+# Output:
+# Processing: Text content from file
+# Processing: CSV data from file
+# Processing: Data from database</code></pre>
+
+        <h3>Operator Overloading</h3>
+        <p>Python allows operators to have different meanings according to context (operator overloading).</p>
+        
+        <pre><code>class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        
+    def __add__(self, other):
+        """Overload the + operator"""
+        return Vector(self.x + other.x, self.y + other.y)
+        
+    def __sub__(self, other):
+        """Overload the - operator"""
+        return Vector(self.x - other.x, self.y - other.y)
+        
+    def __mul__(self, scalar):
+        """Overload the * operator for scalar multiplication"""
+        return Vector(self.x * scalar, self.y * scalar)
+        
+    def __str__(self):
+        """Overload the str() function"""
+        return f"Vector({self.x}, {self.y})"
+
+# Using operator overloading
+v1 = Vector(2, 3)
+v2 = Vector(1, 2)
+
+v3 = v1 + v2  # Uses __add__
+print(v3)  # Output: Vector(3, 5)
+
+v4 = v1 - v2  # Uses __sub__
+print(v4)  # Output: Vector(1, 1)
+
+v5 = v1 * 3  # Uses __mul__
+print(v5)  # Output: Vector(6, 9)</code></pre>
+      </div>
+    </section>
+
+    <section id="magic-methods">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h2>Magic Methods</h2>
+        </div>
+        <p>Magic methods (also called dunder methods) are special methods that start and end with double underscores. They allow you to define how objects of your class behave with Python's built-in operations.</p>
+
+        <h3>Common Magic Methods</h3>
+        <table class="comparison-table">
+          <tr>
+            <th>Method</th>
+            <th>Purpose</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td><code>__init__</code></td>
+            <td>Object initialization</td>
+            <td><code>obj = MyClass()</code></td>
+          </tr>
+          <tr>
+            <td><code>__str__</code></td>
+            <td>String representation</td>
+            <td><code>print(obj)</code></td>
+          </tr>
+          <tr>
+            <td><code>__len__</code></td>
+            <td>Length of object</td>
+            <td><code>len(obj)</code></td>
+          </tr>
+          <tr>
+            <td><code>__getitem__</code></td>
+            <td>Indexing</td>
+            <td><code>obj[index]</code></td>
+          </tr>
+          <tr>
+            <td><code>__setitem__</code></td>
+            <td>Assignment by index</td>
+            <td><code>obj[index] = value</code></td>
+          </tr>
+          <tr>
+            <td><code>__add__</code></td>
+            <td>Addition</td>
+            <td><code>obj1 + obj2</code></td>
+          </tr>
+          <tr>
+            <td><code>__eq__</code></td>
+            <td>Equality comparison</td>
+            <td><code>obj1 == obj2</code></td>
+          </tr>
+        </table>
+
+        <h3>Magic Methods Example</h3>
+        <pre><code>class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+        
+    def __str__(self):
+        return f"'{self.title}' by {self.author}"
+        
+    def __len__(self):
+        return self.pages
+        
+    def __eq__(self, other):
+        if isinstance(other, Book):
+            return (self.title == other.title and 
+                    self.author == other.author)
+        return False
+        
+    def __add__(self, other):
+        if isinstance(other, Book):
+            # Create a bookshelf with both books
+            return Bookshelf([self, other])
+        return NotImplemented
+        
+    def __getitem__(self, key):
+        # Allow book['title'] or book['author']
+        if key == 'title':
+            return self.title
+        elif key == 'author':
+            return self.author
+        elif key == 'pages':
+            return self.pages
+        else:
+            raise KeyError(f"Book has no attribute '{key}'")
+
+class Bookshelf:
+    def __init__(self, books=None):
+        self.books = books or []
+        
+    def __len__(self):
+        return len(self.books)
+        
+    def __getitem__(self, index):
+        return self.books[index]
+        
+    def __str__(self):
+        return f"Bookshelf with {len(self)} books"
+
+# Using the Book class
+book1 = Book("Python Basics", "John Doe", 300)
+book2 = Book("Advanced Python", "Jane Smith", 450)
+
+print(book1)  # Output: 'Python Basics' by John Doe (uses __str__)
+print(len(book1))  # Output: 300 (uses __len__)
+
+# Comparison
+book3 = Book("Python Basics", "John Doe", 350)
+print(book1 == book3)  # Output: True (uses __eq__)
+print(book1 == book2)  # Output: False
+
+# Addition creates a bookshelf
+shelf = book1 + book2  # Uses __add__
+print(shelf)  # Output: Bookshelf with 2 books
+print(len(shelf))  # Output: 2
+print(shelf[0])  # Output: 'Python Basics' by John Doe
+
+# Dictionary-like access
+print(book1['title'])  # Output: Python Basics (uses __getitem__)
+print(book1['author'])  # Output: John Doe</code></pre>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h2>Practical Examples</h2>
+        </div>
+        <p>Here are some practical examples of OOP concepts in real-world scenarios.</p>
+
+        <div class="grid">
+          <div class="example-card">
+            <h3><i class="fas fa-user"></i> User Management System</h3>
+            <pre><code>class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+        self.posts = []
+        
+    def create_post(self, content):
+        post = Post(content, self)
+        self.posts.append(post)
+        return post
+        
+    def __str__(self):
+        return f"User: {self.username}"
+
+class Post:
+    def __init__(self, content, author):
+        self.content = content
+        self.author = author
+        self.timestamp = datetime.now()
+        
+    def __str__(self):
+        return f"{self.author.username}: {self.content}"
+
+# Usage
+user1 = User("johndoe", "john@example.com")
+post1 = user1.create_post("My first post!")
+print(post1)</code></pre>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-shopping-cart"></i> E-commerce System</h3>
+            <pre><code>class Product:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        
+    def update_stock(self, amount):
+        self.quantity += amount
+        
+    def __str__(self):
+        return f"{self.name} - ${self.price}"
+
+class ShoppingCart:
+    def __init__(self):
+        self.items = {}
+        
+    def add_item(self, product, quantity=1):
+        if product.quantity >= quantity:
+            if product in self.items:
+                self.items[product] += quantity
+            else:
+                self.items[product] = quantity
+            product.quantity -= quantity
+        else:
+            print("Insufficient stock")
+            
+    def get_total(self):
+        return sum(product.price * qty for product, qty in self.items.items())</code></pre>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-gamepad"></i> Game Character System</h3>
+            <pre><code>class Character:
+    def __init__(self, name, health=100):
+        self.name = name
+        self.health = health
+        
+    def attack(self, target):
+        damage = random.randint(5, 15)
+        target.take_damage(damage)
+        print(f"{self.name} attacks {target.name} for {damage} damage!")
+        
+    def take_damage(self, damage):
+        self.health -= damage
+        if self.health <= 0:
+            print(f"{self.name} has been defeated!")
+            
+    def __str__(self):
+        return f"{self.name} (Health: {self.health})"
+
+# Usage
+hero = Character("Hero")
+enemy = Character("Enemy")
+
+hero.attack(enemy)
+print(enemy)</code></pre>
+          </div>
+        </div>
+
+        <h3>Interactive OOP Demo: Bank Account System</h3>
+        <div class="interactive-demo">
+          <div class="demo-controls">
+            <div>
+              <label for="account-name">Account Holder:</label>
+              <input type="text" id="account-name" value="John Doe">
+            </div>
+            <div>
+              <label for="initial-deposit">Initial Deposit:</label>
+              <input type="number" id="initial-deposit" value="1000">
+            </div>
+            <button class="demo-btn" onclick="createAccount()">Create Account</button>
+          </div>
+          <div class="demo-controls">
+            <div>
+              <label for="deposit-amount">Deposit Amount:</label>
+              <input type="number" id="deposit-amount" value="100">
+            </div>
+            <button class="demo-btn" onclick="deposit()">Deposit</button>
+          </div>
+          <div class="demo-controls">
+            <div>
+              <label for="withdraw-amount">Withdraw Amount:</label>
+              <input type="number" id="withdraw-amount" value="50">
+            </div>
+            <button class="demo-btn" onclick="withdraw()">Withdraw</button>
+          </div>
+          <div class="demo-output" id="bank-output">
+            Create an account to get started...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="best-practices">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h2>Best Practices</h2>
+        </div>
+        <p>Follow these best practices to write clean, maintainable, and efficient object-oriented code.</p>
+
+        <h3>1. Follow the Single Responsibility Principle</h3>
+        <pre><code># Bad - class does too many things
+class UserManager:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+        
+    def save_to_database(self):
+        # database logic
+        pass
+        
+    def send_email(self, message):
+        # email logic
+        pass
+        
+    def validate_data(self):
+        # validation logic
+        pass
+
+# Better - separate concerns
+class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+        
+class UserValidator:
+    @staticmethod
+    def validate(user):
+        # validation logic
+        pass
+        
+class UserRepository:
+    def save(self, user):
+        # database logic
+        pass
+        
+class EmailService:
+    def send(self, user, message):
+        # email logic
+        pass</code></pre>
+
+        <h3>2. Use Composition Over Inheritance</h3>
+        <pre><code># Inheritance can lead to complex hierarchies
+class Vehicle:
+    pass
+
+class Car(Vehicle):
+    pass
+
+class ElectricCar(Car):
+    pass
+
+class HybridCar(ElectricCar):
+    pass  # Gets complicated!
+
+# Composition is often more flexible
+class Engine:
+    pass
+
+class Battery:
+    pass
+
+class Car:
+    def __init__(self):
+        self.engine = Engine()
+        self.battery = Battery()  # Optional</code></pre>
+
+        <h3>3. Prefer Private Attributes with Getters/Setters</h3>
+        <pre><code># Direct access allows invalid states
+class Person:
+    def __init__(self, age):
+        self.age = age  # Could be set to negative
+
+person = Person(-5)  # Invalid age
+
+# Use properties for validation
+class Person:
+    def __init__(self, age):
+        self._age = age
+        
+    @property
+    def age(self):
+        return self._age
+        
+    @age.setter
+    def age(self, value):
+        if value < 0:
+            raise ValueError("Age cannot be negative")
+        self._age = value
+
+person = Person(25)
+person.age = 30  # OK
+# person.age = -5  # Raises ValueError</code></pre>
+
+        <h3>4. Use Meaningful Class and Method Names</h3>
+        <pre><code># Unclear names
+class A:
+    def x(self, y):
+        pass
+
+# Clear, descriptive names
+class ShoppingCart:
+    def add_product(self, product):
+        pass
+        
+    def calculate_total(self):
+        pass</code></pre>
+
+        <h3>5. Write Comprehensive Docstrings</h3>
+        <pre><code>class BankAccount:
+    """A class representing a bank account.
+    
+    Attributes:
+        account_holder (str): The name of the account holder
+        balance (float): The current account balance
+        
+    Methods:
+        deposit(amount): Add funds to the account
+        withdraw(amount): Remove funds from the account
+        get_balance(): Return the current balance
+    """
+    
+    def __init__(self, account_holder, initial_balance=0):
+        """Initialize a new bank account.
+        
+        Args:
+            account_holder (str): The name of the account holder
+            initial_balance (float, optional): Starting balance. Defaults to 0.
+        """
+        self.account_holder = account_holder
+        self.balance = initial_balance</code></pre>
+
+        <h3>6. Use Type Hints for Better Documentation</h3>
+        <pre><code>from typing import List, Optional
+
+class Product:
+    def __init__(self, name: str, price: float, quantity: int = 0):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        
+    def update_stock(self, amount: int) -> None:
+        """Update the product stock.
+        
+        Args:
+            amount (int): The amount to add (positive) or remove (negative)
+        """
+        self.quantity += amount
+        
+    def is_in_stock(self) -> bool:
+        """Check if the product is in stock.
+        
+        Returns:
+            bool: True if quantity > 0, False otherwise
+        """
+        return self.quantity > 0</code></pre>
+      </div>
+    </section>
+  </div>
+
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <footer class="container">
+    <p>Python Object-Oriented Programming Guide &copy; 2023. This content is for educational purposes only.</p>
+    <p>Python is a registered trademark of the Python Software Foundation.</p>
+    <p>Found an issue or want to contribute? <a href="https://github.com/example/python-oop-guide" target="_blank">Visit the GitHub repository</a>.</p>
+  </footer>
+
+  <script>
+    // Tab functionality
+    function openTab(evt, tabId) {
+      const tabcontent = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      
+      const tablinks = document.getElementsByClassName("tab");
+      for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    
+    // Navigation highlighting
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+    
+    window.addEventListener("scroll", () => {
+      let current = "";
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute("id");
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").substring(1) === current) {
+          link.classList.add("active");
+        }
+      });
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (this.getAttribute('href') === '#') {
+          // Back to top
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return;
+        }
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Bank Account Demo
+    let bankAccount = null;
+    
+    class BankAccount {
+      constructor(accountHolder, initialBalance = 0) {
+        this.accountHolder = accountHolder;
+        this._balance = initialBalance;
+        this.transactions = [];
+        this.addTransaction('Initial deposit', initialBalance);
+      }
+      
+      deposit(amount) {
+        if (amount > 0) {
+          this._balance += amount;
+          this.addTransaction('Deposit', amount);
+          return true;
+        }
+        return false;
+      }
+      
+      withdraw(amount) {
+        if (amount > 0 && amount <= this._balance) {
+          this._balance -= amount;
+          this.addTransaction('Withdrawal', -amount);
+          return true;
+        }
+        return false;
+      }
+      
+      get balance() {
+        return this._balance;
+      }
+      
+      addTransaction(description, amount) {
+        this.transactions.push({
+          date: new Date().toLocaleString(),
+          description,
+          amount,
+          balance: this._balance
+        });
+      }
+      
+      getTransactionHistory() {
+        return this.transactions.map(t => 
+          `${t.date} - ${t.description}: ${t.amount >= 0 ? '+' : ''}${t.amount.toFixed(2)} (Balance: ${t.balance.toFixed(2)})`
+        ).join('\n');
+      }
+    }
+    
+    function createAccount() {
+      const name = document.getElementById('account-name').value || 'John Doe';
+      const deposit = parseFloat(document.getElementById('initial-deposit').value) || 0;
+      
+      bankAccount = new BankAccount(name, deposit);
+      
+      document.getElementById('bank-output').textContent = 
+        `Account created for ${name} with initial balance: $${deposit.toFixed(2)}`;
+    }
+    
+    function deposit() {
+      if (!bankAccount) {
+        document.getElementById('bank-output').textContent = 'Please create an account first';
+        return;
+      }
+      
+      const amount = parseFloat(document.getElementById('deposit-amount').value) || 0;
+      if (amount <= 0) {
+        document.getElementById('bank-output').textContent = 'Please enter a positive amount';
+        return;
+      }
+      
+      if (bankAccount.deposit(amount)) {
+        document.getElementById('bank-output').textContent = 
+          `Deposited $${amount.toFixed(2)}. New balance: $${bankAccount.balance.toFixed(2)}`;
+      } else {
+        document.getElementById('bank-output').textContent = 'Deposit failed';
+      }
+    }
+    
+    function withdraw() {
+      if (!bankAccount) {
+        document.getElementById('bank-output').textContent = 'Please create an account first';
+        return;
+      }
+      
+      const amount = parseFloat(document.getElementById('withdraw-amount').value) || 0;
+      if (amount <= 0) {
+        document.getElementById('bank-output').textContent = 'Please enter a positive amount';
+        return;
+      }
+      
+      if (bankAccount.withdraw(amount)) {
+        document.getElementById('bank-output').textContent = 
+          `Withdrew $${amount.toFixed(2)}. New balance: $${bankAccount.balance.toFixed(2)}`;
+      } else {
+        document.getElementById('bank-output').textContent = 
+          `Withdrawal failed. Insufficient funds or invalid amount. Current balance: $${bankAccount.balance.toFixed(2)}`;
+      }
+    }
+  </script>
+</body>
+</html>

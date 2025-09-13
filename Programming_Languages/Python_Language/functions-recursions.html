@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Functions & Recursion - Complete Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #306998;
+      --secondary: #FFD43B;
+      --accent: #4B8BBE;
+      --light: #f9f9f9;
+      --dark: #333;
+      --success: #4CAF50;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --info: #2196F3;
+      --code-bg: #f4f4f4;
+      --card-bg: #ffffff;
+      --border: #e6e6e6;
+      --text: #222;
+      --muted: #666;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      background: var(--light);
+      color: var(--text);
+      padding-bottom: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .nav-container {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0.8rem 0;
+    }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0.2rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.8rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid var(--primary);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-icon {
+      background: var(--primary);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      color: var(--accent);
+      margin: 1.2rem 0 0.6rem;
+      font-size: 1.4rem;
+    }
+
+    h4 {
+      color: var(--dark);
+      margin: 1rem 0 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 1.2rem;
+      border-left: 5px solid var(--primary);
+      overflow: auto;
+      border-radius: 6px;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    code {
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      color: var(--primary);
+      background: rgba(48, 105, 152, 0.1);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .note {
+      background: #e7f4e4;
+      border-left: 4px solid var(--success);
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .warning {
+      background: #fff3e0;
+      border-left: 4px solid var(--warning);
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .tip {
+      background: #e3f2fd;
+      border-left: 4px solid var(--info);
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .example-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+      border-top: 4px solid var(--primary);
+    }
+
+    .example-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .example-card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    .badge-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .badge-secondary {
+      background: var(--secondary);
+      color: var(--dark);
+    }
+
+    .badge-success {
+      background: var(--success);
+      color: white;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--dark), #222);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: #6ea8fe;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+
+    .back-to-top:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      nav a {
+        margin: 0.2rem 0;
+      }
+    }
+
+    .tab-container {
+      margin: 1.5rem 0;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .tab {
+      padding: 0.8rem 1.5rem;
+      background: #f1f1f1;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+      margin-right: 0.3rem;
+      font-weight: 500;
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .search-box {
+      margin: 1rem 0;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 40px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+
+    .interactive-demo {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .demo-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .demo-controls input, .demo-controls select {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .demo-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .demo-btn:hover {
+      background: var(--accent);
+    }
+
+    .demo-output {
+      background: white;
+      padding: 1rem;
+      border-radius: 4px;
+      border-left: 4px solid var(--primary);
+      min-height: 60px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th, .comparison-table td {
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      background: var(--primary);
+      color: white;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    .function-visualization {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+    }
+
+    .visualization-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .stack-frame {
+      background: var(--code-bg);
+      border: 1px solid var(--primary);
+      border-radius: 4px;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      width: 300px;
+      text-align: center;
+    }
+
+    .stack-arrow {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-code"></i> Python Functions & Recursion</h1>
+      <p>Master the art of writing reusable code and solving problems recursively</p>
+    </div>
+  </header>
+
+  <div class="nav-container">
+    <nav class="container">
+      <a href="#intro" class="active">Introduction</a>
+      <a href="#syntax">Function Syntax</a>
+      <a href="#parameters">Parameters & Arguments</a>
+      <a href="#scope">Variable Scope</a>
+      <a href="#builtin">Built-in Functions</a>
+      <a href="#recursion">Recursion</a>
+      <a href="#examples">Examples</a>
+      <a href="#best-practices">Best Practices</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <section id="intro">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          <h2>What Are Functions?</h2>
+        </div>
+        <p>Functions are self-contained blocks of code that perform a specific task. They help organize code into manageable pieces, reduce repetition, and make programs easier to understand and maintain.</p>
+        
+        <div class="tip">
+          <p><strong>Analogy:</strong> Think of functions as recipes. Once you define a recipe (function), you can use it repeatedly with different ingredients (arguments) to create variations of the same dish.</p>
+        </div>
+
+        <h3>Why Use Functions?</h3>
+        <ul>
+          <li><strong>Code Reusability:</strong> Write once, use multiple times</li>
+          <li><strong>Modularity:</strong> Break complex problems into smaller, manageable pieces</li>
+          <li><strong>Abstraction:</strong> Hide implementation details, focus on what the function does</li>
+          <li><strong>Maintainability:</strong> Easier to debug and update code</li>
+          <li><strong>Collaboration:</strong> Different programmers can work on different functions</li>
+        </ul>
+
+        <h3>Function Components</h3>
+        <div class="tab-container">
+          <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'tab1')">Definition</div>
+            <div class="tab" onclick="openTab(event, 'tab2')">Call</div>
+            <div class="tab" onclick="openTab(event, 'tab3')">Return</div>
+          </div>
+          <div id="tab1" class="tab-content active">
+            <pre><code># Function definition
+def function_name(parameters):
+    """docstring"""  # Optional documentation
+    # function body
+    # ...
+    return value  # Optional return statement</code></pre>
+          </div>
+          <div id="tab2" class="tab-content">
+            <pre><code># Function call
+result = function_name(arguments)
+
+# Example
+def greet(name):
+    return f"Hello, {name}!"
+
+message = greet("Alice")
+print(message)  # Output: Hello, Alice!</code></pre>
+          </div>
+          <div id="tab3" class="tab-content">
+            <pre><code># Return statement
+def add(a, b):
+    return a + b  # Returns the sum
+
+# Functions without return statement return None
+def print_sum(a, b):
+    print(a + b)  # Prints but returns None
+
+result = add(3, 5)  # result = 8
+result = print_sum(3, 5)  # Prints 8, result = None</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="syntax">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h2>Function Syntax and Structure</h2>
+        </div>
+        <p>Python functions follow a specific syntax that makes them flexible yet consistent. Understanding the syntax is key to writing effective functions.</p>
+
+        <h3>Basic Syntax Rules</h3>
+        <ol>
+          <li>Start with the <code>def</code> keyword followed by the function name and parentheses</li>
+          <li>Parameters are placed inside the parentheses (can be empty)</li>
+          <li>End the line with a colon</li>
+          <li>The function body is indented (typically 4 spaces)</li>
+          <li>Optional <code>return</code> statement to send a value back to the caller</li>
+          <li>Optional docstring to document the function's purpose</li>
+        </ol>
+
+        <h3>Anatomy of a Function</h3>
+        <pre><code>def calculate_grade(score, max_score=100):
+    """
+    Calculate a letter grade based on percentage.
+    
+    Args:
+        score (float): The student's score
+        max_score (float): Maximum possible score (default 100)
+        
+    Returns:
+        str: Letter grade (A, B, C, D, or F)
+    """
+    percentage = (score / max_score) * 100
+    
+    if percentage >= 90:
+        return "A"
+    elif percentage >= 80:
+        return "B"
+    elif percentage >= 70:
+        return "C"
+    elif percentage >= 60:
+        return "D"
+    else:
+        return "F"
+
+# Using the function
+grade = calculate_grade(85)
+print(f"Grade: {grade}")  # Output: Grade: B</code></pre>
+
+        <div class="note">
+          <p><strong>Note:</strong> Python functions are first-class objects, which means they can be assigned to variables, stored in data structures, passed as arguments to other functions, and even returned as values from other functions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="parameters">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h2>Parameters and Arguments</h2>
+        </div>
+        <p>Parameters are variables in a function definition, while arguments are the actual values passed to the function when it's called. Python supports several types of parameters.</p>
+
+        <h3>Types of Parameters</h3>
+        <table class="comparison-table">
+          <tr>
+            <th>Type</th>
+            <th>Syntax</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td>Positional</td>
+            <td><code>def func(a, b)</code></td>
+            <td>Arguments matched by position</td>
+            <td><code>func(1, 2)</code></td>
+          </tr>
+          <tr>
+            <td>Keyword</td>
+            <td><code>def func(a, b)</code></td>
+            <td>Arguments matched by parameter name</td>
+            <td><code>func(a=1, b=2)</code></td>
+          </tr>
+          <tr>
+            <td>Default</td>
+            <td><code>def func(a=0)</code></td>
+            <td>Parameters with default values</td>
+            <td><code>func()</code> uses a=0</td>
+          </tr>
+          <tr>
+            <td>Variable-length</td>
+            <td><code>def func(*args)</code></td>
+            <td>Accepts any number of positional arguments</td>
+            <td><code>func(1, 2, 3)</code></td>
+          </tr>
+          <tr>
+            <td>Keyword variable-length</td>
+            <td><code>def func(**kwargs)</code></td>
+            <td>Accepts any number of keyword arguments</td>
+            <td><code>func(a=1, b=2)</code></td>
+          </tr>
+        </table>
+
+        <h3>Parameter Examples</h3>
+        <div class="tab-container">
+          <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'tab4')">Positional & Keyword</div>
+            <div class="tab" onclick="openTab(event, 'tab5')">Default Values</div>
+            <div class="tab" onclick="openTab(event, 'tab6')">Variable-length</div>
+          </div>
+          <div id="tab4" class="tab-content active">
+            <pre><code># Positional arguments
+def describe_pet(animal_type, pet_name):
+    print(f"I have a {animal_type} named {pet_name}.")
+
+# These calls are equivalent
+describe_pet("hamster", "Harry")  # Positional
+describe_pet(animal_type="hamster", pet_name="Harry")  # Keyword
+describe_pet(pet_name="Harry", animal_type="hamster")  # Order doesn't matter with keywords</code></pre>
+          </div>
+          <div id="tab5" class="tab-content">
+            <pre><code># Default parameter values
+def describe_pet(pet_name, animal_type="dog"):
+    print(f"I have a {animal_type} named {pet_name}.")
+
+describe_pet("Willie")  # animal_type defaults to "dog"
+describe_pet("Harry", "hamster")  # animal_type is "hamster"
+
+# Important: Mutable default values can be problematic
+def add_item(item, items=[]):  # Wrong - same list used in all calls
+    items.append(item)
+    return items
+
+def add_item_fixed(item, items=None):  # Correct
+    if items is None:
+        items = []
+    items.append(item)
+    return items</code></pre>
+          </div>
+          <div id="tab6" class="tab-content">
+            <pre><code># Variable-length arguments
+def make_pizza(*toppings):
+    """Print the list of toppings that have been requested."""
+    print("Making a pizza with the following toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+
+make_pizza('pepperoni')
+make_pizza('mushrooms', 'green peppers', 'extra cheese')
+
+# Combining with regular parameters
+def build_profile(first, last, **user_info):
+    """Build a dictionary containing everything we know about a user."""
+    user_info['first_name'] = first
+    user_info['last_name'] = last
+    return user_info
+
+user_profile = build_profile('albert', 'einstein',
+                             location='princeton',
+                             field='physics')
+print(user_profile)</code></pre>
+          </div>
+        </div>
+
+        <div class="warning">
+          <p><strong>Important:</strong> Avoid using mutable objects (like lists or dictionaries) as default parameter values, as they are created only once when the function is defined, not each time the function is called. This can lead to unexpected behavior.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="scope">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h2>Variable Scope</h2>
+        </div>
+        <p>Variable scope determines where in your program a variable is accessible. Python has four types of variable scopes.</p>
+
+        <h3>Types of Variable Scope</h3>
+        <table class="comparison-table">
+          <tr>
+            <th>Scope</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td>Local</td>
+            <td>Variables defined inside a function</td>
+            <td><code>def func(): x = 5</code></td>
+          </tr>
+          <tr>
+            <td>Enclosing</td>
+            <td>Variables in the scope of enclosing functions</td>
+            <td>Nested functions</td>
+          </tr>
+          <tr>
+            <td>Global</td>
+            <td>Variables defined at the top level of a module</td>
+            <td><code>x = 5</code> outside any function</td>
+          </tr>
+          <tr>
+            <td>Built-in</td>
+            <td>Names preassigned in Python</td>
+            <td><code>print</code>, <code>len</code>, etc.</td>
+          </tr>
+        </table>
+
+        <h3>Scope Examples</h3>
+        <pre><code># Global variable
+global_var = "I'm global"
+
+def test_scope():
+    # Local variable
+    local_var = "I'm local"
+    print(global_var)  # Accessible: I'm global
+    print(local_var)   # Accessible: I'm local
+    
+    def inner_function():
+        # Enclosing scope
+        inner_var = "I'm in inner function"
+        print(local_var)  # Accessible: I'm local
+        print(global_var) # Accessible: I'm global
+        
+    inner_function()
+    # print(inner_var)  # Not accessible - would cause error
+
+test_scope()
+# print(local_var)  # Not accessible - would cause error</code></pre>
+
+        <h3>The global and nonlocal Keywords</h3>
+        <pre><code>x = "global"
+
+def outer():
+    x = "outer"  # Enclosing scope
+    
+    def inner():
+        nonlocal x  # Refers to x in the enclosing (outer) scope
+        x = "inner"  # Modifies the outer x
+        
+    inner()
+    print(x)  # Output: inner
+
+def change_global():
+    global x  # Refers to the global x
+    x = "changed"  # Modifies the global x
+
+outer()
+print(x)  # Output: global (not changed by nonlocal)
+
+change_global()
+print(x)  # Output: changed</code></pre>
+
+        <div class="note">
+          <p><strong>Best Practice:</strong> Minimize the use of global variables. Instead, pass values as parameters and return results. This makes your functions more self-contained and easier to test and debug.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="builtin">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-toolbox"></i>
+          </div>
+          <h2>Built-in Functions</h2>
+        </div>
+        <p>Python comes with many built-in functions that are always available. These functions perform common tasks and are optimized for performance.</p>
+
+        <h3>Commonly Used Built-in Functions</h3>
+        <div class="grid">
+          <div class="example-card">
+            <h3><i class="fas fa-ruler"></i> len()</h3>
+            <p>Returns the length of an object</p>
+            <pre><code>length = len("Hello")  # 5
+length = len([1, 2, 3])  # 3</code></pre>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-exchange-alt"></i> type()</h3>
+            <p>Returns the type of an object</p>
+            <pre><code>t = type(5)  # &lt;class 'int'&gt;
+t = type("hello")  # &lt;class 'str'&gt;</code></pre>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-cogs"></i> range()</h3>
+            <p>Generates a sequence of numbers</p>
+            <pre><code>numbers = range(5)  # 0, 1, 2, 3, 4
+numbers = range(1, 6)  # 1, 2, 3, 4, 5
+numbers = range(0, 10, 2)  # 0, 2, 4, 6, 8</code></pre>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-list"></i> list(), dict(), set(), tuple()</h3>
+            <p>Create data structures</p>
+            <pre><code>lst = list([1, 2, 3])
+d = dict(a=1, b=2)
+s = set([1, 2, 3])
+t = tuple([1, 2, 3])</code></pre>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-sort"></i> sorted()</h3>
+            <p>Returns a sorted list from an iterable</p>
+            <pre><code>numbers = [3, 1, 4, 2]
+sorted_nums = sorted(numbers)  # [1, 2, 3, 4]
+sorted_nums = sorted(numbers, reverse=True)  # [4, 3, 2, 1]</code></pre>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-filter"></i> filter()</h3>
+            <p>Filters elements from an iterable</p>
+            <pre><code>numbers = [1, 2, 3, 4, 5, 6]
+even = filter(lambda x: x % 2 == 0, numbers)
+# even = [2, 4, 6]</code></pre>
+          </div>
+        </div>
+
+        <h3>Interactive Built-in Functions Demo</h3>
+        <div class="interactive-demo">
+          <div class="demo-controls">
+            <div>
+              <label for="demo-input">Enter values (comma-separated):</label>
+              <input type="text" id="demo-input" value="5, 2, 8, 1, 9">
+            </div>
+            <div>
+              <label for="demo-function">Select function:</label>
+              <select id="demo-function">
+                <option value="len">len() - Length</option>
+                <option value="sum">sum() - Sum</option>
+                <option value="max">max() - Maximum</option>
+                <option value="min">min() - Minimum</option>
+                <option value="sorted">sorted() - Sorted</option>
+              </select>
+            </div>
+            <button class="demo-btn" onclick="runBuiltInFunction()">Run Function</button>
+          </div>
+          <div class="demo-output" id="demo-output">
+            Result will appear here...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recursion">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-infinity"></i>
+          </div>
+          <h2>Recursion</h2>
+        </div>
+        <p>Recursion is a technique where a function calls itself to solve a problem by breaking it down into smaller subproblems of the same type.</p>
+
+        <h3>Key Elements of Recursion</h3>
+        <ul>
+          <li><strong>Base Case:</strong> The condition that stops the recursion</li>
+          <li><strong>Recursive Case:</strong> The part where the function calls itself</li>
+          <li><strong>Progress Toward Base Case:</strong> Each recursive call should move closer to the base case</li>
+        </ul>
+
+        <h3>Classic Recursion Example: Factorial</h3>
+        <pre><code>def factorial(n):
+    """
+    Calculate n! using recursion.
+    
+    n! = n * (n-1) * (n-2) * ... * 1
+    0! = 1 (by definition)
+    """
+    # Base case
+    if n == 0:
+        return 1
+    # Recursive case
+    else:
+        return n * factorial(n - 1)
+
+# Test the function
+print(factorial(5))  # Output: 120
+print(factorial(0))  # Output: 1</code></pre>
+
+        <div class="function-visualization">
+          <h4>Visualizing factorial(5) Execution</h4>
+          <div class="visualization-container">
+            <div class="stack-frame">factorial(5) = 5 × factorial(4)</div>
+            <div class="stack-arrow">↓</div>
+            <div class="stack-frame">factorial(4) = 4 × factorial(3)</div>
+            <div class="stack-arrow">↓</div>
+            <div class="stack-frame">factorial(3) = 3 × factorial(2)</div>
+            <div class="stack-arrow">↓</div>
+            <div class="stack-frame">factorial(2) = 2 × factorial(1)</div>
+            <div class="stack-arrow">↓</div>
+            <div class="stack-frame">factorial(1) = 1 × factorial(0)</div>
+            <div class="stack-arrow">↓</div>
+            <div class="stack-frame">factorial(0) = 1 ← Base case</div>
+            <div class="stack-arrow">↑</div>
+            <div class="stack-frame">factorial(1) = 1 × 1 = 1</div>
+            <div class="stack-arrow">↑</div>
+            <div class="stack-frame">factorial(2) = 2 × 1 = 2</div>
+            <div class="stack-arrow">↑</div>
+            <div class="stack-frame">factorial(3) = 3 × 2 = 6</div>
+            <div class="stack-arrow">↑</div>
+            <div class="stack-frame">factorial(4) = 4 × 6 = 24</div>
+            <div class="stack-arrow">↑</div>
+            <div class="stack-frame">factorial(5) = 5 × 24 = 120</div>
+          </div>
+        </div>
+
+        <h3>Another Example: Fibonacci Sequence</h3>
+        <pre><code>def fibonacci(n):
+    """
+    Return the nth Fibonacci number.
+    
+    Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, ...
+    Each number is the sum of the two preceding ones.
+    """
+    # Base cases
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    # Recursive case
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+# Test the function
+for i in range(10):
+    print(f"F({i}) = {fibonacci(i)}")</code></pre>
+
+        <div class="warning">
+          <p><strong>Performance Note:</strong> The recursive Fibonacci implementation above is inefficient for large values of n because it recalculates the same values many times. For better performance, use memoization (caching) or an iterative approach.</p>
+        </div>
+
+        <h3>When to Use Recursion</h3>
+        <ul>
+          <li>Problems that can be naturally divided into similar subproblems</li>
+          <li>Tree and graph traversal algorithms</li>
+          <li>Problems with recursive mathematical definitions (factorial, Fibonacci)</li>
+          <li>Divide and conquer algorithms (merge sort, quick sort)</li>
+          <li>Backtracking algorithms (solving puzzles, maze navigation)</li>
+        </ul>
+
+        <h3>When to Avoid Recursion</h3>
+        <ul>
+          <li>Problems with simple iterative solutions</li>
+          <li>When recursion depth might be too large (Python has a recursion limit)</li>
+          <li>Performance-critical applications where iterative solutions are faster</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h2>Practical Examples</h2>
+        </div>
+        <p>Here are some practical examples of functions and recursion in real-world scenarios.</p>
+
+        <div class="grid">
+          <div class="example-card">
+            <h3><i class="fas fa-calculator"></i> Calculator Functions</h3>
+            <pre><code>def calculator(a, b, operation='add'):
+    operations = {
+        'add': a + b,
+        'subtract': a - b,
+        'multiply': a * b,
+        'divide': a / b if b != 0 else 'Error: Division by zero'
+    }
+    return operations.get(operation, 'Invalid operation')
+
+result = calculator(10, 5, 'multiply')
+print(result)  # Output: 50</code></pre>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-user-check"></i> Input Validation</h3>
+            <pre><code>def get_valid_input(prompt, input_type=str, 
+                   validation_func=lambda x: True):
+    while True:
+        try:
+            user_input = input_type(input(prompt))
+            if validation_func(user_input):
+                return user_input
+            else:
+                print("Invalid input. Try again.")
+        except ValueError:
+            print("Invalid format. Try again.")
+
+# Example usage
+age = get_valid_input("Enter your age: ", int, 
+                     lambda x: 0 <= x <= 120)</code></pre>
+          </div>
+
+          <div class="example-card">
+            <h3><i class="fas fa-folder"></i> File Operations</h3>
+            <pre><code>def count_words(filename):
+    try:
+        with open(filename, 'r') as file:
+            content = file.read()
+            words = content.split()
+            return len(words)
+    except FileNotFoundError:
+        return f"The file {filename} was not found."
+
+word_count = count_words('sample.txt')
+print(f"Word count: {word_count}")</code></pre>
+          </div>
+        </div>
+
+        <h3>Interactive Recursion Demo: Fibonacci Sequence</h3>
+        <div class="interactive-demo">
+          <div class="demo-controls">
+            <div>
+              <label for="fib-input">Enter Fibonacci position:</label>
+              <input type="number" id="fib-input" value="7" min="0" max="20">
+            </div>
+            <button class="demo-btn" onclick="calculateFibonacci()">Calculate Fibonacci</button>
+          </div>
+          <div class="demo-output" id="fib-output">
+            Result will appear here...
+          </div>
+        </div>
+
+        <h3>Advanced Example: Recursive File Search</h3>
+        <pre><code>import os
+
+def find_files(directory, pattern):
+    """
+    Recursively find all files in directory that match pattern.
+    
+    Args:
+        directory (str): Path to search in
+        pattern (str): Pattern to match (e.g., '*.txt')
+        
+    Returns:
+        list: Paths of matching files
+    """
+    matches = []
+    try:
+        for item in os.listdir(directory):
+            path = os.path.join(directory, item)
+            if os.path.isfile(path):
+                if pattern in item:
+                    matches.append(path)
+            elif os.path.isdir(path):
+                # Recursive call for subdirectories
+                matches.extend(find_files(path, pattern))
+    except PermissionError:
+        print(f"Permission denied: {directory}")
+    return matches
+
+# Find all Python files in current directory and subdirectories
+python_files = find_files('.', '.py')
+for file in python_files:
+    print(file)</code></pre>
+      </div>
+    </section>
+
+    <section id="best-practices">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h2>Best Practices</h2>
+        </div>
+        <p>Follow these best practices to write clean, maintainable, and efficient functions.</p>
+
+        <h3>1. Write Clear, Descriptive Names</h3>
+        <pre><code># Bad function names
+def proc_data(d): 
+    # unclear what it does
+def x(y, z):
+    # meaningless names
+
+# Good function names
+def calculate_average(grades):
+    # clear what it does
+def validate_email_address(email):
+    # descriptive and specific</code></pre>
+
+        <h3>2. Keep Functions Focused and Short</h3>
+        <pre><code># Too many responsibilities
+def process_user_data(user_data):
+    # validates data
+    # saves to database
+    # sends welcome email
+    # generates report
+    # ... too many things!
+
+# Better - separate concerns
+def validate_user_data(user_data):
+    # validation only
+
+def save_user_to_db(user_data):
+    # database operations only
+
+def send_welcome_email(user_email):
+    # email sending only</code></pre>
+
+        <h3>3. Use Docstrings for Documentation</h3>
+        <pre><code>def calculate_compound_interest(principal, rate, time, compounds_per_year):
+    """
+    Calculate compound interest.
+    
+    Formula: A = P(1 + r/n)^(nt)
+    
+    Args:
+        principal (float): Initial investment
+        rate (float): Annual interest rate (as decimal)
+        time (float): Time in years
+        compounds_per_year (int): Number of compounding periods per year
+        
+    Returns:
+        float: Final amount after compound interest
+    """
+    return principal * (1 + rate/compounds_per_year) ** (compounds_per_year * time)</code></pre>
+
+        <h3>4. Avoid Side Effects When Possible</h3>
+        <pre><code># Function with side effect (modifies external state)
+total = 0
+
+def add_to_total(amount):
+    global total
+    total += amount  # side effect
+
+# Better - pure function (no side effects)
+def add_numbers(a, b):
+    return a + b  # no side effects, same input always gives same output</code></pre>
+
+        <h3>5. Use Appropriate Parameter Types</h3>
+        <pre><code># Use default parameters for optional values
+def connect_to_db(host='localhost', port=5432, timeout=30):
+    # connection logic
+
+# Use *args for variable positional arguments
+def sum_numbers(*args):
+    return sum(args)
+
+# Use **kwargs for variable keyword arguments  
+def create_person(**attributes):
+    return attributes</code></pre>
+
+        <h3>6. Handle Errors Gracefully</h3>
+        <pre><code>def safe_divide(dividend, divisor):
+    """
+    Safely divide two numbers.
+    
+    Returns:
+        float: Result of division, or None if division by zero
+    """
+    try:
+        return dividend / divisor
+    except ZeroDivisionError:
+        print("Error: Division by zero")
+        return None
+    except TypeError:
+        print("Error: Both arguments must be numbers")
+        return None</code></pre>
+
+        <h3>7. Recursion Best Practices</h3>
+        <ul>
+          <li>Always define a base case to prevent infinite recursion</li>
+          <li>Ensure each recursive call progresses toward the base case</li>
+          <li>Consider using memoization to cache results and avoid redundant calculations</li>
+          <li>Be aware of Python's recursion limit (usually around 1000)</li>
+          <li>For deep recursion, consider iterative solutions or increasing recursion limit</li>
+        </ul>
+
+        <pre><code># Recursion with memoization
+def fibonacci_memo(n, memo={}):
+    """
+    Fibonacci with memoization to improve performance.
+    """
+    if n in memo:
+        return memo[n]
+    if n <= 1:
+        return n
+    memo[n] = fibonacci_memo(n-1, memo) + fibonacci_memo(n-2, memo)
+    return memo[n]</code></pre>
+      </div>
+    </section>
+  </div>
+
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <footer class="container">
+    <p>Python Functions & Recursion Guide &copy; 2023. This content is for educational purposes only.</p>
+    <p>Python is a registered trademark of the Python Software Foundation.</p>
+    <p>Found an issue or want to contribute? <a href="https://github.com/example/python-functions-guide" target="_blank">Visit the GitHub repository</a>.</p>
+  </footer>
+
+  <script>
+    // Tab functionality
+    function openTab(evt, tabId) {
+      const tabcontent = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      
+      const tablinks = document.getElementsByClassName("tab");
+      for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    
+    // Navigation highlighting
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+    
+    window.addEventListener("scroll", () => {
+      let current = "";
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute("id");
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").substring(1) === current) {
+          link.classList.add("active");
+        }
+      });
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a, .back-to-top').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (this.getAttribute('href') === '#') {
+          // Back to top
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return;
+        }
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Built-in functions demo
+    function runBuiltInFunction() {
+      const input = document.getElementById('demo-input').value;
+      const func = document.getElementById('demo-function').value;
+      let output = "";
+      
+      try {
+        // Parse input as array of numbers
+        const numbers = input.split(',').map(item => {
+          const num = parseFloat(item.trim());
+          return isNaN(num) ? 0 : num;
+        });
+        
+        // Apply selected function
+        switch(func) {
+          case 'len':
+            output = `len(${JSON.stringify(numbers)}) = ${numbers.length}`;
+            break;
+          case 'sum':
+            output = `sum(${JSON.stringify(numbers)}) = ${numbers.reduce((a, b) => a + b, 0)}`;
+            break;
+          case 'max':
+            output = `max(${JSON.stringify(numbers)}) = ${Math.max(...numbers)}`;
+            break;
+          case 'min':
+            output = `min(${JSON.stringify(numbers)}) = ${Math.min(...numbers)}`;
+            break;
+          case 'sorted':
+            output = `sorted(${JSON.stringify(numbers)}) = ${JSON.stringify(numbers.sort((a, b) => a - b))}`;
+            break;
+        }
+      } catch (error) {
+        output = `Error: ${error.message}`;
+      }
+      
+      document.getElementById('demo-output').textContent = output;
+    }
+    
+    // Fibonacci calculation
+    function calculateFibonacci() {
+      const n = parseInt(document.getElementById('fib-input').value);
+      let output = "";
+      
+      if (isNaN(n) || n < 0 || n > 20) {
+        output = "Please enter a valid number between 0 and 20.";
+      } else {
+        // Calculate Fibonacci recursively
+        function fib(n) {
+          if (n <= 1) return n;
+          return fib(n - 1) + fib(n - 2);
+        }
+        
+        const result = fib(n);
+        output = `Fibonacci(${n}) = ${result}`;
+        
+        // Show sequence
+        if (n > 0) {
+          const sequence = [];
+          for (let i = 0; i <= n; i++) {
+            sequence.push(fib(i));
+          }
+          output += `\nSequence: ${sequence.join(', ')}`;
+        }
+      }
+      
+      document.getElementById('fib-output').textContent = output;
+    }
+    
+    // Initialize the demo
+    document.addEventListener('DOMContentLoaded', function() {
+      runBuiltInFunction();
+      calculateFibonacci();
+    });
+  </script>
+</body>
+</html>
